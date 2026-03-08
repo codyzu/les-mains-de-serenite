@@ -1,12 +1,12 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import {defineConfig} from 'astro/config';
 import unoCSS from 'unocss/astro';
 
 // https://astro.build/config
 export default defineConfig({
   integrations: [
     unoCSS({
-      injectReset: '@unocss/reset/tailwind-v4.css'
-    })
-  ]
+      injectReset: '@unocss/reset/tailwind-v4.css',
+    }),
+  ],
 });
