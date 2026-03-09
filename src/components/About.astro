@@ -1,5 +1,7 @@
 ---
+import {Picture} from 'astro:assets';
 import type {SiteData} from '../data/site';
+import Practitioner from '../assets/about-practitioner.png';
 import SectionIntro from './SectionIntro.astro';
 
 type Props = SiteData['about'];
@@ -23,8 +25,9 @@ const {title, paragraphs} = Astro.props;
         <div
           class="overflow-hidden rounded-[2rem] shadow-soft ring-1 ring-surface-soft"
         >
-          <img
-            src="/images/about-practitioner.png"
+          <Picture
+            src={Practitioner}
+            formats={['avif', 'webp']}
             alt="Ambiance bien-être et massage"
             class="h-[420px] w-full object-cover object-top"
           />
