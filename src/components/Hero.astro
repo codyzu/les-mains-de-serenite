@@ -1,0 +1,74 @@
+---
+interface Props {
+  brand: string;
+  subtitle: string;
+  title: string;
+  description: string;
+  bookingUrl: string;
+  phoneHref: string;
+  primaryCta: string;
+  secondaryCta: string;
+}
+
+const {
+  brand,
+  subtitle,
+  title,
+  description,
+  bookingUrl,
+  phoneHref,
+  primaryCta,
+  secondaryCta,
+} = Astro.props;
+---
+
+<section id="accueil" class="relative overflow-hidden">
+  <div class="absolute inset-0">
+    <img
+      src="/images/hero-massage-room.png"
+      alt=""
+      class="h-full w-full object-cover"
+    />
+    <div
+      class="absolute inset-0 bg-gradient-to-r from-ink/55 via-ink/25 to-transparent"
+    >
+    </div>
+  </div>
+
+  <div class="container-page relative py-24 sm:py-30 lg:py-36">
+    <div class="max-w-2xl">
+      <p class="mb-4 text-sm uppercase tracking-[0.25em] text-white/80">
+        {subtitle}
+      </p>
+      <h1
+        class="font-display text-5xl leading-tight text-white sm:text-6xl lg:text-7xl"
+      >
+        {title}
+      </h1>
+      <p class="mt-6 max-w-xl text-lg leading-8 text-white/90 sm:text-xl">
+        {description}
+      </p>
+
+      <div class="mt-8 flex flex-wrap gap-4">
+        <a
+          href={bookingUrl}
+          target="_blank"
+          rel="noreferrer"
+          class="btn-primary"
+        >
+          {primaryCta}
+        </a>
+        <a href={`tel:${phoneHref}`} class="btn-secondary">
+          {secondaryCta}
+        </a>
+      </div>
+
+      <div
+        class="mt-12 inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm text-white/90 backdrop-blur-sm"
+      >
+        <span class="i-lucide-map-pin h-4 w-4"></span>
+        <span>Annecy et alentours, sur rendez-vous</span>
+      </div>
+    </div>
+  </div>
+</section>

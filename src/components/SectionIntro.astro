@@ -1,0 +1,19 @@
+---
+interface Props {
+  title: string;
+  text?: string;
+  centered?: boolean;
+}
+
+const {title, text, centered = true} = Astro.props;
+---
+
+<div
+  class:list={[
+    'mb-12',
+    centered ? 'mx-auto max-w-3xl text-center' : 'max-w-2xl',
+  ]}
+>
+  <h2 class="heading-lg">{title}</h2>
+  {text ? <p class="body-lg mt-4">{text}</p> : null}
+</div>

@@ -1,0 +1,61 @@
+---
+import IconImage from './IconImage.astro';
+import SectionIntro from './SectionIntro.astro';
+
+interface Props {
+  phoneDisplay: string;
+  phoneHref: string;
+  email: string;
+  locationText: string;
+}
+
+const {phoneDisplay, phoneHref, email, locationText} = Astro.props;
+---
+
+<section id="contact" class="section-pad bg-surface">
+  <div class="container-page">
+    <SectionIntro
+      title="Contact"
+      text="Une question, une demande particulière, ou envie de réserver directement par téléphone?"
+    />
+
+    <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+      <article class="card-soft p-6 sm:p-7">
+        <IconImage
+          class="bg-brand-soft text-brand-strong"
+          name="i-lucide-phone"
+        />
+        <h3 class="heading-md text-[1.6rem]">Téléphone</h3>
+        <a
+          href={`tel:${phoneHref}`}
+          class="body-lg mt-4 inline-flex text-ink transition hover:text-brand-strong"
+        >
+          {phoneDisplay}
+        </a>
+      </article>
+
+      <article class="card-soft p-6 sm:p-7">
+        <IconImage
+          class="bg-accent-soft text-accent-strong"
+          name="i-lucide-mail"
+        />
+        <h3 class="heading-md text-[1.6rem]">Email</h3>
+        <a
+          href={`mailto:${email}`}
+          class="body-lg mt-4 inline-flex break-all text-ink transition hover:text-accent-strong"
+        >
+          {email}
+        </a>
+      </article>
+
+      <article class="card-soft p-6 sm:p-7 md:col-span-2 xl:col-span-1">
+        <IconImage
+          class="bg-brand-soft text-brand-strong"
+          name="i-lucide-map-pin"
+        />
+        <h3 class="heading-md text-[1.6rem]">Lieu</h3>
+        <p class="body-base mt-4">{locationText}</p>
+      </article>
+    </div>
+  </div>
+</section>

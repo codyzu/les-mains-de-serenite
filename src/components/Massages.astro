@@ -1,0 +1,45 @@
+---
+import SectionIntro from './SectionIntro.astro';
+import IconImage from './IconImage.astro';
+
+interface Massage {
+  title: string;
+  description: string;
+  icon: string;
+}
+
+interface Props {
+  items: Massage[];
+}
+
+const {items} = Astro.props;
+---
+
+<section id="massages" class="section-pad bg-surface">
+  <div class="container-page">
+    <SectionIntro
+      title="Massages proposés"
+      text="Des soins pensés pour favoriser la détente, soulager les tensions et offrir un vrai moment pour soi."
+    />
+
+    <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+      {
+        items.map((item, index) => (
+          <article class="card-soft p-6 sm:p-7">
+            <IconImage
+              class={
+                index % 2 === 0
+                  ? 'bg-brand-soft text-brand-strong'
+                  : 'bg-accent-soft text-accent'
+              }
+              name={item.icon}
+            />
+
+            <h3 class="heading-md text-[1.6rem]">{item.title}</h3>
+            <p class="body-base mt-3">{item.description}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

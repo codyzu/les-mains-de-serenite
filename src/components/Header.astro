@@ -1,0 +1,26 @@
+---
+interface Props {
+  brand: string;
+}
+
+const {brand} = Astro.props;
+---
+
+<header
+  class="sticky top-0 z-50 border-b border-surface-soft/80 bg-surface-muted/90 backdrop-blur-md"
+>
+  <div class="container-page flex items-center justify-between gap-6 py-4">
+    <a href="#accueil" class="min-w-0 no-underline">
+      <div class="font-display text-2xl text-ink sm:text-3xl">{brand}</div>
+      <p class="mt-1 text-sm text-ink-subtle">Massage bien-être</p>
+    </a>
+
+    <nav class="hidden items-center gap-6 md:flex">
+      <a href="#accueil" class="nav-link">Accueil</a>
+      <a href="#massages" class="nav-link">Massages</a>
+      <a href="#apropos" class="nav-link">À propos</a>
+      <a href="#reservation" class="nav-link">Réserver</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </nav>
+  </div>
+</header>
