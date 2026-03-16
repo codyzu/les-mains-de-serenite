@@ -1,5 +1,6 @@
 ---
 import type {ComponentProps} from 'astro/types';
+import HeroMassageRoom from '../assets/hero-massage-room.png';
 import BaseLayout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import Massages from '../components/Massages.astro';
@@ -7,6 +8,7 @@ import About from '../components/About.astro';
 import Booking from '../components/Booking.astro';
 import Contact from '../components/Contact.astro';
 import {site} from '../data/site';
+import {getPhoneHref} from '../utils/phone';
 
 type HeroProps = ComponentProps<typeof Hero>;
 type ContactProps = ComponentProps<typeof Contact>;
@@ -24,11 +26,26 @@ const contactProps = {
   email: site.email,
   locationText: site.locationText,
 } satisfies ContactProps;
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': site.seo.schemaType,
+  name: site.brand,
+  image: new URL(HeroMassageRoom.src, site.siteUrl).toString(),
+  telephone: `+33${getPhoneHref(site.phone).replace(/^0/, '')}`,
+  address: {
+    '@type': 'PostalAddress',
+    ...site.address,
+  },
+  areaServed: site.seo.areaServed,
+  url: site.siteUrl,
+};
 ---
 
 <BaseLayout
   title={`${site.brand} | Massage bien-être à Annecy`}
   description="Massages bien-être à Annecy. Réservation en ligne."
+  structuredData={structuredData}
 >
   <main>
     <Hero {...heroProps} />

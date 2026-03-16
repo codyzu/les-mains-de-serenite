@@ -7,10 +7,16 @@ import {getBaseUrl} from '../utils/url';
 interface Props {
   title: string;
   description?: string;
+  structuredData?: Record<string, unknown> | Array<Record<string, unknown>>;
 }
 
-const {title, description = ''} = Astro.props;
+const {title, description = '', structuredData} = Astro.props;
 const baseUrl = getBaseUrl();
+const structuredDataItems = structuredData
+  ? Array.isArray(structuredData)
+    ? structuredData
+    : [structuredData]
+  : [];
 ---
 
 <!doctype html>
@@ -22,6 +28,11 @@ const baseUrl = getBaseUrl();
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {
+      structuredDataItems.map((item) => (
+        <script type="application/ld+json" set:html={JSON.stringify(item)} />
+      ))
+    }
   </head>
   <body>
     <Header brand={site.brand} />
