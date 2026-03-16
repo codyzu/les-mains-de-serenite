@@ -1,0 +1,141 @@
+---
+import BaseLayout from '../layouts/Layout.astro';
+import {site} from '../data/site';
+import {getPhoneHref} from '../utils/phone';
+
+const {legal} = site;
+const phoneHref = getPhoneHref(site.phone);
+---
+
+<BaseLayout
+  title={`Politique de confidentialité | ${site.brand}`}
+  description={`Politique de confidentialité du site ${site.brand}.`}
+>
+  <main class="bg-surface">
+    <section class="section-pad">
+      <div class="container-page max-w-3xl">
+        <div class="mb-10 space-y-4">
+          <p class="text-sm uppercase tracking-[0.25em] text-ink-subtle">
+            Données personnelles
+          </p>
+          <h1 class="heading-lg">Politique de confidentialité</h1>
+          <p class="body-base">
+            Cette page décrit le traitement des données personnelles effectué
+            depuis le site {site.brand}.
+          </p>
+        </div>
+
+        <div class="space-y-8">
+          <section class="card-soft p-6 sm:p-8">
+            <h2 class="heading-md">Responsable du traitement</h2>
+            <div class="body-base mt-4 space-y-2">
+              <p>{legal.name}</p>
+              <p>{legal.address}</p>
+              <p>
+                <a
+                  href={`mailto:${site.email}`}
+                  class="text-ink transition hover:text-brand-strong"
+                >
+                  {site.email}
+                </a>
+              </p>
+              <p>
+                <a
+                  href={`tel:${phoneHref}`}
+                  class="text-ink transition hover:text-brand-strong"
+                >
+                  {site.phone}
+                </a>
+              </p>
+            </div>
+          </section>
+
+          <section class="card-soft p-6 sm:p-8">
+            <h2 class="heading-md">Données collectées</h2>
+            <p class="body-base mt-4">
+              Le site ne comporte pas de formulaire en ligne. Les données
+              personnelles sont susceptibles d’être collectées uniquement
+              lorsque vous prenez contact par téléphone, par email ou via la
+              plateforme de réservation liée depuis le site.
+            </p>
+            <p class="body-base mt-4">
+              Les données concernées peuvent inclure votre nom, vos coordonnées
+              et les informations utiles au traitement de votre demande ou de
+              votre rendez-vous.
+            </p>
+          </section>
+
+          <section class="card-soft p-6 sm:p-8">
+            <h2 class="heading-md">Finalités et base légale</h2>
+            <div class="body-base mt-4 space-y-3">
+              <p>
+                Les données sont utilisées pour répondre à vos demandes,
+                organiser les rendez-vous et assurer le suivi de la relation
+                client.
+              </p>
+              <p>
+                Le traitement repose selon les cas sur l’exécution de mesures
+                précontractuelles ou contractuelles, et sur l’intérêt légitime à
+                gérer les demandes entrantes.
+              </p>
+            </div>
+          </section>
+
+          <section class="card-soft p-6 sm:p-8">
+            <h2 class="heading-md">Destinataires</h2>
+            <p class="body-base mt-4">
+              Les données sont destinées uniquement à {legal.name}, ainsi qu’aux
+              prestataires strictement nécessaires au fonctionnement du site et
+              à la gestion des rendez-vous, notamment l’hébergeur du site et la
+              plateforme de réservation utilisée.
+            </p>
+          </section>
+
+          <section class="card-soft p-6 sm:p-8">
+            <h2 class="heading-md">Durée de conservation</h2>
+            <p class="body-base mt-4">{legal.dataRetention}</p>
+          </section>
+
+          <section class="card-soft p-6 sm:p-8">
+            <h2 class="heading-md">Vos droits</h2>
+            <p class="body-base mt-4">
+              Vous disposez d’un droit d’accès, de rectification, d’effacement,
+              de limitation du traitement et d’opposition, dans les conditions
+              prévues par la réglementation applicable.
+            </p>
+            <p class="body-base mt-4">
+              Vous pouvez exercer ces droits en écrivant à
+              <a
+                href={`mailto:${site.email}`}
+                class="mx-1 text-ink transition hover:text-brand-strong"
+              >
+                {site.email}
+              </a>
+              ou par courrier à l’adresse indiquée ci-dessus.
+            </p>
+            <p class="body-base mt-4">
+              En cas de difficulté non résolue, vous pouvez également introduire
+              une réclamation auprès de la CNIL.
+            </p>
+          </section>
+
+          <section class="card-soft p-6 sm:p-8">
+            <h2 class="heading-md">Cookies</h2>
+            <p class="body-base mt-4">
+              À ce stade, le site n’utilise pas de cookies publicitaires ni de
+              mesure d’audience. Si cela change, cette politique sera mise à
+              jour.
+            </p>
+          </section>
+
+          <section class="card-soft p-6 sm:p-8">
+            <h2 class="heading-md">Mise à jour</h2>
+            <p class="body-base mt-4">
+              Dernière mise à jour : {legal.lastUpdated}
+            </p>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

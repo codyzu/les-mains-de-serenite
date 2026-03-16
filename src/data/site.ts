@@ -2,11 +2,23 @@
 export type SiteData = {
   brand: string;
   subtitle: string;
-  phoneDisplay: string;
-  phoneHref: string;
+  phone: string;
   email: string;
   bookingUrl: string;
   locationText: string;
+  legal: {
+    name: string;
+    legalStatus: string;
+    address: string;
+    siren: string;
+    siret: string;
+    vatNumber: string;
+    hostName: string;
+    hostAddress: string;
+    hostWebsite: string;
+    dataRetention: string;
+    lastUpdated: string;
+  };
   hero: {
     title: string;
     description: string;
@@ -28,12 +40,26 @@ export type SiteData = {
 export const site = {
   brand: 'Les Mains de Sérénité',
   subtitle: 'Massage bien-être à Annecy',
-  phoneDisplay: '06 XX XX XX XX',
-  phoneHref: '0600000000',
+  phone: '06 18 75 81 28',
   email: 'bonjour@lesmainsdeserenite.fr',
   bookingUrl: 'https://calendly.com/your-link',
   locationText:
     'Massages sur rendez-vous. Le lieu sera communiqué lors de la réservation.',
+  legal: {
+    name: 'Zahara Zuschlag',
+    legalStatus: 'Entrepreneur individuel en micro-entreprise',
+    address: '27 avenue de la plaine, 74000 Annecy',
+    siren: 'SIREN à compléter',
+    siret: 'SIRET à compléter',
+    vatNumber:
+      'TVA non applicable, art. 293 B du CGI (à adapter si la situation change)',
+    hostName: 'GitHub, Inc.',
+    hostAddress: '88 Colin P Kelly Jr St, San Francisco, CA 94107, États-Unis',
+    hostWebsite: 'https://github.com',
+    dataRetention:
+      '3 ans maximum après le dernier contact émanant de la personne',
+    lastUpdated: '16 mars 2026',
+  },
   hero: {
     title: 'Les Mains de Sérénité',
     description:

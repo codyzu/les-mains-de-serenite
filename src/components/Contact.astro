@@ -1,14 +1,13 @@
 ---
 import type {SiteData} from '../data/site';
+import {getPhoneHref} from '../utils/phone';
 import IconImage from './IconImage.astro';
 import SectionIntro from './SectionIntro.astro';
 
-type Props = Pick<
-  SiteData,
-  'phoneDisplay' | 'phoneHref' | 'email' | 'locationText'
->;
+type Props = Pick<SiteData, 'phone' | 'email' | 'locationText'>;
 
-const {phoneDisplay, phoneHref, email, locationText} = Astro.props;
+const {phone, email, locationText} = Astro.props;
+const phoneHref = getPhoneHref(phone);
 ---
 
 <section id="contact" class="section-pad bg-surface">
@@ -29,7 +28,7 @@ const {phoneDisplay, phoneHref, email, locationText} = Astro.props;
           href={`tel:${phoneHref}`}
           class="body-lg mt-4 inline-flex text-ink transition hover:text-brand-strong"
         >
-          {phoneDisplay}
+          {phone}
         </a>
       </article>
 

@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../layouts/Layout.astro';
+import {site} from '../data/site';
+
+const {legal} = site;
+---
+
+<BaseLayout
+  title={`Mentions légales | ${site.brand}`}
+  description={`Mentions légales du site ${site.brand}.`}
+>
+  <main class="bg-surface">
+    <section class="section-pad">
+      <div class="container-page max-w-3xl">
+        <div class="mb-10 space-y-4">
+          <p class="text-sm uppercase tracking-[0.25em] text-ink-subtle">
+            Informations légales
+          </p>
+          <h1 class="heading-lg">Mentions légales</h1>
+          <p class="body-base">
+            Les informations ci-dessous sont fournies à titre de minimum légal
+            pour l’exploitation de ce site vitrine.
+          </p>
+        </div>
+
+        <div class="space-y-8">
+          <section class="card-soft p-6 sm:p-8">
+            <h2 class="heading-md">Éditeur du site</h2>
+            <div class="body-base mt-4 space-y-2">
+              <p><strong>Nom :</strong> {legal.name}</p>
+              <p><strong>Nom commercial :</strong> {site.brand}</p>
+              <p><strong>Statut :</strong> {legal.legalStatus}</p>
+              <p><strong>Adresse :</strong> {legal.address}</p>
+              <p><strong>Téléphone :</strong> {site.phone}</p>
+              <p>
+                <strong>Email :</strong>
+                <a
+                  href={`mailto:${site.email}`}
+                  class="text-ink transition hover:text-brand-strong"
+                >
+                  {site.email}
+                </a>
+              </p>
+              <p><strong>SIREN :</strong> {legal.siren}</p>
+              <p><strong>SIRET :</strong> {legal.siret}</p>
+              <p><strong>TVA :</strong> {legal.vatNumber}</p>
+            </div>
+          </section>
+
+          <section class="card-soft p-6 sm:p-8">
+            <h2 class="heading-md">Directrice de la publication</h2>
+            <p class="body-base mt-4">{legal.name}</p>
+          </section>
+
+          <section class="card-soft p-6 sm:p-8">
+            <h2 class="heading-md">Hébergement</h2>
+            <div class="body-base mt-4 space-y-2">
+              <p><strong>Hébergeur :</strong> {legal.hostName}</p>
+              <p><strong>Adresse :</strong> {legal.hostAddress}</p>
+              <p>
+                <strong>Site web :</strong>
+                <a
+                  href={legal.hostWebsite}
+                  target="_blank"
+                  rel="noreferrer"
+                  class="ml-1 text-ink transition hover:text-brand-strong"
+                >
+                  {legal.hostWebsite}
+                </a>
+              </p>
+            </div>
+          </section>
+
+          <section class="card-soft p-6 sm:p-8">
+            <h2 class="heading-md">Propriété intellectuelle</h2>
+            <p class="body-base mt-4">
+              Sauf mention contraire, l’ensemble des contenus présents sur ce
+              site (textes, images, éléments graphiques, logo) est protégé par
+              le droit de la propriété intellectuelle. Toute reproduction,
+              représentation, adaptation ou exploitation, totale ou partielle,
+              sans autorisation préalable est interdite.
+            </p>
+          </section>
+
+          <section class="card-soft p-6 sm:p-8">
+            <h2 class="heading-md">Responsabilité</h2>
+            <p class="body-base mt-4">
+              L’éditrice s’efforce de fournir des informations aussi exactes que
+              possible. Elle ne peut toutefois garantir l’exhaustivité,
+              l’exactitude ou l’actualité de l’ensemble des contenus publiés sur
+              le site.
+            </p>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

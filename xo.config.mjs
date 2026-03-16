@@ -22,10 +22,22 @@ const config = [
         'error',
         {
           case: 'pascalCase',
-          ignore: ['index.astro', /\[\w+]\.astro$/],
+          ignore: ['index.astro', /\[.+]\.astro$/],
         },
       ],
       'n/file-extension-in-import': 'off',
+    },
+  },
+  {
+    files: ['src/pages/**/*.astro'],
+    rules: {
+      'unicorn/filename-case': [
+        'error',
+        {
+          case: 'kebabCase',
+          ignore: [/\[.+]\.astro$/],
+        },
+      ],
     },
   },
   {

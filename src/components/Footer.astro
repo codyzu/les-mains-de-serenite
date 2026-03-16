@@ -1,9 +1,11 @@
 ---
 import type {SiteData} from '../data/site';
+import {getBaseUrl} from '../utils/url';
 
 type Props = Pick<SiteData, 'brand'>;
 
 const {brand} = Astro.props;
+const baseUrl = getBaseUrl();
 ---
 
 <footer class="bg-brand-strong py-10 text-white">
@@ -13,10 +15,30 @@ const {brand} = Astro.props;
     <div
       class="flex flex-wrap items-center justify-center gap-4 text-sm text-white/75"
     >
-      <a href="#massages" class="no-underline hover:text-white">Massages</a>
-      <a href="#apropos" class="no-underline hover:text-white">À propos</a>
-      <a href="#reservation" class="no-underline hover:text-white">Réserver</a>
-      <a href="#contact" class="no-underline hover:text-white">Contact</a>
+      <a href={`${baseUrl}#massages`} class="no-underline hover:text-white">
+        Massages
+      </a>
+      <a href={`${baseUrl}#apropos`} class="no-underline hover:text-white">
+        À propos
+      </a>
+      <a href={`${baseUrl}#reservation`} class="no-underline hover:text-white">
+        Réserver
+      </a>
+      <a href={`${baseUrl}#contact`} class="no-underline hover:text-white">
+        Contact
+      </a>
+      <a
+        href={`${baseUrl}mentions-legales/`}
+        class="no-underline hover:text-white"
+      >
+        Mentions légales
+      </a>
+      <a
+        href={`${baseUrl}politique-de-confidentialite/`}
+        class="no-underline hover:text-white"
+      >
+        Politique de confidentialité
+      </a>
     </div>
   </div>
 </footer>

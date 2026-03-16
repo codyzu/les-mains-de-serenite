@@ -1,9 +1,10 @@
 ---
 import {Picture} from 'astro:assets';
 import type {SiteData} from '../data/site';
+import {getPhoneHref} from '../utils/phone';
 import HeroMassageRoom from '../assets/hero-massage-room.png';
 
-type Props = Pick<SiteData, 'subtitle' | 'bookingUrl' | 'phoneHref'> &
+type Props = Pick<SiteData, 'subtitle' | 'bookingUrl' | 'phone'> &
   SiteData['hero'];
 
 const {
@@ -12,10 +13,11 @@ const {
   description,
   location,
   bookingUrl,
-  phoneHref,
+  phone,
   primaryCta,
   secondaryCta,
 } = Astro.props;
+const phoneHref = getPhoneHref(phone);
 ---
 
 <section id="accueil" class="relative overflow-hidden">
