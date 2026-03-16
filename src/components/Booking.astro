@@ -26,6 +26,7 @@ const {bookingUrl} = Astro.props;
 
         <a
           href={bookingUrl}
+          onclick="window.dispatchEvent(new CustomEvent('cf-analytics-event', {detail: {name: 'book_click'}}))"
           target="_blank"
           rel="noreferrer noopener"
           class="btn-primary mt-8 min-w-[13rem]"
@@ -36,3 +37,25 @@ const {bookingUrl} = Astro.props;
     </div>
   </div>
 </section>
+
+<script>
+  const el = document.querySelector('#reservation');
+
+  if (el && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          window.dispatchEvent(
+            new CustomEvent('cf-analytics-event', {
+              detail: {name: 'view_booking_section'},
+            })
+          );
+          observer.disconnect();
+        }
+      },
+      {threshold: 0.5}
+    );
+
+    observer.observe(el);
+  }
+</script>

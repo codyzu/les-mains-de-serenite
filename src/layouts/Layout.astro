@@ -27,6 +27,18 @@ const baseUrl = getBaseUrl();
     <Header brand={site.brand} />
     <slot />
     <Footer brand={site.brand} />
+
+    <!-- Cloudflare Web Analytics -->
+    {
+      import.meta.env.PROD ? (
+        <script
+          defer
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon='{"token": "cac9cbcf27cb4fd1b8c1f96bc6e63852"}'
+        />
+      ) : null
+    }
+    <!-- End Cloudflare Web Analytics -->
   </body>
 </html>
 
