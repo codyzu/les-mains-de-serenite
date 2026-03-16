@@ -30,7 +30,7 @@ export const site = {
   subtitle: 'Massage bien-être à Annecy',
   phoneDisplay: '06 XX XX XX XX',
   phoneHref: '0600000000',
-  email: 'bonjour@example.com',
+  email: 'bonjour@lesmainsdeserenite.fr',
   bookingUrl: 'https://calendly.com/your-link',
   locationText:
     'Massages sur rendez-vous. Le lieu sera communiqué lors de la réservation.',
