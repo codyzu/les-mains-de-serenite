@@ -30,6 +30,11 @@ export type SiteData = {
     title: string;
     description: string;
     icon: string;
+    prices: Array<{
+      duration: string;
+      price: string;
+      recommended?: boolean;
+    }>;
   }>;
   about: {
     title: string;
@@ -74,24 +79,44 @@ export const site = {
       description:
         'Massage ciblé pour soulager les tensions musculaires et les douleurs du quotidien. Idéal pour le dos, les épaules et la nuque, il aide à retrouver confort et détente.',
       icon: 'i-lucide-activity',
+      prices: [
+        {duration: '45 min', price: '60 €'},
+        {duration: '1 h', price: '80 €', recommended: true},
+        {duration: '1 h 30', price: '115 €'},
+      ],
     },
     {
       title: 'Drainage lymphatique',
       description:
-        'Massage doux et rythmé qui stimule la circulation lymphatique. Il aide à réduire la rétention d’eau et procure une agréable sensation de légèreté.',
+        'Massage doux et rythmé qui stimule la circulation lymphatique. Il aide à réduire la rétention d’eau et procure une sensation de légèreté.',
       icon: 'i-lucide-droplets',
+      prices: [
+        {duration: '45 min', price: '70 €'},
+        {duration: '1 h', price: '90 €', recommended: true},
+        {duration: '1 h 30', price: '125 €'},
+      ],
     },
     {
       title: 'Massage remodelant',
       description:
         'Massage tonifiant qui aide à raffermir la peau et redessiner certaines zones du corps. Il stimule la circulation et améliore l’aspect de la silhouette.',
       icon: 'i-lucide-scan',
+      prices: [
+        {duration: '45 min', price: '70 €'},
+        {duration: '1 h', price: '90 €', recommended: true},
+        {duration: '1 h 30', price: '125 €'},
+      ],
     },
     {
       title: 'Massage visage liftant',
       description:
         'Soin du visage relaxant qui stimule la circulation et tonifie la peau. Il aide à illuminer le teint et procure un effet liftant naturel.',
       icon: 'i-lucide-sparkles',
+      prices: [
+        {duration: '30 min', price: '50 €'},
+        {duration: '45 min', price: '65 €', recommended: true},
+        {duration: '1 h', price: '85 €'},
+      ],
     },
   ],
   about: {
