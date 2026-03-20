@@ -31,11 +31,6 @@ export default defineConfig({
   ],
   transformers: [transformerDirectives(), transformerVariantGroup()],
 
-  safelist: [
-    // Used for link icons in markdown (see astro.config.mjs)
-    'i-tabler-link',
-  ],
-
   theme: {
     colors: {
       brand: {
