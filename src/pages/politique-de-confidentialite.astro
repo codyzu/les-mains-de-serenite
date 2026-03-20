@@ -1,9 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import {site} from '../data/site';
+import {formatAddress} from '../utils/address';
 import {getPhoneHref} from '../utils/phone';
 
 const {legal} = site;
+const legalAddress = formatAddress(site.address);
 const phoneHref = getPhoneHref(site.phone);
 ---
 
@@ -30,7 +32,7 @@ const phoneHref = getPhoneHref(site.phone);
             <h2 class="heading-md">Responsable du traitement</h2>
             <div class="body-base mt-4 space-y-2">
               <p>{legal.name}</p>
-              <p>{legal.address}</p>
+              <p>{legalAddress}</p>
               <p>
                 <a
                   href={`mailto:${site.email}`}

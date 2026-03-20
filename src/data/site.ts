@@ -20,7 +20,6 @@ export type SiteData = {
   legal: {
     name: string;
     legalStatus: string;
-    address: string;
     siren: string;
     siret: string;
     vatNumber: string;
@@ -53,22 +52,6 @@ export type SiteData = {
   };
 };
 
-const address = {
-  streetAddress: '27 avenue de la plaine',
-  addressLocality: 'Annecy',
-  postalCode: '74000',
-  addressCountry: 'FR',
-} as const;
-
-const formatAddress = ({
-  streetAddress,
-  postalCode,
-  addressLocality,
-}: Pick<
-  SiteData['address'],
-  'streetAddress' | 'postalCode' | 'addressLocality'
->) => `${streetAddress}, ${postalCode} ${addressLocality}`;
-
 export const site = {
   brand: 'Les Mains de Sérénité',
   subtitle: 'Massage bien-être à Annecy',
@@ -78,7 +61,12 @@ export const site = {
   bookingUrl: 'https://calendly.com/your-link',
   locationText:
     'Massages sur rendez-vous. Le lieu sera communiqué lors de la réservation.',
-  address,
+  address: {
+    streetAddress: '27 avenue de la plaine',
+    addressLocality: 'Annecy',
+    postalCode: '74000',
+    addressCountry: 'FR',
+  },
   seo: {
     schemaType: 'MassageTherapist',
     areaServed: 'Annecy',
@@ -86,7 +74,6 @@ export const site = {
   legal: {
     name: 'Zahara Zuschlag',
     legalStatus: 'Entrepreneur individuel en micro-entreprise',
-    address: formatAddress(address),
     siren: 'SIREN à compléter',
     siret: 'SIRET à compléter',
     vatNumber:
