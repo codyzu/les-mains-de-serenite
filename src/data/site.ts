@@ -58,7 +58,7 @@ export const site = {
   siteUrl: 'https://lesmainsdeserenite.fr',
   phone: '06 18 75 81 28',
   email: 'bonjour@lesmainsdeserenite.fr',
-  bookingUrl: 'https://calendly.com/your-link',
+  bookingUrl: 'https://cal.eu/lesmainsdeserenite',
   locationText:
     'Massages sur rendez-vous. Le lieu sera communiqué lors de la réservation.',
   address: {
@@ -72,7 +72,7 @@ export const site = {
     areaServed: 'Annecy',
   },
   legal: {
-    name: 'Zahara Zuschlag',
+    name: 'Zahara ZUSCHLAG',
     legalStatus: 'Entrepreneur individuel en micro-entreprise',
     siren: 'SIREN à compléter',
     siret: 'SIRET à compléter',
