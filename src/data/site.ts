@@ -60,7 +60,7 @@ export const site = {
   email: 'bonjour@lesmainsdeserenite.fr',
   bookingUrl: 'https://cal.eu/lesmainsdeserenite',
   locationText:
-    'Massages sur rendez-vous. Le lieu sera communiqué lors de la réservation.',
+    'Massage à domicile à Annecy et alentours. Je me déplace directement chez vous sur rendez-vous.',
   address: {
     streetAddress: '27 avenue de la plaine',
     addressLocality: 'Annecy',
