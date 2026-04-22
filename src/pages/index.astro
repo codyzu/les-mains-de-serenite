@@ -3,10 +3,12 @@ import type {ComponentProps} from 'astro/types';
 import HeroMassageRoom from '../assets/hero-massage-room.png';
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
+import NeedsSection from '../components/NeedsSection.astro';
 import Massages from '../components/Massages.astro';
 import About from '../components/About.astro';
 import SessionSteps from '../components/SessionSteps.astro';
 import Testimonials from '../components/Testimonials.astro';
+import FeltBenefits from '../components/FeltBenefits.astro';
 import Booking from '../components/Booking.astro';
 import Contact from '../components/Contact.astro';
 import {site} from '../data/site';
@@ -20,6 +22,7 @@ const heroProps = {
   subtitle: site.subtitle,
   bookingUrl: bookingPath,
   phone: site.phone,
+  whatsappUrl: site.whatsappUrl,
   ...site.hero,
 } satisfies HeroProps;
 
@@ -27,6 +30,7 @@ const contactProps = {
   phone: site.phone,
   email: site.email,
   locationText: site.locationText,
+  whatsappUrl: site.whatsappUrl,
 } satisfies ContactProps;
 
 const structuredData = {
@@ -45,18 +49,22 @@ const structuredData = {
 ---
 
 <Layout
-  title={`${site.brand} | Massage à domicile à Annecy pour femmes`}
-  description="Massage à domicile à Annecy pour femmes. Drainage lymphatique, massage anti-douleur, remodelant et visage. Réservation en ligne simple et rapide."
+  title={`${site.brand} | Massage bien-être à Annecy pour femmes`}
+  description="Massage bien-être à Annecy pour femmes, à domicile ou sur place. Drainage lymphatique, massage anti-douleur, remodelant et visage. Réservation en ligne simple et rapide."
   structuredData={structuredData}
 >
   <main>
     <Hero {...heroProps} />
+
+    <NeedsSection {...site.needsSection} />
 
     <Massages items={site.massages} />
 
     <About {...site.about} />
 
     <SessionSteps {...site.sessionSteps} />
+
+    <FeltBenefits {...site.feltBenefits} />
 
     <Testimonials {...site.testimonials} />
 

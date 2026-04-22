@@ -4,9 +4,9 @@ import {getPhoneHref} from '../utils/phone';
 import IconImage from './IconImage.astro';
 import SectionIntro from './SectionIntro.astro';
 
-type Props = Pick<SiteData, 'phone' | 'email' | 'locationText'>;
+type Props = Pick<SiteData, 'phone' | 'email' | 'locationText' | 'whatsappUrl'>;
 
-const {phone, email, locationText} = Astro.props;
+const {phone, email, locationText, whatsappUrl} = Astro.props;
 const phoneHref = getPhoneHref(phone);
 ---
 
@@ -14,10 +14,10 @@ const phoneHref = getPhoneHref(phone);
   <div class="container-page">
     <SectionIntro
       title="Contact"
-      text="Une question, une demande particulière, ou envie de réserver directement par téléphone?"
+      text="Une question, une demande particulière, ou envie de réserver directement par téléphone ou sur WhatsApp ?"
     />
 
-    <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+    <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
       <article class="card-soft p-6 sm:p-7">
         <IconImage
           class="bg-brand-soft text-brand-strong"
@@ -29,6 +29,22 @@ const phoneHref = getPhoneHref(phone);
           class="body-lg mt-4 inline-flex text-ink transition hover:text-brand-strong"
         >
           {phone}
+        </a>
+      </article>
+
+      <article class="card-soft p-6 sm:p-7">
+        <IconImage
+          class="bg-brand-soft text-brand-strong"
+          name="i-lucide-message-circle-heart"
+        />
+        <h3 class="heading-md text-[1.6rem]">WhatsApp</h3>
+        <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noreferrer"
+          class="body-lg mt-4 inline-flex text-ink transition hover:text-brand-strong"
+        >
+          Écrire sur WhatsApp
         </a>
       </article>
 

@@ -2,17 +2,28 @@
 interface Props {
   name: string;
   class?: string;
+  iconClass?: string;
+  inline?: boolean;
 }
 
 const {name, class: className = 'bg-brand-soft text-brand-strong'} =
   Astro.props;
+const {iconClass = 'h-7 w-7', inline = false} = Astro.props;
 ---
 
-<div
-  class:list={[
-    'mb-5 flex h-16 w-16 items-center justify-center rounded-full',
-    className,
-  ]}
->
-  <span class:list={['h-7 w-7', name]}></span>
-</div>
+{
+  inline ? (
+    <span class:list={['flex items-center justify-center', className]}>
+      <span class:list={[iconClass, name]} />
+    </span>
+  ) : (
+    <div
+      class:list={[
+        'mb-5 flex h-16 w-16 items-center justify-center rounded-full',
+        className,
+      ]}
+    >
+      <span class:list={[iconClass, name]} />
+    </div>
+  )
+}

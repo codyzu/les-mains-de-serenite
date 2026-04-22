@@ -6,6 +6,7 @@ export type SiteData = {
   phone: string;
   email: string;
   bookingUrl: string;
+  whatsappUrl: string;
   locationText: string;
   address: {
     streetAddress: string;
@@ -32,9 +33,15 @@ export type SiteData = {
   hero: {
     title: string;
     description: string;
-    location: string;
+    womenOnlyLabel: string;
+    benefitHighlight: string;
     primaryCta: string;
     secondaryCta: string;
+    whatsappCta: string;
+  };
+  needsSection: {
+    title: string;
+    items: string[];
   };
   massages: Array<{
     title: string;
@@ -67,17 +74,23 @@ export type SiteData = {
       author: string;
     }>;
   };
+  feltBenefits: {
+    title: string;
+    items: string[];
+  };
 };
 
 export const site = {
   brand: 'Les Mains de Sérénité',
-  subtitle: 'Massage à domicile à Annecy',
+  subtitle: 'Massage bien-être à Annecy',
   siteUrl: 'https://lesmainsdeserenite.fr',
   phone: '06 18 75 81 28',
   email: 'bonjour@lesmainsdeserenite.fr',
   bookingUrl: 'https://cal.eu/lesmainsdeserenite',
+  whatsappUrl:
+    'https://wa.me/33618758128?text=Bonjour%2C%20je%20souhaite%20des%20informations%20pour%20un%20massage',
   locationText:
-    'Massage à domicile à Annecy et alentours. Je me déplace directement chez vous sur rendez-vous.',
+    'Massages bien-être à Annecy et alentours, à domicile ou sur place selon le rendez-vous.',
   address: {
     streetAddress: '27 avenue de la plaine',
     addressLocality: 'Annecy',
@@ -105,32 +118,43 @@ export const site = {
   hero: {
     title: 'Les Mains de Sérénité',
     description:
-      'Massage à domicile à Annecy, exclusivement réservé aux femmes. Profitez d’un moment de détente profonde directement chez vous, dans un cadre bienveillant et sécurisé.',
-    location: 'Annecy et alentours · À domicile · Réservé aux femmes',
+      'Réservé aux femmes, dans un cadre bienveillant, apaisant et sécurisé, à domicile ou sur place.',
+    womenOnlyLabel: 'Réservé aux femmes',
+    benefitHighlight: 'Idéal pour jambes lourdes et ventre gonflé',
     primaryCta: 'Réserver un massage',
     secondaryCta: 'Appeler',
+    whatsappCta: 'WhatsApp',
+  },
+  needsSection: {
+    title: 'Pour quels besoins ?',
+    items: [
+      'Jambes lourdes',
+      'Ventre gonflé',
+      'Rétention d’eau',
+      'Fatigue / sensation de lourdeur',
+    ],
   },
   massages: [
     {
-      title: 'Massage anti-douleur',
-      description:
-        'Massage ciblé pour soulager les tensions musculaires et les douleurs du quotidien. Idéal pour le dos, les épaules et la nuque, il aide à retrouver confort et détente.',
-      icon: 'i-lucide-activity',
-      prices: [
-        {duration: '45 min', price: '60 €'},
-        {duration: '1 h', price: '80 €', recommended: true},
-        {duration: '1 h 30', price: '115 €'},
-      ],
-    },
-    {
       title: 'Drainage lymphatique',
       description:
-        'Massage doux et rythmé qui stimule la circulation lymphatique. Il aide à réduire la rétention d’eau et procure une sensation de légèreté.',
+        'Massage doux et rythmé qui stimule la circulation lymphatique. Idéal pour soulager les jambes lourdes, le ventre gonflé et la rétention d’eau, il procure une sensation immédiate de légèreté.',
       icon: 'i-lucide-droplets',
       prices: [
         {duration: '45 min', price: '70 €'},
         {duration: '1 h', price: '90 €', recommended: true},
         {duration: '1 h 30', price: '125 €'},
+      ],
+    },
+    {
+      title: 'Massage anti-douleur',
+      description:
+        'Massage ciblé pour soulager les tensions musculaires et les inconforts du quotidien. Idéal pour le dos, les épaules et la nuque, il aide à retrouver confort et détente.',
+      icon: 'i-lucide-activity',
+      prices: [
+        {duration: '45 min', price: '60 €'},
+        {duration: '1 h', price: '80 €', recommended: true},
+        {duration: '1 h 30', price: '115 €'},
       ],
     },
     {
@@ -161,16 +185,16 @@ export const site = {
     body: `
 Je suis praticienne en massage bien-être, avec une formation d’auxiliaire de puériculture, ce qui m’a permis de développer une approche attentive, douce et à l’écoute du corps.
 
-Je vous propose des massages à domicile à Annecy et ses alentours, exclusivement réservés aux femmes, afin de garantir un cadre de confiance, de confort et de sérénité.
+Je vous propose des massages bien-être à Annecy et ses alentours, exclusivement réservés aux femmes, dans un cadre de confiance, de confort et de sérénité.
 
 Chaque séance est entièrement personnalisée, en fonction de vos besoins du moment, qu’il s’agisse de soulager des tensions, de relâcher le stress ou simplement de vous accorder un moment pour vous.
 
-Mon objectif est simple : vous offrir une parenthèse de bien-être, directement chez vous, dans un environnement calme, rassurant et bienveillant.
+Mon objectif est simple : vous offrir une parenthèse de bien-être dans un environnement calme, rassurant et bienveillant, pensé pour que vous puissiez pleinement relâcher et profiter de l’instant.
     `,
   },
   sessionSteps: {
     title: 'Comment se déroule une séance ?',
-    intro: 'Un moment de bien-être chez vous, en toute simplicité.',
+    intro: 'Un moment de bien-être, en toute simplicité.',
     reassuranceNote: 'Aucun matériel n’est à prévoir de votre côté.',
     steps: [
       {
@@ -179,14 +203,14 @@ Mon objectif est simple : vous offrir une parenthèse de bien-être, directement
           'Choisissez le créneau qui vous convient en ligne ou par téléphone.',
       },
       {
-        title: 'Déplacement à domicile',
+        title: 'Lieu du rendez-vous',
         description:
-          'Je me déplace chez vous à Annecy et alentours avec table de massage et matériel professionnel.',
+          'La séance peut avoir lieu à votre domicile ou sur place, selon votre préférence, avec tout le matériel nécessaire.',
       },
       {
         title: 'Votre moment de détente',
         description:
-          'Vous profitez d’une séance personnalisée, directement chez vous, dans un cadre calme et rassurant.',
+          'Vous profitez d’une séance personnalisée dans un cadre calme, rassurant et propice à la détente.',
       },
     ],
   },
@@ -206,6 +230,16 @@ Mon objectif est simple : vous offrir une parenthèse de bien-être, directement
         text: 'Je ne pensais pas pouvoir me détendre autant à la maison. Une expérience très agréable, dans un cadre simple et rassurant.',
         author: 'Camille, Annecy',
       },
+    ],
+  },
+  feltBenefits: {
+    title: 'Les bienfaits ressentis',
+    items: [
+      'Sensation de légèreté',
+      'Jambes moins lourdes',
+      'Ventre moins gonflé',
+      'Détente profonde',
+      'Un vrai moment pour soi',
     ],
   },
 } satisfies SiteData;
