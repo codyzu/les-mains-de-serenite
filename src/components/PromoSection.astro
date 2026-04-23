@@ -1,0 +1,40 @@
+---
+import type {SiteData} from '../data/site';
+
+interface Props {
+  promo?: SiteData['promo'];
+}
+
+const {promo} = Astro.props;
+---
+
+{
+  promo ? (
+    <section class="bg-surface pb-8 pt-8 sm:pb-10 sm:pt-10 lg:pb-12 lg:pt-14">
+      <div class="container-page">
+        <div class="card-soft overflow-hidden rounded-[2rem] bg-gradient-to-br from-brand-soft/70 via-white/88 to-surface-muted p-7 shadow-soft sm:p-9 lg:p-12">
+          <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between lg:gap-10">
+            <div class="max-w-3xl">
+              <p class="text-sm uppercase tracking-[0.25em] text-brand-strong/90">
+                {promo.title}
+              </p>
+              <h2 class="heading-lg mt-4 max-w-[17ch] text-[2.2rem] sm:text-4xl lg:max-w-[20ch]">
+                {promo.headline}
+              </h2>
+              <p class="body-lg mt-4 max-w-2xl">{promo.description}</p>
+            </div>
+
+            <div class="flex items-start lg:shrink-0 lg:self-end">
+              <a
+                href={promo.ctaLink}
+                class="btn-primary min-h-[3rem] px-6 py-3.5"
+              >
+                {promo.ctaText}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  ) : null
+}

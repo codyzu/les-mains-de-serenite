@@ -39,6 +39,13 @@ export type SiteData = {
     secondaryCta: string;
     whatsappCta: string;
   };
+  promo?: {
+    title: string;
+    headline: string;
+    description: string;
+    ctaText: string;
+    ctaLink: string;
+  };
   needsSection: {
     title: string;
     items: string[];
@@ -124,6 +131,14 @@ export const site = {
     primaryCta: 'Réserver un massage',
     secondaryCta: 'Appeler',
     whatsappCta: 'WhatsApp',
+  },
+  promo: {
+    title: 'Offre découverte',
+    headline: 'Première séance découverte : 45 min à 50€',
+    description:
+      'Un premier moment pour découvrir les bienfaits du massage, dans un cadre doux et rassurant.',
+    ctaText: 'Réserver un massage',
+    ctaLink: '/reserver',
   },
   needsSection: {
     title: 'Pour quels besoins ?',
