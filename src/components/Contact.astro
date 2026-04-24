@@ -4,26 +4,77 @@ import {getPhoneHref} from '../utils/phone';
 import IconImage from './IconImage.astro';
 import SectionIntro from './SectionIntro.astro';
 
-type Props = Pick<SiteData, 'phone' | 'email' | 'locationText' | 'whatsappUrl'>;
+type Props = Pick<SiteData, 'phone' | 'email' | 'whatsappUrl'> &
+  Partial<Pick<SiteData, 'locationText'>> & {
+    title?: string;
+    subtitle?: string;
+    whatsappDescription?: string;
+    phoneDescription?: string;
+    emailDescription?: string;
+    whatsappLabel?: string;
+    whatsappHref?: string;
+  };
 
-const {phone, email, locationText, whatsappUrl} = Astro.props;
+const {
+  phone,
+  email,
+  locationText,
+  whatsappUrl,
+  title = 'Contact',
+  subtitle = 'Une question, une demande particulière, ou envie de réserver directement par téléphone ou sur WhatsApp ?',
+  whatsappDescription,
+  phoneDescription,
+  emailDescription,
+  whatsappLabel = 'Écrire sur WhatsApp',
+  whatsappHref,
+} = Astro.props;
 const phoneHref = getPhoneHref(phone);
+const effectiveWhatsappHref = whatsappHref ?? whatsappUrl;
+const hasLocation = Boolean(locationText);
 ---
 
 <section id="contact" class="section-pad bg-surface">
   <div class="container-page">
-    <SectionIntro
-      title="Contact"
-      text="Une question, une demande particulière, ou envie de réserver directement par téléphone ou sur WhatsApp ?"
-    />
+    <SectionIntro title={title} text={subtitle} />
 
-    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4">
+    <div
+      class:list={[
+        'grid grid-cols-1 gap-6 sm:grid-cols-2',
+        hasLocation ? 'xl:grid-cols-4' : 'xl:grid-cols-3',
+      ]}
+    >
+      <article class="card-soft min-w-0 p-6 sm:p-7">
+        <IconImage
+          class="bg-brand-soft text-brand-strong"
+          name="i-lucide-message-circle-heart"
+        />
+        <h3 class="heading-md text-[1.6rem]">WhatsApp</h3>
+        {
+          whatsappDescription ? (
+            <p class="body-base mt-3">{whatsappDescription}</p>
+          ) : null
+        }
+        <a
+          href={effectiveWhatsappHref}
+          target="_blank"
+          rel="noreferrer"
+          class="body-lg mt-4 inline-flex text-ink transition hover:text-brand-strong"
+        >
+          {whatsappLabel}
+        </a>
+      </article>
+
       <article class="card-soft min-w-0 p-6 sm:p-7">
         <IconImage
           class="bg-brand-soft text-brand-strong"
           name="i-lucide-phone"
         />
         <h3 class="heading-md text-[1.6rem]">Téléphone</h3>
+        {
+          phoneDescription ? (
+            <p class="body-base mt-3">{phoneDescription}</p>
+          ) : null
+        }
         <a
           href={`tel:${phoneHref}`}
           class="body-lg mt-4 inline-flex text-ink transition hover:text-brand-strong"
@@ -34,26 +85,15 @@ const phoneHref = getPhoneHref(phone);
 
       <article class="card-soft min-w-0 p-6 sm:p-7">
         <IconImage
-          class="bg-brand-soft text-brand-strong"
-          name="i-lucide-message-circle-heart"
-        />
-        <h3 class="heading-md text-[1.6rem]">WhatsApp</h3>
-        <a
-          href={whatsappUrl}
-          target="_blank"
-          rel="noreferrer"
-          class="body-lg mt-4 inline-flex text-ink transition hover:text-brand-strong"
-        >
-          Écrire sur WhatsApp
-        </a>
-      </article>
-
-      <article class="card-soft min-w-0 p-6 sm:p-7">
-        <IconImage
           class="bg-accent-soft text-accent-strong"
           name="i-lucide-mail"
         />
         <h3 class="heading-md text-[1.6rem]">Email</h3>
+        {
+          emailDescription ? (
+            <p class="body-base mt-3">{emailDescription}</p>
+          ) : null
+        }
         <a
           href={`mailto:${email}`}
           class="body-lg mt-4 inline-flex break-all text-ink transition hover:text-accent-strong"
@@ -62,14 +102,18 @@ const phoneHref = getPhoneHref(phone);
         </a>
       </article>
 
-      <article class="card-soft min-w-0 p-6 sm:p-7">
-        <IconImage
-          class="bg-brand-soft text-brand-strong"
-          name="i-lucide-map-pin"
-        />
-        <h3 class="heading-md text-[1.6rem]">Lieu</h3>
-        <p class="body-base mt-4">{locationText}</p>
-      </article>
+      {
+        hasLocation ? (
+          <article class="card-soft min-w-0 p-6 sm:p-7">
+            <IconImage
+              class="bg-brand-soft text-brand-strong"
+              name="i-lucide-map-pin"
+            />
+            <h3 class="heading-md text-[1.6rem]">Lieu</h3>
+            <p class="body-base mt-4">{locationText}</p>
+          </article>
+        ) : null
+      }
     </div>
   </div>
 </section>

@@ -2,10 +2,14 @@
 import type {SiteData} from '../data/site';
 import {getBaseUrl} from '../utils/url';
 
-type Props = Pick<SiteData, 'brand'>;
+type Props = Pick<SiteData, 'brand'> & {
+  reserveLink?: string;
+  reserveActive?: boolean;
+};
 
-const {brand} = Astro.props;
+const {brand, reserveLink, reserveActive = false} = Astro.props;
 const baseUrl = getBaseUrl();
+const bookingHref = reserveLink ?? `${baseUrl}#reservation`;
 ---
 
 <footer class="bg-brand-strong py-10 text-white">
@@ -21,9 +25,17 @@ const baseUrl = getBaseUrl();
       <a href={`${baseUrl}#apropos`} class="no-underline hover:text-white">
         À propos
       </a>
-      <a href={`${baseUrl}#reservation`} class="no-underline hover:text-white">
-        Réserver
-      </a>
+      {
+        reserveActive ? (
+          <span aria-current="page" class="text-white">
+            Réserver
+          </span>
+        ) : (
+          <a href={bookingHref} class="no-underline hover:text-white">
+            Réserver
+          </a>
+        )
+      }
       <a href={`${baseUrl}#contact`} class="no-underline hover:text-white">
         Contact
       </a>

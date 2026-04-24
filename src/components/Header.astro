@@ -2,10 +2,14 @@
 import type {SiteData} from '../data/site';
 import {getBaseUrl} from '../utils/url';
 
-type Props = Pick<SiteData, 'brand'>;
+type Props = Pick<SiteData, 'brand'> & {
+  reserveLink?: string;
+  reserveActive?: boolean;
+};
 
-const {brand} = Astro.props;
+const {brand, reserveLink, reserveActive = false} = Astro.props;
 const baseUrl = getBaseUrl();
+const bookingHref = reserveLink ?? `${baseUrl}#reservation`;
 ---
 
 <header
@@ -21,7 +25,17 @@ const baseUrl = getBaseUrl();
       <a href={`${baseUrl}#accueil`} class="nav-link">Accueil</a>
       <a href={`${baseUrl}#massages`} class="nav-link">Massages</a>
       <a href={`${baseUrl}#apropos`} class="nav-link">À propos</a>
-      <a href={`${baseUrl}#reservation`} class="nav-link">Réserver</a>
+      {
+        reserveActive ? (
+          <span aria-current="page" class="text-sm font-medium text-ink">
+            Réserver
+          </span>
+        ) : (
+          <a href={bookingHref} class="nav-link">
+            Réserver
+          </a>
+        )
+      }
       <a href={`${baseUrl}#contact`} class="nav-link">Contact</a>
     </nav>
   </div>

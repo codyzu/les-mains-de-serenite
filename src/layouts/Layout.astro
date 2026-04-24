@@ -8,9 +8,17 @@ interface Props {
   title: string;
   description?: string;
   structuredData?: Record<string, unknown> | Array<Record<string, unknown>>;
+  reserveLink?: string;
+  reserveActive?: boolean;
 }
 
-const {title, description = '', structuredData} = Astro.props;
+const {
+  title,
+  description = '',
+  structuredData,
+  reserveLink,
+  reserveActive = false,
+} = Astro.props;
 const structuredDataItems = structuredData
   ? Array.isArray(structuredData)
     ? structuredData
@@ -23,7 +31,15 @@ const structuredDataItems = structuredData
   description={description}
   structuredData={structuredDataItems}
 >
-  <Header brand={site.brand} />
+  <Header
+    brand={site.brand}
+    reserveLink={reserveLink}
+    reserveActive={reserveActive}
+  />
   <slot />
-  <Footer brand={site.brand} />
+  <Footer
+    brand={site.brand}
+    reserveLink={reserveLink}
+    reserveActive={reserveActive}
+  />
 </BaseLayout>
