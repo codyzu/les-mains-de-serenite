@@ -1,59 +1,72 @@
 ---
-import type {SiteData} from '../data/site';
+import {defaultLocale, getLocalizedSite, site, type Locale} from '../data/site';
 import {getBaseUrl} from '../utils/url';
 
-type Props = Pick<SiteData, 'brand'> & {
+type Props = {
+  locale?: Locale;
   reserveLink?: string;
   reserveActive?: boolean;
 };
 
-const {brand, reserveLink, reserveActive = false} = Astro.props;
+const {
+  locale = defaultLocale,
+  reserveLink,
+  reserveActive = false,
+} = Astro.props;
 const baseUrl = getBaseUrl();
 const bookingHref = reserveLink ?? `${baseUrl}#reservation`;
+const {
+  business: {name: brand},
+  pages,
+} = site;
+const {
+  chrome: {footer},
+} = getLocalizedSite(locale);
+const {tagline, links, disclaimer} = footer;
 ---
 
 <footer class="bg-brand-strong py-10 text-white">
   <div class="container-page flex flex-col items-center gap-3 text-center">
     <div class="font-display text-3xl">{brand}</div>
-    <p class="text-white/85">Massage bien-être</p>
+    <p class="text-white/85">{tagline}</p>
     <div
       class="flex flex-wrap items-center justify-center gap-4 text-sm text-white/75"
     >
       <a href={`${baseUrl}#massages`} class="no-underline hover:text-white">
-        Massages
+        {links.massages}
       </a>
       <a href={`${baseUrl}#apropos`} class="no-underline hover:text-white">
-        À propos
+        {links.about}
       </a>
       {
         reserveActive ? (
           <span aria-current="page" class="text-white">
-            Réserver
+            {links.reserve}
           </span>
         ) : (
           <a href={bookingHref} class="no-underline hover:text-white">
-            Réserver
+            {links.reserve}
           </a>
         )
       }
       <a href={`${baseUrl}#contact`} class="no-underline hover:text-white">
-        Contact
+        {links.contact}
       </a>
       <a
-        href={`${baseUrl}mentions-legales/`}
+        href={`${baseUrl}${pages.mentionsLegalesPath.replace(/^\//, '')}/`}
         class="no-underline hover:text-white"
       >
-        Mentions légales
+        {links.legal}
       </a>
       <a
-        href={`${baseUrl}politique-de-confidentialite/`}
+        href={`${baseUrl}${pages.politiqueConfidentialitePath.replace(/^\//, '')}/`}
         class="no-underline hover:text-white"
       >
-        Politique de confidentialité
+        {links.privacy}
       </a>
     </div>
     <p class="max-w-2xl text-xs leading-relaxed text-white/60">
-      Massage bien-être sans visée thérapeutique ou médicale.
+      {disclaimer}
     </p>
   </div>
 </footer>

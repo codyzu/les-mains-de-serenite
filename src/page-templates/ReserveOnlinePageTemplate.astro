@@ -1,0 +1,215 @@
+---
+import Contact from '../components/Contact.astro';
+import IconImage from '../components/IconImage.astro';
+import type {Locale, LocalizedSiteData, SiteBusinessData} from '../data/site';
+import Layout from '../layouts/Layout.astro';
+
+interface Props {
+  locale: Locale;
+  business: SiteBusinessData;
+  localized: LocalizedSiteData;
+}
+
+const {locale, business, localized} = Astro.props;
+const {
+  pages: {reserveOnline, home},
+} = localized;
+const whatsappUrl = home.whatsapp.generalHref;
+---
+
+<Layout
+  reserveActive
+  locale={locale}
+  title={reserveOnline.meta.title}
+  description={reserveOnline.meta.description}
+  reserveLink={reserveOnline.reserveLink}
+>
+  <main class="bg-surface">
+    <section
+      class="relative overflow-hidden section-pad !pb-10 !pt-14 sm:!pt-18"
+    >
+      <div
+        class="absolute inset-x-0 top-0 h-[26rem] bg-gradient-to-b from-brand-soft/70 via-surface-muted to-transparent"
+      >
+      </div>
+
+      <div class="container-page relative">
+        <div class="mx-auto max-w-4xl text-center">
+          <p
+            class="text-xs font-medium uppercase tracking-[0.28em] text-ink-muted/90"
+          >
+            {reserveOnline.hero.kicker}
+          </p>
+
+          <h1
+            class="heading-xl mt-4 text-[2.6rem] sm:mt-5 sm:text-5xl lg:text-6xl"
+          >
+            {reserveOnline.hero.title}
+          </h1>
+          <p class="body-lg mx-auto mt-5 max-w-3xl text-balance">
+            {reserveOnline.hero.description}
+          </p>
+        </div>
+
+        <div
+          class="mx-auto mt-9 grid max-w-5xl gap-4 sm:grid-cols-2 xl:grid-cols-4"
+        >
+          {
+            reserveOnline.hero.reassuranceItems.map(({icon, label}) => (
+              <article class="card-soft min-w-0 p-5 text-center shadow-soft sm:p-6">
+                <div class="flex justify-center">
+                  <IconImage
+                    class="mb-0 bg-brand-soft text-brand-strong"
+                    name={icon}
+                    iconClass="h-6 w-6"
+                  />
+                </div>
+                <p class="mt-4 text-sm font-semibold leading-6 text-ink">
+                  {label}
+                </p>
+              </article>
+            ))
+          }
+        </div>
+
+        <figure
+          class="mx-auto mt-6 max-w-2xl rounded-spa bg-white/50 px-5 py-4 text-center shadow-[0_8px_20px_rgba(62,62,62,0.05)] backdrop-blur-sm"
+        >
+          <blockquote class="text-base leading-7 text-ink-muted">
+            “{reserveOnline.hero.testimonialQuote}”
+          </blockquote>
+          <figcaption class="mt-2 text-sm text-ink-subtle">
+            — {reserveOnline.hero.testimonialAuthor}
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section-pad !pt-4 bg-surface-muted/45">
+      <div class="container-page">
+        <div class="mx-auto max-w-4xl text-center">
+          <h2 class="heading-md text-[2rem] sm:text-[2.2rem]">
+            {reserveOnline.scheduler.title}
+          </h2>
+          <p class="mt-3 text-base leading-7 text-ink">
+            {reserveOnline.scheduler.description}
+          </p>
+          <p class="mx-auto mt-3 max-w-3xl text-sm leading-6 text-ink-muted">
+            {reserveOnline.scheduler.detail}
+          </p>
+          <p class="mt-1 text-sm leading-6 text-ink-muted">
+            {reserveOnline.scheduler.paymentNote}
+          </p>
+          <p
+            class="mt-3 text-xs font-medium uppercase tracking-[0.18em] text-ink-subtle"
+          >
+            {reserveOnline.scheduler.disclaimer}
+          </p>
+        </div>
+
+        <div
+          class="mx-auto mt-6 max-w-5xl rounded-[2rem] bg-white/45 p-1.5 shadow-[0_10px_24px_rgba(62,62,62,0.05)] sm:p-3"
+        >
+          <div
+            id="my-cal-inline-reserver"
+            class="min-h-[760px] w-full overflow-hidden rounded-[1.5rem] bg-white sm:min-h-[860px] lg:min-h-[940px]"
+          >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <Contact
+      {...reserveOnline.contact}
+      phone={business.phone}
+      email={business.email}
+      whatsappUrl={whatsappUrl}
+      whatsappHref={reserveOnline.contact.whatsappHref}
+    />
+  </main>
+
+  <script>
+    type CalArgs = unknown[];
+    type QueuedCalApi = {
+      (...args: CalArgs): void;
+      q?: CalArgs[];
+    };
+    type CalApi = QueuedCalApi & {
+      ns: Record<string, QueuedCalApi>;
+      loaded?: boolean;
+    };
+    type CalWindow = Window & {
+      Cal?: CalApi;
+    };
+
+    const calScriptUrl = 'https://app.cal.eu/embed/embed.js';
+    const calOrigin = 'https://app.cal.eu';
+    const calNamespace = 'reserver-en-ligne';
+    const calSelector = '#my-cal-inline-reserver';
+    const calWindow = window as CalWindow;
+
+    const queueCall = (target: QueuedCalApi, args: CalArgs) => {
+      target.q = target.q || [];
+      target.q.push(args);
+    };
+
+    const ensureCal = (): CalApi => {
+      if (calWindow.Cal) {
+        return calWindow.Cal;
+      }
+
+      const cal = ((...args: CalArgs) => {
+        if (args[0] === 'init') {
+          const namespace = args[1];
+
+          if (typeof namespace === 'string') {
+            const namespaceApi: QueuedCalApi = (...namespaceArgs: CalArgs) => {
+              queueCall(namespaceApi, namespaceArgs);
+            };
+
+            cal.ns[namespace] = cal.ns[namespace] || namespaceApi;
+            queueCall(cal.ns[namespace], args);
+            queueCall(cal, ['initNamespace', namespace]);
+            return;
+          }
+        }
+
+        queueCall(cal, args);
+      }) as CalApi;
+
+      cal.ns = {};
+      cal.loaded = true;
+
+      const script = document.createElement('script');
+      script.src = calScriptUrl;
+      script.async = true;
+      document.head.append(script);
+
+      calWindow.Cal = cal;
+      return cal;
+    };
+
+    const cal = ensureCal();
+
+    cal('init', calNamespace, {origin: calOrigin});
+
+    cal.ns[calNamespace]('inline', {
+      elementOrSelector: calSelector,
+      config: {
+        layout: 'month_view',
+        useSlotsViewOnSmallScreen: true,
+      },
+      calLink: 'lesmainsdeserenite',
+    });
+
+    cal.ns[calNamespace]('ui', {
+      hideEventTypeDetails: false,
+      layout: 'month_view',
+      styles: {
+        branding: {
+          brandColor: '#6b8f71',
+        },
+      },
+    });
+  </script>
+</Layout>

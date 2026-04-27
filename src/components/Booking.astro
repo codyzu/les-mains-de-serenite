@@ -1,10 +1,12 @@
 ---
-import type {SiteData} from '../data/site';
+import type {HomePageData} from '../data/site';
 import IconImage from './IconImage.astro';
 
-type Props = Pick<SiteData, 'bookingUrl'>;
+type Props = HomePageData['booking'] & {
+  bookingUrl: string;
+};
 
-const {bookingUrl} = Astro.props;
+const {bookingUrl, title, description, note, ctaText} = Astro.props;
 ---
 
 <section id="reservation" class="section-pad bg-surface-muted">
@@ -18,17 +20,14 @@ const {bookingUrl} = Astro.props;
           name="i-lucide-calendar-heart"
         />
 
-        <h2 class="heading-lg">Réserver votre massage</h2>
+        <h2 class="heading-lg">{title}</h2>
         <p class="body-lg mt-4 max-w-xl text-pretty">
-          Réservez facilement votre massage en ligne et choisissez le créneau
-          qui vous convient.
+          {description}
         </p>
-        <p class="mt-3 text-sm text-ink/68">
-          Échange facile par téléphone ou WhatsApp avant réservation
-        </p>
+        <p class="mt-3 text-sm text-ink/68">{note}</p>
 
         <a href={bookingUrl} class="btn-primary mt-8 min-w-[13rem]">
-          Réserver en ligne
+          {ctaText}
         </a>
       </div>
     </div>

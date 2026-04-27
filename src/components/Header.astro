@@ -1,15 +1,25 @@
 ---
-import type {SiteData} from '../data/site';
+import {defaultLocale, getLocalizedSite, site, type Locale} from '../data/site';
 import {getBaseUrl} from '../utils/url';
 
-type Props = Pick<SiteData, 'brand'> & {
+type Props = {
+  locale?: Locale;
   reserveLink?: string;
   reserveActive?: boolean;
 };
 
-const {brand, reserveLink, reserveActive = false} = Astro.props;
+const {
+  locale = defaultLocale,
+  reserveLink,
+  reserveActive = false,
+} = Astro.props;
 const baseUrl = getBaseUrl();
 const bookingHref = reserveLink ?? `${baseUrl}#reservation`;
+const brand = site.business.name;
+const {
+  chrome: {header},
+} = getLocalizedSite(locale);
+const {tagline, links} = header;
 ---
 
 <header
@@ -18,25 +28,25 @@ const bookingHref = reserveLink ?? `${baseUrl}#reservation`;
   <div class="container-page flex items-center justify-between gap-6 py-4">
     <a href={baseUrl} class="min-w-0 no-underline">
       <div class="font-display text-2xl text-ink sm:text-3xl">{brand}</div>
-      <p class="mt-1 text-sm text-ink-subtle">Massage bien-être</p>
+      <p class="mt-1 text-sm text-ink-subtle">{tagline}</p>
     </a>
 
     <nav class="hidden items-center gap-6 md:flex">
-      <a href={`${baseUrl}#accueil`} class="nav-link">Accueil</a>
-      <a href={`${baseUrl}#massages`} class="nav-link">Massages</a>
-      <a href={`${baseUrl}#apropos`} class="nav-link">À propos</a>
+      <a href={`${baseUrl}#accueil`} class="nav-link">{links.home}</a>
+      <a href={`${baseUrl}#massages`} class="nav-link">{links.massages}</a>
+      <a href={`${baseUrl}#apropos`} class="nav-link">{links.about}</a>
       {
         reserveActive ? (
           <span aria-current="page" class="text-sm font-medium text-ink">
-            Réserver
+            {links.reserve}
           </span>
         ) : (
           <a href={bookingHref} class="nav-link">
-            Réserver
+            {links.reserve}
           </a>
         )
       }
-      <a href={`${baseUrl}#contact`} class="nav-link">Contact</a>
+      <a href={`${baseUrl}#contact`} class="nav-link">{links.contact}</a>
     </nav>
   </div>
 </header>

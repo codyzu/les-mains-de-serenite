@@ -1,10 +1,11 @@
 ---
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
-import {site} from '../data/site';
+import {defaultLocale, getLocalizedSite, type Locale} from '../data/site';
 import BaseLayout from './BaseLayout.astro';
 
 interface Props {
+  locale?: Locale;
   title: string;
   description?: string;
   structuredData?: Record<string, unknown> | Array<Record<string, unknown>>;
@@ -13,12 +14,14 @@ interface Props {
 }
 
 const {
+  locale = defaultLocale,
   title,
   description = '',
   structuredData,
   reserveLink,
   reserveActive = false,
 } = Astro.props;
+const localized = getLocalizedSite(locale);
 const structuredDataItems = structuredData
   ? Array.isArray(structuredData)
     ? structuredData
@@ -27,18 +30,19 @@ const structuredDataItems = structuredData
 ---
 
 <BaseLayout
+  lang={localized.lang}
   title={title}
   description={description}
   structuredData={structuredDataItems}
 >
   <Header
-    brand={site.brand}
+    locale={locale}
     reserveLink={reserveLink}
     reserveActive={reserveActive}
   />
   <slot />
   <Footer
-    brand={site.brand}
+    locale={locale}
     reserveLink={reserveLink}
     reserveActive={reserveActive}
   />

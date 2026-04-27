@@ -4,10 +4,11 @@ import {getBaseUrl} from '../utils/url';
 interface Props {
   title: string;
   description?: string;
+  lang?: string;
   structuredData?: Record<string, unknown> | Array<Record<string, unknown>>;
 }
 
-const {title, description = '', structuredData} = Astro.props;
+const {title, description = '', lang = 'fr', structuredData} = Astro.props;
 const baseUrl = getBaseUrl();
 const structuredDataItems = structuredData
   ? Array.isArray(structuredData)
@@ -17,7 +18,7 @@ const structuredDataItems = structuredData
 ---
 
 <!doctype html>
-<html lang="fr">
+<html lang={lang}>
   <head>
     <meta charset="utf8" />
     <meta name="viewport" content="width=device-width" />

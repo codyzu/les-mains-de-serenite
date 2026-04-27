@@ -1,31 +1,27 @@
 ---
-import type {SiteData} from '../data/site';
+import type {ContactBlockData} from '../data/site';
 import {getPhoneHref} from '../utils/phone';
 import IconImage from './IconImage.astro';
 import SectionIntro from './SectionIntro.astro';
 
-type Props = Pick<SiteData, 'phone' | 'email' | 'whatsappUrl'> &
-  Partial<Pick<SiteData, 'locationText'>> & {
-    title?: string;
-    subtitle?: string;
-    whatsappDescription?: string;
-    phoneDescription?: string;
-    emailDescription?: string;
-    whatsappLabel?: string;
-    whatsappHref?: string;
-  };
+type Props = ContactBlockData & {
+  phone: string;
+  email: string;
+  whatsappUrl: string;
+  whatsappHref?: string;
+};
 
 const {
   phone,
   email,
-  locationText,
   whatsappUrl,
-  title = 'Contact',
-  subtitle = 'Une question, une demande particulière, ou envie de réserver directement par téléphone ou sur WhatsApp ?',
+  locationText,
+  title,
+  subtitle,
   whatsappDescription,
   phoneDescription,
   emailDescription,
-  whatsappLabel = 'Écrire sur WhatsApp',
+  whatsappLabel,
   whatsappHref,
 } = Astro.props;
 const phoneHref = getPhoneHref(phone);

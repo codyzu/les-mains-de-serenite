@@ -1,78 +1,12 @@
 ---
-import type {ComponentProps} from 'astro/types';
-import HeroMassageRoom from '../assets/hero-massage-room.png';
-import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.astro';
-import PromoSection from '../components/PromoSection.astro';
-import NeedsSection from '../components/NeedsSection.astro';
-import Massages from '../components/Massages.astro';
-import About from '../components/About.astro';
-import SessionSteps from '../components/SessionSteps.astro';
-import Testimonials from '../components/Testimonials.astro';
-import FeltBenefits from '../components/FeltBenefits.astro';
-import Booking from '../components/Booking.astro';
-import Contact from '../components/Contact.astro';
-import {site} from '../data/site';
-import {getPhoneHref} from '../utils/phone';
+import {defaultLocale, getLocalizedSite, site} from '../data/site';
+import HomePageTemplate from '../page-templates/HomePageTemplate.astro';
 
-type HeroProps = ComponentProps<typeof Hero>;
-type ContactProps = ComponentProps<typeof Contact>;
-const bookingPath = '/reserver';
-
-const heroProps = {
-  subtitle: site.subtitle,
-  bookingUrl: bookingPath,
-  phone: site.phone,
-  whatsappUrl: site.whatsappUrl,
-  ...site.hero,
-} satisfies HeroProps;
-
-const contactProps = {
-  phone: site.phone,
-  email: site.email,
-  locationText: site.locationText,
-  whatsappUrl: site.whatsappUrl,
-} satisfies ContactProps;
-
-const structuredData = {
-  '@context': 'https://schema.org',
-  '@type': site.seo.schemaType,
-  name: site.brand,
-  image: new URL(HeroMassageRoom.src, site.siteUrl).toString(),
-  telephone: `+33${getPhoneHref(site.phone).replace(/^0/, '')}`,
-  address: {
-    '@type': 'PostalAddress',
-    ...site.address,
-  },
-  areaServed: site.seo.areaServed,
-  url: site.siteUrl,
-};
+const localized = getLocalizedSite(defaultLocale);
 ---
 
-<Layout
-  title={`${site.brand} | Massage bien-être à Annecy pour femmes`}
-  description="Massage bien-être à Annecy pour femmes, sur rendez-vous, dans un cadre calme et confortable. Drainage lymphatique, massage anti-douleur, remodelant et visage."
-  structuredData={structuredData}
->
-  <main>
-    <Hero {...heroProps} />
-
-    <PromoSection promo={site.promo} />
-
-    <NeedsSection {...site.needsSection} />
-
-    <Massages items={site.massages} />
-
-    <About {...site.about} />
-
-    <SessionSteps {...site.sessionSteps} />
-
-    <FeltBenefits {...site.feltBenefits} />
-
-    <Testimonials {...site.testimonials} />
-
-    <Booking bookingUrl={bookingPath} />
-
-    <Contact {...contactProps} />
-  </main>
-</Layout>
+<HomePageTemplate
+  locale={defaultLocale}
+  business={site.business}
+  localized={localized}
+/>

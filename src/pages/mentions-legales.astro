@@ -1,15 +1,17 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import {site} from '../data/site';
+import {defaultLocale, site} from '../data/site';
 import {formatAddress} from '../utils/address';
 
-const {legal} = site;
-const legalAddress = formatAddress(site.address);
+const {business} = site;
+const {legal} = business;
+const legalAddress = formatAddress(business.address);
 ---
 
 <Layout
-  title={`Mentions légales | ${site.brand}`}
-  description={`Mentions légales du site ${site.brand}.`}
+  locale={defaultLocale}
+  title={`Mentions légales | ${business.name}`}
+  description={`Mentions légales du site ${business.name}.`}
 >
   <main class="bg-surface">
     <section class="section-pad">
@@ -30,17 +32,17 @@ const legalAddress = formatAddress(site.address);
             <h2 class="heading-md">Éditeur du site</h2>
             <div class="body-base mt-4 space-y-2">
               <p><strong>Nom :</strong> {legal.name}</p>
-              <p><strong>Nom commercial :</strong> {site.brand}</p>
+              <p><strong>Nom commercial :</strong> {business.name}</p>
               <p><strong>Statut :</strong> {legal.legalStatus}</p>
               <p><strong>Adresse :</strong> {legalAddress}</p>
-              <p><strong>Téléphone :</strong> {site.phone}</p>
+              <p><strong>Téléphone :</strong> {business.phone}</p>
               <p>
                 <strong>Email :</strong>
                 <a
-                  href={`mailto:${site.email}`}
+                  href={`mailto:${business.email}`}
                   class="text-ink transition hover:text-brand-strong"
                 >
-                  {site.email}
+                  {business.email}
                 </a>
               </p>
               <p><strong>SIREN :</strong> {legal.siren}</p>

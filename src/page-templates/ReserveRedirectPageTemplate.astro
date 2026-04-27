@@ -1,0 +1,53 @@
+---
+import type {LocalizedSiteData, SiteBusinessData} from '../data/site';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+interface Props {
+  business: SiteBusinessData;
+  localized: LocalizedSiteData;
+}
+
+const {business, localized}: Props = Astro.props;
+const {
+  pages: {reserve},
+} = localized;
+const redirectUrl = business.bookingUrl;
+---
+
+<BaseLayout
+  lang={localized.lang}
+  title={reserve.meta.title}
+  description={reserve.meta.description}
+>
+  <Fragment slot="head">
+    <meta name="robots" content="noindex" />
+    <link rel="canonical" href={redirectUrl} />
+  </Fragment>
+  <main class="min-h-screen bg-surface px-6 py-16 text-ink">
+    <div
+      class="mx-auto flex min-h-[60vh] max-w-xl flex-col items-center justify-center text-center"
+    >
+      <p class="text-sm uppercase tracking-[0.25em] text-ink-subtle">
+        {reserve.redirect.kicker}
+      </p>
+      <h1 class="heading-lg mt-4">{reserve.redirect.heading}</h1>
+      <p class="body-base mt-4">
+        {reserve.redirect.description}
+      </p>
+      <a href={redirectUrl} class="btn-primary mt-8">
+        {reserve.redirect.ctaText}
+      </a>
+    </div>
+  </main>
+
+  <script
+    define:vars={{
+      redirectDelayMs: reserve.redirect.delayMs,
+      redirectUrl,
+    }}
+  >
+    window.setTimeout(() => {
+      window.location.replace(redirectUrl);
+    }, redirectDelayMs);
+  </script>
+</BaseLayout>

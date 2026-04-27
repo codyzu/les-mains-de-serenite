@@ -1,21 +1,16 @@
 ---
-import type {SiteData} from '../data/site';
+import type {MassagesSectionData} from '../data/site';
 import SectionIntro from './SectionIntro.astro';
 import IconImage from './IconImage.astro';
 
-type Props = {
-  items: SiteData['massages'];
-};
+type Props = MassagesSectionData;
 
-const {items} = Astro.props;
+const {title, intro, recommendedLabel, items} = Astro.props;
 ---
 
 <section id="massages" class="section-pad bg-surface">
   <div class="container-page">
-    <SectionIntro
-      title="Massages proposés"
-      text="Des massages pensés pour soulager les tensions et offrir un véritable moment de bien-être."
-    />
+    <SectionIntro title={title} text={intro} />
 
     <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
       {
@@ -45,7 +40,7 @@ const {items} = Astro.props;
                   {option.recommended ? (
                     <div class="grid grid-cols-[minmax(0,1fr)_auto] items-end gap-x-4 gap-y-0.5">
                       <p class="col-span-2 leading-none text-[0.68rem] font-medium uppercase tracking-[0.16em] text-brand-strong/80">
-                        Durée conseillée
+                        {recommendedLabel}
                       </p>
                       <span class="col-start-1 row-start-2 text-sm font-medium text-ink">
                         {option.duration}

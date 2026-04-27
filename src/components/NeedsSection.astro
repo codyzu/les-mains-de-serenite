@@ -1,18 +1,15 @@
 ---
-import type {SiteData} from '../data/site';
+import type {NeedsSectionData} from '../data/site';
 import SectionIntro from './SectionIntro.astro';
 
-type Props = SiteData['needsSection'];
+type Props = NeedsSectionData;
 
-const {title, items} = Astro.props;
+const {title, intro, items} = Astro.props;
 ---
 
 <section id="besoins" class="section-pad bg-surface-muted">
   <div class="container-page">
-    <SectionIntro
-      title={title}
-      text="Des besoins fréquents pour lesquels ces massages sont particulièrement adaptés."
-    />
+    <SectionIntro title={title} text={intro} />
 
     <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
       {

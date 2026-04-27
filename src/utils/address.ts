@@ -1,10 +1,10 @@
-import type {SiteData} from '../data/site';
+import type {SiteBusinessData} from '../data/site';
 
 export const formatAddress = ({
   streetAddress,
   postalCode,
   addressLocality,
 }: Pick<
-  SiteData['address'],
+  SiteBusinessData['address'],
   'streetAddress' | 'postalCode' | 'addressLocality'
 >) => `${streetAddress}, ${postalCode} ${addressLocality}`;

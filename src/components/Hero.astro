@@ -1,15 +1,15 @@
 ---
 import {Picture} from 'astro:assets';
-import type {SiteData} from '../data/site';
+import type {HeroData} from '../data/site';
 import {getPhoneHref} from '../utils/phone';
 import HeroMassageRoom from '../assets/hero-massage-room.png';
 import IconImage from './IconImage.astro';
 
-type Props = Pick<
-  SiteData,
-  'subtitle' | 'bookingUrl' | 'phone' | 'whatsappUrl'
-> &
-  SiteData['hero'];
+type Props = HeroData & {
+  bookingUrl: string;
+  phone: string;
+  whatsappUrl: string;
+};
 
 const {
   subtitle,

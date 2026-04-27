@@ -1,8 +1,8 @@
 ---
-import type {SiteData} from '../data/site';
+import type {SessionStepsData} from '../data/site';
 import SectionIntro from './SectionIntro.astro';
 
-type Props = SiteData['sessionSteps'];
+type Props = SessionStepsData;
 
 const {title, intro, steps, reassuranceNote} = Astro.props;
 ---

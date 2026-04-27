@@ -1,17 +1,19 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import {site} from '../data/site';
+import {defaultLocale, site} from '../data/site';
 import {formatAddress} from '../utils/address';
 import {getPhoneHref} from '../utils/phone';
 
-const {legal} = site;
-const legalAddress = formatAddress(site.address);
-const phoneHref = getPhoneHref(site.phone);
+const {business} = site;
+const {legal} = business;
+const legalAddress = formatAddress(business.address);
+const phoneHref = getPhoneHref(business.phone);
 ---
 
 <Layout
-  title={`Politique de confidentialité | ${site.brand}`}
-  description={`Politique de confidentialité du site ${site.brand}.`}
+  locale={defaultLocale}
+  title={`Politique de confidentialité | ${business.name}`}
+  description={`Politique de confidentialité du site ${business.name}.`}
 >
   <main class="bg-surface">
     <section class="section-pad">
@@ -23,7 +25,7 @@ const phoneHref = getPhoneHref(site.phone);
           <h1 class="heading-lg">Politique de confidentialité</h1>
           <p class="body-base">
             Cette page décrit le traitement des données personnelles effectué
-            depuis le site {site.brand}.
+            depuis le site {business.name}.
           </p>
         </div>
 
@@ -35,10 +37,10 @@ const phoneHref = getPhoneHref(site.phone);
               <p>{legalAddress}</p>
               <p>
                 <a
-                  href={`mailto:${site.email}`}
+                  href={`mailto:${business.email}`}
                   class="text-ink transition hover:text-brand-strong"
                 >
-                  {site.email}
+                  {business.email}
                 </a>
               </p>
               <p>
@@ -46,7 +48,7 @@ const phoneHref = getPhoneHref(site.phone);
                   href={`tel:${phoneHref}`}
                   class="text-ink transition hover:text-brand-strong"
                 >
-                  {site.phone}
+                  {business.phone}
                 </a>
               </p>
             </div>
@@ -108,10 +110,10 @@ const phoneHref = getPhoneHref(site.phone);
             <p class="body-base mt-4">
               Vous pouvez exercer ces droits en écrivant à
               <a
-                href={`mailto:${site.email}`}
+                href={`mailto:${business.email}`}
                 class="mx-1 text-ink transition hover:text-brand-strong"
               >
-                {site.email}
+                {business.email}
               </a>
               ou par courrier à l’adresse indiquée ci-dessus.
             </p>
