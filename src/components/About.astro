@@ -6,7 +6,7 @@ import SectionIntro from './SectionIntro.astro';
 
 type Props = AboutData;
 
-const {title, body} = Astro.props;
+const {title, body, imageAlt} = Astro.props;
 const paragraphs = body
   .split(/\n\s*\n/)
   .map((paragraph) => paragraph.trim())
@@ -32,7 +32,7 @@ const paragraphs = body
           <Picture
             src={Practitioner}
             formats={['avif', 'webp']}
-            alt="Ambiance bien-être et massage"
+            alt={imageAlt}
             class="h-[420px] w-full object-cover object-top"
           />
         </div>

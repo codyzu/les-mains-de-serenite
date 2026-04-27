@@ -65,6 +65,7 @@ export type HeroData = {
   subtitle: string;
   title: string;
   description: string;
+  imageAlt: string;
   womenOnlyLabel: string;
   benefitHighlight: string;
   primaryCta: string;
@@ -109,6 +110,7 @@ export type MassagesSectionData = {
 export type AboutData = {
   title: string;
   body: string;
+  imageAlt: string;
 };
 
 export type SessionStepsData = {
@@ -139,6 +141,10 @@ export type FeltBenefitsData = {
 export type ContactBlockData = {
   title: string;
   subtitle: string;
+  whatsappTitle: string;
+  phoneTitle: string;
+  emailTitle: string;
+  locationTitle: string;
   whatsappDescription: string;
   phoneDescription: string;
   emailDescription: string;
@@ -314,6 +320,7 @@ const siteBase = {
             title: 'Les Mains de Sérénité',
             description:
               'À Annecy, dans un cadre bienveillant, apaisant et sécurisé.',
+            imageAlt: 'Ambiance bien-être et massage',
             womenOnlyLabel: 'Réservé aux femmes',
             benefitHighlight: 'Idéal pour jambes lourdes et ventre gonflé',
             primaryCta: 'Réserver un massage',
@@ -404,6 +411,7 @@ Chaque séance est entièrement personnalisée, en fonction de vos besoins du mo
 
 Mon objectif est simple : vous offrir une parenthèse de bien-être dans un environnement calme, rassurant et bienveillant, pensé pour que vous puissiez pleinement relâcher et profiter de l’instant.
             `,
+            imageAlt: 'Ambiance bien-être et massage',
           },
           sessionSteps: {
             title: 'Comment se déroule une séance ?',
@@ -468,6 +476,10 @@ Mon objectif est simple : vous offrir une parenthèse de bien-être dans un envi
             title: 'Contact',
             subtitle:
               'Une question, une demande particulière, ou envie de réserver directement par téléphone ou sur WhatsApp ?',
+            whatsappTitle: 'WhatsApp',
+            phoneTitle: 'Téléphone',
+            emailTitle: 'Email',
+            locationTitle: 'Lieu',
             whatsappDescription:
               'Réponse rapide pour toute question avant réservation.',
             phoneDescription:
@@ -546,6 +558,10 @@ Mon objectif est simple : vous offrir une parenthèse de bien-être dans un envi
             title: 'Une question avant de réserver ?',
             subtitle:
               'Je vous réponds rapidement pour vous aider à choisir le massage le plus adapté.',
+            whatsappTitle: 'WhatsApp',
+            phoneTitle: 'Téléphone',
+            emailTitle: 'Email',
+            locationTitle: 'Lieu',
             whatsappDescription:
               'Réponse rapide pour toute question avant réservation.',
             phoneDescription:
@@ -573,7 +589,6 @@ Mon objectif est simple : vous offrir une parenthèse de bien-être dans un envi
 const frLocalized = siteBase.localized.fr;
 
 const enLocalized = {
-  ...frLocalized,
   locale: 'en-US',
   lang: 'en',
   chrome: {
@@ -594,57 +609,205 @@ const enLocalized = {
         about: 'About',
         reserve: 'Book',
         contact: 'Contact',
-        legal: 'Legal notice',
-        privacy: 'Privacy policy',
+        legal: 'Legal notice (FR)',
+        privacy: 'Privacy policy (FR)',
       },
       disclaimer: 'Wellness massage with no therapeutic or medical purpose.',
     },
   },
   pages: {
-    ...frLocalized.pages,
     home: {
-      ...frLocalized.pages.home,
       meta: {
-        title: 'Les Mains de Sérénité | Wellness massage in Annecy for women',
+        title: 'Women’s Wellness Massage in Annecy | Les Mains de Sérénité',
         description:
-          'Wellness massage in Annecy for women, by appointment, in a calm and comfortable setting. Lymphatic drainage, pain-relief massage, body sculpting and facial massage.',
+          'Women-only wellness massage in Annecy, by appointment, in a calm and comfortable setting. Lymphatic drainage, tension relief massage, body sculpting massage, and lifting facial massage.',
       },
-      promo: frLocalized.pages.home.promo
-        ? {
-            ...frLocalized.pages.home.promo,
-            ctaText: 'Book a massage',
-            ctaLink: '/en/book',
-          }
-        : undefined,
+      hero: {
+        subtitle: 'Wellness massage for women in Annecy',
+        title: 'Les Mains de Sérénité',
+        description:
+          'In Annecy, enjoy a calm, caring, and reassuring space dedicated to your well-being.',
+        imageAlt: 'Wellness massage atmosphere',
+        womenOnlyLabel: 'For women only',
+        benefitHighlight:
+          'Especially appreciated for heavy legs and feeling bloated',
+        primaryCta: 'Book a massage',
+        secondaryCta: 'Call',
+        whatsappCta: 'WhatsApp',
+      },
+      promo: {
+        title: 'Intro offer',
+        headline: 'First discovery session: 45 min for €50',
+        description:
+          'A gentle first session to discover the benefits of massage in a calm and reassuring setting.',
+        ctaText: 'Book a massage',
+        ctaLink: '/en/book',
+      },
+      needsSection: {
+        title: 'Common needs',
+        intro: 'Common needs these massages are often chosen for.',
+        items: [
+          'Heavy legs',
+          'Feeling bloated',
+          'Water retention',
+          'Fatigue and overall heaviness',
+        ],
+      },
+      massagesSection: {
+        title: 'Available massages',
+        intro:
+          'Tailored massages designed to ease tension and offer a true moment of well-being.',
+        recommendedLabel: 'Recommended',
+        items: [
+          {
+            title: 'Lymphatic drainage',
+            description:
+              'Dynamic lymphatic drainage using the Renata França method. Commonly chosen for heavy legs, feeling bloated, and water retention, while creating a pleasant feeling of lightness.',
+            icon: 'i-lucide-droplets',
+            prices: [
+              {duration: '45 min', price: '70 €'},
+              {duration: '1 h', price: '90 €', recommended: true},
+              {duration: '1 h 30', price: '125 €'},
+            ],
+          },
+          {
+            title: 'Tension relief massage',
+            description:
+              'A targeted massage designed to ease muscular tension and everyday discomfort. Well-suited for the back, shoulders, and neck, and for supporting deep relaxation.',
+            icon: 'i-lucide-activity',
+            prices: [
+              {duration: '45 min', price: '60 €'},
+              {duration: '1 h', price: '80 €', recommended: true},
+              {duration: '1 h 30', price: '115 €'},
+            ],
+          },
+          {
+            title: 'Body sculpting massage',
+            description:
+              'A toning massage that supports skin firmness and helps improve the appearance of the silhouette.',
+            icon: 'i-lucide-scan',
+            prices: [
+              {duration: '45 min', price: '70 €'},
+              {duration: '1 h', price: '90 €', recommended: true},
+              {duration: '1 h 30', price: '125 €'},
+            ],
+          },
+          {
+            title: 'Lifting facial massage',
+            description:
+              'A relaxing facial treatment that stimulates circulation and tones the skin, leaving the face feeling refreshed and naturally toned.',
+            icon: 'i-lucide-sparkles',
+            prices: [
+              {duration: '30 min', price: '50 €'},
+              {duration: '45 min', price: '65 €', recommended: true},
+              {duration: '1 h', price: '85 €'},
+            ],
+          },
+        ],
+      },
+      about: {
+        title: 'About',
+        body: `
+I am Zahara, a wellness massage practitioner in Annecy. My background as a childcare assistant helped me develop an attentive, gentle, and body-aware approach.
+
+Trained in lymphatic drainage with the Renata França method, I offer women-only massages designed to provide a genuine moment of release and well-being.
+
+I welcome you for wellness massages in a calm and trusted environment where each session invites you to slow down, release tension, and reconnect with your body.
+
+Every session is fully personalized to your needs at that moment, whether you want to ease tension, let go of stress, or simply take time for yourself.
+
+My goal is simple: to offer you a peaceful wellness break in a calm, reassuring, and caring setting where you can fully relax and enjoy the moment.
+            `,
+        imageAlt: 'Wellness practitioner portrait',
+      },
+      sessionSteps: {
+        title: 'How does a session work?',
+        intro: 'A simple and peaceful wellness experience.',
+        reassuranceNote: 'You do not need to bring any equipment.',
+        steps: [
+          {
+            title: 'Booking',
+            description:
+              'Choose the time slot that suits you online or by phone.',
+          },
+          {
+            title: 'Appointment location',
+            description:
+              'Sessions take place by appointment in Annecy, in a calm and comfortable setting, with all equipment provided.',
+          },
+          {
+            title: 'Your relaxation time',
+            description:
+              'Enjoy a personalized session in a calm and reassuring environment.',
+          },
+        ],
+      },
+      testimonials: {
+        title: 'Client reviews',
+        intro: 'Clients often describe it best.',
+        items: [
+          {
+            text: 'A truly relaxing experience. I felt comfortable from beginning to end in a very soothing setting.',
+            author: 'Marie, Annecy',
+          },
+          {
+            text: 'Very gentle, professional, and attentive. The space is comfortable and you quickly feel at ease.',
+            author: 'Sophie, Annecy',
+          },
+          {
+            text: 'A very pleasant experience in a simple and reassuring environment. I highly recommend it.',
+            author: 'Camille, Annecy',
+          },
+        ],
+      },
+      feltBenefits: {
+        title: 'Benefits often felt',
+        intro:
+          'These are some of the benefits clients often describe after a session.',
+        items: [
+          'A feeling of lightness',
+          'Less heaviness in the legs',
+          'Feeling less bloated',
+          'Deep relaxation',
+          'A true moment for yourself',
+        ],
+      },
       booking: {
-        ...frLocalized.pages.home.booking,
         bookingPath: '/en/book',
         title: 'Book your massage',
         description:
-          'Book your massage online and choose the time slot that suits you.',
-        note: 'Easy contact by phone or WhatsApp before booking',
+          'Book your massage online in just a few clicks and choose the time slot that suits you best.',
+        note: 'Easy to reach by phone or WhatsApp before booking',
         ctaText: 'Book online',
       },
       contact: {
-        ...frLocalized.pages.home.contact,
         title: 'Contact',
         subtitle:
-          'A question, a specific request, or would you like to book directly by phone or WhatsApp?',
-        whatsappDescription: 'Quick reply for any question before booking.',
-        phoneDescription: 'To quickly discuss your booking.',
-        emailDescription:
-          'Ideal if you prefer to ask your question in writing.',
+          'Have a question, a specific request, or prefer to book directly by phone or WhatsApp?',
+        whatsappTitle: 'WhatsApp',
+        phoneTitle: 'Phone',
+        emailTitle: 'Email',
+        locationTitle: 'Location',
+        whatsappDescription:
+          'Quick reply for any question before your booking.',
+        phoneDescription: 'For a quick chat before booking.',
+        emailDescription: 'Best if you prefer to ask your question in writing.',
         whatsappLabel: 'Message on WhatsApp',
+        locationText:
+          'Wellness massage in Annecy, by appointment, in a calm and comfortable setting.',
+      },
+      whatsapp: {
+        generalHref:
+          'https://wa.me/33618758128?text=Hello%2C%20I%20would%20like%20more%20information%20about%20a%20massage.',
       },
     },
     reserve: {
-      ...frLocalized.pages.reserve,
       meta: {
-        title: 'Redirecting...',
-        description: 'Redirect to online booking.',
+        title: 'Booking Redirect | Les Mains de Sérénité',
+        description:
+          'Redirecting you to the online booking page for Les Mains de Sérénité.',
       },
       redirect: {
-        ...frLocalized.pages.reserve.redirect,
         title: 'Redirecting...',
         kicker: 'Booking',
         heading: 'Redirecting...',
@@ -653,23 +816,63 @@ const enLocalized = {
       },
     },
     reserveOnline: {
-      ...frLocalized.pages.reserveOnline,
       meta: {
-        title: 'Book a massage in Annecy | Les Mains de Sérénité',
+        title: 'Book Online | Les Mains de Sérénité Annecy',
         description:
-          'Book your wellness massage in Annecy. Women-only service, easy online booking, payment on site.',
+          'Book your women-only wellness massage in Annecy. Easy online scheduling and payment on site.',
       },
       reserveLink: '/en/book-online',
+      hero: {
+        kicker: 'Wellness massage for women in Annecy',
+        title: 'Book your wellness massage',
+        description:
+          'Choose your massage and your preferred time slot with ease. Sessions are available by appointment in a calm, caring, and soothing setting.',
+        reassuranceItems: [
+          {
+            icon: 'i-lucide-flower',
+            label: 'Women-only service',
+          },
+          {
+            icon: 'i-lucide-home',
+            label: 'Calm and private setting',
+          },
+          {
+            icon: 'i-lucide-briefcase-medical',
+            label: 'Massage table and equipment provided',
+          },
+          {
+            icon: 'i-lucide-wallet',
+            label: 'Pay on site',
+          },
+        ],
+        testimonialQuote: 'A truly relaxing moment, I highly recommend it.',
+        testimonialAuthor: 'Marie, Annecy',
+      },
+      scheduler: {
+        title: 'Choose your time slot',
+        description:
+          'Pick your massage and your appointment time in just a few seconds.',
+        detail:
+          'Each session is tailored to your needs at the moment, so you can enjoy a true moment of relaxation.',
+        paymentNote: 'No online payment. Please pay on site.',
+        disclaimer:
+          'Women-only service · Wellness massage with no medical purpose',
+      },
       contact: {
-        ...frLocalized.pages.reserveOnline.contact,
         title: 'A question before booking?',
         subtitle:
-          'I reply quickly to help you choose the massage that suits you best.',
-        whatsappDescription: 'Quick reply for any question before booking.',
-        phoneDescription: 'To quickly discuss your booking.',
-        emailDescription:
-          'Ideal if you prefer to ask your question in writing.',
+          'I reply quickly to help you choose the massage that best fits your needs.',
+        whatsappTitle: 'WhatsApp',
+        phoneTitle: 'Phone',
+        emailTitle: 'Email',
+        locationTitle: 'Location',
+        whatsappDescription:
+          'Quick reply for any question before your booking.',
+        phoneDescription: 'For a quick chat before booking.',
+        emailDescription: 'Best if you prefer to ask your question in writing.',
         whatsappLabel: 'Message on WhatsApp',
+        whatsappHref:
+          'https://wa.me/33618758128?text=Hello%2C%20I%20have%20a%20question%20before%20booking%20a%20massage.',
       },
     },
   },

@@ -18,6 +18,10 @@ const {
   locationText,
   title,
   subtitle,
+  whatsappTitle,
+  phoneTitle,
+  emailTitle,
+  locationTitle,
   whatsappDescription,
   phoneDescription,
   emailDescription,
@@ -44,7 +48,7 @@ const hasLocation = Boolean(locationText);
           class="bg-brand-soft text-brand-strong"
           name="i-lucide-message-circle-heart"
         />
-        <h3 class="heading-md text-[1.6rem]">WhatsApp</h3>
+        <h3 class="heading-md text-[1.6rem]">{whatsappTitle}</h3>
         {
           whatsappDescription ? (
             <p class="body-base mt-3">{whatsappDescription}</p>
@@ -65,7 +69,7 @@ const hasLocation = Boolean(locationText);
           class="bg-brand-soft text-brand-strong"
           name="i-lucide-phone"
         />
-        <h3 class="heading-md text-[1.6rem]">Téléphone</h3>
+        <h3 class="heading-md text-[1.6rem]">{phoneTitle}</h3>
         {
           phoneDescription ? (
             <p class="body-base mt-3">{phoneDescription}</p>
@@ -84,7 +88,7 @@ const hasLocation = Boolean(locationText);
           class="bg-accent-soft text-accent-strong"
           name="i-lucide-mail"
         />
-        <h3 class="heading-md text-[1.6rem]">Email</h3>
+        <h3 class="heading-md text-[1.6rem]">{emailTitle}</h3>
         {
           emailDescription ? (
             <p class="body-base mt-3">{emailDescription}</p>
@@ -105,7 +109,7 @@ const hasLocation = Boolean(locationText);
               class="bg-brand-soft text-brand-strong"
               name="i-lucide-map-pin"
             />
-            <h3 class="heading-md text-[1.6rem]">Lieu</h3>
+            <h3 class="heading-md text-[1.6rem]">{locationTitle}</h3>
             <p class="body-base mt-4">{locationText}</p>
           </article>
         ) : null
