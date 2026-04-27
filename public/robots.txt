@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lesmainsdeserenite.fr/sitemap-index.xml
