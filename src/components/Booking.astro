@@ -6,7 +6,8 @@ type Props = HomePageData['booking'] & {
   bookingUrl: string;
 };
 
-const {bookingUrl, title, description, note, ctaText} = Astro.props;
+const {bookingUrl, title, description, note, reassuranceNote, ctaText} =
+  Astro.props;
 ---
 
 <section id="reservation" class="section-pad bg-surface-muted">
@@ -24,7 +25,10 @@ const {bookingUrl, title, description, note, ctaText} = Astro.props;
         <p class="body-lg mt-4 max-w-xl text-pretty">
           {description}
         </p>
-        <p class="mt-3 text-sm text-ink/68">{note}</p>
+        <div class="mt-3 space-y-1 text-sm leading-6 text-ink/68">
+          <p>{note}</p>
+          {reassuranceNote ? <p>{reassuranceNote}</p> : null}
+        </div>
 
         <a href={bookingUrl} class="btn-primary mt-8 min-w-[13rem]">
           {ctaText}

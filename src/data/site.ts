@@ -172,6 +172,7 @@ export type HomePageData = {
     title: string;
     description: string;
     note: string;
+    reassuranceNote?: string;
     ctaText: string;
   };
   contact: ContactBlockData;
@@ -325,7 +326,7 @@ const siteBase = {
             subtitle: 'Massage bien-être à Annecy',
             title: 'Les Mains de Sérénité',
             description:
-              'À Annecy, dans un cadre bienveillant, apaisant et sécurisé.',
+              'À Annecy, dans un cadre chaleureux, apaisant et sécurisant.',
             imageAlt: 'Ambiance bien-être et massage',
             womenOnlyLabel: 'Réservé aux femmes',
             benefitHighlight: 'Idéal pour jambes lourdes et ventre gonflé',
@@ -335,9 +336,9 @@ const siteBase = {
           },
           promo: {
             title: 'Offre découverte',
-            headline: 'Première séance découverte : 45 min à 50€',
+            headline: 'Première séance découverte : 45 min à 55 €',
             description:
-              'Un premier moment pour découvrir les bienfaits du massage, dans un cadre doux et rassurant.',
+              'Une première séance idéale pour découvrir les bienfaits du drainage lymphatique et retrouver une agréable sensation de légèreté et de détente, dans un cadre doux et rassurant.',
             ctaText: 'Réserver un massage',
             ctaLink: '/reserver',
           },
@@ -364,7 +365,6 @@ const siteBase = {
                   'Drainage lymphatique dynamique selon la méthode Renata França. Idéal pour soulager les jambes lourdes, le ventre gonflé et la rétention d’eau, il procure une agréable sensation de légèreté.',
                 icon: 'i-lucide-droplets',
                 prices: [
-                  {duration: '45 min', price: '70 €'},
                   {duration: '1 h', price: '90 €', recommended: true},
                   {duration: '1 h 30', price: '125 €'},
                 ],
@@ -411,7 +411,7 @@ Je suis Zahara, praticienne en massage bien-être à Annecy, avec une formation 
 
 Formée au drainage lymphatique selon la méthode Renata França, je propose des massages réservés aux femmes, pensés pour offrir un véritable moment de relâchement et de bien-être.
 
-Je vous propose des massages bien-être dans un cadre de confiance, de confort et de sérénité, où chaque séance invite à ralentir, à relâcher les tensions et à se reconnecter à ses sensations.
+Je vous accueille dans un cadre doux, calme et rassurant, pensé pour vous permettre de ralentir, de relâcher les tensions et de vous reconnecter à vos sensations.
 
 Chaque séance est entièrement personnalisée, en fonction de vos besoins du moment, qu’il s’agisse de soulager des tensions, de relâcher le stress ou simplement de vous accorder un moment pour vous.
 
@@ -421,7 +421,8 @@ Mon objectif est simple : vous offrir une parenthèse de bien-être dans un envi
           },
           sessionSteps: {
             title: 'Comment se déroule une séance ?',
-            intro: 'Un moment de bien-être, en toute simplicité.',
+            intro:
+              'Chaque séance est pensée comme un véritable moment de détente et de reconnexion au corps. Le drainage lymphatique est une technique douce, rythmée et apaisante, réalisée avec des mouvements précis pour stimuler naturellement la circulation lymphatique.',
             reassuranceNote: 'Aucun matériel n’est à prévoir de votre côté.',
             steps: [
               {
@@ -432,12 +433,12 @@ Mon objectif est simple : vous offrir une parenthèse de bien-être dans un envi
               {
                 title: 'Lieu du rendez-vous',
                 description:
-                  'La séance a lieu sur rendez-vous à Annecy, dans un cadre calme, confortable et propice à la détente, avec tout le matériel nécessaire.',
+                  'La séance a lieu sur rendez-vous à Annecy, dans un espace privé soigneusement aménagé pour votre confort et votre bien-être. Vous êtes accueillie dans un cadre calme, chaleureux et intime, pensé pour vous permettre de relâcher pleinement les tensions.',
               },
               {
                 title: 'Votre moment de détente',
                 description:
-                  'Vous profitez d’une séance personnalisée dans un cadre calme, rassurant et propice à la détente.',
+                  'Avant de commencer, nous prenons quelques minutes pour échanger sur vos besoins afin d’adapter le soin à votre corps et à vos attentes. Chaque séance est personnalisée pour vous aider à relâcher les tensions, alléger le corps et apaiser l’esprit.',
               },
             ],
           },
@@ -465,7 +466,7 @@ Mon objectif est simple : vous offrir une parenthèse de bien-être dans un envi
             items: [
               'Sensation de légèreté',
               'Jambes moins lourdes',
-              'Ventre moins gonflé',
+              'Sensation de bien-être global',
               'Détente profonde',
               'Un vrai moment pour soi',
             ],
@@ -476,6 +477,8 @@ Mon objectif est simple : vous offrir une parenthèse de bien-être dans un envi
             description:
               'Réservez facilement votre massage en ligne et choisissez le créneau qui vous convient.',
             note: 'Échange facile par téléphone ou WhatsApp avant réservation',
+            reassuranceNote:
+              'Massage réservé exclusivement aux femmes, dans un cadre privé et confidentiel.',
             ctaText: 'Réserver en ligne',
           },
           contact: {
@@ -645,9 +648,9 @@ const enLocalized = {
       },
       promo: {
         title: 'Intro offer',
-        headline: 'First discovery session: 45 min for €50',
+        headline: 'First discovery session: 45 min for €55',
         description:
-          'A gentle first session to discover the benefits of massage in a calm and reassuring setting.',
+          'A gentle first session to discover the benefits of lymphatic drainage, ideal for restoring a feeling of lightness and relaxation in a calm and reassuring setting.',
         ctaText: 'Book a massage',
         ctaLink: '/en/book',
       },
@@ -673,7 +676,6 @@ const enLocalized = {
               'Dynamic lymphatic drainage using the Renata França method. Commonly chosen for heavy legs, feeling bloated, and water retention, while creating a pleasant feeling of lightness.',
             icon: 'i-lucide-droplets',
             prices: [
-              {duration: '45 min', price: '70 €'},
               {duration: '1 h', price: '90 €', recommended: true},
               {duration: '1 h 30', price: '125 €'},
             ],
@@ -786,6 +788,8 @@ My goal is simple: to offer you a peaceful wellness break in a calm, reassuring,
         description:
           'Book your massage online in just a few clicks and choose the time slot that suits you best.',
         note: 'Easy to reach by phone or WhatsApp before booking',
+        reassuranceNote:
+          'Massage exclusively reserved for women, in a private and confidential setting.',
         ctaText: 'Book online',
       },
       contact: {
