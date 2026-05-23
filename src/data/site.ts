@@ -1,4 +1,6 @@
 // @unocss-include
+import type {ImageMetadata} from 'astro';
+import MothersDayOffer from '../assets/images/mothers-day-offer.png';
 import {getWhatsappHref} from '../utils/phone';
 
 export type Locale = 'fr' | 'en';
@@ -81,6 +83,10 @@ export type PromoData = {
   description: string;
   ctaText: string;
   ctaLink: string;
+  image?: {
+    src: ImageMetadata;
+    alt: string;
+  };
 };
 
 export type NeedsSectionData = {
@@ -335,12 +341,18 @@ const siteBase = {
             whatsappCta: 'WhatsApp',
           },
           promo: {
-            title: 'Offre découverte',
-            headline: 'Première séance découverte : 45 min à 55 €',
+            title: 'Offre Fête des Mères',
+            headline: 'Bon cadeau drainage lymphatique 1h à 85 €',
             description:
-              'Une première séance idéale pour découvrir les bienfaits du drainage lymphatique et retrouver une agréable sensation de légèreté et de détente, dans un cadre doux et rassurant.',
-            ctaText: 'Réserver un massage',
-            ctaLink: '/reserver',
+              'Parce qu’elle mérite le meilleur, offrez-lui un moment rien qu’à elle. Bon cadeau valable 3 mois après achat.',
+            ctaText: 'Offrir un bon cadeau',
+            ctaLink: getBusinessWhatsappHref(
+              'Bonjour, je souhaiterais offrir un bon cadeau Fête des Mères pour un drainage lymphatique 1h à 85 €.'
+            ),
+            image: {
+              src: MothersDayOffer,
+              alt: 'Massage drainage lymphatique dans une ambiance douce et apaisante',
+            },
           },
           needsSection: {
             title: 'Pour quels besoins ?',
