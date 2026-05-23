@@ -342,7 +342,7 @@ const siteBase = {
           },
           promo: {
             title: 'Offre Fête des Mères',
-            headline: 'Bon cadeau drainage lymphatique 1h à 85 €',
+            headline: 'Bon cadeau drainage lymphatique 1h à 85&nbsp;€',
             description:
               'Parce qu’elle mérite le meilleur, offrez-lui un moment rien qu’à elle. Bon cadeau valable 3 mois après achat.',
             ctaText: 'Offrir un bon cadeau',
