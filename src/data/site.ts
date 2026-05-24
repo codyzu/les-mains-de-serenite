@@ -659,12 +659,18 @@ const enLocalized = {
         whatsappCta: 'WhatsApp',
       },
       promo: {
-        title: 'Intro offer',
-        headline: 'First discovery session: 45 min for €55',
+        title: 'Mother’s Day Offer',
+        headline: 'Gift voucher: 1-hour lymphatic drainage massage for €85',
         description:
-          'A gentle first session to discover the benefits of lymphatic drainage, ideal for restoring a feeling of lightness and relaxation in a calm and reassuring setting.',
-        ctaText: 'Book a massage',
-        ctaLink: '/en/book',
+          'Because she deserves the very best, offer her a moment just for herself. Gift voucher valid for 3 months after purchase.',
+        ctaText: 'Offer a gift voucher',
+        ctaLink: getBusinessWhatsappHref(
+          'Hello, I would like to offer a Mother’s Day gift voucher for a 1-hour lymphatic drainage massage at €85.'
+        ),
+        image: {
+          src: MothersDayOffer,
+          alt: 'Lymphatic drainage massage in a soft and calming atmosphere',
+        },
       },
       needsSection: {
         title: 'Common needs',
