@@ -298,7 +298,7 @@ const siteBase = {
       lang: 'fr',
       chrome: {
         header: {
-          tagline: 'Massage bien-être',
+          tagline: 'Massothérapeute',
           links: {
             home: 'Accueil',
             massages: 'Massages',
@@ -616,7 +616,7 @@ const enLocalized = {
   lang: 'en',
   chrome: {
     header: {
-      tagline: 'Wellness massage',
+      tagline: 'Massothérapeute',
       links: {
         home: 'Home',
         massages: 'Massages',

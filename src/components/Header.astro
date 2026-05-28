@@ -6,6 +6,7 @@ import {
   type Locale,
   type LocalePathMap,
 } from '../data/site';
+import logoSquareSimple from '../assets/brand/logo-square-simple.svg';
 import {getBaseUrl} from '../utils/url';
 
 type Props = {
@@ -42,9 +43,27 @@ const {tagline, links} = header;
   <div
     class="container-page flex items-center justify-between gap-6 py-4 sm:gap-8"
   >
-    <a href={homeHref} class="min-w-0 no-underline">
-      <div class="font-display text-2xl text-ink sm:text-3xl">{brand}</div>
-      <p class="mt-1 text-sm text-ink-subtle">{tagline}</p>
+    <a href={homeHref} class="flex min-w-0 items-center gap-3 no-underline">
+      <img
+        src={logoSquareSimple.src}
+        width={logoSquareSimple.width}
+        height={logoSquareSimple.height}
+        alt=""
+        class="h-10 w-10 shrink-0 sm:h-12 sm:w-12"
+        aria-hidden="true"
+      />
+      <div class="min-w-0">
+        <div
+          class="truncate font-display text-xl leading-tight text-ink sm:text-2xl"
+        >
+          {brand}
+        </div>
+        <p
+          class="mt-0.5 truncate text-xs font-normal leading-tight text-ink-subtle sm:text-sm"
+        >
+          {tagline}
+        </p>
+      </div>
     </a>
 
     <nav class="hidden items-center gap-6 md:flex">
