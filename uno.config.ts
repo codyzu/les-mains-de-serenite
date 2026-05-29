@@ -8,6 +8,7 @@ import {
   transformerVariantGroup,
 } from 'unocss';
 import {createLocalFontProcessor} from '@unocss/preset-web-fonts/local';
+import lucideIcons from '@iconify-json/lucide/icons.json';
 import {joinBasePath} from './config/base-path.mjs';
 
 const localFontProcessor = createLocalFontProcessor({
@@ -23,6 +24,9 @@ export default defineConfig({
     }),
     presetTypography(),
     presetIcons({
+      collections: {
+        lucide: () => lucideIcons,
+      },
       scale: 1.2,
       warn: true,
       extraProperties: {
