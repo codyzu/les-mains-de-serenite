@@ -28,7 +28,7 @@ const {
 const {
   chrome: {footer},
 } = getLocalizedSite(locale);
-const {tagline, links, disclaimer} = footer;
+const {tagline, links} = footer;
 ---
 
 <footer class="bg-brand-strong py-10 text-white">
@@ -71,8 +71,5 @@ const {tagline, links, disclaimer} = footer;
         {links.privacy}
       </a>
     </div>
-    <p class="max-w-2xl text-xs leading-relaxed text-white/60">
-      {disclaimer}
-    </p>
   </div>
 </footer>

@@ -57,7 +57,6 @@ export type SiteFooterData = {
     legal: string;
     privacy: string;
   };
-  disclaimer: string;
 };
 
 export type SiteChromeData = {
@@ -317,7 +316,6 @@ const siteBase = {
             legal: 'Mentions légales',
             privacy: 'Politique de confidentialité',
           },
-          disclaimer: 'Massage bien-être sans visée thérapeutique ou médicale.',
         },
       },
       pages: {
@@ -635,7 +633,6 @@ const enLocalized = {
         legal: 'Legal notice (FR)',
         privacy: 'Privacy policy (FR)',
       },
-      disclaimer: 'Wellness massage with no therapeutic or medical purpose.',
     },
   },
   pages: {
