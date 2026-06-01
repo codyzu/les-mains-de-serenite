@@ -1,0 +1,250 @@
+---
+import {Picture} from 'astro:assets';
+import IconImage from '../components/IconImage.astro';
+import Practitioner from '../assets/about-practitioner.png';
+import ProgramDrainageHero from '../assets/program-drainage-hero.png';
+import type {Locale, LocalizedSiteData, SiteBusinessData} from '../data/site';
+import Layout from '../layouts/Layout.astro';
+
+interface Props {
+  locale: Locale;
+  business: SiteBusinessData;
+  localized: LocalizedSiteData;
+}
+
+const {locale, business, localized} = Astro.props;
+const {
+  pages: {program},
+} = localized;
+const languageSwitchPaths = {
+  fr: '/programme-ventre-leger-jambes-legeres',
+  en: '/en/light-belly-light-legs-program',
+} as const;
+const ctaIsExternal = program.cta.href.startsWith('http');
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: program.hero.title,
+  description: program.meta.description,
+  provider: {
+    '@type': business.seo.schemaType,
+    name: business.name,
+    telephone: business.phone,
+    address: {
+      '@type': 'PostalAddress',
+      ...business.address,
+    },
+  },
+  areaServed: business.seo.areaServed,
+  offers: {
+    '@type': 'Offer',
+    price: '229',
+    priceCurrency: 'EUR',
+  },
+};
+---
+
+<Layout
+  locale={locale}
+  canonicalPath={program.path}
+  alternatePaths={languageSwitchPaths}
+  languageSwitchPaths={languageSwitchPaths}
+  title={program.meta.title}
+  description={program.meta.description}
+  structuredData={structuredData}
+>
+  <main>
+    <section class="relative overflow-hidden bg-ink">
+      <div class="absolute inset-0">
+        <Picture
+          priority
+          src={ProgramDrainageHero}
+          formats={['avif', 'webp']}
+          alt=""
+          class="h-full w-full object-cover object-center"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-ink/78 via-ink/46 to-ink/8"
+        >
+        </div>
+      </div>
+
+      <div
+        class="container-page relative pb-22 pt-24 sm:pb-28 sm:pt-30 lg:pb-36 lg:pt-36"
+      >
+        <div class="max-w-3xl">
+          <p class="mb-4 text-sm uppercase tracking-[0.25em] text-white/76">
+            {program.hero.eyebrow}
+          </p>
+          <h1
+            class="font-display text-5xl leading-tight text-white sm:text-6xl lg:text-7xl"
+          >
+            {program.hero.title}
+          </h1>
+          <p
+            class="mt-6 max-w-2xl text-pretty text-lg leading-8 text-white/88 sm:text-xl"
+          >
+            {program.hero.description}
+          </p>
+
+          <div
+            class="mt-7 inline-flex flex-wrap items-center gap-x-3 gap-y-1 rounded-2xl bg-white/14 px-4 py-3 text-white shadow-soft backdrop-blur-sm"
+          >
+            <span
+              class="text-xs font-medium uppercase tracking-[0.18em] text-white/72"
+            >
+              {program.price.label}
+            </span>
+            <span class="font-display text-3xl leading-none">
+              {program.price.amount}
+            </span>
+            <span class="text-sm text-white/70">
+              {program.price.usualValueLabel}
+              {program.price.usualValue}
+            </span>
+          </div>
+
+          <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <a
+              href={program.cta.href}
+              target={ctaIsExternal ? '_blank' : undefined}
+              rel={ctaIsExternal ? 'noreferrer' : undefined}
+              class="btn-primary min-h-[3rem] px-7 py-3.5 sm:min-h-0 sm:py-3"
+            >
+              {program.hero.primaryCta}
+            </a>
+            <a
+              href="#contenu-programme"
+              class="inline-flex min-h-[3rem] items-center justify-center rounded-full border border-white/24 bg-white/10 px-7 py-3.5 text-sm font-medium text-white/86 shadow-soft backdrop-blur-sm transition hover:border-white/36 hover:bg-white/16 hover:text-white sm:min-h-0 sm:py-3"
+            >
+              {program.hero.secondaryCta}
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad bg-surface">
+      <div class="container-page">
+        <div class="max-w-3xl">
+          <h2 class="heading-lg">{program.intro.title}</h2>
+          <p class="body-lg mt-5">{program.intro.body}</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contenu-programme" class="section-pad bg-surface-muted">
+      <div class="container-page">
+        <div class="grid gap-8 lg:grid-cols-2">
+          <div>
+            <h2 class="heading-lg">{program.forWhom.title}</h2>
+            <div class="mt-7 grid gap-3">
+              {
+                program.forWhom.items.map((item) => (
+                  <article class="card-soft flex items-center gap-4 bg-white/82 p-5 shadow-card">
+                    <span class="i-lucide-check h-5 w-5 shrink-0 text-brand-strong" />
+                    <p class="text-base font-medium leading-6 text-ink">
+                      {item}
+                    </p>
+                  </article>
+                ))
+              }
+            </div>
+          </div>
+
+          <div>
+            <h2 class="heading-lg">{program.includes.title}</h2>
+            <div class="mt-7 grid gap-3">
+              {
+                program.includes.items.map((item) => (
+                  <article class="card-soft flex items-center gap-4 bg-white/82 p-5 shadow-card">
+                    <span class="i-lucide-sparkles h-5 w-5 shrink-0 text-brand-strong" />
+                    <p class="text-base font-medium leading-6 text-ink">
+                      {item}
+                    </p>
+                  </article>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad bg-surface">
+      <div class="container-page">
+        <div
+          class="grid gap-10 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:items-center"
+        >
+          <div class="grid gap-10">
+            <div>
+              <h2 class="heading-lg">{program.method.title}</h2>
+              <p class="body-lg mt-5">{program.method.body}</p>
+            </div>
+            <div>
+              <h2 class="heading-lg">{program.story.title}</h2>
+              <p class="body-lg mt-5">{program.story.body}</p>
+            </div>
+          </div>
+
+          <div
+            class="overflow-hidden rounded-[2rem] shadow-soft ring-1 ring-surface-soft"
+          >
+            <Picture
+              src={Practitioner}
+              formats={['avif', 'webp']}
+              alt="Zahara pendant une séance de massage bien-être"
+              class="h-[520px] w-full object-cover object-center"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad bg-surface-muted">
+      <div class="container-page">
+        <h2 class="heading-lg text-center">{program.faq.title}</h2>
+        <div class="mx-auto mt-9 grid max-w-5xl gap-4">
+          {
+            program.faq.items.map((item) => (
+              <article class="card-soft bg-white/84 p-6 shadow-card sm:p-7">
+                <h3 class="text-lg font-semibold text-ink">{item.question}</h3>
+                <p class="body-base mt-3">{item.answer}</p>
+              </article>
+            ))
+          }
+        </div>
+        <p
+          class="mx-auto mt-6 max-w-3xl text-center text-sm leading-6 text-ink/62"
+        >
+          {program.disclaimer}
+        </p>
+      </div>
+    </section>
+
+    <section class="section-pad bg-surface">
+      <div class="container-page">
+        <div
+          class="card-soft mx-auto max-w-4xl p-8 text-center shadow-soft sm:p-10 lg:p-14"
+        >
+          <IconImage
+            name="i-lucide-message-circle"
+            class="mx-auto bg-brand-soft text-brand-strong"
+          />
+          <h2 class="heading-lg">{program.cta.title}</h2>
+          <p class="body-lg mx-auto mt-4 max-w-xl">
+            {program.cta.description}
+          </p>
+          <a
+            href={program.cta.href}
+            target={ctaIsExternal ? '_blank' : undefined}
+            rel={ctaIsExternal ? 'noreferrer' : undefined}
+            class="btn-primary mt-8 min-h-[3rem] px-7 py-3.5 sm:min-h-0 sm:py-3"
+          >
+            {program.cta.text}
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

@@ -1,0 +1,12 @@
+---
+import {defaultLocale, getLocalizedSite, site} from '../data/site';
+import ProgramPageTemplate from '../page-templates/ProgramPageTemplate.astro';
+
+const localized = getLocalizedSite(defaultLocale);
+---
+
+<ProgramPageTemplate
+  locale={defaultLocale}
+  business={site.business}
+  localized={localized}
+/>
