@@ -27,6 +27,11 @@ const {title, intro, recommendedLabel, items} = Astro.props;
 
             <h3 class="heading-md text-[1.6rem]">{item.title}</h3>
             <p class="body-base mt-3">{item.description}</p>
+            {item.note ? (
+              <p class="mt-4 rounded-2xl bg-brand-soft/55 px-4 py-3 text-sm leading-6 text-ink/76">
+                {item.note}
+              </p>
+            ) : null}
 
             <div class="mt-7 space-y-2 border-t border-ink/8 pt-4">
               {item.prices.map((option) => (

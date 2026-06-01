@@ -103,6 +103,7 @@ export type MassagePriceData = {
 export type MassageData = {
   title: string;
   description: string;
+  note?: string;
   icon: string;
   prices: MassagePriceData[];
 };
@@ -373,7 +374,8 @@ const siteBase = {
               {
                 title: 'Drainage lymphatique',
                 description:
-                  'Drainage lymphatique dynamique selon la méthode Renata França. Idéal pour soulager les jambes lourdes, le ventre gonflé et la rétention d’eau, il procure une agréable sensation de légèreté. Des conseils simples peuvent aussi vous aider à prolonger les bienfaits après la séance.',
+                  'Drainage lymphatique dynamique selon la méthode Renata França. Idéal pour soulager les jambes lourdes, le ventre gonflé et la rétention d’eau, il procure une agréable sensation de légèreté.',
+                note: 'Après un drainage, quelques conseils simples peuvent être proposés pour prolonger les bienfaits au quotidien.',
                 icon: 'i-lucide-droplets',
                 prices: [
                   {duration: '1 h', price: '90 €', recommended: true},
@@ -691,7 +693,8 @@ const enLocalized = {
           {
             title: 'Lymphatic drainage',
             description:
-              'Dynamic lymphatic drainage using the Renata França method. Commonly chosen for heavy legs, feeling bloated, and water retention, while creating a pleasant feeling of lightness. Simple guidance may also help extend the benefits after your session.',
+              'Dynamic lymphatic drainage using the Renata França method. Commonly chosen for heavy legs, feeling bloated, and water retention, while creating a pleasant feeling of lightness.',
+            note: 'After lymphatic drainage, simple guidance can be offered to help extend the benefits in everyday life.',
             icon: 'i-lucide-droplets',
             prices: [
               {duration: '1 h', price: '90 €', recommended: true},
