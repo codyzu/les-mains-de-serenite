@@ -1,6 +1,6 @@
 // @unocss-include
 import type {ImageMetadata} from 'astro';
-import MothersDayOffer from '../assets/images/mothers-day-offer.png';
+import DiscoveryOffer from '../assets/images/massage-legs-offer.png';
 import {getWhatsappHref} from '../utils/phone';
 
 export type Locale = 'fr' | 'en';
@@ -339,17 +339,17 @@ const siteBase = {
             whatsappCta: 'WhatsApp',
           },
           promo: {
-            title: 'Offre Fête des Mères',
-            headline: 'Bon cadeau drainage lymphatique 1h à 85\u00A0€',
+            title: 'Offre découverte',
+            headline: '45 min à 55\u00A0€',
             description:
-              'Parce qu’elle mérite le meilleur, offrez-lui un moment rien qu’à elle. Bon cadeau valable 3 mois après achat.',
-            ctaText: 'Offrir un bon cadeau',
+              'Une séance ciblée pour soulager les jambes lourdes ou le mal de dos, et retrouver une sensation de légèreté.',
+            ctaText: 'Réserver l’offre',
             ctaLink: getBusinessWhatsappHref(
-              'Bonjour, je souhaiterais offrir un bon cadeau Fête des Mères pour un drainage lymphatique 1h à 85 €.'
+              'Bonjour, je souhaiterais réserver l’offre découverte 45 min à 55 € pour jambes lourdes ou mal de dos.'
             ),
             image: {
-              src: MothersDayOffer,
-              alt: 'Massage drainage lymphatique dans une ambiance douce et apaisante',
+              src: DiscoveryOffer,
+              alt: 'Massage bien-être dans une ambiance douce et apaisante',
             },
           },
           needsSection: {
@@ -656,17 +656,17 @@ const enLocalized = {
         whatsappCta: 'WhatsApp',
       },
       promo: {
-        title: 'Mother’s Day Offer',
-        headline: 'Gift voucher: 1-hour lymphatic drainage massage for €85',
+        title: 'Discovery Offer',
+        headline: '45 min for €55',
         description:
-          'Because she deserves the very best, offer her a moment just for herself. Gift voucher valid for 3 months after purchase.',
-        ctaText: 'Offer a gift voucher',
+          'A focused session to ease heavy legs or back pain, and help you feel lighter.',
+        ctaText: 'Book the offer',
         ctaLink: getBusinessWhatsappHref(
-          'Hello, I would like to offer a Mother’s Day gift voucher for a 1-hour lymphatic drainage massage at €85.'
+          'Hello, I would like to book the 45-minute discovery offer at €55 for heavy legs or back pain.'
         ),
         image: {
-          src: MothersDayOffer,
-          alt: 'Lymphatic drainage massage in a soft and calming atmosphere',
+          src: DiscoveryOffer,
+          alt: 'Wellness massage in a soft and calming atmosphere',
         },
       },
       needsSection: {
