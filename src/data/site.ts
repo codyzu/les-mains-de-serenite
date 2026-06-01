@@ -326,7 +326,7 @@ const siteBase = {
             title:
               'Les Mains de Sérénité | Massage bien-être à Annecy pour femmes',
             description:
-              'Massage bien-être à Annecy pour femmes, sur rendez-vous, dans un cadre calme et confortable. Drainage lymphatique, massage anti-douleur, remodelant et visage.',
+              'Massage bien-être à Annecy pour femmes, sur rendez-vous, dans un cadre calme et confortable. Drainage lymphatique, massages ciblés et conseils simples pour prolonger les bienfaits.',
           },
           hero: {
             subtitle: 'Massage bien-être à Annecy',
@@ -335,7 +335,8 @@ const siteBase = {
               'À Annecy, dans un cadre chaleureux, apaisant et sécurisant.',
             imageAlt: 'Ambiance bien-être et massage',
             womenOnlyLabel: 'Réservé aux femmes',
-            benefitHighlight: 'Idéal pour jambes lourdes et ventre gonflé',
+            benefitHighlight:
+              'Idéal pour jambes lourdes, ventre gonflé et confort au quotidien',
             primaryCta: 'Réserver un massage',
             secondaryCta: 'Appeler',
             whatsappCta: 'WhatsApp',
@@ -355,7 +356,7 @@ const siteBase = {
           needsSection: {
             title: 'Pour quels besoins ?',
             intro:
-              'Des besoins fréquents pour lesquels ces massages sont particulièrement adaptés.',
+              'Des besoins fréquents pour lesquels ces massages sont particulièrement adaptés, avec des conseils simples pour prolonger les bienfaits selon vos besoins.',
             items: [
               'Jambes lourdes',
               'Ventre gonflé',
@@ -366,13 +367,13 @@ const siteBase = {
           massagesSection: {
             title: 'Massages proposés',
             intro:
-              'Des massages pensés pour soulager les tensions et offrir un véritable moment de bien-être.',
+              'Des massages pensés pour soulager les tensions, offrir un véritable moment de bien-être et vous aider à mieux écouter les besoins de votre corps.',
             recommendedLabel: 'Durée conseillée',
             items: [
               {
                 title: 'Drainage lymphatique',
                 description:
-                  'Drainage lymphatique dynamique selon la méthode Renata França. Idéal pour soulager les jambes lourdes, le ventre gonflé et la rétention d’eau, il procure une agréable sensation de légèreté.',
+                  'Drainage lymphatique dynamique selon la méthode Renata França. Idéal pour soulager les jambes lourdes, le ventre gonflé et la rétention d’eau, il procure une agréable sensation de légèreté. Des conseils simples peuvent aussi vous aider à prolonger les bienfaits après la séance.',
                 icon: 'i-lucide-droplets',
                 prices: [
                   {duration: '1 h', price: '90 €', recommended: true},
@@ -472,11 +473,12 @@ Mon objectif est simple : vous offrir une parenthèse de bien-être dans un envi
           },
           feltBenefits: {
             title: 'Les bienfaits ressentis',
-            intro: 'Des bienfaits souvent ressentis dès la fin de la séance.',
+            intro:
+              'Des bienfaits souvent ressentis dès la fin de la séance, puis soutenus par une meilleure écoute de soi au quotidien.',
             items: [
               'Sensation de légèreté',
               'Jambes moins lourdes',
-              'Sensation de bien-être global',
+              'Confort au quotidien',
               'Détente profonde',
               'Un vrai moment pour soi',
             ],
@@ -640,7 +642,7 @@ const enLocalized = {
       meta: {
         title: 'Women’s Wellness Massage in Annecy | Les Mains de Sérénité',
         description:
-          'Women-only wellness massage in Annecy, by appointment, in a calm and comfortable setting. Lymphatic drainage, tension relief massage, body sculpting massage, and lifting facial massage.',
+          'Women-only wellness massage in Annecy, by appointment, in a calm and comfortable setting. Lymphatic drainage, targeted massages, and simple guidance to help extend the benefits.',
       },
       hero: {
         subtitle: 'Wellness massage for women in Annecy',
@@ -650,7 +652,7 @@ const enLocalized = {
         imageAlt: 'Wellness massage atmosphere',
         womenOnlyLabel: 'For women only',
         benefitHighlight:
-          'Especially appreciated for heavy legs and feeling bloated',
+          'Especially appreciated for heavy legs, bloating, and everyday comfort',
         primaryCta: 'Book a massage',
         secondaryCta: 'Call',
         whatsappCta: 'WhatsApp',
@@ -669,7 +671,8 @@ const enLocalized = {
       },
       needsSection: {
         title: 'Common needs',
-        intro: 'Common needs these massages are often chosen for.',
+        intro:
+          'Common needs these massages are often chosen for, with simple guidance to help extend the benefits when helpful.',
         items: [
           'Heavy legs',
           'Feeling bloated',
@@ -680,13 +683,13 @@ const enLocalized = {
       massagesSection: {
         title: 'Available massages',
         intro:
-          'Tailored massages designed to ease tension and offer a true moment of well-being.',
+          'Tailored massages designed to ease tension, offer a true moment of well-being, and help you listen more closely to your body’s needs.',
         recommendedLabel: 'Recommended',
         items: [
           {
             title: 'Lymphatic drainage',
             description:
-              'Dynamic lymphatic drainage using the Renata França method. Commonly chosen for heavy legs, feeling bloated, and water retention, while creating a pleasant feeling of lightness.',
+              'Dynamic lymphatic drainage using the Renata França method. Commonly chosen for heavy legs, feeling bloated, and water retention, while creating a pleasant feeling of lightness. Simple guidance may also help extend the benefits after your session.',
             icon: 'i-lucide-droplets',
             prices: [
               {duration: '1 h', price: '90 €', recommended: true},
@@ -786,11 +789,11 @@ My goal is simple: to offer you a peaceful wellness break in a calm, reassuring,
       feltBenefits: {
         title: 'Benefits often felt',
         intro:
-          'These are some of the benefits clients often describe after a session.',
+          'These are some of the benefits clients often describe after a session, supported by a more attentive everyday relationship with the body.',
         items: [
           'A feeling of lightness',
           'Less heaviness in the legs',
-          'Feeling less bloated',
+          'Everyday comfort',
           'Deep relaxation',
           'A true moment for yourself',
         ],
