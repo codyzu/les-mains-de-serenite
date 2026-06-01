@@ -257,6 +257,8 @@ export const defaultLocale: Locale = 'fr';
 const businessPhone = '+33766612017';
 const getBusinessWhatsappHref = (message: string) =>
   getWhatsappHref(businessPhone, message);
+const discoveryOfferBookingHref =
+  'https://cal.eu/lesmainsdeserenite/massage-45-minutes-offre-decouverte';
 
 const siteBase = {
   business: {
@@ -344,9 +346,7 @@ const siteBase = {
             description:
               'Une séance ciblée pour soulager les jambes lourdes ou le mal de dos, et retrouver une sensation de légèreté.',
             ctaText: 'Réserver l’offre',
-            ctaLink: getBusinessWhatsappHref(
-              'Bonjour, je souhaiterais réserver l’offre découverte 45 min à 55 € pour jambes lourdes ou mal de dos.'
-            ),
+            ctaLink: discoveryOfferBookingHref,
             image: {
               src: DiscoveryOffer,
               alt: 'Massage bien-être dans une ambiance douce et apaisante',
@@ -661,9 +661,7 @@ const enLocalized = {
         description:
           'A focused session to ease heavy legs or back pain, and help you feel lighter.',
         ctaText: 'Book the offer',
-        ctaLink: getBusinessWhatsappHref(
-          'Hello, I would like to book the 45-minute discovery offer at €55 for heavy legs or back pain.'
-        ),
+        ctaLink: discoveryOfferBookingHref,
         image: {
           src: DiscoveryOffer,
           alt: 'Wellness massage in a soft and calming atmosphere',
