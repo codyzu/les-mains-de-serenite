@@ -1,0 +1,89 @@
+---
+import type {ProgramPreviewData} from '../data/site';
+import IconImage from './IconImage.astro';
+
+type Props = ProgramPreviewData;
+
+const {
+  eyebrow,
+  title,
+  subtitle,
+  description,
+  includesTitle,
+  includes,
+  priceLabel,
+  price,
+  note,
+  ctaText,
+  ctaLink,
+} = Astro.props;
+const ctaIsExternal = ctaLink.startsWith('http');
+---
+
+<section class="section-pad bg-surface-muted">
+  <div class="container-page">
+    <div
+      class="grid gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(20rem,0.8fr)] lg:items-center"
+    >
+      <div>
+        <p
+          class="mb-4 text-sm uppercase tracking-[0.25em] text-brand-strong/90"
+        >
+          {eyebrow}
+        </p>
+        <h2 class="heading-lg max-w-[18ch]">{title}</h2>
+        <p class="mt-4 text-lg font-medium leading-7 text-ink/78">
+          {subtitle}
+        </p>
+        <p class="body-lg mt-5 max-w-2xl">{description}</p>
+        <p
+          class="mt-5 max-w-2xl rounded-2xl bg-white/72 px-4 py-3 text-sm leading-6 text-ink/72 shadow-card"
+        >
+          {note}
+        </p>
+      </div>
+
+      <aside class="card-soft bg-white/86 p-6 shadow-soft sm:p-7">
+        <div class="flex items-start justify-between gap-5">
+          <div>
+            <p
+              class="text-sm font-medium uppercase tracking-[0.18em] text-brand-strong/80"
+            >
+              {priceLabel}
+            </p>
+            <p class="mt-2 font-display text-4xl leading-none text-ink">
+              {price}
+            </p>
+          </div>
+          <IconImage
+            name="i-lucide-calendar-heart"
+            class="bg-brand-soft text-brand-strong"
+          />
+        </div>
+
+        <div class="mt-7 border-t border-ink/8 pt-5">
+          <h3 class="text-base font-semibold text-ink">{includesTitle}</h3>
+          <ul class="mt-4 space-y-3">
+            {
+              includes.map((item) => (
+                <li class="flex gap-3 text-sm leading-6 text-ink/74">
+                  <span class="i-lucide-check mt-1 h-4 w-4 shrink-0 text-brand-strong" />
+                  <span>{item}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+
+        <a
+          href={ctaLink}
+          target={ctaIsExternal ? '_blank' : undefined}
+          rel={ctaIsExternal ? 'noreferrer' : undefined}
+          class="btn-primary mt-7 min-h-[3.25rem] w-full px-7 py-4 text-base"
+        >
+          {ctaText}
+        </a>
+      </aside>
+    </div>
+  </div>
+</section>

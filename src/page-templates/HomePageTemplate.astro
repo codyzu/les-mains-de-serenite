@@ -4,6 +4,7 @@ import Hero from '../components/Hero.astro';
 import PromoSection from '../components/PromoSection.astro';
 import NeedsSection from '../components/NeedsSection.astro';
 import Massages from '../components/Massages.astro';
+import ProgramPreview from '../components/ProgramPreview.astro';
 import About from '../components/About.astro';
 import SessionSteps from '../components/SessionSteps.astro';
 import Testimonials from '../components/Testimonials.astro';
@@ -69,6 +70,8 @@ const structuredData = {
     <NeedsSection {...home.needsSection} />
 
     <Massages {...home.massagesSection} />
+
+    <ProgramPreview {...home.programPreview} />
 
     <About {...home.about} />
 

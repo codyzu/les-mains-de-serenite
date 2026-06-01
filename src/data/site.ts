@@ -115,6 +115,20 @@ export type MassagesSectionData = {
   items: MassageData[];
 };
 
+export type ProgramPreviewData = {
+  eyebrow: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  includesTitle: string;
+  includes: string[];
+  priceLabel: string;
+  price: string;
+  note: string;
+  ctaText: string;
+  ctaLink: string;
+};
+
 export type AboutData = {
   title: string;
   body: string;
@@ -169,6 +183,7 @@ export type HomePageData = {
   promo?: PromoData;
   needsSection: NeedsSectionData;
   massagesSection: MassagesSectionData;
+  programPreview: ProgramPreviewData;
   about: AboutData;
   sessionSteps: SessionStepsData;
   feltBenefits: FeltBenefitsData;
@@ -416,6 +431,27 @@ const siteBase = {
                 ],
               },
             ],
+          },
+          programPreview: {
+            eyebrow: 'Nouveau',
+            title: 'Programme Ventre Léger & Jambes Légères',
+            subtitle: 'Un accompagnement bien-être de 21 jours',
+            description:
+              'Pour les femmes qui souhaitent aller plus loin qu’une séance seule, ce programme associe 3 drainages lymphatiques Renata França à un bilan bien-être et à des conseils simples pour prolonger la sensation de légèreté au quotidien.',
+            includesTitle: 'Le programme comprend',
+            includes: [
+              '3 séances de drainage lymphatique',
+              'Un bilan bien-être de 20 minutes',
+              'Un guide alimentaire simple',
+              'Un suivi WhatsApp pendant 21 jours',
+            ],
+            priceLabel: 'Tarif lancement',
+            price: '229 €',
+            note: 'L’accompagnement associe drainage lymphatique, écoute du corps et conseils simples du quotidien pour vous aider à retrouver une sensation de légèreté durable.',
+            ctaText: 'Demander des informations',
+            ctaLink: getBusinessWhatsappHref(
+              'Bonjour, je souhaite en savoir plus sur le programme Ventre Léger & Jambes Légères.'
+            ),
           },
           about: {
             title: 'À propos',
@@ -735,6 +771,27 @@ const enLocalized = {
             ],
           },
         ],
+      },
+      programPreview: {
+        eyebrow: 'New',
+        title: 'Light Belly & Light Legs Program',
+        subtitle: 'A 21-day wellness accompaniment',
+        description:
+          'For women who would like to go further than a single session, this program combines 3 Renata França lymphatic drainage sessions with a wellness check-in and simple guidance to help extend the feeling of lightness in everyday life.',
+        includesTitle: 'The program includes',
+        includes: [
+          '3 lymphatic drainage sessions',
+          'A 20-minute wellness check-in',
+          'A simple food guidance PDF',
+          'WhatsApp follow-up for 21 days',
+        ],
+        priceLabel: 'Launch price',
+        price: '229 €',
+        note: 'The accompaniment combines lymphatic drainage, body awareness, and simple everyday guidance to help you reconnect with a lasting feeling of lightness.',
+        ctaText: 'Ask for details',
+        ctaLink: getBusinessWhatsappHref(
+          'Hello, I would like to know more about the Light Belly & Light Legs program.'
+        ),
       },
       about: {
         title: 'About',
