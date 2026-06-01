@@ -422,7 +422,9 @@ Je suis Zahara, praticienne en massage bien-être à Annecy, avec une formation 
 
 Formée au drainage lymphatique selon la méthode Renata França, je propose des massages réservés aux femmes, pensés pour offrir un véritable moment de relâchement et de bien-être.
 
-Je vous accueille dans un cadre doux, calme et rassurant, pensé pour vous permettre de ralentir, de relâcher les tensions et de vous reconnecter à vos sensations.
+Au fil de mes accompagnements, j’ai constaté que de nombreuses femmes avaient tendance à s’oublier entre la vie professionnelle, la vie familiale et les obligations du quotidien. Elles vivent parfois avec des tensions, de la fatigue ou une sensation de lourdeur qu’elles finissent par considérer comme normale.
+
+C’est ce qui m’a donné envie d’enrichir certains accompagnements, toujours centrés sur le toucher et l’écoute du corps, avec parfois quelques conseils simples pour prolonger les bienfaits au quotidien.
 
 Chaque séance est entièrement personnalisée, en fonction de vos besoins du moment, qu’il s’agisse de soulager des tensions, de relâcher le stress ou simplement de vous accorder un moment pour vous.
 
@@ -738,7 +740,9 @@ I am Zahara, a wellness massage practitioner in Annecy. My background as a child
 
 Trained in lymphatic drainage with the Renata França method, I offer women-only massages designed to provide a genuine moment of release and well-being.
 
-I welcome you for wellness massages in a calm and trusted environment where each session invites you to slow down, release tension, and reconnect with your body.
+Through my sessions, I have noticed that many women tend to put themselves last between work, family life, and everyday responsibilities. They often live with tension, fatigue, or a feeling of heaviness until it starts to feel normal.
+
+That is why some sessions can include a little more support, while staying centered on touch, body awareness, and, when helpful, a few simple everyday tips to extend the benefits.
 
 Every session is fully personalized to your needs at that moment, whether you want to ease tension, let go of stress, or simply take time for yourself.
 
