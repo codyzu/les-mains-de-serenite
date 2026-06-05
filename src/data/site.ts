@@ -842,7 +842,7 @@ const enLocalized = {
         description:
           'In Annecy, enjoy a calm, caring, and reassuring space dedicated to your well-being.',
         imageAlt: 'Wellness massage atmosphere',
-        womenOnlyLabel: 'For women only',
+        womenOnlyLabel: 'For women only · English welcome',
         benefitHighlight:
           'Especially appreciated for heavy legs, bloating, and everyday comfort',
         primaryCta: 'Book a massage',
