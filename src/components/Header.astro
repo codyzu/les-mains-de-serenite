@@ -128,4 +128,49 @@ const programHref = toHref(program.path);
       ) : null
     }
   </div>
+  <nav
+    class="container-page flex items-center gap-2 overflow-x-auto border-t border-surface-soft/70 pb-3 pt-2 lg:hidden"
+    aria-label="Navigation principale"
+  >
+    <a
+      href={`${homeHref}#massages`}
+      class="shrink-0 rounded-full px-3 py-1.5 text-sm font-medium text-ink-muted no-underline transition hover:bg-white/70 hover:text-ink"
+    >
+      {links.massages}
+    </a>
+    {
+      programActive ? (
+        <span
+          aria-current="page"
+          class="shrink-0 rounded-full bg-white px-3 py-1.5 text-sm font-semibold text-ink shadow-card"
+        >
+          {links.program}
+        </span>
+      ) : (
+        <a
+          href={programHref}
+          class="shrink-0 rounded-full px-3 py-1.5 text-sm font-medium text-ink-muted no-underline transition hover:bg-white/70 hover:text-ink"
+        >
+          {links.program}
+        </a>
+      )
+    }
+    {
+      reserveActive ? (
+        <span
+          aria-current="page"
+          class="shrink-0 rounded-full bg-white px-3 py-1.5 text-sm font-semibold text-ink shadow-card"
+        >
+          {links.reserve}
+        </span>
+      ) : (
+        <a
+          href={bookingHref}
+          class="shrink-0 rounded-full bg-brand px-3.5 py-1.5 text-sm font-semibold text-white no-underline shadow-card transition hover:bg-brand-strong"
+        >
+          {links.reserve}
+        </a>
+      )
+    }
+  </nav>
 </header>
