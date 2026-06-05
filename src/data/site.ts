@@ -1,5 +1,6 @@
 // @unocss-include
 import type {ImageMetadata} from 'astro';
+import FestivalAnimationOffer from '../assets/offer-festival-animation.png';
 import DiscoveryOffer from '../assets/images/massage-legs-offer.png';
 import {getWhatsappHref} from '../utils/phone';
 
@@ -332,6 +333,8 @@ const getBusinessWhatsappHref = (message: string) =>
   getWhatsappHref(businessPhone, message);
 const discoveryOfferBookingHref =
   'https://cal.eu/lesmainsdeserenite/massage-45-minutes-offre-decouverte';
+const festivalRecoveryMassageBookingHref =
+  'https://cal.eu/lesmainsdeserenite/festival-recovery-massage-60-min';
 const programFrPath = '/programme-ventre-leger-jambes-legeres';
 const programEnPath = '/en/light-belly-light-legs-program';
 const programFrWhatsappHref = getBusinessWhatsappHref(
@@ -847,15 +850,15 @@ const enLocalized = {
         whatsappCta: 'WhatsApp',
       },
       promo: {
-        title: 'Discovery Offer',
-        headline: '45 min for €55',
+        title: 'ANNECY ANIMATION FESTIVAL',
+        headline: 'Festival Recovery Massage',
         description:
-          'A focused session to ease heavy legs or back pain, and help you feel lighter.',
-        ctaText: 'Book the offer',
-        ctaLink: discoveryOfferBookingHref,
+          '60 min\n\nAfter a long day of screenings, meetings, travel, and networking, take time to relax and recharge.\n\nThis personalized wellness massage is designed to help release tension in the neck, shoulders, back, and legs while promoting deep relaxation and well-being.\n\nWellness massages for women only. English welcome available.',
+        ctaText: 'Book your festival massage',
+        ctaLink: festivalRecoveryMassageBookingHref,
         image: {
-          src: DiscoveryOffer,
-          alt: 'Wellness massage in a soft and calming atmosphere',
+          src: FestivalAnimationOffer,
+          alt: 'Annecy Animation Festival wellness massage offer',
         },
       },
       needsSection: {
