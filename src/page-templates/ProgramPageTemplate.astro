@@ -237,24 +237,25 @@ const structuredData = {
     <section class="section-pad bg-surface">
       <div class="container-page">
         <div
-          class="card-soft mx-auto max-w-4xl p-8 text-center shadow-soft sm:p-10 lg:p-14"
+          class="card-soft mx-auto max-w-4xl p-8 text-center shadow-soft sm:p-10 lg:p-12"
         >
           <IconImage
             name="i-lucide-message-circle"
             class="mx-auto bg-brand-soft text-brand-strong"
           />
           <h2 class="heading-lg">{program.cta.title}</h2>
-          <p class="body-lg mx-auto mt-4 max-w-xl">
+          <p class="body-lg mx-auto mt-4 max-w-2xl">
             {program.cta.description}
           </p>
           <a
             href={program.cta.href}
             target={ctaIsExternal ? '_blank' : undefined}
             rel={ctaIsExternal ? 'noreferrer' : undefined}
-            class="btn-primary mt-8 min-h-[3rem] px-7 py-3.5 sm:min-h-0 sm:py-3"
+            class="btn-primary mt-7 min-h-[3rem] px-7 py-3.5 sm:min-h-0 sm:py-3"
           >
             {program.cta.text}
           </a>
+          <p class="mt-4 text-sm font-medium text-ink/58">{program.cta.note}</p>
         </div>
       </div>
     </section>

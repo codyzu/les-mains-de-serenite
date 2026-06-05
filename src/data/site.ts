@@ -179,6 +179,7 @@ export type ProgramPageData = {
     title: string;
     description: string;
     text: string;
+    note: string;
     href: string;
   };
 };
@@ -694,10 +695,11 @@ Mon objectif est simple : vous offrir une parenthèse de bien-être dans un envi
             ],
           },
           cta: {
-            title: 'Envie de savoir si ce programme est adapté à vous ?',
+            title: 'Vous souhaitez retrouver plus de légèreté ?',
             description:
-              'Envoyez un message à Zahara pour poser vos questions ou vérifier si cet accompagnement correspond à vos besoins du moment.',
-            text: 'Écrire sur WhatsApp',
+              'Envoyez un message à Zahara pour poser vos questions ou réserver votre place au tarif lancement.',
+            text: 'Demander le programme',
+            note: 'Réponse personnalisée par WhatsApp.',
             href: programFrWhatsappHref,
           },
         },
@@ -1112,10 +1114,11 @@ My goal is simple: to offer you a peaceful wellness break in a calm, reassuring,
         ],
       },
       cta: {
-        title: 'Want to know if this program is right for you?',
+        title: 'Would you like to feel lighter?',
         description:
-          'Send Zahara a message to ask your questions or check whether this accompaniment fits your current needs.',
-        text: 'Message on WhatsApp',
+          'Send Zahara a message to ask your questions or reserve your place at the launch price.',
+        text: 'Ask about the program',
+        note: 'Personal reply by WhatsApp.',
         href: programEnWhatsappHref,
       },
     },
