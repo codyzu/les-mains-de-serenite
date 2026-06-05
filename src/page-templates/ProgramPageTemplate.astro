@@ -3,6 +3,7 @@ import {Picture} from 'astro:assets';
 import IconImage from '../components/IconImage.astro';
 import Practitioner from '../assets/about-practitioner.png';
 import ProgramDrainageHero from '../assets/program-drainage-hero.png';
+import ProgramHabitsGuidance from '../assets/program-habits-guidance-no-text.png';
 import type {Locale, LocalizedSiteData, SiteBusinessData} from '../data/site';
 import Layout from '../layouts/Layout.astro';
 
@@ -173,29 +174,45 @@ const structuredData = {
 
     <section class="section-pad bg-surface">
       <div class="container-page">
-        <div
-          class="grid gap-10 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:items-center"
-        >
-          <div class="grid gap-10">
+        <div class="grid gap-14">
+          <div
+            class="grid gap-8 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:items-center"
+          >
             <div>
               <h2 class="heading-lg">{program.method.title}</h2>
               <p class="body-lg mt-5">{program.method.body}</p>
             </div>
-            <div>
-              <h2 class="heading-lg">{program.story.title}</h2>
-              <p class="body-lg mt-5">{program.story.body}</p>
+
+            <div
+              class="overflow-hidden rounded-[2rem] shadow-soft ring-1 ring-surface-soft"
+            >
+              <Picture
+                src={ProgramHabitsGuidance}
+                formats={['avif', 'webp']}
+                alt="Guide d’habitudes alimentaires simples et boisson chaude sur une table"
+                class="h-[420px] w-full object-cover object-center"
+              />
             </div>
           </div>
 
           <div
-            class="overflow-hidden rounded-[2rem] shadow-soft ring-1 ring-surface-soft"
+            class="grid gap-8 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:items-center"
           >
-            <Picture
-              src={Practitioner}
-              formats={['avif', 'webp']}
-              alt="Zahara pendant une séance de massage bien-être"
-              class="h-[520px] w-full object-cover object-center"
-            />
+            <div>
+              <h2 class="heading-lg">{program.story.title}</h2>
+              <p class="body-lg mt-5">{program.story.body}</p>
+            </div>
+
+            <div
+              class="overflow-hidden rounded-[2rem] shadow-soft ring-1 ring-surface-soft"
+            >
+              <Picture
+                src={Practitioner}
+                formats={['avif', 'webp']}
+                alt="Zahara pendant une séance de massage bien-être"
+                class="h-[420px] w-full object-cover object-center"
+              />
+            </div>
           </div>
         </div>
       </div>
