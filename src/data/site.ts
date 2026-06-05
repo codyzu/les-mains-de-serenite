@@ -41,6 +41,7 @@ export type SiteHeaderData = {
   links: {
     home: string;
     massages: string;
+    program: string;
     about: string;
     reserve: string;
     contact: string;
@@ -383,6 +384,7 @@ const siteBase = {
           links: {
             home: 'Accueil',
             massages: 'Massages',
+            program: 'Programme',
             about: 'À propos',
             reserve: 'Réserver',
             contact: 'Contact',
@@ -806,6 +808,7 @@ const enLocalized = {
       links: {
         home: 'Home',
         massages: 'Massages',
+        program: 'Program',
         about: 'About',
         reserve: 'Book',
         contact: 'Contact',

@@ -31,10 +31,16 @@ const bookingHref = reserveLink
   ? toHref(reserveLink)
   : `${homeHref}#reservation`;
 const brand = site.business.name;
+const localized = getLocalizedSite(locale);
 const {
   chrome: {header},
-} = getLocalizedSite(locale);
+  pages: {program},
+} = localized;
 const {tagline, links} = header;
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+const programPath = program.path.replace(/\/$/, '') || '/';
+const programActive = currentPath === programPath;
+const programHref = toHref(program.path);
 ---
 
 <header
@@ -66,9 +72,20 @@ const {tagline, links} = header;
       </div>
     </a>
 
-    <nav class="hidden items-center gap-6 md:flex">
+    <nav class="hidden items-center gap-6 lg:flex">
       <a href={`${homeHref}#accueil`} class="nav-link">{links.home}</a>
       <a href={`${homeHref}#massages`} class="nav-link">{links.massages}</a>
+      {
+        programActive ? (
+          <span aria-current="page" class="text-sm font-medium text-ink">
+            {links.program}
+          </span>
+        ) : (
+          <a href={programHref} class="nav-link">
+            {links.program}
+          </a>
+        )
+      }
       <a href={`${homeHref}#apropos`} class="nav-link">{links.about}</a>
       {
         reserveActive ? (
