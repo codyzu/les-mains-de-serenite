@@ -175,7 +175,6 @@ export type ProgramPageData = {
       answer: string;
     }>;
   };
-  disclaimer: string;
   cta: {
     title: string;
     description: string;
@@ -694,8 +693,6 @@ Mon objectif est simple : vous offrir une parenthèse de bien-être dans un envi
               },
             ],
           },
-          disclaimer:
-            'Cet accompagnement bien-être ne remplace pas un avis médical ou un suivi nutritionnel thérapeutique.',
           cta: {
             title: 'Envie de savoir si ce programme est adapté à vous ?',
             description:
@@ -1114,8 +1111,6 @@ My goal is simple: to offer you a peaceful wellness break in a calm, reassuring,
           },
         ],
       },
-      disclaimer:
-        'This wellness accompaniment does not replace medical advice or therapeutic nutrition care.',
       cta: {
         title: 'Want to know if this program is right for you?',
         description:
