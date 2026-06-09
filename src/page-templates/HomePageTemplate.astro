@@ -67,21 +67,21 @@ const structuredData = {
 
     <PromoSection promo={home.promo} />
 
-    <NeedsSection {...home.needsSection} />
-
     <Massages {...home.massagesSection} />
 
     <ProgramPreview {...home.programPreview} />
 
-    <About {...home.about} />
+    <Testimonials {...home.testimonials} />
+
+    <Booking {...home.booking} bookingUrl={bookingPath} />
 
     <SessionSteps {...home.sessionSteps} />
 
     <FeltBenefits {...home.feltBenefits} />
 
-    <Testimonials {...home.testimonials} />
+    <NeedsSection {...home.needsSection} />
 
-    <Booking {...home.booking} bookingUrl={bookingPath} />
+    <About {...home.about} />
 
     <Contact
       {...home.contact}

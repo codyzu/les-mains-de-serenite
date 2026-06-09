@@ -1,7 +1,8 @@
 ---
-import {Picture} from 'astro:assets';
+import {Image, Picture} from 'astro:assets';
 import type {AboutData} from '../data/site';
 import Practitioner from '../assets/about-practitioner.png';
+import LogoSquareDark from '../../assets/logo-square-dark.png';
 import SectionIntro from './SectionIntro.astro';
 
 type Props = AboutData;
@@ -15,10 +16,45 @@ const paragraphs = body
 
 <section id="apropos" class="section-pad bg-surface-muted">
   <div class="container-page">
-    <div
-      class="grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-14"
-    >
+    <div class="mb-6 hidden justify-center lg:flex">
+      <div class="flex items-center justify-center gap-5 text-ink/78">
+        <Image
+          src={LogoSquareDark}
+          alt=""
+          width={88}
+          height={88}
+          class="h-22 w-22 shrink-0 opacity-80"
+        />
+        <div>
+          <p class="font-display text-4xl leading-none text-ink/78">
+            Les Mains de Sérénité
+          </p>
+          <p class="mt-2 text-base leading-none text-ink/58">Massothérapeute</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid items-center gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:gap-14">
       <div class="order-2 lg:order-1">
+        <div
+          class="mx-auto mb-4 flex max-w-sm flex-col items-center justify-center gap-3 text-center text-ink/78 sm:mb-5 sm:max-w-none sm:flex-row sm:gap-4 sm:text-left lg:hidden"
+        >
+          <Image
+            src={LogoSquareDark}
+            alt=""
+            width={72}
+            height={72}
+            class="h-18 w-18 shrink-0 opacity-80"
+          />
+          <div>
+            <p
+              class="font-display text-3xl leading-none text-ink/78 sm:text-4xl"
+            >
+              Les Mains de Sérénité
+            </p>
+            <p class="mt-2 text-sm leading-none text-ink/58">Massothérapeute</p>
+          </div>
+        </div>
         <SectionIntro title={title} centered={false} />
         <div class="space-y-5">
           {paragraphs.map((paragraph) => <p class="body-lg">{paragraph}</p>)}

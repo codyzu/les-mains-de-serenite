@@ -1,4 +1,6 @@
 ---
+import {Image} from 'astro:assets';
+import LogoSquareLight from '../../assets/logo-square-light.png';
 import {defaultLocale, getLocalizedSite, site, type Locale} from '../data/site';
 import {getBaseUrl} from '../utils/url';
 
@@ -32,9 +34,16 @@ const {tagline, links} = footer;
 ---
 
 <footer
-  class="bg-brand-strong pb-[calc(2.5rem+env(safe-area-inset-bottom))] pt-10 text-white"
+  class="bg-brand-strong pb-[calc(2.5rem+env(safe-area-inset-bottom))] pt-7 text-white"
 >
   <div class="container-page flex flex-col items-center gap-3 text-center">
+    <Image
+      src={LogoSquareLight}
+      alt={brand}
+      width={160}
+      height={160}
+      class="mb-4 h-auto w-28 opacity-90 sm:w-36 lg:w-40"
+    />
     <div class="font-display text-3xl">{brand}</div>
     <p class="text-white/85">{tagline}</p>
     <div
