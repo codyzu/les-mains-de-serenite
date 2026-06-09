@@ -565,16 +565,24 @@ Mon objectif est simple : vous offrir une parenthèse de bien-être dans un envi
             intro: 'Celles qui ont testé en parlent le mieux.',
             items: [
               {
-                text: 'Un vrai moment de détente. Je me suis sentie à l’aise du début à la fin, dans un cadre très apaisant.',
+                text: 'Je souffrais régulièrement de jambes lourdes en fin de journée. Dès la première séance, j’ai ressenti une vraie sensation de légèreté et un meilleur confort dans les jours qui ont suivi.',
                 author: 'Marie, Annecy',
               },
               {
-                text: 'Très douce, professionnelle et à l’écoute. Le cadre est confortable et on se sent rapidement en confiance.',
+                text: 'Première expérience de drainage lymphatique pour moi. Zahara a pris le temps de tout m’expliquer et m’a mise en confiance immédiatement. Je me suis sentie à l’aise du début à la fin.',
                 author: 'Sophie, Annecy',
               },
               {
-                text: 'Une expérience très agréable, dans un environnement simple et rassurant. Je recommande vivement.',
+                text: 'Je cherchais un moment pour relâcher les tensions accumulées entre le travail et la vie de famille. Cette séance m’a permis de vraiment déconnecter et de prendre du temps pour moi.',
                 author: 'Camille, Annecy',
+              },
+              {
+                text: 'J’ai été agréablement surprise par le lieu. La pièce est calme, chaleureuse et très soignée. On s’y sent bien immédiatement, ce qui aide vraiment à se détendre dès les premières minutes.',
+                author: 'Élodie, Annecy',
+              },
+              {
+                text: 'J’ai particulièrement apprécié l’écoute et la personnalisation de la séance. Zahara s’adapte aux besoins du moment plutôt que d’appliquer un protocole identique à tout le monde.',
+                author: 'Julie, Annecy',
               },
             ],
           },
@@ -987,16 +995,24 @@ My goal is simple: to offer you a peaceful wellness break in a calm, reassuring,
         intro: 'Clients often describe it best.',
         items: [
           {
-            text: 'A truly relaxing experience. I felt comfortable from beginning to end in a very soothing setting.',
+            text: 'I often had heavy legs at the end of the day. After the first session, I felt a real sense of lightness and better comfort over the following days.',
             author: 'Marie, Annecy',
           },
           {
-            text: 'Very gentle, professional, and attentive. The space is comfortable and you quickly feel at ease.',
+            text: 'It was my first lymphatic drainage massage. Zahara took the time to explain everything and made me feel confident straight away. I felt comfortable from beginning to end.',
             author: 'Sophie, Annecy',
           },
           {
-            text: 'A very pleasant experience in a simple and reassuring environment. I highly recommend it.',
+            text: 'I was looking for a moment to release the tension that had built up between work and family life. The session helped me truly switch off and take time for myself.',
             author: 'Camille, Annecy',
+          },
+          {
+            text: 'I was pleasantly surprised by the space. The room is calm, warm, and very well cared for. You feel good there immediately, which really helps you relax from the first few minutes.',
+            author: 'Élodie, Annecy',
+          },
+          {
+            text: 'I especially appreciated how attentive and personalized the session felt. Zahara adapts to what you need in the moment instead of applying the same routine to everyone.',
+            author: 'Julie, Annecy',
           },
         ],
       },

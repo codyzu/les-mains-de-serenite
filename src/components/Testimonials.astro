@@ -11,22 +11,38 @@ const {title, intro, items} = Astro.props;
   <div class="container-page">
     <SectionIntro title={title} text={intro} />
 
-    <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+    <div class="grid gap-5 md:grid-cols-6 md:gap-6">
       {
-        items.map((item) => (
-          <article class="card-soft flex h-full flex-col p-6 sm:p-7">
-            <div
-              class="mb-4 text-[0.7rem] font-medium tracking-[0.22em] text-accent-strong/65 uppercase"
-              aria-hidden="true"
+        items.map((item, index) => {
+          const centeredSecondRowClass =
+            items.length === 5 && index === 3
+              ? 'md:col-start-2'
+              : items.length === 5 && index === 4
+                ? 'md:col-start-4'
+                : '';
+
+          return (
+            <article
+              class:list={[
+                'card-soft flex h-full flex-col p-5 sm:p-6 md:col-span-2',
+                centeredSecondRowClass,
+              ]}
             >
-              ★★★★★
-            </div>
+              <div
+                class="mb-4 text-[0.7rem] font-medium tracking-[0.22em] text-accent-strong/65 uppercase"
+                aria-hidden="true"
+              >
+                ★★★★★
+              </div>
 
-            <p class="mt-1 text-lg leading-relaxed text-ink">“{item.text}”</p>
+              <p class="mt-1 text-base leading-relaxed text-ink">
+                “{item.text}”
+              </p>
 
-            <p class="mt-6 text-sm font-medium text-ink/68">{item.author}</p>
-          </article>
-        ))
+              <p class="mt-5 text-sm font-medium text-ink/68">{item.author}</p>
+            </article>
+          );
+        })
       }
     </div>
   </div>
