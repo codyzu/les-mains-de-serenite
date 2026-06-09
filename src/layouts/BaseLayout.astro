@@ -33,7 +33,16 @@ const structuredDataItems = structuredData
 <html lang={lang}>
   <head>
     <meta charset="utf8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#F6F3EE" />
+    <meta
+      name="theme-color"
+      content="#F6F3EE"
+      media="(prefers-color-scheme: dark)"
+    />
     <link
       rel="icon"
       type="image/png"
@@ -90,5 +99,14 @@ const structuredDataItems = structuredData
   html,
   body {
     --uno: 'm-0 w-full h-full';
+    background-color: #f6f3ee;
+  }
+
+  html {
+    min-height: 100%;
+  }
+
+  body {
+    min-height: 100%;
   }
 </style>

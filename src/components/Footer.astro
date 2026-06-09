@@ -31,7 +31,9 @@ const {
 const {tagline, links} = footer;
 ---
 
-<footer class="bg-brand-strong py-10 text-white">
+<footer
+  class="bg-brand-strong pb-[calc(2.5rem+env(safe-area-inset-bottom))] pt-10 text-white"
+>
   <div class="container-page flex flex-col items-center gap-3 text-center">
     <div class="font-display text-3xl">{brand}</div>
     <p class="text-white/85">{tagline}</p>
