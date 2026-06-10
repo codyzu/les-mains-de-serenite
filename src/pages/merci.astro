@@ -1,0 +1,119 @@
+---
+import IconImage from '../components/IconImage.astro';
+import {site} from '../data/site';
+import Layout from '../layouts/Layout.astro';
+import {
+  formatPhoneDisplay,
+  getPhoneHref,
+  getWhatsappHref,
+} from '../utils/phone';
+
+const {
+  business: {name, phone},
+} = site;
+const phoneHref = getPhoneHref(phone);
+const phoneDisplay = formatPhoneDisplay(phone);
+const whatsappHref = getWhatsappHref(
+  phone,
+  'Bonjour, je souhaite modifier une reservation.'
+);
+const localePaths = {
+  fr: '/merci',
+  en: '/merci',
+} as const;
+const publicGoogleAdsId = import.meta.env.PUBLIC_GOOGLE_ADS_ID;
+const googleAdsId =
+  typeof publicGoogleAdsId === 'string' ? publicGoogleAdsId.trim() : '';
+const publicGoogleAdsConversionLabel = import.meta.env
+  .PUBLIC_GOOGLE_ADS_CONVERSION_LABEL;
+const googleAdsConversionLabel =
+  typeof publicGoogleAdsConversionLabel === 'string'
+    ? publicGoogleAdsConversionLabel.trim()
+    : '';
+const googleAdsSendTo =
+  googleAdsId && googleAdsConversionLabel
+    ? `${googleAdsId}/${googleAdsConversionLabel}`
+    : '';
+---
+
+<Layout
+  locale="fr"
+  canonicalPath="/merci"
+  alternatePaths={localePaths}
+  title={`Reservation confirmee | ${name}`}
+  description="Votre reservation a bien ete recue. Contactez-nous par WhatsApp ou telephone si vous devez modifier quelque chose."
+>
+  <meta slot="head" name="robots" content="noindex" />
+
+  <main class="bg-surface">
+    <section class="section-pad !pt-16">
+      <div class="container-page">
+        <div class="mx-auto flex max-w-3xl flex-col items-center text-center">
+          <IconImage
+            class="bg-brand-soft text-brand-strong"
+            name="i-lucide-calendar-check"
+          />
+          <p
+            class="mt-2 text-xs font-medium uppercase tracking-[0.28em] text-ink-muted/90"
+          >
+            Reservation recue
+          </p>
+          <h1 class="heading-xl mt-4 text-[2.8rem] sm:text-5xl">
+            Merci pour votre reservation
+          </h1>
+          <p class="body-lg mx-auto mt-5 max-w-2xl text-balance">
+            Votre demande de rendez-vous a bien ete recue. Vous recevrez les
+            informations utiles pour votre massage selon les modalites de
+            confirmation de la reservation.
+          </p>
+          <p class="body-base mx-auto mt-4 max-w-2xl">
+            Si vous devez modifier un detail, vous pouvez me contacter par
+            WhatsApp ou par telephone.
+          </p>
+
+          <div
+            class="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:justify-center"
+          >
+            <a href="/" class="btn-primary min-h-[3rem] px-7 py-3.5">
+              Retour a l&apos;accueil
+            </a>
+            <a
+              href={whatsappHref}
+              target="_blank"
+              rel="noreferrer"
+              class="inline-flex min-h-[3rem] items-center justify-center rounded-full border border-brand/20 bg-white px-7 py-3.5 text-sm font-semibold text-ink no-underline shadow-card transition hover:border-brand/35 hover:text-brand-strong"
+              data-analytics-event="whatsapp_click"
+            >
+              WhatsApp
+            </a>
+            <a
+              href={`tel:${phoneHref}`}
+              class="inline-flex min-h-[3rem] items-center justify-center rounded-full border border-brand/20 bg-white px-7 py-3.5 text-sm font-semibold text-ink no-underline shadow-card transition hover:border-brand/35 hover:text-brand-strong"
+              data-analytics-event="phone_click"
+            >
+              {phoneDisplay}
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script define:vars={{googleAdsSendTo}}>
+    type GtagWindow = Window & {
+      gtag?: (...args: unknown[]) => void;
+    };
+
+    const gtagWindow = window as GtagWindow;
+
+    if (typeof gtagWindow.gtag === 'function') {
+      gtagWindow.gtag('event', 'booking_completed');
+
+      if (googleAdsSendTo) {
+        gtagWindow.gtag('event', 'conversion', {
+          send_to: googleAdsSendTo,
+        });
+      }
+    }
+  </script>
+</Layout>

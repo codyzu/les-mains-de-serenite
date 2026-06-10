@@ -60,6 +60,7 @@ const hasLocation = Boolean(locationText);
           target="_blank"
           rel="noreferrer"
           class="body-lg mt-4 inline-flex text-ink transition hover:text-brand-strong"
+          data-analytics-event="whatsapp_click"
         >
           {whatsappLabel}
         </a>
@@ -79,6 +80,7 @@ const hasLocation = Boolean(locationText);
         <a
           href={`tel:${phoneHref}`}
           class="body-lg mt-4 inline-flex text-ink transition hover:text-brand-strong"
+          data-analytics-event="phone_click"
         >
           {phoneDisplay}
         </a>
@@ -98,6 +100,7 @@ const hasLocation = Boolean(locationText);
         <a
           href={`mailto:${email}`}
           class="body-lg mt-4 inline-flex break-all text-ink transition hover:text-accent-strong"
+          data-analytics-event="email_click"
         >
           {email}
         </a>

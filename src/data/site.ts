@@ -6,6 +6,11 @@ import {getWhatsappHref} from '../utils/phone';
 
 export type Locale = 'fr' | 'en';
 export type LocalePathMap = Record<Locale, string>;
+export type AnalyticsEventName =
+  | 'reserve_click'
+  | 'whatsapp_click'
+  | 'phone_click'
+  | 'email_click';
 
 export type SiteBusinessData = {
   name: string;
@@ -84,6 +89,7 @@ export type PromoData = {
   description: string;
   ctaText: string;
   ctaLink: string;
+  analyticsEvent?: AnalyticsEventName;
   image?: {
     src: ImageMetadata;
     alt: string;
@@ -129,6 +135,7 @@ export type ProgramPreviewData = {
   note: string;
   ctaText: string;
   ctaLink: string;
+  analyticsEvent?: AnalyticsEventName;
 };
 
 export type ProgramPageData = {
@@ -183,6 +190,7 @@ export type ProgramPageData = {
     text: string;
     note: string;
     href: string;
+    analyticsEvent?: AnalyticsEventName;
   };
 };
 
@@ -433,6 +441,7 @@ const siteBase = {
               'Une séance ciblée pour soulager les jambes lourdes ou le mal de dos, et retrouver une sensation de légèreté.',
             ctaText: 'Réserver l’offre',
             ctaLink: discoveryOfferBookingHref,
+            analyticsEvent: 'reserve_click',
             image: {
               src: DiscoveryOffer,
               alt: 'Massage bien-être dans une ambiance douce et apaisante',
@@ -714,6 +723,7 @@ Mon objectif est simple : vous offrir une parenthèse de bien-être dans un envi
             text: 'Demander le programme',
             note: 'Réponse personnalisée par WhatsApp.',
             href: programFrWhatsappHref,
+            analyticsEvent: 'whatsapp_click',
           },
         },
         reserve: {
@@ -864,6 +874,7 @@ const enLocalized = {
           '60 min\n\nAfter a long day of screenings, meetings, travel, and networking, take time to relax and recharge.\n\nThis personalized wellness massage is designed to help release tension in the neck, shoulders, back, and legs while promoting deep relaxation and well-being.\n\nWellness massages for women only. English welcome available.',
         ctaText: 'Book your festival massage',
         ctaLink: festivalRecoveryMassageBookingHref,
+        analyticsEvent: 'reserve_click',
         image: {
           src: FestivalAnimationOffer,
           alt: 'Annecy Animation Festival wellness massage offer',
@@ -1142,6 +1153,7 @@ My goal is simple: to offer you a peaceful wellness break in a calm, reassuring,
         text: 'Ask about the program',
         note: 'Personal reply by WhatsApp.',
         href: programEnWhatsappHref,
+        analyticsEvent: 'whatsapp_click',
       },
     },
     reserve: {

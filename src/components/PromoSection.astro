@@ -50,6 +50,7 @@ const ctaIsExternal = promo?.ctaLink.startsWith('http') ?? false;
                   target={ctaIsExternal ? '_blank' : undefined}
                   rel={ctaIsExternal ? 'noreferrer' : undefined}
                   class="btn-primary min-h-[3.25rem] w-full px-7 py-4 text-base sm:w-auto sm:min-w-[14rem]"
+                  data-analytics-event={promo.analyticsEvent}
                 >
                   {promo.ctaText}
                 </a>

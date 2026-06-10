@@ -64,7 +64,11 @@ const {tagline, links} = footer;
             {links.reserve}
           </span>
         ) : (
-          <a href={bookingHref} class="no-underline hover:text-white">
+          <a
+            href={bookingHref}
+            class="no-underline hover:text-white"
+            data-analytics-event="reserve_click"
+          >
             {links.reserve}
           </a>
         )

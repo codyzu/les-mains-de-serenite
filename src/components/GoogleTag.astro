@@ -1,0 +1,65 @@
+---
+interface Props {
+  gaMeasurementId: string;
+  googleAdsId?: string;
+}
+
+const {gaMeasurementId, googleAdsId = ''} = Astro.props;
+const gtagSrc =
+  'https://www.googletagmanager.com/gtag/js?id=' +
+  encodeURIComponent(gaMeasurementId);
+---
+
+<script is:inline async src={gtagSrc}></script>
+
+<script define:vars={{gaMeasurementId, googleAdsId}}>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+
+  gtag('js', new Date());
+  gtag('config', gaMeasurementId, {
+    allow_google_signals: false,
+    allow_ad_personalization_signals: false,
+  });
+
+  if (googleAdsId) {
+    gtag('config', googleAdsId, {
+      allow_google_signals: false,
+      allow_ad_personalization_signals: false,
+    });
+  }
+</script>
+
+<script>
+  type GtagWindow = Window & {
+    gtag?: (...args: unknown[]) => void;
+  };
+
+  const trackedClickSelector = '[data-analytics-event]';
+  const gtagWindow = window as GtagWindow;
+
+  document.addEventListener('click', (event) => {
+    const target = event.target;
+
+    if (!(target instanceof Element)) {
+      return;
+    }
+
+    const trackedElement = target.closest(trackedClickSelector);
+
+    if (!(trackedElement instanceof HTMLElement)) {
+      return;
+    }
+
+    const eventName = trackedElement.dataset.analyticsEvent;
+
+    if (!eventName || typeof gtagWindow.gtag !== 'function') {
+      return;
+    }
+
+    gtagWindow.gtag('event', eventName);
+  });
+</script>

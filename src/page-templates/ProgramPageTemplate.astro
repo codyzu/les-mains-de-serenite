@@ -111,6 +111,7 @@ const structuredData = {
               target={ctaIsExternal ? '_blank' : undefined}
               rel={ctaIsExternal ? 'noreferrer' : undefined}
               class="btn-primary min-h-[3rem] px-7 py-3.5 sm:min-h-0 sm:py-3"
+              data-analytics-event={program.cta.analyticsEvent}
             >
               {program.hero.primaryCta}
             </a>
@@ -252,6 +253,7 @@ const structuredData = {
             target={ctaIsExternal ? '_blank' : undefined}
             rel={ctaIsExternal ? 'noreferrer' : undefined}
             class="btn-primary mt-7 min-h-[3rem] px-7 py-3.5 sm:min-h-0 sm:py-3"
+            data-analytics-event={program.cta.analyticsEvent}
           >
             {program.cta.text}
           </a>

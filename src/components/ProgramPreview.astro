@@ -16,6 +16,7 @@ const {
   note,
   ctaText,
   ctaLink,
+  analyticsEvent,
 } = Astro.props;
 const ctaIsExternal = ctaLink.startsWith('http');
 ---
@@ -80,6 +81,7 @@ const ctaIsExternal = ctaLink.startsWith('http');
           target={ctaIsExternal ? '_blank' : undefined}
           rel={ctaIsExternal ? 'noreferrer' : undefined}
           class="btn-primary mt-7 min-h-[3.25rem] w-full px-7 py-4 text-base"
+          data-analytics-event={analyticsEvent}
         >
           {ctaText}
         </a>

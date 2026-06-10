@@ -30,7 +30,11 @@ const {bookingUrl, title, description, note, reassuranceNote, ctaText} =
           {reassuranceNote ? <p>{reassuranceNote}</p> : null}
         </div>
 
-        <a href={bookingUrl} class="btn-primary mt-8 min-w-[13rem]">
+        <a
+          href={bookingUrl}
+          class="btn-primary mt-8 min-w-[13rem]"
+          data-analytics-event="reserve_click"
+        >
           {ctaText}
         </a>
       </div>

@@ -75,7 +75,11 @@ const alternates = [
       <p class="body-base mt-4">
         {reserve.redirect.description}
       </p>
-      <a href={redirectUrl} class="btn-primary mt-8">
+      <a
+        href={redirectUrl}
+        class="btn-primary mt-8"
+        data-analytics-event="reserve_click"
+      >
         {reserve.redirect.ctaText}
       </a>
     </div>

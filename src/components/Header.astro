@@ -93,7 +93,11 @@ const programHref = toHref(program.path);
             {links.reserve}
           </span>
         ) : (
-          <a href={bookingHref} class="nav-link">
+          <a
+            href={bookingHref}
+            class="nav-link"
+            data-analytics-event="reserve_click"
+          >
             {links.reserve}
           </a>
         )
@@ -167,6 +171,7 @@ const programHref = toHref(program.path);
         <a
           href={bookingHref}
           class="shrink-0 rounded-full bg-brand px-3.5 py-1.5 text-sm font-semibold text-white no-underline shadow-card transition hover:bg-brand-strong"
+          data-analytics-event="reserve_click"
         >
           {links.reserve}
         </a>
