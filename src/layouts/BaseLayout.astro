@@ -26,9 +26,6 @@ const baseUrl = getBaseUrl();
 const publicGaMeasurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
 const gaMeasurementId =
   typeof publicGaMeasurementId === 'string' ? publicGaMeasurementId.trim() : '';
-const publicGoogleAdsId = import.meta.env.PUBLIC_GOOGLE_ADS_ID;
-const googleAdsId =
-  typeof publicGoogleAdsId === 'string' ? publicGoogleAdsId.trim() : '';
 const structuredDataItems = structuredData
   ? Array.isArray(structuredData)
     ? structuredData
@@ -84,14 +81,7 @@ const structuredDataItems = structuredData
       ))
     }
     <slot name="head" />
-    {
-      gaMeasurementId ? (
-        <GoogleTag
-          gaMeasurementId={gaMeasurementId}
-          googleAdsId={googleAdsId}
-        />
-      ) : null
-    }
+    {gaMeasurementId ? <GoogleTag gaMeasurementId={gaMeasurementId} /> : null}
   </head>
   <body>
     <slot />

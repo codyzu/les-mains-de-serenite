@@ -3,7 +3,6 @@ import Contact from '../components/Contact.astro';
 import IconImage from '../components/IconImage.astro';
 import type {Locale, LocalizedSiteData, SiteBusinessData} from '../data/site';
 import Layout from '../layouts/Layout.astro';
-import {getBaseUrl} from '../utils/url';
 
 interface Props {
   locale: Locale;
@@ -20,7 +19,6 @@ const localePaths = {
   en: '/en/book-online',
 } as const;
 const whatsappUrl = home.whatsapp.generalHref;
-const confirmationPath = `${getBaseUrl()}merci`;
 ---
 
 <Layout
@@ -121,7 +119,6 @@ const confirmationPath = `${getBaseUrl()}merci`;
         >
           <div
             id="my-cal-inline-reserver"
-            data-confirmation-path={confirmationPath}
             class="min-h-[760px] w-full overflow-hidden rounded-[1.5rem] bg-white sm:min-h-[860px] lg:min-h-[940px]"
           >
           </div>
@@ -156,8 +153,6 @@ const confirmationPath = `${getBaseUrl()}merci`;
     const calOrigin = 'https://app.cal.eu';
     const calNamespace = 'reserver-en-ligne';
     const calSelector = '#my-cal-inline-reserver';
-    const calElement = document.querySelector<HTMLElement>(calSelector);
-    const confirmationPath = calElement?.dataset.confirmationPath ?? '/merci';
     const calWindow = window as CalWindow;
 
     const queueCall = (target: QueuedCalApi, args: CalArgs) => {
@@ -223,14 +218,5 @@ const confirmationPath = `${getBaseUrl()}merci`;
         },
       },
     });
-
-    if (cal.ns[calNamespace]) {
-      cal.ns[calNamespace]('on', {
-        action: 'bookingSuccessful',
-        callback: () => {
-          window.location.assign(confirmationPath);
-        },
-      });
-    }
   </script>
 </Layout>
