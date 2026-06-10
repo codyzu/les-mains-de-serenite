@@ -43,6 +43,9 @@ const {tagline, links} = footer;
       width={480}
       height={480}
       class="mb-4 h-auto w-28 opacity-90 sm:w-36 lg:w-40"
+      loading="lazy"
+      decoding="async"
+      fetchpriority="low"
     />
     <div class="font-display text-3xl">{brand}</div>
     <p class="text-white/85">{tagline}</p>
