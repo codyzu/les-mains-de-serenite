@@ -6,16 +6,35 @@ import IconImage from './IconImage.astro';
 type Props = MassagesSectionData;
 
 const {title, intro, recommendedLabel, items} = Astro.props;
+
+const getCardGridClasses = (index: number) => {
+  const isLastTabletCard = items.length % 2 === 1 && index === items.length - 1;
+  const desktopRemainder = items.length % 3;
+  const isFirstDesktopLastRow =
+    desktopRemainder > 0 && index === items.length - desktopRemainder;
+
+  return [
+    'md:col-span-2',
+    isLastTabletCard ? 'md:col-start-2 xl:col-start-auto' : '',
+    desktopRemainder === 1 && isFirstDesktopLastRow ? 'xl:col-start-3' : '',
+    desktopRemainder === 2 && isFirstDesktopLastRow ? 'xl:col-start-2' : '',
+  ];
+};
 ---
 
 <section id="massages" class="section-pad bg-surface">
   <div class="container-page">
     <SectionIntro title={title} text={intro} />
 
-    <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+    <div class="grid gap-6 md:grid-cols-4 xl:grid-cols-6">
       {
         items.map((item, index) => (
-          <article class="card-soft flex flex-col p-6 sm:p-7">
+          <article
+            class:list={[
+              'card-soft flex flex-col p-6 sm:p-7',
+              ...getCardGridClasses(index),
+            ]}
+          >
             <IconImage
               class={
                 index % 2 === 0
@@ -65,6 +84,12 @@ const {title, intro, recommendedLabel, items} = Astro.props;
                 </div>
               ))}
             </div>
+
+            {item.ctaText && item.ctaLink ? (
+              <a href={item.ctaLink} class="btn-primary mt-6 w-full">
+                {item.ctaText}
+              </a>
+            ) : null}
           </article>
         ))
       }

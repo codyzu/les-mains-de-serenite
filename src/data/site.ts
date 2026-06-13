@@ -114,6 +114,8 @@ export type MassageData = {
   note?: string;
   icon: string;
   prices: MassagePriceData[];
+  ctaText?: string;
+  ctaLink?: string;
 };
 
 export type MassagesSectionData = {
@@ -507,6 +509,17 @@ const siteBase = {
                   {duration: '45 min', price: '65 €', recommended: true},
                   {duration: '1 h', price: '85 €'},
                 ],
+              },
+              {
+                title: 'Madérothérapie',
+                description:
+                  'Soin ciblé utilisant des instruments en bois pour stimuler la circulation, favoriser le drainage naturel et procurer une agréable sensation de légèreté.',
+                icon: 'i-lucide-leaf',
+                prices: [
+                  {duration: '45 min', price: '65 €', recommended: true},
+                ],
+                ctaText: 'Découvrir',
+                ctaLink: '/maderotherapie-annecy/',
               },
             ],
           },
@@ -940,6 +953,15 @@ const enLocalized = {
               {duration: '45 min', price: '65 €', recommended: true},
               {duration: '1 h', price: '85 €'},
             ],
+          },
+          {
+            title: 'Maderotherapy',
+            description:
+              'A targeted treatment using wooden instruments to stimulate circulation, support natural drainage, and create a pleasant feeling of lightness.',
+            icon: 'i-lucide-leaf',
+            prices: [{duration: '45 min', price: '65 €', recommended: true}],
+            ctaText: 'Discover',
+            ctaLink: '/maderotherapie-annecy/',
           },
         ],
       },
