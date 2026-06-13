@@ -515,16 +515,16 @@ const siteBase = {
             title: 'Programme Ventre Léger & Jambes Légères',
             subtitle: 'Un accompagnement bien-être de 21 jours',
             description:
-              'Pour les femmes qui souhaitent aller plus loin qu’une séance seule, ce programme associe 3 drainages lymphatiques Renata França à un bilan bien-être et à des conseils simples pour prolonger la sensation de légèreté au quotidien.',
+              'Pour les femmes qui souhaitent aller plus loin qu’une séance seule, ce programme associe 5 drainages lymphatiques Renata França à un bilan bien-être et à des conseils simples pour prolonger la sensation de légèreté au quotidien.',
             includesTitle: 'Le programme comprend',
             includes: [
-              '3 séances de drainage lymphatique',
+              '5 séances de drainage lymphatique',
               'Un bilan bien-être de 20 minutes',
               'Un guide alimentaire simple',
               'Un suivi WhatsApp pendant 21 jours',
             ],
             priceLabel: 'Tarif lancement',
-            price: '229 €',
+            price: '350 €',
             note: 'L’accompagnement associe drainage lymphatique, écoute du corps et conseils simples du quotidien pour vous aider à retrouver une sensation de légèreté durable.',
             ctaText: 'Découvrir le programme',
             ctaLink: programFrPath,
@@ -659,7 +659,7 @@ Mon objectif est simple : vous offrir une parenthèse de bien-être dans un envi
           },
           intro: {
             title: 'Un accompagnement pour prolonger les bienfaits du drainage',
-            body: 'Ce programme s’adresse aux femmes qui souhaitent aller plus loin qu’une séance seule. Il associe 3 drainages lymphatiques Renata França à un bilan bien-être, des conseils simples du quotidien et un suivi WhatsApp pendant 21 jours.',
+            body: 'Ce programme s’adresse aux femmes qui souhaitent aller plus loin qu’une séance seule. Il associe 5 drainages lymphatiques Renata França à un bilan bien-être, des conseils simples du quotidien et un suivi WhatsApp pendant 21 jours.',
           },
           forWhom: {
             title: 'Ce programme est idéal si vous souhaitez',
@@ -674,7 +674,7 @@ Mon objectif est simple : vous offrir une parenthèse de bien-être dans un envi
           includes: {
             title: 'Le programme comprend',
             items: [
-              '3 séances de drainage lymphatique Renata França d’1h',
+              '5 séances de drainage lymphatique Renata França d’1h',
               'Un bilan bien-être de 20 minutes',
               'Un guide alimentaire anti-ballonnements et rétention d’eau',
               'Une liste de courses simplifiée',
@@ -684,9 +684,9 @@ Mon objectif est simple : vous offrir une parenthèse de bien-être dans un envi
           },
           price: {
             label: 'Tarif lancement',
-            amount: '229 €',
+            amount: '350 €',
             usualValueLabel: 'Valeur habituelle',
-            usualValue: '290 €',
+            usualValue: '470 €',
           },
           method: {
             title: 'Pourquoi associer drainage et habitudes du quotidien ?',
@@ -948,16 +948,16 @@ const enLocalized = {
         title: 'Light Belly & Light Legs Program',
         subtitle: 'A 21-day wellness accompaniment',
         description:
-          'For women who would like to go further than a single session, this program combines 3 Renata França lymphatic drainage sessions with a wellness check-in and simple guidance to help extend the feeling of lightness in everyday life.',
+          'For women who would like to go further than a single session, this program combines 5 Renata França lymphatic drainage sessions with a wellness check-in and simple guidance to help extend the feeling of lightness in everyday life.',
         includesTitle: 'The program includes',
         includes: [
-          '3 lymphatic drainage sessions',
+          '5 lymphatic drainage sessions',
           'A 20-minute wellness check-in',
           'A simple food guidance PDF',
           'WhatsApp follow-up for 21 days',
         ],
         priceLabel: 'Launch price',
-        price: '229 €',
+        price: '350 €',
         note: 'The accompaniment combines lymphatic drainage, body awareness, and simple everyday guidance to help you reconnect with a lasting feeling of lightness.',
         ctaText: 'Discover the program',
         ctaLink: programEnPath,
@@ -1089,7 +1089,7 @@ My goal is simple: to offer you a peaceful wellness break in a calm, reassuring,
       },
       intro: {
         title: 'An accompaniment to extend the benefits of drainage',
-        body: 'This program is for women who would like to go further than a single session. It combines 3 Renata França lymphatic drainage sessions with a wellness check-in, simple everyday guidance, and WhatsApp follow-up for 21 days.',
+        body: 'This program is for women who would like to go further than a single session. It combines 5 Renata França lymphatic drainage sessions with a wellness check-in, simple everyday guidance, and WhatsApp follow-up for 21 days.',
       },
       forWhom: {
         title: 'This program is ideal if you would like to',
@@ -1104,7 +1104,7 @@ My goal is simple: to offer you a peaceful wellness break in a calm, reassuring,
       includes: {
         title: 'The program includes',
         items: [
-          '3 one-hour Renata França lymphatic drainage sessions',
+          '5 one-hour Renata França lymphatic drainage sessions',
           'A 20-minute wellness check-in',
           'A simple food guide for bloating and water retention',
           'A simplified shopping list',
@@ -1114,9 +1114,9 @@ My goal is simple: to offer you a peaceful wellness break in a calm, reassuring,
       },
       price: {
         label: 'Launch price',
-        amount: '229 €',
+        amount: '350 €',
         usualValueLabel: 'Usual value',
-        usualValue: '290 €',
+        usualValue: '470 €',
       },
       method: {
         title: 'Why combine drainage and everyday habits?',
