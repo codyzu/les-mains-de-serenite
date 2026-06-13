@@ -1,0 +1,370 @@
+---
+import {Picture} from 'astro:assets';
+import IconImage from '../components/IconImage.astro';
+import SectionIntro from '../components/SectionIntro.astro';
+import MaderotherapieHeroImage from '../assets/maderotherapie.png';
+import type {Locale, LocalizedSiteData, SiteBusinessData} from '../data/site';
+import Layout from '../layouts/Layout.astro';
+
+interface Props {
+  locale: Locale;
+  business: SiteBusinessData;
+  localized: LocalizedSiteData;
+}
+
+const {locale, business, localized} = Astro.props;
+const {
+  pages: {maderotherapie},
+} = localized;
+const ctaIsExternal = maderotherapie.cta.href.startsWith('http');
+const structuredDataPrice = maderotherapie.offer.price.replaceAll(
+  /[^\d,.]/g,
+  ''
+);
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: maderotherapie.meta.title,
+  description: maderotherapie.meta.description,
+  image: new URL(MaderotherapieHeroImage.src, business.siteUrl).toString(),
+  provider: {
+    '@type': business.seo.schemaType,
+    name: business.name,
+    telephone: business.phone,
+    address: {
+      '@type': 'PostalAddress',
+      ...business.address,
+    },
+  },
+  areaServed: business.seo.areaServed,
+  offers: {
+    '@type': 'Offer',
+    price: structuredDataPrice,
+    priceCurrency: 'EUR',
+  },
+};
+---
+
+<Layout
+  locale={locale}
+  canonicalPath={maderotherapie.path}
+  title={maderotherapie.meta.title}
+  description={maderotherapie.meta.description}
+  structuredData={structuredData}
+>
+  <main>
+    <section class="overflow-hidden bg-surface-muted">
+      <div
+        class="container-page grid gap-10 pb-16 pt-14 sm:pb-20 sm:pt-18 lg:grid-cols-[minmax(0,0.95fr)_minmax(22rem,0.8fr)] lg:items-center lg:gap-14 lg:pb-16 lg:pt-16"
+      >
+        <div class="max-w-3xl">
+          <p
+            class="mb-4 text-sm uppercase tracking-[0.25em] text-brand-strong/90"
+          >
+            Madérothérapie à Annecy
+          </p>
+          <h1 class="font-display text-5xl leading-tight text-ink sm:text-6xl">
+            {maderotherapie.hero.title}
+          </h1>
+          <p
+            class="mt-6 max-w-2xl text-pretty text-lg leading-8 text-ink-muted sm:text-xl"
+          >
+            {maderotherapie.hero.description}
+          </p>
+
+          <div class="mt-7 flex flex-wrap gap-3">
+            {
+              maderotherapie.hero.keyInfo.map((item) => (
+                <span class="rounded-full bg-white/78 px-4 py-2 text-sm font-medium text-ink shadow-card">
+                  {item}
+                </span>
+              ))
+            }
+          </div>
+
+          <a
+            href={maderotherapie.cta.href}
+            target={ctaIsExternal ? '_blank' : undefined}
+            rel={ctaIsExternal ? 'noreferrer' : undefined}
+            class="btn-primary mt-9 min-h-[3rem] px-7 py-3.5 sm:min-h-0 sm:py-3"
+            data-analytics-event={maderotherapie.cta.analyticsEvent}
+          >
+            {maderotherapie.hero.primaryCta}
+          </a>
+        </div>
+
+        <div
+          class="flex items-center justify-center overflow-hidden rounded-[2rem] bg-white/72 p-3 shadow-soft ring-1 ring-surface-soft sm:p-4 lg:p-5"
+        >
+          <Picture
+            priority
+            src={MaderotherapieHeroImage}
+            formats={['avif', 'webp']}
+            alt={maderotherapie.hero.imageAlt}
+            class="h-auto w-full max-w-[28rem] rounded-[1.55rem] lg:max-h-[34rem] lg:w-auto lg:max-w-full"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad bg-surface">
+      <div class="container-page">
+        <div
+          class="grid gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-center"
+        >
+          <div>
+            <h2 class="heading-lg">{maderotherapie.overview.title}</h2>
+            <p class="body-lg mt-5">{maderotherapie.overview.body}</p>
+          </div>
+
+          <article class="card-soft bg-white/82 p-7 shadow-soft sm:p-8">
+            <IconImage name="i-lucide-leaf" />
+            <h2 class="heading-md">{maderotherapie.instruments.title}</h2>
+            <p class="body-base mt-4">{maderotherapie.instruments.body}</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad bg-surface-muted">
+      <div class="container-page">
+        <SectionIntro
+          title={maderotherapie.benefits.title}
+          text={maderotherapie.benefits.intro}
+        />
+
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {
+            maderotherapie.benefits.items.map((benefit) => (
+              <article class="card-soft bg-white/84 p-6 shadow-card">
+                <IconImage
+                  name={benefit.icon}
+                  class="mb-4 h-12 w-12 bg-brand-soft text-brand-strong"
+                  iconClass="h-5 w-5"
+                />
+                <p class="text-base font-medium leading-7 text-ink">
+                  {benefit.text}
+                </p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad bg-surface">
+      <div class="container-page">
+        <SectionIntro
+          title={maderotherapie.forYou.title}
+          text={maderotherapie.forYou.intro}
+        />
+
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {
+            maderotherapie.forYou.items.map((item) => (
+              <article class="card-soft bg-white/78 p-6 shadow-card">
+                <h3 class="text-lg font-semibold text-ink">{item.title}</h3>
+                <p class="body-base mt-3">{item.description}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad bg-surface-muted">
+      <div class="container-page">
+        <div
+          class="grid overflow-hidden rounded-[2rem] bg-ink shadow-soft lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-center"
+        >
+          <div class="flex items-center justify-center p-6 sm:p-8 lg:p-10">
+            <Picture
+              src={MaderotherapieHeroImage}
+              formats={['avif', 'webp']}
+              alt={maderotherapie.hero.imageAlt}
+              class="h-auto w-full max-w-[18rem] rounded-[1.35rem] shadow-soft ring-1 ring-white/10 lg:max-h-[31rem] lg:w-auto lg:max-w-full"
+            />
+          </div>
+
+          <div class="p-8 text-white sm:p-10 lg:p-12">
+            <p class="text-sm uppercase tracking-[0.25em] text-white/68">
+              Offre Découverte
+            </p>
+            <h2 class="mt-4 font-display text-3xl leading-tight sm:text-4xl">
+              {maderotherapie.offer.title}
+            </h2>
+            <div class="mt-6 flex flex-wrap gap-3">
+              <span
+                class="rounded-full bg-white/12 px-4 py-2 text-sm font-medium"
+              >
+                {maderotherapie.offer.duration}
+              </span>
+              <span
+                class="rounded-full bg-white/12 px-4 py-2 text-sm font-medium"
+              >
+                {maderotherapie.offer.price}
+              </span>
+            </div>
+            <div class="mt-7 space-y-4 text-base leading-7 text-white/82">
+              <p>{maderotherapie.offer.description}</p>
+              <p>{maderotherapie.offer.targetAudience}</p>
+              <p>{maderotherapie.offer.benefits}</p>
+              <p>{maderotherapie.offer.positioning}</p>
+            </div>
+            <a
+              href={maderotherapie.cta.href}
+              target={ctaIsExternal ? '_blank' : undefined}
+              rel={ctaIsExternal ? 'noreferrer' : undefined}
+              class="btn-primary mt-8 min-h-[3rem] px-7 py-3.5 sm:min-h-0 sm:py-3"
+              data-analytics-event={maderotherapie.cta.analyticsEvent}
+            >
+              {maderotherapie.hero.primaryCta}
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad bg-surface">
+      <div class="container-page">
+        <SectionIntro title={maderotherapie.steps.title} />
+
+        <div class="grid gap-4 md:grid-cols-5">
+          {
+            maderotherapie.steps.items.map((step, index) => (
+              <article class="card-soft bg-white/78 p-5 shadow-card">
+                <span class="font-display text-4xl leading-none text-brand-strong">
+                  {index + 1}
+                </span>
+                <h3 class="mt-4 text-base font-semibold leading-6 text-ink">
+                  {step.title}
+                </h3>
+                <p class="mt-3 text-sm leading-6 text-ink-muted">
+                  {step.description}
+                </p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad bg-surface-muted">
+      <div class="container-page">
+        <SectionIntro title={maderotherapie.beforeAfter.title} />
+
+        <div class="grid gap-5 lg:grid-cols-2">
+          <article class="card-soft bg-white/84 p-7 shadow-card sm:p-8">
+            <h3 class="heading-md">Avant</h3>
+            <ul class="mt-5 space-y-3">
+              {
+                maderotherapie.beforeAfter.before.map((item) => (
+                  <li class="flex gap-3 text-base leading-7 text-ink/76">
+                    <span class="i-lucide-check mt-1 h-5 w-5 shrink-0 text-brand-strong" />
+                    <span>{item}</span>
+                  </li>
+                ))
+              }
+            </ul>
+          </article>
+
+          <article class="card-soft bg-white/84 p-7 shadow-card sm:p-8">
+            <h3 class="heading-md">Après</h3>
+            <ul class="mt-5 space-y-3">
+              {
+                maderotherapie.beforeAfter.after.map((item) => (
+                  <li class="flex gap-3 text-base leading-7 text-ink/76">
+                    <span class="i-lucide-check mt-1 h-5 w-5 shrink-0 text-brand-strong" />
+                    <span>{item}</span>
+                  </li>
+                ))
+              }
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad bg-surface">
+      <div class="container-page">
+        <div
+          class="card-soft mx-auto max-w-5xl bg-white/84 p-7 shadow-soft sm:p-9"
+        >
+          <div
+            class="grid gap-8 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]"
+          >
+            <div>
+              <IconImage
+                name="i-lucide-circle-alert"
+                class="bg-accent-soft text-accent-strong"
+              />
+              <h2 class="heading-lg">
+                {maderotherapie.contraindications.title}
+              </h2>
+              <p class="body-base mt-4">
+                {maderotherapie.contraindications.note}
+              </p>
+            </div>
+
+            <ul class="grid gap-3 sm:grid-cols-2">
+              {
+                maderotherapie.contraindications.items.map((item) => (
+                  <li class="flex gap-3 rounded-2xl bg-surface-muted/70 px-4 py-3 text-sm font-medium leading-6 text-ink/78">
+                    <span class="i-lucide-info mt-1 h-4 w-4 shrink-0 text-accent-strong" />
+                    <span>{item}</span>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad bg-surface-muted">
+      <div class="container-page">
+        <SectionIntro title={maderotherapie.faq.title} />
+
+        <div class="mx-auto grid max-w-4xl gap-4">
+          {
+            maderotherapie.faq.items.map((item) => (
+              <details class="group card-soft bg-white/84 p-6 shadow-card sm:p-7">
+                <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-lg font-semibold text-ink">
+                  <span>{item.question}</span>
+                  <span class="i-lucide-chevron-down h-5 w-5 shrink-0 text-brand-strong transition group-open:rotate-180" />
+                </summary>
+                <p class="body-base mt-4">{item.answer}</p>
+              </details>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad bg-surface">
+      <div class="container-page">
+        <div
+          class="card-soft mx-auto max-w-4xl p-8 text-center shadow-soft sm:p-10 lg:p-12"
+        >
+          <IconImage
+            name="i-lucide-calendar-heart"
+            class="mx-auto bg-brand-soft text-brand-strong"
+          />
+          <h2 class="heading-lg">{maderotherapie.cta.title}</h2>
+          <p class="body-lg mx-auto mt-4 max-w-2xl">
+            {maderotherapie.cta.description}
+          </p>
+          <a
+            href={maderotherapie.cta.href}
+            target={ctaIsExternal ? '_blank' : undefined}
+            rel={ctaIsExternal ? 'noreferrer' : undefined}
+            class="btn-primary mt-7 min-h-[3rem] px-7 py-3.5 sm:min-h-0 sm:py-3"
+            data-analytics-event={maderotherapie.cta.analyticsEvent}
+          >
+            {maderotherapie.cta.text}
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

@@ -1,0 +1,12 @@
+---
+import {defaultLocale, getLocalizedSite, site} from '../data/site';
+import MaderotherapiePageTemplate from '../page-templates/MaderotherapiePageTemplate.astro';
+
+const localized = getLocalizedSite(defaultLocale);
+---
+
+<MaderotherapiePageTemplate
+  locale={defaultLocale}
+  business={site.business}
+  localized={localized}
+/>

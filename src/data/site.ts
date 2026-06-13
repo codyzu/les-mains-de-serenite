@@ -196,6 +196,85 @@ export type ProgramPageData = {
   };
 };
 
+export type MaderotherapiePageData = {
+  meta: {
+    title: string;
+    description: string;
+  };
+  path: string;
+  hero: {
+    title: string;
+    description: string;
+    primaryCta: string;
+    imageAlt: string;
+    keyInfo: string[];
+  };
+  overview: {
+    title: string;
+    body: string;
+  };
+  instruments: {
+    title: string;
+    body: string;
+  };
+  benefits: {
+    title: string;
+    intro: string;
+    items: Array<{
+      icon: string;
+      text: string;
+    }>;
+  };
+  forYou: {
+    title: string;
+    intro: string;
+    items: Array<{
+      title: string;
+      description: string;
+    }>;
+  };
+  offer: {
+    title: string;
+    duration: string;
+    price: string;
+    description: string;
+    targetAudience: string;
+    benefits: string;
+    positioning: string;
+  };
+  steps: {
+    title: string;
+    items: Array<{
+      title: string;
+      description: string;
+    }>;
+  };
+  beforeAfter: {
+    title: string;
+    before: string[];
+    after: string[];
+  };
+  contraindications: {
+    title: string;
+    items: string[];
+    note: string;
+  };
+  faq: {
+    title: string;
+    items: Array<{
+      question: string;
+      answer: string;
+    }>;
+  };
+  cta: {
+    title: string;
+    description: string;
+    text: string;
+    href: string;
+    analyticsEvent?: AnalyticsEventName;
+  };
+};
+
 export type AboutData = {
   title: string;
   body: string;
@@ -320,6 +399,7 @@ export type LocalizedSiteData = {
   pages: {
     home: HomePageData;
     program: ProgramPageData;
+    maderotherapie: MaderotherapiePageData;
     reserve: ReservePageData;
     reserveOnline: ReserveOnlinePageData;
   };
@@ -519,7 +599,7 @@ const siteBase = {
                   {duration: '45 min', price: '65 €', recommended: true},
                 ],
                 ctaText: 'Découvrir',
-                ctaLink: '/maderotherapie-annecy/',
+                ctaLink: '/maderotherapie/',
               },
             ],
           },
@@ -737,6 +817,224 @@ Mon objectif est simple : vous offrir une parenthèse de bien-être dans un envi
             note: 'Réponse personnalisée par WhatsApp.',
             href: programFrWhatsappHref,
             analyticsEvent: 'whatsapp_click',
+          },
+        },
+        maderotherapie: {
+          path: '/maderotherapie/',
+          meta: {
+            title:
+              'Madérothérapie Jambes Légères à Annecy | Les Mains de Sérénité',
+            description:
+              'Découvrez la madérothérapie Jambes Légères à Annecy : un soin bien-être de 45 minutes utilisant des instruments en bois pour stimuler la circulation et accompagner le drainage naturel du corps.',
+          },
+          hero: {
+            title: 'Madérothérapie Jambes Légères',
+            description:
+              'Retrouvez une agréable sensation de légèreté grâce à un soin utilisant des instruments en bois spécialement conçus pour stimuler la circulation et accompagner le drainage naturel du corps.',
+            primaryCta: 'Réserver une séance',
+            imageAlt:
+              'Soin jambes légères dans une ambiance bien-être chaleureuse',
+            keyInfo: ['45 minutes', '65 €', 'Réservé aux femmes'],
+          },
+          overview: {
+            title: 'En quoi consiste la madérothérapie ?',
+            body: 'La madérothérapie est une technique de massage d’origine colombienne qui utilise différents instruments en bois pour travailler les tissus de manière précise et rythmée. Ce soin vise à stimuler la circulation sanguine et lymphatique, à accompagner le drainage naturel du corps et à procurer une sensation de légèreté. Naturelle et non invasive, cette approche s’intègre dans une démarche de bien-être, d’écoute du corps et de détente.',
+          },
+          instruments: {
+            title: 'Pourquoi utiliser des instruments en bois ?',
+            body: 'Les instruments en bois permettent un travail précis, régulier et adapté aux zones ciblées. Leur matière naturelle offre un contact chaleureux, tout en aidant à stimuler les tissus et à relancer les sensations de circulation. Associés à un geste manuel attentif, ils rendent l’expérience à la fois tonique, enveloppante et relaxante.',
+          },
+          benefits: {
+            title: 'Les bienfaits de la madérothérapie',
+            intro:
+              'Un soin ciblé pour retrouver du confort corporel, relâcher les tensions et repartir avec une sensation de légèreté.',
+            items: [
+              {
+                icon: 'i-lucide-droplets',
+                text: 'Favorise le drainage lymphatique naturel',
+              },
+              {
+                icon: 'i-lucide-activity',
+                text: 'Stimule la circulation sanguine et lymphatique',
+              },
+              {
+                icon: 'i-lucide-feather',
+                text: 'Aide à réduire la sensation de jambes lourdes',
+              },
+              {
+                icon: 'i-lucide-waves',
+                text: 'Contribue à diminuer la rétention d’eau',
+              },
+              {
+                icon: 'i-lucide-sparkles',
+                text: 'Améliore visiblement la qualité et la tonicité de la peau',
+              },
+              {
+                icon: 'i-lucide-scan',
+                text: 'Aide à lisser l’aspect de la peau et des tissus',
+              },
+              {
+                icon: 'i-lucide-leaf',
+                text: 'Procure une sensation de légèreté et de bien-être durable',
+              },
+              {
+                icon: 'i-lucide-heart-pulse',
+                text: 'Détend les muscles et soulage certaines tensions corporelles',
+              },
+              {
+                icon: 'i-lucide-flower',
+                text: 'Favorise la relaxation et le lâcher-prise',
+              },
+            ],
+          },
+          forYou: {
+            title: 'Est-ce fait pour vous ?',
+            intro:
+              'Ce soin s’adresse aux femmes qui souhaitent prendre soin de leur corps avec une approche naturelle, ciblée et respectueuse de leurs sensations.',
+            items: [
+              {
+                title: 'Jambes lourdes',
+                description:
+                  'Pour retrouver une sensation de jambes plus légères, notamment en fin de journée ou après des périodes debout.',
+              },
+              {
+                title: 'Ventre gonflé',
+                description:
+                  'Pour accompagner le confort corporel lorsque vous ressentez une impression de gonflement.',
+              },
+              {
+                title: 'Rétention d’eau',
+                description:
+                  'Pour soutenir les sensations de drainage naturel et aider le corps à retrouver plus de fluidité.',
+              },
+              {
+                title: 'Fatigue physique et sensation de lourdeur',
+                description:
+                  'Pour relâcher le corps, alléger les tensions et vous accorder un temps de récupération.',
+              },
+              {
+                title: 'Besoin de ralentir et de prendre soin de soi',
+                description:
+                  'Pour faire une pause, respirer et vous reconnecter à votre corps dans un cadre calme.',
+              },
+              {
+                title: 'Envie de retrouver une silhouette plus harmonieuse',
+                description:
+                  'Pour stimuler les tissus et accompagner une sensation de tonicité et d’équilibre corporel.',
+              },
+            ],
+          },
+          offer: {
+            title: 'Offre Découverte Madérothérapie Jambes Légères',
+            duration: '45 minutes',
+            price: '65 €',
+            description:
+              'Une séance ciblée pour découvrir la madérothérapie et profiter d’un travail spécifique sur les zones de lourdeur, avec une attention particulière portée au confort et au ressenti.',
+            targetAudience:
+              'Idéale pour les femmes qui ressentent des jambes lourdes, de la rétention d’eau, une fatigue corporelle ou l’envie de prendre soin d’elles autrement.',
+            benefits:
+              'Le soin aide à stimuler la circulation, accompagne le drainage naturel du corps et procure une sensation de légèreté et de détente.',
+            positioning:
+              'Une offre découverte pensée pour tester la méthode en douceur avant d’envisager, si besoin, un accompagnement plus régulier.',
+          },
+          steps: {
+            title: 'Déroulement d’une séance',
+            items: [
+              {
+                title: 'Échange sur vos besoins',
+                description:
+                  'Nous prenons quelques minutes pour comprendre vos attentes, vos sensations et les éventuelles précautions à connaître.',
+              },
+              {
+                title: 'Installation confortable',
+                description:
+                  'Vous vous installez dans un espace calme, chaleureux et adapté à un vrai moment de détente.',
+              },
+              {
+                title: 'Travail manuel préparatoire',
+                description:
+                  'Le soin commence par des gestes manuels pour préparer les tissus et favoriser le relâchement.',
+              },
+              {
+                title: 'Utilisation des instruments de madérothérapie',
+                description:
+                  'Les instruments en bois sont utilisés progressivement, avec une pression ajustée à votre confort.',
+              },
+              {
+                title: 'Retour au calme et recommandations',
+                description:
+                  'La séance se termine en douceur, avec quelques conseils simples pour prolonger les sensations de légèreté.',
+              },
+            ],
+          },
+          beforeAfter: {
+            title: 'Avant et après votre séance',
+            before: [
+              'Bien s’hydrater',
+              'Prévoir une tenue confortable',
+              'Signaler toute contre-indication',
+            ],
+            after: [
+              'Boire de l’eau',
+              'Favoriser une activité douce',
+              'Écouter son corps et se reposer si nécessaire',
+            ],
+          },
+          contraindications: {
+            title: 'Contre-indications',
+            items: [
+              'Phlébite ou thrombose',
+              'Grossesse (sauf avis médical)',
+              'Cancer en cours de traitement',
+              'Infection ou fièvre',
+              'Troubles circulatoires sévères',
+              'Plaies ou lésions cutanées',
+              'Intervention chirurgicale récente',
+            ],
+            note: 'En cas de doute ou de situation particulière, contactez Zahara avant de réserver afin de vérifier ensemble si le soin est adapté.',
+          },
+          faq: {
+            title: 'Questions fréquentes',
+            items: [
+              {
+                question: 'Qu’est-ce que la madérothérapie ?',
+                answer:
+                  'C’est une technique de massage d’origine colombienne qui utilise des instruments en bois pour stimuler les tissus, la circulation et les sensations de drainage naturel.',
+              },
+              {
+                question: 'Est-ce douloureux ?',
+                answer:
+                  'Le soin peut être tonique, mais la pression est toujours adaptée à votre confort. L’objectif est de stimuler sans forcer.',
+              },
+              {
+                question: 'Combien de séances sont recommandées ?',
+                answer:
+                  'Une séance permet de découvrir la méthode et de ressentir une première sensation de légèreté. Un rythme plus régulier peut être envisagé selon vos objectifs et vos ressentis.',
+              },
+              {
+                question: 'Quand ressent-on les premiers effets ?',
+                answer:
+                  'Certaines femmes ressentent une sensation de légèreté dès la fin de la séance, parfois davantage dans les heures ou les jours qui suivent.',
+              },
+              {
+                question: 'Que faut-il porter pendant la séance ?',
+                answer:
+                  'Prévoyez simplement une tenue confortable pour venir au rendez-vous. Les modalités pratiques sont expliquées sur place dans le respect de votre pudeur et de votre confort.',
+              },
+              {
+                question: 'Existe-t-il des contre-indications ?',
+                answer:
+                  'Oui, notamment en cas de phlébite, thrombose, fièvre, infection, troubles circulatoires sévères, plaies, intervention récente, grossesse sans avis médical ou cancer en cours de traitement.',
+              },
+            ],
+          },
+          cta: {
+            title: 'Offrez-vous un moment de légèreté',
+            description:
+              'Réservez votre séance de madérothérapie Jambes Légères à Annecy et accordez à votre corps une vraie pause bien-être.',
+            text: 'Réserver ma séance',
+            href: '/reserver',
+            analyticsEvent: 'reserve_click',
           },
         },
         reserve: {
@@ -961,7 +1259,7 @@ const enLocalized = {
             icon: 'i-lucide-leaf',
             prices: [{duration: '45 min', price: '65 €', recommended: true}],
             ctaText: 'Discover',
-            ctaLink: '/maderotherapie-annecy/',
+            ctaLink: '/maderotherapie/',
           },
         ],
       },
@@ -1176,6 +1474,222 @@ My goal is simple: to offer you a peaceful wellness break in a calm, reassuring,
         note: 'Personal reply by WhatsApp.',
         href: programEnWhatsappHref,
         analyticsEvent: 'whatsapp_click',
+      },
+    },
+    maderotherapie: {
+      path: '/maderotherapie/',
+      meta: {
+        title: 'Maderotherapy Light Legs in Annecy | Les Mains de Sérénité',
+        description:
+          'Discover the Light Legs maderotherapy treatment in Annecy: a 45-minute wellness session using wooden instruments to stimulate circulation and support the body’s natural drainage.',
+      },
+      hero: {
+        title: 'Maderotherapy Light Legs',
+        description:
+          'Reconnect with a pleasant feeling of lightness through a treatment using wooden instruments designed to stimulate circulation and support the body’s natural drainage.',
+        primaryCta: 'Book a session',
+        imageAlt: 'Light legs wellness treatment in a warm massage setting',
+        keyInfo: ['45 minutes', '65 €', 'Women only'],
+      },
+      overview: {
+        title: 'What is maderotherapy?',
+        body: 'Maderotherapy is a Colombian massage technique that uses different wooden instruments to work the tissues with precision and rhythm. This treatment is designed to stimulate blood and lymphatic circulation, support the body’s natural drainage, and create a feeling of lightness. Natural and non-invasive, it belongs to a wellness approach centered on body awareness and relaxation.',
+      },
+      instruments: {
+        title: 'Why use wooden instruments?',
+        body: 'Wooden instruments allow precise, regular work adapted to targeted areas. Their natural material offers a warm contact while helping stimulate the tissues and circulation sensations. Combined with attentive manual gestures, they make the experience both toning, enveloping, and relaxing.',
+      },
+      benefits: {
+        title: 'Benefits of maderotherapy',
+        intro:
+          'A targeted treatment to support body comfort, release tension, and leave with a pleasant feeling of lightness.',
+        items: [
+          {
+            icon: 'i-lucide-droplets',
+            text: 'Supports natural lymphatic drainage',
+          },
+          {
+            icon: 'i-lucide-activity',
+            text: 'Stimulates blood and lymphatic circulation',
+          },
+          {
+            icon: 'i-lucide-feather',
+            text: 'Helps reduce the sensation of heavy legs',
+          },
+          {
+            icon: 'i-lucide-waves',
+            text: 'Helps ease the feeling of water retention',
+          },
+          {
+            icon: 'i-lucide-sparkles',
+            text: 'Visibly supports skin quality and tone',
+          },
+          {
+            icon: 'i-lucide-scan',
+            text: 'Helps smooth the appearance of skin and tissues',
+          },
+          {
+            icon: 'i-lucide-leaf',
+            text: 'Creates a lasting feeling of lightness and well-being',
+          },
+          {
+            icon: 'i-lucide-heart-pulse',
+            text: 'Relaxes muscles and eases certain body tensions',
+          },
+          {
+            icon: 'i-lucide-flower',
+            text: 'Supports relaxation and letting go',
+          },
+        ],
+      },
+      forYou: {
+        title: 'Is it right for you?',
+        intro:
+          'This treatment is for women who want to care for their body through a natural, targeted approach that respects their sensations.',
+        items: [
+          {
+            title: 'Heavy legs',
+            description:
+              'To reconnect with lighter legs, especially at the end of the day or after standing for long periods.',
+          },
+          {
+            title: 'Bloated belly',
+            description:
+              'To support body comfort when you feel a sensation of bloating.',
+          },
+          {
+            title: 'Water retention',
+            description:
+              'To support natural drainage sensations and help the body feel more fluid.',
+          },
+          {
+            title: 'Physical fatigue and heaviness',
+            description:
+              'To release the body, ease tension, and give yourself recovery time.',
+          },
+          {
+            title: 'Need to slow down and care for yourself',
+            description:
+              'To pause, breathe, and reconnect with your body in a calm setting.',
+          },
+          {
+            title: 'Desire for a more harmonious silhouette',
+            description:
+              'To stimulate the tissues and support a feeling of tone and body balance.',
+          },
+        ],
+      },
+      offer: {
+        title: 'Light Legs Maderotherapy Discovery Offer',
+        duration: '45 minutes',
+        price: '65 €',
+        description:
+          'A targeted session to discover maderotherapy and enjoy focused work on areas of heaviness, with close attention to comfort and how your body feels.',
+        targetAudience:
+          'Ideal for women experiencing heavy legs, water retention, body fatigue, or the desire to care for themselves differently.',
+        benefits:
+          'The treatment helps stimulate circulation, supports the body’s natural drainage, and creates a feeling of lightness and relaxation.',
+        positioning:
+          'A discovery offer designed to try the method gently before considering, if helpful, a more regular accompaniment.',
+      },
+      steps: {
+        title: 'How a session works',
+        items: [
+          {
+            title: 'Discuss your needs',
+            description:
+              'We take a few minutes to understand your expectations, sensations, and any precautions to know.',
+          },
+          {
+            title: 'Comfortable setup',
+            description:
+              'You settle into a calm, warm space designed for a true moment of relaxation.',
+          },
+          {
+            title: 'Preparatory manual work',
+            description:
+              'The treatment begins with manual gestures to prepare the tissues and support release.',
+          },
+          {
+            title: 'Use of maderotherapy instruments',
+            description:
+              'Wooden instruments are used progressively, with pressure adjusted to your comfort.',
+          },
+          {
+            title: 'Return to calm and recommendations',
+            description:
+              'The session ends gently, with simple tips to help extend the feeling of lightness.',
+          },
+        ],
+      },
+      beforeAfter: {
+        title: 'Before and after your session',
+        before: [
+          'Hydrate well',
+          'Wear comfortable clothing',
+          'Mention any contraindication',
+        ],
+        after: [
+          'Drink water',
+          'Choose gentle movement',
+          'Listen to your body and rest if needed',
+        ],
+      },
+      contraindications: {
+        title: 'Contraindications',
+        items: [
+          'Phlebitis or thrombosis',
+          'Pregnancy, unless medically approved',
+          'Cancer currently under treatment',
+          'Infection or fever',
+          'Severe circulatory disorders',
+          'Wounds or skin lesions',
+          'Recent surgery',
+        ],
+        note: 'If you have any doubt or a specific situation, contact Zahara before booking so you can check together whether the treatment is suitable.',
+      },
+      faq: {
+        title: 'Frequently asked questions',
+        items: [
+          {
+            question: 'What is maderotherapy?',
+            answer:
+              'It is a Colombian massage technique using wooden instruments to stimulate tissues, circulation, and natural drainage sensations.',
+          },
+          {
+            question: 'Is it painful?',
+            answer:
+              'The treatment can be toning, but pressure is always adapted to your comfort. The goal is to stimulate without forcing.',
+          },
+          {
+            question: 'How many sessions are recommended?',
+            answer:
+              'One session lets you discover the method and feel an initial sense of lightness. A more regular rhythm can be considered depending on your goals and sensations.',
+          },
+          {
+            question: 'When are the first effects felt?',
+            answer:
+              'Some women feel lighter right after the session, sometimes more noticeably in the following hours or days.',
+          },
+          {
+            question: 'What should I wear during the session?',
+            answer:
+              'Simply wear comfortable clothing to come to the appointment. Practical details are explained on site with respect for your modesty and comfort.',
+          },
+          {
+            question: 'Are there contraindications?',
+            answer:
+              'Yes, including phlebitis, thrombosis, fever, infection, severe circulatory disorders, wounds, recent surgery, pregnancy without medical approval, or cancer currently under treatment.',
+          },
+        ],
+      },
+      cta: {
+        title: 'Treat yourself to a moment of lightness',
+        description:
+          'Book your Light Legs maderotherapy session in Annecy and give your body a true wellness pause.',
+        text: 'Book my session',
+        href: '/en/book',
+        analyticsEvent: 'reserve_click',
       },
     },
     reserve: {
