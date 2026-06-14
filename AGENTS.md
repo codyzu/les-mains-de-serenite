@@ -23,7 +23,8 @@ Run commands from the repository root.
 - Lint: `pnpm run lint`
 - Refresh committed local font assets after font config changes: `pnpm run fonts:refresh`
 
-When passing `--host` to the dev server, pass it directly as shown above. Do not add an extra `--` separator.
+When starting the dev server, run `pnpm run dev --host` exactly as shown above.
+Do not append a host value such as `127.0.0.1` or `0.0.0.0`, and do not add an extra `--` separator.
 
 ## Project Structure
 
