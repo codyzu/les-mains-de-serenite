@@ -236,6 +236,32 @@ const structuredData = {
       </div>
     </section>
 
+    <section class="bg-surface px-0 py-10 sm:py-12">
+      <div class="container-page">
+        <div
+          class="card-soft mx-auto max-w-5xl bg-white/84 p-7 shadow-card sm:p-8 lg:flex lg:items-center lg:justify-between lg:gap-10"
+        >
+          <div class="max-w-3xl">
+            <p class="text-sm uppercase tracking-[0.22em] text-brand-strong/82">
+              Madérothérapie
+            </p>
+            <h2 class="heading-md mt-3">
+              {program.maderotherapieCrossLink.title}
+            </h2>
+            <p class="body-base mt-4">
+              {program.maderotherapieCrossLink.description}
+            </p>
+          </div>
+          <a
+            href={program.maderotherapieCrossLink.href}
+            class="mt-6 inline-flex min-h-[3rem] items-center justify-center rounded-full border border-brand/24 px-6 py-3 text-sm font-semibold text-brand-strong no-underline transition hover:bg-brand-soft lg:mt-0 lg:shrink-0"
+          >
+            {program.maderotherapieCrossLink.text}
+          </a>
+        </div>
+      </div>
+    </section>
+
     <section class="section-pad bg-surface">
       <div class="container-page">
         <div

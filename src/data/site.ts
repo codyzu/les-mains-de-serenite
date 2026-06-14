@@ -47,6 +47,7 @@ export type SiteHeaderData = {
   links: {
     home: string;
     massages: string;
+    maderotherapie: string;
     program: string;
     about: string;
     reserve: string;
@@ -99,7 +100,12 @@ export type PromoData = {
 export type NeedsSectionData = {
   title: string;
   intro: string;
-  items: string[];
+  ctaText: string;
+  items: Array<{
+    title: string;
+    description: string;
+    href: string;
+  }>;
 };
 
 export type MassagePriceData = {
@@ -144,6 +150,8 @@ export type ProgramPageData = {
   meta: {
     title: string;
     description: string;
+    openGraphTitle?: string;
+    openGraphDescription?: string;
   };
   path: string;
   hero: {
@@ -194,12 +202,20 @@ export type ProgramPageData = {
     href: string;
     analyticsEvent?: AnalyticsEventName;
   };
+  maderotherapieCrossLink: {
+    title: string;
+    description: string;
+    text: string;
+    href: string;
+  };
 };
 
 export type MaderotherapiePageData = {
   meta: {
     title: string;
     description: string;
+    openGraphTitle?: string;
+    openGraphDescription?: string;
   };
   path: string;
   hero: {
@@ -229,6 +245,7 @@ export type MaderotherapiePageData = {
     title: string;
     intro: string;
     items: Array<{
+      anchorId?: string;
       title: string;
       description: string;
     }>;
@@ -272,6 +289,13 @@ export type MaderotherapiePageData = {
     text: string;
     href: string;
     analyticsEvent?: AnalyticsEventName;
+  };
+  reassuranceNote: string;
+  programCrossLink: {
+    title: string;
+    description: string;
+    text: string;
+    href: string;
   };
 };
 
@@ -477,6 +501,7 @@ const siteBase = {
           links: {
             home: 'Accueil',
             massages: 'Massages',
+            maderotherapie: 'Madérothérapie',
             program: 'Programme',
             about: 'À propos',
             reserve: 'Réserver',
@@ -532,12 +557,33 @@ const siteBase = {
           needsSection: {
             title: 'Pour quels besoins ?',
             intro:
-              'Des besoins fréquents pour lesquels ces massages sont particulièrement adaptés, avec des conseils simples pour prolonger les bienfaits selon vos besoins.',
+              'Repérez ce qui vous parle le plus, puis choisissez le soin ou l’accompagnement le plus adapté à vos besoins du moment.',
+            ctaText: 'Voir l’option',
             items: [
-              'Jambes lourdes',
-              'Ventre gonflé',
-              'Rétention d’eau',
-              'Fatigue / sensation de lourdeur',
+              {
+                title: 'Jambes lourdes',
+                description:
+                  'Pour retrouver une sensation de légèreté et soulager l’inconfort en fin de journée.',
+                href: '/maderotherapie/#jambes-lourdes',
+              },
+              {
+                title: 'Ventre gonflé',
+                description:
+                  'Pour accompagner une sensation de ventre plus léger grâce au drainage et aux conseils adaptés.',
+                href: `${programFrPath}/`,
+              },
+              {
+                title: 'Rétention d’eau',
+                description:
+                  'Pour aider le corps à relancer naturellement la circulation des fluides.',
+                href: '/maderotherapie/#retention-eau',
+              },
+              {
+                title: 'Besoin de ralentir',
+                description:
+                  'Pour s’offrir une pause, relâcher les tensions et retrouver un moment de calme.',
+                href: '/#reservation',
+              },
             ],
           },
           massagesSection: {
@@ -818,14 +864,23 @@ Mon objectif est simple : vous offrir une parenthèse de bien-être dans un envi
             href: programFrWhatsappHref,
             analyticsEvent: 'whatsapp_click',
           },
+          maderotherapieCrossLink: {
+            title: 'Envie de découvrir la madérothérapie ?',
+            description:
+              'Pour une première approche ciblée sur les jambes légères, découvrez aussi le soin Madérothérapie, une séance de 45 minutes avec instruments en bois.',
+            text: 'Découvrir la madérothérapie',
+            href: '/maderotherapie/',
+          },
         },
         maderotherapie: {
           path: '/maderotherapie/',
           meta: {
-            title:
-              'Madérothérapie Jambes Légères à Annecy | Les Mains de Sérénité',
+            title: 'Madérothérapie à Annecy | Les Mains de Sérénité',
             description:
-              'Découvrez la madérothérapie Jambes Légères à Annecy : un soin bien-être de 45 minutes utilisant des instruments en bois pour stimuler la circulation et accompagner le drainage naturel du corps.',
+              'Découvrez la madérothérapie à Annecy : un soin ciblé avec instruments en bois pour aider à retrouver une sensation de jambes légères, stimuler le drainage naturel et s’offrir un moment de bien-être.',
+            openGraphTitle: 'Madérothérapie Jambes Légères à Annecy',
+            openGraphDescription:
+              'Un soin bien-être de 45 minutes réservé aux femmes, idéal pour les jambes lourdes, la rétention d’eau et la sensation de légèreté.',
           },
           hero: {
             title: 'Madérothérapie Jambes Légères',
@@ -867,7 +922,7 @@ Mon objectif est simple : vous offrir une parenthèse de bien-être dans un envi
               },
               {
                 icon: 'i-lucide-sparkles',
-                text: 'Améliore visiblement la qualité et la tonicité de la peau',
+                text: 'Contribue à une sensation de peau plus tonique',
               },
               {
                 icon: 'i-lucide-scan',
@@ -875,11 +930,11 @@ Mon objectif est simple : vous offrir une parenthèse de bien-être dans un envi
               },
               {
                 icon: 'i-lucide-leaf',
-                text: 'Procure une sensation de légèreté et de bien-être durable',
+                text: 'Procure une sensation de légèreté et de bien-être',
               },
               {
                 icon: 'i-lucide-heart-pulse',
-                text: 'Détend les muscles et soulage certaines tensions corporelles',
+                text: 'Aide à détendre les muscles et les tensions corporelles',
               },
               {
                 icon: 'i-lucide-flower',
@@ -893,31 +948,37 @@ Mon objectif est simple : vous offrir une parenthèse de bien-être dans un envi
               'Ce soin s’adresse aux femmes qui souhaitent prendre soin de leur corps avec une approche naturelle, ciblée et respectueuse de leurs sensations.',
             items: [
               {
+                anchorId: 'jambes-lourdes',
                 title: 'Jambes lourdes',
                 description:
                   'Pour retrouver une sensation de jambes plus légères, notamment en fin de journée ou après des périodes debout.',
               },
               {
+                anchorId: 'ventre-gonfle',
                 title: 'Ventre gonflé',
                 description:
                   'Pour accompagner le confort corporel lorsque vous ressentez une impression de gonflement.',
               },
               {
+                anchorId: 'retention-eau',
                 title: 'Rétention d’eau',
                 description:
                   'Pour soutenir les sensations de drainage naturel et aider le corps à retrouver plus de fluidité.',
               },
               {
+                anchorId: 'fatigue-lourdeur',
                 title: 'Fatigue physique et sensation de lourdeur',
                 description:
                   'Pour relâcher le corps, alléger les tensions et vous accorder un temps de récupération.',
               },
               {
+                anchorId: 'ralentir',
                 title: 'Besoin de ralentir et de prendre soin de soi',
                 description:
                   'Pour faire une pause, respirer et vous reconnecter à votre corps dans un cadre calme.',
               },
               {
+                anchorId: 'silhouette-harmonieuse',
                 title: 'Envie de retrouver une silhouette plus harmonieuse',
                 description:
                   'Pour stimuler les tissus et accompagner une sensation de tonicité et d’équilibre corporel.',
@@ -1032,9 +1093,18 @@ Mon objectif est simple : vous offrir une parenthèse de bien-être dans un envi
             title: 'Offrez-vous un moment de légèreté',
             description:
               'Réservez votre séance de madérothérapie Jambes Légères à Annecy et accordez à votre corps une vraie pause bien-être.',
-            text: 'Réserver ma séance',
+            text: 'Réserver une séance',
             href: '/reserver',
             analyticsEvent: 'reserve_click',
+          },
+          reassuranceNote:
+            'Ce soin est réservé aux femmes. En cas de doute ou de contre-indication, contactez-moi avant de réserver.',
+          programCrossLink: {
+            title: 'Vous souhaitez un accompagnement plus complet ?',
+            description:
+              'Si vous ressentez régulièrement des jambes lourdes, de la rétention d’eau ou une sensation de ventre gonflé, le Programme Ventre Léger & Jambes Légères propose un accompagnement sur plusieurs séances avec des conseils adaptés.',
+            text: 'Découvrir le programme',
+            href: `${programFrPath}/`,
           },
         },
         reserve: {
@@ -1140,6 +1210,7 @@ const enLocalized = {
       links: {
         home: 'Home',
         massages: 'Massages',
+        maderotherapie: 'Maderotherapy',
         program: 'Program',
         about: 'About',
         reserve: 'Book',
@@ -1194,12 +1265,33 @@ const enLocalized = {
       needsSection: {
         title: 'Common needs',
         intro:
-          'Common needs these massages are often chosen for, with simple guidance to help extend the benefits when helpful.',
+          'Find the need that feels closest to your situation, then choose the most relevant treatment or support.',
+        ctaText: 'View option',
         items: [
-          'Heavy legs',
-          'Feeling bloated',
-          'Water retention',
-          'Fatigue and overall heaviness',
+          {
+            title: 'Heavy legs',
+            description:
+              'To reconnect with a feeling of lightness and ease end-of-day discomfort.',
+            href: '/maderotherapie/#jambes-lourdes',
+          },
+          {
+            title: 'Feeling bloated',
+            description:
+              'To support a lighter belly feeling through drainage and adapted guidance.',
+            href: `${programEnPath}/`,
+          },
+          {
+            title: 'Water retention',
+            description:
+              'To help the body naturally restart fluid circulation sensations.',
+            href: '/maderotherapie/#retention-eau',
+          },
+          {
+            title: 'Need to slow down',
+            description:
+              'To take a pause, release tension, and return to a calmer moment.',
+            href: '/en/#reservation',
+          },
         ],
       },
       massagesSection: {
@@ -1475,6 +1567,13 @@ My goal is simple: to offer you a peaceful wellness break in a calm, reassuring,
         href: programEnWhatsappHref,
         analyticsEvent: 'whatsapp_click',
       },
+      maderotherapieCrossLink: {
+        title: 'Curious about maderotherapy?',
+        description:
+          'For a first targeted approach to lighter legs, you can also discover Maderotherapy, a 45-minute session using wooden instruments.',
+        text: 'Discover maderotherapy',
+        href: '/maderotherapie/',
+      },
     },
     maderotherapie: {
       path: '/maderotherapie/',
@@ -1482,6 +1581,9 @@ My goal is simple: to offer you a peaceful wellness break in a calm, reassuring,
         title: 'Maderotherapy Light Legs in Annecy | Les Mains de Sérénité',
         description:
           'Discover the Light Legs maderotherapy treatment in Annecy: a 45-minute wellness session using wooden instruments to stimulate circulation and support the body’s natural drainage.',
+        openGraphTitle: 'Light Legs Maderotherapy in Annecy',
+        openGraphDescription:
+          'A 45-minute women-only wellness treatment for heavy legs, water retention, and a pleasant feeling of lightness.',
       },
       hero: {
         title: 'Maderotherapy Light Legs',
@@ -1522,7 +1624,7 @@ My goal is simple: to offer you a peaceful wellness break in a calm, reassuring,
           },
           {
             icon: 'i-lucide-sparkles',
-            text: 'Visibly supports skin quality and tone',
+            text: 'Contributes to a sensation of more toned skin',
           },
           {
             icon: 'i-lucide-scan',
@@ -1530,7 +1632,7 @@ My goal is simple: to offer you a peaceful wellness break in a calm, reassuring,
           },
           {
             icon: 'i-lucide-leaf',
-            text: 'Creates a lasting feeling of lightness and well-being',
+            text: 'Creates a feeling of lightness and well-being',
           },
           {
             icon: 'i-lucide-heart-pulse',
@@ -1548,31 +1650,37 @@ My goal is simple: to offer you a peaceful wellness break in a calm, reassuring,
           'This treatment is for women who want to care for their body through a natural, targeted approach that respects their sensations.',
         items: [
           {
+            anchorId: 'jambes-lourdes',
             title: 'Heavy legs',
             description:
               'To reconnect with lighter legs, especially at the end of the day or after standing for long periods.',
           },
           {
+            anchorId: 'ventre-gonfle',
             title: 'Bloated belly',
             description:
               'To support body comfort when you feel a sensation of bloating.',
           },
           {
+            anchorId: 'retention-eau',
             title: 'Water retention',
             description:
               'To support natural drainage sensations and help the body feel more fluid.',
           },
           {
+            anchorId: 'fatigue-lourdeur',
             title: 'Physical fatigue and heaviness',
             description:
               'To release the body, ease tension, and give yourself recovery time.',
           },
           {
+            anchorId: 'ralentir',
             title: 'Need to slow down and care for yourself',
             description:
               'To pause, breathe, and reconnect with your body in a calm setting.',
           },
           {
+            anchorId: 'silhouette-harmonieuse',
             title: 'Desire for a more harmonious silhouette',
             description:
               'To stimulate the tissues and support a feeling of tone and body balance.',
@@ -1687,9 +1795,18 @@ My goal is simple: to offer you a peaceful wellness break in a calm, reassuring,
         title: 'Treat yourself to a moment of lightness',
         description:
           'Book your Light Legs maderotherapy session in Annecy and give your body a true wellness pause.',
-        text: 'Book my session',
+        text: 'Book a session',
         href: '/en/book',
         analyticsEvent: 'reserve_click',
+      },
+      reassuranceNote:
+        'This treatment is reserved for women. If you have any doubt or contraindication, contact me before booking.',
+      programCrossLink: {
+        title: 'Would you like more complete support?',
+        description:
+          'If you regularly experience heavy legs, water retention, or a bloated feeling, the Light Belly & Light Legs Program offers multi-session support with adapted guidance.',
+        text: 'Discover the program',
+        href: `${programEnPath}/`,
       },
     },
     reserve: {

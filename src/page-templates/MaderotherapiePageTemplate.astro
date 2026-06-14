@@ -50,6 +50,8 @@ const structuredData = {
   canonicalPath={maderotherapie.path}
   title={maderotherapie.meta.title}
   description={maderotherapie.meta.description}
+  openGraphTitle={maderotherapie.meta.openGraphTitle}
+  openGraphDescription={maderotherapie.meta.openGraphDescription}
   structuredData={structuredData}
 >
   <main>
@@ -91,6 +93,9 @@ const structuredData = {
           >
             {maderotherapie.hero.primaryCta}
           </a>
+          <p class="mt-4 max-w-xl text-sm leading-6 text-ink/62">
+            {maderotherapie.reassuranceNote}
+          </p>
         </div>
 
         <div
@@ -126,7 +131,7 @@ const structuredData = {
       </div>
     </section>
 
-    <section class="section-pad bg-surface-muted">
+    <section id="bienfaits" class="section-pad bg-surface-muted">
       <div class="container-page">
         <SectionIntro
           title={maderotherapie.benefits.title}
@@ -162,7 +167,10 @@ const structuredData = {
         <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {
             maderotherapie.forYou.items.map((item) => (
-              <article class="card-soft bg-white/78 p-6 shadow-card">
+              <article
+                id={item.anchorId}
+                class="card-soft scroll-mt-28 bg-white/78 p-6 shadow-card"
+              >
                 <h3 class="text-lg font-semibold text-ink">{item.title}</h3>
                 <p class="body-base mt-3">{item.description}</p>
               </article>
@@ -220,7 +228,36 @@ const structuredData = {
             >
               {maderotherapie.hero.primaryCta}
             </a>
+            <p class="mt-4 text-sm leading-6 text-white/68">
+              {maderotherapie.reassuranceNote}
+            </p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-surface px-0 py-10 sm:py-12">
+      <div class="container-page">
+        <div
+          class="card-soft mx-auto max-w-5xl bg-white/82 p-7 shadow-card sm:p-8 lg:flex lg:items-center lg:justify-between lg:gap-10"
+        >
+          <div class="max-w-3xl">
+            <p class="text-sm uppercase tracking-[0.22em] text-brand-strong/82">
+              Programme
+            </p>
+            <h2 class="heading-md mt-3">
+              {maderotherapie.programCrossLink.title}
+            </h2>
+            <p class="body-base mt-4">
+              {maderotherapie.programCrossLink.description}
+            </p>
+          </div>
+          <a
+            href={maderotherapie.programCrossLink.href}
+            class="mt-6 inline-flex min-h-[3rem] items-center justify-center rounded-full border border-brand/24 px-6 py-3 text-sm font-semibold text-brand-strong no-underline transition hover:bg-brand-soft lg:mt-0 lg:shrink-0"
+          >
+            {maderotherapie.programCrossLink.text}
+          </a>
         </div>
       </div>
     </section>
@@ -285,7 +322,10 @@ const structuredData = {
       </div>
     </section>
 
-    <section class="section-pad bg-surface">
+    <section
+      id="contre-indications"
+      class="section-pad scroll-mt-28 bg-surface"
+    >
       <div class="container-page">
         <div
           class="card-soft mx-auto max-w-5xl bg-white/84 p-7 shadow-soft sm:p-9"
@@ -321,7 +361,7 @@ const structuredData = {
       </div>
     </section>
 
-    <section class="section-pad bg-surface-muted">
+    <section id="faq" class="section-pad scroll-mt-28 bg-surface-muted">
       <div class="container-page">
         <SectionIntro title={maderotherapie.faq.title} />
 
@@ -341,7 +381,7 @@ const structuredData = {
       </div>
     </section>
 
-    <section class="section-pad bg-surface">
+    <section id="reservation" class="section-pad scroll-mt-28 bg-surface">
       <div class="container-page">
         <div
           class="card-soft mx-auto max-w-4xl p-8 text-center shadow-soft sm:p-10 lg:p-12"
@@ -363,6 +403,9 @@ const structuredData = {
           >
             {maderotherapie.cta.text}
           </a>
+          <p class="mx-auto mt-4 max-w-2xl text-sm leading-6 text-ink/58">
+            {maderotherapie.reassuranceNote}
+          </p>
         </div>
       </div>
     </section>

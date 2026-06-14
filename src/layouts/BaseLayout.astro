@@ -5,6 +5,8 @@ import {getBaseUrl} from '../utils/url';
 interface Props {
   title: string;
   description?: string;
+  openGraphTitle?: string;
+  openGraphDescription?: string;
   lang?: string;
   canonicalUrl?: string;
   alternates?: Array<{
@@ -17,6 +19,8 @@ interface Props {
 const {
   title,
   description = '',
+  openGraphTitle,
+  openGraphDescription,
   lang = 'fr',
   canonicalUrl,
   alternates = [],
@@ -65,6 +69,13 @@ const structuredDataItems = structuredData
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={openGraphTitle ?? title} />
+    <meta
+      property="og:description"
+      content={openGraphDescription ?? description}
+    />
+    {canonicalUrl ? <meta property="og:url" content={canonicalUrl} /> : null}
     {canonicalUrl ? <link rel="canonical" href={canonicalUrl} /> : null}
     {
       alternates.map((alternate) => (

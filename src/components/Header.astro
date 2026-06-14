@@ -34,13 +34,16 @@ const brand = site.business.name;
 const localized = getLocalizedSite(locale);
 const {
   chrome: {header},
-  pages: {program},
+  pages: {maderotherapie, program},
 } = localized;
 const {tagline, links} = header;
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 const programPath = program.path.replace(/\/$/, '') || '/';
+const maderotherapiePath = maderotherapie.path.replace(/\/$/, '') || '/';
 const programActive = currentPath === programPath;
+const maderotherapieActive = currentPath === maderotherapiePath;
 const programHref = toHref(program.path);
+const maderotherapieHref = toHref(maderotherapie.path);
 ---
 
 <header
@@ -75,6 +78,17 @@ const programHref = toHref(program.path);
     <nav class="hidden items-center gap-6 lg:flex">
       <a href={`${homeHref}#accueil`} class="nav-link">{links.home}</a>
       <a href={`${homeHref}#massages`} class="nav-link">{links.massages}</a>
+      {
+        maderotherapieActive ? (
+          <span aria-current="page" class="text-sm font-medium text-ink">
+            {links.maderotherapie}
+          </span>
+        ) : (
+          <a href={maderotherapieHref} class="nav-link">
+            {links.maderotherapie}
+          </a>
+        )
+      }
       {
         programActive ? (
           <span aria-current="page" class="text-sm font-medium text-ink">
@@ -142,6 +156,23 @@ const programHref = toHref(program.path);
     >
       {links.massages}
     </a>
+    {
+      maderotherapieActive ? (
+        <span
+          aria-current="page"
+          class="shrink-0 rounded-full bg-white px-3 py-1.5 text-sm font-semibold text-ink shadow-card"
+        >
+          {links.maderotherapie}
+        </span>
+      ) : (
+        <a
+          href={maderotherapieHref}
+          class="shrink-0 rounded-full px-3 py-1.5 text-sm font-medium text-ink-muted no-underline transition hover:bg-white/70 hover:text-ink"
+        >
+          {links.maderotherapie}
+        </a>
+      )
+    }
     {
       programActive ? (
         <span
