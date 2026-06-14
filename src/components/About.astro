@@ -74,6 +74,11 @@ const paragraphs = body
           <Picture
             src={Practitioner}
             formats={['avif', 'webp']}
+            fallbackFormat="webp"
+            widths={[360, 520, 704, 900]}
+            width={704}
+            height={1056}
+            sizes="(min-width: 1024px) 38rem, (min-width: 640px) calc(100vw - 3rem), calc(100vw - 2rem)"
             alt={imageAlt}
             class="h-[420px] w-full object-cover object-top"
             loading="lazy"

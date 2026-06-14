@@ -1,4 +1,5 @@
 ---
+import {Image} from 'astro:assets';
 import {
   defaultLocale,
   getLocalizedSite,
@@ -6,7 +7,7 @@ import {
   type Locale,
   type LocalePathMap,
 } from '../data/site';
-import logoSquareSimpleSmall from '../assets/logo-icon-small-paths-dark.png';
+import LogoSquareDark from '../assets/logo-square-dark.png';
 import {getPhoneHref} from '../utils/phone';
 import {getBaseUrl} from '../utils/url';
 
@@ -71,12 +72,15 @@ const navLabel = locale === 'en' ? 'Main navigation' : 'Navigation principale';
       href={homeHref}
       class="flex min-w-0 items-center gap-2 no-underline sm:gap-3"
     >
-      <img
-        src={logoSquareSimpleSmall.src}
-        width={logoSquareSimpleSmall.width}
-        height={logoSquareSimpleSmall.height}
+      <Image
+        src={LogoSquareDark}
+        width={288}
+        height={288}
         alt=""
         class="h-10 w-10 shrink-0 select-none sm:h-12 sm:w-12"
+        loading="eager"
+        decoding="async"
+        fetchpriority="auto"
         aria-hidden="true"
       />
       <div class="min-w-0">

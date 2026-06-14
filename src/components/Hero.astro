@@ -34,6 +34,11 @@ const phoneHref = getPhoneHref(phone);
       priority
       src={HeroMassageRoom}
       formats={['avif', 'webp']}
+      fallbackFormat="webp"
+      widths={[640, 960, 1280, 1536]}
+      width={1536}
+      height={1024}
+      sizes="100vw"
       alt={imageAlt}
       class="h-full w-full object-cover"
     />

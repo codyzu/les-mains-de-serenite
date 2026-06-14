@@ -108,6 +108,11 @@ const structuredData = {
             priority
             src={MaderotherapieHeroImage}
             formats={['avif', 'webp']}
+            fallbackFormat="webp"
+            widths={[320, 448, 640, 768, 1086]}
+            width={448}
+            height={597}
+            sizes="(min-width: 640px) 28rem, calc(100vw - 2rem)"
             alt={maderotherapie.hero.imageAlt}
             class="h-auto w-full max-w-[28rem] rounded-[1.55rem] lg:max-h-[34rem] lg:w-auto lg:max-w-full"
           />
@@ -210,6 +215,11 @@ const structuredData = {
             <Picture
               src={MaderotherapieHeroImage}
               formats={['avif', 'webp']}
+              fallbackFormat="webp"
+              widths={[288, 448, 576]}
+              width={288}
+              height={384}
+              sizes="(min-width: 1024px) 18rem, min(18rem, calc(100vw - 5rem))"
               alt={maderotherapie.hero.imageAlt}
               class="h-auto w-full max-w-[18rem] rounded-[1.35rem] shadow-soft ring-1 ring-white/10 lg:max-h-[31rem] lg:w-auto lg:max-w-full"
             />
