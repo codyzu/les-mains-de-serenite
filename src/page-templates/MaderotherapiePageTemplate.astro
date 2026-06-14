@@ -3,6 +3,7 @@ import {Picture} from 'astro:assets';
 import IconImage from '../components/IconImage.astro';
 import SectionIntro from '../components/SectionIntro.astro';
 import MaderotherapieHeroImage from '../assets/maderotherapie.png';
+import MaderotherapieToolsImage from '../assets/maderotherapie-outils-bois.png';
 import type {Locale, LocalizedSiteData, SiteBusinessData} from '../data/site';
 import Layout from '../layouts/Layout.astro';
 
@@ -17,6 +18,8 @@ const {
   pages: {maderotherapie},
 } = localized;
 const ctaIsExternal = maderotherapie.cta.href.startsWith('http');
+const toolsImageAlt =
+  'Instruments en bois utilisés pour la madérothérapie : champignon, rouleau cylindre, rouleau cube et table de remodelage.';
 const structuredDataPrice = maderotherapie.offer.price.replaceAll(
   /[^\d,.]/g,
   ''
@@ -122,11 +125,29 @@ const structuredData = {
             <p class="body-lg mt-5">{maderotherapie.overview.body}</p>
           </div>
 
-          <article class="card-soft bg-white/82 p-7 shadow-soft sm:p-8">
-            <IconImage name="i-lucide-leaf" />
-            <h2 class="heading-md">{maderotherapie.instruments.title}</h2>
-            <p class="body-base mt-4">{maderotherapie.instruments.body}</p>
-          </article>
+          <div class="space-y-6">
+            <article class="card-soft bg-white/82 p-7 shadow-soft sm:p-8">
+              <IconImage name="i-lucide-leaf" />
+              <h2 class="heading-md">{maderotherapie.instruments.title}</h2>
+              <p class="body-base mt-4">{maderotherapie.instruments.body}</p>
+            </article>
+
+            <div
+              class="overflow-hidden rounded-[1.75rem] bg-white/72 p-2 shadow-soft ring-1 ring-surface-soft sm:p-3"
+            >
+              <Picture
+                src={MaderotherapieToolsImage}
+                formats={['avif', 'webp']}
+                fallbackFormat="webp"
+                widths={[360, 520, 704, 900]}
+                width={704}
+                height={528}
+                sizes="(min-width: 1024px) 32rem, (min-width: 640px) calc(100vw - 3rem), calc(100vw - 2rem)"
+                alt={toolsImageAlt}
+                class="aspect-[4/3] h-auto w-full rounded-[1.35rem] object-cover"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>
