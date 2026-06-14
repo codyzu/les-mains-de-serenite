@@ -403,6 +403,7 @@ const navLabel = locale === 'en' ? 'Main navigation' : 'Navigation principale';
 </script>
 
 <style>
+  /* Keep drawer state styling close to the JS that toggles data-state. */
   [data-mobile-menu][data-state='open'] {
     pointer-events: auto;
   }
@@ -411,6 +412,7 @@ const navLabel = locale === 'en' ? 'Main navigation' : 'Navigation principale';
     opacity: 1;
   }
 
+  /* iOS Safari needs explicit clipping/compositing during drawer transforms. */
   [data-mobile-menu-drawer] {
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
@@ -428,6 +430,7 @@ const navLabel = locale === 'en' ? 'Main navigation' : 'Navigation principale';
     pointer-events: none;
   }
 
+  /* Header-only shortcuts keep repeated drawer links readable in markup. */
   .drawer-link {
     --uno: 'rounded-2xl px-4 py-3 text-base font-medium text-ink-muted no-underline transition hover:bg-white/70 hover:text-ink focus:outline-none focus:ring-2 focus:ring-brand/45';
   }
