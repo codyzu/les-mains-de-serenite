@@ -30,8 +30,9 @@ const getCardGridClasses = (index: number) => {
       {
         items.map((item, index) => (
           <article
+            id={item.anchorId}
             class:list={[
-              'card-soft flex flex-col p-6 sm:p-7',
+              'card-soft flex scroll-mt-30 flex-col p-6 sm:p-7',
               ...getCardGridClasses(index),
             ]}
           >

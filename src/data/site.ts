@@ -115,6 +115,7 @@ export type MassagePriceData = {
 };
 
 export type MassageData = {
+  anchorId?: string;
   title: string;
   description: string;
   note?: string;
@@ -564,7 +565,7 @@ const siteBase = {
                 title: 'Jambes lourdes',
                 description:
                   'Pour retrouver une sensation de légèreté et soulager l’inconfort en fin de journée.',
-                href: '/maderotherapie/#jambes-lourdes',
+                href: '/#drainage-lymphatique',
               },
               {
                 title: 'Ventre gonflé',
@@ -576,7 +577,7 @@ const siteBase = {
                 title: 'Rétention d’eau',
                 description:
                   'Pour aider le corps à relancer naturellement la circulation des fluides.',
-                href: '/maderotherapie/#retention-eau',
+                href: '/#drainage-lymphatique',
               },
               {
                 title: 'Besoin de ralentir',
@@ -593,6 +594,7 @@ const siteBase = {
             recommendedLabel: 'Durée conseillée',
             items: [
               {
+                anchorId: 'drainage-lymphatique',
                 title: 'Drainage lymphatique',
                 description:
                   'Drainage lymphatique dynamique selon la méthode Renata França. Idéal pour soulager les jambes lourdes, le ventre gonflé et la rétention d’eau, il procure une agréable sensation de légèreté.',
@@ -604,6 +606,7 @@ const siteBase = {
                 ],
               },
               {
+                anchorId: 'massage-anti-douleur',
                 title: 'Massage anti-douleur',
                 description:
                   'Massage ciblé pour soulager les tensions musculaires et les inconforts du quotidien. Idéal pour le dos, les épaules et la nuque, il aide à retrouver confort et détente.',
@@ -615,6 +618,7 @@ const siteBase = {
                 ],
               },
               {
+                anchorId: 'massage-remodelant',
                 title: 'Massage remodelant',
                 description:
                   'Massage tonifiant qui aide à raffermir la peau et redessiner certaines zones du corps. Il stimule la circulation et améliore l’aspect de la silhouette.',
@@ -626,6 +630,7 @@ const siteBase = {
                 ],
               },
               {
+                anchorId: 'massage-visage-liftant',
                 title: 'Massage visage liftant',
                 description:
                   'Soin du visage relaxant qui stimule la circulation et tonifie la peau. Il aide à illuminer le teint et procure un effet liftant naturel.',
@@ -637,6 +642,7 @@ const siteBase = {
                 ],
               },
               {
+                anchorId: 'maderotherapie',
                 title: 'Madérothérapie',
                 description:
                   'Soin ciblé utilisant des instruments en bois pour stimuler la circulation, favoriser le drainage naturel et procurer une agréable sensation de légèreté.',
@@ -1272,7 +1278,7 @@ const enLocalized = {
             title: 'Heavy legs',
             description:
               'To reconnect with a feeling of lightness and ease end-of-day discomfort.',
-            href: '/maderotherapie/#jambes-lourdes',
+            href: '/en/#lymphatic-drainage',
           },
           {
             title: 'Feeling bloated',
@@ -1284,7 +1290,7 @@ const enLocalized = {
             title: 'Water retention',
             description:
               'To help the body naturally restart fluid circulation sensations.',
-            href: '/maderotherapie/#retention-eau',
+            href: '/en/#lymphatic-drainage',
           },
           {
             title: 'Need to slow down',
@@ -1301,6 +1307,7 @@ const enLocalized = {
         recommendedLabel: 'Recommended',
         items: [
           {
+            anchorId: 'lymphatic-drainage',
             title: 'Lymphatic drainage',
             description:
               'Dynamic lymphatic drainage using the Renata França method. Commonly chosen for heavy legs, feeling bloated, and water retention, while creating a pleasant feeling of lightness.',
@@ -1312,6 +1319,7 @@ const enLocalized = {
             ],
           },
           {
+            anchorId: 'tension-relief-massage',
             title: 'Tension relief massage',
             description:
               'A targeted massage designed to ease muscular tension and everyday discomfort. Well-suited for the back, shoulders, and neck, and for supporting deep relaxation.',
@@ -1323,6 +1331,7 @@ const enLocalized = {
             ],
           },
           {
+            anchorId: 'body-sculpting-massage',
             title: 'Body sculpting massage',
             description:
               'A toning massage that supports skin firmness and helps improve the appearance of the silhouette.',
@@ -1334,6 +1343,7 @@ const enLocalized = {
             ],
           },
           {
+            anchorId: 'lifting-facial-massage',
             title: 'Lifting facial massage',
             description:
               'A relaxing facial treatment that stimulates circulation and tones the skin, leaving the face feeling refreshed and naturally toned.',
@@ -1345,6 +1355,7 @@ const enLocalized = {
             ],
           },
           {
+            anchorId: 'maderotherapy',
             title: 'Maderotherapy',
             description:
               'A targeted treatment using wooden instruments to stimulate circulation, support natural drainage, and create a pleasant feeling of lightness.',
