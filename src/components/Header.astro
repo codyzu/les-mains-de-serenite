@@ -65,9 +65,12 @@ const navLabel = locale === 'en' ? 'Main navigation' : 'Navigation principale';
   class="sticky top-0 z-50 border-b border-surface-soft/80 bg-surface-muted/90 backdrop-blur-md"
 >
   <div
-    class="container-page flex items-center justify-between gap-6 pb-4 pt-[calc(1rem+env(safe-area-inset-top))] sm:gap-8"
+    class="container-page flex items-center justify-between gap-4 pb-4 pt-[calc(1rem+env(safe-area-inset-top))] sm:gap-8"
   >
-    <a href={homeHref} class="flex min-w-0 items-center gap-3 no-underline">
+    <a
+      href={homeHref}
+      class="flex min-w-0 items-center gap-2 no-underline sm:gap-3"
+    >
       <img
         src={logoSquareSimpleSmall.src}
         width={logoSquareSimpleSmall.width}
@@ -78,12 +81,12 @@ const navLabel = locale === 'en' ? 'Main navigation' : 'Navigation principale';
       />
       <div class="min-w-0">
         <div
-          class="truncate font-display text-xl leading-tight text-ink sm:text-2xl"
+          class="font-display text-xl leading-tight text-ink sm:text-2xl lg:truncate"
         >
           {brand}
         </div>
         <p
-          class="mt-0.5 truncate text-xs font-normal leading-tight text-ink-muted sm:text-sm"
+          class="mt-0.5 truncate text-xs font-normal leading-tight text-ink-muted max-xs:hidden sm:text-sm"
         >
           {tagline}
         </p>
@@ -133,7 +136,9 @@ const navLabel = locale === 'en' ? 'Main navigation' : 'Navigation principale';
       }
       <a href={`${homeHref}#contact`} class="nav-link">{links.contact}</a>
     </nav>
-    <div class="flex shrink-0 items-center gap-3">
+    <div
+      class="flex shrink-0 items-center gap-2 max-xs:flex-col max-xs:items-end max-xs:gap-1 sm:gap-3"
+    >
       {
         languageSwitchPaths ? (
           <div class="flex items-center gap-2 text-xs font-medium uppercase tracking-[0.1em] text-ink-subtle">
@@ -406,8 +411,17 @@ const navLabel = locale === 'en' ? 'Main navigation' : 'Navigation principale';
     opacity: 1;
   }
 
+  [data-mobile-menu-drawer] {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    clip-path: inset(0 round 1.5rem 0 0 1.5rem);
+    transition: transform 260ms cubic-bezier(0.2, 0, 0, 1);
+    transform: translate3d(100%, 0, 0);
+    will-change: transform;
+  }
+
   [data-mobile-menu][data-state='open'] [data-mobile-menu-drawer] {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
 
   [data-mobile-menu][data-state='closed'] {

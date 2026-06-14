@@ -8,6 +8,7 @@ import {
   transformerVariantGroup,
 } from 'unocss';
 import {createLocalFontProcessor} from '@unocss/preset-web-fonts/local';
+import {breakpoint as wind4Breakpoint} from '@unocss/preset-wind4/theme';
 import lucideIcons from '@iconify-json/lucide/icons.json';
 import {joinBasePath} from './config/base-path.mjs';
 
@@ -45,6 +46,12 @@ export default defineConfig({
   transformers: [transformerDirectives(), transformerVariantGroup()],
 
   theme: {
+    breakpoint: {
+      ...wind4Breakpoint,
+      // Extra-small phones: keep mobile header branding balanced below 384px.
+      xs: '24rem',
+    },
+
     colors: {
       brand: {
         // eslint-disable-next-line @typescript-eslint/naming-convention
