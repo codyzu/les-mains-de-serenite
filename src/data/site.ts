@@ -648,7 +648,8 @@ const siteBase = {
                   'Soin ciblé utilisant des instruments en bois pour stimuler la circulation, favoriser le drainage naturel et procurer une agréable sensation de légèreté.',
                 icon: 'i-lucide-leaf',
                 prices: [
-                  {duration: '45 min', price: '65 €', recommended: true},
+                  {duration: '1 h', price: '90 €', recommended: true},
+                  {duration: '1 h 30', price: '125 €'},
                 ],
                 ctaText: 'Découvrir',
                 ctaLink: '/maderotherapie/',
@@ -873,7 +874,7 @@ Mon objectif est simple : vous offrir une parenthèse de bien-être dans un envi
           maderotherapieCrossLink: {
             title: 'Envie de découvrir la madérothérapie ?',
             description:
-              'Pour une première approche ciblée sur les jambes légères, découvrez aussi le soin Madérothérapie, une séance de 45 minutes avec instruments en bois.',
+              'Pour une première approche ciblée sur les jambes légères, découvrez aussi le soin Madérothérapie, une séance de 60 minutes avec instruments en bois.',
             text: 'Découvrir la madérothérapie',
             href: '/maderotherapie/',
           },
@@ -886,7 +887,7 @@ Mon objectif est simple : vous offrir une parenthèse de bien-être dans un envi
               'Découvrez la madérothérapie à Annecy : un soin ciblé avec instruments en bois pour aider à retrouver une sensation de jambes légères, stimuler le drainage naturel et s’offrir un moment de bien-être.',
             openGraphTitle: 'Madérothérapie Jambes Légères à Annecy',
             openGraphDescription:
-              'Un soin bien-être de 45 minutes réservé aux femmes, idéal pour les jambes lourdes, la rétention d’eau et la sensation de légèreté.',
+              'Un soin bien-être de 60 minutes réservé aux femmes, idéal pour les jambes lourdes, la rétention d’eau et la sensation de légèreté.',
           },
           hero: {
             title: 'Madérothérapie Jambes Légères',
@@ -895,7 +896,11 @@ Mon objectif est simple : vous offrir une parenthèse de bien-être dans un envi
             primaryCta: 'Réserver une séance',
             imageAlt:
               'Soin jambes légères dans une ambiance bien-être chaleureuse',
-            keyInfo: ['45 minutes', '65 €', 'Réservé aux femmes'],
+            keyInfo: [
+              'Soin ciblé jambes légères',
+              'Instruments en bois',
+              'Réservé aux femmes',
+            ],
           },
           overview: {
             title: 'En quoi consiste la madérothérapie ?',
@@ -993,16 +998,16 @@ Mon objectif est simple : vous offrir une parenthèse de bien-être dans un envi
           },
           offer: {
             title: 'Offre Découverte Madérothérapie Jambes Légères',
-            duration: '45 minutes',
-            price: '65 €',
+            duration: '60 minutes',
+            price: '90 €',
             description:
-              'Une séance ciblée pour découvrir la madérothérapie et profiter d’un travail spécifique sur les zones de lourdeur, avec une attention particulière portée au confort et au ressenti.',
+              'Une séance ciblée de 60 minutes pour découvrir la madérothérapie et profiter d’un travail spécifique sur les zones de lourdeur, avec une attention particulière portée au confort et au ressenti.',
             targetAudience:
               'Idéale pour les femmes qui ressentent des jambes lourdes, de la rétention d’eau, une fatigue corporelle ou l’envie de prendre soin d’elles autrement.',
             benefits:
               'Le soin aide à stimuler la circulation, accompagne le drainage naturel du corps et procure une sensation de légèreté et de détente.',
             positioning:
-              'Une offre découverte pensée pour tester la méthode en douceur avant d’envisager, si besoin, un accompagnement plus régulier.',
+              'La durée de 60 minutes est recommandée pour une première séance complète. Une version de 90 minutes est aussi possible si vous souhaitez un temps de soin plus enveloppant.',
           },
           steps: {
             title: 'Déroulement d’une séance',
@@ -1360,7 +1365,10 @@ const enLocalized = {
             description:
               'A targeted treatment using wooden instruments to stimulate circulation, support natural drainage, and create a pleasant feeling of lightness.',
             icon: 'i-lucide-leaf',
-            prices: [{duration: '45 min', price: '65 €', recommended: true}],
+            prices: [
+              {duration: '1 h', price: '90 €', recommended: true},
+              {duration: '1 h 30', price: '125 €'},
+            ],
             ctaText: 'Discover',
             ctaLink: '/maderotherapie/',
           },
@@ -1581,7 +1589,7 @@ My goal is simple: to offer you a peaceful wellness break in a calm, reassuring,
       maderotherapieCrossLink: {
         title: 'Curious about maderotherapy?',
         description:
-          'For a first targeted approach to lighter legs, you can also discover Maderotherapy, a 45-minute session using wooden instruments.',
+          'For a first targeted approach to lighter legs, you can also discover Maderotherapy, a 60-minute session using wooden instruments.',
         text: 'Discover maderotherapy',
         href: '/maderotherapie/',
       },
@@ -1591,10 +1599,10 @@ My goal is simple: to offer you a peaceful wellness break in a calm, reassuring,
       meta: {
         title: 'Maderotherapy Light Legs in Annecy | Les Mains de Sérénité',
         description:
-          'Discover the Light Legs maderotherapy treatment in Annecy: a 45-minute wellness session using wooden instruments to stimulate circulation and support the body’s natural drainage.',
+          'Discover the Light Legs maderotherapy treatment in Annecy: a 60-minute wellness session using wooden instruments to stimulate circulation and support the body’s natural drainage.',
         openGraphTitle: 'Light Legs Maderotherapy in Annecy',
         openGraphDescription:
-          'A 45-minute women-only wellness treatment for heavy legs, water retention, and a pleasant feeling of lightness.',
+          'A 60-minute women-only wellness treatment for heavy legs, water retention, and a pleasant feeling of lightness.',
       },
       hero: {
         title: 'Maderotherapy Light Legs',
@@ -1602,7 +1610,11 @@ My goal is simple: to offer you a peaceful wellness break in a calm, reassuring,
           'Reconnect with a pleasant feeling of lightness through a treatment using wooden instruments designed to stimulate circulation and support the body’s natural drainage.',
         primaryCta: 'Book a session',
         imageAlt: 'Light legs wellness treatment in a warm massage setting',
-        keyInfo: ['45 minutes', '65 €', 'Women only'],
+        keyInfo: [
+          'Targeted light-legs treatment',
+          'Wooden instruments',
+          'Women only',
+        ],
       },
       overview: {
         title: 'What is maderotherapy?',
@@ -1700,16 +1712,16 @@ My goal is simple: to offer you a peaceful wellness break in a calm, reassuring,
       },
       offer: {
         title: 'Light Legs Maderotherapy Discovery Offer',
-        duration: '45 minutes',
-        price: '65 €',
+        duration: '60 minutes',
+        price: '90 €',
         description:
-          'A targeted session to discover maderotherapy and enjoy focused work on areas of heaviness, with close attention to comfort and how your body feels.',
+          'A targeted 60-minute session to discover maderotherapy and enjoy focused work on areas of heaviness, with close attention to comfort and how your body feels.',
         targetAudience:
           'Ideal for women experiencing heavy legs, water retention, body fatigue, or the desire to care for themselves differently.',
         benefits:
           'The treatment helps stimulate circulation, supports the body’s natural drainage, and creates a feeling of lightness and relaxation.',
         positioning:
-          'A discovery offer designed to try the method gently before considering, if helpful, a more regular accompaniment.',
+          'The 60-minute duration is recommended for a complete first session. A 90-minute version is also available if you would like a more enveloping treatment time.',
       },
       steps: {
         title: 'How a session works',
