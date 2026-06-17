@@ -17,9 +17,17 @@ const {locale, business, localized} = Astro.props;
 const {
   pages: {maderotherapie},
 } = localized;
+const languageSwitchPaths = {
+  fr: '/maderotherapie/',
+  en: '/en/maderotherapy/',
+} as const;
 const ctaIsExternal = maderotherapie.cta.href.startsWith('http');
+const heroEyebrow =
+  locale === 'en' ? 'Maderotherapy in Annecy' : 'Madérothérapie à Annecy';
 const toolsImageAlt =
-  'Instruments en bois utilisés pour la madérothérapie : champignon, rouleau cylindre, rouleau cube et table de remodelage.';
+  locale === 'en'
+    ? 'Wooden instruments used for maderotherapy: mushroom tool, cylinder roller, cube roller, and sculpting board.'
+    : 'Instruments en bois utilisés pour la madérothérapie : champignon, rouleau cylindre, rouleau cube et table de remodelage.';
 const structuredDataPrice = maderotherapie.offer.price.replaceAll(
   /[^\d,.]/g,
   ''
@@ -51,6 +59,8 @@ const structuredData = {
 <Layout
   locale={locale}
   canonicalPath={maderotherapie.path}
+  alternatePaths={languageSwitchPaths}
+  languageSwitchPaths={languageSwitchPaths}
   title={maderotherapie.meta.title}
   description={maderotherapie.meta.description}
   openGraphTitle={maderotherapie.meta.openGraphTitle}
@@ -66,7 +76,7 @@ const structuredData = {
           <p
             class="mb-4 text-sm uppercase tracking-[0.25em] text-brand-strong/90"
           >
-            Madérothérapie à Annecy
+            {heroEyebrow}
           </p>
           <h1 class="font-display text-5xl leading-tight text-ink sm:text-6xl">
             {maderotherapie.hero.title}

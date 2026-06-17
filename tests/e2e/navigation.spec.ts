@@ -42,7 +42,7 @@ test('mobile menu opens, exposes localized links, and closes with Escape', async
   await expect(drawer).toBeVisible();
   await expect(
     drawer.getByRole('link', {name: 'Maderotherapy'})
-  ).toHaveAttribute('href', '/maderotherapie/');
+  ).toHaveAttribute('href', '/en/maderotherapy/');
   await expect(drawer.getByRole('link', {name: 'Program'})).toHaveAttribute(
     'href',
     '/en/light-belly-light-legs-program'

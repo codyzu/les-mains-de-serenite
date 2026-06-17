@@ -1370,7 +1370,7 @@ const enLocalized = {
               {duration: '1 h 30', price: '125 €'},
             ],
             ctaText: 'Discover',
-            ctaLink: '/maderotherapie/',
+            ctaLink: '/en/maderotherapy/',
           },
         ],
       },
@@ -1591,11 +1591,11 @@ My goal is simple: to offer you a peaceful wellness break in a calm, reassuring,
         description:
           'For a first targeted approach to lighter legs, you can also discover Maderotherapy, a 60-minute session using wooden instruments.',
         text: 'Discover maderotherapy',
-        href: '/maderotherapie/',
+        href: '/en/maderotherapy/',
       },
     },
     maderotherapie: {
-      path: '/maderotherapie/',
+      path: '/en/maderotherapy/',
       meta: {
         title: 'Maderotherapy Light Legs in Annecy | Les Mains de Sérénité',
         description:

@@ -51,3 +51,24 @@ test('program pages expose matching localized alternates', async ({page}) => {
   await expectAlternate(page, 'en', `${siteUrl}${englishPath}`);
   await expectAlternate(page, 'x-default', `${siteUrl}${frenchPath}`);
 });
+
+test('maderotherapy pages expose matching localized alternates', async ({
+  page,
+}) => {
+  const frenchPath = '/maderotherapie/';
+  const englishPath = '/en/maderotherapy/';
+
+  await page.goto(frenchPath);
+
+  await expectCanonical(page, `${siteUrl}${frenchPath}`);
+  await expectAlternate(page, 'fr', `${siteUrl}${frenchPath}`);
+  await expectAlternate(page, 'en', `${siteUrl}${englishPath}`);
+  await expectAlternate(page, 'x-default', `${siteUrl}${frenchPath}`);
+
+  await page.goto(englishPath);
+
+  await expectCanonical(page, `${siteUrl}${englishPath}`);
+  await expectAlternate(page, 'fr', `${siteUrl}${frenchPath}`);
+  await expectAlternate(page, 'en', `${siteUrl}${englishPath}`);
+  await expectAlternate(page, 'x-default', `${siteUrl}${frenchPath}`);
+});

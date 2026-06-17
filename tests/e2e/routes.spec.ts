@@ -5,6 +5,7 @@ const routes = [
   '/404.html',
   '/en/',
   '/maderotherapie/',
+  '/en/maderotherapy/',
   '/programme-ventre-leger-jambes-legeres',
   '/en/light-belly-light-legs-program',
   '/reserver',
