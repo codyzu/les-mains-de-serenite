@@ -2,6 +2,7 @@ import {expect, test} from './fixtures';
 
 const routes = [
   '/',
+  '/404.html',
   '/en/',
   '/maderotherapie/',
   '/programme-ventre-leger-jambes-legeres',
@@ -21,6 +22,22 @@ for (const route of routes) {
     expect(response.status()).toBe(200);
   });
 }
+
+test('custom 404 page renders branded recovery links', async ({page}) => {
+  await page.goto('/404.html');
+
+  await expect(
+    page.getByRole('heading', {
+      name: 'Cette page n’existe plus ou a changé d’adresse.',
+    })
+  ).toBeVisible();
+  await expect(
+    page.getByRole('link', {name: 'Retour à l’accueil'})
+  ).toHaveAttribute('href', '/');
+  await expect(
+    page.getByRole('link', {name: 'English homepage', exact: true})
+  ).toHaveAttribute('href', '/en/');
+});
 
 test('online booking pages render the embedded scheduler shell', async ({
   page,

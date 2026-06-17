@@ -1,0 +1,82 @@
+---
+import {defaultLocale} from '../data/site';
+import Layout from '../layouts/Layout.astro';
+
+const locale = defaultLocale;
+const languageSwitchPaths = {
+  fr: '/',
+  en: '/en/',
+} as const;
+const title = 'Page introuvable | Les Mains de Sérénité';
+const description =
+  'La page demandée est introuvable. Retrouvez Les Mains de Sérénité depuis la page d’accueil française ou anglaise.';
+---
+
+<Layout
+  locale={locale}
+  languageSwitchPaths={languageSwitchPaths}
+  title={title}
+  description={description}
+>
+  <main class="bg-surface">
+    <section
+      class="relative overflow-hidden bg-surface-muted py-18 sm:py-22 lg:py-26"
+    >
+      <div class="container-page">
+        <div class="max-w-3xl">
+          <p
+            class="mb-4 text-sm font-medium uppercase tracking-[0.25em] text-brand-strong"
+          >
+            404
+          </p>
+          <h1 class="heading-xl">
+            Cette page n’existe plus ou a changé d’adresse.
+          </h1>
+          <p class="body-lg mt-6 max-w-2xl">
+            Revenez à l’accueil pour retrouver les massages bien-être, les
+            informations de réservation et les coordonnées de Les Mains de
+            Sérénité.
+          </p>
+
+          <div class="mt-9 flex flex-wrap gap-3">
+            <a class="btn-primary" href="/">Retour à l’accueil</a>
+            <a
+              class="inline-flex items-center justify-center rounded-full border border-brand-soft bg-white/70 px-6 py-3 text-sm font-medium text-ink no-underline shadow-card transition hover:bg-white"
+              href="/en/"
+            >
+              English homepage
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad bg-surface">
+      <div class="container-page grid gap-4 md:grid-cols-2">
+        <article class="card-soft p-6 sm:p-8">
+          <span
+            class="i-lucide-home mb-5 h-9 w-9 text-brand-strong"
+            aria-hidden="true"></span>
+          <h2 class="heading-md">Continuer en français</h2>
+          <p class="body-base mt-4">
+            Retrouvez les soins, le programme, les avis clientes et la
+            réservation depuis la page d’accueil.
+          </p>
+          <a class="btn-primary mt-6" href="/">Ouvrir la page d’accueil</a>
+        </article>
+
+        <article class="card-soft p-6 sm:p-8">
+          <span
+            class="i-lucide-languages mb-5 h-9 w-9 text-accent-strong"
+            aria-hidden="true"></span>
+          <h2 class="heading-md">Continue in English</h2>
+          <p class="body-base mt-4">
+            Find the massages, wellness program, reviews and booking details
+            from the English homepage.
+          </p>
+          <a class="btn-primary mt-6" href="/en/">Open English homepage</a>
+        </article>
+      </div>
+    </section>
+  </main>
+</Layout>
