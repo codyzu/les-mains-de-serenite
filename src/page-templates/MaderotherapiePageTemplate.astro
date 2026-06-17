@@ -4,7 +4,12 @@ import IconImage from '../components/IconImage.astro';
 import SectionIntro from '../components/SectionIntro.astro';
 import MaderotherapieHeroImage from '../assets/maderotherapie.png';
 import MaderotherapieToolsImage from '../assets/maderotherapie-outils-bois.png';
-import type {Locale, LocalizedSiteData, SiteBusinessData} from '../data/site';
+import {
+  localizedPagePaths,
+  type Locale,
+  type LocalizedSiteData,
+  type SiteBusinessData,
+} from '../data/site';
 import Layout from '../layouts/Layout.astro';
 
 interface Props {
@@ -17,10 +22,7 @@ const {locale, business, localized} = Astro.props;
 const {
   pages: {maderotherapie},
 } = localized;
-const languageSwitchPaths = {
-  fr: '/maderotherapie/',
-  en: '/en/maderotherapy/',
-} as const;
+const languageSwitchPaths = localizedPagePaths.maderotherapie;
 const ctaIsExternal = maderotherapie.cta.href.startsWith('http');
 const heroEyebrow =
   locale === 'en' ? 'Maderotherapy in Annecy' : 'Madérothérapie à Annecy';

@@ -433,6 +433,6 @@ export type GlobalPagesData = {
 
 export type SiteData = {
   business: SiteBusinessData;
-  localized: Partial<Record<Locale, LocalizedSiteData>>;
+  localized: Record<Locale, LocalizedSiteData>;
   pages: GlobalPagesData;
 };

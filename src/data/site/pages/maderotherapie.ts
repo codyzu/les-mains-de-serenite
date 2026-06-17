@@ -1,10 +1,10 @@
 // @unocss-include
 import type {Locale, MaderotherapiePageData} from '../types';
-import {programEnPath, programFrPath} from '../shared';
+import {localizedPagePaths} from '../paths';
 
 export const maderotherapiePages = {
   fr: {
-    path: '/maderotherapie/',
+    path: localizedPagePaths.maderotherapie.fr,
     meta: {
       title: 'Madérothérapie à Annecy | Les Mains de Sérénité',
       description:
@@ -228,7 +228,7 @@ export const maderotherapiePages = {
       description:
         'Réservez votre séance de madérothérapie Jambes Légères à Annecy et accordez à votre corps une vraie pause bien-être.',
       text: 'Réserver une séance',
-      href: '/reserver',
+      href: localizedPagePaths.reserve.fr,
       analyticsEvent: 'reserve_click',
     },
     reassuranceNote:
@@ -238,11 +238,11 @@ export const maderotherapiePages = {
       description:
         'Si vous ressentez régulièrement des jambes lourdes, de la rétention d’eau ou une sensation de ventre gonflé, le Programme Ventre Léger & Jambes Légères propose un accompagnement sur plusieurs séances avec des conseils adaptés.',
       text: 'Découvrir le programme',
-      href: `${programFrPath}/`,
+      href: `${localizedPagePaths.program.fr}/`,
     },
   },
   en: {
-    path: '/en/maderotherapy/',
+    path: localizedPagePaths.maderotherapie.en,
     meta: {
       title: 'Maderotherapy Light Legs in Annecy | Les Mains de Sérénité',
       description:
@@ -466,7 +466,7 @@ export const maderotherapiePages = {
       description:
         'Book your Light Legs maderotherapy session in Annecy and give your body a true wellness pause.',
       text: 'Book a session',
-      href: '/en/book',
+      href: localizedPagePaths.reserve.en,
       analyticsEvent: 'reserve_click',
     },
     reassuranceNote:
@@ -476,7 +476,7 @@ export const maderotherapiePages = {
       description:
         'If you regularly experience heavy legs, water retention, or a bloated feeling, the Light Belly & Light Legs Program offers multi-session support with adapted guidance.',
       text: 'Discover the program',
-      href: `${programEnPath}/`,
+      href: `${localizedPagePaths.program.en}/`,
     },
   },
 } satisfies Record<Locale, MaderotherapiePageData>;

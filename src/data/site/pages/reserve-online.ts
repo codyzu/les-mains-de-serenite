@@ -1,5 +1,6 @@
 // @unocss-include
 import type {Locale, ReserveOnlinePageData} from '../types';
+import {localizedPagePaths} from '../paths';
 import {getBusinessWhatsappHref} from '../shared';
 
 export const reserveOnlinePages = {
@@ -9,7 +10,7 @@ export const reserveOnlinePages = {
       description:
         'Réservez votre massage bien-être à Annecy. Service réservé aux femmes, réservation simple en ligne, paiement sur place.',
     },
-    reserveLink: '/reserver-en-ligne',
+    reserveLink: localizedPagePaths.reserveOnline.fr,
     hero: {
       kicker: 'Massage bien-être à Annecy',
       title: 'Réserver votre massage bien-être',
@@ -71,7 +72,7 @@ export const reserveOnlinePages = {
       description:
         'Book your women-only wellness massage in Annecy. Easy online scheduling and payment on site.',
     },
-    reserveLink: '/en/book-online',
+    reserveLink: localizedPagePaths.reserveOnline.en,
     hero: {
       kicker: 'Wellness massage for women in Annecy',
       title: 'Book your wellness massage',

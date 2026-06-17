@@ -1,15 +1,11 @@
 // @unocss-include
 import type {Locale, ProgramPageData} from '../types';
-import {
-  programEnPath,
-  programEnWhatsappHref,
-  programFrPath,
-  programFrWhatsappHref,
-} from '../shared';
+import {localizedPagePaths} from '../paths';
+import {programEnWhatsappHref, programFrWhatsappHref} from '../shared';
 
 export const programPages = {
   fr: {
-    path: programFrPath,
+    path: localizedPagePaths.program.fr,
     meta: {
       title:
         'Programme Ventre Léger & Jambes Légères à Annecy | Les Mains de Sérénité',
@@ -97,11 +93,11 @@ export const programPages = {
       description:
         'Pour une première approche ciblée sur les jambes légères, découvrez aussi le soin Madérothérapie, une séance de 60 minutes avec instruments en bois.',
       text: 'Découvrir la madérothérapie',
-      href: '/maderotherapie/',
+      href: localizedPagePaths.maderotherapie.fr,
     },
   },
   en: {
-    path: programEnPath,
+    path: localizedPagePaths.program.en,
     meta: {
       title:
         'Light Belly & Light Legs Program in Annecy | Les Mains de Sérénité',
@@ -189,7 +185,7 @@ export const programPages = {
       description:
         'For a first targeted approach to lighter legs, you can also discover Maderotherapy, a 60-minute session using wooden instruments.',
       text: 'Discover maderotherapy',
-      href: '/en/maderotherapy/',
+      href: localizedPagePaths.maderotherapie.en,
     },
   },
 } satisfies Record<Locale, ProgramPageData>;

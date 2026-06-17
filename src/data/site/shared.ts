@@ -10,8 +10,6 @@ export const discoveryOfferBookingHref =
   'https://cal.eu/lesmainsdeserenite/massage-45-minutes-offre-decouverte';
 export const festivalRecoveryMassageBookingHref =
   'https://cal.eu/lesmainsdeserenite/festival-recovery-massage-60-min';
-export const programFrPath = '/programme-ventre-leger-jambes-legeres';
-export const programEnPath = '/en/light-belly-light-legs-program';
 export const programFrWhatsappHref = getBusinessWhatsappHref(
   'Bonjour, je souhaite en savoir plus sur le programme Ventre Léger & Jambes Légères.'
 );

@@ -1,7 +1,12 @@
 ---
 import Contact from '../components/Contact.astro';
 import IconImage from '../components/IconImage.astro';
-import type {Locale, LocalizedSiteData, SiteBusinessData} from '../data/site';
+import {
+  localizedPagePaths,
+  type Locale,
+  type LocalizedSiteData,
+  type SiteBusinessData,
+} from '../data/site';
 import Layout from '../layouts/Layout.astro';
 
 interface Props {
@@ -14,10 +19,7 @@ const {locale, business, localized} = Astro.props;
 const {
   pages: {reserveOnline, home},
 } = localized;
-const localePaths = {
-  fr: '/reserver-en-ligne',
-  en: '/en/book-online',
-} as const;
+const localePaths = localizedPagePaths.reserveOnline;
 const whatsappUrl = home.whatsapp.generalHref;
 ---
 

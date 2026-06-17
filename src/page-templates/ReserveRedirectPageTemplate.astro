@@ -1,5 +1,6 @@
 ---
 import {
+  localizedPagePaths,
   site,
   type Locale,
   type LocalizedSiteData,
@@ -18,10 +19,7 @@ const {
   pages: {reserve},
 } = localized;
 const redirectUrl = business.bookingUrl;
-const localePaths = {
-  fr: '/reserver',
-  en: '/en/book',
-} as const;
+const localePaths = localizedPagePaths.reserve;
 const toAbsoluteUrl = (path: string) =>
   new URL(path, site.business.siteUrl).toString();
 const alternates = [

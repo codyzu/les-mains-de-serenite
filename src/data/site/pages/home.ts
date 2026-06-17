@@ -2,12 +2,11 @@
 import FestivalAnimationOffer from '../../../assets/offer-festival-animation.png';
 import DiscoveryOffer from '../../../assets/images/massage-legs-offer.png';
 import type {HomePageData, Locale} from '../types';
+import {localizedPagePaths} from '../paths';
 import {
   discoveryOfferBookingHref,
   festivalRecoveryMassageBookingHref,
   getBusinessWhatsappHref,
-  programEnPath,
-  programFrPath,
 } from '../shared';
 
 export const homePages = {
@@ -59,7 +58,7 @@ export const homePages = {
           title: 'Ventre gonflé',
           description:
             'Pour accompagner une sensation de ventre plus léger grâce au drainage et aux conseils adaptés.',
-          href: `${programFrPath}/`,
+          href: `${localizedPagePaths.program.fr}/`,
         },
         {
           title: 'Rétention d’eau',
@@ -140,7 +139,7 @@ export const homePages = {
             {duration: '1 h 30', price: '125 €'},
           ],
           ctaText: 'Découvrir',
-          ctaLink: '/maderotherapie/',
+          ctaLink: localizedPagePaths.maderotherapie.fr,
         },
       ],
     },
@@ -161,7 +160,7 @@ export const homePages = {
       price: '350 €',
       note: 'L’accompagnement associe drainage lymphatique, écoute du corps et conseils simples du quotidien pour vous aider à retrouver une sensation de légèreté durable.',
       ctaText: 'Découvrir le programme',
-      ctaLink: programFrPath,
+      ctaLink: localizedPagePaths.program.fr,
     },
     about: {
       title: 'À propos',
@@ -242,7 +241,7 @@ export const homePages = {
       ],
     },
     booking: {
-      bookingPath: '/reserver',
+      bookingPath: localizedPagePaths.reserve.fr,
       title: 'Réserver votre massage',
       description:
         'Réservez facilement votre massage en ligne et choisissez le créneau qui vous convient.',
@@ -322,7 +321,7 @@ export const homePages = {
           title: 'Feeling bloated',
           description:
             'To support a lighter belly feeling through drainage and adapted guidance.',
-          href: `${programEnPath}/`,
+          href: `${localizedPagePaths.program.en}/`,
         },
         {
           title: 'Water retention',
@@ -403,7 +402,7 @@ export const homePages = {
             {duration: '1 h 30', price: '125 €'},
           ],
           ctaText: 'Discover',
-          ctaLink: '/en/maderotherapy/',
+          ctaLink: localizedPagePaths.maderotherapie.en,
         },
       ],
     },
@@ -424,7 +423,7 @@ export const homePages = {
       price: '350 €',
       note: 'The accompaniment combines lymphatic drainage, body awareness, and simple everyday guidance to help you reconnect with a lasting feeling of lightness.',
       ctaText: 'Discover the program',
-      ctaLink: programEnPath,
+      ctaLink: localizedPagePaths.program.en,
     },
     about: {
       title: 'About',
@@ -504,7 +503,7 @@ export const homePages = {
       ],
     },
     booking: {
-      bookingPath: '/en/book',
+      bookingPath: localizedPagePaths.reserve.en,
       title: 'Book your massage',
       description:
         'Book your massage online in just a few clicks and choose the time slot that suits you best.',

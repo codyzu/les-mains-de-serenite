@@ -1,12 +1,13 @@
-import type {Locale, LocalizedSiteData, SiteData} from './site/types';
-import {business} from './site/business';
-import {chrome} from './site/chrome';
-import {homePages} from './site/pages/home';
-import {maderotherapiePages} from './site/pages/maderotherapie';
-import {programPages} from './site/pages/program';
-import {reservePages} from './site/pages/reserve';
-import {reserveOnlinePages} from './site/pages/reserve-online';
-import {defaultLocale as defaultSiteLocale} from './site/shared';
+import type {Locale, LocalizedSiteData, SiteData} from './types';
+import {business} from './business';
+import {chrome} from './chrome';
+import {homePages} from './pages/home';
+import {maderotherapiePages} from './pages/maderotherapie';
+import {programPages} from './pages/program';
+import {reservePages} from './pages/reserve';
+import {reserveOnlinePages} from './pages/reserve-online';
+import {globalPagePaths} from './paths';
+import {defaultLocale as defaultSiteLocale} from './shared';
 
 export type {
   AboutData,
@@ -36,8 +37,9 @@ export type {
   SiteFooterData,
   SiteHeaderData,
   TestimonialsData,
-} from './site/types';
-export {defaultLocale} from './site/shared';
+} from './types';
+export {defaultLocale} from './shared';
+export {globalPagePaths, localizedPagePaths} from './paths';
 
 const localized = {
   fr: {
@@ -70,19 +72,11 @@ export const site = {
   business,
   localized,
   pages: {
-    mentionsLegalesPath: '/mentions-legales',
-    politiqueConfidentialitePath: '/politique-de-confidentialite',
+    mentionsLegalesPath: globalPagePaths.mentionsLegales,
+    politiqueConfidentialitePath: globalPagePaths.politiqueConfidentialite,
   },
 } satisfies SiteData;
 
 export const getLocalizedSite = (
   locale: Locale = defaultSiteLocale
-): LocalizedSiteData => {
-  const localizedSite = site.localized[locale] as LocalizedSiteData | undefined;
-
-  if (!localizedSite) {
-    throw new Error(`Missing localized site data for locale: ${locale}`);
-  }
-
-  return localizedSite;
-};
+): LocalizedSiteData => site.localized[locale];
