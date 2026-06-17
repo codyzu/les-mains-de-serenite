@@ -47,7 +47,6 @@ jobs:
         id: pages
         uses: actions/configure-pages@v5
 
-      # Build main -> out/
       - name: Install deps
         run: pnpm install
 
@@ -60,15 +59,15 @@ jobs:
       - name: Install Playwright browsers
         run: pnpm exec playwright install --with-deps chromium
 
-      - name: Run Playwright smoke tests
-        run: pnpm run test:e2e
-
       - name: Build
         env:
           PUBLIC_GA_MEASUREMENT_ID: ${{ vars.PUBLIC_GA_MEASUREMENT_ID }}
         run: |
           SITE_BASE="${{ steps.pages.outputs.base_path }}" pnpm astro build \
             --site "${{ steps.pages.outputs.origin }}"
+
+      - name: Run Playwright smoke tests
+        run: pnpm run test:e2e
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

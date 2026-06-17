@@ -4,6 +4,12 @@ import {defineConfig} from '@playwright/test';
 
 const port = 4321;
 const baseUrl = `http://127.0.0.1:${port}`;
+const previewCommand = `pnpm run preview --host 127.0.0.1 --port ${port}`;
+// CI builds first so tests preview the exact dist/ artifact that will be
+// deployed. Local test runs still build automatically from a clean checkout.
+const webServerCommand = process.env.CI
+  ? previewCommand
+  : `pnpm run build && ${previewCommand}`;
 
 export default defineConfig({
   testDir: './tests/e2e',
@@ -20,7 +26,7 @@ export default defineConfig({
     trace: 'on-first-retry',
   },
   webServer: {
-    command: `pnpm run build && pnpm run preview --host 127.0.0.1 --port ${port}`,
+    command: webServerCommand,
     url: baseUrl,
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,
