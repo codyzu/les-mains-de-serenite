@@ -1,4 +1,4 @@
-import {expect, test} from '@playwright/test';
+import {expect, test} from './fixtures';
 
 test('French homepage renders the main business content and booking CTA', async ({
   page,

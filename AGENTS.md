@@ -21,6 +21,8 @@ Run commands from the repository root.
 - Build: `pnpm run build`
 - Preview a built site: `pnpm run preview`
 - Lint: `pnpm run lint`
+- Run Playwright smoke tests: `pnpm run test:e2e`
+- Run the full local check: `pnpm run test`
 - Refresh committed local font assets after font config changes: `pnpm run fonts:refresh`
 
 When starting the dev server, run `pnpm run dev --host` exactly as shown above.
@@ -89,6 +91,13 @@ Run `pnpm run fonts:refresh` only when intentionally changing font configuration
 - Component filenames are PascalCase. Page filenames are kebab-case, except `index.astro`.
 - Do not manually edit generated build output in `dist/`.
 
+## Playwright Tests
+
+- Playwright tests live in `tests/e2e/` and run against production build output.
+- Browser specs should import `test` and `expect` from `tests/e2e/fixtures.ts` instead of directly from `@playwright/test`.
+- The shared fixture blocks Google Analytics and Cloudflare Web Analytics requests so tests do not generate analytics traffic.
+- Request-only tests may still use the shared fixture for consistency.
+
 ## Validation
 
 Before handing off code changes, run:
@@ -98,3 +107,5 @@ pnpm run lint
 ```
 
 Run `pnpm run build` when changes affect routes, layouts, Astro config, images, metadata, fonts, base paths, or production-only behavior.
+
+Run `pnpm run test:e2e` when changes affect routes, layouts, navigation, metadata, booking pages, or browser behavior covered by the smoke tests.

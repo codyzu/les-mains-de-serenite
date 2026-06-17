@@ -39,8 +39,18 @@ All commands are run from the root of the project, from a terminal:
 | `pnpm build`           | Build your production site to `./dist/`          |
 | `pnpm fonts:refresh`   | Regenerates committed local web fonts in `public/assets/fonts/` |
 | `pnpm preview`         | Preview your build locally, before deploying     |
+| `pnpm test:e2e`        | Runs the Playwright smoke tests against build output |
+| `pnpm test`            | Runs lint, build, and Playwright smoke tests     |
 | `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `pnpm astro -- --help` | Get help using the Astro CLI                     |
+
+## Testing
+
+Playwright smoke tests live in `tests/e2e/` and run against production build
+output. Browser-based specs should import `test` and `expect` from
+`tests/e2e/fixtures.ts` instead of directly from `@playwright/test`; the shared
+fixture blocks Google Analytics and Cloudflare Web Analytics requests during
+local and CI test runs.
 
 ## Fonts
 
