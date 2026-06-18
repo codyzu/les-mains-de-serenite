@@ -173,7 +173,7 @@ const navLabel = locale === 'en' ? 'Main navigation' : 'Navigation principale';
       <button
         data-mobile-menu-open
         type="button"
-        class="inline-flex items-center rounded-full border border-brand-muted/70 bg-brand-muted/45 px-4 py-2 text-sm font-semibold text-ink shadow-card transition hover:bg-brand-muted/55 focus:outline-none focus:ring-2 focus:ring-brand/45 lg:hidden"
+        class="inline-flex touch-manipulation select-none items-center rounded-full border border-brand-muted/70 bg-brand-muted/45 px-4 py-2 text-sm font-semibold text-ink shadow-card transition hover:bg-brand-muted/55 focus:outline-none focus:ring-2 focus:ring-brand/45 lg:hidden"
         aria-label={menuLabel}
         aria-controls="mobile-navigation-drawer"
         aria-expanded="false"
@@ -185,20 +185,22 @@ const navLabel = locale === 'en' ? 'Main navigation' : 'Navigation principale';
 </header>
 
 <div
+  inert
   data-mobile-menu
   class="fixed inset-0 z-60 hidden overflow-hidden lg:hidden"
   data-state="closed"
+  aria-hidden="true"
 >
   <div
     data-mobile-menu-backdrop
-    class="absolute inset-0 bg-ink/25 opacity-0 backdrop-blur-[2px] transition-opacity duration-250"
+    class="absolute inset-0 bg-ink/25 opacity-0 transition-opacity duration-250"
     aria-hidden="true"
   >
   </div>
   <aside
     data-mobile-menu-drawer
     id="mobile-navigation-drawer"
-    class="absolute bottom-0 right-0 top-0 flex w-[88vw] max-w-[400px] translate-x-full flex-col overflow-y-auto rounded-l-spa bg-surface px-6 pb-[calc(1.5rem+env(safe-area-inset-bottom))] pt-[calc(1.25rem+env(safe-area-inset-top))] text-ink shadow-soft transition-transform duration-300"
+    class="absolute right-0 top-0 flex h-[calc(100dvh-clamp(3.75rem,9.5dvh,7.5rem))] w-[88vw] max-w-[400px] flex-col overflow-y-auto rounded-l-spa bg-surface px-6 pb-7 pt-[calc(1.25rem+env(safe-area-inset-top))] text-ink shadow-soft"
     role="dialog"
     aria-modal="true"
     aria-labelledby="mobile-navigation-title"
@@ -216,7 +218,7 @@ const navLabel = locale === 'en' ? 'Main navigation' : 'Navigation principale';
       <button
         data-mobile-menu-close
         type="button"
-        class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-surface-soft/80 bg-white/50 text-ink-muted transition hover:bg-white/80 hover:text-ink focus:outline-none focus:ring-2 focus:ring-brand/45"
+        class="inline-flex h-10 w-10 touch-manipulation select-none shrink-0 items-center justify-center rounded-full border border-surface-soft/80 bg-white/50 text-ink-muted transition hover:bg-white/80 hover:text-ink focus:outline-none focus:ring-2 focus:ring-brand/45"
         aria-label={closeMenuLabel}
       >
         <span class="i-lucide-x h-4 w-4" aria-hidden="true"></span>
@@ -333,16 +335,25 @@ const navLabel = locale === 'en' ? 'Main navigation' : 'Navigation principale';
     }
 
     previousFocus = document.activeElement;
+    menuDrawer?.classList.remove('animate-slide-out-right');
+    menuDrawer?.classList.add('animate-slide-in-right');
     menuRoot.classList.remove('hidden');
+    menuRoot.setAttribute('data-state', 'open');
+    menuRoot.removeAttribute('aria-hidden');
+    menuRoot.removeAttribute('inert');
+    document.body.setAttribute('data-mobile-menu-open', '');
     document.body.classList.add('overflow-hidden');
     openMenuButton.setAttribute('aria-expanded', 'true');
+  };
 
-    requestAnimationFrame(() => {
-      menuRoot.setAttribute('data-state', 'open');
-      closeMenuButton instanceof HTMLElement
-        ? closeMenuButton.focus()
-        : getFocusableMenuItems()[0]?.focus();
-    });
+  const finishClosingMenu = () => {
+    if (menuRoot?.getAttribute('data-state') !== 'closing') {
+      return;
+    }
+
+    menuRoot.classList.add('hidden');
+    menuRoot.setAttribute('data-state', 'closed');
+    document.body.removeAttribute('data-mobile-menu-open');
   };
 
   const closeMenu = () => {
@@ -350,13 +361,13 @@ const navLabel = locale === 'en' ? 'Main navigation' : 'Navigation principale';
       return;
     }
 
-    menuRoot.setAttribute('data-state', 'closed');
+    menuRoot.setAttribute('data-state', 'closing');
+    menuDrawer?.classList.remove('animate-slide-in-right');
+    menuDrawer?.classList.add('animate-slide-out-right');
+    menuRoot.setAttribute('aria-hidden', 'true');
+    menuRoot.setAttribute('inert', '');
     document.body.classList.remove('overflow-hidden');
     openMenuButton.setAttribute('aria-expanded', 'false');
-
-    window.setTimeout(() => {
-      menuRoot.classList.add('hidden');
-    }, 300);
 
     if (previousFocus instanceof HTMLElement) {
       previousFocus.focus();
@@ -370,6 +381,19 @@ const navLabel = locale === 'en' ? 'Main navigation' : 'Navigation principale';
   menuDrawer?.addEventListener('click', (event) => {
     if (event.target instanceof HTMLAnchorElement) {
       closeMenu();
+    }
+  });
+
+  menuDrawer?.addEventListener('animationend', (event) => {
+    if (
+      event.animationName === 'slide-in-right' &&
+      menuRoot?.getAttribute('data-state') === 'open'
+    ) {
+      closeMenuButton instanceof HTMLElement
+        ? closeMenuButton.focus()
+        : getFocusableMenuItems()[0]?.focus();
+    } else if (event.animationName === 'slide-out-right') {
+      finishClosingMenu();
     }
   });
 
@@ -396,6 +420,12 @@ const navLabel = locale === 'en' ? 'Main navigation' : 'Navigation principale';
       return;
     }
 
+    if (!menuDrawer?.contains(document.activeElement)) {
+      event.preventDefault();
+      event.shiftKey ? lastItem.focus() : firstItem.focus();
+      return;
+    }
+
     if (event.shiftKey && document.activeElement === firstItem) {
       event.preventDefault();
       lastItem.focus();
@@ -416,27 +446,29 @@ const navLabel = locale === 'en' ? 'Main navigation' : 'Navigation principale';
     opacity: 1;
   }
 
-  /* iOS Safari needs explicit clipping/compositing during drawer transforms. */
+  /* Keep the rounded edge clipped cleanly while Uno animates the drawer. */
   [data-mobile-menu-drawer] {
     -webkit-backface-visibility: hidden;
+    animation-duration: 220ms;
+    animation-timing-function: ease-out;
     backface-visibility: hidden;
     clip-path: inset(0 round 1.5rem 0 0 1.5rem);
-    transition: transform 260ms cubic-bezier(0.2, 0, 0, 1);
-    transform: translate3d(100%, 0, 0);
-    will-change: transform;
   }
 
-  [data-mobile-menu][data-state='open'] [data-mobile-menu-drawer] {
-    transform: translate3d(0, 0, 0);
-  }
-
-  [data-mobile-menu][data-state='closed'] {
+  [data-mobile-menu][data-state='closed'],
+  [data-mobile-menu][data-state='closing'] {
     pointer-events: none;
+  }
+
+  :global(body[data-mobile-menu-open] > header),
+  :global(body[data-mobile-menu-open] > main),
+  :global(body[data-mobile-menu-open] > footer) {
+    filter: blur(2px);
   }
 
   /* Header-only shortcuts keep repeated drawer links readable in markup. */
   .drawer-link {
-    --uno: 'rounded-2xl px-4 py-3 text-base font-medium text-ink-muted no-underline transition hover:bg-white/70 hover:text-ink focus:outline-none focus:ring-2 focus:ring-brand/45';
+    --uno: 'rounded-2xl px-4 py-[0.675rem] text-base font-medium text-ink-muted no-underline transition hover:bg-white/70 hover:text-ink focus:outline-none focus:ring-2 focus:ring-brand/45';
   }
 
   .drawer-link-active {
@@ -446,6 +478,7 @@ const navLabel = locale === 'en' ? 'Main navigation' : 'Navigation principale';
   @media (prefers-reduced-motion: reduce) {
     [data-mobile-menu-backdrop],
     [data-mobile-menu-drawer] {
+      animation-duration: 1ms;
       transition-duration: 1ms;
     }
   }

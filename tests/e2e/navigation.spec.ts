@@ -53,3 +53,26 @@ test('mobile menu opens, exposes localized links, and closes with Escape', async
   await expect(menuButton).toHaveAttribute('aria-expanded', 'false');
   await expect(drawer).toBeHidden();
 });
+
+test('mobile menu contains focus and handles a rapid close', async ({page}) => {
+  await page.setViewportSize({width: 390, height: 844});
+  await page.goto('/');
+
+  const menuButton = page.getByRole('button', {name: 'Menu', exact: true});
+  const drawer = page.getByRole('dialog', {name: 'Les Mains de Sérénité'});
+  const closeButton = drawer.getByRole('button', {name: 'Fermer le menu'});
+
+  await menuButton.click();
+  await page.keyboard.press('Escape');
+
+  await expect(drawer).toBeHidden();
+  await expect(menuButton).toBeFocused();
+
+  await menuButton.click();
+  await expect(closeButton).toBeFocused();
+
+  await menuButton.focus();
+  await page.keyboard.press('Tab');
+
+  await expect(closeButton).toBeFocused();
+});
