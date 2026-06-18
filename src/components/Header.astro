@@ -141,28 +141,37 @@ const navLabel = locale === 'en' ? 'Main navigation' : 'Navigation principale';
       <a href={`${homeHref}#contact`} class="nav-link">{links.contact}</a>
     </nav>
     <div
-      class="flex shrink-0 items-center gap-2 max-xs:flex-col max-xs:items-end max-xs:gap-1 sm:gap-3"
+      class="flex shrink-0 items-center gap-4 max-xs:flex-col max-xs:items-end max-xs:gap-1 lg:gap-3"
     >
       {
         languageSwitchPaths ? (
-          <div class="flex items-center gap-2 text-xs font-medium uppercase tracking-[0.1em] text-ink-subtle">
+          <div
+            data-language-switcher
+            class="flex items-center gap-0.5 text-xs font-medium uppercase tracking-[0.1em]"
+          >
             <a
               href={toHref(languageSwitchPaths.fr)}
               aria-current={locale === 'fr' ? 'page' : undefined}
               class:list={[
-                'no-underline transition',
-                locale === 'fr' ? 'text-ink' : 'hover:text-ink',
+                'inline-flex h-8 min-w-8 touch-manipulation items-center justify-center rounded-full px-1.5 no-underline transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/55 focus-visible:ring-offset-1 focus-visible:ring-offset-surface-muted',
+                locale === 'fr'
+                  ? 'bg-brand-muted/35 font-semibold text-ink'
+                  : 'text-ink-muted hover:bg-white/50 hover:text-ink active:bg-brand-muted/25',
               ]}
             >
               FR
             </a>
-            <span>/</span>
+            <span aria-hidden="true" class="text-ink-subtle/70">
+              /
+            </span>
             <a
               href={toHref(languageSwitchPaths.en)}
               aria-current={locale === 'en' ? 'page' : undefined}
               class:list={[
-                'no-underline transition',
-                locale === 'en' ? 'text-ink' : 'hover:text-ink',
+                'inline-flex h-8 min-w-8 touch-manipulation items-center justify-center rounded-full px-1.5 no-underline transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/55 focus-visible:ring-offset-1 focus-visible:ring-offset-surface-muted',
+                locale === 'en'
+                  ? 'bg-brand-muted/35 font-semibold text-ink'
+                  : 'text-ink-muted hover:bg-white/50 hover:text-ink active:bg-brand-muted/25',
               ]}
             >
               EN

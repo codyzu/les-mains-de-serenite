@@ -24,6 +24,41 @@ test('language switch points between localized homepages', async ({page}) => {
   );
 });
 
+for (const width of [390, 430]) {
+  test(`mobile language switcher has clear tap targets at ${width}px`, async ({
+    page,
+  }) => {
+    await page.setViewportSize({width, height: 844});
+    await page.goto('/');
+
+    const switcher = page.locator('[data-language-switcher]');
+    const languageLinks = switcher.getByRole('link');
+    const menuButton = page.getByRole('button', {name: 'Menu', exact: true});
+
+    await expect(languageLinks).toHaveCount(2);
+    await expect(languageLinks).toHaveText(['FR', 'EN']);
+
+    const links = await languageLinks.all();
+    const linkBoxes = await Promise.all(
+      links.map(async (link) => link.boundingBox())
+    );
+    const switcherBox = await switcher.boundingBox();
+    const menuBox = await menuButton.boundingBox();
+
+    expect(linkBoxes).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({height: 32, width: 32}),
+        expect.objectContaining({height: 32, width: 32}),
+      ])
+    );
+    expect(switcherBox).not.toBeNull();
+    expect(menuBox).not.toBeNull();
+    expect(
+      menuBox!.x - (switcherBox!.x + switcherBox!.width)
+    ).toBeGreaterThanOrEqual(16);
+  });
+}
+
 test('mobile menu opens, exposes localized links, and closes with Escape', async ({
   page,
 }) => {
