@@ -125,20 +125,9 @@ const transitionPathGroups = [
     }
     <!-- End Cloudflare Web Analytics -->
 
-    <script>
-      type TransitionMode = 'language' | 'page';
-      type TransitionEvent = Event & {
-        activation?: {from?: {url: string}; to?: {url: string}};
-        viewTransition?: {
-          skipTransition: () => void;
-          types: Set<string>;
-        };
-      };
-
+    <script is:inline>
       const root = document.documentElement;
-      const pathGroups = JSON.parse(
-        root.dataset.transitionPathGroups ?? '[]'
-      ) as Array<Record<string, string>>;
+      const pathGroups = JSON.parse(root.dataset.transitionPathGroups ?? '[]');
       const normalizedPathGroups = pathGroups.map((group) =>
         Object.values(group).map(
           (path) => new URL(path, location.href).pathname
@@ -146,10 +135,11 @@ const transitionPathGroups = [
       );
       const transitionPaths = new Set(normalizedPathGroups.flat());
       const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
-      let pendingMode: TransitionMode | undefined;
+      const transitionStorageKey = 'page-transition-mode';
+      let pendingMode;
       let suppressTransition = false;
 
-      const getMode = (fromValue: string, toValue: string) => {
+      const getMode = (fromValue, toValue) => {
         const from = new URL(fromValue, location.href);
         const to = new URL(toValue, location.href);
 
@@ -176,13 +166,13 @@ const transitionPathGroups = [
       };
 
       document.addEventListener('click', (event) => {
-        const link = (event.target as Element | null)?.closest(
-          'a[data-language-transition]'
-        );
+        const link =
+          event.target instanceof Element
+            ? event.target.closest('a[href]')
+            : null;
         pendingMode =
-          link instanceof HTMLAnchorElement &&
-          getMode(location.href, link.href) === 'language'
-            ? 'language'
+          link instanceof HTMLAnchorElement
+            ? getMode(location.href, link.href)
             : undefined;
       });
       // Form submissions always retain the browser's native navigation.
@@ -194,16 +184,29 @@ const transitionPathGroups = [
         {capture: true}
       );
 
-      const configureTransition = (event: TransitionEvent) => {
+      const configureTransition = (event, incoming = false) => {
         if (!event.viewTransition) {
           return;
         }
 
-        const from = event.activation?.from?.url;
-        const to = event.activation?.to?.url ?? location.href;
+        const activation = event.activation ?? window.navigation?.activation;
+        const from = activation?.from?.url;
+        const to = activation?.entry?.url ?? location.href;
         const mode = suppressTransition
           ? undefined
-          : (pendingMode ?? (from ? getMode(from, to) : undefined));
+          : (pendingMode ??
+            (from ? getMode(from, to) : undefined) ??
+            (incoming
+              ? sessionStorage.getItem(transitionStorageKey)
+              : undefined));
+
+        if (incoming) {
+          sessionStorage.removeItem(transitionStorageKey);
+        } else if (mode) {
+          sessionStorage.setItem(transitionStorageKey, mode);
+        } else {
+          sessionStorage.removeItem(transitionStorageKey);
+        }
 
         if (reducedMotion.matches || !mode) {
           event.viewTransition.skipTransition();
@@ -214,10 +217,10 @@ const transitionPathGroups = [
       };
 
       addEventListener('pageswap', (event) => {
-        configureTransition(event as TransitionEvent);
+        configureTransition(event);
       });
       addEventListener('pagereveal', (event) => {
-        configureTransition(event as TransitionEvent);
+        configureTransition(event, true);
       });
     </script>
   </body>
@@ -245,19 +248,19 @@ const transitionPathGroups = [
   }
 
   html:active-view-transition-type(language)::view-transition-old(root) {
-    animation: 180ms cubic-bezier(0.4, 0, 0.2, 1) both language-fade-out;
+    animation: 220ms cubic-bezier(0.4, 0, 0.2, 1) both language-fade-out;
   }
 
   html:active-view-transition-type(language)::view-transition-new(root) {
-    animation: 180ms cubic-bezier(0.4, 0, 0.2, 1) both language-fade-in;
+    animation: 220ms cubic-bezier(0.4, 0, 0.2, 1) both language-fade-in;
   }
 
   html:active-view-transition-type(page)::view-transition-old(root) {
-    animation: 190ms cubic-bezier(0.4, 0, 0.2, 1) both page-fade-out;
+    animation: 240ms cubic-bezier(0.4, 0, 0.2, 1) both page-fade-out;
   }
 
   html:active-view-transition-type(page)::view-transition-new(root) {
-    animation: 190ms cubic-bezier(0.22, 1, 0.36, 1) both page-fade-in;
+    animation: 240ms cubic-bezier(0.22, 1, 0.36, 1) both page-fade-in;
   }
 
   @keyframes language-fade-out {
@@ -281,7 +284,7 @@ const transitionPathGroups = [
   @keyframes page-fade-in {
     from {
       opacity: 0;
-      transform: translateY(6px);
+      transform: translateY(8px);
     }
   }
 

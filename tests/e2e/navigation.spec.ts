@@ -51,6 +51,48 @@ test('configures only homepage and service paths for view transitions', async ({
   expect(configuredPaths).not.toContain('/reserver');
 });
 
+for (const transitionCase of [
+  {
+    destination: '/maderotherapie/',
+    name: 'page',
+    selector: 'header nav a[href="/maderotherapie/"]',
+    start: '/',
+  },
+  {
+    destination: '/en/maderotherapy/',
+    name: 'language',
+    selector: 'a[data-language-transition][href="/en/maderotherapy/"]',
+    start: '/maderotherapie/',
+  },
+]) {
+  test(`activates the ${transitionCase.name} transition type`, async ({
+    page,
+  }) => {
+    await page.goto(transitionCase.start);
+    await page.evaluate(() => {
+      addEventListener(
+        'pageswap',
+        (event) => {
+          const transition = event.viewTransition;
+          sessionStorage.setItem(
+            'active-transition-types',
+            JSON.stringify(transition ? [...transition.types] : [])
+          );
+        },
+        {once: true}
+      );
+    });
+
+    await page.locator(transitionCase.selector).click();
+    await page.waitForURL(transitionCase.destination);
+    expect(
+      await page.evaluate(() =>
+        sessionStorage.getItem('active-transition-types')
+      )
+    ).toBe(JSON.stringify([transitionCase.name]));
+  });
+}
+
 for (const width of [390, 430]) {
   test(`mobile language switcher has clear tap targets at ${width}px`, async ({
     page,
