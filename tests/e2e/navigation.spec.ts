@@ -11,6 +11,10 @@ test('language switch points between localized homepages', async ({page}) => {
     'href',
     '/en/'
   );
+  await expect(page.getByRole('link', {name: 'EN'}).first()).toHaveAttribute(
+    'data-language-transition',
+    ''
+  );
 
   await page.goto('/en/');
 
@@ -22,6 +26,29 @@ test('language switch points between localized homepages', async ({page}) => {
     'href',
     '/'
   );
+});
+
+test('configures only homepage and service paths for view transitions', async ({
+  page,
+}) => {
+  await page.goto('/');
+
+  const pathGroups = await page
+    .locator('[data-transition-path-groups]')
+    .getAttribute('data-transition-path-groups');
+  const configuredPaths = Object.values(
+    JSON.parse(pathGroups!) as Array<Record<string, string>>
+  ).flatMap((group) => Object.values(group));
+
+  expect(configuredPaths).toEqual(
+    expect.arrayContaining([
+      '/',
+      '/en/',
+      '/maderotherapie/',
+      '/en/maderotherapy/',
+    ])
+  );
+  expect(configuredPaths).not.toContain('/reserver');
 });
 
 for (const width of [390, 430]) {

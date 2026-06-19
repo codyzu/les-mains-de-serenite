@@ -1,5 +1,6 @@
 ---
 import GoogleTag from '../components/GoogleTag.astro';
+import {localizedPagePaths} from '../data/site';
 import {getBaseUrl} from '../utils/url';
 
 interface Props {
@@ -35,10 +36,25 @@ const structuredDataItems = structuredData
     ? structuredData
     : [structuredData]
   : [];
+const transitionPathGroups = [
+  localizedPagePaths.home,
+  localizedPagePaths.maderotherapie,
+  localizedPagePaths.program,
+].map((paths) =>
+  Object.fromEntries(
+    Object.entries(paths).map(([locale, path]) => [
+      locale,
+      `${baseUrl}${path.replace(/^\//, '')}`,
+    ])
+  )
+);
 ---
 
 <!doctype html>
-<html lang={lang}>
+<html
+  lang={lang}
+  data-transition-path-groups={JSON.stringify(transitionPathGroups)}
+>
   <head>
     <meta charset="utf8" />
     <meta
@@ -108,6 +124,102 @@ const structuredDataItems = structuredData
       ) : null
     }
     <!-- End Cloudflare Web Analytics -->
+
+    <script>
+      type TransitionMode = 'language' | 'page';
+      type TransitionEvent = Event & {
+        activation?: {from?: {url: string}; to?: {url: string}};
+        viewTransition?: {
+          skipTransition: () => void;
+          types: Set<string>;
+        };
+      };
+
+      const root = document.documentElement;
+      const pathGroups = JSON.parse(
+        root.dataset.transitionPathGroups ?? '[]'
+      ) as Array<Record<string, string>>;
+      const normalizedPathGroups = pathGroups.map((group) =>
+        Object.values(group).map(
+          (path) => new URL(path, location.href).pathname
+        )
+      );
+      const transitionPaths = new Set(normalizedPathGroups.flat());
+      const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+      let pendingMode: TransitionMode | undefined;
+      let suppressTransition = false;
+
+      const getMode = (fromValue: string, toValue: string) => {
+        const from = new URL(fromValue, location.href);
+        const to = new URL(toValue, location.href);
+
+        if (
+          from.origin !== to.origin ||
+          (from.pathname === to.pathname && from.search === to.search)
+        ) {
+          return undefined;
+        }
+
+        const languageChange = normalizedPathGroups.some(
+          (group) =>
+            group.includes(from.pathname) && group.includes(to.pathname)
+        );
+
+        if (languageChange) {
+          return 'language';
+        }
+
+        return transitionPaths.has(from.pathname) &&
+          transitionPaths.has(to.pathname)
+          ? 'page'
+          : undefined;
+      };
+
+      document.addEventListener('click', (event) => {
+        const link = (event.target as Element | null)?.closest(
+          'a[data-language-transition]'
+        );
+        pendingMode =
+          link instanceof HTMLAnchorElement &&
+          getMode(location.href, link.href) === 'language'
+            ? 'language'
+            : undefined;
+      });
+      // Form submissions always retain the browser's native navigation.
+      document.addEventListener(
+        'submit',
+        () => {
+          suppressTransition = true;
+        },
+        {capture: true}
+      );
+
+      const configureTransition = (event: TransitionEvent) => {
+        if (!event.viewTransition) {
+          return;
+        }
+
+        const from = event.activation?.from?.url;
+        const to = event.activation?.to?.url ?? location.href;
+        const mode = suppressTransition
+          ? undefined
+          : (pendingMode ?? (from ? getMode(from, to) : undefined));
+
+        if (reducedMotion.matches || !mode) {
+          event.viewTransition.skipTransition();
+          return;
+        }
+
+        event.viewTransition.types.add(mode);
+      };
+
+      addEventListener('pageswap', (event) => {
+        configureTransition(event as TransitionEvent);
+      });
+      addEventListener('pagereveal', (event) => {
+        configureTransition(event as TransitionEvent);
+      });
+    </script>
   </body>
 </html>
 
@@ -124,5 +236,64 @@ const structuredDataItems = structuredData
 
   body {
     min-height: 100%;
+  }
+</style>
+
+<style is:global>
+  @view-transition {
+    navigation: auto;
+  }
+
+  html:active-view-transition-type(language)::view-transition-old(root) {
+    animation: 180ms cubic-bezier(0.4, 0, 0.2, 1) both language-fade-out;
+  }
+
+  html:active-view-transition-type(language)::view-transition-new(root) {
+    animation: 180ms cubic-bezier(0.4, 0, 0.2, 1) both language-fade-in;
+  }
+
+  html:active-view-transition-type(page)::view-transition-old(root) {
+    animation: 190ms cubic-bezier(0.4, 0, 0.2, 1) both page-fade-out;
+  }
+
+  html:active-view-transition-type(page)::view-transition-new(root) {
+    animation: 190ms cubic-bezier(0.22, 1, 0.36, 1) both page-fade-in;
+  }
+
+  @keyframes language-fade-out {
+    to {
+      opacity: 0;
+    }
+  }
+
+  @keyframes language-fade-in {
+    from {
+      opacity: 0;
+    }
+  }
+
+  @keyframes page-fade-out {
+    to {
+      opacity: 0;
+    }
+  }
+
+  @keyframes page-fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    @view-transition {
+      navigation: none;
+    }
+
+    ::view-transition-group(root),
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+      animation: none;
+    }
   }
 </style>
