@@ -33,10 +33,19 @@ for (const width of [390, 430]) {
 
     const switcher = page.locator('[data-language-switcher]');
     const languageLinks = switcher.getByRole('link');
+    const inactiveLanguage = switcher.getByRole('link', {name: 'EN'});
     const menuButton = page.getByRole('button', {name: 'Menu', exact: true});
 
     await expect(languageLinks).toHaveCount(2);
     await expect(languageLinks).toHaveText(['FR', 'EN']);
+    await expect(switcher).not.toContainText('/');
+    await inactiveLanguage.focus();
+    await expect(inactiveLanguage).toBeFocused();
+    expect(
+      await inactiveLanguage.evaluate(
+        (link) => getComputedStyle(link).boxShadow
+      )
+    ).not.toBe('none');
 
     const links = await languageLinks.all();
     const linkBoxes = await Promise.all(
@@ -53,6 +62,7 @@ for (const width of [390, 430]) {
     );
     expect(switcherBox).not.toBeNull();
     expect(menuBox).not.toBeNull();
+    expect(switcherBox!.height).toBeLessThan(menuBox!.height);
     expect(
       menuBox!.x - (switcherBox!.x + switcherBox!.width)
     ).toBeGreaterThanOrEqual(16);

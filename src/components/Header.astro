@@ -147,7 +147,7 @@ const navLabel = locale === 'en' ? 'Main navigation' : 'Navigation principale';
         languageSwitchPaths ? (
           <div
             data-language-switcher
-            class="flex items-center gap-0.5 text-xs font-medium uppercase tracking-[0.1em]"
+            class="flex items-center gap-0.5 rounded-full border border-brand-muted/45 bg-white/30 px-0.5 text-xs font-medium uppercase tracking-[0.1em]"
           >
             <a
               href={toHref(languageSwitchPaths.fr)}
@@ -155,23 +155,20 @@ const navLabel = locale === 'en' ? 'Main navigation' : 'Navigation principale';
               class:list={[
                 'inline-flex h-8 min-w-8 touch-manipulation items-center justify-center rounded-full px-1.5 no-underline transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/55 focus-visible:ring-offset-1 focus-visible:ring-offset-surface-muted',
                 locale === 'fr'
-                  ? 'bg-brand-muted/35 font-semibold text-ink'
-                  : 'text-ink-muted hover:bg-white/50 hover:text-ink active:bg-brand-muted/25',
+                  ? 'bg-brand-muted/25 font-semibold text-ink'
+                  : 'text-ink-muted hover:bg-white/60 hover:text-ink active:bg-brand-muted/20',
               ]}
             >
               FR
             </a>
-            <span aria-hidden="true" class="text-ink-subtle/70">
-              /
-            </span>
             <a
               href={toHref(languageSwitchPaths.en)}
               aria-current={locale === 'en' ? 'page' : undefined}
               class:list={[
                 'inline-flex h-8 min-w-8 touch-manipulation items-center justify-center rounded-full px-1.5 no-underline transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/55 focus-visible:ring-offset-1 focus-visible:ring-offset-surface-muted',
                 locale === 'en'
-                  ? 'bg-brand-muted/35 font-semibold text-ink'
-                  : 'text-ink-muted hover:bg-white/50 hover:text-ink active:bg-brand-muted/25',
+                  ? 'bg-brand-muted/25 font-semibold text-ink'
+                  : 'text-ink-muted hover:bg-white/60 hover:text-ink active:bg-brand-muted/20',
               ]}
             >
               EN
