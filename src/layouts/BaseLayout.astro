@@ -36,25 +36,17 @@ const structuredDataItems = structuredData
     ? structuredData
     : [structuredData]
   : [];
-const transitionPathGroups = [
+const transitionPaths = [
   localizedPagePaths.home,
   localizedPagePaths.maderotherapie,
   localizedPagePaths.program,
-].map((paths) =>
-  Object.fromEntries(
-    Object.entries(paths).map(([locale, path]) => [
-      locale,
-      `${baseUrl}${path.replace(/^\//, '')}`,
-    ])
-  )
+].flatMap((paths) =>
+  Object.values(paths).map((path) => `${baseUrl}${path.replace(/^\//, '')}`)
 );
 ---
 
 <!doctype html>
-<html
-  lang={lang}
-  data-transition-path-groups={JSON.stringify(transitionPathGroups)}
->
+<html lang={lang} data-transition-paths={JSON.stringify(transitionPaths)}>
   <head>
     <meta charset="utf8" />
     <meta
@@ -127,19 +119,16 @@ const transitionPathGroups = [
 
     <script is:inline>
       const root = document.documentElement;
-      const pathGroups = JSON.parse(root.dataset.transitionPathGroups ?? '[]');
-      const normalizedPathGroups = pathGroups.map((group) =>
-        Object.values(group).map(
+      const transitionPaths = new Set(
+        JSON.parse(root.dataset.transitionPaths ?? '[]').map(
           (path) => new URL(path, location.href).pathname
         )
       );
-      const transitionPaths = new Set(normalizedPathGroups.flat());
       const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
-      const transitionStorageKey = 'page-transition-mode';
-      let pendingMode;
+      let clickedDestination;
       let suppressTransition = false;
 
-      const getMode = (fromValue, toValue) => {
+      const isEligibleNavigation = (fromValue, toValue) => {
         const from = new URL(fromValue, location.href);
         const to = new URL(toValue, location.href);
 
@@ -147,22 +136,12 @@ const transitionPathGroups = [
           from.origin !== to.origin ||
           (from.pathname === to.pathname && from.search === to.search)
         ) {
-          return undefined;
+          return false;
         }
 
-        const languageChange = normalizedPathGroups.some(
-          (group) =>
-            group.includes(from.pathname) && group.includes(to.pathname)
+        return (
+          transitionPaths.has(from.pathname) && transitionPaths.has(to.pathname)
         );
-
-        if (languageChange) {
-          return 'language';
-        }
-
-        return transitionPaths.has(from.pathname) &&
-          transitionPaths.has(to.pathname)
-          ? 'page'
-          : undefined;
       };
 
       document.addEventListener('click', (event) => {
@@ -170,10 +149,8 @@ const transitionPathGroups = [
           event.target instanceof Element
             ? event.target.closest('a[href]')
             : null;
-        pendingMode =
-          link instanceof HTMLAnchorElement
-            ? getMode(location.href, link.href)
-            : undefined;
+        clickedDestination =
+          link instanceof HTMLAnchorElement ? link.href : undefined;
       });
       // Form submissions always retain the browser's native navigation.
       document.addEventListener(
@@ -184,43 +161,20 @@ const transitionPathGroups = [
         {capture: true}
       );
 
-      const configureTransition = (event, incoming = false) => {
+      addEventListener('pageswap', (event) => {
         if (!event.viewTransition) {
           return;
         }
 
-        const activation = event.activation ?? window.navigation?.activation;
-        const from = activation?.from?.url;
-        const to = activation?.entry?.url ?? location.href;
-        const mode = suppressTransition
-          ? undefined
-          : (pendingMode ??
-            (from ? getMode(from, to) : undefined) ??
-            (incoming
-              ? sessionStorage.getItem(transitionStorageKey)
-              : undefined));
+        const destination = event.activation?.entry?.url ?? clickedDestination;
+        const isEligible =
+          !suppressTransition &&
+          destination &&
+          isEligibleNavigation(location.href, destination);
 
-        if (incoming) {
-          sessionStorage.removeItem(transitionStorageKey);
-        } else if (mode) {
-          sessionStorage.setItem(transitionStorageKey, mode);
-        } else {
-          sessionStorage.removeItem(transitionStorageKey);
-        }
-
-        if (reducedMotion.matches || !mode) {
+        if (reducedMotion.matches || !isEligible) {
           event.viewTransition.skipTransition();
-          return;
         }
-
-        event.viewTransition.types.add(mode);
-      };
-
-      addEventListener('pageswap', (event) => {
-        configureTransition(event);
-      });
-      addEventListener('pagereveal', (event) => {
-        configureTransition(event, true);
       });
     </script>
   </body>
@@ -247,32 +201,12 @@ const transitionPathGroups = [
     navigation: auto;
   }
 
-  html:active-view-transition-type(language)::view-transition-old(root) {
-    animation: 220ms cubic-bezier(0.4, 0, 0.2, 1) both language-fade-out;
-  }
-
-  html:active-view-transition-type(language)::view-transition-new(root) {
-    animation: 220ms cubic-bezier(0.4, 0, 0.2, 1) both language-fade-in;
-  }
-
-  html:active-view-transition-type(page)::view-transition-old(root) {
+  ::view-transition-old(root) {
     animation: 240ms cubic-bezier(0.4, 0, 0.2, 1) both page-fade-out;
   }
 
-  html:active-view-transition-type(page)::view-transition-new(root) {
+  ::view-transition-new(root) {
     animation: 240ms cubic-bezier(0.22, 1, 0.36, 1) both page-fade-in;
-  }
-
-  @keyframes language-fade-out {
-    to {
-      opacity: 0;
-    }
-  }
-
-  @keyframes language-fade-in {
-    from {
-      opacity: 0;
-    }
   }
 
   @keyframes page-fade-out {

@@ -150,7 +150,6 @@ const navLabel = locale === 'en' ? 'Main navigation' : 'Navigation principale';
             class="flex items-center gap-0.5 rounded-full border border-brand-muted/45 bg-white/30 px-0.5 text-xs font-medium uppercase tracking-[0.1em]"
           >
             <a
-              data-language-transition
               href={toHref(languageSwitchPaths.fr)}
               aria-current={locale === 'fr' ? 'page' : undefined}
               class:list={[
@@ -163,7 +162,6 @@ const navLabel = locale === 'en' ? 'Main navigation' : 'Navigation principale';
               FR
             </a>
             <a
-              data-language-transition
               href={toHref(languageSwitchPaths.en)}
               aria-current={locale === 'en' ? 'page' : undefined}
               class:list={[

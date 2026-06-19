@@ -11,11 +11,6 @@ test('language switch points between localized homepages', async ({page}) => {
     'href',
     '/en/'
   );
-  await expect(page.getByRole('link', {name: 'EN'}).first()).toHaveAttribute(
-    'data-language-transition',
-    ''
-  );
-
   await page.goto('/en/');
 
   await expect(page.getByRole('link', {name: 'EN'}).first()).toHaveAttribute(
@@ -33,12 +28,10 @@ test('configures only homepage and service paths for view transitions', async ({
 }) => {
   await page.goto('/');
 
-  const pathGroups = await page
-    .locator('[data-transition-path-groups]')
-    .getAttribute('data-transition-path-groups');
-  const configuredPaths = Object.values(
-    JSON.parse(pathGroups!) as Array<Record<string, string>>
-  ).flatMap((group) => Object.values(group));
+  const paths = await page
+    .locator('[data-transition-paths]')
+    .getAttribute('data-transition-paths');
+  const configuredPaths = JSON.parse(paths!) as string[];
 
   expect(configuredPaths).toEqual(
     expect.arrayContaining([
@@ -50,48 +43,6 @@ test('configures only homepage and service paths for view transitions', async ({
   );
   expect(configuredPaths).not.toContain('/reserver');
 });
-
-for (const transitionCase of [
-  {
-    destination: '/maderotherapie/',
-    name: 'page',
-    selector: 'header nav a[href="/maderotherapie/"]',
-    start: '/',
-  },
-  {
-    destination: '/en/maderotherapy/',
-    name: 'language',
-    selector: 'a[data-language-transition][href="/en/maderotherapy/"]',
-    start: '/maderotherapie/',
-  },
-]) {
-  test(`activates the ${transitionCase.name} transition type`, async ({
-    page,
-  }) => {
-    await page.goto(transitionCase.start);
-    await page.evaluate(() => {
-      addEventListener(
-        'pageswap',
-        (event) => {
-          const transition = event.viewTransition;
-          sessionStorage.setItem(
-            'active-transition-types',
-            JSON.stringify(transition ? [...transition.types] : [])
-          );
-        },
-        {once: true}
-      );
-    });
-
-    await page.locator(transitionCase.selector).click();
-    await page.waitForURL(transitionCase.destination);
-    expect(
-      await page.evaluate(() =>
-        sessionStorage.getItem('active-transition-types')
-      )
-    ).toBe(JSON.stringify([transitionCase.name]));
-  });
-}
 
 for (const width of [390, 430]) {
   test(`mobile language switcher has clear tap targets at ${width}px`, async ({
