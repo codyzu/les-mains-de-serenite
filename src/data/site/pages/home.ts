@@ -111,9 +111,8 @@ export const homePages = {
             'Massage tonifiant qui aide à raffermir la peau et redessiner certaines zones du corps. Il stimule la circulation et améliore l’aspect de la silhouette.',
           icon: 'i-lucide-scan',
           prices: [
-            {duration: '45 min', price: '70 €'},
-            {duration: '1 h', price: '90 €', recommended: true},
-            {duration: '1 h 30', price: '125 €'},
+            {duration: '1 h', price: '110 €', recommended: true},
+            {duration: '1 h 30', price: '135 €'},
           ],
         },
         {
@@ -374,9 +373,8 @@ export const homePages = {
             'A toning massage that supports skin firmness and helps improve the appearance of the silhouette.',
           icon: 'i-lucide-scan',
           prices: [
-            {duration: '45 min', price: '70 €'},
-            {duration: '1 h', price: '90 €', recommended: true},
-            {duration: '1 h 30', price: '125 €'},
+            {duration: '1 h', price: '110 €', recommended: true},
+            {duration: '1 h 30', price: '135 €'},
           ],
         },
         {
