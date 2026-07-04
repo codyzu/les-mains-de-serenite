@@ -7,8 +7,7 @@ export const chrome = {
       links: {
         home: 'Accueil',
         massages: 'Massages',
-        maderotherapie: 'Madérothérapie',
-        program: 'Programme',
+        program: 'Programmes',
         about: 'À propos',
         reserve: 'Réserver',
         contact: 'Contact',
@@ -32,8 +31,7 @@ export const chrome = {
       links: {
         home: 'Home',
         massages: 'Massages',
-        maderotherapie: 'Maderotherapy',
-        program: 'Program',
+        program: 'Programs',
         about: 'About',
         reserve: 'Book',
         contact: 'Contact',

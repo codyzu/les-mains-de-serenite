@@ -79,7 +79,7 @@ export const homePages = {
           title: 'Drainage lymphatique',
           description:
             'Drainage lymphatique dynamique selon la méthode Renata França. Idéal pour soulager les jambes lourdes, le ventre gonflé et la rétention d’eau, il procure une agréable sensation de légèreté.',
-          note: 'Après un drainage, quelques conseils simples peuvent être proposés pour prolonger les bienfaits au quotidien.',
+          note: 'Également adapté aux femmes enceintes à partir de la fin du premier trimestre, avec un protocole spécifiquement adapté.',
           icon: 'i-lucide-droplets',
           prices: [
             {duration: '1 h', price: '90 €', recommended: true},
@@ -88,9 +88,9 @@ export const homePages = {
         },
         {
           anchorId: 'massage-anti-douleur',
-          title: 'Massage anti-douleur',
+          title: 'Massage anti-douleur ou relaxant',
           description:
-            'Massage ciblé pour soulager les tensions musculaires et les inconforts du quotidien. Idéal pour le dos, les épaules et la nuque, il aide à retrouver confort et détente.',
+            'Massage personnalisé pour soulager les tensions musculaires, relâcher le stress et offrir une détente profonde. La séance s’adapte à vos besoins : dos, épaules, nuque, fatigue ou simple besoin de ralentir.',
           icon: 'i-lucide-activity',
           prices: [
             {duration: '45 min', price: '60 €'},
@@ -137,23 +137,54 @@ export const homePages = {
       ],
     },
     programPreview: {
-      eyebrow: 'Nouveau',
-      title: 'Programme Ventre Léger & Jambes Légères',
-      subtitle: 'Un accompagnement bien-être de 21 jours',
-      description:
-        'Pour les femmes qui souhaitent aller plus loin qu’une séance seule, ce programme associe 5 drainages lymphatiques Renata França à un bilan bien-être et à des conseils simples pour prolonger la sensation de légèreté au quotidien.',
-      includesTitle: 'Le programme comprend',
-      includes: [
-        '5 séances de drainage lymphatique',
-        'Un bilan bien-être de 20 minutes',
-        'Un guide alimentaire simple',
-        'Un suivi WhatsApp pendant 21 jours',
+      title: 'Programmes d’accompagnement',
+      intro:
+        'Des expériences sur plusieurs séances, pensées pour les femmes qui souhaitent aller plus loin qu’un massage seul, dans un cadre doux, progressif et personnalisé.',
+      items: [
+        {
+          eyebrow: 'Nouveau',
+          title: 'Programme Ventre Léger & Jambes Légères',
+          subtitle: 'Un accompagnement bien-être de 21 jours',
+          description:
+            'Pour les femmes qui souhaitent aller plus loin qu’une séance seule, ce programme associe 5 drainages lymphatiques Renata França à un bilan bien-être et à des conseils simples pour prolonger la sensation de légèreté au quotidien.',
+          includesTitle: 'Le programme comprend',
+          includes: [
+            '5 séances de drainage lymphatique',
+            'Un bilan bien-être de 20 minutes',
+            'Un guide alimentaire simple',
+            'Un suivi WhatsApp pendant 21 jours',
+          ],
+          priceLabel: 'Tarif lancement',
+          price: '350 €',
+          note: 'L’accompagnement associe drainage lymphatique, écoute du corps et conseils simples du quotidien pour vous aider à retrouver une sensation de légèreté durable.',
+          ctaText: 'Découvrir le programme',
+          ctaLink: localizedPagePaths.program.fr,
+          icon: 'i-lucide-calendar-heart',
+        },
+        {
+          eyebrow: 'Nouvelle cure',
+          title: 'Cure Fusion',
+          subtitle: '3 séances personnalisées',
+          description:
+            'Un accompagnement conçu pour retrouver une sensation de légèreté, de tonicité et de bien-être global au fil des séances. Les techniques sont choisies selon vos besoins et le résultat recherché.',
+          includesTitle: 'La cure peut associer',
+          includes: [
+            'Drainage lymphatique',
+            'Massage remodelant',
+            'Madérothérapie',
+          ],
+          priceLabel: 'Tarif',
+          price: '350 €',
+          priceDetail: '3 séances',
+          note: 'Chaque cure est entièrement personnalisée. Les soins sont sélectionnés en fonction de vos besoins, de vos ressentis et de vos objectifs du moment.',
+          ctaText: 'Découvrir la cure',
+          ctaLink: getBusinessWhatsappHref(
+            'Bonjour, je souhaite en savoir plus sur la Cure Fusion.'
+          ),
+          icon: 'i-lucide-sparkles',
+          analyticsEvent: 'whatsapp_click',
+        },
       ],
-      priceLabel: 'Tarif lancement',
-      price: '350 €',
-      note: 'L’accompagnement associe drainage lymphatique, écoute du corps et conseils simples du quotidien pour vous aider à retrouver une sensation de légèreté durable.',
-      ctaText: 'Découvrir le programme',
-      ctaLink: localizedPagePaths.program.fr,
     },
     about: {
       title: 'À propos',
@@ -341,7 +372,7 @@ export const homePages = {
           title: 'Lymphatic drainage',
           description:
             'Dynamic lymphatic drainage using the Renata França method. Commonly chosen for heavy legs, feeling bloated, and water retention, while creating a pleasant feeling of lightness.',
-          note: 'After lymphatic drainage, simple guidance can be offered to help extend the benefits in everyday life.',
+          note: 'Also suitable during pregnancy from the end of the first trimester, with a specifically adapted protocol.',
           icon: 'i-lucide-droplets',
           prices: [
             {duration: '1 h', price: '90 €', recommended: true},
@@ -350,9 +381,9 @@ export const homePages = {
         },
         {
           anchorId: 'tension-relief-massage',
-          title: 'Tension relief massage',
+          title: 'Tension relief or relaxation massage',
           description:
-            'A targeted massage designed to ease muscular tension and everyday discomfort. Well-suited for the back, shoulders, and neck, and for supporting deep relaxation.',
+            'A personalized massage to ease muscular tension, release stress, and provide deep relaxation. The session adapts to your needs: back, shoulders, neck, fatigue, or simply a need to slow down.',
           icon: 'i-lucide-activity',
           prices: [
             {duration: '45 min', price: '60 €'},
@@ -399,23 +430,54 @@ export const homePages = {
       ],
     },
     programPreview: {
-      eyebrow: 'New',
-      title: 'Light Belly & Light Legs Program',
-      subtitle: 'A 21-day wellness accompaniment',
-      description:
-        'For women who would like to go further than a single session, this program combines 5 Renata França lymphatic drainage sessions with a wellness check-in and simple guidance to help extend the feeling of lightness in everyday life.',
-      includesTitle: 'The program includes',
-      includes: [
-        '5 lymphatic drainage sessions',
-        'A 20-minute wellness check-in',
-        'A simple food guidance PDF',
-        'WhatsApp follow-up for 21 days',
+      title: 'Support programs',
+      intro:
+        'Multi-session experiences for women who would like to go further than a single massage, with a soft, progressive, and personalized approach.',
+      items: [
+        {
+          eyebrow: 'New',
+          title: 'Light Belly & Light Legs Program',
+          subtitle: 'A 21-day wellness accompaniment',
+          description:
+            'For women who would like to go further than a single session, this program combines 5 Renata França lymphatic drainage sessions with a wellness check-in and simple guidance to help extend the feeling of lightness in everyday life.',
+          includesTitle: 'The program includes',
+          includes: [
+            '5 lymphatic drainage sessions',
+            'A 20-minute wellness check-in',
+            'A simple food guidance PDF',
+            'WhatsApp follow-up for 21 days',
+          ],
+          priceLabel: 'Launch price',
+          price: '350 €',
+          note: 'The accompaniment combines lymphatic drainage, body awareness, and simple everyday guidance to help you reconnect with a lasting feeling of lightness.',
+          ctaText: 'Discover the program',
+          ctaLink: localizedPagePaths.program.en,
+          icon: 'i-lucide-calendar-heart',
+        },
+        {
+          eyebrow: 'New package',
+          title: 'Cure Fusion',
+          subtitle: '3 personalized sessions',
+          description:
+            'A guided accompaniment designed to restore a feeling of lightness, tone, and overall well-being over several sessions. Techniques are selected according to your needs and desired outcome.',
+          includesTitle: 'The package may include',
+          includes: [
+            'Lymphatic drainage',
+            'Body sculpting massage',
+            'Maderotherapy',
+          ],
+          priceLabel: 'Price',
+          price: '350 €',
+          priceDetail: '3 sessions',
+          note: 'Each package is fully personalized. Treatments are selected according to your needs, how your body feels, and your current goals.',
+          ctaText: 'Discover the package',
+          ctaLink: getBusinessWhatsappHref(
+            'Hello, I would like to know more about Cure Fusion.'
+          ),
+          icon: 'i-lucide-sparkles',
+          analyticsEvent: 'whatsapp_click',
+        },
       ],
-      priceLabel: 'Launch price',
-      price: '350 €',
-      note: 'The accompaniment combines lymphatic drainage, body awareness, and simple everyday guidance to help you reconnect with a lasting feeling of lightness.',
-      ctaText: 'Discover the program',
-      ctaLink: localizedPagePaths.program.en,
     },
     about: {
       title: 'About',

@@ -105,10 +105,10 @@ test('mobile menu opens, exposes localized links, and closes with Escape', async
 
   await expect(menuButton).toHaveAttribute('aria-expanded', 'true');
   await expect(drawer).toBeVisible();
-  await expect(
-    drawer.getByRole('link', {name: 'Maderotherapy'})
-  ).toHaveAttribute('href', '/en/maderotherapy/');
-  await expect(drawer.getByRole('link', {name: 'Program'})).toHaveAttribute(
+  await expect(drawer.getByRole('link', {name: 'Maderotherapy'})).toHaveCount(
+    0
+  );
+  await expect(drawer.getByRole('link', {name: 'Programs'})).toHaveAttribute(
     'href',
     '/en/light-belly-light-legs-program'
   );

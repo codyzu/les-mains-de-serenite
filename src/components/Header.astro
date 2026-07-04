@@ -36,7 +36,7 @@ const brand = site.business.name;
 const localized = getLocalizedSite(locale);
 const {
   chrome: {header},
-  pages: {home, maderotherapie, program},
+  pages: {home, program},
 } = localized;
 const {tagline, links} = header;
 const {
@@ -47,12 +47,9 @@ const {
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 const normalizedHomePath = homePath.replace(/\/$/, '') || '/';
 const programPath = program.path.replace(/\/$/, '') || '/';
-const maderotherapiePath = maderotherapie.path.replace(/\/$/, '') || '/';
 const homeActive = currentPath === normalizedHomePath;
 const programActive = currentPath === programPath;
-const maderotherapieActive = currentPath === maderotherapiePath;
 const programHref = toHref(program.path);
-const maderotherapieHref = toHref(maderotherapie.path);
 const drawerBookingHref = reserveLink
   ? toHref(reserveLink)
   : toHref(bookingPath);
@@ -100,17 +97,6 @@ const navLabel = locale === 'en' ? 'Main navigation' : 'Navigation principale';
     <nav class="hidden items-center gap-6 lg:flex">
       <a href={`${homeHref}#accueil`} class="nav-link">{links.home}</a>
       <a href={`${homeHref}#massages`} class="nav-link">{links.massages}</a>
-      {
-        maderotherapieActive ? (
-          <span aria-current="page" class="text-sm font-medium text-ink">
-            {links.maderotherapie}
-          </span>
-        ) : (
-          <a href={maderotherapieHref} class="nav-link">
-            {links.maderotherapie}
-          </a>
-        )
-      }
       {
         programActive ? (
           <span aria-current="page" class="text-sm font-medium text-ink">
@@ -246,17 +232,6 @@ const navLabel = locale === 'en' ? 'Main navigation' : 'Navigation principale';
       <a href={`${homeHref}#massages`} class="drawer-link">
         {links.massages}
       </a>
-      {
-        maderotherapieActive ? (
-          <span aria-current="page" class="drawer-link drawer-link-active">
-            {links.maderotherapie}
-          </span>
-        ) : (
-          <a href={maderotherapieHref} class="drawer-link">
-            {links.maderotherapie}
-          </a>
-        )
-      }
       {
         programActive ? (
           <span aria-current="page" class="drawer-link drawer-link-active">

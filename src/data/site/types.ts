@@ -43,7 +43,6 @@ export type SiteHeaderData = {
   links: {
     home: string;
     massages: string;
-    maderotherapie: string;
     program: string;
     about: string;
     reserve: string;
@@ -128,7 +127,7 @@ export type MassagesSectionData = {
   items: MassageData[];
 };
 
-export type ProgramPreviewData = {
+export type ProgramPreviewItemData = {
   eyebrow: string;
   title: string;
   subtitle: string;
@@ -137,10 +136,18 @@ export type ProgramPreviewData = {
   includes: string[];
   priceLabel: string;
   price: string;
+  priceDetail?: string;
   note: string;
   ctaText: string;
   ctaLink: string;
+  icon: string;
   analyticsEvent?: AnalyticsEventName;
+};
+
+export type ProgramPreviewData = {
+  title: string;
+  intro: string;
+  items: ProgramPreviewItemData[];
 };
 
 export type ProgramPageData = {
