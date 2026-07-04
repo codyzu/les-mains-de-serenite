@@ -1,13 +1,7 @@
-// @unocss-include
-import FestivalAnimationOffer from '../../../assets/offer-festival-animation.png';
 import DiscoveryOffer from '../../../assets/images/massage-legs-offer.png';
 import type {HomePageData, Locale} from '../types';
 import {localizedPagePaths} from '../paths';
-import {
-  discoveryOfferBookingHref,
-  festivalRecoveryMassageBookingHref,
-  getBusinessWhatsappHref,
-} from '../shared';
+import {discoveryOfferBookingHref, getBusinessWhatsappHref} from '../shared';
 
 export const homePages = {
   fr: {
@@ -292,16 +286,16 @@ export const homePages = {
       whatsappCta: 'WhatsApp',
     },
     promo: {
-      title: 'ANNECY ANIMATION FESTIVAL',
-      headline: 'Festival Recovery Massage',
+      title: 'Discovery offer',
+      headline: '45 min for €55',
       description:
-        '60 min\n\nAfter a long day of screenings, meetings, travel, and networking, take time to relax and recharge.\n\nThis personalized wellness massage is designed to help release tension in the neck, shoulders, back, and legs while promoting deep relaxation and well-being.\n\nWellness massages for women only. English welcome available.',
-      ctaText: 'Book your festival massage',
-      ctaLink: festivalRecoveryMassageBookingHref,
+        'A targeted session to soothe heavy legs or back pain, and reconnect with a feeling of lightness.',
+      ctaText: 'Book the offer',
+      ctaLink: discoveryOfferBookingHref,
       analyticsEvent: 'reserve_click',
       image: {
-        src: FestivalAnimationOffer,
-        alt: 'Annecy Animation Festival wellness massage offer',
+        src: DiscoveryOffer,
+        alt: 'Wellness massage in a soft and soothing atmosphere',
       },
     },
     needsSection: {
