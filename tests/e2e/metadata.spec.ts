@@ -34,8 +34,50 @@ test('homepages expose canonical and alternate language links', async ({
 });
 
 test('program pages expose matching localized alternates', async ({page}) => {
-  const frenchPath = '/programme-ventre-leger-jambes-legeres';
-  const englishPath = '/en/light-belly-light-legs-program';
+  const frenchPath = '/programmes/ventre-leger-jambes-legeres/';
+  const englishPath = '/en/programs/light-belly-light-legs/';
+
+  await page.goto(frenchPath);
+
+  await expectCanonical(page, `${siteUrl}${frenchPath}`);
+  await expectAlternate(page, 'fr', `${siteUrl}${frenchPath}`);
+  await expectAlternate(page, 'en', `${siteUrl}${englishPath}`);
+  await expectAlternate(page, 'x-default', `${siteUrl}${frenchPath}`);
+
+  await page.goto(englishPath);
+
+  await expectCanonical(page, `${siteUrl}${englishPath}`);
+  await expectAlternate(page, 'fr', `${siteUrl}${frenchPath}`);
+  await expectAlternate(page, 'en', `${siteUrl}${englishPath}`);
+  await expectAlternate(page, 'x-default', `${siteUrl}${frenchPath}`);
+});
+
+test('program overview pages expose matching localized alternates', async ({
+  page,
+}) => {
+  const frenchPath = '/programmes/';
+  const englishPath = '/en/programs/';
+
+  await page.goto(frenchPath);
+
+  await expectCanonical(page, `${siteUrl}${frenchPath}`);
+  await expectAlternate(page, 'fr', `${siteUrl}${frenchPath}`);
+  await expectAlternate(page, 'en', `${siteUrl}${englishPath}`);
+  await expectAlternate(page, 'x-default', `${siteUrl}${frenchPath}`);
+
+  await page.goto(englishPath);
+
+  await expectCanonical(page, `${siteUrl}${englishPath}`);
+  await expectAlternate(page, 'fr', `${siteUrl}${frenchPath}`);
+  await expectAlternate(page, 'en', `${siteUrl}${englishPath}`);
+  await expectAlternate(page, 'x-default', `${siteUrl}${frenchPath}`);
+});
+
+test('massage overview pages expose matching localized alternates', async ({
+  page,
+}) => {
+  const frenchPath = '/massages/';
+  const englishPath = '/en/massages/';
 
   await page.goto(frenchPath);
 
@@ -55,8 +97,8 @@ test('program pages expose matching localized alternates', async ({page}) => {
 test('maderotherapy pages expose matching localized alternates', async ({
   page,
 }) => {
-  const frenchPath = '/maderotherapie/';
-  const englishPath = '/en/maderotherapy/';
+  const frenchPath = '/massages/maderotherapie/';
+  const englishPath = '/en/massages/maderotherapy/';
 
   await page.goto(frenchPath);
 

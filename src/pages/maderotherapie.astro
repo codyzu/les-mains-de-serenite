@@ -1,12 +1,13 @@
 ---
-import {defaultLocale, getLocalizedSite, site} from '../data/site';
-import MaderotherapiePageTemplate from '../page-templates/MaderotherapiePageTemplate.astro';
-
-const localized = getLocalizedSite(defaultLocale);
+import {defaultLocale, localizedPagePaths} from '../data/site';
+import LegacyRedirectPageTemplate from '../page-templates/LegacyRedirectPageTemplate.astro';
 ---
 
-<MaderotherapiePageTemplate
+<LegacyRedirectPageTemplate
   locale={defaultLocale}
-  business={site.business}
-  localized={localized}
+  title="Madérothérapie à Annecy"
+  description="La page Madérothérapie se trouve désormais dans la section Massages."
+  destinationPath={localizedPagePaths.maderotherapie.fr}
+  destinationLabel="Découvrir la madérothérapie"
+  languageSwitchPaths={localizedPagePaths.maderotherapie}
 />

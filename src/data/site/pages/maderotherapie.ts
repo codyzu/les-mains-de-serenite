@@ -238,7 +238,7 @@ export const maderotherapiePages = {
       description:
         'Si vous ressentez régulièrement des jambes lourdes, de la rétention d’eau ou une sensation de ventre gonflé, le Programme Ventre Léger & Jambes Légères propose un accompagnement sur plusieurs séances avec des conseils adaptés.',
       text: 'Découvrir le programme',
-      href: `${localizedPagePaths.program.fr}/`,
+      href: localizedPagePaths.program.fr,
     },
   },
   en: {
@@ -476,7 +476,7 @@ export const maderotherapiePages = {
       description:
         'If you regularly experience heavy legs, water retention, or a bloated feeling, the Light Belly & Light Legs Program offers multi-session support with adapted guidance.',
       text: 'Discover the program',
-      href: `${localizedPagePaths.program.en}/`,
+      href: localizedPagePaths.program.en,
     },
   },
 } satisfies Record<Locale, MaderotherapiePageData>;

@@ -37,8 +37,12 @@ test('configures only homepage and service paths for view transitions', async ({
     expect.arrayContaining([
       '/',
       '/en/',
-      '/maderotherapie/',
-      '/en/maderotherapy/',
+      '/massages/',
+      '/en/massages/',
+      '/programmes/',
+      '/en/programs/',
+      '/massages/maderotherapie/',
+      '/en/massages/maderotherapy/',
     ])
   );
   expect(configuredPaths).not.toContain('/reserver');
@@ -54,7 +58,7 @@ for (const width of [390, 430]) {
     const switcher = page.locator('[data-language-switcher]');
     const languageLinks = switcher.getByRole('link');
     const inactiveLanguage = switcher.getByRole('link', {name: 'EN'});
-    const menuButton = page.getByRole('button', {name: 'Menu', exact: true});
+    const menuButton = page.locator('button[data-mobile-menu-open]');
 
     await expect(languageLinks).toHaveCount(2);
     await expect(languageLinks).toHaveText(['FR', 'EN']);
@@ -95,7 +99,7 @@ test('mobile menu opens, exposes localized links, and closes with Escape', async
   await page.setViewportSize({width: 390, height: 844});
   await page.goto('/en/');
 
-  const menuButton = page.getByRole('button', {name: 'Menu', exact: true});
+  const menuButton = page.locator('button[data-mobile-menu-open]');
   const drawer = page.getByRole('dialog', {name: 'Les Mains de Sérénité'});
 
   await expect(menuButton).toBeVisible();
@@ -108,9 +112,13 @@ test('mobile menu opens, exposes localized links, and closes with Escape', async
   await expect(drawer.getByRole('link', {name: 'Maderotherapy'})).toHaveCount(
     0
   );
+  await expect(drawer.getByRole('link', {name: 'Massages'})).toHaveAttribute(
+    'href',
+    '/en/massages/'
+  );
   await expect(drawer.getByRole('link', {name: 'Programs'})).toHaveAttribute(
     'href',
-    '/en/light-belly-light-legs-program'
+    '/en/programs/'
   );
 
   await page.keyboard.press('Escape');
@@ -123,7 +131,7 @@ test('mobile menu contains focus and handles a rapid close', async ({page}) => {
   await page.setViewportSize({width: 390, height: 844});
   await page.goto('/');
 
-  const menuButton = page.getByRole('button', {name: 'Menu', exact: true});
+  const menuButton = page.locator('button[data-mobile-menu-open]');
   const drawer = page.getByRole('dialog', {name: 'Les Mains de Sérénité'});
   const closeButton = drawer.getByRole('button', {name: 'Fermer le menu'});
 

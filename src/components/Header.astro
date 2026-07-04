@@ -29,14 +29,11 @@ const toHref = (path: string) =>
   path.startsWith('http') ? path : `${baseUrl}${path.replace(/^\//, '')}`;
 const homePath = locale === 'en' ? '/en/' : '/';
 const homeHref = toHref(homePath);
-const bookingHref = reserveLink
-  ? toHref(reserveLink)
-  : `${homeHref}#reservation`;
 const brand = site.business.name;
 const localized = getLocalizedSite(locale);
 const {
   chrome: {header},
-  pages: {home, program},
+  pages: {home, massages, programs},
 } = localized;
 const {tagline, links} = header;
 const {
@@ -44,12 +41,18 @@ const {
   booking: {bookingPath},
   whatsapp: {generalHref: whatsappHref},
 } = home;
+const bookingHref = reserveLink ? toHref(reserveLink) : toHref(bookingPath);
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 const normalizedHomePath = homePath.replace(/\/$/, '') || '/';
-const programPath = program.path.replace(/\/$/, '') || '/';
 const homeActive = currentPath === normalizedHomePath;
-const programActive = currentPath === programPath;
-const programHref = toHref(program.path);
+const massagePath = massages.path.replace(/\/$/, '') || '/';
+const programPath = programs.path.replace(/\/$/, '') || '/';
+const massagesActive =
+  currentPath === massagePath || currentPath.startsWith(`${massagePath}/`);
+const programActive =
+  currentPath === programPath || currentPath.startsWith(`${programPath}/`);
+const massagesHref = toHref(massages.path);
+const programHref = toHref(programs.path);
 const drawerBookingHref = reserveLink
   ? toHref(reserveLink)
   : toHref(bookingPath);
@@ -96,7 +99,17 @@ const navLabel = locale === 'en' ? 'Main navigation' : 'Navigation principale';
 
     <nav class="hidden items-center gap-6 lg:flex">
       <a href={`${homeHref}#accueil`} class="nav-link">{links.home}</a>
-      <a href={`${homeHref}#massages`} class="nav-link">{links.massages}</a>
+      {
+        massagesActive ? (
+          <span aria-current="page" class="text-sm font-medium text-ink">
+            {links.massages}
+          </span>
+        ) : (
+          <a href={massagesHref} class="nav-link">
+            {links.massages}
+          </a>
+        )
+      }
       {
         programActive ? (
           <span aria-current="page" class="text-sm font-medium text-ink">
@@ -229,9 +242,17 @@ const navLabel = locale === 'en' ? 'Main navigation' : 'Navigation principale';
           </a>
         )
       }
-      <a href={`${homeHref}#massages`} class="drawer-link">
-        {links.massages}
-      </a>
+      {
+        massagesActive ? (
+          <span aria-current="page" class="drawer-link drawer-link-active">
+            {links.massages}
+          </span>
+        ) : (
+          <a href={massagesHref} class="drawer-link">
+            {links.massages}
+          </a>
+        )
+      }
       {
         programActive ? (
           <span aria-current="page" class="drawer-link drawer-link-active">

@@ -20,17 +20,19 @@ const toHref = (path: string) =>
   path.startsWith('http') ? path : `${baseUrl}${path.replace(/^\//, '')}`;
 const homePath = locale === 'en' ? '/en/' : '/';
 const homeHref = toHref(homePath);
-const bookingHref = reserveLink
-  ? toHref(reserveLink)
-  : `${homeHref}#reservation`;
 const {
   business: {name: brand},
   pages,
+  localized,
 } = site;
 const {
   chrome: {footer},
 } = getLocalizedSite(locale);
 const {tagline, links} = footer;
+const localizedPages = localized[locale].pages;
+const bookingHref = reserveLink
+  ? toHref(reserveLink)
+  : toHref(localizedPages.home.booking.bookingPath);
 ---
 
 <footer
@@ -52,8 +54,17 @@ const {tagline, links} = footer;
     <div
       class="flex flex-wrap items-center justify-center gap-4 text-sm text-white/75"
     >
-      <a href={`${homeHref}#massages`} class="no-underline hover:text-white">
+      <a
+        href={toHref(localizedPages.massages.path)}
+        class="no-underline hover:text-white"
+      >
         {links.massages}
+      </a>
+      <a
+        href={toHref(localizedPages.programs.path)}
+        class="no-underline hover:text-white"
+      >
+        {links.program}
       </a>
       <a href={`${homeHref}#apropos`} class="no-underline hover:text-white">
         {links.about}

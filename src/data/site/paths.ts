@@ -5,13 +5,25 @@ export const localizedPagePaths = {
     fr: '/',
     en: '/en/',
   },
+  massages: {
+    fr: '/massages/',
+    en: '/en/massages/',
+  },
+  programs: {
+    fr: '/programmes/',
+    en: '/en/programs/',
+  },
   program: {
-    fr: '/programme-ventre-leger-jambes-legeres',
-    en: '/en/light-belly-light-legs-program',
+    fr: '/programmes/ventre-leger-jambes-legeres/',
+    en: '/en/programs/light-belly-light-legs/',
+  },
+  cureFusion: {
+    fr: '/programmes/cure-fusion/',
+    en: '/en/programs/cure-fusion/',
   },
   maderotherapie: {
-    fr: '/maderotherapie/',
-    en: '/en/maderotherapy/',
+    fr: '/massages/maderotherapie/',
+    en: '/en/massages/maderotherapy/',
   },
   reserve: {
     fr: '/reserver',

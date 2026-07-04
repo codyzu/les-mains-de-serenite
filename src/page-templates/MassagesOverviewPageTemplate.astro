@@ -1,0 +1,130 @@
+---
+import IconImage from '../components/IconImage.astro';
+import Massages from '../components/Massages.astro';
+import {
+  localizedPagePaths,
+  type Locale,
+  type LocalizedSiteData,
+  type SiteBusinessData,
+} from '../data/site';
+import Layout from '../layouts/Layout.astro';
+
+interface Props {
+  locale: Locale;
+  business: SiteBusinessData;
+  localized: LocalizedSiteData;
+}
+
+const {locale, business, localized} = Astro.props;
+const {
+  pages: {massages},
+} = localized;
+const languageSwitchPaths = localizedPagePaths.massages;
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: massages.meta.title,
+  description: massages.meta.description,
+  itemListElement: massages.section.items.map((item, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: item.title,
+  })),
+  provider: {
+    '@type': business.seo.schemaType,
+    name: business.name,
+    telephone: business.phone,
+    address: {
+      '@type': 'PostalAddress',
+      ...business.address,
+    },
+  },
+  areaServed: business.seo.areaServed,
+};
+---
+
+<Layout
+  locale={locale}
+  canonicalPath={massages.path}
+  alternatePaths={languageSwitchPaths}
+  languageSwitchPaths={languageSwitchPaths}
+  title={massages.meta.title}
+  description={massages.meta.description}
+  structuredData={structuredData}
+>
+  <main>
+    <section class="overflow-hidden bg-surface-muted">
+      <div class="container-page py-16 sm:py-20 lg:py-24">
+        <div class="max-w-3xl">
+          <p
+            class="mb-4 text-sm font-medium uppercase tracking-[0.25em] text-brand-strong"
+          >
+            {massages.hero.eyebrow}
+          </p>
+          <h1 class="heading-xl">{massages.hero.title}</h1>
+          <p class="body-lg mt-6 max-w-2xl">{massages.hero.description}</p>
+          <p class="mt-4 max-w-2xl text-base leading-7 text-ink/68">
+            {massages.hero.reassurance}
+          </p>
+          <a
+            href={massages.hero.ctaHref}
+            class="btn-primary mt-8 min-h-[3rem] px-7 py-3.5 sm:min-h-0 sm:py-3"
+            data-analytics-event={massages.hero.analyticsEvent}
+          >
+            {massages.hero.ctaText}
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <Massages {...massages.section} />
+
+    <section class="bg-surface-muted px-0 py-10 sm:py-12">
+      <div class="container-page">
+        <div
+          class="card-soft mx-auto max-w-5xl bg-white/84 p-7 shadow-card sm:p-8 lg:flex lg:items-center lg:justify-between lg:gap-10"
+        >
+          <div class="max-w-3xl">
+            <p class="text-sm uppercase tracking-[0.22em] text-brand-strong/82">
+              {locale === 'en' ? 'Programs' : 'Programmes'}
+            </p>
+            <h2 class="heading-md mt-3">{massages.programCrossLink.title}</h2>
+            <p class="body-base mt-4">
+              {massages.programCrossLink.description}
+            </p>
+          </div>
+          <a
+            href={massages.programCrossLink.href}
+            class="mt-6 inline-flex min-h-[3rem] items-center justify-center rounded-full border border-brand/24 px-6 py-3 text-sm font-semibold text-brand-strong no-underline transition hover:bg-brand-soft lg:mt-0 lg:shrink-0"
+          >
+            {massages.programCrossLink.text}
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="reservation" class="section-pad bg-surface">
+      <div class="container-page">
+        <div
+          class="card-soft mx-auto max-w-4xl p-8 text-center shadow-soft sm:p-10 lg:p-12"
+        >
+          <IconImage
+            name="i-lucide-calendar-heart"
+            class="mx-auto bg-brand-soft text-brand-strong"
+          />
+          <h2 class="heading-lg">{massages.booking.title}</h2>
+          <p class="body-lg mx-auto mt-4 max-w-2xl">
+            {massages.booking.description}
+          </p>
+          <a
+            href={massages.booking.href}
+            class="btn-primary mt-7 min-h-[3rem] px-7 py-3.5 sm:min-h-0 sm:py-3"
+            data-analytics-event={massages.booking.analyticsEvent}
+          >
+            {massages.booking.text}
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

@@ -1,13 +1,15 @@
 ---
-import {getLocalizedSite, site} from '../../data/site';
-import MaderotherapiePageTemplate from '../../page-templates/MaderotherapiePageTemplate.astro';
+import {localizedPagePaths} from '../../data/site';
+import LegacyRedirectPageTemplate from '../../page-templates/LegacyRedirectPageTemplate.astro';
 
 const locale = 'en' as const;
-const localized = getLocalizedSite(locale);
 ---
 
-<MaderotherapiePageTemplate
+<LegacyRedirectPageTemplate
   locale={locale}
-  business={site.business}
-  localized={localized}
+  title="Maderotherapy in Annecy"
+  description="The Maderotherapy page now lives in the Massages section."
+  destinationPath={localizedPagePaths.maderotherapie.en}
+  destinationLabel="Discover maderotherapy"
+  languageSwitchPaths={localizedPagePaths.maderotherapie}
 />

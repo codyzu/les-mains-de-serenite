@@ -1,12 +1,13 @@
 ---
-import {defaultLocale, getLocalizedSite, site} from '../data/site';
-import ProgramPageTemplate from '../page-templates/ProgramPageTemplate.astro';
-
-const localized = getLocalizedSite(defaultLocale);
+import {defaultLocale, localizedPagePaths} from '../data/site';
+import LegacyRedirectPageTemplate from '../page-templates/LegacyRedirectPageTemplate.astro';
 ---
 
-<ProgramPageTemplate
+<LegacyRedirectPageTemplate
   locale={defaultLocale}
-  business={site.business}
-  localized={localized}
+  title="Programme Ventre Léger & Jambes Légères"
+  description="Cette page se trouve désormais dans la section Programmes."
+  destinationPath={localizedPagePaths.program.fr}
+  destinationLabel="Découvrir le programme"
+  languageSwitchPaths={localizedPagePaths.program}
 />

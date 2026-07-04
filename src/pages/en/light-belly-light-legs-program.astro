@@ -1,13 +1,15 @@
 ---
-import {getLocalizedSite, site} from '../../data/site';
-import ProgramPageTemplate from '../../page-templates/ProgramPageTemplate.astro';
+import {localizedPagePaths} from '../../data/site';
+import LegacyRedirectPageTemplate from '../../page-templates/LegacyRedirectPageTemplate.astro';
 
-const locale = 'en';
-const localized = getLocalizedSite(locale);
+const locale = 'en' as const;
 ---
 
-<ProgramPageTemplate
+<LegacyRedirectPageTemplate
   locale={locale}
-  business={site.business}
-  localized={localized}
+  title="Light Belly & Light Legs Program"
+  description="This page now lives in the Programs section."
+  destinationPath={localizedPagePaths.program.en}
+  destinationLabel="Discover the program"
+  languageSwitchPaths={localizedPagePaths.program}
 />

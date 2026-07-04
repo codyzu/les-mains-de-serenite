@@ -46,25 +46,25 @@ export const homePages = {
           title: 'Jambes lourdes',
           description:
             'Pour retrouver une sensation de légèreté et soulager l’inconfort en fin de journée.',
-          href: '/#drainage-lymphatique',
+          href: `${localizedPagePaths.massages.fr}#drainage-lymphatique`,
         },
         {
           title: 'Ventre gonflé',
           description:
             'Pour accompagner une sensation de ventre plus léger grâce au drainage et aux conseils adaptés.',
-          href: `${localizedPagePaths.program.fr}/`,
+          href: localizedPagePaths.program.fr,
         },
         {
           title: 'Rétention d’eau',
           description:
             'Pour aider le corps à relancer naturellement la circulation des fluides.',
-          href: '/#drainage-lymphatique',
+          href: `${localizedPagePaths.massages.fr}#drainage-lymphatique`,
         },
         {
           title: 'Besoin de ralentir',
           description:
             'Pour s’offrir une pause, relâcher les tensions et retrouver un moment de calme.',
-          href: '/#reservation',
+          href: `${localizedPagePaths.massages.fr}#massage-anti-douleur`,
         },
       ],
     },
@@ -85,6 +85,8 @@ export const homePages = {
             {duration: '1 h', price: '90 €', recommended: true},
             {duration: '1 h 30', price: '125 €'},
           ],
+          ctaText: 'Voir les massages',
+          ctaLink: localizedPagePaths.massages.fr,
         },
         {
           anchorId: 'massage-anti-douleur',
@@ -97,6 +99,8 @@ export const homePages = {
             {duration: '1 h', price: '80 €', recommended: true},
             {duration: '1 h 30', price: '115 €'},
           ],
+          ctaText: 'Voir les massages',
+          ctaLink: localizedPagePaths.massages.fr,
         },
         {
           anchorId: 'massage-remodelant',
@@ -108,6 +112,8 @@ export const homePages = {
             {duration: '1 h', price: '110 €', recommended: true},
             {duration: '1 h 30', price: '135 €'},
           ],
+          ctaText: 'Voir les massages',
+          ctaLink: localizedPagePaths.massages.fr,
         },
         {
           anchorId: 'massage-visage-liftant',
@@ -120,6 +126,8 @@ export const homePages = {
             {duration: '45 min', price: '65 €', recommended: true},
             {duration: '1 h', price: '85 €'},
           ],
+          ctaText: 'Voir les massages',
+          ctaLink: localizedPagePaths.massages.fr,
         },
         {
           anchorId: 'maderotherapie',
@@ -166,7 +174,7 @@ export const homePages = {
           title: 'Cure Fusion',
           subtitle: '3 séances personnalisées',
           description:
-            'Un accompagnement conçu pour retrouver une sensation de légèreté, de tonicité et de bien-être global au fil des séances. Les techniques sont choisies selon vos besoins et le résultat recherché.',
+            'Un accompagnement conçu pour retrouver une sensation de légèreté, de tonicité et de bien-être durable grâce à plusieurs séances adaptées à vos besoins.',
           includesTitle: 'La cure peut associer',
           includes: [
             'Drainage lymphatique',
@@ -339,25 +347,25 @@ export const homePages = {
           title: 'Heavy legs',
           description:
             'To reconnect with a feeling of lightness and ease end-of-day discomfort.',
-          href: '/en/#lymphatic-drainage',
+          href: `${localizedPagePaths.massages.en}#lymphatic-drainage`,
         },
         {
           title: 'Feeling bloated',
           description:
             'To support a lighter belly feeling through drainage and adapted guidance.',
-          href: `${localizedPagePaths.program.en}/`,
+          href: localizedPagePaths.program.en,
         },
         {
           title: 'Water retention',
           description:
             'To help the body naturally restart fluid circulation sensations.',
-          href: '/en/#lymphatic-drainage',
+          href: `${localizedPagePaths.massages.en}#lymphatic-drainage`,
         },
         {
           title: 'Need to slow down',
           description:
             'To take a pause, release tension, and return to a calmer moment.',
-          href: '/en/#reservation',
+          href: `${localizedPagePaths.massages.en}#tension-relief-massage`,
         },
       ],
     },
@@ -378,6 +386,8 @@ export const homePages = {
             {duration: '1 h', price: '90 €', recommended: true},
             {duration: '1 h 30', price: '125 €'},
           ],
+          ctaText: 'View massages',
+          ctaLink: localizedPagePaths.massages.en,
         },
         {
           anchorId: 'tension-relief-massage',
@@ -390,6 +400,8 @@ export const homePages = {
             {duration: '1 h', price: '80 €', recommended: true},
             {duration: '1 h 30', price: '115 €'},
           ],
+          ctaText: 'View massages',
+          ctaLink: localizedPagePaths.massages.en,
         },
         {
           anchorId: 'body-sculpting-massage',
@@ -401,6 +413,8 @@ export const homePages = {
             {duration: '1 h', price: '110 €', recommended: true},
             {duration: '1 h 30', price: '135 €'},
           ],
+          ctaText: 'View massages',
+          ctaLink: localizedPagePaths.massages.en,
         },
         {
           anchorId: 'lifting-facial-massage',
@@ -413,6 +427,8 @@ export const homePages = {
             {duration: '45 min', price: '65 €', recommended: true},
             {duration: '1 h', price: '85 €'},
           ],
+          ctaText: 'View massages',
+          ctaLink: localizedPagePaths.massages.en,
         },
         {
           anchorId: 'maderotherapy',
@@ -459,7 +475,7 @@ export const homePages = {
           title: 'Cure Fusion',
           subtitle: '3 personalized sessions',
           description:
-            'A guided accompaniment designed to restore a feeling of lightness, tone, and overall well-being over several sessions. Techniques are selected according to your needs and desired outcome.',
+            'A guided accompaniment designed to restore a lasting feeling of lightness, tone, and well-being through several sessions adapted to your needs.',
           includesTitle: 'The package may include',
           includes: [
             'Lymphatic drainage',

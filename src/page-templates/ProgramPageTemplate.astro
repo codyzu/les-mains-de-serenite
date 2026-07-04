@@ -4,7 +4,12 @@ import IconImage from '../components/IconImage.astro';
 import Practitioner from '../assets/about-practitioner.png';
 import ProgramDrainageHero from '../assets/program-drainage-realistic.png';
 import ProgramHabitsGuidance from '../assets/program-habits-guidance-no-text.png';
-import type {Locale, LocalizedSiteData, SiteBusinessData} from '../data/site';
+import {
+  localizedPagePaths,
+  type Locale,
+  type LocalizedSiteData,
+  type SiteBusinessData,
+} from '../data/site';
 import Layout from '../layouts/Layout.astro';
 
 interface Props {
@@ -17,10 +22,7 @@ const {locale, business, localized} = Astro.props;
 const {
   pages: {program},
 } = localized;
-const languageSwitchPaths = {
-  fr: '/programme-ventre-leger-jambes-legeres',
-  en: '/en/light-belly-light-legs-program',
-} as const;
+const languageSwitchPaths = localizedPagePaths.program;
 const ctaIsExternal = program.cta.href.startsWith('http');
 const structuredDataPrice = program.price.amount.replaceAll(/[^\d,.]/g, '');
 const structuredData = {

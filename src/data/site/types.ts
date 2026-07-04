@@ -54,6 +54,7 @@ export type SiteFooterData = {
   tagline: string;
   links: {
     massages: string;
+    program: string;
     about: string;
     reserve: string;
     contact: string;
@@ -148,6 +149,60 @@ export type ProgramPreviewData = {
   title: string;
   intro: string;
   items: ProgramPreviewItemData[];
+};
+
+export type OverviewCtaData = {
+  title: string;
+  description: string;
+  text: string;
+  href: string;
+  analyticsEvent?: AnalyticsEventName;
+};
+
+export type MassagesOverviewPageData = {
+  meta: {
+    title: string;
+    description: string;
+  };
+  path: string;
+  hero: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    reassurance: string;
+    ctaText: string;
+    ctaHref: string;
+    analyticsEvent?: AnalyticsEventName;
+  };
+  section: MassagesSectionData;
+  programCrossLink: OverviewCtaData;
+  booking: OverviewCtaData;
+};
+
+export type ProgramsOverviewPageData = {
+  meta: {
+    title: string;
+    description: string;
+  };
+  path: string;
+  hero: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    reassurance: string;
+    ctaText: string;
+    ctaHref: string;
+    analyticsEvent?: AnalyticsEventName;
+  };
+  distinction: {
+    singleTitle: string;
+    singleDescription: string;
+    programTitle: string;
+    programDescription: string;
+  };
+  preview: ProgramPreviewData;
+  massagesCrossLink: OverviewCtaData;
+  booking: OverviewCtaData;
 };
 
 export type ProgramPageData = {
@@ -426,6 +481,8 @@ export type LocalizedSiteData = {
   chrome: SiteChromeData;
   pages: {
     home: HomePageData;
+    massages: MassagesOverviewPageData;
+    programs: ProgramsOverviewPageData;
     program: ProgramPageData;
     maderotherapie: MaderotherapiePageData;
     reserve: ReservePageData;

@@ -1,0 +1,55 @@
+---
+import type {Locale, LocalePathMap} from '../data/site';
+import Layout from '../layouts/Layout.astro';
+
+interface Props {
+  locale: Locale;
+  title: string;
+  description: string;
+  destinationPath: string;
+  destinationLabel: string;
+  languageSwitchPaths?: LocalePathMap;
+}
+
+const {
+  locale,
+  title,
+  description,
+  destinationPath,
+  destinationLabel,
+  languageSwitchPaths,
+} = Astro.props;
+---
+
+<Layout
+  locale={locale}
+  canonicalPath={destinationPath}
+  languageSwitchPaths={languageSwitchPaths}
+  title={title}
+  description={description}
+>
+  <meta
+    slot="head"
+    http-equiv="refresh"
+    content={`0; url=${destinationPath}`}
+  />
+  <main class="bg-surface">
+    <section class="section-pad">
+      <div class="container-page max-w-3xl">
+        <div class="card-soft p-7 text-center shadow-soft sm:p-10">
+          <p class="text-sm uppercase tracking-[0.25em] text-brand-strong">
+            {locale === 'en' ? 'Page moved' : 'Page déplacée'}
+          </p>
+          <h1 class="heading-lg mt-4">{title}</h1>
+          <p class="body-base mx-auto mt-4 max-w-xl">{description}</p>
+          <a class="btn-primary mt-7" href={destinationPath}>
+            {destinationLabel}
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script define:vars={{destinationPath}}>
+    window.location.replace(destinationPath);
+  </script>
+</Layout>

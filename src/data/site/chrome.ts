@@ -17,6 +17,7 @@ export const chrome = {
       tagline: 'Massage bien-être',
       links: {
         massages: 'Massages',
+        program: 'Programmes',
         about: 'À propos',
         reserve: 'Réserver',
         contact: 'Contact',
@@ -41,6 +42,7 @@ export const chrome = {
       tagline: 'Wellness massage',
       links: {
         massages: 'Massages',
+        program: 'Programs',
         about: 'About',
         reserve: 'Book',
         contact: 'Contact',

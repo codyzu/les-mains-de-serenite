@@ -2,10 +2,17 @@ import {expect, test} from './fixtures';
 
 const routes = [
   '/',
-  '/404.html',
   '/en/',
+  '/massages/',
+  '/en/massages/',
+  '/massages/maderotherapie/',
+  '/en/massages/maderotherapy/',
   '/maderotherapie/',
   '/en/maderotherapy/',
+  '/programmes/',
+  '/en/programs/',
+  '/programmes/ventre-leger-jambes-legeres/',
+  '/en/programs/light-belly-light-legs/',
   '/programme-ventre-leger-jambes-legeres',
   '/en/light-belly-light-legs-program',
   '/reserver',
@@ -38,6 +45,58 @@ test('custom 404 page renders branded recovery links', async ({page}) => {
   await expect(
     page.getByRole('link', {name: 'English homepage', exact: true})
   ).toHaveAttribute('href', '/en/');
+});
+
+test('section overview pages render their main content', async ({page}) => {
+  await page.goto('/massages/');
+
+  await expect(
+    page.getByRole('heading', {
+      name: 'Chaque massage est pensé pour répondre à votre besoin du moment',
+    })
+  ).toBeVisible();
+  await expect(
+    page.getByText('Massages réservés exclusivement aux femmes')
+  ).toBeVisible();
+  await expect(
+    page.getByRole('link', {name: 'Réserver un massage'})
+  ).toHaveAttribute('href', '/reserver');
+  await expect(
+    page.getByRole('heading', {name: 'Madérothérapie'})
+  ).toBeVisible();
+  await expect(
+    page.getByRole('heading', {name: 'Besoin d’aide pour choisir ?'})
+  ).toBeVisible();
+  await expect(
+    page.getByRole('link', {name: 'Réserver ou poser une question'})
+  ).toHaveAttribute('href', '/reserver');
+  await expect(
+    page.getByRole('link', {name: 'Découvrir les programmes'})
+  ).toHaveAttribute('href', '/programmes/');
+
+  await page.goto('/programmes/');
+
+  await expect(
+    page.getByRole('heading', {name: 'Aller plus loin qu’une séance seule'})
+  ).toBeVisible();
+  await expect(
+    page.getByText('Des accompagnements bien-être réservés aux femmes')
+  ).toBeVisible();
+  await expect(
+    page.getByRole('link', {name: 'Réserver un accompagnement'})
+  ).toHaveAttribute('href', '/reserver');
+  await expect(page.getByRole('heading', {name: 'Cure Fusion'})).toBeVisible();
+  await expect(
+    page.getByRole('link', {name: 'Découvrir la cure'})
+  ).toHaveAttribute('href', /wa\.me/);
+  await expect(
+    page.getByText(
+      'Deux accompagnements permettent d’aller plus loin, selon vos besoins et votre objectif de bien-être.'
+    )
+  ).toBeVisible();
+  await expect(
+    page.getByRole('link', {name: 'Voir les massages'})
+  ).toHaveAttribute('href', '/massages/');
 });
 
 test('online booking pages render the embedded scheduler shell', async ({

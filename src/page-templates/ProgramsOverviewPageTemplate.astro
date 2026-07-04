@@ -1,0 +1,157 @@
+---
+import IconImage from '../components/IconImage.astro';
+import ProgramPreview from '../components/ProgramPreview.astro';
+import {
+  localizedPagePaths,
+  type Locale,
+  type LocalizedSiteData,
+  type SiteBusinessData,
+} from '../data/site';
+import Layout from '../layouts/Layout.astro';
+
+interface Props {
+  locale: Locale;
+  business: SiteBusinessData;
+  localized: LocalizedSiteData;
+}
+
+const {locale, business, localized} = Astro.props;
+const {
+  pages: {programs},
+} = localized;
+const languageSwitchPaths = localizedPagePaths.programs;
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: programs.meta.title,
+  description: programs.meta.description,
+  itemListElement: programs.preview.items.map((item, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: item.title,
+  })),
+  provider: {
+    '@type': business.seo.schemaType,
+    name: business.name,
+    telephone: business.phone,
+    address: {
+      '@type': 'PostalAddress',
+      ...business.address,
+    },
+  },
+  areaServed: business.seo.areaServed,
+};
+---
+
+<Layout
+  locale={locale}
+  canonicalPath={programs.path}
+  alternatePaths={languageSwitchPaths}
+  languageSwitchPaths={languageSwitchPaths}
+  title={programs.meta.title}
+  description={programs.meta.description}
+  structuredData={structuredData}
+>
+  <main>
+    <section class="overflow-hidden bg-surface-muted">
+      <div class="container-page py-16 sm:py-20 lg:py-24">
+        <div class="max-w-3xl">
+          <p
+            class="mb-4 text-sm font-medium uppercase tracking-[0.25em] text-brand-strong"
+          >
+            {programs.hero.eyebrow}
+          </p>
+          <h1 class="heading-xl">{programs.hero.title}</h1>
+          <p class="body-lg mt-6 max-w-2xl">{programs.hero.description}</p>
+          <p class="mt-4 max-w-2xl text-base leading-7 text-ink/68">
+            {programs.hero.reassurance}
+          </p>
+          <a
+            href={programs.hero.ctaHref}
+            class="btn-primary mt-8 min-h-[3rem] px-7 py-3.5 sm:min-h-0 sm:py-3"
+            data-analytics-event={programs.hero.analyticsEvent}
+          >
+            {programs.hero.ctaText}
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad bg-surface">
+      <div class="container-page">
+        <div class="grid gap-5 lg:grid-cols-2">
+          <article class="card-soft bg-white/82 p-7 shadow-card sm:p-8">
+            <IconImage
+              name="i-lucide-sparkles"
+              class="bg-brand-soft text-brand-strong"
+            />
+            <h2 class="heading-md">{programs.distinction.singleTitle}</h2>
+            <p class="body-base mt-4">
+              {programs.distinction.singleDescription}
+            </p>
+          </article>
+          <article class="card-soft bg-white/82 p-7 shadow-card sm:p-8">
+            <IconImage
+              name="i-lucide-calendar-heart"
+              class="bg-accent-soft text-accent-strong"
+            />
+            <h2 class="heading-md">{programs.distinction.programTitle}</h2>
+            <p class="body-base mt-4">
+              {programs.distinction.programDescription}
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <ProgramPreview {...programs.preview} />
+
+    <section class="bg-surface px-0 py-10 sm:py-12">
+      <div class="container-page">
+        <div
+          class="card-soft mx-auto max-w-5xl bg-white/84 p-7 shadow-card sm:p-8 lg:flex lg:items-center lg:justify-between lg:gap-10"
+        >
+          <div class="max-w-3xl">
+            <p class="text-sm uppercase tracking-[0.22em] text-brand-strong/82">
+              {locale === 'en' ? 'Massages' : 'Massages'}
+            </p>
+            <h2 class="heading-md mt-3">{programs.massagesCrossLink.title}</h2>
+            <p class="body-base mt-4">
+              {programs.massagesCrossLink.description}
+            </p>
+          </div>
+          <a
+            href={programs.massagesCrossLink.href}
+            class="mt-6 inline-flex min-h-[3rem] items-center justify-center rounded-full border border-brand/24 px-6 py-3 text-sm font-semibold text-brand-strong no-underline transition hover:bg-brand-soft lg:mt-0 lg:shrink-0"
+          >
+            {programs.massagesCrossLink.text}
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="reservation" class="section-pad bg-surface-muted">
+      <div class="container-page">
+        <div
+          class="card-soft mx-auto max-w-4xl p-8 text-center shadow-soft sm:p-10 lg:p-12"
+        >
+          <IconImage
+            name="i-lucide-message-circle"
+            class="mx-auto bg-brand-soft text-brand-strong"
+          />
+          <h2 class="heading-lg">{programs.booking.title}</h2>
+          <p class="body-lg mx-auto mt-4 max-w-2xl">
+            {programs.booking.description}
+          </p>
+          <a
+            href={programs.booking.href}
+            class="btn-primary mt-7 min-h-[3rem] px-7 py-3.5 sm:min-h-0 sm:py-3"
+            data-analytics-event={programs.booking.analyticsEvent}
+          >
+            {programs.booking.text}
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
