@@ -29,7 +29,7 @@ export const homePages = {
         {text: 'Des '},
         {
           text: 'soins ponctuels',
-          href: localizedPagePaths.massages.fr,
+          href: localizedPagePaths.soins.fr,
         },
         {
           text: ', dont le massage bien-être à Annecy, pour répondre à un besoin du moment, ou des ',
@@ -65,7 +65,7 @@ export const homePages = {
           title: 'Jambes lourdes',
           description:
             'Un soin ponctuel peut aider à retrouver une sensation de légèreté.',
-          href: `${localizedPagePaths.massages.fr}#drainage-lymphatique`,
+          href: `${localizedPagePaths.soins.fr}#drainage-lymphatique`,
           ctaText: 'Voir le soin',
         },
         {
@@ -79,21 +79,21 @@ export const homePages = {
           title: 'Rétention d’eau',
           description:
             'Le drainage lymphatique à Annecy est souvent choisi pour ce besoin.',
-          href: `${localizedPagePaths.massages.fr}#drainage-lymphatique`,
+          href: `${localizedPagePaths.soins.fr}#drainage-lymphatique`,
           ctaText: 'Voir le soin',
         },
         {
           title: 'Besoin de ralentir',
           description:
             'Un soin relaxant pour relâcher les tensions et retrouver du calme.',
-          href: `${localizedPagePaths.massages.fr}#massage-anti-douleur`,
+          href: `${localizedPagePaths.soins.fr}#massage-anti-douleur`,
           ctaText: 'Voir le soin',
         },
         {
           title: 'Silhouette / tonicité',
           description:
             'Un soin remodelant ou une madérothérapie à Annecy selon votre ressenti.',
-          href: `${localizedPagePaths.massages.fr}#massage-remodelant`,
+          href: `${localizedPagePaths.soins.fr}#massage-remodelant`,
           ctaText: 'Voir les soins',
         },
         {
@@ -105,19 +105,19 @@ export const homePages = {
         },
       ],
     },
-    massagesSection: {
+    soinsSection: {
       title: 'Soin ponctuel : choisir le rituel juste',
       intro:
         'Une sélection de soins bien-être à Annecy, réservés aux femmes, pour répondre à un besoin précis ou simplement s’accorder un vrai moment pour soi.',
       introLinks: [
         {
           text: 'soins bien-être à Annecy',
-          href: localizedPagePaths.massages.fr,
+          href: localizedPagePaths.soins.fr,
         },
       ],
       recommendedLabel: 'Durée conseillée',
       ctaText: 'Découvrir les soins',
-      ctaLink: localizedPagePaths.massages.fr,
+      ctaLink: localizedPagePaths.soins.fr,
       items: [
         {
           anchorId: 'drainage-lymphatique',
@@ -131,7 +131,7 @@ export const homePages = {
             {duration: '1 h 30', price: '125 €'},
           ],
           ctaText: 'Voir le soin',
-          ctaLink: `${localizedPagePaths.massages.fr}#drainage-lymphatique`,
+          ctaLink: `${localizedPagePaths.soins.fr}#drainage-lymphatique`,
         },
         {
           anchorId: 'massage-anti-douleur',
@@ -145,7 +145,7 @@ export const homePages = {
             {duration: '1 h 30', price: '115 €'},
           ],
           ctaText: 'Voir le soin',
-          ctaLink: `${localizedPagePaths.massages.fr}#massage-anti-douleur`,
+          ctaLink: `${localizedPagePaths.soins.fr}#massage-anti-douleur`,
         },
         {
           anchorId: 'massage-remodelant',
@@ -158,7 +158,7 @@ export const homePages = {
             {duration: '1 h 30', price: '135 €'},
           ],
           ctaText: 'Voir le soin',
-          ctaLink: `${localizedPagePaths.massages.fr}#massage-remodelant`,
+          ctaLink: `${localizedPagePaths.soins.fr}#massage-remodelant`,
         },
         {
           anchorId: 'massage-visage-liftant',
@@ -172,7 +172,7 @@ export const homePages = {
             {duration: '1 h', price: '85 €'},
           ],
           ctaText: 'Voir le soin',
-          ctaLink: `${localizedPagePaths.massages.fr}#massage-visage-liftant`,
+          ctaLink: `${localizedPagePaths.soins.fr}#massage-visage-liftant`,
         },
         {
           anchorId: 'maderotherapie',
@@ -384,7 +384,7 @@ export const homePages = {
         {text: 'Choose '},
         {
           text: 'single treatments',
-          href: localizedPagePaths.massages.en,
+          href: localizedPagePaths.soins.en,
         },
         {
           text: ', including wellness massage in Annecy, for a current need, or ',
@@ -420,7 +420,7 @@ export const homePages = {
           title: 'Heavy legs',
           description:
             'A single treatment can help you reconnect with a feeling of lightness.',
-          href: `${localizedPagePaths.massages.en}#lymphatic-drainage`,
+          href: `${localizedPagePaths.soins.en}#lymphatic-drainage`,
           ctaText: 'View treatment',
         },
         {
@@ -434,21 +434,21 @@ export const homePages = {
           title: 'Water retention',
           description:
             'Lymphatic drainage in Annecy is often chosen for this kind of need.',
-          href: `${localizedPagePaths.massages.en}#lymphatic-drainage`,
+          href: `${localizedPagePaths.soins.en}#lymphatic-drainage`,
           ctaText: 'View treatment',
         },
         {
           title: 'Need to slow down',
           description:
             'A relaxing treatment to release tension and return to a calmer moment.',
-          href: `${localizedPagePaths.massages.en}#tension-relief-massage`,
+          href: `${localizedPagePaths.soins.en}#tension-relief-massage`,
           ctaText: 'View treatment',
         },
         {
           title: 'Silhouette / tone',
           description:
             'A body sculpting treatment or maderotherapy depending on how you feel.',
-          href: `${localizedPagePaths.massages.en}#body-sculpting-massage`,
+          href: `${localizedPagePaths.soins.en}#body-sculpting-massage`,
           ctaText: 'View treatments',
         },
         {
@@ -460,19 +460,19 @@ export const homePages = {
         },
       ],
     },
-    massagesSection: {
+    soinsSection: {
       title: 'Single treatment: choose the right ritual',
       intro:
         'A curated preview of women-only wellness treatments in Annecy, for a specific need or a true moment for yourself.',
       introLinks: [
         {
           text: 'wellness treatments in Annecy',
-          href: localizedPagePaths.massages.en,
+          href: localizedPagePaths.soins.en,
         },
       ],
       recommendedLabel: 'Recommended',
       ctaText: 'Discover the treatments',
-      ctaLink: localizedPagePaths.massages.en,
+      ctaLink: localizedPagePaths.soins.en,
       items: [
         {
           anchorId: 'lymphatic-drainage',
@@ -486,7 +486,7 @@ export const homePages = {
             {duration: '1 h 30', price: '125 €'},
           ],
           ctaText: 'View treatment',
-          ctaLink: `${localizedPagePaths.massages.en}#lymphatic-drainage`,
+          ctaLink: `${localizedPagePaths.soins.en}#lymphatic-drainage`,
         },
         {
           anchorId: 'tension-relief-massage',
@@ -500,7 +500,7 @@ export const homePages = {
             {duration: '1 h 30', price: '115 €'},
           ],
           ctaText: 'View treatment',
-          ctaLink: `${localizedPagePaths.massages.en}#tension-relief-massage`,
+          ctaLink: `${localizedPagePaths.soins.en}#tension-relief-massage`,
         },
         {
           anchorId: 'body-sculpting-massage',
@@ -513,7 +513,7 @@ export const homePages = {
             {duration: '1 h 30', price: '135 €'},
           ],
           ctaText: 'View treatment',
-          ctaLink: `${localizedPagePaths.massages.en}#body-sculpting-massage`,
+          ctaLink: `${localizedPagePaths.soins.en}#body-sculpting-massage`,
         },
         {
           anchorId: 'lifting-facial-massage',
@@ -527,7 +527,7 @@ export const homePages = {
             {duration: '1 h', price: '85 €'},
           ],
           ctaText: 'View treatment',
-          ctaLink: `${localizedPagePaths.massages.en}#lifting-facial-massage`,
+          ctaLink: `${localizedPagePaths.soins.en}#lifting-facial-massage`,
         },
         {
           anchorId: 'maderotherapy',

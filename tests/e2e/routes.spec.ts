@@ -3,9 +3,9 @@ import {expect, test} from './fixtures';
 const routes = [
   '/',
   '/en/',
-  '/massages/',
+  '/soins/',
   '/en/massages/',
-  '/massages/maderotherapie/',
+  '/soins/maderotherapie/',
   '/en/massages/maderotherapy/',
   '/maderotherapie/',
   '/en/maderotherapy/',
@@ -50,7 +50,7 @@ test('custom 404 page renders branded recovery links', async ({page}) => {
 });
 
 test('section overview pages render their main content', async ({page}) => {
-  await page.goto('/massages/');
+  await page.goto('/soins/');
 
   await expect(
     page.getByRole('heading', {
@@ -117,7 +117,7 @@ test('section overview pages render their main content', async ({page}) => {
   ).toBeVisible();
   await expect(
     page.getByRole('link', {name: 'Voir les soins'})
-  ).toHaveAttribute('href', '/massages/');
+  ).toHaveAttribute('href', '/soins/');
   await expect(
     page.getByText('Une question avant de réserver ? Écrivez-moi sur')
   ).toBeVisible();
@@ -216,7 +216,7 @@ test('Cure Fusion page explains the personalized package', async ({page}) => {
   ).toHaveAttribute('href', '/programmes/');
   await expect(
     page.getByRole('link', {name: 'Voir les soins'})
-  ).toHaveAttribute('href', '/massages/');
+  ).toHaveAttribute('href', '/soins/');
   await expect(
     page.getByRole('link', {name: 'Programme Ventre Léger'})
   ).toHaveAttribute('href', '/programmes/ventre-leger-jambes-legeres/');

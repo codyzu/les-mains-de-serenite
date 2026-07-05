@@ -182,7 +182,7 @@ export const cureFusionPages = {
         },
         {
           text: 'Voir les soins',
-          href: localizedPagePaths.massages.fr,
+          href: localizedPagePaths.soins.fr,
         },
         {
           text: 'Programme Ventre Léger',
@@ -365,7 +365,7 @@ export const cureFusionPages = {
         },
         {
           text: 'View treatments',
-          href: localizedPagePaths.massages.en,
+          href: localizedPagePaths.soins.en,
         },
         {
           text: 'Light Belly Program',

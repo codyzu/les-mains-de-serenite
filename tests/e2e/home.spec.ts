@@ -21,7 +21,7 @@ test('French homepage renders the main business content and booking CTA', async 
   ).toBeVisible();
   await expect(
     page.getByRole('link', {name: 'Découvrir les soins'})
-  ).toHaveAttribute('href', '/massages/');
+  ).toHaveAttribute('href', '/soins/');
   await expect(page.getByText('Prendre le temps')).toBeVisible();
   await expect(page.getByText('S’accorder une vraie pause')).toBeVisible();
   await expect(
@@ -57,8 +57,8 @@ test('French homepage renders the main business content and booking CTA', async 
     page.getByRole('link', {name: 'Découvrir la cure'})
   ).toHaveAttribute('href', '/programmes/cure-fusion/');
   await expect(
-    page.locator('a[href="/massages/maderotherapie/"]').first()
-  ).toHaveAttribute('href', '/massages/maderotherapie/');
+    page.locator('a[href="/soins/maderotherapie/"]').first()
+  ).toHaveAttribute('href', '/soins/maderotherapie/');
   await expect(
     page.getByRole('heading', {name: 'Quel est votre besoin aujourd’hui ?'})
   ).toBeVisible();

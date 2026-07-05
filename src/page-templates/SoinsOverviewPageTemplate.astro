@@ -2,7 +2,7 @@
 import {Picture} from 'astro:assets';
 import CtaReassurance from '../components/CtaReassurance.astro';
 import IconImage from '../components/IconImage.astro';
-import Massages from '../components/Massages.astro';
+import Soins from '../components/Soins.astro';
 import Testimonials from '../components/Testimonials.astro';
 import TeaLakeImage from '../assets/tea-lake.png';
 import {
@@ -21,15 +21,15 @@ interface Props {
 
 const {locale, business, localized} = Astro.props;
 const {
-  pages: {massages},
+  pages: {soins},
 } = localized;
-const languageSwitchPaths = localizedPagePaths.massages;
+const languageSwitchPaths = localizedPagePaths.soins;
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
-  name: massages.meta.title,
-  description: massages.meta.description,
-  itemListElement: massages.section.items.map((item, index) => ({
+  name: soins.meta.title,
+  description: soins.meta.description,
+  itemListElement: soins.section.items.map((item, index) => ({
     '@type': 'ListItem',
     position: index + 1,
     name: item.title,
@@ -49,11 +49,11 @@ const structuredData = {
 
 <Layout
   locale={locale}
-  canonicalPath={massages.path}
+  canonicalPath={soins.path}
   alternatePaths={languageSwitchPaths}
   languageSwitchPaths={languageSwitchPaths}
-  title={massages.meta.title}
-  description={massages.meta.description}
+  title={soins.meta.title}
+  description={soins.meta.description}
   structuredData={structuredData}
 >
   <main>
@@ -63,19 +63,19 @@ const structuredData = {
           <p
             class="mb-4 text-sm font-medium uppercase tracking-[0.25em] text-brand-strong"
           >
-            {massages.hero.eyebrow}
+            {soins.hero.eyebrow}
           </p>
-          <h1 class="heading-xl">{massages.hero.title}</h1>
-          <p class="body-lg mt-6 max-w-2xl">{massages.hero.description}</p>
+          <h1 class="heading-xl">{soins.hero.title}</h1>
+          <p class="body-lg mt-6 max-w-2xl">{soins.hero.description}</p>
           <p class="mt-4 max-w-2xl text-base leading-7 text-ink/68">
-            {massages.hero.reassurance}
+            {soins.hero.reassurance}
           </p>
           <a
-            href={massages.hero.ctaHref}
+            href={soins.hero.ctaHref}
             class="btn-primary mt-8 min-h-[3rem] px-7 py-3.5 sm:min-h-0 sm:py-3"
-            data-analytics-event={massages.hero.analyticsEvent}
+            data-analytics-event={soins.hero.analyticsEvent}
           >
-            {massages.hero.ctaText}
+            {soins.hero.ctaText}
           </a>
         </div>
       </div>
@@ -91,8 +91,8 @@ const structuredData = {
               name="i-lucide-sparkles"
               class="bg-brand-soft text-brand-strong"
             />
-            <h2 class="heading-lg">{massages.philosophy.title}</h2>
-            <p class="body-lg mt-5">{massages.philosophy.description}</p>
+            <h2 class="heading-lg">{soins.philosophy.title}</h2>
+            <p class="body-lg mt-5">{soins.philosophy.description}</p>
           </article>
 
           <div
@@ -100,7 +100,7 @@ const structuredData = {
           >
             <Picture
               src={TeaLakeImage}
-              alt={massages.transitionImageAlt}
+              alt={soins.transitionImageAlt}
               formats={['avif', 'webp']}
               widths={[640, 960, 1280, 1536]}
               sizes="(min-width: 1024px) 40rem, calc(100vw - 2rem)"
@@ -113,7 +113,7 @@ const structuredData = {
       </div>
     </section>
 
-    <Massages {...massages.section} />
+    <Soins {...soins.section} />
 
     <section class="bg-surface px-0 pb-12 sm:pb-14">
       <div class="container-page">
@@ -124,26 +124,26 @@ const structuredData = {
             name="i-lucide-message-circle"
             class="mx-auto bg-accent-soft text-accent-strong"
           />
-          <h2 class="heading-md">{massages.choiceHelp.title}</h2>
+          <h2 class="heading-md">{soins.choiceHelp.title}</h2>
           <p class="body-base mx-auto mt-4 max-w-2xl">
-            {massages.choiceHelp.description}
+            {soins.choiceHelp.description}
           </p>
           <a
-            href={massages.choiceHelp.href}
+            href={soins.choiceHelp.href}
             class="mt-6 inline-flex min-h-[3rem] items-center justify-center rounded-full border border-brand/24 px-6 py-3 text-sm font-semibold text-brand-strong no-underline transition hover:bg-brand-soft"
-            data-analytics-event={massages.choiceHelp.analyticsEvent}
+            data-analytics-event={soins.choiceHelp.analyticsEvent}
           >
-            {massages.choiceHelp.text}
+            {soins.choiceHelp.text}
           </a>
           <CtaReassurance
-            reassurance={massages.choiceHelp.reassurance}
+            reassurance={soins.choiceHelp.reassurance}
             class="mx-auto mt-4 max-w-2xl"
           />
         </div>
       </div>
     </section>
 
-    <Testimonials {...massages.testimonials} />
+    <Testimonials {...soins.testimonials} />
 
     <section class="bg-surface px-0 py-10 sm:py-12">
       <div class="container-page">
@@ -154,16 +154,16 @@ const structuredData = {
             <p class="text-sm uppercase tracking-[0.22em] text-brand-strong/82">
               {locale === 'en' ? 'Programs' : 'Programmes'}
             </p>
-            <h2 class="heading-md mt-3">{massages.programCrossLink.title}</h2>
+            <h2 class="heading-md mt-3">{soins.programCrossLink.title}</h2>
             <p class="body-base mt-4">
-              {massages.programCrossLink.description}
+              {soins.programCrossLink.description}
             </p>
           </div>
           <a
-            href={massages.programCrossLink.href}
+            href={soins.programCrossLink.href}
             class="mt-6 inline-flex min-h-[3rem] items-center justify-center rounded-full border border-brand/24 px-6 py-3 text-sm font-semibold text-brand-strong no-underline transition hover:bg-brand-soft lg:mt-0 lg:shrink-0"
           >
-            {massages.programCrossLink.text}
+            {soins.programCrossLink.text}
           </a>
         </div>
       </div>
@@ -178,19 +178,19 @@ const structuredData = {
             name="i-lucide-calendar-heart"
             class="mx-auto bg-brand-soft text-brand-strong"
           />
-          <h2 class="heading-lg">{massages.booking.title}</h2>
+          <h2 class="heading-lg">{soins.booking.title}</h2>
           <p class="body-lg mx-auto mt-4 max-w-2xl">
-            {massages.booking.description}
+            {soins.booking.description}
           </p>
           <a
-            href={massages.booking.href}
+            href={soins.booking.href}
             class="btn-primary mt-7 min-h-[3rem] px-7 py-3.5 sm:min-h-0 sm:py-3"
-            data-analytics-event={massages.booking.analyticsEvent}
+            data-analytics-event={soins.booking.analyticsEvent}
           >
-            {massages.booking.text}
+            {soins.booking.text}
           </a>
           <CtaReassurance
-            reassurance={massages.booking.reassurance}
+            reassurance={soins.booking.reassurance}
             class="mx-auto mt-4 max-w-2xl"
           />
         </div>

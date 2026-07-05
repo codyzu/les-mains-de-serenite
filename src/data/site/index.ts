@@ -4,7 +4,7 @@ import {chrome} from './chrome';
 import {cureFusionPages} from './pages/cure-fusion';
 import {homePages} from './pages/home';
 import {maderotherapiePages} from './pages/maderotherapie';
-import {massagesPages} from './pages/massages';
+import {soinsPages} from './pages/soins';
 import {programPages} from './pages/program';
 import {programsPages} from './pages/programs';
 import {reservePages} from './pages/reserve';
@@ -24,10 +24,10 @@ export type {
   LocalePathMap,
   LocalizedSiteData,
   MaderotherapiePageData,
-  MassagesOverviewPageData,
-  MassageData,
-  MassagePriceData,
-  MassagesSectionData,
+  SoinsOverviewPageData,
+  SoinData,
+  SoinPriceData,
+  SoinsSectionData,
   NeedsSectionData,
   OverviewCtaData,
   ProgramPageData,
@@ -54,7 +54,7 @@ const localized = {
     chrome: chrome.fr,
     pages: {
       home: homePages.fr,
-      massages: massagesPages.fr,
+      soins: soinsPages.fr,
       programs: programsPages.fr,
       program: programPages.fr,
       cureFusion: cureFusionPages.fr,
@@ -69,7 +69,7 @@ const localized = {
     chrome: chrome.en,
     pages: {
       home: homePages.en,
-      massages: massagesPages.en,
+      soins: soinsPages.en,
       programs: programsPages.en,
       program: programPages.en,
       cureFusion: cureFusionPages.en,

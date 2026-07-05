@@ -41,11 +41,11 @@ test('configures only homepage and service paths for view transitions', async ({
     expect.arrayContaining([
       '/',
       '/en/',
-      '/massages/',
+      '/soins/',
       '/en/massages/',
       '/programmes/',
       '/en/programs/',
-      '/massages/maderotherapie/',
+      '/soins/maderotherapie/',
       '/en/massages/maderotherapy/',
     ])
   );

@@ -6,7 +6,7 @@ export const chrome = {
       tagline: 'Praticienne bien-être',
       links: {
         home: 'Accueil',
-        massages: 'Soins',
+        soins: 'Soins',
         program: 'Programmes',
         about: 'À propos',
         reserve: 'Réserver',
@@ -16,7 +16,7 @@ export const chrome = {
     footer: {
       tagline: 'Soin bien-être',
       links: {
-        massages: 'Soins',
+        soins: 'Soins',
         program: 'Programmes',
         about: 'À propos',
         reserve: 'Réserver',
@@ -31,7 +31,7 @@ export const chrome = {
       tagline: 'Wellness practitioner',
       links: {
         home: 'Home',
-        massages: 'Treatments',
+        soins: 'Treatments',
         program: 'Programs',
         about: 'About',
         reserve: 'Book',
@@ -41,7 +41,7 @@ export const chrome = {
     footer: {
       tagline: 'Wellness massage',
       links: {
-        massages: 'Treatments',
+        soins: 'Treatments',
         program: 'Programs',
         about: 'About',
         reserve: 'Book',

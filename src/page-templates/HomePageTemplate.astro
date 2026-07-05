@@ -3,7 +3,7 @@ import HeroMassageRoom from '../assets/hero-massage-room.png';
 import Hero from '../components/Hero.astro';
 import PromoSection from '../components/PromoSection.astro';
 import NeedsSection from '../components/NeedsSection.astro';
-import Massages from '../components/Massages.astro';
+import Soins from '../components/Soins.astro';
 import HomeMomentTransition from '../components/HomeMomentTransition.astro';
 import ProgramPreview from '../components/ProgramPreview.astro';
 import About from '../components/About.astro';
@@ -91,7 +91,7 @@ const structuredData = {
 
     <PromoSection promo={home.promo} />
 
-    <Massages {...home.massagesSection} />
+    <Soins {...home.soinsSection} />
 
     <HomeMomentTransition {...home.emotionalTransition} />
 

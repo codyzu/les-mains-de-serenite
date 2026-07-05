@@ -1,9 +1,9 @@
 ---
-import type {MassagesSectionData} from '../data/site';
+import type {SoinsSectionData} from '../data/site';
 import SectionIntro from './SectionIntro.astro';
 import IconImage from './IconImage.astro';
 
-type Props = MassagesSectionData;
+type Props = SoinsSectionData;
 
 const {title, intro, introLinks, recommendedLabel, ctaText, ctaLink, items} =
   Astro.props;
@@ -23,7 +23,7 @@ const getCardGridClasses = (index: number) => {
 };
 ---
 
-<section id="massages" class="section-pad bg-surface">
+<section id="soins" class="section-pad bg-surface">
   <div class="container-page">
     <SectionIntro title={title} text={intro} textLinks={introLinks} />
 

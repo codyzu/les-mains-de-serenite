@@ -44,12 +44,12 @@ export const programsPages = {
             : localizedPagePaths.program.fr,
       })),
     },
-    massagesCrossLink: {
+    soinsCrossLink: {
       title: 'Vous préférez une séance ponctuelle ?',
       description:
         'Les soins individuels permettent de répondre à un besoin précis sans vous engager dans un accompagnement complet.',
       text: 'Voir les soins',
-      href: localizedPagePaths.massages.fr,
+      href: localizedPagePaths.soins.fr,
     },
     booking: {
       title: 'Besoin d’aide pour choisir ?',
@@ -109,12 +109,12 @@ export const programsPages = {
             : localizedPagePaths.program.en,
       })),
     },
-    massagesCrossLink: {
+    soinsCrossLink: {
       title: 'Would you prefer a single session?',
       description:
         'Individual treatments are ideal for a specific need without committing to a full accompaniment.',
       text: 'View treatments',
-      href: localizedPagePaths.massages.en,
+      href: localizedPagePaths.soins.en,
     },
     booking: {
       title: 'Need help choosing?',

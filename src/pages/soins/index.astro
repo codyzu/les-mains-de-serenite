@@ -1,11 +1,11 @@
 ---
 import {defaultLocale, getLocalizedSite, site} from '../../data/site';
-import MassagesOverviewPageTemplate from '../../page-templates/MassagesOverviewPageTemplate.astro';
+import SoinsOverviewPageTemplate from '../../page-templates/SoinsOverviewPageTemplate.astro';
 
 const localized = getLocalizedSite(defaultLocale);
 ---
 
-<MassagesOverviewPageTemplate
+<SoinsOverviewPageTemplate
   locale={defaultLocale}
   business={site.business}
   localized={localized}

@@ -1,9 +1,9 @@
-import type {Locale, MassagesOverviewPageData} from '../types';
+import type {Locale, SoinsOverviewPageData} from '../types';
 import {localizedPagePaths} from '../paths';
 import {getBusinessWhatsappHref} from '../shared';
 import {homePages} from './home';
 
-const withFrenchCtas = homePages.fr.massagesSection.items.map((item) => ({
+const withFrenchCtas = homePages.fr.soinsSection.items.map((item) => ({
   ...item,
   ctaText:
     item.anchorId === 'maderotherapie'
@@ -15,7 +15,7 @@ const withFrenchCtas = homePages.fr.massagesSection.items.map((item) => ({
       : localizedPagePaths.reserve.fr,
 }));
 
-const withEnglishCtas = homePages.en.massagesSection.items.map((item) => ({
+const withEnglishCtas = homePages.en.soinsSection.items.map((item) => ({
   ...item,
   ctaText:
     item.anchorId === 'maderotherapy'
@@ -27,11 +27,11 @@ const withEnglishCtas = homePages.en.massagesSection.items.map((item) => ({
       : localizedPagePaths.reserve.en,
 }));
 
-export const massagesPages = {
+export const soinsPages = {
   fr: {
-    path: localizedPagePaths.massages.fr,
+    path: localizedPagePaths.soins.fr,
     meta: {
-      title: 'Massages bien-être à Annecy | Les Mains de Sérénité',
+      title: 'Soins bien-être à Annecy | Les Mains de Sérénité',
       description:
         'Découvrez les soins bien-être et massages à Annecy : drainage lymphatique, soin relaxant, soin thérapeutique, remodelant, visage liftant et madérothérapie.',
     },
@@ -54,7 +54,7 @@ export const massagesPages = {
     transitionImageAlt:
       'Théière asiatique et petites tasses sur une terrasse avec vue sur le lac et les montagnes à Annecy',
     section: {
-      ...homePages.fr.massagesSection,
+      ...homePages.fr.soinsSection,
       intro:
         'Les soins sont des séances individuelles. Ils permettent de répondre à un besoin précis, de découvrir une technique de soin bien-être ou de vous offrir un moment de détente ponctuel.',
       ctaText: undefined,
@@ -123,7 +123,7 @@ export const massagesPages = {
     },
   },
   en: {
-    path: localizedPagePaths.massages.en,
+    path: localizedPagePaths.soins.en,
     meta: {
       title: 'Wellness Massages in Annecy | Les Mains de Sérénité',
       description:
@@ -148,7 +148,7 @@ export const massagesPages = {
     transitionImageAlt:
       'Asian teapot and small cups on a terrace overlooking the lake and mountains in Annecy',
     section: {
-      ...homePages.en.massagesSection,
+      ...homePages.en.soinsSection,
       intro:
         'Treatments are individual sessions. They are ideal for a specific need, discovering a wellness massage technique, or giving yourself a focused moment of well-being.',
       ctaText: undefined,
@@ -216,4 +216,4 @@ export const massagesPages = {
       },
     },
   },
-} satisfies Record<Locale, MassagesOverviewPageData>;
+} satisfies Record<Locale, SoinsOverviewPageData>;

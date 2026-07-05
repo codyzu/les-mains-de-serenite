@@ -20,7 +20,7 @@ type Props = {
 };
 
 type HeaderNavItem = {
-  key: 'home' | 'massages' | 'program' | 'about' | 'reserve' | 'contact';
+  key: 'home' | 'soins' | 'program' | 'about' | 'reserve' | 'contact';
   label: string;
   href: string;
   active?: boolean;
@@ -43,7 +43,7 @@ const brand = site.business.name;
 const localized = getLocalizedSite(locale);
 const {
   chrome: {header},
-  pages: {home, massages, programs},
+  pages: {home, soins, programs},
 } = localized;
 const {tagline, links} = header;
 const {
@@ -55,13 +55,13 @@ const bookingHref = reserveLink ? toHref(reserveLink) : toHref(bookingPath);
 const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 const normalizedHomePath = homePath.replace(/\/$/, '') || '/';
 const homeActive = currentPath === normalizedHomePath;
-const massagePath = massages.path.replace(/\/$/, '') || '/';
+const soinsPath = soins.path.replace(/\/$/, '') || '/';
 const programPath = programs.path.replace(/\/$/, '') || '/';
-const massagesActive =
-  currentPath === massagePath || currentPath.startsWith(`${massagePath}/`);
+const soinsActive =
+  currentPath === soinsPath || currentPath.startsWith(`${soinsPath}/`);
 const programActive =
   currentPath === programPath || currentPath.startsWith(`${programPath}/`);
-const massagesHref = toHref(massages.path);
+const soinsHref = toHref(soins.path);
 const programHref = toHref(programs.path);
 const drawerBookingHref = reserveLink
   ? toHref(reserveLink)
@@ -77,10 +77,10 @@ const desktopNavItems = [
     href: `${homeHref}#accueil`,
   },
   {
-    key: 'massages',
-    label: links.massages,
-    href: massagesHref,
-    active: massagesActive,
+    key: 'soins',
+    label: links.soins,
+    href: soinsHref,
+    active: soinsActive,
     activeElement: 'link',
   },
   {

@@ -42,7 +42,7 @@ export type SiteHeaderData = {
   tagline: string;
   links: {
     home: string;
-    massages: string;
+    soins: string;
     program: string;
     about: string;
     reserve: string;
@@ -53,7 +53,7 @@ export type SiteHeaderData = {
 export type SiteFooterData = {
   tagline: string;
   links: {
-    massages: string;
+    soins: string;
     program: string;
     about: string;
     reserve: string;
@@ -119,31 +119,31 @@ export type NeedsSectionData = {
   }>;
 };
 
-export type MassagePriceData = {
+export type SoinPriceData = {
   duration: string;
   price: string;
   recommended?: boolean;
 };
 
-export type MassageData = {
+export type SoinData = {
   anchorId?: string;
   title: string;
   description: string;
   note?: string;
   icon: string;
-  prices: MassagePriceData[];
+  prices: SoinPriceData[];
   ctaText?: string;
   ctaLink?: string;
 };
 
-export type MassagesSectionData = {
+export type SoinsSectionData = {
   title: string;
   intro: string;
   introLinks?: InlineTextLinkData[];
   recommendedLabel: string;
   ctaText?: string;
   ctaLink?: string;
-  items: MassageData[];
+  items: SoinData[];
 };
 
 export type ProgramPreviewItemData = {
@@ -196,7 +196,7 @@ export type OverviewCtaData = {
   reassurance?: ReassuranceLinkData;
 };
 
-export type MassagesOverviewPageData = {
+export type SoinsOverviewPageData = {
   meta: {
     title: string;
     description: string;
@@ -216,7 +216,7 @@ export type MassagesOverviewPageData = {
     description: string;
   };
   transitionImageAlt: string;
-  section: MassagesSectionData;
+  section: SoinsSectionData;
   choiceHelp: OverviewCtaData;
   testimonials: TestimonialsData;
   programCrossLink: OverviewCtaData;
@@ -245,7 +245,7 @@ export type ProgramsOverviewPageData = {
     programDescription: string;
   };
   preview: ProgramPreviewData;
-  massagesCrossLink: OverviewCtaData;
+  soinsCrossLink: OverviewCtaData;
   booking: OverviewCtaData;
 };
 
@@ -494,7 +494,7 @@ export type HomePageData = {
   };
   promo?: PromoData;
   needsSection: NeedsSectionData;
-  massagesSection: MassagesSectionData;
+  soinsSection: SoinsSectionData;
   emotionalTransition: HomeTransitionData;
   programPreview: ProgramPreviewData;
   about: AboutData;
@@ -565,7 +565,7 @@ export type LocalizedSiteData = {
   chrome: SiteChromeData;
   pages: {
     home: HomePageData;
-    massages: MassagesOverviewPageData;
+    soins: SoinsOverviewPageData;
     programs: ProgramsOverviewPageData;
     program: ProgramPageData;
     cureFusion: ProgramPageData;

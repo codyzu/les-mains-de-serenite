@@ -5,8 +5,8 @@ export const localizedPagePaths = {
     fr: '/',
     en: '/en/',
   },
-  massages: {
-    fr: '/massages/',
+  soins: {
+    fr: '/soins/',
     en: '/en/massages/',
   },
   programs: {
@@ -22,7 +22,7 @@ export const localizedPagePaths = {
     en: '/en/programs/cure-fusion/',
   },
   maderotherapie: {
-    fr: '/massages/maderotherapie/',
+    fr: '/soins/maderotherapie/',
     en: '/en/massages/maderotherapy/',
   },
   reserve: {

@@ -94,10 +94,10 @@ test('program overview pages expose matching localized alternates', async ({
   await expectAlternate(page, 'x-default', `${siteUrl}${frenchPath}`);
 });
 
-test('massage overview pages expose matching localized alternates', async ({
+test('soins overview pages expose matching localized alternates', async ({
   page,
 }) => {
-  const frenchPath = '/massages/';
+  const frenchPath = '/soins/';
   const englishPath = '/en/massages/';
 
   await page.goto(frenchPath);
@@ -118,7 +118,7 @@ test('massage overview pages expose matching localized alternates', async ({
 test('maderotherapy pages expose matching localized alternates', async ({
   page,
 }) => {
-  const frenchPath = '/massages/maderotherapie/';
+  const frenchPath = '/soins/maderotherapie/';
   const englishPath = '/en/massages/maderotherapy/';
 
   await page.goto(frenchPath);
