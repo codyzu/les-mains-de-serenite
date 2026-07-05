@@ -32,7 +32,7 @@ export const programsPages = {
     preview: {
       ...homePages.fr.programPreview,
       intro:
-        'Deux accompagnements permettent d’aller plus loin, selon vos besoins et votre objectif de bien-être.',
+        'Deux façons d’aller plus loin qu’une séance unique, selon vos besoins et vos objectifs de bien-être.',
       items: homePages.fr.programPreview.items.map((item) => ({
         ...item,
         ctaLink:
@@ -86,7 +86,7 @@ export const programsPages = {
     preview: {
       ...homePages.en.programPreview,
       intro:
-        'Two forms of support help you go further, depending on your needs and your well-being goal.',
+        'Two ways to go further than a single session, depending on your needs and wellness goals.',
       items: homePages.en.programPreview.items.map((item) => ({
         ...item,
         ctaLink:

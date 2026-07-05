@@ -147,7 +147,7 @@ export const homePages = {
     programPreview: {
       title: 'Programmes d’accompagnement',
       intro:
-        'Des expériences sur plusieurs séances, pensées pour les femmes qui souhaitent aller plus loin qu’un massage seul, dans un cadre doux, progressif et personnalisé.',
+        'Deux façons d’aller plus loin qu’une séance unique, selon vos besoins et vos objectifs de bien-être.',
       items: [
         {
           eyebrow: 'Nouveau',
@@ -174,8 +174,8 @@ export const homePages = {
           title: 'Cure Fusion',
           subtitle: '3 séances personnalisées',
           description:
-            'Un accompagnement conçu pour retrouver une sensation de légèreté, de tonicité et de bien-être durable grâce à plusieurs séances adaptées à vos besoins.',
-          includesTitle: 'La cure peut associer',
+            'Un accompagnement personnalisé en 3 séances où chaque massage est choisi selon vos besoins et l’évolution de vos ressentis.',
+          includesTitle: 'Votre accompagnement peut inclure',
           includes: [
             'Drainage lymphatique',
             'Massage remodelant',
@@ -184,7 +184,7 @@ export const homePages = {
           priceLabel: 'Tarif',
           price: '350 €',
           priceDetail: '3 séances',
-          note: 'Chaque cure est entièrement personnalisée. Les soins sont sélectionnés en fonction de vos besoins, de vos ressentis et de vos objectifs du moment.',
+          note: 'Vous n’avez pas à choisir entre drainage lymphatique, massage remodelant ou madérothérapie. Chaque séance est adaptée à vos besoins du moment pour vous accompagner vers une sensation de légèreté, de confort et de bien-être.',
           ctaText: 'Découvrir la cure',
           ctaLink: localizedPagePaths.cureFusion.fr,
           icon: 'i-lucide-sparkles',
@@ -445,7 +445,7 @@ export const homePages = {
     programPreview: {
       title: 'Support programs',
       intro:
-        'Multi-session experiences for women who would like to go further than a single massage, with a soft, progressive, and personalized approach.',
+        'Two ways to go further than a single session, depending on your needs and wellness goals.',
       items: [
         {
           eyebrow: 'New',
@@ -472,8 +472,8 @@ export const homePages = {
           title: 'Cure Fusion',
           subtitle: '3 personalized sessions',
           description:
-            'A guided accompaniment designed to restore a lasting feeling of lightness, tone, and well-being through several sessions adapted to your needs.',
-          includesTitle: 'The package may include',
+            'A personalized 3-session accompaniment where each massage is chosen according to your needs and how your body responds.',
+          includesTitle: 'Your accompaniment may include',
           includes: [
             'Lymphatic drainage',
             'Body sculpting massage',
@@ -482,7 +482,7 @@ export const homePages = {
           priceLabel: 'Price',
           price: '350 €',
           priceDetail: '3 sessions',
-          note: 'Each package is fully personalized. Treatments are selected according to your needs, how your body feels, and your current goals.',
+          note: 'You do not have to choose between lymphatic drainage, body sculpting massage, or maderotherapy. Each session is adapted to what you need at that moment, supporting a feeling of lightness, comfort, and well-being.',
           ctaText: 'Discover the package',
           ctaLink: localizedPagePaths.cureFusion.en,
           icon: 'i-lucide-sparkles',
