@@ -14,10 +14,10 @@ export const maderotherapiePages = {
         'Un soin bien-être de 60 minutes réservé aux femmes, idéal pour les jambes lourdes, la rétention d’eau et la sensation de légèreté.',
     },
     hero: {
-      title: 'Madérothérapie Jambes Légères',
+      title: 'Soin de madérothérapie Jambes Légères',
       description:
         'Retrouvez une agréable sensation de légèreté grâce à un soin utilisant des instruments en bois spécialement conçus pour stimuler la circulation et accompagner le drainage naturel du corps.',
-      primaryCta: 'Réserver une séance',
+      primaryCta: 'Réserver ce soin',
       imageAlt: 'Soin jambes légères dans une ambiance bien-être chaleureuse',
       keyInfo: [
         'Soin ciblé jambes légères',
@@ -120,11 +120,11 @@ export const maderotherapiePages = {
       ],
     },
     offer: {
-      title: 'Offre Découverte Madérothérapie Jambes Légères',
+      title: 'Offre Découverte Soin de madérothérapie Jambes Légères',
       duration: '60 minutes',
       price: '90 €',
       description:
-        'Une séance ciblée de 60 minutes pour découvrir la madérothérapie et profiter d’un travail spécifique sur les zones de lourdeur, avec une attention particulière portée au confort et au ressenti.',
+        'Un soin ciblé de 60 minutes pour découvrir la madérothérapie et profiter d’un travail spécifique sur les zones de lourdeur, avec une attention particulière portée au confort et au ressenti.',
       targetAudience:
         'Idéale pour les femmes qui ressentent des jambes lourdes, de la rétention d’eau, une fatigue corporelle ou l’envie de prendre soin d’elles autrement.',
       benefits:
@@ -226,8 +226,8 @@ export const maderotherapiePages = {
     cta: {
       title: 'Offrez-vous un moment de légèreté',
       description:
-        'Réservez votre séance de madérothérapie Jambes Légères à Annecy et accordez à votre corps une vraie pause bien-être.',
-      text: 'Réserver une séance',
+        'Réservez votre soin de madérothérapie Jambes Légères à Annecy et accordez à votre corps une vraie pause bien-être.',
+      text: 'Réserver ce soin',
       href: localizedPagePaths.reserve.fr,
       analyticsEvent: 'reserve_click',
     },
@@ -252,10 +252,10 @@ export const maderotherapiePages = {
         'A 60-minute women-only wellness treatment for heavy legs, water retention, and a pleasant feeling of lightness.',
     },
     hero: {
-      title: 'Maderotherapy Light Legs',
+      title: 'Light Legs Maderotherapy Treatment',
       description:
         'Reconnect with a pleasant feeling of lightness through a treatment using wooden instruments designed to stimulate circulation and support the body’s natural drainage.',
-      primaryCta: 'Book a session',
+      primaryCta: 'Book this treatment',
       imageAlt: 'Light legs wellness treatment in a warm massage setting',
       keyInfo: [
         'Targeted light-legs treatment',
@@ -358,11 +358,11 @@ export const maderotherapiePages = {
       ],
     },
     offer: {
-      title: 'Light Legs Maderotherapy Discovery Offer',
+      title: 'Light Legs Maderotherapy Treatment Discovery Offer',
       duration: '60 minutes',
       price: '90 €',
       description:
-        'A targeted 60-minute session to discover maderotherapy and enjoy focused work on areas of heaviness, with close attention to comfort and how your body feels.',
+        'A targeted 60-minute treatment to discover maderotherapy and enjoy focused work on areas of heaviness, with close attention to comfort and how your body feels.',
       targetAudience:
         'Ideal for women experiencing heavy legs, water retention, body fatigue, or the desire to care for themselves differently.',
       benefits:
@@ -464,8 +464,8 @@ export const maderotherapiePages = {
     cta: {
       title: 'Treat yourself to a moment of lightness',
       description:
-        'Book your Light Legs maderotherapy session in Annecy and give your body a true wellness pause.',
-      text: 'Book a session',
+        'Book your Light Legs maderotherapy treatment in Annecy and give your body a true wellness pause.',
+      text: 'Book this treatment',
       href: localizedPagePaths.reserve.en,
       analyticsEvent: 'reserve_click',
     },

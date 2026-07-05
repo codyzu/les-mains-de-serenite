@@ -6,16 +6,16 @@ import {getBusinessWhatsappHref} from '../shared';
 export const reserveOnlinePages = {
   fr: {
     meta: {
-      title: 'Réserver un massage à Annecy | Les Mains de Sérénité',
+      title: 'Réserver un soin et massage à Annecy | Les Mains de Sérénité',
       description:
-        'Réservez votre massage bien-être à Annecy. Service réservé aux femmes, réservation simple en ligne, paiement sur place.',
+        'Réservez votre soin bien-être à Annecy, avec techniques de massage personnalisées. Service réservé aux femmes, réservation simple en ligne, paiement sur place.',
     },
     reserveLink: localizedPagePaths.reserveOnline.fr,
     hero: {
       kicker: 'Massage bien-être à Annecy',
-      title: 'Réserver votre massage bien-être',
+      title: 'Réserver votre soin bien-être',
       description:
-        'Choisissez votre massage et votre créneau en toute simplicité. Les séances sont proposées sur rendez-vous, dans un cadre calme, bienveillant et apaisant.',
+        'Choisissez votre soin et votre créneau en toute simplicité. Les séances sont proposées sur rendez-vous, dans un cadre calme, bienveillant et apaisant.',
       reassuranceItems: [
         {
           icon: 'i-lucide-flower',
@@ -40,7 +40,7 @@ export const reserveOnlinePages = {
     scheduler: {
       title: 'Choisissez votre créneau',
       description:
-        'Choisissez votre massage puis votre créneau en quelques secondes.',
+        'Choisissez votre soin puis votre créneau en quelques secondes.',
       detail:
         'Chaque séance est adaptée à vos besoins du moment, pour vous offrir un véritable moment de détente.',
       paymentNote: 'Aucun paiement en ligne. Règlement sur place.',
@@ -50,7 +50,7 @@ export const reserveOnlinePages = {
     contact: {
       title: 'Une question avant de réserver ?',
       subtitle:
-        'Je vous réponds rapidement pour vous aider à choisir le massage le plus adapté.',
+        'Je vous réponds rapidement pour vous aider à choisir le soin le plus adapté.',
       whatsappTitle: 'WhatsApp',
       phoneTitle: 'Téléphone',
       emailTitle: 'Email',
@@ -62,7 +62,7 @@ export const reserveOnlinePages = {
         'Idéal si vous préférez poser votre question par écrit.',
       whatsappLabel: 'Écrire sur WhatsApp',
       whatsappHref: getBusinessWhatsappHref(
-        "Bonjour, j'ai une question avant de réserver un massage."
+        "Bonjour, j'ai une question avant de réserver un soin."
       ),
     },
   },
@@ -70,14 +70,14 @@ export const reserveOnlinePages = {
     meta: {
       title: 'Book Online | Les Mains de Sérénité Annecy',
       description:
-        'Book your women-only wellness massage in Annecy. Easy online scheduling and payment on site.',
+        'Book your women-only wellness treatment and massage in Annecy. Easy online scheduling and payment on site.',
     },
     reserveLink: localizedPagePaths.reserveOnline.en,
     hero: {
       kicker: 'Wellness massage for women in Annecy',
-      title: 'Book your wellness massage',
+      title: 'Book your wellness treatment',
       description:
-        'Choose your massage and your preferred time slot with ease. Sessions are available by appointment in a calm, caring, and soothing setting.',
+        'Choose your treatment and your preferred time slot with ease. Sessions are available by appointment in a calm, caring, and soothing setting.',
       reassuranceItems: [
         {
           icon: 'i-lucide-flower',
@@ -102,7 +102,7 @@ export const reserveOnlinePages = {
     scheduler: {
       title: 'Choose your time slot',
       description:
-        'Pick your massage and your appointment time in just a few seconds.',
+        'Pick your treatment and your appointment time in just a few seconds.',
       detail:
         'Each session is tailored to your needs at the moment, so you can enjoy a true moment of relaxation.',
       paymentNote: 'No online payment. Please pay on site.',
@@ -112,7 +112,7 @@ export const reserveOnlinePages = {
     contact: {
       title: 'A question before booking?',
       subtitle:
-        'I reply quickly to help you choose the massage that best fits your needs.',
+        'I reply quickly to help you choose the treatment that best fits your needs.',
       whatsappTitle: 'WhatsApp',
       phoneTitle: 'Phone',
       emailTitle: 'Email',
@@ -122,7 +122,7 @@ export const reserveOnlinePages = {
       emailDescription: 'Best if you prefer to ask your question in writing.',
       whatsappLabel: 'Message on WhatsApp',
       whatsappHref: getBusinessWhatsappHref(
-        'Hello, I have a question before booking a massage.'
+        'Hello, I have a question before booking a treatment.'
       ),
     },
   },

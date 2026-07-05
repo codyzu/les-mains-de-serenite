@@ -54,14 +54,16 @@ test('section overview pages render their main content', async ({page}) => {
 
   await expect(
     page.getByRole('heading', {
-      name: 'Chaque massage est pensé pour répondre à votre besoin du moment',
+      name: 'Chaque soin est pensé pour répondre à votre besoin du moment',
     })
   ).toBeVisible();
   await expect(
-    page.getByText('Massages réservés exclusivement aux femmes')
+    page.getByText(
+      'Soins et massages bien-être réservés exclusivement aux femmes'
+    )
   ).toBeVisible();
   await expect(
-    page.getByRole('link', {name: 'Réserver un massage'})
+    page.getByRole('link', {name: 'Réserver un soin'})
   ).toHaveAttribute('href', '/reserver');
   await expect(
     page.getByRole('heading', {name: 'Madérothérapie'})
@@ -95,11 +97,11 @@ test('section overview pages render their main content', async ({page}) => {
   ).toHaveAttribute('href', '/programmes/cure-fusion/');
   await expect(
     page.getByText(
-      'Deux accompagnements permettent d’aller plus loin, selon vos besoins et votre objectif de bien-être.'
+      'Deux accompagnements pour répondre à des besoins différents'
     )
   ).toBeVisible();
   await expect(
-    page.getByRole('link', {name: 'Voir les massages'})
+    page.getByRole('link', {name: 'Voir les soins'})
   ).toHaveAttribute('href', '/massages/');
 });
 
@@ -113,18 +115,18 @@ test('Cure Fusion page explains the personalized package', async ({page}) => {
     page.getByText('3 séances personnalisées').first()
   ).toBeVisible();
   await expect(
-    page.getByText('3 massages personnalisés', {exact: true})
+    page.getByText('3 soins personnalisés', {exact: true})
   ).toBeVisible();
   await expect(page.getByText('350 €').first()).toBeVisible();
   await expect(
     page.getByText('Accompagnement réservé exclusivement aux femmes')
   ).toBeVisible();
   await expect(
-    page.getByText('Vous n’avez pas à choisir le bon massage')
+    page.getByText('Vous n’avez pas à choisir le bon soin seule')
   ).toBeVisible();
   await expect(
     page.getByText(
-      'Vous n’avez pas à choisir entre drainage lymphatique, massage remodelant ou madérothérapie'
+      'Vous n’avez pas à choisir seule entre drainage lymphatique, soin remodelant ou madérothérapie'
     )
   ).toBeVisible();
   await expect(
@@ -154,14 +156,14 @@ test('Cure Fusion page explains the personalized package', async ({page}) => {
   ).toBeVisible();
   await expect(
     page.getByRole('heading', {
-      name: 'Les massages pouvant être choisis',
+      name: 'Les soins pouvant être choisis',
     })
   ).toBeVisible();
   await expect(
     page.getByRole('heading', {name: 'Drainage lymphatique'})
   ).toBeVisible();
   await expect(
-    page.getByRole('heading', {name: 'Massage remodelant'})
+    page.getByRole('heading', {name: 'Soin remodelant'})
   ).toBeVisible();
   await expect(
     page.getByRole('heading', {name: 'Madérothérapie'})
@@ -178,7 +180,7 @@ test('Cure Fusion page explains the personalized package', async ({page}) => {
   ).toBeVisible();
   await expect(
     page.getByRole('heading', {
-      name: 'Pourquoi choisir une Cure Fusion plutôt que trois massages réservés séparément ?',
+      name: 'Pourquoi choisir une Cure Fusion plutôt que trois soins réservés séparément ?',
     })
   ).toBeVisible();
   await expect(
@@ -194,7 +196,7 @@ test('Cure Fusion page explains the personalized package', async ({page}) => {
     page.getByRole('link', {name: 'Voir les programmes'})
   ).toHaveAttribute('href', '/programmes/');
   await expect(
-    page.getByRole('link', {name: 'Voir les massages'})
+    page.getByRole('link', {name: 'Voir les soins'})
   ).toHaveAttribute('href', '/massages/');
   await expect(
     page.getByRole('link', {name: 'Programme Ventre Léger'})
@@ -207,14 +209,14 @@ test('online booking pages render the embedded scheduler shell', async ({
   await page.goto('/reserver-en-ligne');
 
   await expect(
-    page.getByRole('heading', {name: 'Réserver votre massage bien-être'})
+    page.getByRole('heading', {name: 'Réserver votre soin bien-être'})
   ).toBeVisible();
   await expect(page.locator('#my-cal-inline-reserver')).toBeVisible();
 
   await page.goto('/en/book-online');
 
   await expect(
-    page.getByRole('heading', {name: 'Book your wellness massage'})
+    page.getByRole('heading', {name: 'Book your wellness treatment'})
   ).toBeVisible();
   await expect(page.locator('#my-cal-inline-reserver')).toBeVisible();
 });

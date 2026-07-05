@@ -7,7 +7,7 @@ const withFrenchCtas = homePages.fr.massagesSection.items.map((item) => ({
   ctaText:
     item.anchorId === 'maderotherapie'
       ? (item.ctaText ?? 'Découvrir')
-      : 'Réserver ce massage',
+      : 'Réserver ce soin',
   ctaLink:
     item.anchorId === 'maderotherapie'
       ? localizedPagePaths.maderotherapie.fr
@@ -19,7 +19,7 @@ const withEnglishCtas = homePages.en.massagesSection.items.map((item) => ({
   ctaText:
     item.anchorId === 'maderotherapy'
       ? (item.ctaText ?? 'Discover')
-      : 'Book this massage',
+      : 'Book this treatment',
   ctaLink:
     item.anchorId === 'maderotherapy'
       ? localizedPagePaths.maderotherapie.en
@@ -32,23 +32,23 @@ export const massagesPages = {
     meta: {
       title: 'Massages bien-être à Annecy | Les Mains de Sérénité',
       description:
-        'Découvrez les massages bien-être proposés à Annecy : drainage lymphatique, massage relaxant ou anti-douleur, remodelant, visage liftant et madérothérapie.',
+        'Découvrez les soins bien-être et massages à Annecy : drainage lymphatique, soin relaxant, soin thérapeutique, remodelant, visage liftant et madérothérapie.',
     },
     hero: {
       eyebrow: 'Massages bien-être à Annecy',
-      title: 'Chaque massage est pensé pour répondre à votre besoin du moment',
+      title: 'Chaque soin est pensé pour répondre à votre besoin du moment',
       description:
         'À chaque rendez-vous, le soin s’adapte à ce dont votre corps a besoin aujourd’hui : légèreté, détente, relâchement des tensions ou tonicité.',
       reassurance:
-        'Massages réservés exclusivement aux femmes, dans un cadre calme, bienveillant et confidentiel.',
-      ctaText: 'Réserver un massage',
+        'Soins et massages bien-être réservés exclusivement aux femmes, dans un cadre calme, bienveillant et confidentiel.',
+      ctaText: 'Réserver un soin',
       ctaHref: localizedPagePaths.reserve.fr,
       analyticsEvent: 'reserve_click',
     },
     section: {
       ...homePages.fr.massagesSection,
       intro:
-        'Les massages sont des séances individuelles. Ils permettent de répondre à un besoin précis, de découvrir une technique ou de vous offrir un moment de bien-être ponctuel.',
+        'Les soins sont des séances individuelles. Ils permettent de répondre à un besoin précis, de découvrir une technique de massage bien-être ou de vous offrir un moment de détente ponctuel.',
       items: withFrenchCtas,
     },
     programCrossLink: {
@@ -61,7 +61,7 @@ export const massagesPages = {
     booking: {
       title: 'Besoin d’aide pour choisir ?',
       description:
-        'Nous pouvons vous orienter vers le massage le plus adapté à vos besoins du moment.',
+        'Nous pouvons vous orienter vers le soin le plus adapté à vos besoins du moment.',
       text: 'Réserver ou poser une question',
       href: localizedPagePaths.reserve.fr,
       analyticsEvent: 'reserve_click',
@@ -72,23 +72,23 @@ export const massagesPages = {
     meta: {
       title: 'Wellness Massages in Annecy | Les Mains de Sérénité',
       description:
-        'Discover women-only wellness massages in Annecy: lymphatic drainage, relaxation or tension relief, body sculpting, lifting facial massage, and maderotherapy.',
+        'Discover women-only wellness treatments and massages in Annecy: lymphatic drainage, relaxing treatment, tension relief, body sculpting, lifting facial treatment, and maderotherapy.',
     },
     hero: {
       eyebrow: 'Wellness massages in Annecy',
-      title: 'Each massage is designed around what you need today',
+      title: 'Each treatment is designed around what you need today',
       description:
         'At every appointment, the treatment adapts to how your body feels now: lightness, relaxation, tension relief, or tone.',
       reassurance:
-        'Massages are reserved exclusively for women, in a calm, caring, and confidential setting.',
-      ctaText: 'Book a massage',
+        'Wellness treatments and massages are reserved exclusively for women, in a calm, caring, and confidential setting.',
+      ctaText: 'Book a treatment',
       ctaHref: localizedPagePaths.reserve.en,
       analyticsEvent: 'reserve_click',
     },
     section: {
       ...homePages.en.massagesSection,
       intro:
-        'Massages are individual sessions. They are ideal for a specific need, discovering a technique, or giving yourself a focused moment of well-being.',
+        'Treatments are individual sessions. They are ideal for a specific need, discovering a wellness massage technique, or giving yourself a focused moment of well-being.',
       items: withEnglishCtas,
     },
     programCrossLink: {
@@ -101,7 +101,7 @@ export const massagesPages = {
     booking: {
       title: 'Need help choosing?',
       description:
-        'We can guide you toward the massage that best fits your current needs.',
+        'We can guide you toward the treatment that best fits your current needs.',
       text: 'Book or ask a question',
       href: localizedPagePaths.reserve.en,
       analyticsEvent: 'reserve_click',

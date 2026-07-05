@@ -8,7 +8,7 @@ export const programsPages = {
     meta: {
       title: 'Programmes bien-être à Annecy | Les Mains de Sérénité',
       description:
-        'Découvrez les programmes bien-être à Annecy : des accompagnements sur plusieurs séances pour aller plus loin qu’un massage seul.',
+        'Découvrez les programmes bien-être à Annecy : des accompagnements sur plusieurs séances pour aller plus loin qu’un soin ou massage seul.',
     },
     hero: {
       eyebrow: 'Programmes d’accompagnement',
@@ -22,9 +22,9 @@ export const programsPages = {
       analyticsEvent: 'reserve_click',
     },
     distinction: {
-      singleTitle: 'Un massage individuel',
+      singleTitle: 'Un soin individuel',
       singleDescription:
-        'Répond à un besoin ponctuel : détente, jambes lourdes, tensions ou découverte d’une technique. Une séance, un besoin précis.',
+        'Répond à un besoin ponctuel : détente, jambes lourdes, tensions ou découverte d’une technique de massage bien-être. Une séance, un besoin précis.',
       programTitle: 'Un programme',
       programDescription:
         'Associe plusieurs séances personnalisées pour soutenir les bienfaits dans la durée. Un accompagnement qui évolue avec vous.',
@@ -44,8 +44,8 @@ export const programsPages = {
     massagesCrossLink: {
       title: 'Vous préférez une séance ponctuelle ?',
       description:
-        'Les massages individuels permettent de répondre à un besoin précis sans vous engager dans un accompagnement complet.',
-      text: 'Voir les massages',
+        'Les soins individuels permettent de répondre à un besoin précis sans vous engager dans un accompagnement complet.',
+      text: 'Voir les soins',
       href: localizedPagePaths.massages.fr,
     },
     booking: {
@@ -62,7 +62,7 @@ export const programsPages = {
     meta: {
       title: 'Wellness Programs in Annecy | Les Mains de Sérénité',
       description:
-        'Discover women-only wellness programs in Annecy: multi-session support designed to go further than one massage alone.',
+        'Discover women-only wellness programs in Annecy: multi-session support designed to go further than one wellness treatment or massage alone.',
     },
     hero: {
       eyebrow: 'Support programs',
@@ -76,9 +76,9 @@ export const programsPages = {
       analyticsEvent: 'reserve_click',
     },
     distinction: {
-      singleTitle: 'An individual massage',
+      singleTitle: 'An individual treatment',
       singleDescription:
-        'Responds to a one-time need: relaxation, heavy legs, tension, or discovering a technique. One session, one precise need.',
+        'Responds to a one-time need: relaxation, heavy legs, tension, or discovering a wellness massage technique. One session, one precise need.',
       programTitle: 'A program',
       programDescription:
         'Combines several personalized sessions to support the benefits over time. An accompaniment that evolves with you.',
@@ -98,8 +98,8 @@ export const programsPages = {
     massagesCrossLink: {
       title: 'Would you prefer a single session?',
       description:
-        'Individual massages are ideal for a specific need without committing to a full accompaniment.',
-      text: 'View massages',
+        'Individual treatments are ideal for a specific need without committing to a full accompaniment.',
+      text: 'View treatments',
       href: localizedPagePaths.massages.en,
     },
     booking: {

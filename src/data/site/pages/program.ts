@@ -149,7 +149,7 @@ export const programPages = {
     },
     story: {
       title: 'Why I created this method',
-      body: 'Through my sessions, I understood that one massage alone was not always enough. Everyday habits also play an important role. This is how the Light Belly Method was born: a simple, caring, and accessible approach combining lymphatic drainage, everyday habits, and better body awareness.',
+      body: 'Through my sessions, I understood that one treatment alone was not always enough. Everyday habits also play an important role. This is how the Light Belly Method was born: a simple, caring, and accessible approach combining lymphatic drainage, everyday habits, and better body awareness.',
     },
     faq: {
       title: 'Frequently asked questions',

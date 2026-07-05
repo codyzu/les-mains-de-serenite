@@ -3,21 +3,25 @@ import {expect, test} from './fixtures';
 test('language switch points between localized homepages', async ({page}) => {
   await page.goto('/');
 
-  await expect(page.getByRole('link', {name: 'FR'}).first()).toHaveAttribute(
+  const switcher = page.locator('[data-language-switcher]').first();
+
+  await expect(switcher.getByRole('link', {name: 'FR'})).toHaveAttribute(
     'aria-current',
     'page'
   );
-  await expect(page.getByRole('link', {name: 'EN'}).first()).toHaveAttribute(
+  await expect(switcher.getByRole('link', {name: 'EN'})).toHaveAttribute(
     'href',
     '/en/'
   );
   await page.goto('/en/');
 
-  await expect(page.getByRole('link', {name: 'EN'}).first()).toHaveAttribute(
+  const englishSwitcher = page.locator('[data-language-switcher]').first();
+
+  await expect(englishSwitcher.getByRole('link', {name: 'EN'})).toHaveAttribute(
     'aria-current',
     'page'
   );
-  await expect(page.getByRole('link', {name: 'FR'}).first()).toHaveAttribute(
+  await expect(englishSwitcher.getByRole('link', {name: 'FR'})).toHaveAttribute(
     'href',
     '/'
   );
@@ -112,7 +116,7 @@ test('mobile menu opens, exposes localized links, and closes with Escape', async
   await expect(drawer.getByRole('link', {name: 'Maderotherapy'})).toHaveCount(
     0
   );
-  await expect(drawer.getByRole('link', {name: 'Massages'})).toHaveAttribute(
+  await expect(drawer.getByRole('link', {name: 'Treatments'})).toHaveAttribute(
     'href',
     '/en/massages/'
   );

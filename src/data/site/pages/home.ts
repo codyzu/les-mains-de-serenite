@@ -8,7 +8,7 @@ export const homePages = {
     meta: {
       title: 'Les Mains de Sérénité | Massage bien-être à Annecy pour femmes',
       description:
-        'Massage bien-être à Annecy pour femmes, sur rendez-vous, dans un cadre calme et confortable. Drainage lymphatique, massages ciblés et conseils simples pour prolonger les bienfaits.',
+        'Soin bien-être et massage à Annecy pour femmes, sur rendez-vous, dans un cadre calme et confortable. Drainage lymphatique, soins ciblés et conseils simples pour prolonger les bienfaits.',
     },
     hero: {
       subtitle: 'Massage bien-être à Annecy',
@@ -19,7 +19,7 @@ export const homePages = {
       womenOnlyLabel: 'Réservé aux femmes',
       benefitHighlight:
         'Idéal pour jambes lourdes, ventre gonflé et confort au quotidien',
-      primaryCta: 'Réserver un massage',
+      primaryCta: 'Réserver un soin',
       secondaryCta: 'Appeler',
       whatsappCta: 'WhatsApp',
     },
@@ -27,7 +27,7 @@ export const homePages = {
       title: 'Offre découverte',
       headline: '45 min à 55\u00A0€',
       description:
-        'Une séance ciblée pour soulager les jambes lourdes ou le mal de dos, et retrouver une sensation de légèreté.',
+        'Un soin ciblé pour accompagner les jambes lourdes ou les tensions du dos, et retrouver une sensation de légèreté.',
       ctaText: 'Réserver l’offre',
       ctaLink: discoveryOfferBookingHref,
       analyticsEvent: 'reserve_click',
@@ -69,9 +69,9 @@ export const homePages = {
       ],
     },
     massagesSection: {
-      title: 'Massages proposés',
+      title: 'Soins proposés',
       intro:
-        'Des massages pensés pour soulager les tensions, offrir un véritable moment de bien-être et vous aider à mieux écouter les besoins de votre corps.',
+        'Des soins bien-être pensés pour accompagner les tensions, offrir un véritable moment de détente et vous aider à mieux écouter les besoins de votre corps.',
       recommendedLabel: 'Durée conseillée',
       items: [
         {
@@ -85,39 +85,39 @@ export const homePages = {
             {duration: '1 h', price: '90 €', recommended: true},
             {duration: '1 h 30', price: '125 €'},
           ],
-          ctaText: 'Voir les massages',
+          ctaText: 'Découvrir le soin',
           ctaLink: localizedPagePaths.massages.fr,
         },
         {
           anchorId: 'massage-anti-douleur',
-          title: 'Massage anti-douleur ou relaxant',
+          title: 'Soin thérapeutique ou relaxant',
           description:
-            'Massage personnalisé pour soulager les tensions musculaires, relâcher le stress et offrir une détente profonde. La séance s’adapte à vos besoins : dos, épaules, nuque, fatigue ou simple besoin de ralentir.',
+            'Soin personnalisé avec techniques de massage bien-être pour accompagner les tensions musculaires, relâcher le stress et offrir une détente profonde. La séance s’adapte à vos besoins : dos, épaules, nuque, fatigue ou simple besoin de ralentir.',
           icon: 'i-lucide-activity',
           prices: [
             {duration: '45 min', price: '60 €'},
             {duration: '1 h', price: '80 €', recommended: true},
             {duration: '1 h 30', price: '115 €'},
           ],
-          ctaText: 'Voir les massages',
+          ctaText: 'Découvrir le soin',
           ctaLink: localizedPagePaths.massages.fr,
         },
         {
           anchorId: 'massage-remodelant',
-          title: 'Massage remodelant',
+          title: 'Soin remodelant',
           description:
-            'Massage tonifiant qui aide à raffermir la peau et redessiner certaines zones du corps. Il stimule la circulation et améliore l’aspect de la silhouette.',
+            'Soin tonifiant avec techniques de massage remodelant, pensé pour stimuler les tissus, soutenir la sensation de fermeté et accompagner l’harmonie de la silhouette.',
           icon: 'i-lucide-scan',
           prices: [
             {duration: '1 h', price: '110 €', recommended: true},
             {duration: '1 h 30', price: '135 €'},
           ],
-          ctaText: 'Voir les massages',
+          ctaText: 'Découvrir le soin',
           ctaLink: localizedPagePaths.massages.fr,
         },
         {
           anchorId: 'massage-visage-liftant',
-          title: 'Massage visage liftant',
+          title: 'Soin visage liftant',
           description:
             'Soin du visage relaxant qui stimule la circulation et tonifie la peau. Il aide à illuminer le teint et procure un effet liftant naturel.',
           icon: 'i-lucide-sparkles',
@@ -126,12 +126,12 @@ export const homePages = {
             {duration: '45 min', price: '65 €', recommended: true},
             {duration: '1 h', price: '85 €'},
           ],
-          ctaText: 'Voir les massages',
+          ctaText: 'Découvrir le soin',
           ctaLink: localizedPagePaths.massages.fr,
         },
         {
           anchorId: 'maderotherapie',
-          title: 'Madérothérapie',
+          title: 'Soin de madérothérapie',
           description:
             'Soin ciblé utilisant des instruments en bois pour stimuler la circulation, favoriser le drainage naturel et procurer une agréable sensation de légèreté.',
           icon: 'i-lucide-leaf',
@@ -139,7 +139,7 @@ export const homePages = {
             {duration: '1 h', price: '90 €', recommended: true},
             {duration: '1 h 30', price: '125 €'},
           ],
-          ctaText: 'Découvrir',
+          ctaText: 'Découvrir le soin',
           ctaLink: localizedPagePaths.maderotherapie.fr,
         },
       ],
@@ -174,17 +174,17 @@ export const homePages = {
           title: 'Cure Fusion',
           subtitle: '3 séances personnalisées',
           description:
-            'Un accompagnement personnalisé en 3 séances où chaque massage est choisi selon vos besoins et l’évolution de vos ressentis.',
+            'Un accompagnement personnalisé en 3 séances où chaque soin est choisi selon vos besoins et l’évolution de vos ressentis.',
           includesTitle: 'Selon vos besoins, votre accompagnement peut inclure',
           includes: [
             'Drainage lymphatique',
-            'Massage remodelant',
+            'Soin remodelant',
             'Madérothérapie',
           ],
           priceLabel: 'Tarif',
           price: '350 €',
           priceDetail: '3 séances',
-          note: 'Vous n’avez pas à choisir le massage. Chaque séance est adaptée à vos besoins du moment pour vous accompagner vers une sensation de légèreté, de confort et de bien-être.',
+          note: 'Vous n’avez pas à choisir le soin seule. Chaque séance est adaptée à vos besoins du moment pour vous accompagner vers une sensation de légèreté, de confort et de bien-être.',
           ctaText: 'Découvrir la cure',
           ctaLink: localizedPagePaths.cureFusion.fr,
           icon: 'i-lucide-sparkles',
@@ -196,7 +196,7 @@ export const homePages = {
       body: `
   Je suis Zahara, praticienne en massage bien-être à Annecy, avec une formation d’auxiliaire de puériculture, ce qui m’a permis de développer une approche attentive, douce et à l’écoute du corps.
 
-  Formée au drainage lymphatique selon la méthode Renata França, je propose des massages réservés aux femmes, pensés pour offrir un véritable moment de relâchement et de bien-être.
+  Formée au drainage lymphatique selon la méthode Renata França, je propose des soins réservés aux femmes, pensés pour offrir un véritable moment de relâchement et de bien-être.
 
   Au fil de mes accompagnements, j’ai constaté que de nombreuses femmes avaient tendance à s’oublier entre la vie professionnelle, la vie familiale et les obligations du quotidien. Elles vivent parfois avec des tensions, de la fatigue ou une sensation de lourdeur qu’elles finissent par considérer comme normale.
 
@@ -271,12 +271,12 @@ export const homePages = {
     },
     booking: {
       bookingPath: localizedPagePaths.reserve.fr,
-      title: 'Réserver votre massage',
+      title: 'Réserver votre soin',
       description:
-        'Réservez facilement votre massage en ligne et choisissez le créneau qui vous convient.',
+        'Réservez facilement votre soin en ligne et choisissez le créneau qui vous convient.',
       note: 'Échange facile par téléphone ou WhatsApp avant réservation',
       reassuranceNote:
-        'Massage réservé exclusivement aux femmes, dans un cadre privé et confidentiel.',
+        'Soin réservé exclusivement aux femmes, dans un cadre privé et confidentiel.',
       ctaText: 'Réserver en ligne',
     },
     contact: {
@@ -294,11 +294,11 @@ export const homePages = {
         'Idéal si vous préférez poser votre question par écrit.',
       whatsappLabel: 'Écrire sur WhatsApp',
       locationText:
-        'Massages bien-être à Annecy, sur rendez-vous, dans un cadre calme et confortable.',
+        'Soins et massages bien-être à Annecy, sur rendez-vous, dans un cadre calme et confortable.',
     },
     whatsapp: {
       generalHref: getBusinessWhatsappHref(
-        'Bonjour, je souhaite des informations pour un massage'
+        'Bonjour, je souhaite des informations pour un soin bien-être'
       ),
     },
   },
@@ -317,7 +317,7 @@ export const homePages = {
       womenOnlyLabel: 'For women only · English welcome',
       benefitHighlight:
         'Especially appreciated for heavy legs, bloating, and everyday comfort',
-      primaryCta: 'Book a massage',
+      primaryCta: 'Book a treatment',
       secondaryCta: 'Call',
       whatsappCta: 'WhatsApp',
     },
@@ -367,9 +367,9 @@ export const homePages = {
       ],
     },
     massagesSection: {
-      title: 'Available massages',
+      title: 'Available treatments',
       intro:
-        'Tailored massages designed to ease tension, offer a true moment of well-being, and help you listen more closely to your body’s needs.',
+        'Tailored wellness treatments designed to ease tension, offer a true moment of well-being, and help you listen more closely to your body’s needs.',
       recommendedLabel: 'Recommended',
       items: [
         {
@@ -383,39 +383,39 @@ export const homePages = {
             {duration: '1 h', price: '90 €', recommended: true},
             {duration: '1 h 30', price: '125 €'},
           ],
-          ctaText: 'View massages',
+          ctaText: 'Discover the treatment',
           ctaLink: localizedPagePaths.massages.en,
         },
         {
           anchorId: 'tension-relief-massage',
-          title: 'Tension relief or relaxation massage',
+          title: 'Therapeutic or relaxing treatment',
           description:
-            'A personalized massage to ease muscular tension, release stress, and provide deep relaxation. The session adapts to your needs: back, shoulders, neck, fatigue, or simply a need to slow down.',
+            'A personalized treatment using wellness massage techniques to ease muscular tension, release stress, and provide deep relaxation. The session adapts to your needs: back, shoulders, neck, fatigue, or simply a need to slow down.',
           icon: 'i-lucide-activity',
           prices: [
             {duration: '45 min', price: '60 €'},
             {duration: '1 h', price: '80 €', recommended: true},
             {duration: '1 h 30', price: '115 €'},
           ],
-          ctaText: 'View massages',
+          ctaText: 'Discover the treatment',
           ctaLink: localizedPagePaths.massages.en,
         },
         {
           anchorId: 'body-sculpting-massage',
-          title: 'Body sculpting massage',
+          title: 'Body sculpting treatment',
           description:
-            'A toning massage that supports skin firmness and helps improve the appearance of the silhouette.',
+            'A toning treatment using body sculpting massage techniques to stimulate the tissues and support a more harmonious silhouette.',
           icon: 'i-lucide-scan',
           prices: [
             {duration: '1 h', price: '110 €', recommended: true},
             {duration: '1 h 30', price: '135 €'},
           ],
-          ctaText: 'View massages',
+          ctaText: 'Discover the treatment',
           ctaLink: localizedPagePaths.massages.en,
         },
         {
           anchorId: 'lifting-facial-massage',
-          title: 'Lifting facial massage',
+          title: 'Lifting facial treatment',
           description:
             'A relaxing facial treatment that stimulates circulation and tones the skin, leaving the face feeling refreshed and naturally toned.',
           icon: 'i-lucide-sparkles',
@@ -424,12 +424,12 @@ export const homePages = {
             {duration: '45 min', price: '65 €', recommended: true},
             {duration: '1 h', price: '85 €'},
           ],
-          ctaText: 'View massages',
+          ctaText: 'Discover the treatment',
           ctaLink: localizedPagePaths.massages.en,
         },
         {
           anchorId: 'maderotherapy',
-          title: 'Maderotherapy',
+          title: 'Maderotherapy treatment',
           description:
             'A targeted treatment using wooden instruments to stimulate circulation, support natural drainage, and create a pleasant feeling of lightness.',
           icon: 'i-lucide-leaf',
@@ -437,7 +437,7 @@ export const homePages = {
             {duration: '1 h', price: '90 €', recommended: true},
             {duration: '1 h 30', price: '125 €'},
           ],
-          ctaText: 'Discover',
+          ctaText: 'Discover the treatment',
           ctaLink: localizedPagePaths.maderotherapie.en,
         },
       ],
@@ -472,18 +472,18 @@ export const homePages = {
           title: 'Cure Fusion',
           subtitle: '3 personalized sessions',
           description:
-            'A personalized 3-session accompaniment where each massage is chosen according to your needs and how your body responds.',
+            'A personalized 3-session accompaniment where each treatment is chosen according to your needs and how your body responds.',
           includesTitle:
             'Depending on your needs, your accompaniment may include',
           includes: [
             'Lymphatic drainage',
-            'Body sculpting massage',
+            'Body sculpting treatment',
             'Maderotherapy',
           ],
           priceLabel: 'Price',
           price: '350 €',
           priceDetail: '3 sessions',
-          note: 'You do not have to choose the massage. Each session is adapted to what you need at that moment, supporting a feeling of lightness, comfort, and well-being.',
+          note: 'You do not have to choose the treatment alone. Each session is adapted to what you need at that moment, supporting a feeling of lightness, comfort, and well-being.',
           ctaText: 'Discover the package',
           ctaLink: localizedPagePaths.cureFusion.en,
           icon: 'i-lucide-sparkles',
@@ -495,7 +495,7 @@ export const homePages = {
       body: `
   I am Zahara, a wellness massage practitioner in Annecy. My background as a childcare assistant helped me develop an attentive, gentle, and body-aware approach.
 
-  Trained in lymphatic drainage with the Renata França method, I offer women-only massages designed to provide a genuine moment of release and well-being.
+  Trained in lymphatic drainage with the Renata França method, I offer women-only treatments designed to provide a genuine moment of release and well-being.
 
   Through my sessions, I have noticed that many women tend to put themselves last between work, family life, and everyday responsibilities. They often live with tension, fatigue, or a feeling of heaviness until it starts to feel normal.
 
@@ -569,12 +569,12 @@ export const homePages = {
     },
     booking: {
       bookingPath: localizedPagePaths.reserve.en,
-      title: 'Book your massage',
+      title: 'Book your treatment',
       description:
-        'Book your massage online in just a few clicks and choose the time slot that suits you best.',
+        'Book your treatment online in just a few clicks and choose the time slot that suits you best.',
       note: 'Easy to reach by phone or WhatsApp before booking',
       reassuranceNote:
-        'Massage exclusively reserved for women, in a private and confidential setting.',
+        'Treatment exclusively reserved for women, in a private and confidential setting.',
       ctaText: 'Book online',
     },
     contact: {
@@ -594,7 +594,7 @@ export const homePages = {
     },
     whatsapp: {
       generalHref: getBusinessWhatsappHref(
-        'Hello, I would like more information about a massage.'
+        'Hello, I would like more information about a wellness treatment.'
       ),
     },
   },

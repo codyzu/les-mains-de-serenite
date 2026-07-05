@@ -12,10 +12,10 @@ test('French homepage renders the main business content and booking CTA', async 
     page.getByRole('heading', {name: 'Les Mains de Sérénité'}).first()
   ).toBeVisible();
   await expect(
-    page.getByRole('heading', {name: 'Massages proposés'})
+    page.getByRole('heading', {name: 'Soins proposés'})
   ).toBeVisible();
   await expect(
-    page.getByRole('heading', {name: 'Massage anti-douleur ou relaxant'})
+    page.getByRole('heading', {name: 'Soin thérapeutique ou relaxant'})
   ).toBeVisible();
   await expect(
     page.getByText(
@@ -35,7 +35,7 @@ test('French homepage renders the main business content and booking CTA', async 
   await expect(page.getByText('3 séances', {exact: true})).toBeVisible();
   await expect(
     page.getByText(
-      'Un accompagnement conçu pour retrouver une sensation de légèreté, de tonicité et de bien-être durable'
+      'L’accompagnement associe drainage lymphatique, écoute du corps'
     )
   ).toBeVisible();
   await expect(
@@ -45,10 +45,10 @@ test('French homepage renders the main business content and booking CTA', async 
     page.getByRole('link', {name: 'Découvrir la cure'})
   ).toHaveAttribute('href', '/programmes/cure-fusion/');
   await expect(
-    page.getByRole('link', {name: 'Découvrir'}).first()
+    page.locator('a[href="/massages/maderotherapie/"]').first()
   ).toHaveAttribute('href', '/massages/maderotherapie/');
   await expect(
-    page.getByRole('link', {name: 'Réserver un massage'}).first()
+    page.getByRole('link', {name: 'Réserver un soin'}).first()
   ).toHaveAttribute('href', '/reserver');
 });
 
@@ -64,11 +64,11 @@ test('English homepage renders localized content and booking CTA', async ({
     page.getByRole('heading', {name: 'Les Mains de Sérénité'}).first()
   ).toBeVisible();
   await expect(
-    page.getByRole('heading', {name: 'Available massages'})
+    page.getByRole('heading', {name: 'Available treatments'})
   ).toBeVisible();
   await expect(
     page.getByRole('heading', {
-      name: 'Tension relief or relaxation massage',
+      name: 'Therapeutic or relaxing treatment',
     })
   ).toBeVisible();
   await expect(
@@ -85,7 +85,7 @@ test('English homepage renders localized content and booking CTA', async ({
   await expect(page.getByText('3 sessions', {exact: true})).toBeVisible();
   await expect(
     page.getByText(
-      'A guided accompaniment designed to restore a lasting feeling of lightness'
+      'The accompaniment combines lymphatic drainage, body awareness'
     )
   ).toBeVisible();
   await expect(
@@ -95,9 +95,9 @@ test('English homepage renders localized content and booking CTA', async ({
     page.getByRole('link', {name: 'Discover the package'})
   ).toHaveAttribute('href', '/en/programs/cure-fusion/');
   await expect(
-    page.getByRole('link', {name: 'Discover'}).first()
+    page.locator('a[href="/en/massages/maderotherapy/"]').first()
   ).toHaveAttribute('href', '/en/massages/maderotherapy/');
   await expect(
-    page.getByRole('link', {name: 'Book a massage'}).first()
+    page.getByRole('link', {name: 'Book a treatment'}).first()
   ).toHaveAttribute('href', '/en/book');
 });

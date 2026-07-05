@@ -3,10 +3,10 @@ import type {Locale, SiteChromeData} from './types';
 export const chrome = {
   fr: {
     header: {
-      tagline: 'Massothérapeute',
+      tagline: 'Praticienne bien-être',
       links: {
         home: 'Accueil',
-        massages: 'Massages',
+        massages: 'Soins',
         program: 'Programmes',
         about: 'À propos',
         reserve: 'Réserver',
@@ -14,9 +14,9 @@ export const chrome = {
       },
     },
     footer: {
-      tagline: 'Massage bien-être',
+      tagline: 'Soin bien-être',
       links: {
-        massages: 'Massages',
+        massages: 'Soins',
         program: 'Programmes',
         about: 'À propos',
         reserve: 'Réserver',
@@ -28,10 +28,10 @@ export const chrome = {
   },
   en: {
     header: {
-      tagline: 'Massothérapeute',
+      tagline: 'Wellness practitioner',
       links: {
         home: 'Home',
-        massages: 'Massages',
+        massages: 'Treatments',
         program: 'Programs',
         about: 'About',
         reserve: 'Book',
@@ -41,7 +41,7 @@ export const chrome = {
     footer: {
       tagline: 'Wellness massage',
       links: {
-        massages: 'Massages',
+        massages: 'Treatments',
         program: 'Programs',
         about: 'About',
         reserve: 'Book',
