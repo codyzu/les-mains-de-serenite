@@ -4,6 +4,7 @@ import {
   defaultLocale,
   getLocalizedSite,
   site,
+  type AnalyticsEventName,
   type Locale,
   type LocalePathMap,
 } from '../data/site';
@@ -16,6 +17,15 @@ type Props = {
   languageSwitchPaths?: LocalePathMap;
   reserveLink?: string;
   reserveActive?: boolean;
+};
+
+type HeaderNavItem = {
+  key: 'home' | 'massages' | 'program' | 'about' | 'reserve' | 'contact';
+  label: string;
+  href: string;
+  active?: boolean;
+  activeElement?: 'link' | 'span';
+  analyticsEvent?: AnalyticsEventName;
 };
 
 const {
@@ -60,6 +70,52 @@ const phoneHref = getPhoneHref(site.business.phone);
 const menuLabel = locale === 'en' ? 'Menu' : 'Menu';
 const closeMenuLabel = locale === 'en' ? 'Close menu' : 'Fermer le menu';
 const navLabel = locale === 'en' ? 'Main navigation' : 'Navigation principale';
+const desktopNavItems = [
+  {
+    key: 'home',
+    label: links.home,
+    href: `${homeHref}#accueil`,
+  },
+  {
+    key: 'massages',
+    label: links.massages,
+    href: massagesHref,
+    active: massagesActive,
+    activeElement: 'link',
+  },
+  {
+    key: 'program',
+    label: links.program,
+    href: programHref,
+    active: programActive,
+    activeElement: 'link',
+  },
+  {
+    key: 'about',
+    label: links.about,
+    href: `${homeHref}#apropos`,
+  },
+  {
+    key: 'reserve',
+    label: links.reserve,
+    href: bookingHref,
+    active: reserveActive,
+    activeElement: 'span',
+    analyticsEvent: 'reserve_click',
+  },
+  {
+    key: 'contact',
+    label: links.contact,
+    href: `${homeHref}#contact`,
+  },
+] satisfies HeaderNavItem[];
+const mobileNavItems = desktopNavItems
+  .filter((item) => item.key !== 'reserve')
+  .map((item) =>
+    item.key === 'home'
+      ? {...item, active: homeActive, activeElement: 'span' as const}
+      : item
+  );
 ---
 
 <header
@@ -98,54 +154,28 @@ const navLabel = locale === 'en' ? 'Main navigation' : 'Navigation principale';
     </a>
 
     <nav class="hidden items-center gap-6 lg:flex">
-      <a href={`${homeHref}#accueil`} class="nav-link">{links.home}</a>
       {
-        massagesActive ? (
-          <a
-            href={massagesHref}
-            aria-current="page"
-            class="text-sm font-medium text-ink no-underline"
-          >
-            {links.massages}
-          </a>
-        ) : (
-          <a href={massagesHref} class="nav-link">
-            {links.massages}
-          </a>
+        desktopNavItems.map((item) =>
+          item.active && item.activeElement === 'span' ? (
+            <span aria-current="page" class="text-sm font-medium text-ink">
+              {item.label}
+            </span>
+          ) : (
+            <a
+              href={item.href}
+              aria-current={item.active ? 'page' : undefined}
+              class:list={[
+                item.active
+                  ? 'text-sm font-medium text-ink no-underline'
+                  : 'nav-link',
+              ]}
+              data-analytics-event={item.analyticsEvent}
+            >
+              {item.label}
+            </a>
+          )
         )
       }
-      {
-        programActive ? (
-          <a
-            href={programHref}
-            aria-current="page"
-            class="text-sm font-medium text-ink no-underline"
-          >
-            {links.program}
-          </a>
-        ) : (
-          <a href={programHref} class="nav-link">
-            {links.program}
-          </a>
-        )
-      }
-      <a href={`${homeHref}#apropos`} class="nav-link">{links.about}</a>
-      {
-        reserveActive ? (
-          <span aria-current="page" class="text-sm font-medium text-ink">
-            {links.reserve}
-          </span>
-        ) : (
-          <a
-            href={bookingHref}
-            class="nav-link"
-            data-analytics-event="reserve_click"
-          >
-            {links.reserve}
-          </a>
-        )
-      }
-      <a href={`${homeHref}#contact`} class="nav-link">{links.contact}</a>
     </nav>
     <div
       class="flex shrink-0 items-center gap-4 max-xs:flex-col max-xs:items-end max-xs:gap-1 lg:gap-3"
@@ -240,52 +270,25 @@ const navLabel = locale === 'en' ? 'Main navigation' : 'Navigation principale';
 
     <nav class="mt-8 flex flex-col gap-[0.4rem]" aria-label={navLabel}>
       {
-        homeActive ? (
-          <span aria-current="page" class="drawer-link drawer-link-active">
-            {links.home}
-          </span>
-        ) : (
-          <a href={`${homeHref}#accueil`} class="drawer-link">
-            {links.home}
-          </a>
+        mobileNavItems.map((item) =>
+          item.active && item.activeElement === 'span' ? (
+            <span aria-current="page" class="drawer-link drawer-link-active">
+              {item.label}
+            </span>
+          ) : (
+            <a
+              href={item.href}
+              aria-current={item.active ? 'page' : undefined}
+              class:list={[
+                'drawer-link',
+                item.active ? 'drawer-link-active' : '',
+              ]}
+            >
+              {item.label}
+            </a>
+          )
         )
       }
-      {
-        massagesActive ? (
-          <a
-            href={massagesHref}
-            aria-current="page"
-            class="drawer-link drawer-link-active"
-          >
-            {links.massages}
-          </a>
-        ) : (
-          <a href={massagesHref} class="drawer-link">
-            {links.massages}
-          </a>
-        )
-      }
-      {
-        programActive ? (
-          <a
-            href={programHref}
-            aria-current="page"
-            class="drawer-link drawer-link-active"
-          >
-            {links.program}
-          </a>
-        ) : (
-          <a href={programHref} class="drawer-link">
-            {links.program}
-          </a>
-        )
-      }
-      <a href={`${homeHref}#apropos`} class="drawer-link">
-        {links.about}
-      </a>
-      <a href={`${homeHref}#contact`} class="drawer-link">
-        {links.contact}
-      </a>
     </nav>
 
     <div class="mt-auto pt-8">
