@@ -1,0 +1,28 @@
+---
+import type {ReassuranceLinkData} from '../data/site';
+
+type Props = {
+  reassurance?: ReassuranceLinkData;
+  class?: string;
+};
+
+const {reassurance, class: className = ''} = Astro.props;
+---
+
+{
+  reassurance ? (
+    <p class:list={['text-sm leading-6 text-ink/62', className]}>
+      {reassurance.prefix}
+      <a
+        href={reassurance.href}
+        class="font-medium text-brand-strong underline decoration-brand-strong/30 underline-offset-4 transition hover:text-brand"
+        target="_blank"
+        rel="noreferrer"
+        data-analytics-event={reassurance.analyticsEvent}
+      >
+        {reassurance.linkText}
+      </a>
+      {reassurance.suffix}
+    </p>
+  ) : null
+}

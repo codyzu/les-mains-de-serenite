@@ -1,5 +1,6 @@
 ---
 import {Picture} from 'astro:assets';
+import CtaReassurance from '../components/CtaReassurance.astro';
 import IconImage from '../components/IconImage.astro';
 import ProgramPreview from '../components/ProgramPreview.astro';
 import CureFusionLakeWalk from '../assets/cure-fusion-lake-walk.png';
@@ -171,6 +172,10 @@ const structuredData = {
           >
             {programs.booking.text}
           </a>
+          <CtaReassurance
+            reassurance={programs.booking.reassurance}
+            class="mx-auto mt-4 max-w-2xl"
+          />
         </div>
       </div>
     </section>

@@ -63,7 +63,7 @@ test('section overview pages render their main content', async ({page}) => {
     )
   ).toBeVisible();
   await expect(
-    page.getByRole('link', {name: 'Réserver ou poser une question'}).first()
+    page.getByRole('link', {name: 'Réserver un soin'}).first()
   ).toHaveAttribute('href', '/reserver');
   await expect(
     page.getByRole('heading', {name: 'Un soin pensé pour vous'})
@@ -81,8 +81,14 @@ test('section overview pages render their main content', async ({page}) => {
     page.getByRole('heading', {name: 'Vous souhaitez aller plus loin ?'})
   ).toBeVisible();
   await expect(
-    page.getByRole('link', {name: 'Réserver ou poser une question'}).last()
+    page.getByRole('link', {name: 'Réserver un soin'}).last()
   ).toHaveAttribute('href', '/reserver');
+  await expect(
+    page.getByText('Une question avant de réserver ? Écrivez-moi sur')
+  ).toBeVisible();
+  await expect(
+    page.getByRole('link', {name: 'WhatsApp'}).last()
+  ).toHaveAttribute('href', /wa\.me/);
   await expect(
     page.getByRole('link', {name: 'Découvrir les programmes'})
   ).toHaveAttribute('href', '/programmes/');
@@ -96,7 +102,7 @@ test('section overview pages render their main content', async ({page}) => {
     page.getByText('Des accompagnements bien-être réservés aux femmes')
   ).toBeVisible();
   await expect(
-    page.getByRole('link', {name: 'Réserver un accompagnement'})
+    page.getByRole('link', {name: 'Réserver un programme'}).first()
   ).toHaveAttribute('href', '/reserver');
   await expect(
     page.getByRole('heading', {name: 'Cure Fusion', exact: true})
@@ -112,6 +118,9 @@ test('section overview pages render their main content', async ({page}) => {
   await expect(
     page.getByRole('link', {name: 'Voir les soins'})
   ).toHaveAttribute('href', '/massages/');
+  await expect(
+    page.getByText('Une question avant de réserver ? Écrivez-moi sur')
+  ).toBeVisible();
 });
 
 test('Cure Fusion page explains the personalized package', async ({page}) => {
@@ -196,11 +205,12 @@ test('Cure Fusion page explains the personalized package', async ({page}) => {
     page.getByText('L’expérience globale est plus cohérente')
   ).toBeVisible();
   await expect(
-    page.getByRole('link', {name: 'Poser une question sur la cure'}).last()
-  ).toHaveAttribute('href', /wa\.me/);
-  await expect(
-    page.getByRole('link', {name: 'Réserver un créneau'})
+    page.getByRole('link', {name: 'Réserver cette cure'}).last()
   ).toHaveAttribute('href', '/reserver');
+  await expect(page.getByText('Vous hésitez ? Écrivez-moi sur')).toBeVisible();
+  await expect(
+    page.getByRole('link', {name: 'WhatsApp'}).last()
+  ).toHaveAttribute('href', /wa\.me/);
   await expect(
     page.getByRole('link', {name: 'Voir les programmes'})
   ).toHaveAttribute('href', '/programmes/');

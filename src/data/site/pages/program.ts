@@ -17,7 +17,7 @@ export const programPages = {
       title: 'Programme Ventre Léger & Jambes Légères',
       description:
         'Retrouvez des jambes plus légères, un ventre plus confortable et davantage d’énergie grâce à une approche globale du bien-être féminin.',
-      primaryCta: 'Demander des informations',
+      primaryCta: 'Réserver le programme',
       secondaryCta: 'Voir ce qui est inclus',
     },
     intro: {
@@ -82,11 +82,18 @@ export const programPages = {
     cta: {
       title: 'Vous souhaitez retrouver plus de légèreté ?',
       description:
-        'Envoyez un message à Zahara pour poser vos questions ou réserver votre place au tarif lancement.',
-      text: 'Demander le programme',
-      note: 'Réponse personnalisée par WhatsApp.',
-      href: programFrWhatsappHref,
-      analyticsEvent: 'whatsapp_click',
+        'Réservez votre place pour le Programme Ventre Léger & Jambes Légères à Annecy.',
+      text: 'Réserver le programme',
+      note: '',
+      href: localizedPagePaths.reserve.fr,
+      analyticsEvent: 'reserve_click',
+      reassurance: {
+        prefix: 'Une question avant de réserver ? Écrivez-moi sur ',
+        linkText: 'WhatsApp',
+        suffix: '.',
+        href: programFrWhatsappHref,
+        analyticsEvent: 'whatsapp_click',
+      },
     },
     maderotherapieCrossLink: {
       title: 'Envie de découvrir la madérothérapie ?',
@@ -109,7 +116,7 @@ export const programPages = {
       title: 'Light Belly & Light Legs Program',
       description:
         'Reconnect with lighter legs, a more comfortable belly, and more everyday energy through a holistic women’s wellness approach.',
-      primaryCta: 'Ask for details',
+      primaryCta: 'Book the program',
       secondaryCta: 'See what is included',
     },
     intro: {
@@ -174,11 +181,18 @@ export const programPages = {
     cta: {
       title: 'Would you like to feel lighter?',
       description:
-        'Send Zahara a message to ask your questions or reserve your place at the launch price.',
-      text: 'Ask about the program',
-      note: 'Personal reply by WhatsApp.',
-      href: programEnWhatsappHref,
-      analyticsEvent: 'whatsapp_click',
+        'Book your place for the Light Belly & Light Legs Program in Annecy.',
+      text: 'Book the program',
+      note: '',
+      href: localizedPagePaths.reserve.en,
+      analyticsEvent: 'reserve_click',
+      reassurance: {
+        prefix: 'A question before booking? Message me on ',
+        linkText: 'WhatsApp',
+        suffix: '.',
+        href: programEnWhatsappHref,
+        analyticsEvent: 'whatsapp_click',
+      },
     },
     maderotherapieCrossLink: {
       title: 'Curious about maderotherapy?',

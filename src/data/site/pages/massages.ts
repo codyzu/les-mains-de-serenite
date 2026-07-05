@@ -1,5 +1,6 @@
 import type {Locale, MassagesOverviewPageData} from '../types';
 import {localizedPagePaths} from '../paths';
+import {getBusinessWhatsappHref} from '../shared';
 import {homePages} from './home';
 
 const withFrenchCtas = homePages.fr.massagesSection.items.map((item) => ({
@@ -41,7 +42,7 @@ export const massagesPages = {
         'À chaque rendez-vous, le soin s’adapte à vos besoins actuels, à vos sensations et à votre intention du moment : légèreté, détente, relâchement ou tonicité.',
       reassurance:
         'Des soins bien-être à Annecy réservés exclusivement aux femmes, dans un cadre calme, bienveillant et confidentiel.',
-      ctaText: 'Réserver ou poser une question',
+      ctaText: 'Réserver un soin',
       ctaHref: localizedPagePaths.reserve.fr,
       analyticsEvent: 'reserve_click',
     },
@@ -64,9 +65,18 @@ export const massagesPages = {
       title: 'Vous ne savez pas quel soin choisir ?',
       description:
         'C’est normal. Si vous hésitez, nous pouvons confirmer ensemble le soin le plus adapté à vos besoins lors de la réservation ou au début du rendez-vous.',
-      text: 'Réserver ou poser une question',
+      text: 'Réserver un soin',
       href: localizedPagePaths.reserve.fr,
       analyticsEvent: 'reserve_click',
+      reassurance: {
+        prefix: 'Une question avant de réserver ? Écrivez-moi sur ',
+        linkText: 'WhatsApp',
+        suffix: '.',
+        href: getBusinessWhatsappHref(
+          "Bonjour, j'ai une question avant de réserver un soin."
+        ),
+        analyticsEvent: 'whatsapp_click',
+      },
     },
     testimonials: {
       title: 'Elles ont pris le temps de s’écouter',
@@ -98,9 +108,18 @@ export const massagesPages = {
       title: 'Besoin d’aide pour choisir ?',
       description:
         'Nous pouvons vous orienter vers le soin le plus adapté à vos besoins du moment.',
-      text: 'Réserver ou poser une question',
+      text: 'Réserver un soin',
       href: localizedPagePaths.reserve.fr,
       analyticsEvent: 'reserve_click',
+      reassurance: {
+        prefix: 'Vous hésitez ? Écrivez-moi sur ',
+        linkText: 'WhatsApp',
+        suffix: ', je serai ravie de vous orienter.',
+        href: getBusinessWhatsappHref(
+          "Bonjour, j'ai une question avant de réserver un soin."
+        ),
+        analyticsEvent: 'whatsapp_click',
+      },
     },
   },
   en: {
@@ -117,7 +136,7 @@ export const massagesPages = {
         'At every appointment, the treatment adapts to your current needs, sensations, and intention for the session: lightness, relaxation, tension relief, or tone.',
       reassurance:
         'Wellness treatments and massages are reserved exclusively for women, in a calm, caring, and confidential setting.',
-      ctaText: 'Book or ask a question',
+      ctaText: 'Book a treatment',
       ctaHref: localizedPagePaths.reserve.en,
       analyticsEvent: 'reserve_click',
     },
@@ -140,9 +159,18 @@ export const massagesPages = {
       title: 'Not sure which treatment to choose?',
       description:
         'That is normal. If you are unsure, we can confirm together which treatment best fits your needs when booking or at the beginning of your appointment.',
-      text: 'Book or ask a question',
+      text: 'Book a treatment',
       href: localizedPagePaths.reserve.en,
       analyticsEvent: 'reserve_click',
+      reassurance: {
+        prefix: 'A question before booking? Message me on ',
+        linkText: 'WhatsApp',
+        suffix: '.',
+        href: getBusinessWhatsappHref(
+          'Hello, I have a question before booking a treatment.'
+        ),
+        analyticsEvent: 'whatsapp_click',
+      },
     },
     testimonials: {
       title: 'They took time to listen to themselves',
@@ -174,9 +202,18 @@ export const massagesPages = {
       title: 'Need help choosing?',
       description:
         'We can guide you toward the treatment that best fits your current needs.',
-      text: 'Book or ask a question',
+      text: 'Book a treatment',
       href: localizedPagePaths.reserve.en,
       analyticsEvent: 'reserve_click',
+      reassurance: {
+        prefix: 'Unsure? Message me on ',
+        linkText: 'WhatsApp',
+        suffix: ', I will be happy to guide you.',
+        href: getBusinessWhatsappHref(
+          'Hello, I have a question before booking a treatment.'
+        ),
+        analyticsEvent: 'whatsapp_click',
+      },
     },
   },
 } satisfies Record<Locale, MassagesOverviewPageData>;

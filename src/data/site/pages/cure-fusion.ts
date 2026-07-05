@@ -21,7 +21,7 @@ export const cureFusionPages = {
         '3 soins personnalisés, parfois différents d’une séance à l’autre, choisis selon vos besoins, vos sensations et l’évolution de votre corps pour retrouver légèreté, confort, tonicité et bien-être.',
       reassurance:
         'Accompagnement réservé exclusivement aux femmes, adapté à vos objectifs bien-être.',
-      primaryCta: 'Poser une question sur la cure',
+      primaryCta: 'Réserver cette cure',
       secondaryCta: 'Voir comment fonctionne la cure',
     },
     intro: {
@@ -150,15 +150,18 @@ export const cureFusionPages = {
     },
     cta: {
       title: 'Vous hésitez entre un soin individuel et Cure Fusion ?',
-      description:
-        'Envoyez un message pour expliquer ce que vous recherchez. Vous pourrez poser vos questions et être orientée vers le format le plus adapté à vos besoins du moment.',
-      text: 'Poser une question sur la cure',
-      note: 'Réponse personnalisée par WhatsApp.',
-      href: cureFusionFrWhatsappHref,
-      analyticsEvent: 'whatsapp_click',
-      secondaryText: 'Réserver un créneau',
-      secondaryHref: localizedPagePaths.reserve.fr,
-      secondaryAnalyticsEvent: 'reserve_click',
+      description: 'Réservez votre créneau pour la Cure Fusion à Annecy.',
+      text: 'Réserver cette cure',
+      note: '',
+      href: localizedPagePaths.reserve.fr,
+      analyticsEvent: 'reserve_click',
+      reassurance: {
+        prefix: 'Vous hésitez ? Écrivez-moi sur ',
+        linkText: 'WhatsApp',
+        suffix: ', je serai ravie de vous orienter.',
+        href: cureFusionFrWhatsappHref,
+        analyticsEvent: 'whatsapp_click',
+      },
     },
     maderotherapieCrossLink: {
       title: 'Envie de comparer avec une séance ciblée ?',
@@ -202,7 +205,7 @@ export const cureFusionPages = {
       description:
         '3 personalized treatments, sometimes different from one session to the next, chosen according to your needs, sensations, and how your body evolves, to reconnect with lightness, comfort, tone, and well-being.',
       reassurance: 'A women-only accompaniment adapted to your wellness goals.',
-      primaryCta: 'Ask about the package',
+      primaryCta: 'Book this package',
       secondaryCta: 'See how it works',
     },
     intro: {
@@ -330,15 +333,18 @@ export const cureFusionPages = {
     },
     cta: {
       title: 'Unsure whether to choose one treatment or Cure Fusion?',
-      description:
-        'Send a message to explain what you are looking for. You can ask your questions and be guided toward the format that best fits your current needs.',
-      text: 'Ask about the package',
-      note: 'Personal reply by WhatsApp.',
-      href: cureFusionEnWhatsappHref,
-      analyticsEvent: 'whatsapp_click',
-      secondaryText: 'Book a time slot',
-      secondaryHref: localizedPagePaths.reserve.en,
-      secondaryAnalyticsEvent: 'reserve_click',
+      description: 'Book your time slot for Cure Fusion in Annecy.',
+      text: 'Book this package',
+      note: '',
+      href: localizedPagePaths.reserve.en,
+      analyticsEvent: 'reserve_click',
+      reassurance: {
+        prefix: 'Unsure? Message me on ',
+        linkText: 'WhatsApp',
+        suffix: ', I will be happy to guide you.',
+        href: cureFusionEnWhatsappHref,
+        analyticsEvent: 'whatsapp_click',
+      },
     },
     maderotherapieCrossLink: {
       title: 'Would you like to compare with a targeted session?',

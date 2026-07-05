@@ -1,5 +1,6 @@
 ---
 import {Picture} from 'astro:assets';
+import CtaReassurance from '../components/CtaReassurance.astro';
 import IconImage from '../components/IconImage.astro';
 import Testimonials from '../components/Testimonials.astro';
 import Practitioner from '../assets/about-practitioner.png';
@@ -389,9 +390,7 @@ const structuredData = {
           <p class="body-lg mx-auto mt-4 max-w-2xl">
             {page.cta.description}
           </p>
-          <div
-            class="mt-7 flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap"
-          >
+          <div class="mt-7 flex flex-col items-center justify-center gap-3">
             <a
               href={page.cta.href}
               target={ctaIsExternal ? '_blank' : undefined}
@@ -401,6 +400,10 @@ const structuredData = {
             >
               {page.cta.text}
             </a>
+            <CtaReassurance
+              reassurance={page.cta.reassurance}
+              class="mx-auto max-w-2xl"
+            />
             {
               page.cta.secondaryText && page.cta.secondaryHref ? (
                 <a
@@ -415,7 +418,13 @@ const structuredData = {
               ) : null
             }
           </div>
-          <p class="mt-4 text-sm font-medium text-ink/58">{page.cta.note}</p>
+          {
+            page.cta.note ? (
+              <p class="mt-4 text-sm font-medium text-ink/58">
+                {page.cta.note}
+              </p>
+            ) : null
+          }
         </div>
       </div>
     </section>

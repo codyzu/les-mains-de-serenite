@@ -99,6 +99,14 @@ export type InlineTextLinkData = {
   href: string;
 };
 
+export type ReassuranceLinkData = {
+  prefix: string;
+  linkText: string;
+  suffix?: string;
+  href: string;
+  analyticsEvent?: AnalyticsEventName;
+};
+
 export type NeedsSectionData = {
   title: string;
   intro: string;
@@ -185,6 +193,7 @@ export type OverviewCtaData = {
   text: string;
   href: string;
   analyticsEvent?: AnalyticsEventName;
+  reassurance?: ReassuranceLinkData;
 };
 
 export type MassagesOverviewPageData = {
@@ -317,6 +326,7 @@ export type ProgramPageData = {
     note: string;
     href: string;
     analyticsEvent?: AnalyticsEventName;
+    reassurance?: ReassuranceLinkData;
     secondaryText?: string;
     secondaryHref?: string;
     secondaryAnalyticsEvent?: AnalyticsEventName;
@@ -417,6 +427,7 @@ export type MaderotherapiePageData = {
     text: string;
     href: string;
     analyticsEvent?: AnalyticsEventName;
+    reassurance?: ReassuranceLinkData;
   };
   reassuranceNote: string;
   programCrossLink: {

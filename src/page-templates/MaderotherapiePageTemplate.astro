@@ -1,5 +1,6 @@
 ---
 import {Picture} from 'astro:assets';
+import CtaReassurance from '../components/CtaReassurance.astro';
 import IconImage from '../components/IconImage.astro';
 import SectionIntro from '../components/SectionIntro.astro';
 import MaderotherapieHeroImage from '../assets/maderotherapie.png';
@@ -446,6 +447,10 @@ const structuredData = {
           >
             {maderotherapie.cta.text}
           </a>
+          <CtaReassurance
+            reassurance={maderotherapie.cta.reassurance}
+            class="mx-auto mt-4 max-w-2xl"
+          />
           <p class="mx-auto mt-4 max-w-2xl text-sm leading-6 text-ink/58">
             {maderotherapie.reassuranceNote}
           </p>

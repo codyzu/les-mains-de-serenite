@@ -1,6 +1,7 @@
 // @unocss-include
 import type {Locale, MaderotherapiePageData} from '../types';
 import {localizedPagePaths} from '../paths';
+import {getBusinessWhatsappHref} from '../shared';
 
 export const maderotherapiePages = {
   fr: {
@@ -230,6 +231,15 @@ export const maderotherapiePages = {
       text: 'Réserver ce soin',
       href: localizedPagePaths.reserve.fr,
       analyticsEvent: 'reserve_click',
+      reassurance: {
+        prefix: 'Une question avant de réserver ? Écrivez-moi sur ',
+        linkText: 'WhatsApp',
+        suffix: '.',
+        href: getBusinessWhatsappHref(
+          "Bonjour, j'ai une question avant de réserver la madérothérapie."
+        ),
+        analyticsEvent: 'whatsapp_click',
+      },
     },
     reassuranceNote:
       'Ce soin est réservé aux femmes. En cas de doute ou de contre-indication, contactez-moi avant de réserver.',
@@ -468,6 +478,15 @@ export const maderotherapiePages = {
       text: 'Book this treatment',
       href: localizedPagePaths.reserve.en,
       analyticsEvent: 'reserve_click',
+      reassurance: {
+        prefix: 'A question before booking? Message me on ',
+        linkText: 'WhatsApp',
+        suffix: '.',
+        href: getBusinessWhatsappHref(
+          'Hello, I have a question before booking maderotherapy.'
+        ),
+        analyticsEvent: 'whatsapp_click',
+      },
     },
     reassuranceNote:
       'This treatment is reserved for women. If you have any doubt or contraindication, contact me before booking.',
