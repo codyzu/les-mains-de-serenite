@@ -28,17 +28,17 @@ export const homePages = {
       parts: [
         {text: 'Des '},
         {
-          text: 'soins ponctuels',
+          text: 'soins individuels',
           href: localizedPagePaths.soins.fr,
         },
         {
-          text: ', dont le massage bien-être à Annecy, pour répondre à un besoin du moment, ou des ',
+          text: ' pour soulager les tensions ou retrouver une sensation de légèreté, et des ',
         },
         {
-          text: 'programmes personnalisés',
+          text: 'programmes d’accompagnement',
           href: localizedPagePaths.programs.fr,
         },
-        {text: ' pour aller plus loin.'},
+        {text: ' pour avancer avec douceur sur plusieurs séances.'},
       ],
     },
     promo: {
@@ -383,17 +383,17 @@ export const homePages = {
       parts: [
         {text: 'Choose '},
         {
-          text: 'single treatments',
+          text: 'individual treatments',
           href: localizedPagePaths.soins.en,
         },
         {
-          text: ', including wellness massage in Annecy, for a current need, or ',
+          text: ' to release tension or restore a feeling of lightness, and ',
         },
         {
-          text: 'personalized programs',
+          text: 'support programs',
           href: localizedPagePaths.programs.en,
         },
-        {text: ' when you want to go further.'},
+        {text: ' when you want gentle guidance over several sessions.'},
       ],
     },
     promo: {
