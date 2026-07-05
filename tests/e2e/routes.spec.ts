@@ -116,7 +116,9 @@ test('Cure Fusion page explains the personalized package', async ({page}) => {
     page.getByText('3 massages personnalisés', {exact: true})
   ).toBeVisible();
   await expect(page.getByText('350 €').first()).toBeVisible();
-  await expect(page.getByText('Cure réservée aux femmes')).toBeVisible();
+  await expect(
+    page.getByText('Accompagnement réservé exclusivement aux femmes')
+  ).toBeVisible();
   await expect(
     page.getByText('Vous n’avez pas à choisir le bon massage')
   ).toBeVisible();
@@ -126,12 +128,33 @@ test('Cure Fusion page explains the personalized package', async ({page}) => {
     )
   ).toBeVisible();
   await expect(
-    page.getByText('Une expertise au service de votre corps')
+    page.getByRole('heading', {name: 'Votre accompagnement en 3 séances'})
   ).toBeVisible();
-  await expect(page.getByText(/deuxième séance/)).toBeVisible();
+  await expect(
+    page.getByText('La troisième séance vient consolider les bienfaits')
+  ).toBeVisible();
   await expect(
     page.getByRole('heading', {
-      name: 'Les massages pouvant composer votre cure',
+      name: 'Votre corps évolue, votre accompagnement aussi',
+    })
+  ).toBeVisible();
+  await expect(
+    page
+      .locator(
+        'img[alt="Deux femmes marchent pieds nus au bord du lac d’Annecy"]'
+      )
+      .first()
+  ).toBeVisible();
+  await expect(
+    page
+      .locator(
+        'img[alt="Plumes blanches dans une ambiance douce et apaisante"]'
+      )
+      .first()
+  ).toBeVisible();
+  await expect(
+    page.getByRole('heading', {
+      name: 'Les massages pouvant être choisis',
     })
   ).toBeVisible();
   await expect(
@@ -149,10 +172,17 @@ test('Cure Fusion page explains the personalized package', async ({page}) => {
   await expect(
     page.getByText('J’ai particulièrement apprécié l’écoute')
   ).toBeVisible();
+  await expect(page.getByText('Je suis ressortie avec')).toBeVisible();
+  await expect(
+    page.getByText('professionnelle et très rassurante')
+  ).toBeVisible();
   await expect(
     page.getByRole('heading', {
       name: 'Pourquoi choisir une Cure Fusion plutôt que trois massages réservés séparément ?',
     })
+  ).toBeVisible();
+  await expect(
+    page.getByText('L’expérience globale est plus cohérente')
   ).toBeVisible();
   await expect(
     page.getByRole('link', {name: 'Poser une question sur la cure'}).last()

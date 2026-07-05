@@ -40,6 +40,14 @@ const ctaIsExternal = page.cta.href.startsWith('http');
 const secondaryCtaIsExternal =
   page.cta.secondaryHref?.startsWith('http') ?? false;
 const structuredDataPrice = page.price.amount.replaceAll(/[^\d,.]/g, '');
+const methodImage = page.visuals?.methodImage ?? {
+  src: ProgramHabitsGuidance,
+  alt: 'Guide d’habitudes alimentaires simples et boisson chaude sur une table',
+};
+const storyImage = page.visuals?.storyImage ?? {
+  src: Practitioner,
+  alt: 'Zahara pendant une séance de massage bien-être',
+};
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'Service',
@@ -227,14 +235,14 @@ const structuredData = {
               class="overflow-hidden rounded-[2rem] shadow-soft ring-1 ring-surface-soft"
             >
               <Picture
-                src={ProgramHabitsGuidance}
+                src={methodImage.src}
                 formats={['avif', 'webp']}
                 fallbackFormat="webp"
                 widths={[360, 520, 704, 900, 1100]}
                 width={704}
                 height={396}
                 sizes="(min-width: 1024px) 38rem, (min-width: 640px) calc(100vw - 3rem), calc(100vw - 2rem)"
-                alt="Guide d’habitudes alimentaires simples et boisson chaude sur une table"
+                alt={methodImage.alt}
                 class="h-[420px] w-full object-cover object-center"
               />
             </div>
@@ -252,14 +260,14 @@ const structuredData = {
               class="overflow-hidden rounded-[2rem] shadow-soft ring-1 ring-surface-soft"
             >
               <Picture
-                src={Practitioner}
+                src={storyImage.src}
                 formats={['avif', 'webp']}
                 fallbackFormat="webp"
                 widths={[360, 520, 704, 900]}
                 width={704}
                 height={1056}
                 sizes="(min-width: 1024px) 38rem, (min-width: 640px) calc(100vw - 3rem), calc(100vw - 2rem)"
-                alt="Zahara pendant une séance de massage bien-être"
+                alt={storyImage.alt}
                 class="h-[420px] w-full object-cover object-center"
               />
             </div>

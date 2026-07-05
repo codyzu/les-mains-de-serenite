@@ -248,6 +248,16 @@ export type ProgramPageData = {
     title: string;
     body: string;
   };
+  visuals?: {
+    methodImage?: {
+      src: ImageMetadata;
+      alt: string;
+    };
+    storyImage?: {
+      src: ImageMetadata;
+      alt: string;
+    };
+  };
   techniques?: {
     title: string;
     intro: string;
