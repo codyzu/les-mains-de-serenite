@@ -101,6 +101,7 @@ export type NeedsSectionData = {
     title: string;
     description: string;
     href: string;
+    ctaText?: string;
   }>;
 };
 

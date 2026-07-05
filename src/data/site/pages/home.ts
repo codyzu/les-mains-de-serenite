@@ -25,10 +25,10 @@ export const homePages = {
       whatsappCta: 'WhatsApp',
     },
     promo: {
-      title: 'Offre découverte',
+      title: 'Pour commencer',
       headline: '45 min à 55\u00A0€',
       description:
-        'Un soin ciblé pour découvrir l’approche, accompagner les jambes lourdes ou les tensions du dos, et retrouver une sensation de légèreté.',
+        'L’offre découverte est une première visite simple et rassurante pour découvrir l’approche, accompagner les jambes lourdes ou les tensions du dos, et retrouver une sensation de légèreté.',
       ctaText: 'Réserver l’offre',
       ctaLink: discoveryOfferBookingHref,
       analyticsEvent: 'reserve_click',
@@ -48,36 +48,42 @@ export const homePages = {
           description:
             'Un soin ponctuel peut aider à retrouver une sensation de légèreté.',
           href: `${localizedPagePaths.massages.fr}#drainage-lymphatique`,
+          ctaText: 'Voir le soin',
         },
         {
           title: 'Ventre gonflé',
           description:
             'Un accompagnement structuré peut être plus adapté si le besoin revient souvent.',
           href: localizedPagePaths.program.fr,
+          ctaText: 'Voir le programme',
         },
         {
           title: 'Rétention d’eau',
           description:
             'Le drainage lymphatique à Annecy est souvent choisi pour ce besoin.',
           href: `${localizedPagePaths.massages.fr}#drainage-lymphatique`,
+          ctaText: 'Voir le soin',
         },
         {
           title: 'Besoin de ralentir',
           description:
             'Un soin relaxant pour relâcher les tensions et retrouver du calme.',
           href: `${localizedPagePaths.massages.fr}#massage-anti-douleur`,
+          ctaText: 'Voir le soin',
         },
         {
           title: 'Silhouette / tonicité',
           description:
             'Un soin remodelant ou une madérothérapie à Annecy selon votre ressenti.',
           href: `${localizedPagePaths.massages.fr}#massage-remodelant`,
+          ctaText: 'Voir les soins',
         },
         {
           title: 'Je souhaite un accompagnement',
           description:
             'Les programmes créent un cadre sur plusieurs séances, avec un suivi plus guidé.',
           href: localizedPagePaths.programs.fr,
+          ctaText: 'Découvrir',
         },
       ],
     },
@@ -93,7 +99,7 @@ export const homePages = {
           anchorId: 'drainage-lymphatique',
           title: 'Drainage lymphatique',
           description:
-            'Drainage lymphatique dynamique selon la méthode Renata França, choisi pour les jambes lourdes, la rétention d’eau et la sensation de ventre gonflé.',
+            'Pour retrouver une sensation de légèreté et de confort lorsque les jambes sont lourdes ou le ventre gonflé. Drainage lymphatique dynamique à Annecy selon la méthode Renata França.',
           note: 'Également adapté aux femmes enceintes à partir de la fin du premier trimestre, avec un protocole spécifiquement adapté.',
           icon: 'i-lucide-droplets',
           prices: [
@@ -107,7 +113,7 @@ export const homePages = {
           anchorId: 'massage-anti-douleur',
           title: 'Soin thérapeutique ou relaxant',
           description:
-            'Soin personnalisé pour accompagner les tensions, relâcher le stress et retrouver une détente profonde dans un cadre calme.',
+            'Pour relâcher les tensions, apaiser le stress et retrouver une détente profonde. Un soin personnalisé selon vos besoins du moment.',
           icon: 'i-lucide-activity',
           prices: [
             {duration: '45 min', price: '60 €'},
@@ -121,7 +127,7 @@ export const homePages = {
           anchorId: 'massage-remodelant',
           title: 'Soin remodelant',
           description:
-            'Soin tonifiant pensé pour stimuler les tissus, soutenir la sensation de fermeté et accompagner l’harmonie de la silhouette.',
+            'Pour accompagner la tonicité, la sensation de fermeté et l’harmonie de la silhouette. Un soin remodelant tonifiant et ciblé.',
           icon: 'i-lucide-scan',
           prices: [
             {duration: '1 h', price: '110 €', recommended: true},
@@ -134,7 +140,7 @@ export const homePages = {
           anchorId: 'massage-visage-liftant',
           title: 'Soin visage liftant',
           description:
-            'Soin du visage relaxant pour stimuler la circulation, tonifier la peau et retrouver un teint plus lumineux.',
+            'Pour retrouver un teint plus lumineux et une peau tonifiée. Un soin du visage relaxant qui stimule la circulation avec douceur.',
           icon: 'i-lucide-sparkles',
           prices: [
             {duration: '30 min', price: '50 €'},
@@ -148,7 +154,7 @@ export const homePages = {
           anchorId: 'maderotherapie',
           title: 'Soin de madérothérapie',
           description:
-            'Soin ciblé avec instruments en bois pour stimuler la circulation, soutenir le drainage naturel et retrouver une sensation de légèreté.',
+            'Pour une sensation de légèreté, de tonicité et de tissus stimulés. Soin de madérothérapie à Annecy avec instruments en bois.',
           icon: 'i-lucide-leaf',
           prices: [
             {duration: '1 h', price: '90 €', recommended: true},
@@ -217,7 +223,7 @@ export const homePages = {
       ],
     },
     about: {
-      title: 'À propos',
+      title: 'Qui prendra soin de vous ?',
       body: `
   Je suis Zahara, praticienne bien-être à Annecy. Mon parcours d’auxiliaire de puériculture m’a appris l’attention, la douceur et l’écoute fine du corps.
 
@@ -343,10 +349,10 @@ export const homePages = {
       whatsappCta: 'WhatsApp',
     },
     promo: {
-      title: 'Discovery offer',
+      title: 'To begin',
       headline: '45 min for €55',
       description:
-        'A targeted treatment to discover the approach, soothe heavy legs or back tension, and reconnect with a feeling of lightness.',
+        'The discovery offer is a simple, reassuring first visit to discover the approach, soothe heavy legs or back tension, and reconnect with a feeling of lightness.',
       ctaText: 'Book the offer',
       ctaLink: discoveryOfferBookingHref,
       analyticsEvent: 'reserve_click',
@@ -366,36 +372,42 @@ export const homePages = {
           description:
             'A single treatment can help you reconnect with a feeling of lightness.',
           href: `${localizedPagePaths.massages.en}#lymphatic-drainage`,
+          ctaText: 'View treatment',
         },
         {
           title: 'Feeling bloated',
           description:
             'A structured program may be more relevant when the need comes back often.',
           href: localizedPagePaths.program.en,
+          ctaText: 'View program',
         },
         {
           title: 'Water retention',
           description:
             'Lymphatic drainage in Annecy is often chosen for this kind of need.',
           href: `${localizedPagePaths.massages.en}#lymphatic-drainage`,
+          ctaText: 'View treatment',
         },
         {
           title: 'Need to slow down',
           description:
             'A relaxing treatment to release tension and return to a calmer moment.',
           href: `${localizedPagePaths.massages.en}#tension-relief-massage`,
+          ctaText: 'View treatment',
         },
         {
           title: 'Silhouette / tone',
           description:
             'A body sculpting treatment or maderotherapy depending on how you feel.',
           href: `${localizedPagePaths.massages.en}#body-sculpting-massage`,
+          ctaText: 'View treatments',
         },
         {
           title: 'I want support',
           description:
             'Support programs create a guided frame across several sessions.',
           href: localizedPagePaths.programs.en,
+          ctaText: 'Discover',
         },
       ],
     },
@@ -411,7 +423,7 @@ export const homePages = {
           anchorId: 'lymphatic-drainage',
           title: 'Lymphatic drainage',
           description:
-            'Dynamic lymphatic drainage using the Renata França method, often chosen for heavy legs, water retention, and a bloated feeling.',
+            'For a feeling of lightness and comfort when legs feel heavy or the belly feels bloated. Dynamic lymphatic drainage in Annecy using the Renata França method.',
           note: 'Also suitable during pregnancy from the end of the first trimester, with a specifically adapted protocol.',
           icon: 'i-lucide-droplets',
           prices: [
@@ -425,7 +437,7 @@ export const homePages = {
           anchorId: 'tension-relief-massage',
           title: 'Therapeutic or relaxing treatment',
           description:
-            'A personalized treatment to ease tension, release stress, and return to deep relaxation in a calm setting.',
+            'To release tension, soften stress, and return to deep relaxation. A personalized treatment adapted to what you need in the moment.',
           icon: 'i-lucide-activity',
           prices: [
             {duration: '45 min', price: '60 €'},
@@ -439,7 +451,7 @@ export const homePages = {
           anchorId: 'body-sculpting-massage',
           title: 'Body sculpting treatment',
           description:
-            'A toning treatment designed to stimulate the tissues, support a firmer feeling, and accompany silhouette harmony.',
+            'To support tone, a firmer feeling, and silhouette harmony. A targeted and toning body sculpting treatment.',
           icon: 'i-lucide-scan',
           prices: [
             {duration: '1 h', price: '110 €', recommended: true},
@@ -452,7 +464,7 @@ export const homePages = {
           anchorId: 'lifting-facial-massage',
           title: 'Lifting facial treatment',
           description:
-            'A relaxing facial treatment to stimulate circulation, tone the skin, and bring back a brighter-looking complexion.',
+            'For a brighter-looking complexion and a more toned skin feel. A relaxing facial treatment that gently stimulates circulation.',
           icon: 'i-lucide-sparkles',
           prices: [
             {duration: '30 min', price: '50 €'},
@@ -466,7 +478,7 @@ export const homePages = {
           anchorId: 'maderotherapy',
           title: 'Maderotherapy treatment',
           description:
-            'A targeted treatment using wooden instruments to stimulate circulation, support natural drainage, and create a feeling of lightness.',
+            'For a feeling of lightness, tone, and stimulated tissues. A maderotherapy treatment in Annecy using wooden instruments.',
           icon: 'i-lucide-leaf',
           prices: [
             {duration: '1 h', price: '90 €', recommended: true},
@@ -536,7 +548,7 @@ export const homePages = {
       ],
     },
     about: {
-      title: 'About',
+      title: 'Who will take care of you?',
       body: `
   I am Zahara, a wellness practitioner in Annecy. My background as a childcare assistant shaped an attentive, gentle, and body-aware approach.
 
