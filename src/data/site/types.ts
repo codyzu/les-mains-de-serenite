@@ -217,6 +217,7 @@ export type ProgramPageData = {
     eyebrow: string;
     title: string;
     description: string;
+    reassurance?: string;
     primaryCta: string;
     secondaryCta: string;
   };
@@ -235,8 +236,9 @@ export type ProgramPageData = {
   price: {
     label: string;
     amount: string;
-    usualValueLabel: string;
-    usualValue: string;
+    detail?: string;
+    usualValueLabel?: string;
+    usualValue?: string;
   };
   method: {
     title: string;
@@ -245,6 +247,15 @@ export type ProgramPageData = {
   story: {
     title: string;
     body: string;
+  };
+  techniques?: {
+    title: string;
+    intro: string;
+    items: Array<{
+      title: string;
+      description: string;
+      icon: string;
+    }>;
   };
   faq: {
     title: string;
@@ -260,12 +271,24 @@ export type ProgramPageData = {
     note: string;
     href: string;
     analyticsEvent?: AnalyticsEventName;
+    secondaryText?: string;
+    secondaryHref?: string;
+    secondaryAnalyticsEvent?: AnalyticsEventName;
   };
   maderotherapieCrossLink: {
     title: string;
     description: string;
     text: string;
     href: string;
+  };
+  relatedLinks?: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    items: Array<{
+      text: string;
+      href: string;
+    }>;
   };
 };
 
@@ -484,6 +507,7 @@ export type LocalizedSiteData = {
     massages: MassagesOverviewPageData;
     programs: ProgramsOverviewPageData;
     program: ProgramPageData;
+    cureFusion: ProgramPageData;
     maderotherapie: MaderotherapiePageData;
     reserve: ReservePageData;
     reserveOnline: ReserveOnlinePageData;

@@ -14,3 +14,9 @@ export const programFrWhatsappHref = getBusinessWhatsappHref(
 export const programEnWhatsappHref = getBusinessWhatsappHref(
   'Hello, I would like to know more about the Light Belly & Light Legs program.'
 );
+export const cureFusionFrWhatsappHref = getBusinessWhatsappHref(
+  'Bonjour, je souhaite en savoir plus sur la Cure Fusion.'
+);
+export const cureFusionEnWhatsappHref = getBusinessWhatsappHref(
+  'Hello, I would like to know more about Cure Fusion.'
+);

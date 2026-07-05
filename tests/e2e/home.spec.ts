@@ -43,7 +43,7 @@ test('French homepage renders the main business content and booking CTA', async 
   ).toHaveAttribute('href', '/programmes/ventre-leger-jambes-legeres/');
   await expect(
     page.getByRole('link', {name: 'Découvrir la cure'})
-  ).toHaveAttribute('href', /wa\.me/);
+  ).toHaveAttribute('href', '/programmes/cure-fusion/');
   await expect(
     page.getByRole('link', {name: 'Découvrir'}).first()
   ).toHaveAttribute('href', '/massages/maderotherapie/');
@@ -93,7 +93,7 @@ test('English homepage renders localized content and booking CTA', async ({
   ).toHaveAttribute('href', '/en/programs/light-belly-light-legs/');
   await expect(
     page.getByRole('link', {name: 'Discover the package'})
-  ).toHaveAttribute('href', /wa\.me/);
+  ).toHaveAttribute('href', '/en/programs/cure-fusion/');
   await expect(
     page.getByRole('link', {name: 'Discover'}).first()
   ).toHaveAttribute('href', '/en/massages/maderotherapy/');

@@ -52,6 +52,27 @@ test('program pages expose matching localized alternates', async ({page}) => {
   await expectAlternate(page, 'x-default', `${siteUrl}${frenchPath}`);
 });
 
+test('Cure Fusion pages expose matching localized alternates', async ({
+  page,
+}) => {
+  const frenchPath = '/programmes/cure-fusion/';
+  const englishPath = '/en/programs/cure-fusion/';
+
+  await page.goto(frenchPath);
+
+  await expectCanonical(page, `${siteUrl}${frenchPath}`);
+  await expectAlternate(page, 'fr', `${siteUrl}${frenchPath}`);
+  await expectAlternate(page, 'en', `${siteUrl}${englishPath}`);
+  await expectAlternate(page, 'x-default', `${siteUrl}${frenchPath}`);
+
+  await page.goto(englishPath);
+
+  await expectCanonical(page, `${siteUrl}${englishPath}`);
+  await expectAlternate(page, 'fr', `${siteUrl}${frenchPath}`);
+  await expectAlternate(page, 'en', `${siteUrl}${englishPath}`);
+  await expectAlternate(page, 'x-default', `${siteUrl}${frenchPath}`);
+});
+
 test('program overview pages expose matching localized alternates', async ({
   page,
 }) => {

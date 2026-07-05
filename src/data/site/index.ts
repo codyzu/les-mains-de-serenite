@@ -1,6 +1,7 @@
 import type {Locale, LocalizedSiteData, SiteData} from './types';
 import {business} from './business';
 import {chrome} from './chrome';
+import {cureFusionPages} from './pages/cure-fusion';
 import {homePages} from './pages/home';
 import {maderotherapiePages} from './pages/maderotherapie';
 import {massagesPages} from './pages/massages';
@@ -56,6 +57,7 @@ const localized = {
       massages: massagesPages.fr,
       programs: programsPages.fr,
       program: programPages.fr,
+      cureFusion: cureFusionPages.fr,
       maderotherapie: maderotherapiePages.fr,
       reserve: reservePages.fr,
       reserveOnline: reserveOnlinePages.fr,
@@ -70,6 +72,7 @@ const localized = {
       massages: massagesPages.en,
       programs: programsPages.en,
       program: programPages.en,
+      cureFusion: cureFusionPages.en,
       maderotherapie: maderotherapiePages.en,
       reserve: reservePages.en,
       reserveOnline: reserveOnlinePages.en,

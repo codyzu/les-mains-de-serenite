@@ -1,0 +1,19 @@
+---
+import {
+  defaultLocale,
+  getLocalizedSite,
+  localizedPagePaths,
+  site,
+} from '../../data/site';
+import ProgramPageTemplate from '../../page-templates/ProgramPageTemplate.astro';
+
+const localized = getLocalizedSite(defaultLocale);
+---
+
+<ProgramPageTemplate
+  locale={defaultLocale}
+  business={site.business}
+  localized={localized}
+  programData={localized.pages.cureFusion}
+  languageSwitchPaths={localizedPagePaths.cureFusion}
+/>

@@ -186,11 +186,8 @@ export const homePages = {
           priceDetail: '3 séances',
           note: 'Chaque cure est entièrement personnalisée. Les soins sont sélectionnés en fonction de vos besoins, de vos ressentis et de vos objectifs du moment.',
           ctaText: 'Découvrir la cure',
-          ctaLink: getBusinessWhatsappHref(
-            'Bonjour, je souhaite en savoir plus sur la Cure Fusion.'
-          ),
+          ctaLink: localizedPagePaths.cureFusion.fr,
           icon: 'i-lucide-sparkles',
-          analyticsEvent: 'whatsapp_click',
         },
       ],
     },
@@ -487,11 +484,8 @@ export const homePages = {
           priceDetail: '3 sessions',
           note: 'Each package is fully personalized. Treatments are selected according to your needs, how your body feels, and your current goals.',
           ctaText: 'Discover the package',
-          ctaLink: getBusinessWhatsappHref(
-            'Hello, I would like to know more about Cure Fusion.'
-          ),
+          ctaLink: localizedPagePaths.cureFusion.en,
           icon: 'i-lucide-sparkles',
-          analyticsEvent: 'whatsapp_click',
         },
       ],
     },

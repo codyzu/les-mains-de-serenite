@@ -13,6 +13,8 @@ const routes = [
   '/en/programs/',
   '/programmes/ventre-leger-jambes-legeres/',
   '/en/programs/light-belly-light-legs/',
+  '/programmes/cure-fusion/',
+  '/en/programs/cure-fusion/',
   '/programme-ventre-leger-jambes-legeres',
   '/en/light-belly-light-legs-program',
   '/reserver',
@@ -85,10 +87,12 @@ test('section overview pages render their main content', async ({page}) => {
   await expect(
     page.getByRole('link', {name: 'Réserver un accompagnement'})
   ).toHaveAttribute('href', '/reserver');
-  await expect(page.getByRole('heading', {name: 'Cure Fusion'})).toBeVisible();
+  await expect(
+    page.getByRole('heading', {name: 'Cure Fusion', exact: true})
+  ).toBeVisible();
   await expect(
     page.getByRole('link', {name: 'Découvrir la cure'})
-  ).toHaveAttribute('href', /wa\.me/);
+  ).toHaveAttribute('href', '/programmes/cure-fusion/');
   await expect(
     page.getByText(
       'Deux accompagnements permettent d’aller plus loin, selon vos besoins et votre objectif de bien-être.'
@@ -97,6 +101,49 @@ test('section overview pages render their main content', async ({page}) => {
   await expect(
     page.getByRole('link', {name: 'Voir les massages'})
   ).toHaveAttribute('href', '/massages/');
+});
+
+test('Cure Fusion page explains the personalized package', async ({page}) => {
+  await page.goto('/programmes/cure-fusion/');
+
+  await expect(
+    page.getByRole('heading', {name: 'Cure Fusion', exact: true})
+  ).toBeVisible();
+  await expect(
+    page.getByText('3 séances personnalisées').first()
+  ).toBeVisible();
+  await expect(page.getByText('350 €').first()).toBeVisible();
+  await expect(page.getByText('Cure réservée aux femmes')).toBeVisible();
+  await expect(
+    page.getByText('Une approche personnalisée, pas une formule fixe')
+  ).toBeVisible();
+  await expect(
+    page.getByRole('heading', {name: 'Les soins pouvant être associés'})
+  ).toBeVisible();
+  await expect(
+    page.getByRole('heading', {name: 'Drainage lymphatique'})
+  ).toBeVisible();
+  await expect(
+    page.getByRole('heading', {name: 'Massage remodelant'})
+  ).toBeVisible();
+  await expect(
+    page.getByRole('heading', {name: 'Madérothérapie'})
+  ).toBeVisible();
+  await expect(
+    page.getByRole('link', {name: 'Poser une question sur la cure'}).last()
+  ).toHaveAttribute('href', /wa\.me/);
+  await expect(
+    page.getByRole('link', {name: 'Réserver un créneau'})
+  ).toHaveAttribute('href', '/reserver');
+  await expect(
+    page.getByRole('link', {name: 'Voir les programmes'})
+  ).toHaveAttribute('href', '/programmes/');
+  await expect(
+    page.getByRole('link', {name: 'Voir les massages'})
+  ).toHaveAttribute('href', '/massages/');
+  await expect(
+    page.getByRole('link', {name: 'Programme Ventre Léger'})
+  ).toHaveAttribute('href', '/programmes/ventre-leger-jambes-legeres/');
 });
 
 test('online booking pages render the embedded scheduler shell', async ({

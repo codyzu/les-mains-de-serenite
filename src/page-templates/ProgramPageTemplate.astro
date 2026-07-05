@@ -7,7 +7,9 @@ import ProgramHabitsGuidance from '../assets/program-habits-guidance-no-text.png
 import {
   localizedPagePaths,
   type Locale,
+  type LocalePathMap,
   type LocalizedSiteData,
+  type ProgramPageData,
   type SiteBusinessData,
 } from '../data/site';
 import Layout from '../layouts/Layout.astro';
@@ -16,20 +18,32 @@ interface Props {
   locale: Locale;
   business: SiteBusinessData;
   localized: LocalizedSiteData;
+  programData?: ProgramPageData;
+  languageSwitchPaths?: LocalePathMap;
 }
 
-const {locale, business, localized} = Astro.props;
+const {
+  locale,
+  business,
+  localized,
+  programData,
+  languageSwitchPaths: providedLanguageSwitchPaths,
+} = Astro.props;
 const {
   pages: {program},
 } = localized;
-const languageSwitchPaths = localizedPagePaths.program;
-const ctaIsExternal = program.cta.href.startsWith('http');
-const structuredDataPrice = program.price.amount.replaceAll(/[^\d,.]/g, '');
+const page = programData ?? program;
+const languageSwitchPaths =
+  providedLanguageSwitchPaths ?? localizedPagePaths.program;
+const ctaIsExternal = page.cta.href.startsWith('http');
+const secondaryCtaIsExternal =
+  page.cta.secondaryHref?.startsWith('http') ?? false;
+const structuredDataPrice = page.price.amount.replaceAll(/[^\d,.]/g, '');
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'Service',
-  name: program.hero.title,
-  description: program.meta.description,
+  name: page.hero.title,
+  description: page.meta.description,
   provider: {
     '@type': business.seo.schemaType,
     name: business.name,
@@ -50,11 +64,11 @@ const structuredData = {
 
 <Layout
   locale={locale}
-  canonicalPath={program.path}
+  canonicalPath={page.path}
   alternatePaths={languageSwitchPaths}
   languageSwitchPaths={languageSwitchPaths}
-  title={program.meta.title}
-  description={program.meta.description}
+  title={page.meta.title}
+  description={page.meta.description}
   structuredData={structuredData}
 >
   <main>
@@ -83,18 +97,25 @@ const structuredData = {
       >
         <div class="max-w-3xl">
           <p class="mb-4 text-sm uppercase tracking-[0.25em] text-white/76">
-            {program.hero.eyebrow}
+            {page.hero.eyebrow}
           </p>
           <h1
             class="font-display text-5xl leading-tight text-white sm:text-6xl lg:text-7xl"
           >
-            {program.hero.title}
+            {page.hero.title}
           </h1>
           <p
             class="mt-6 max-w-2xl text-pretty text-lg leading-8 text-white/88 sm:text-xl"
           >
-            {program.hero.description}
+            {page.hero.description}
           </p>
+          {
+            page.hero.reassurance ? (
+              <p class="mt-4 max-w-2xl text-base font-medium leading-7 text-white/78">
+                {page.hero.reassurance}
+              </p>
+            ) : null
+          }
 
           <div
             class="mt-7 inline-flex flex-wrap items-center gap-x-3 gap-y-1 rounded-2xl bg-white/14 px-4 py-3 text-white shadow-soft backdrop-blur-sm"
@@ -102,32 +123,41 @@ const structuredData = {
             <span
               class="text-xs font-medium uppercase tracking-[0.18em] text-white/72"
             >
-              {program.price.label}
+              {page.price.label}
             </span>
             <span class="font-display text-3xl leading-none">
-              {program.price.amount}
+              {page.price.amount}
             </span>
-            <span class="text-sm text-white/70">
-              {program.price.usualValueLabel}
-              {program.price.usualValue}
-            </span>
+            {
+              page.price.detail ? (
+                <span class="text-sm text-white/78">{page.price.detail}</span>
+              ) : null
+            }
+            {
+              page.price.usualValueLabel && page.price.usualValue ? (
+                <span class="text-sm text-white/70">
+                  {page.price.usualValueLabel}
+                  {page.price.usualValue}
+                </span>
+              ) : null
+            }
           </div>
 
           <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <a
-              href={program.cta.href}
+              href={page.cta.href}
               target={ctaIsExternal ? '_blank' : undefined}
               rel={ctaIsExternal ? 'noreferrer' : undefined}
               class="btn-primary min-h-[3rem] px-7 py-3.5 sm:min-h-0 sm:py-3"
-              data-analytics-event={program.cta.analyticsEvent}
+              data-analytics-event={page.cta.analyticsEvent}
             >
-              {program.hero.primaryCta}
+              {page.hero.primaryCta}
             </a>
             <a
               href="#contenu-programme"
               class="inline-flex min-h-[3rem] items-center justify-center rounded-full border border-white/24 bg-white/10 px-7 py-3.5 text-sm font-medium text-white/86 shadow-soft backdrop-blur-sm transition hover:border-white/36 hover:bg-white/16 hover:text-white sm:min-h-0 sm:py-3"
             >
-              {program.hero.secondaryCta}
+              {page.hero.secondaryCta}
             </a>
           </div>
         </div>
@@ -137,8 +167,8 @@ const structuredData = {
     <section class="section-pad bg-surface">
       <div class="container-page">
         <div class="max-w-3xl">
-          <h2 class="heading-lg">{program.intro.title}</h2>
-          <p class="body-lg mt-5">{program.intro.body}</p>
+          <h2 class="heading-lg">{page.intro.title}</h2>
+          <p class="body-lg mt-5">{page.intro.body}</p>
         </div>
       </div>
     </section>
@@ -147,10 +177,10 @@ const structuredData = {
       <div class="container-page">
         <div class="grid gap-8 lg:grid-cols-2">
           <div>
-            <h2 class="heading-lg">{program.forWhom.title}</h2>
+            <h2 class="heading-lg">{page.forWhom.title}</h2>
             <div class="mt-7 grid gap-3">
               {
-                program.forWhom.items.map((item) => (
+                page.forWhom.items.map((item) => (
                   <article class="card-soft flex items-center gap-4 bg-white/82 p-5 shadow-card">
                     <span class="i-lucide-check h-5 w-5 shrink-0 text-brand-strong" />
                     <p class="text-base font-medium leading-6 text-ink">
@@ -163,10 +193,10 @@ const structuredData = {
           </div>
 
           <div>
-            <h2 class="heading-lg">{program.includes.title}</h2>
+            <h2 class="heading-lg">{page.includes.title}</h2>
             <div class="mt-7 grid gap-3">
               {
-                program.includes.items.map((item) => (
+                page.includes.items.map((item) => (
                   <article class="card-soft flex items-center gap-4 bg-white/82 p-5 shadow-card">
                     <span class="i-lucide-sparkles h-5 w-5 shrink-0 text-brand-strong" />
                     <p class="text-base font-medium leading-6 text-ink">
@@ -188,8 +218,8 @@ const structuredData = {
             class="grid gap-8 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:items-center"
           >
             <div>
-              <h2 class="heading-lg">{program.method.title}</h2>
-              <p class="body-lg mt-5">{program.method.body}</p>
+              <h2 class="heading-lg">{page.method.title}</h2>
+              <p class="body-lg mt-5">{page.method.body}</p>
             </div>
 
             <div
@@ -213,8 +243,8 @@ const structuredData = {
             class="grid gap-8 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:items-center"
           >
             <div>
-              <h2 class="heading-lg">{program.story.title}</h2>
-              <p class="body-lg mt-5">{program.story.body}</p>
+              <h2 class="heading-lg">{page.story.title}</h2>
+              <p class="body-lg mt-5">{page.story.body}</p>
             </div>
 
             <div
@@ -237,12 +267,38 @@ const structuredData = {
       </div>
     </section>
 
+    {
+      page.techniques ? (
+        <section class="section-pad bg-surface-muted">
+          <div class="container-page">
+            <div class="mx-auto max-w-3xl text-center">
+              <h2 class="heading-lg">{page.techniques.title}</h2>
+              <p class="body-lg mt-5">{page.techniques.intro}</p>
+            </div>
+
+            <div class="mt-9 grid gap-5 lg:grid-cols-3">
+              {page.techniques.items.map((item) => (
+                <article class="card-soft bg-white/84 p-6 shadow-card sm:p-7">
+                  <IconImage
+                    name={item.icon}
+                    class="bg-brand-soft text-brand-strong"
+                  />
+                  <h3 class="heading-md mt-5 text-[1.55rem]">{item.title}</h3>
+                  <p class="body-base mt-4">{item.description}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null
+    }
+
     <section class="section-pad bg-surface-muted">
       <div class="container-page">
-        <h2 class="heading-lg text-center">{program.faq.title}</h2>
+        <h2 class="heading-lg text-center">{page.faq.title}</h2>
         <div class="mx-auto mt-9 grid max-w-5xl gap-4">
           {
-            program.faq.items.map((item) => (
+            page.faq.items.map((item) => (
               <article class="card-soft bg-white/84 p-6 shadow-card sm:p-7">
                 <h3 class="text-lg font-semibold text-ink">{item.question}</h3>
                 <p class="body-base mt-3">{item.answer}</p>
@@ -263,21 +319,51 @@ const structuredData = {
               Madérothérapie
             </p>
             <h2 class="heading-md mt-3">
-              {program.maderotherapieCrossLink.title}
+              {page.maderotherapieCrossLink.title}
             </h2>
             <p class="body-base mt-4">
-              {program.maderotherapieCrossLink.description}
+              {page.maderotherapieCrossLink.description}
             </p>
           </div>
           <a
-            href={program.maderotherapieCrossLink.href}
+            href={page.maderotherapieCrossLink.href}
             class="mt-6 inline-flex min-h-[3rem] items-center justify-center rounded-full border border-brand/24 px-6 py-3 text-sm font-semibold text-brand-strong no-underline transition hover:bg-brand-soft lg:mt-0 lg:shrink-0"
           >
-            {program.maderotherapieCrossLink.text}
+            {page.maderotherapieCrossLink.text}
           </a>
         </div>
       </div>
     </section>
+
+    {
+      page.relatedLinks ? (
+        <section class="bg-surface px-0 py-10 sm:py-12">
+          <div class="container-page">
+            <div class="mx-auto max-w-5xl">
+              <p class="text-center text-sm uppercase tracking-[0.22em] text-brand-strong/82">
+                {page.relatedLinks.eyebrow}
+              </p>
+              <h2 class="heading-md mt-3 text-center">
+                {page.relatedLinks.title}
+              </h2>
+              <p class="body-base mx-auto mt-4 max-w-3xl text-center">
+                {page.relatedLinks.description}
+              </p>
+              <div class="mt-7 flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap">
+                {page.relatedLinks.items.map((item) => (
+                  <a
+                    href={item.href}
+                    class="inline-flex min-h-[3rem] items-center justify-center rounded-full border border-brand/24 bg-white/70 px-6 py-3 text-sm font-semibold text-brand-strong no-underline shadow-card transition hover:bg-brand-soft"
+                  >
+                    {item.text}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      ) : null
+    }
 
     <section class="section-pad bg-surface">
       <div class="container-page">
@@ -288,20 +374,37 @@ const structuredData = {
             name="i-lucide-message-circle"
             class="mx-auto bg-brand-soft text-brand-strong"
           />
-          <h2 class="heading-lg">{program.cta.title}</h2>
+          <h2 class="heading-lg">{page.cta.title}</h2>
           <p class="body-lg mx-auto mt-4 max-w-2xl">
-            {program.cta.description}
+            {page.cta.description}
           </p>
-          <a
-            href={program.cta.href}
-            target={ctaIsExternal ? '_blank' : undefined}
-            rel={ctaIsExternal ? 'noreferrer' : undefined}
-            class="btn-primary mt-7 min-h-[3rem] px-7 py-3.5 sm:min-h-0 sm:py-3"
-            data-analytics-event={program.cta.analyticsEvent}
+          <div
+            class="mt-7 flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap"
           >
-            {program.cta.text}
-          </a>
-          <p class="mt-4 text-sm font-medium text-ink/58">{program.cta.note}</p>
+            <a
+              href={page.cta.href}
+              target={ctaIsExternal ? '_blank' : undefined}
+              rel={ctaIsExternal ? 'noreferrer' : undefined}
+              class="btn-primary min-h-[3rem] px-7 py-3.5 sm:min-h-0 sm:py-3"
+              data-analytics-event={page.cta.analyticsEvent}
+            >
+              {page.cta.text}
+            </a>
+            {
+              page.cta.secondaryText && page.cta.secondaryHref ? (
+                <a
+                  href={page.cta.secondaryHref}
+                  target={secondaryCtaIsExternal ? '_blank' : undefined}
+                  rel={secondaryCtaIsExternal ? 'noreferrer' : undefined}
+                  class="inline-flex min-h-[3rem] items-center justify-center rounded-full border border-brand/24 px-7 py-3.5 text-sm font-semibold text-brand-strong no-underline transition hover:bg-brand-soft sm:min-h-0 sm:py-3"
+                  data-analytics-event={page.cta.secondaryAnalyticsEvent}
+                >
+                  {page.cta.secondaryText}
+                </a>
+              ) : null
+            }
+          </div>
+          <p class="mt-4 text-sm font-medium text-ink/58">{page.cta.note}</p>
         </div>
       </div>
     </section>
