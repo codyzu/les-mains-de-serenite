@@ -175,7 +175,7 @@ export const homePages = {
           subtitle: '3 séances personnalisées',
           description:
             'Un accompagnement personnalisé en 3 séances où chaque massage est choisi selon vos besoins et l’évolution de vos ressentis.',
-          includesTitle: 'Votre accompagnement peut inclure',
+          includesTitle: 'Selon vos besoins, votre accompagnement peut inclure',
           includes: [
             'Drainage lymphatique',
             'Massage remodelant',
@@ -184,7 +184,7 @@ export const homePages = {
           priceLabel: 'Tarif',
           price: '350 €',
           priceDetail: '3 séances',
-          note: 'Vous n’avez pas à choisir entre drainage lymphatique, massage remodelant ou madérothérapie. Chaque séance est adaptée à vos besoins du moment pour vous accompagner vers une sensation de légèreté, de confort et de bien-être.',
+          note: 'Vous n’avez pas à choisir le massage. Chaque séance est adaptée à vos besoins du moment pour vous accompagner vers une sensation de légèreté, de confort et de bien-être.',
           ctaText: 'Découvrir la cure',
           ctaLink: localizedPagePaths.cureFusion.fr,
           icon: 'i-lucide-sparkles',
@@ -473,7 +473,8 @@ export const homePages = {
           subtitle: '3 personalized sessions',
           description:
             'A personalized 3-session accompaniment where each massage is chosen according to your needs and how your body responds.',
-          includesTitle: 'Your accompaniment may include',
+          includesTitle:
+            'Depending on your needs, your accompaniment may include',
           includes: [
             'Lymphatic drainage',
             'Body sculpting massage',
@@ -482,7 +483,7 @@ export const homePages = {
           priceLabel: 'Price',
           price: '350 €',
           priceDetail: '3 sessions',
-          note: 'You do not have to choose between lymphatic drainage, body sculpting massage, or maderotherapy. Each session is adapted to what you need at that moment, supporting a feeling of lightness, comfort, and well-being.',
+          note: 'You do not have to choose the massage. Each session is adapted to what you need at that moment, supporting a feeling of lightness, comfort, and well-being.',
           ctaText: 'Discover the package',
           ctaLink: localizedPagePaths.cureFusion.en,
           icon: 'i-lucide-sparkles',

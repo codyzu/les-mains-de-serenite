@@ -1,6 +1,8 @@
 ---
+import {Picture} from 'astro:assets';
 import IconImage from '../components/IconImage.astro';
 import ProgramPreview from '../components/ProgramPreview.astro';
+import CureFusionLakeWalk from '../assets/cure-fusion-lake-walk.png';
 import {
   localizedPagePaths,
   type Locale,
@@ -20,6 +22,10 @@ const {
   pages: {programs},
 } = localized;
 const languageSwitchPaths = localizedPagePaths.programs;
+const transitionImageAlt =
+  locale === 'en'
+    ? 'Two women walking barefoot along Lake Annecy'
+    : 'Deux femmes marchent pieds nus au bord du lac d’Annecy';
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
@@ -100,6 +106,21 @@ const structuredData = {
               {programs.distinction.programDescription}
             </p>
           </article>
+        </div>
+
+        <div
+          class="mt-10 overflow-hidden rounded-[2rem] shadow-soft ring-1 ring-surface-soft sm:mt-12 lg:mt-14"
+        >
+          <Picture
+            src={CureFusionLakeWalk}
+            alt={transitionImageAlt}
+            formats={['avif', 'webp']}
+            widths={[640, 960, 1280, 1536]}
+            sizes="(min-width: 1024px) 74rem, calc(100vw - 2rem)"
+            loading="lazy"
+            decoding="async"
+            class="aspect-[4/3] w-full object-cover object-[50%_54%] sm:aspect-[16/8] lg:aspect-[16/7]"
+          />
         </div>
       </div>
     </section>

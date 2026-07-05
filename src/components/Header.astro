@@ -101,9 +101,13 @@ const navLabel = locale === 'en' ? 'Main navigation' : 'Navigation principale';
       <a href={`${homeHref}#accueil`} class="nav-link">{links.home}</a>
       {
         massagesActive ? (
-          <span aria-current="page" class="text-sm font-medium text-ink">
+          <a
+            href={massagesHref}
+            aria-current="page"
+            class="text-sm font-medium text-ink no-underline"
+          >
             {links.massages}
-          </span>
+          </a>
         ) : (
           <a href={massagesHref} class="nav-link">
             {links.massages}
@@ -112,9 +116,13 @@ const navLabel = locale === 'en' ? 'Main navigation' : 'Navigation principale';
       }
       {
         programActive ? (
-          <span aria-current="page" class="text-sm font-medium text-ink">
+          <a
+            href={programHref}
+            aria-current="page"
+            class="text-sm font-medium text-ink no-underline"
+          >
             {links.program}
-          </span>
+          </a>
         ) : (
           <a href={programHref} class="nav-link">
             {links.program}
@@ -244,9 +252,13 @@ const navLabel = locale === 'en' ? 'Main navigation' : 'Navigation principale';
       }
       {
         massagesActive ? (
-          <span aria-current="page" class="drawer-link drawer-link-active">
+          <a
+            href={massagesHref}
+            aria-current="page"
+            class="drawer-link drawer-link-active"
+          >
             {links.massages}
-          </span>
+          </a>
         ) : (
           <a href={massagesHref} class="drawer-link">
             {links.massages}
@@ -255,9 +267,13 @@ const navLabel = locale === 'en' ? 'Main navigation' : 'Navigation principale';
       }
       {
         programActive ? (
-          <span aria-current="page" class="drawer-link drawer-link-active">
+          <a
+            href={programHref}
+            aria-current="page"
+            class="drawer-link drawer-link-active"
+          >
             {links.program}
-          </span>
+          </a>
         ) : (
           <a href={programHref} class="drawer-link">
             {links.program}

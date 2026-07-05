@@ -24,15 +24,15 @@ export const programsPages = {
     distinction: {
       singleTitle: 'Un massage individuel',
       singleDescription:
-        'Répond à un besoin ponctuel : détente, jambes lourdes, tensions ou découverte d’une technique.',
+        'Répond à un besoin ponctuel : détente, jambes lourdes, tensions ou découverte d’une technique. Une séance, un besoin précis.',
       programTitle: 'Un programme',
       programDescription:
-        'Associe plusieurs séances personnalisées pour soutenir les bienfaits dans la durée, avec un accompagnement progressif.',
+        'Associe plusieurs séances personnalisées pour soutenir les bienfaits dans la durée. Un accompagnement qui évolue avec vous.',
     },
     preview: {
       ...homePages.fr.programPreview,
       intro:
-        'Deux façons d’aller plus loin qu’une séance unique, selon vos besoins et vos objectifs de bien-être.',
+        'Deux accompagnements pour répondre à des besoins différents, selon votre objectif de bien-être.',
       items: homePages.fr.programPreview.items.map((item) => ({
         ...item,
         ctaLink:
@@ -78,15 +78,15 @@ export const programsPages = {
     distinction: {
       singleTitle: 'An individual massage',
       singleDescription:
-        'Responds to a one-time need: relaxation, heavy legs, tension, or discovering a technique.',
+        'Responds to a one-time need: relaxation, heavy legs, tension, or discovering a technique. One session, one precise need.',
       programTitle: 'A program',
       programDescription:
-        'Combines several personalized sessions to support the benefits over time, with progressive accompaniment.',
+        'Combines several personalized sessions to support the benefits over time. An accompaniment that evolves with you.',
     },
     preview: {
       ...homePages.en.programPreview,
       intro:
-        'Two ways to go further than a single session, depending on your needs and wellness goals.',
+        'Two accompaniments designed for different needs, depending on your wellness goal.',
       items: homePages.en.programPreview.items.map((item) => ({
         ...item,
         ctaLink:
