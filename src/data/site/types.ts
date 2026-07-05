@@ -257,6 +257,7 @@ export type ProgramPageData = {
       icon: string;
     }>;
   };
+  testimonials?: TestimonialsData;
   faq: {
     title: string;
     items: Array<{

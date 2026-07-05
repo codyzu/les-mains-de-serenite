@@ -112,13 +112,27 @@ test('Cure Fusion page explains the personalized package', async ({page}) => {
   await expect(
     page.getByText('3 séances personnalisées').first()
   ).toBeVisible();
+  await expect(
+    page.getByText('3 massages personnalisés', {exact: true})
+  ).toBeVisible();
   await expect(page.getByText('350 €').first()).toBeVisible();
   await expect(page.getByText('Cure réservée aux femmes')).toBeVisible();
   await expect(
-    page.getByText('Une approche personnalisée, pas une formule fixe')
+    page.getByText('Vous n’avez pas à choisir le bon massage')
   ).toBeVisible();
   await expect(
-    page.getByRole('heading', {name: 'Les soins pouvant être associés'})
+    page.getByText(
+      'Vous n’avez pas à choisir entre drainage lymphatique, massage remodelant ou madérothérapie'
+    )
+  ).toBeVisible();
+  await expect(
+    page.getByText('Une expertise au service de votre corps')
+  ).toBeVisible();
+  await expect(page.getByText(/deuxième séance/)).toBeVisible();
+  await expect(
+    page.getByRole('heading', {
+      name: 'Les massages pouvant composer votre cure',
+    })
   ).toBeVisible();
   await expect(
     page.getByRole('heading', {name: 'Drainage lymphatique'})
@@ -128,6 +142,17 @@ test('Cure Fusion page explains the personalized package', async ({page}) => {
   ).toBeVisible();
   await expect(
     page.getByRole('heading', {name: 'Madérothérapie'})
+  ).toBeVisible();
+  await expect(
+    page.getByRole('heading', {name: 'Un accompagnement attentif'})
+  ).toBeVisible();
+  await expect(
+    page.getByText('J’ai particulièrement apprécié l’écoute')
+  ).toBeVisible();
+  await expect(
+    page.getByRole('heading', {
+      name: 'Pourquoi choisir une Cure Fusion plutôt que trois massages réservés séparément ?',
+    })
   ).toBeVisible();
   await expect(
     page.getByRole('link', {name: 'Poser une question sur la cure'}).last()

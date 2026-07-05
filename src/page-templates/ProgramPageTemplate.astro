@@ -1,6 +1,7 @@
 ---
 import {Picture} from 'astro:assets';
 import IconImage from '../components/IconImage.astro';
+import Testimonials from '../components/Testimonials.astro';
 import Practitioner from '../assets/about-practitioner.png';
 import ProgramDrainageHero from '../assets/program-drainage-realistic.png';
 import ProgramHabitsGuidance from '../assets/program-habits-guidance-no-text.png';
@@ -266,6 +267,8 @@ const structuredData = {
         </div>
       </div>
     </section>
+
+    {page.testimonials ? <Testimonials {...page.testimonials} /> : null}
 
     {
       page.techniques ? (

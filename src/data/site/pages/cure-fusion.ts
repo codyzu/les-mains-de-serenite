@@ -16,15 +16,15 @@ export const cureFusionPages = {
       eyebrow: 'Cure personnalisée à Annecy',
       title: 'Cure Fusion',
       description:
-        'Un accompagnement bien-être en 3 séances personnalisées, pensé pour vous aider à retrouver une sensation de légèreté, de tonicité et de confort dans votre corps.',
+        '3 massages personnalisés, choisis à chaque séance selon vos besoins, vos sensations et l’évolution de votre corps, pour retrouver légèreté, confort et tonicité.',
       reassurance:
-        'Cure réservée aux femmes, adaptée à vos besoins, vos ressentis et vos objectifs de bien-être.',
+        'Cure réservée aux femmes : vous n’avez pas à choisir seule le massage le plus adapté.',
       primaryCta: 'Poser une question sur la cure',
       secondaryCta: 'Voir comment fonctionne la cure',
     },
     intro: {
-      title: 'Une cure pensée pour aller plus loin qu’une séance seule',
-      body: 'Cure Fusion s’adresse aux femmes qui souhaitent un accompagnement plus complet, sans protocole figé. Chaque séance est ajustée selon vos sensations, votre confort et l’objectif bien-être que vous souhaitez soutenir.',
+      title: 'Vous n’avez pas à choisir le bon massage',
+      body: 'Cure Fusion s’adresse aux femmes qui souhaitent un accompagnement plus guidé. Vous n’avez pas à choisir entre drainage lymphatique, massage remodelant ou madérothérapie : chaque massage est sélectionné selon vos besoins, vos objectifs et la façon dont votre corps répond au fil de la cure.',
     },
     forWhom: {
       title: 'Cette cure est idéale si vous souhaitez',
@@ -32,18 +32,18 @@ export const cureFusionPages = {
         'Retrouver une sensation de légèreté',
         'Vous sentir plus tonique et plus à l’aise dans votre corps',
         'Apaiser les sensations de lourdeur ou d’inconfort',
-        'Être accompagnée sur plusieurs séances plutôt qu’une seule',
-        'Combiner plusieurs approches selon vos besoins du moment',
+        'Être guidée sans devoir choisir seule la technique la plus adaptée',
+        'Bénéficier d’un accompagnement qui évolue sur 3 séances',
       ],
     },
     includes: {
       title: 'La cure comprend',
       items: [
-        '3 séances personnalisées',
-        'Un échange sur vos besoins avant ou au début de la cure',
-        'Le choix des soins selon vos ressentis et vos objectifs',
-        'Une progression adaptée d’une séance à l’autre',
-        'Des conseils simples pour prolonger les bienfaits au quotidien',
+        '3 massages personnalisés',
+        'Le choix du massage le plus adapté à chaque séance',
+        'Un accompagnement fondé sur vos ressentis et vos objectifs',
+        'Une adaptation selon la façon dont votre corps répond',
+        'Des conseils personnalisés pour prolonger les bienfaits',
       ],
     },
     price: {
@@ -53,16 +53,16 @@ export const cureFusionPages = {
     },
     method: {
       title: 'Comment fonctionne la Cure Fusion ?',
-      body: 'La cure commence par un échange pour comprendre vos besoins, vos sensations et ce que vous recherchez : plus de légèreté, de confort, de tonicité ou simplement un accompagnement plus guidé. Les soins sont ensuite choisis et ajustés au fil des 3 séances, afin de rester au plus près de votre corps et de votre ressenti.',
+      body: 'La première séance permet de comprendre vos besoins, vos sensations et vos objectifs, puis de réaliser un premier massage personnalisé. À la deuxième séance, le massage est adapté selon ce que votre corps a déjà exprimé et ce qui a évolué depuis le premier rendez-vous. La troisième séance vient renforcer les bienfaits ressentis et se termine par des conseils personnalisés pour prolonger cette sensation de légèreté, de confort et de tonicité.',
     },
     story: {
-      title: 'Une approche personnalisée, pas une formule fixe',
-      body: 'Cure Fusion peut associer drainage lymphatique, massage remodelant et madérothérapie, mais ces techniques restent des outils. L’objectif n’est pas d’appliquer la même recette à chaque femme, mais de construire une expérience bien-être cohérente avec vos besoins du moment.',
+      title: 'Une expertise au service de votre corps',
+      body: 'Chaque femme est différente, et chaque corps réagit différemment. Cure Fusion ne suit donc pas une formule fixe : l’accompagnement repose sur l’écoute, l’observation et le choix du massage le plus juste à chaque étape de la cure.',
     },
     techniques: {
-      title: 'Les soins pouvant être associés',
+      title: 'Les massages pouvant composer votre cure',
       intro:
-        'Selon votre objectif et vos sensations, la cure peut s’appuyer sur une ou plusieurs approches complémentaires.',
+        'Chaque Cure Fusion est différente. Ces massages sont des outils choisis selon vos besoins, vos ressentis et l’évolution observée au fil des séances.',
       items: [
         {
           title: 'Drainage lymphatique',
@@ -84,6 +84,17 @@ export const cureFusionPages = {
         },
       ],
     },
+    testimonials: {
+      title: 'Un accompagnement attentif',
+      intro:
+        'La personnalisation et l’écoute font partie intégrante de chaque séance.',
+      items: [
+        {
+          text: 'J’ai particulièrement apprécié l’écoute et la personnalisation de la séance. Zahara s’adapte aux besoins du moment plutôt que d’appliquer un protocole identique à tout le monde.',
+          author: 'Julie, Annecy',
+        },
+      ],
+    },
     faq: {
       title: 'Questions fréquentes',
       items: [
@@ -91,6 +102,12 @@ export const cureFusionPages = {
           question: 'Est-ce que les 3 séances sont identiques ?',
           answer:
             'Non. La cure est personnalisée : les séances peuvent évoluer selon vos ressentis, vos besoins et ce que vous souhaitez privilégier.',
+        },
+        {
+          question:
+            'Pourquoi choisir une Cure Fusion plutôt que trois massages réservés séparément ?',
+          answer:
+            'Les 3 séances sont pensées ensemble. Chaque massage peut évoluer selon vos ressentis, vos objectifs et la manière dont votre corps répond. Vous bénéficiez d’un accompagnement plus cohérent, avec des conseils personnalisés à la fin pour prolonger les bienfaits.',
         },
         {
           question:
@@ -112,9 +129,9 @@ export const cureFusionPages = {
       ],
     },
     cta: {
-      title: 'Vous souhaitez savoir si la Cure Fusion est adaptée ?',
+      title: 'Vous hésitez sur le massage le plus adapté ?',
       description:
-        'Envoyez un message à Zahara pour poser vos questions ou préparer votre première séance personnalisée.',
+        'Envoyez un message pour expliquer ce que vous recherchez. Vous pourrez poser vos questions et vérifier si la Cure Fusion correspond à vos besoins du moment.',
       text: 'Poser une question sur la cure',
       note: 'Réponse personnalisée par WhatsApp.',
       href: cureFusionFrWhatsappHref,
@@ -163,15 +180,15 @@ export const cureFusionPages = {
       eyebrow: 'Personalized package in Annecy',
       title: 'Cure Fusion',
       description:
-        'A 3-session personalized wellness accompaniment designed to help you reconnect with a feeling of lightness, tone, and body comfort.',
+        '3 personalized massages, chosen at each session according to your needs, sensations, and how your body evolves, to reconnect with lightness, comfort, and tone.',
       reassurance:
-        'A women-only package adapted to your needs, sensations, and wellness goals.',
+        'A women-only package: you do not have to choose the most appropriate massage on your own.',
       primaryCta: 'Ask about the package',
       secondaryCta: 'See how it works',
     },
     intro: {
-      title: 'A package designed to go further than one session',
-      body: 'Cure Fusion is for women who want a more complete accompaniment without a fixed protocol. Each session is adjusted to your sensations, your comfort, and the wellness goal you would like to support.',
+      title: 'You do not have to choose the right massage',
+      body: 'Cure Fusion is for women who want more guided support. You do not have to choose between lymphatic drainage, body sculpting massage, or maderotherapy: each massage is selected according to your needs, goals, and how your body responds throughout the package.',
     },
     forWhom: {
       title: 'This package is ideal if you would like to',
@@ -179,18 +196,18 @@ export const cureFusionPages = {
         'Reconnect with a feeling of lightness',
         'Feel more toned and more at ease in your body',
         'Ease feelings of heaviness or discomfort',
-        'Be supported over several sessions rather than one',
-        'Combine several approaches according to your current needs',
+        'Be guided without choosing the most suitable technique alone',
+        'Benefit from support that evolves over 3 sessions',
       ],
     },
     includes: {
       title: 'The package includes',
       items: [
-        '3 personalized sessions',
-        'A conversation about your needs before or at the beginning',
-        'Approach choices based on your sensations and goals',
-        'A progression adapted from one session to the next',
-        'Simple tips to extend the benefits in everyday life',
+        '3 personalized massages',
+        'The most suitable massage chosen at each session',
+        'Support based on your sensations and goals',
+        'Adjustments according to how your body responds',
+        'Personalized tips to extend the benefits',
       ],
     },
     price: {
@@ -200,16 +217,16 @@ export const cureFusionPages = {
     },
     method: {
       title: 'How does Cure Fusion work?',
-      body: 'The package begins with a conversation to understand your needs, how your body feels, and what you are looking for: more lightness, comfort, tone, or simply more guided support. The approaches are then chosen and adjusted across the 3 sessions to stay close to your body and your sensations.',
+      body: 'The first session helps clarify your needs, sensations, and goals, then begins with a first personalized massage. At the second session, the massage is adapted according to how your body has responded and what has changed since the first appointment. The third session reinforces the benefits already felt and ends with personalized tips to extend the feeling of lightness, comfort, and tone.',
     },
     story: {
-      title: 'A personalized approach, not a fixed formula',
-      body: 'Cure Fusion may combine lymphatic drainage, body sculpting massage, and maderotherapy, but these techniques remain supporting tools. The goal is not to apply the same recipe to every woman, but to build a wellness experience that fits your current needs.',
+      title: 'Expertise guided by your body',
+      body: 'Every woman is different, and every body responds differently. Cure Fusion does not follow a fixed formula: the accompaniment is based on listening, observation, and choosing the most appropriate massage at each step of the package.',
     },
     techniques: {
-      title: 'Approaches that may be combined',
+      title: 'Massages that may shape your package',
       intro:
-        'Depending on your goal and sensations, the package may use one or several complementary approaches.',
+        'Every Cure Fusion is different. These massages are supporting tools, selected according to your needs, sensations, and how your body evolves across the sessions.',
       items: [
         {
           title: 'Lymphatic drainage',
@@ -231,6 +248,16 @@ export const cureFusionPages = {
         },
       ],
     },
+    testimonials: {
+      title: 'Attentive personalized care',
+      intro: 'Listening and personalization are part of every session.',
+      items: [
+        {
+          text: 'I especially appreciated how attentive and personalized the session felt. Zahara adapts to what you need in the moment instead of applying the same routine to everyone.',
+          author: 'Julie, Annecy',
+        },
+      ],
+    },
     faq: {
       title: 'Frequently asked questions',
       items: [
@@ -238,6 +265,12 @@ export const cureFusionPages = {
           question: 'Are the 3 sessions identical?',
           answer:
             'No. The package is personalized: sessions can evolve according to your sensations, needs, and what you would like to focus on.',
+        },
+        {
+          question:
+            'Why choose Cure Fusion instead of booking three individual massages?',
+          answer:
+            'The 3 sessions are planned together. Each massage can evolve according to your sensations, goals, and how your body responds. You benefit from a more coherent overall experience, with personalized tips at the end to extend the benefits.',
         },
         {
           question:
@@ -258,9 +291,9 @@ export const cureFusionPages = {
       ],
     },
     cta: {
-      title: 'Would you like to know if Cure Fusion is right for you?',
+      title: 'Unsure which massage is most suitable?',
       description:
-        'Send Zahara a message to ask your questions or prepare your first personalized session.',
+        'Send a message to explain what you are looking for. You can ask your questions and check whether Cure Fusion fits your current needs.',
       text: 'Ask about the package',
       note: 'Personal reply by WhatsApp.',
       href: cureFusionEnWhatsappHref,

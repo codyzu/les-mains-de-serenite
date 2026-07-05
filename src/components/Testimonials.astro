@@ -15,11 +15,13 @@ const {title, intro, items} = Astro.props;
       {
         items.map((item, index) => {
           const centeredSecondRowClass =
-            items.length === 5 && index === 3
-              ? 'md:col-start-2'
-              : items.length === 5 && index === 4
-                ? 'md:col-start-4'
-                : '';
+            items.length === 1
+              ? 'md:col-start-3'
+              : items.length === 5 && index === 3
+                ? 'md:col-start-2'
+                : items.length === 5 && index === 4
+                  ? 'md:col-start-4'
+                  : '';
 
           return (
             <article
