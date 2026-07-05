@@ -2,10 +2,34 @@
 interface Props {
   title: string;
   text?: string;
+  textLinks?: Array<{
+    text: string;
+    href: string;
+  }>;
   centered?: boolean;
 }
 
-const {title, text, centered = true} = Astro.props;
+const {title, text, textLinks = [], centered = true} = Astro.props;
+
+const renderTextParts = (value: string) => {
+  const parts: Array<string | {text: string; href: string}> = [value];
+
+  for (const link of textLinks) {
+    const index = parts.findIndex(
+      (part) => typeof part === 'string' && part.includes(link.text)
+    );
+
+    if (index === -1) {
+      continue;
+    }
+
+    const part = parts[index] as string;
+    const [before, after] = part.split(link.text);
+    parts.splice(index, 1, before, {text: link.text, href: link.href}, after);
+  }
+
+  return parts.filter(Boolean);
+};
 ---
 
 <div
@@ -15,5 +39,22 @@ const {title, text, centered = true} = Astro.props;
   ]}
 >
   <h2 class="heading-lg">{title}</h2>
-  {text ? <p class="body-lg mt-4">{text}</p> : null}
+  {
+    text ? (
+      <p class="body-lg mt-4">
+        {renderTextParts(text).map((part) =>
+          typeof part === 'string' ? (
+            part
+          ) : (
+            <a
+              href={part.href}
+              class="font-medium text-brand-strong underline decoration-brand-strong/28 underline-offset-4 transition hover:text-accent-strong"
+            >
+              {part.text}
+            </a>
+          )
+        )}
+      </p>
+    ) : null
+  }
 </div>

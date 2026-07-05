@@ -5,7 +5,8 @@ import IconImage from './IconImage.astro';
 
 type Props = MassagesSectionData;
 
-const {title, intro, recommendedLabel, ctaText, ctaLink, items} = Astro.props;
+const {title, intro, introLinks, recommendedLabel, ctaText, ctaLink, items} =
+  Astro.props;
 
 const getCardGridClasses = (index: number) => {
   const isLastTabletCard = items.length % 2 === 1 && index === items.length - 1;
@@ -24,7 +25,7 @@ const getCardGridClasses = (index: number) => {
 
 <section id="massages" class="section-pad bg-surface">
   <div class="container-page">
-    <SectionIntro title={title} text={intro} />
+    <SectionIntro title={title} text={intro} textLinks={introLinks} />
 
     <div class="grid gap-6 md:grid-cols-4 xl:grid-cols-6">
       {

@@ -23,9 +23,10 @@ test('French homepage renders the main business content and booking CTA', async 
     page.getByRole('link', {name: 'Découvrir les soins'})
   ).toHaveAttribute('href', '/massages/');
   await expect(page.getByText('Prendre le temps')).toBeVisible();
+  await expect(page.getByText('S’accorder une vraie pause')).toBeVisible();
   await expect(
     page.getByText(
-      'Prendre soin de soi commence parfois par s’accorder un vrai moment.'
+      'Un moment pour ralentir, écouter votre corps et retrouver une sensation de calme.'
     )
   ).toBeVisible();
   await expect(
@@ -94,9 +95,10 @@ test('English homepage renders localized content and booking CTA', async ({
     page.getByRole('link', {name: 'Discover the treatments'})
   ).toHaveAttribute('href', '/en/massages/');
   await expect(page.getByText('Take your time')).toBeVisible();
+  await expect(page.getByText('Allow yourself a real pause')).toBeVisible();
   await expect(
     page.getByText(
-      'Taking care of yourself sometimes starts with allowing yourself a real moment.'
+      'A moment to slow down, listen to your body, and return to a sense of calm.'
     )
   ).toBeVisible();
   await expect(

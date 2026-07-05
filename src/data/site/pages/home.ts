@@ -24,11 +24,29 @@ export const homePages = {
       secondaryCta: 'Appeler',
       whatsappCta: 'WhatsApp',
     },
+    heroBridge: {
+      parts: [
+        {text: 'Des '},
+        {
+          text: 'soins ponctuels',
+          href: localizedPagePaths.massages.fr,
+        },
+        {
+          text: ', dont le massage bien-être à Annecy, pour répondre à un besoin du moment, ou des ',
+        },
+        {
+          text: 'programmes personnalisés',
+          href: localizedPagePaths.programs.fr,
+        },
+        {text: ' pour aller plus loin.'},
+      ],
+    },
     promo: {
       title: 'Pour commencer',
       headline: '45 min à 55\u00A0€',
       description:
-        'L’offre découverte est une première visite simple et rassurante pour découvrir l’approche, accompagner les jambes lourdes ou les tensions du dos, et retrouver une sensation de légèreté.',
+        'Une première séance personnalisée pour découvrir l’approche, relâcher les tensions et prendre un vrai moment pour vous.',
+      note: 'Le choix idéal si vous découvrez Les Mains de Sérénité ou si vous hésitez entre plusieurs soins.',
       ctaText: 'Réserver l’offre',
       ctaLink: discoveryOfferBookingHref,
       analyticsEvent: 'reserve_click',
@@ -91,6 +109,12 @@ export const homePages = {
       title: 'Soin ponctuel : choisir le rituel juste',
       intro:
         'Une sélection de soins bien-être à Annecy, réservés aux femmes, pour répondre à un besoin précis ou simplement s’accorder un vrai moment pour soi.',
+      introLinks: [
+        {
+          text: 'soins bien-être à Annecy',
+          href: localizedPagePaths.massages.fr,
+        },
+      ],
       recommendedLabel: 'Durée conseillée',
       ctaText: 'Découvrir les soins',
       ctaLink: localizedPagePaths.massages.fr,
@@ -167,7 +191,8 @@ export const homePages = {
     },
     emotionalTransition: {
       title: 'Prendre le temps',
-      text: 'Prendre soin de soi commence parfois par s’accorder un vrai moment.',
+      heading: 'S’accorder une vraie pause',
+      text: 'Un moment pour ralentir, écouter votre corps et retrouver une sensation de calme.',
       image: {
         src: TeaLake,
         alt: 'Théière asiatique et petites tasses sur une terrasse avec vue sur le lac et les montagnes',
@@ -177,6 +202,12 @@ export const homePages = {
       title: 'Accompagnement : aller plus loin sur plusieurs séances',
       intro:
         'Lorsque le besoin revient ou que vous souhaitez être guidée, les programmes d’accompagnement offrent un cadre plus progressif qu’un soin ponctuel.',
+      introLinks: [
+        {
+          text: 'programmes d’accompagnement',
+          href: localizedPagePaths.programs.fr,
+        },
+      ],
       ctaText: 'Découvrir les programmes',
       ctaLink: localizedPagePaths.programs.fr,
       items: [
@@ -348,11 +379,29 @@ export const homePages = {
       secondaryCta: 'Call',
       whatsappCta: 'WhatsApp',
     },
+    heroBridge: {
+      parts: [
+        {text: 'Choose '},
+        {
+          text: 'single treatments',
+          href: localizedPagePaths.massages.en,
+        },
+        {
+          text: ', including wellness massage in Annecy, for a current need, or ',
+        },
+        {
+          text: 'personalized programs',
+          href: localizedPagePaths.programs.en,
+        },
+        {text: ' when you want to go further.'},
+      ],
+    },
     promo: {
       title: 'To begin',
       headline: '45 min for €55',
       description:
-        'The discovery offer is a simple, reassuring first visit to discover the approach, soothe heavy legs or back tension, and reconnect with a feeling of lightness.',
+        'A first personalized session to discover the approach, release tension, and take a real moment for yourself.',
+      note: 'The ideal choice if you are discovering Les Mains de Sérénité or hesitating between several treatments.',
       ctaText: 'Book the offer',
       ctaLink: discoveryOfferBookingHref,
       analyticsEvent: 'reserve_click',
@@ -415,6 +464,12 @@ export const homePages = {
       title: 'Single treatment: choose the right ritual',
       intro:
         'A curated preview of women-only wellness treatments in Annecy, for a specific need or a true moment for yourself.',
+      introLinks: [
+        {
+          text: 'wellness treatments in Annecy',
+          href: localizedPagePaths.massages.en,
+        },
+      ],
       recommendedLabel: 'Recommended',
       ctaText: 'Discover the treatments',
       ctaLink: localizedPagePaths.massages.en,
@@ -491,7 +546,8 @@ export const homePages = {
     },
     emotionalTransition: {
       title: 'Take your time',
-      text: 'Taking care of yourself sometimes starts with allowing yourself a real moment.',
+      heading: 'Allow yourself a real pause',
+      text: 'A moment to slow down, listen to your body, and return to a sense of calm.',
       image: {
         src: TeaLake,
         alt: 'Asian teapot and small cups on a terrace overlooking the lake and mountains',
@@ -501,6 +557,12 @@ export const homePages = {
       title: 'Support: go further across several sessions',
       intro:
         'When the need returns or you would like to be guided, support programs offer a more progressive frame than a single treatment.',
+      introLinks: [
+        {
+          text: 'support programs',
+          href: localizedPagePaths.programs.en,
+        },
+      ],
       ctaText: 'Discover the programs',
       ctaLink: localizedPagePaths.programs.en,
       items: [

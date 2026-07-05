@@ -84,6 +84,7 @@ export type PromoData = {
   title: string;
   headline: string;
   description: string;
+  note?: string;
   ctaText: string;
   ctaLink: string;
   analyticsEvent?: AnalyticsEventName;
@@ -91,6 +92,11 @@ export type PromoData = {
     src: ImageMetadata;
     alt: string;
   };
+};
+
+export type InlineTextLinkData = {
+  text: string;
+  href: string;
 };
 
 export type NeedsSectionData = {
@@ -125,6 +131,7 @@ export type MassageData = {
 export type MassagesSectionData = {
   title: string;
   intro: string;
+  introLinks?: InlineTextLinkData[];
   recommendedLabel: string;
   ctaText?: string;
   ctaLink?: string;
@@ -151,6 +158,7 @@ export type ProgramPreviewItemData = {
 export type ProgramPreviewData = {
   title: string;
   intro: string;
+  introLinks?: InlineTextLinkData[];
   ctaText?: string;
   ctaLink?: string;
   items: ProgramPreviewItemData[];
@@ -158,11 +166,17 @@ export type ProgramPreviewData = {
 
 export type HomeTransitionData = {
   title: string;
+  heading: string;
   text: string;
   image: {
     src: ImageMetadata;
     alt: string;
   };
+};
+
+export type RichTextPartData = {
+  text: string;
+  href?: string;
 };
 
 export type OverviewCtaData = {
@@ -464,6 +478,9 @@ export type HomePageData = {
     description: string;
   };
   hero: HeroData;
+  heroBridge: {
+    parts: RichTextPartData[];
+  };
   promo?: PromoData;
   needsSection: NeedsSectionData;
   massagesSection: MassagesSectionData;

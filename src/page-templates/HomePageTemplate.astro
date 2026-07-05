@@ -66,6 +66,29 @@ const structuredData = {
       whatsappUrl={whatsappUrl}
     />
 
+    <section class="bg-surface px-0 pb-2 pt-8 sm:pt-10">
+      <div class="container-page">
+        <p
+          class="mx-auto max-w-3xl text-center text-base leading-7 text-ink-muted sm:text-lg sm:leading-8"
+        >
+          {
+            home.heroBridge.parts.map((part) =>
+              part.href ? (
+                <a
+                  href={part.href}
+                  class="font-medium text-brand-strong underline decoration-brand-strong/28 underline-offset-4 transition hover:text-accent-strong"
+                >
+                  {part.text}
+                </a>
+              ) : (
+                part.text
+              )
+            )
+          }
+        </p>
+      </div>
+    </section>
+
     <PromoSection promo={home.promo} />
 
     <Massages {...home.massagesSection} />

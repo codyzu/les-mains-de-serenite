@@ -4,7 +4,7 @@ import type {HomeTransitionData} from '../data/site';
 
 type Props = HomeTransitionData;
 
-const {title, text, image} = Astro.props;
+const {title, heading, text, image} = Astro.props;
 ---
 
 <section class="bg-surface px-0 py-12 sm:py-14 lg:py-16">
@@ -21,8 +21,9 @@ const {title, text, image} = Astro.props;
         <p
           class="mt-4 font-display text-3xl leading-tight text-ink sm:text-4xl"
         >
-          {text}
+          {heading}
         </p>
+        <p class="body-base mt-4 max-w-md">{text}</p>
       </div>
 
       <div

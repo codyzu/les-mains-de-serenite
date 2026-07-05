@@ -5,12 +5,12 @@ import SectionIntro from './SectionIntro.astro';
 
 type Props = ProgramPreviewData;
 
-const {title, intro, ctaText, ctaLink, items} = Astro.props;
+const {title, intro, introLinks, ctaText, ctaLink, items} = Astro.props;
 ---
 
 <section class="section-pad bg-surface-muted">
   <div class="container-page">
-    <SectionIntro title={title} text={intro} />
+    <SectionIntro title={title} text={intro} textLinks={introLinks} />
 
     <div class="mt-2 grid gap-6 lg:grid-cols-2">
       {

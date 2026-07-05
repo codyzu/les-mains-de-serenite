@@ -37,6 +37,11 @@ const ctaIsExternal = promo?.ctaLink.startsWith('http') ?? false;
                   {promo.headline}
                 </h2>
                 <p class="body-lg mt-4 max-w-2xl">{promo.description}</p>
+                {promo.note ? (
+                  <p class="mt-4 max-w-2xl text-base italic leading-7 text-ink/66">
+                    {promo.note}
+                  </p>
+                ) : null}
               </div>
 
               <div
