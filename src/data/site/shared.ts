@@ -14,9 +14,33 @@ export const programFrWhatsappHref = getBusinessWhatsappHref(
 export const programEnWhatsappHref = getBusinessWhatsappHref(
   'Hello, I would like to know more about the Light Belly & Light Legs program.'
 );
+export const programFrStartWhatsappHref = getBusinessWhatsappHref(
+  'Bonjour, je souhaite commencer le Programme Ventre Léger & Jambes Légères. J’aimerais savoir s’il est adapté à mes besoins.'
+);
+export const programEnStartWhatsappHref = getBusinessWhatsappHref(
+  'Hello, I would like to start the Light Belly & Light Legs Program. I would like to know whether it is suited to my needs.'
+);
+export const programFrQuestionWhatsappHref = getBusinessWhatsappHref(
+  'Bonjour, j’ai quelques questions concernant le Programme Ventre Léger & Jambes Légères avant de me décider.'
+);
+export const programEnQuestionWhatsappHref = getBusinessWhatsappHref(
+  'Hello, I have a few questions about the Light Belly & Light Legs Program before deciding.'
+);
 export const cureFusionFrWhatsappHref = getBusinessWhatsappHref(
   'Bonjour, je souhaite en savoir plus sur la Cure Fusion.'
 );
 export const cureFusionEnWhatsappHref = getBusinessWhatsappHref(
   'Hello, I would like to know more about Cure Fusion.'
+);
+export const cureFusionFrStartWhatsappHref = getBusinessWhatsappHref(
+  'Bonjour, je souhaite commencer la Cure Fusion. J’aimerais savoir si elle est adaptée à mes besoins.'
+);
+export const cureFusionEnStartWhatsappHref = getBusinessWhatsappHref(
+  'Hello, I would like to start Cure Fusion. I would like to know whether it is suited to my needs.'
+);
+export const cureFusionFrQuestionWhatsappHref = getBusinessWhatsappHref(
+  'Bonjour, j’ai quelques questions concernant la Cure Fusion avant de me décider.'
+);
+export const cureFusionEnQuestionWhatsappHref = getBusinessWhatsappHref(
+  'Hello, I have a few questions about Cure Fusion before deciding.'
 );

@@ -1,4 +1,12 @@
-import {expect, test} from './fixtures';
+import {expect, test, type Locator} from './fixtures';
+
+const getWhatsappMessage = async (locator: Locator) => {
+  const href = await locator.getAttribute('href');
+
+  expect(href).not.toBeNull();
+
+  return new URL(href ?? '').searchParams.get('text');
+};
 
 const routes = [
   '/',
@@ -102,8 +110,8 @@ test('section overview pages render their main content', async ({page}) => {
     page.getByText('Des accompagnements bien-être réservés aux femmes')
   ).toBeVisible();
   await expect(
-    page.getByRole('link', {name: 'Réserver un programme'}).first()
-  ).toHaveAttribute('href', '/reserver');
+    page.getByRole('link', {name: 'Découvrir les programmes'}).first()
+  ).toHaveAttribute('href', '#programmes');
   await expect(
     page.getByRole('heading', {name: 'Cure Fusion', exact: true})
   ).toBeVisible();
@@ -119,8 +127,35 @@ test('section overview pages render their main content', async ({page}) => {
     page.getByRole('link', {name: 'Voir les soins'})
   ).toHaveAttribute('href', '/soins/');
   await expect(
-    page.getByText('Une question avant de réserver ? Écrivez-moi sur')
+    page.getByText('Une question avant de choisir ? Écrivez-moi sur')
   ).toBeVisible();
+});
+
+test('Light Belly programme CTAs start a guided WhatsApp conversation', async ({
+  page,
+}) => {
+  await page.goto('/programmes/ventre-leger-jambes-legeres/');
+
+  const startLinks = page.getByRole('link', {
+    name: 'Commencer mon accompagnement',
+  });
+
+  await expect(startLinks.first()).toHaveAttribute('href', /wa\.me/);
+  await expect(startLinks.last()).toHaveAttribute('href', /wa\.me/);
+  expect(await getWhatsappMessage(startLinks.first())).toBe(
+    'Bonjour, je souhaite commencer le Programme Ventre Léger & Jambes Légères. J’aimerais savoir s’il est adapté à mes besoins.'
+  );
+  expect(await getWhatsappMessage(startLinks.last())).toBe(
+    'Bonjour, je souhaite commencer le Programme Ventre Léger & Jambes Légères. J’aimerais savoir s’il est adapté à mes besoins.'
+  );
+  await expect(
+    page.getByText('Une question avant de commencer ? Écrivez-moi sur')
+  ).toBeVisible();
+  expect(
+    await getWhatsappMessage(page.getByRole('link', {name: 'WhatsApp'}).last())
+  ).toBe(
+    'Bonjour, j’ai quelques questions concernant le Programme Ventre Léger & Jambes Légères avant de me décider.'
+  );
 });
 
 test('Cure Fusion page explains the personalized package', async ({page}) => {
@@ -205,12 +240,33 @@ test('Cure Fusion page explains the personalized package', async ({page}) => {
     page.getByText('L’expérience globale est plus cohérente')
   ).toBeVisible();
   await expect(
-    page.getByRole('link', {name: 'Réserver cette cure'}).last()
-  ).toHaveAttribute('href', '/reserver');
-  await expect(page.getByText('Vous hésitez ? Écrivez-moi sur')).toBeVisible();
+    page.getByRole('link', {name: 'Commencer mon accompagnement'}).last()
+  ).toHaveAttribute('href', /wa\.me/);
+  expect(
+    await getWhatsappMessage(
+      page.getByRole('link', {name: 'Commencer mon accompagnement'}).first()
+    )
+  ).toBe(
+    'Bonjour, je souhaite commencer la Cure Fusion. J’aimerais savoir si elle est adaptée à mes besoins.'
+  );
+  expect(
+    await getWhatsappMessage(
+      page.getByRole('link', {name: 'Commencer mon accompagnement'}).last()
+    )
+  ).toBe(
+    'Bonjour, je souhaite commencer la Cure Fusion. J’aimerais savoir si elle est adaptée à mes besoins.'
+  );
+  await expect(
+    page.getByText('Une question avant de commencer ? Écrivez-moi sur')
+  ).toBeVisible();
   await expect(
     page.getByRole('link', {name: 'WhatsApp'}).last()
   ).toHaveAttribute('href', /wa\.me/);
+  expect(
+    await getWhatsappMessage(page.getByRole('link', {name: 'WhatsApp'}).last())
+  ).toBe(
+    'Bonjour, j’ai quelques questions concernant la Cure Fusion avant de me décider.'
+  );
   await expect(
     page.getByRole('link', {name: 'Voir les programmes'})
   ).toHaveAttribute('href', '/programmes/');

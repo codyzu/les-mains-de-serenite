@@ -3,7 +3,12 @@ import CureFusionFeathers from '../../../assets/cure-fusion-feathers.png';
 import CureFusionLakeWalk from '../../../assets/cure-fusion-lake-walk.png';
 import type {Locale, ProgramPageData} from '../types';
 import {localizedPagePaths} from '../paths';
-import {cureFusionEnWhatsappHref, cureFusionFrWhatsappHref} from '../shared';
+import {
+  cureFusionEnQuestionWhatsappHref,
+  cureFusionEnStartWhatsappHref,
+  cureFusionFrQuestionWhatsappHref,
+  cureFusionFrStartWhatsappHref,
+} from '../shared';
 
 export const cureFusionPages = {
   fr: {
@@ -21,7 +26,7 @@ export const cureFusionPages = {
         '3 soins personnalisés, parfois différents d’une séance à l’autre, choisis selon vos besoins, vos sensations et l’évolution de votre corps pour retrouver légèreté, confort, tonicité et bien-être.',
       reassurance:
         'Accompagnement réservé exclusivement aux femmes, adapté à vos objectifs bien-être.',
-      primaryCta: 'Réserver cette cure',
+      primaryCta: 'Commencer mon accompagnement',
       secondaryCta: 'Voir comment fonctionne la cure',
     },
     intro: {
@@ -149,17 +154,18 @@ export const cureFusionPages = {
       ],
     },
     cta: {
-      title: 'Vous hésitez entre un soin individuel et Cure Fusion ?',
-      description: 'Réservez votre créneau pour la Cure Fusion à Annecy.',
-      text: 'Réserver cette cure',
+      title: 'Vous hésitez entre un soin et la Cure Fusion ?',
+      description:
+        'Commencez par un échange pour vérifier si cet accompagnement est adapté à vos besoins du moment.',
+      text: 'Commencer mon accompagnement',
       note: '',
-      href: localizedPagePaths.reserve.fr,
-      analyticsEvent: 'reserve_click',
+      href: cureFusionFrStartWhatsappHref,
+      analyticsEvent: 'whatsapp_click',
       reassurance: {
-        prefix: 'Vous hésitez ? Écrivez-moi sur ',
+        prefix: 'Une question avant de commencer ? Écrivez-moi sur ',
         linkText: 'WhatsApp',
-        suffix: ', je serai ravie de vous orienter.',
-        href: cureFusionFrWhatsappHref,
+        suffix: '.',
+        href: cureFusionFrQuestionWhatsappHref,
         analyticsEvent: 'whatsapp_click',
       },
     },
@@ -205,7 +211,7 @@ export const cureFusionPages = {
       description:
         '3 personalized treatments, sometimes different from one session to the next, chosen according to your needs, sensations, and how your body evolves, to reconnect with lightness, comfort, tone, and well-being.',
       reassurance: 'A women-only accompaniment adapted to your wellness goals.',
-      primaryCta: 'Book this package',
+      primaryCta: 'Start my accompaniment',
       secondaryCta: 'See how it works',
     },
     intro: {
@@ -333,16 +339,17 @@ export const cureFusionPages = {
     },
     cta: {
       title: 'Unsure whether to choose one treatment or Cure Fusion?',
-      description: 'Book your time slot for Cure Fusion in Annecy.',
-      text: 'Book this package',
+      description:
+        'Start with a conversation to check whether this accompaniment fits your current needs.',
+      text: 'Start my accompaniment',
       note: '',
-      href: localizedPagePaths.reserve.en,
-      analyticsEvent: 'reserve_click',
+      href: cureFusionEnStartWhatsappHref,
+      analyticsEvent: 'whatsapp_click',
       reassurance: {
-        prefix: 'Unsure? Message me on ',
+        prefix: 'A question before starting? Message me on ',
         linkText: 'WhatsApp',
-        suffix: ', I will be happy to guide you.',
-        href: cureFusionEnWhatsappHref,
+        suffix: '.',
+        href: cureFusionEnQuestionWhatsappHref,
         analyticsEvent: 'whatsapp_click',
       },
     },

@@ -18,9 +18,8 @@ export const programsPages = {
         'Les programmes sont pensés pour les femmes qui souhaitent un accompagnement progressif, avec plusieurs séances et une attention portée aux ressentis entre les rendez-vous.',
       reassurance:
         'Des accompagnements bien-être réservés aux femmes, pensés pour répondre à vos besoins dans un cadre rassurant et personnalisé.',
-      ctaText: 'Réserver un programme',
-      ctaHref: localizedPagePaths.reserve.fr,
-      analyticsEvent: 'reserve_click',
+      ctaText: 'Découvrir les programmes',
+      ctaHref: '#programmes',
     },
     distinction: {
       singleTitle: 'Un soin individuel',
@@ -55,15 +54,17 @@ export const programsPages = {
       title: 'Besoin d’aide pour choisir ?',
       description:
         'Nous pouvons vous orienter vers le soin ou le programme le plus adapté à vos besoins du moment.',
-      text: 'Réserver un programme',
-      href: localizedPagePaths.reserve.fr,
-      analyticsEvent: 'reserve_click',
+      text: 'Être guidée sur WhatsApp',
+      href: getBusinessWhatsappHref(
+        'Bonjour, j’aimerais être guidée pour choisir le programme le plus adapté à mes besoins.'
+      ),
+      analyticsEvent: 'whatsapp_click',
       reassurance: {
-        prefix: 'Une question avant de réserver ? Écrivez-moi sur ',
+        prefix: 'Une question avant de choisir ? Écrivez-moi sur ',
         linkText: 'WhatsApp',
         suffix: '.',
         href: getBusinessWhatsappHref(
-          "Bonjour, j'ai une question avant de réserver un programme."
+          'Bonjour, j’ai une question avant de choisir un programme.'
         ),
         analyticsEvent: 'whatsapp_click',
       },
@@ -83,9 +84,8 @@ export const programsPages = {
         'Programs are designed for women who want progressive support, with several sessions and attention to how the body feels between appointments.',
       reassurance:
         'Women-only wellness accompaniments, designed around your needs in a reassuring and personalized setting.',
-      ctaText: 'Book a program',
-      ctaHref: localizedPagePaths.reserve.en,
-      analyticsEvent: 'reserve_click',
+      ctaText: 'Discover the programs',
+      ctaHref: '#programmes',
     },
     distinction: {
       singleTitle: 'An individual treatment',
@@ -120,15 +120,17 @@ export const programsPages = {
       title: 'Need help choosing?',
       description:
         'We can guide you toward the treatment or program that best fits your current needs.',
-      text: 'Book a program',
-      href: localizedPagePaths.reserve.en,
-      analyticsEvent: 'reserve_click',
+      text: 'Get guidance on WhatsApp',
+      href: getBusinessWhatsappHref(
+        'Hello, I would like guidance choosing the program that best fits my needs.'
+      ),
+      analyticsEvent: 'whatsapp_click',
       reassurance: {
-        prefix: 'A question before booking? Message me on ',
+        prefix: 'A question before choosing? Message me on ',
         linkText: 'WhatsApp',
         suffix: '.',
         href: getBusinessWhatsappHref(
-          'Hello, I have a question before booking a program.'
+          'Hello, I have a question before choosing a program.'
         ),
         analyticsEvent: 'whatsapp_click',
       },
