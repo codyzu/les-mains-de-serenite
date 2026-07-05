@@ -35,26 +35,60 @@ export const massagesPages = {
         'Découvrez les soins bien-être et massages à Annecy : drainage lymphatique, soin relaxant, soin thérapeutique, remodelant, visage liftant et madérothérapie.',
     },
     hero: {
-      eyebrow: 'Massages bien-être à Annecy',
+      eyebrow: 'Soins bien-être à Annecy',
       title: 'Chaque soin est pensé pour répondre à votre besoin du moment',
       description:
-        'À chaque rendez-vous, le soin s’adapte à ce dont votre corps a besoin aujourd’hui : légèreté, détente, relâchement des tensions ou tonicité.',
+        'À chaque rendez-vous, le soin s’adapte à vos besoins actuels, à vos sensations et à votre intention du moment : légèreté, détente, relâchement ou tonicité.',
       reassurance:
-        'Soins et massages bien-être réservés exclusivement aux femmes, dans un cadre calme, bienveillant et confidentiel.',
-      ctaText: 'Réserver un soin',
+        'Des soins bien-être à Annecy réservés exclusivement aux femmes, dans un cadre calme, bienveillant et confidentiel.',
+      ctaText: 'Réserver ou poser une question',
       ctaHref: localizedPagePaths.reserve.fr,
       analyticsEvent: 'reserve_click',
     },
+    philosophy: {
+      title: 'Un soin pensé pour vous',
+      description:
+        'Chaque rendez-vous commence par un échange pour comprendre vos besoins, vos ressentis et ce que votre corps exprime ce jour-là. L’objectif n’est pas seulement de choisir une technique, mais de vous proposer le soin le plus adapté à votre moment.',
+    },
+    transitionImageAlt:
+      'Théière asiatique et petites tasses sur une terrasse avec vue sur le lac et les montagnes à Annecy',
     section: {
       ...homePages.fr.massagesSection,
       intro:
-        'Les soins sont des séances individuelles. Ils permettent de répondre à un besoin précis, de découvrir une technique de massage bien-être ou de vous offrir un moment de détente ponctuel.',
+        'Les soins sont des séances individuelles. Ils permettent de répondre à un besoin précis, de découvrir une technique de soin bien-être ou de vous offrir un moment de détente ponctuel.',
       items: withFrenchCtas,
     },
-    programCrossLink: {
-      title: 'Besoin d’un accompagnement sur plusieurs séances ?',
+    choiceHelp: {
+      title: 'Vous ne savez pas quel soin choisir ?',
       description:
-        'Les programmes associent plusieurs rendez-vous et un suivi plus progressif pour prolonger les bienfaits dans le temps.',
+        'C’est normal. Si vous hésitez, nous pouvons confirmer ensemble le soin le plus adapté à vos besoins lors de la réservation ou au début du rendez-vous.',
+      text: 'Réserver ou poser une question',
+      href: localizedPagePaths.reserve.fr,
+      analyticsEvent: 'reserve_click',
+    },
+    testimonials: {
+      title: 'Elles ont pris le temps de s’écouter',
+      intro:
+        'Quelques retours de femmes venues pour un besoin précis, une pause ou un moment de recentrage.',
+      items: [
+        {
+          text: 'Une vraie écoute avant de commencer, puis un soin adapté à ce dont j’avais besoin ce jour-là.',
+          author: 'Claire',
+        },
+        {
+          text: 'Je suis ressortie profondément détendue, avec une sensation de relâchement que je n’avais pas ressentie depuis longtemps.',
+          author: 'Marion',
+        },
+        {
+          text: 'Le lieu est calme, rassurant et très soigné. On se sent tout de suite en confiance.',
+          author: 'Sophie',
+        },
+      ],
+    },
+    programCrossLink: {
+      title: 'Vous souhaitez aller plus loin ?',
+      description:
+        'Lorsque plusieurs séances sont plus adaptées à vos besoins, découvrez nos programmes d’accompagnement pour prolonger les bienfaits dans le temps.',
       text: 'Découvrir les programmes',
       href: localizedPagePaths.programs.fr,
     },
@@ -78,23 +112,57 @@ export const massagesPages = {
       eyebrow: 'Wellness massages in Annecy',
       title: 'Each treatment is designed around what you need today',
       description:
-        'At every appointment, the treatment adapts to how your body feels now: lightness, relaxation, tension relief, or tone.',
+        'At every appointment, the treatment adapts to your current needs, sensations, and intention for the session: lightness, relaxation, tension relief, or tone.',
       reassurance:
         'Wellness treatments and massages are reserved exclusively for women, in a calm, caring, and confidential setting.',
-      ctaText: 'Book a treatment',
+      ctaText: 'Book or ask a question',
       ctaHref: localizedPagePaths.reserve.en,
       analyticsEvent: 'reserve_click',
     },
+    philosophy: {
+      title: 'A treatment designed for you',
+      description:
+        'Each appointment begins with a conversation to understand your needs, how you feel, and what your body is expressing that day. The goal is not only to choose a technique, but to offer the treatment that best fits your moment.',
+    },
+    transitionImageAlt:
+      'Asian teapot and small cups on a terrace overlooking the lake and mountains in Annecy',
     section: {
       ...homePages.en.massagesSection,
       intro:
         'Treatments are individual sessions. They are ideal for a specific need, discovering a wellness massage technique, or giving yourself a focused moment of well-being.',
       items: withEnglishCtas,
     },
-    programCrossLink: {
-      title: 'Looking for support over several sessions?',
+    choiceHelp: {
+      title: 'Not sure which treatment to choose?',
       description:
-        'Programs combine several appointments with a more progressive approach to help extend the benefits over time.',
+        'That is normal. If you are unsure, we can confirm together which treatment best fits your needs when booking or at the beginning of your appointment.',
+      text: 'Book or ask a question',
+      href: localizedPagePaths.reserve.en,
+      analyticsEvent: 'reserve_click',
+    },
+    testimonials: {
+      title: 'They took time to listen to themselves',
+      intro:
+        'A few words from women who came for a specific need, a pause, or a moment to reconnect.',
+      items: [
+        {
+          text: 'There was real listening before we started, then a treatment adapted to what I needed that day.',
+          author: 'Claire',
+        },
+        {
+          text: 'I left deeply relaxed, with a sense of release I had not felt in a long time.',
+          author: 'Marion',
+        },
+        {
+          text: 'The place is calm, reassuring, and beautifully cared for. You immediately feel at ease.',
+          author: 'Sophie',
+        },
+      ],
+    },
+    programCrossLink: {
+      title: 'Would you like to go further?',
+      description:
+        'When several sessions are better suited to your needs, discover our support programs to extend the benefits over time.',
       text: 'Discover the programs',
       href: localizedPagePaths.programs.en,
     },

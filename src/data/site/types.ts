@@ -174,7 +174,14 @@ export type MassagesOverviewPageData = {
     ctaHref: string;
     analyticsEvent?: AnalyticsEventName;
   };
+  philosophy: {
+    title: string;
+    description: string;
+  };
+  transitionImageAlt: string;
   section: MassagesSectionData;
+  choiceHelp: OverviewCtaData;
+  testimonials: TestimonialsData;
   programCrossLink: OverviewCtaData;
   booking: OverviewCtaData;
 };

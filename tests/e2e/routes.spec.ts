@@ -59,20 +59,29 @@ test('section overview pages render their main content', async ({page}) => {
   ).toBeVisible();
   await expect(
     page.getByText(
-      'Soins et massages bien-être réservés exclusivement aux femmes'
+      'Des soins bien-être à Annecy réservés exclusivement aux femmes'
     )
   ).toBeVisible();
   await expect(
-    page.getByRole('link', {name: 'Réserver un soin'})
+    page.getByRole('link', {name: 'Réserver ou poser une question'}).first()
   ).toHaveAttribute('href', '/reserver');
+  await expect(
+    page.getByRole('heading', {name: 'Un soin pensé pour vous'})
+  ).toBeVisible();
   await expect(
     page.getByRole('heading', {name: 'Madérothérapie'})
   ).toBeVisible();
   await expect(
-    page.getByRole('heading', {name: 'Besoin d’aide pour choisir ?'})
+    page.getByRole('heading', {name: 'Vous ne savez pas quel soin choisir ?'})
   ).toBeVisible();
   await expect(
-    page.getByRole('link', {name: 'Réserver ou poser une question'})
+    page.getByText('Une vraie écoute avant de commencer')
+  ).toBeVisible();
+  await expect(
+    page.getByRole('heading', {name: 'Vous souhaitez aller plus loin ?'})
+  ).toBeVisible();
+  await expect(
+    page.getByRole('link', {name: 'Réserver ou poser une question'}).last()
   ).toHaveAttribute('href', '/reserver');
   await expect(
     page.getByRole('link', {name: 'Découvrir les programmes'})
