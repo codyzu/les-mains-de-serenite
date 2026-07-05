@@ -5,7 +5,7 @@ import SectionIntro from './SectionIntro.astro';
 
 type Props = ProgramPreviewData;
 
-const {title, intro, items} = Astro.props;
+const {title, intro, ctaText, ctaLink, items} = Astro.props;
 ---
 
 <section class="section-pad bg-surface-muted">
@@ -78,7 +78,7 @@ const {title, intro, items} = Astro.props;
                 href={item.ctaLink}
                 target={ctaIsExternal ? '_blank' : undefined}
                 rel={ctaIsExternal ? 'noreferrer' : undefined}
-                class="btn-primary mt-auto min-h-[3.25rem] w-full px-7 py-4 text-base"
+                class="mt-auto inline-flex min-h-[3.25rem] w-full items-center justify-center rounded-full border border-brand-soft bg-white/72 px-7 py-4 text-base font-medium text-brand-strong transition hover:bg-brand-soft/62"
                 data-analytics-event={item.analyticsEvent}
               >
                 {item.ctaText}
@@ -88,5 +88,18 @@ const {title, intro, items} = Astro.props;
         })
       }
     </div>
+
+    {
+      ctaText && ctaLink ? (
+        <div class="mt-10 flex justify-center">
+          <a
+            href={ctaLink}
+            class="btn-primary min-h-[3.25rem] px-7 py-4 text-base"
+          >
+            {ctaText}
+          </a>
+        </div>
+      ) : null
+    }
   </div>
 </section>

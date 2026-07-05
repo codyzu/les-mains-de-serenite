@@ -1,4 +1,5 @@
 import DiscoveryOffer from '../../../assets/images/massage-legs-offer.png';
+import TeaLake from '../../../assets/tea-lake.png';
 import type {HomePageData, Locale} from '../types';
 import {localizedPagePaths} from '../paths';
 import {discoveryOfferBookingHref, getBusinessWhatsappHref} from '../shared';
@@ -8,13 +9,13 @@ export const homePages = {
     meta: {
       title: 'Les Mains de Sérénité | Massage bien-être à Annecy pour femmes',
       description:
-        'Soin bien-être et massage à Annecy pour femmes, sur rendez-vous, dans un cadre calme et confortable. Drainage lymphatique, soins ciblés et conseils simples pour prolonger les bienfaits.',
+        'Soins bien-être à Annecy réservés aux femmes, sur rendez-vous, dans un cadre calme et confortable. Drainage lymphatique, madérothérapie, soins ciblés et programmes d’accompagnement.',
     },
     hero: {
-      subtitle: 'Massage bien-être à Annecy',
+      subtitle: 'Soins bien-être à Annecy',
       title: 'Les Mains de Sérénité',
       description:
-        'À Annecy, dans un cadre chaleureux, apaisant et sécurisant.',
+        'À Annecy, dans un cadre chaleureux, apaisant, privé et sécurisant.',
       imageAlt: 'Ambiance bien-être et massage',
       womenOnlyLabel: 'Réservé aux femmes',
       benefitHighlight:
@@ -27,7 +28,7 @@ export const homePages = {
       title: 'Offre découverte',
       headline: '45 min à 55\u00A0€',
       description:
-        'Un soin ciblé pour accompagner les jambes lourdes ou les tensions du dos, et retrouver une sensation de légèreté.',
+        'Un soin ciblé pour découvrir l’approche, accompagner les jambes lourdes ou les tensions du dos, et retrouver une sensation de légèreté.',
       ctaText: 'Réserver l’offre',
       ctaLink: discoveryOfferBookingHref,
       analyticsEvent: 'reserve_click',
@@ -37,124 +38,148 @@ export const homePages = {
       },
     },
     needsSection: {
-      title: 'Pour quels besoins ?',
+      title: 'Quel est votre besoin aujourd’hui ?',
       intro:
-        'Repérez ce qui vous parle le plus, puis choisissez le soin ou l’accompagnement le plus adapté à vos besoins du moment.',
-      ctaText: 'Voir l’option',
+        'Quelques repères simples pour choisir entre un soin ponctuel et un programme d’accompagnement.',
+      ctaText: 'Voir',
       items: [
         {
           title: 'Jambes lourdes',
           description:
-            'Pour retrouver une sensation de légèreté et soulager l’inconfort en fin de journée.',
+            'Un soin ponctuel peut aider à retrouver une sensation de légèreté.',
           href: `${localizedPagePaths.massages.fr}#drainage-lymphatique`,
         },
         {
           title: 'Ventre gonflé',
           description:
-            'Pour accompagner une sensation de ventre plus léger grâce au drainage et aux conseils adaptés.',
+            'Un accompagnement structuré peut être plus adapté si le besoin revient souvent.',
           href: localizedPagePaths.program.fr,
         },
         {
           title: 'Rétention d’eau',
           description:
-            'Pour aider le corps à relancer naturellement la circulation des fluides.',
+            'Le drainage lymphatique à Annecy est souvent choisi pour ce besoin.',
           href: `${localizedPagePaths.massages.fr}#drainage-lymphatique`,
         },
         {
           title: 'Besoin de ralentir',
           description:
-            'Pour s’offrir une pause, relâcher les tensions et retrouver un moment de calme.',
+            'Un soin relaxant pour relâcher les tensions et retrouver du calme.',
           href: `${localizedPagePaths.massages.fr}#massage-anti-douleur`,
+        },
+        {
+          title: 'Silhouette / tonicité',
+          description:
+            'Un soin remodelant ou une madérothérapie à Annecy selon votre ressenti.',
+          href: `${localizedPagePaths.massages.fr}#massage-remodelant`,
+        },
+        {
+          title: 'Je souhaite un accompagnement',
+          description:
+            'Les programmes créent un cadre sur plusieurs séances, avec un suivi plus guidé.',
+          href: localizedPagePaths.programs.fr,
         },
       ],
     },
     massagesSection: {
-      title: 'Soins proposés',
+      title: 'Soin ponctuel : choisir le rituel juste',
       intro:
-        'Des soins bien-être pensés pour accompagner les tensions, offrir un véritable moment de détente et vous aider à mieux écouter les besoins de votre corps.',
+        'Une sélection de soins bien-être à Annecy, réservés aux femmes, pour répondre à un besoin précis ou simplement s’accorder un vrai moment pour soi.',
       recommendedLabel: 'Durée conseillée',
+      ctaText: 'Découvrir les soins',
+      ctaLink: localizedPagePaths.massages.fr,
       items: [
         {
           anchorId: 'drainage-lymphatique',
           title: 'Drainage lymphatique',
           description:
-            'Drainage lymphatique dynamique selon la méthode Renata França. Idéal pour soulager les jambes lourdes, le ventre gonflé et la rétention d’eau, il procure une agréable sensation de légèreté.',
+            'Drainage lymphatique dynamique selon la méthode Renata França, choisi pour les jambes lourdes, la rétention d’eau et la sensation de ventre gonflé.',
           note: 'Également adapté aux femmes enceintes à partir de la fin du premier trimestre, avec un protocole spécifiquement adapté.',
           icon: 'i-lucide-droplets',
           prices: [
             {duration: '1 h', price: '90 €', recommended: true},
             {duration: '1 h 30', price: '125 €'},
           ],
-          ctaText: 'Découvrir le soin',
-          ctaLink: localizedPagePaths.massages.fr,
+          ctaText: 'Voir le soin',
+          ctaLink: `${localizedPagePaths.massages.fr}#drainage-lymphatique`,
         },
         {
           anchorId: 'massage-anti-douleur',
           title: 'Soin thérapeutique ou relaxant',
           description:
-            'Soin personnalisé avec techniques de massage bien-être pour accompagner les tensions musculaires, relâcher le stress et offrir une détente profonde. La séance s’adapte à vos besoins : dos, épaules, nuque, fatigue ou simple besoin de ralentir.',
+            'Soin personnalisé pour accompagner les tensions, relâcher le stress et retrouver une détente profonde dans un cadre calme.',
           icon: 'i-lucide-activity',
           prices: [
             {duration: '45 min', price: '60 €'},
             {duration: '1 h', price: '80 €', recommended: true},
             {duration: '1 h 30', price: '115 €'},
           ],
-          ctaText: 'Découvrir le soin',
-          ctaLink: localizedPagePaths.massages.fr,
+          ctaText: 'Voir le soin',
+          ctaLink: `${localizedPagePaths.massages.fr}#massage-anti-douleur`,
         },
         {
           anchorId: 'massage-remodelant',
           title: 'Soin remodelant',
           description:
-            'Soin tonifiant avec techniques de massage remodelant, pensé pour stimuler les tissus, soutenir la sensation de fermeté et accompagner l’harmonie de la silhouette.',
+            'Soin tonifiant pensé pour stimuler les tissus, soutenir la sensation de fermeté et accompagner l’harmonie de la silhouette.',
           icon: 'i-lucide-scan',
           prices: [
             {duration: '1 h', price: '110 €', recommended: true},
             {duration: '1 h 30', price: '135 €'},
           ],
-          ctaText: 'Découvrir le soin',
-          ctaLink: localizedPagePaths.massages.fr,
+          ctaText: 'Voir le soin',
+          ctaLink: `${localizedPagePaths.massages.fr}#massage-remodelant`,
         },
         {
           anchorId: 'massage-visage-liftant',
           title: 'Soin visage liftant',
           description:
-            'Soin du visage relaxant qui stimule la circulation et tonifie la peau. Il aide à illuminer le teint et procure un effet liftant naturel.',
+            'Soin du visage relaxant pour stimuler la circulation, tonifier la peau et retrouver un teint plus lumineux.',
           icon: 'i-lucide-sparkles',
           prices: [
             {duration: '30 min', price: '50 €'},
             {duration: '45 min', price: '65 €', recommended: true},
             {duration: '1 h', price: '85 €'},
           ],
-          ctaText: 'Découvrir le soin',
-          ctaLink: localizedPagePaths.massages.fr,
+          ctaText: 'Voir le soin',
+          ctaLink: `${localizedPagePaths.massages.fr}#massage-visage-liftant`,
         },
         {
           anchorId: 'maderotherapie',
           title: 'Soin de madérothérapie',
           description:
-            'Soin ciblé utilisant des instruments en bois pour stimuler la circulation, favoriser le drainage naturel et procurer une agréable sensation de légèreté.',
+            'Soin ciblé avec instruments en bois pour stimuler la circulation, soutenir le drainage naturel et retrouver une sensation de légèreté.',
           icon: 'i-lucide-leaf',
           prices: [
             {duration: '1 h', price: '90 €', recommended: true},
             {duration: '1 h 30', price: '125 €'},
           ],
-          ctaText: 'Découvrir le soin',
+          ctaText: 'Voir le soin',
           ctaLink: localizedPagePaths.maderotherapie.fr,
         },
       ],
     },
+    emotionalTransition: {
+      title: 'Prendre le temps',
+      text: 'Prendre soin de soi commence parfois par s’accorder un vrai moment.',
+      image: {
+        src: TeaLake,
+        alt: 'Théière asiatique et petites tasses sur une terrasse avec vue sur le lac et les montagnes',
+      },
+    },
     programPreview: {
-      title: 'Programmes d’accompagnement',
+      title: 'Accompagnement : aller plus loin sur plusieurs séances',
       intro:
-        'Deux façons d’aller plus loin qu’une séance unique, selon vos besoins et vos objectifs de bien-être.',
+        'Lorsque le besoin revient ou que vous souhaitez être guidée, les programmes d’accompagnement offrent un cadre plus progressif qu’un soin ponctuel.',
+      ctaText: 'Découvrir les programmes',
+      ctaLink: localizedPagePaths.programs.fr,
       items: [
         {
           eyebrow: 'Nouveau',
           title: 'Programme Ventre Léger & Jambes Légères',
           subtitle: 'Un accompagnement bien-être de 21 jours',
           description:
-            'Pour les femmes qui souhaitent aller plus loin qu’une séance seule, ce programme associe 5 drainages lymphatiques Renata França à un bilan bien-être et à des conseils simples pour prolonger la sensation de légèreté au quotidien.',
+            'Un programme structuré de 21 jours qui associe 5 séances de drainage lymphatique, un bilan bien-être, un guide simple et un suivi WhatsApp.',
           includesTitle: 'Le programme comprend',
           includes: [
             '5 séances de drainage lymphatique',
@@ -174,7 +199,7 @@ export const homePages = {
           title: 'Cure Fusion',
           subtitle: '3 séances personnalisées',
           description:
-            'Un accompagnement personnalisé en 3 séances où chaque soin est choisi selon vos besoins et l’évolution de vos ressentis.',
+            'Un accompagnement en 3 séances personnalisées, avec un soin choisi à chaque rendez-vous selon vos besoins et votre évolution.',
           includesTitle: 'Selon vos besoins, votre accompagnement peut inclure',
           includes: [
             'Drainage lymphatique',
@@ -184,7 +209,7 @@ export const homePages = {
           priceLabel: 'Tarif',
           price: '350 €',
           priceDetail: '3 séances',
-          note: 'Vous n’avez pas à choisir le soin seule. Chaque séance est adaptée à vos besoins du moment pour vous accompagner vers une sensation de légèreté, de confort et de bien-être.',
+          note: 'Vous n’avez pas à choisir une formule fixe. Le soin est adapté au fil des séances pour créer un accompagnement plus juste et plus fluide.',
           ctaText: 'Découvrir la cure',
           ctaLink: localizedPagePaths.cureFusion.fr,
           icon: 'i-lucide-sparkles',
@@ -194,17 +219,13 @@ export const homePages = {
     about: {
       title: 'À propos',
       body: `
-  Je suis Zahara, praticienne en massage bien-être à Annecy, avec une formation d’auxiliaire de puériculture, ce qui m’a permis de développer une approche attentive, douce et à l’écoute du corps.
+  Je suis Zahara, praticienne bien-être à Annecy. Mon parcours d’auxiliaire de puériculture m’a appris l’attention, la douceur et l’écoute fine du corps.
 
-  Formée au drainage lymphatique selon la méthode Renata França, je propose des soins réservés aux femmes, pensés pour offrir un véritable moment de relâchement et de bien-être.
+  Formée au drainage lymphatique selon la méthode Renata França, je propose des soins réservés aux femmes, dans un cadre calme, privé et rassurant.
 
-  Au fil de mes accompagnements, j’ai constaté que de nombreuses femmes avaient tendance à s’oublier entre la vie professionnelle, la vie familiale et les obligations du quotidien. Elles vivent parfois avec des tensions, de la fatigue ou une sensation de lourdeur qu’elles finissent par considérer comme normale.
+  Chaque séance est personnalisée selon vos besoins du moment : alléger le corps, relâcher les tensions, retrouver du calme ou simplement vous accorder une vraie parenthèse.
 
-  C’est ce qui m’a donné envie d’enrichir certains accompagnements, toujours centrés sur le toucher et l’écoute du corps, avec parfois quelques conseils simples pour prolonger les bienfaits au quotidien.
-
-  Chaque séance est entièrement personnalisée, en fonction de vos besoins du moment, qu’il s’agisse de soulager des tensions, de relâcher le stress ou simplement de vous accorder un moment pour vous.
-
-  Mon objectif est simple : vous offrir une parenthèse de bien-être dans un environnement calme, rassurant et bienveillant, pensé pour que vous puissiez pleinement relâcher et profiter de l’instant.
+  Mon intention est de vous accueillir avec soin, présence et bienveillance, pour que vous puissiez pleinement relâcher et profiter de l’instant.
               `,
       imageAlt: 'Ambiance bien-être et massage',
     },
@@ -306,7 +327,7 @@ export const homePages = {
     meta: {
       title: 'Women’s Wellness Massage in Annecy | Les Mains de Sérénité',
       description:
-        'Women-only wellness massage in Annecy, by appointment, in a calm and comfortable setting. Lymphatic drainage, targeted massages, and simple guidance to help extend the benefits.',
+        'Women-only wellness treatments in Annecy, by appointment, in a calm and comfortable setting. Lymphatic drainage, maderotherapy, targeted treatments, and support programs.',
     },
     hero: {
       subtitle: 'Wellness massage for women in Annecy',
@@ -325,7 +346,7 @@ export const homePages = {
       title: 'Discovery offer',
       headline: '45 min for €55',
       description:
-        'A targeted session to soothe heavy legs or back pain, and reconnect with a feeling of lightness.',
+        'A targeted treatment to discover the approach, soothe heavy legs or back tension, and reconnect with a feeling of lightness.',
       ctaText: 'Book the offer',
       ctaLink: discoveryOfferBookingHref,
       analyticsEvent: 'reserve_click',
@@ -335,124 +356,148 @@ export const homePages = {
       },
     },
     needsSection: {
-      title: 'Common needs',
+      title: 'What do you need today?',
       intro:
-        'Find the need that feels closest to your situation, then choose the most relevant treatment or support.',
-      ctaText: 'View option',
+        'A few simple cues to help you choose between a single treatment and a support program.',
+      ctaText: 'View',
       items: [
         {
           title: 'Heavy legs',
           description:
-            'To reconnect with a feeling of lightness and ease end-of-day discomfort.',
+            'A single treatment can help you reconnect with a feeling of lightness.',
           href: `${localizedPagePaths.massages.en}#lymphatic-drainage`,
         },
         {
           title: 'Feeling bloated',
           description:
-            'To support a lighter belly feeling through drainage and adapted guidance.',
+            'A structured program may be more relevant when the need comes back often.',
           href: localizedPagePaths.program.en,
         },
         {
           title: 'Water retention',
           description:
-            'To help the body naturally restart fluid circulation sensations.',
+            'Lymphatic drainage in Annecy is often chosen for this kind of need.',
           href: `${localizedPagePaths.massages.en}#lymphatic-drainage`,
         },
         {
           title: 'Need to slow down',
           description:
-            'To take a pause, release tension, and return to a calmer moment.',
+            'A relaxing treatment to release tension and return to a calmer moment.',
           href: `${localizedPagePaths.massages.en}#tension-relief-massage`,
+        },
+        {
+          title: 'Silhouette / tone',
+          description:
+            'A body sculpting treatment or maderotherapy depending on how you feel.',
+          href: `${localizedPagePaths.massages.en}#body-sculpting-massage`,
+        },
+        {
+          title: 'I want support',
+          description:
+            'Support programs create a guided frame across several sessions.',
+          href: localizedPagePaths.programs.en,
         },
       ],
     },
     massagesSection: {
-      title: 'Available treatments',
+      title: 'Single treatment: choose the right ritual',
       intro:
-        'Tailored wellness treatments designed to ease tension, offer a true moment of well-being, and help you listen more closely to your body’s needs.',
+        'A curated preview of women-only wellness treatments in Annecy, for a specific need or a true moment for yourself.',
       recommendedLabel: 'Recommended',
+      ctaText: 'Discover the treatments',
+      ctaLink: localizedPagePaths.massages.en,
       items: [
         {
           anchorId: 'lymphatic-drainage',
           title: 'Lymphatic drainage',
           description:
-            'Dynamic lymphatic drainage using the Renata França method. Commonly chosen for heavy legs, feeling bloated, and water retention, while creating a pleasant feeling of lightness.',
+            'Dynamic lymphatic drainage using the Renata França method, often chosen for heavy legs, water retention, and a bloated feeling.',
           note: 'Also suitable during pregnancy from the end of the first trimester, with a specifically adapted protocol.',
           icon: 'i-lucide-droplets',
           prices: [
             {duration: '1 h', price: '90 €', recommended: true},
             {duration: '1 h 30', price: '125 €'},
           ],
-          ctaText: 'Discover the treatment',
-          ctaLink: localizedPagePaths.massages.en,
+          ctaText: 'View treatment',
+          ctaLink: `${localizedPagePaths.massages.en}#lymphatic-drainage`,
         },
         {
           anchorId: 'tension-relief-massage',
           title: 'Therapeutic or relaxing treatment',
           description:
-            'A personalized treatment using wellness massage techniques to ease muscular tension, release stress, and provide deep relaxation. The session adapts to your needs: back, shoulders, neck, fatigue, or simply a need to slow down.',
+            'A personalized treatment to ease tension, release stress, and return to deep relaxation in a calm setting.',
           icon: 'i-lucide-activity',
           prices: [
             {duration: '45 min', price: '60 €'},
             {duration: '1 h', price: '80 €', recommended: true},
             {duration: '1 h 30', price: '115 €'},
           ],
-          ctaText: 'Discover the treatment',
-          ctaLink: localizedPagePaths.massages.en,
+          ctaText: 'View treatment',
+          ctaLink: `${localizedPagePaths.massages.en}#tension-relief-massage`,
         },
         {
           anchorId: 'body-sculpting-massage',
           title: 'Body sculpting treatment',
           description:
-            'A toning treatment using body sculpting massage techniques to stimulate the tissues and support a more harmonious silhouette.',
+            'A toning treatment designed to stimulate the tissues, support a firmer feeling, and accompany silhouette harmony.',
           icon: 'i-lucide-scan',
           prices: [
             {duration: '1 h', price: '110 €', recommended: true},
             {duration: '1 h 30', price: '135 €'},
           ],
-          ctaText: 'Discover the treatment',
-          ctaLink: localizedPagePaths.massages.en,
+          ctaText: 'View treatment',
+          ctaLink: `${localizedPagePaths.massages.en}#body-sculpting-massage`,
         },
         {
           anchorId: 'lifting-facial-massage',
           title: 'Lifting facial treatment',
           description:
-            'A relaxing facial treatment that stimulates circulation and tones the skin, leaving the face feeling refreshed and naturally toned.',
+            'A relaxing facial treatment to stimulate circulation, tone the skin, and bring back a brighter-looking complexion.',
           icon: 'i-lucide-sparkles',
           prices: [
             {duration: '30 min', price: '50 €'},
             {duration: '45 min', price: '65 €', recommended: true},
             {duration: '1 h', price: '85 €'},
           ],
-          ctaText: 'Discover the treatment',
-          ctaLink: localizedPagePaths.massages.en,
+          ctaText: 'View treatment',
+          ctaLink: `${localizedPagePaths.massages.en}#lifting-facial-massage`,
         },
         {
           anchorId: 'maderotherapy',
           title: 'Maderotherapy treatment',
           description:
-            'A targeted treatment using wooden instruments to stimulate circulation, support natural drainage, and create a pleasant feeling of lightness.',
+            'A targeted treatment using wooden instruments to stimulate circulation, support natural drainage, and create a feeling of lightness.',
           icon: 'i-lucide-leaf',
           prices: [
             {duration: '1 h', price: '90 €', recommended: true},
             {duration: '1 h 30', price: '125 €'},
           ],
-          ctaText: 'Discover the treatment',
+          ctaText: 'View treatment',
           ctaLink: localizedPagePaths.maderotherapie.en,
         },
       ],
     },
+    emotionalTransition: {
+      title: 'Take your time',
+      text: 'Taking care of yourself sometimes starts with allowing yourself a real moment.',
+      image: {
+        src: TeaLake,
+        alt: 'Asian teapot and small cups on a terrace overlooking the lake and mountains',
+      },
+    },
     programPreview: {
-      title: 'Support programs',
+      title: 'Support: go further across several sessions',
       intro:
-        'Two ways to go further than a single session, depending on your needs and wellness goals.',
+        'When the need returns or you would like to be guided, support programs offer a more progressive frame than a single treatment.',
+      ctaText: 'Discover the programs',
+      ctaLink: localizedPagePaths.programs.en,
       items: [
         {
           eyebrow: 'New',
           title: 'Light Belly & Light Legs Program',
           subtitle: 'A 21-day wellness accompaniment',
           description:
-            'For women who would like to go further than a single session, this program combines 5 Renata França lymphatic drainage sessions with a wellness check-in and simple guidance to help extend the feeling of lightness in everyday life.',
+            'A structured 21-day program with 5 lymphatic drainage sessions, a wellness check-in, a simple guide, and WhatsApp follow-up.',
           includesTitle: 'The program includes',
           includes: [
             '5 lymphatic drainage sessions',
@@ -472,7 +517,7 @@ export const homePages = {
           title: 'Cure Fusion',
           subtitle: '3 personalized sessions',
           description:
-            'A personalized 3-session accompaniment where each treatment is chosen according to your needs and how your body responds.',
+            'A 3-session personalized accompaniment, with the treatment chosen at each appointment according to your needs and evolution.',
           includesTitle:
             'Depending on your needs, your accompaniment may include',
           includes: [
@@ -483,7 +528,7 @@ export const homePages = {
           priceLabel: 'Price',
           price: '350 €',
           priceDetail: '3 sessions',
-          note: 'You do not have to choose the treatment alone. Each session is adapted to what you need at that moment, supporting a feeling of lightness, comfort, and well-being.',
+          note: 'You do not have to choose a fixed formula. The treatment is adapted across the sessions for a more fluid and precise accompaniment.',
           ctaText: 'Discover the package',
           ctaLink: localizedPagePaths.cureFusion.en,
           icon: 'i-lucide-sparkles',
@@ -493,17 +538,13 @@ export const homePages = {
     about: {
       title: 'About',
       body: `
-  I am Zahara, a wellness massage practitioner in Annecy. My background as a childcare assistant helped me develop an attentive, gentle, and body-aware approach.
+  I am Zahara, a wellness practitioner in Annecy. My background as a childcare assistant shaped an attentive, gentle, and body-aware approach.
 
-  Trained in lymphatic drainage with the Renata França method, I offer women-only treatments designed to provide a genuine moment of release and well-being.
+  Trained in lymphatic drainage with the Renata França method, I offer women-only treatments in a calm, private, and reassuring setting.
 
-  Through my sessions, I have noticed that many women tend to put themselves last between work, family life, and everyday responsibilities. They often live with tension, fatigue, or a feeling of heaviness until it starts to feel normal.
+  Every session is personalized to your needs at that moment: lightness, tension release, calm, or simply a real pause for yourself.
 
-  That is why some sessions can include a little more support, while staying centered on touch, body awareness, and, when helpful, a few simple everyday tips to extend the benefits.
-
-  Every session is fully personalized to your needs at that moment, whether you want to ease tension, let go of stress, or simply take time for yourself.
-
-  My goal is simple: to offer you a peaceful wellness break in a calm, reassuring, and caring setting where you can fully relax and enjoy the moment.
+  My intention is to welcome you with care, presence, and kindness, so you can fully relax and enjoy the moment.
               `,
       imageAlt: 'Wellness practitioner portrait',
     },

@@ -125,6 +125,8 @@ export type MassagesSectionData = {
   title: string;
   intro: string;
   recommendedLabel: string;
+  ctaText?: string;
+  ctaLink?: string;
   items: MassageData[];
 };
 
@@ -148,7 +150,18 @@ export type ProgramPreviewItemData = {
 export type ProgramPreviewData = {
   title: string;
   intro: string;
+  ctaText?: string;
+  ctaLink?: string;
   items: ProgramPreviewItemData[];
+};
+
+export type HomeTransitionData = {
+  title: string;
+  text: string;
+  image: {
+    src: ImageMetadata;
+    alt: string;
+  };
 };
 
 export type OverviewCtaData = {
@@ -453,6 +466,7 @@ export type HomePageData = {
   promo?: PromoData;
   needsSection: NeedsSectionData;
   massagesSection: MassagesSectionData;
+  emotionalTransition: HomeTransitionData;
   programPreview: ProgramPreviewData;
   about: AboutData;
   sessionSteps: SessionStepsData;

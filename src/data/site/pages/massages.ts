@@ -56,6 +56,8 @@ export const massagesPages = {
       ...homePages.fr.massagesSection,
       intro:
         'Les soins sont des séances individuelles. Ils permettent de répondre à un besoin précis, de découvrir une technique de soin bien-être ou de vous offrir un moment de détente ponctuel.',
+      ctaText: undefined,
+      ctaLink: undefined,
       items: withFrenchCtas,
     },
     choiceHelp: {
@@ -130,6 +132,8 @@ export const massagesPages = {
       ...homePages.en.massagesSection,
       intro:
         'Treatments are individual sessions. They are ideal for a specific need, discovering a wellness massage technique, or giving yourself a focused moment of well-being.',
+      ctaText: undefined,
+      ctaLink: undefined,
       items: withEnglishCtas,
     },
     choiceHelp: {

@@ -4,6 +4,7 @@ import Hero from '../components/Hero.astro';
 import PromoSection from '../components/PromoSection.astro';
 import NeedsSection from '../components/NeedsSection.astro';
 import Massages from '../components/Massages.astro';
+import HomeMomentTransition from '../components/HomeMomentTransition.astro';
 import ProgramPreview from '../components/ProgramPreview.astro';
 import About from '../components/About.astro';
 import SessionSteps from '../components/SessionSteps.astro';
@@ -69,7 +70,11 @@ const structuredData = {
 
     <Massages {...home.massagesSection} />
 
+    <HomeMomentTransition {...home.emotionalTransition} />
+
     <ProgramPreview {...home.programPreview} />
+
+    <NeedsSection {...home.needsSection} />
 
     <Testimonials {...home.testimonials} />
 
@@ -78,8 +83,6 @@ const structuredData = {
     <SessionSteps {...home.sessionSteps} />
 
     <FeltBenefits {...home.feltBenefits} />
-
-    <NeedsSection {...home.needsSection} />
 
     <About {...home.about} />
 

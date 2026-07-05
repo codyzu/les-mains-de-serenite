@@ -12,18 +12,26 @@ test('French homepage renders the main business content and booking CTA', async 
     page.getByRole('heading', {name: 'Les Mains de Sérénité'}).first()
   ).toBeVisible();
   await expect(
-    page.getByRole('heading', {name: 'Soins proposés'})
+    page.getByRole('heading', {
+      name: 'Soin ponctuel : choisir le rituel juste',
+    })
   ).toBeVisible();
   await expect(
     page.getByRole('heading', {name: 'Soin thérapeutique ou relaxant'})
   ).toBeVisible();
   await expect(
+    page.getByRole('link', {name: 'Découvrir les soins'})
+  ).toHaveAttribute('href', '/massages/');
+  await expect(page.getByText('Prendre le temps')).toBeVisible();
+  await expect(
     page.getByText(
-      'Également adapté aux femmes enceintes à partir de la fin du premier trimestre'
+      'Prendre soin de soi commence parfois par s’accorder un vrai moment.'
     )
   ).toBeVisible();
   await expect(
-    page.getByRole('heading', {name: 'Programmes d’accompagnement'})
+    page.getByRole('heading', {
+      name: 'Accompagnement : aller plus loin sur plusieurs séances',
+    })
   ).toBeVisible();
   await expect(
     page.getByRole('heading', {
@@ -39,7 +47,10 @@ test('French homepage renders the main business content and booking CTA', async 
     )
   ).toBeVisible();
   await expect(
-    page.getByRole('link', {name: 'Découvrir le programme'})
+    page.getByRole('link', {name: 'Découvrir les programmes'})
+  ).toHaveAttribute('href', '/programmes/');
+  await expect(
+    page.getByRole('link', {name: 'Découvrir le programme', exact: true})
   ).toHaveAttribute('href', '/programmes/ventre-leger-jambes-legeres/');
   await expect(
     page.getByRole('link', {name: 'Découvrir la cure'})
@@ -47,6 +58,12 @@ test('French homepage renders the main business content and booking CTA', async 
   await expect(
     page.locator('a[href="/massages/maderotherapie/"]').first()
   ).toHaveAttribute('href', '/massages/maderotherapie/');
+  await expect(
+    page.getByRole('heading', {name: 'Quel est votre besoin aujourd’hui ?'})
+  ).toBeVisible();
+  await expect(
+    page.getByRole('heading', {name: 'Je souhaite un accompagnement'})
+  ).toBeVisible();
   await expect(
     page.getByRole('link', {name: 'Réserver un soin'}).first()
   ).toHaveAttribute('href', '/reserver');
@@ -64,7 +81,9 @@ test('English homepage renders localized content and booking CTA', async ({
     page.getByRole('heading', {name: 'Les Mains de Sérénité'}).first()
   ).toBeVisible();
   await expect(
-    page.getByRole('heading', {name: 'Available treatments'})
+    page.getByRole('heading', {
+      name: 'Single treatment: choose the right ritual',
+    })
   ).toBeVisible();
   await expect(
     page.getByRole('heading', {
@@ -72,10 +91,18 @@ test('English homepage renders localized content and booking CTA', async ({
     })
   ).toBeVisible();
   await expect(
-    page.getByText('Also suitable during pregnancy from the end')
+    page.getByRole('link', {name: 'Discover the treatments'})
+  ).toHaveAttribute('href', '/en/massages/');
+  await expect(page.getByText('Take your time')).toBeVisible();
+  await expect(
+    page.getByText(
+      'Taking care of yourself sometimes starts with allowing yourself a real moment.'
+    )
   ).toBeVisible();
   await expect(
-    page.getByRole('heading', {name: 'Support programs'})
+    page.getByRole('heading', {
+      name: 'Support: go further across several sessions',
+    })
   ).toBeVisible();
   await expect(
     page.getByRole('heading', {name: 'Light Belly & Light Legs Program'})
@@ -89,7 +116,10 @@ test('English homepage renders localized content and booking CTA', async ({
     )
   ).toBeVisible();
   await expect(
-    page.getByRole('link', {name: 'Discover the program'})
+    page.getByRole('link', {name: 'Discover the programs'})
+  ).toHaveAttribute('href', '/en/programs/');
+  await expect(
+    page.getByRole('link', {name: 'Discover the program', exact: true})
   ).toHaveAttribute('href', '/en/programs/light-belly-light-legs/');
   await expect(
     page.getByRole('link', {name: 'Discover the package'})
@@ -97,6 +127,12 @@ test('English homepage renders localized content and booking CTA', async ({
   await expect(
     page.locator('a[href="/en/massages/maderotherapy/"]').first()
   ).toHaveAttribute('href', '/en/massages/maderotherapy/');
+  await expect(
+    page.getByRole('heading', {name: 'What do you need today?'})
+  ).toBeVisible();
+  await expect(
+    page.getByRole('heading', {name: 'I want support'})
+  ).toBeVisible();
   await expect(
     page.getByRole('link', {name: 'Book a treatment'}).first()
   ).toHaveAttribute('href', '/en/book');

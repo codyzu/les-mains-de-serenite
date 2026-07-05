@@ -33,6 +33,8 @@ export const programsPages = {
       ...homePages.fr.programPreview,
       intro:
         'Deux accompagnements pour répondre à des besoins différents, selon votre objectif de bien-être.',
+      ctaText: undefined,
+      ctaLink: undefined,
       items: homePages.fr.programPreview.items.map((item) => ({
         ...item,
         ctaLink:
@@ -87,6 +89,8 @@ export const programsPages = {
       ...homePages.en.programPreview,
       intro:
         'Two accompaniments designed for different needs, depending on your wellness goal.',
+      ctaText: undefined,
+      ctaLink: undefined,
       items: homePages.en.programPreview.items.map((item) => ({
         ...item,
         ctaLink:

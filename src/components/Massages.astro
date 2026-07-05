@@ -5,7 +5,7 @@ import IconImage from './IconImage.astro';
 
 type Props = MassagesSectionData;
 
-const {title, intro, recommendedLabel, items} = Astro.props;
+const {title, intro, recommendedLabel, ctaText, ctaLink, items} = Astro.props;
 
 const getCardGridClasses = (index: number) => {
   const isLastTabletCard = items.length % 2 === 1 && index === items.length - 1;
@@ -87,7 +87,10 @@ const getCardGridClasses = (index: number) => {
             </div>
 
             {item.ctaText && item.ctaLink ? (
-              <a href={item.ctaLink} class="btn-primary mt-6 w-full">
+              <a
+                href={item.ctaLink}
+                class="mt-6 inline-flex min-h-[2.75rem] w-full items-center justify-center rounded-full border border-brand-soft bg-white/60 px-5 py-3 text-sm font-medium text-brand-strong transition hover:bg-brand-soft/60"
+              >
                 {item.ctaText}
               </a>
             ) : null}
@@ -95,5 +98,18 @@ const getCardGridClasses = (index: number) => {
         ))
       }
     </div>
+
+    {
+      ctaText && ctaLink ? (
+        <div class="mt-10 flex justify-center">
+          <a
+            href={ctaLink}
+            class="btn-primary min-h-[3.25rem] px-7 py-4 text-base"
+          >
+            {ctaText}
+          </a>
+        </div>
+      ) : null
+    }
   </div>
 </section>
