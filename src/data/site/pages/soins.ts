@@ -1,31 +1,7 @@
 import type {Locale, SoinsOverviewPageData} from '../types';
+import {getOverviewTreatmentItems} from '../catalog/treatments';
 import {localizedPagePaths} from '../paths';
 import {getBusinessWhatsappHref} from '../shared';
-import {homePages} from './home';
-
-const withFrenchCtas = homePages.fr.soinsSection.items.map((item) => ({
-  ...item,
-  ctaText:
-    item.anchorId === 'maderotherapie'
-      ? (item.ctaText ?? 'Découvrir')
-      : 'Réserver ce soin',
-  ctaLink:
-    item.anchorId === 'maderotherapie'
-      ? localizedPagePaths.maderotherapie.fr
-      : localizedPagePaths.reserve.fr,
-}));
-
-const withEnglishCtas = homePages.en.soinsSection.items.map((item) => ({
-  ...item,
-  ctaText:
-    item.anchorId === 'maderotherapy'
-      ? (item.ctaText ?? 'Discover')
-      : 'Book this treatment',
-  ctaLink:
-    item.anchorId === 'maderotherapy'
-      ? localizedPagePaths.maderotherapie.en
-      : localizedPagePaths.reserve.en,
-}));
 
 export const soinsPages = {
   fr: {
@@ -54,12 +30,17 @@ export const soinsPages = {
     transitionImageAlt:
       'Théière asiatique et petites tasses sur une terrasse avec vue sur le lac et les montagnes à Annecy',
     section: {
-      ...homePages.fr.soinsSection,
+      title: 'Soin ponctuel : choisir le rituel juste',
       intro:
         'Les soins sont des séances individuelles. Ils permettent de répondre à un besoin précis, de découvrir une technique de soin bien-être ou de vous offrir un moment de détente ponctuel.',
-      ctaText: undefined,
-      ctaLink: undefined,
-      items: withFrenchCtas,
+      introLinks: [
+        {
+          text: 'soins bien-être à Annecy',
+          href: localizedPagePaths.soins.fr,
+        },
+      ],
+      recommendedLabel: 'Durée conseillée',
+      items: getOverviewTreatmentItems('fr'),
     },
     choiceHelp: {
       title: 'Vous ne savez pas quel soin choisir ?',
@@ -148,12 +129,17 @@ export const soinsPages = {
     transitionImageAlt:
       'Asian teapot and small cups on a terrace overlooking the lake and mountains in Annecy',
     section: {
-      ...homePages.en.soinsSection,
+      title: 'Single treatment: choose the right ritual',
       intro:
         'Treatments are individual sessions. They are ideal for a specific need, discovering a wellness massage technique, or giving yourself a focused moment of well-being.',
-      ctaText: undefined,
-      ctaLink: undefined,
-      items: withEnglishCtas,
+      introLinks: [
+        {
+          text: 'wellness treatments in Annecy',
+          href: localizedPagePaths.soins.en,
+        },
+      ],
+      recommendedLabel: 'Recommended',
+      items: getOverviewTreatmentItems('en'),
     },
     choiceHelp: {
       title: 'Not sure which treatment to choose?',

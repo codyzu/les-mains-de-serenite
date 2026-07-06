@@ -1,7 +1,7 @@
 import type {Locale, ProgramsOverviewPageData} from '../types';
+import {getProgramPreviewItems} from '../catalog/programs';
 import {localizedPagePaths} from '../paths';
 import {getBusinessWhatsappHref} from '../shared';
-import {homePages} from './home';
 
 export const programsPages = {
   fr: {
@@ -30,18 +30,16 @@ export const programsPages = {
         'Associe plusieurs séances personnalisées pour soutenir les bienfaits dans la durée. Un accompagnement qui évolue avec vous.',
     },
     preview: {
-      ...homePages.fr.programPreview,
+      title: 'Accompagnement : aller plus loin sur plusieurs séances',
       intro:
         'Deux accompagnements pour répondre à des besoins différents, selon votre objectif de bien-être.',
-      ctaText: undefined,
-      ctaLink: undefined,
-      items: homePages.fr.programPreview.items.map((item) => ({
-        ...item,
-        ctaLink:
-          item.title === 'Cure Fusion'
-            ? item.ctaLink
-            : localizedPagePaths.program.fr,
-      })),
+      introLinks: [
+        {
+          text: 'programmes d’accompagnement',
+          href: localizedPagePaths.programs.fr,
+        },
+      ],
+      items: getProgramPreviewItems('fr'),
     },
     soinsCrossLink: {
       title: 'Vous préférez une séance ponctuelle ?',
@@ -96,18 +94,16 @@ export const programsPages = {
         'Combines several personalized sessions to support the benefits over time. An accompaniment that evolves with you.',
     },
     preview: {
-      ...homePages.en.programPreview,
+      title: 'Support: go further across several sessions',
       intro:
         'Two accompaniments designed for different needs, depending on your wellness goal.',
-      ctaText: undefined,
-      ctaLink: undefined,
-      items: homePages.en.programPreview.items.map((item) => ({
-        ...item,
-        ctaLink:
-          item.title === 'Cure Fusion'
-            ? item.ctaLink
-            : localizedPagePaths.program.en,
-      })),
+      introLinks: [
+        {
+          text: 'support programs',
+          href: localizedPagePaths.programs.en,
+        },
+      ],
+      items: getProgramPreviewItems('en'),
     },
     soinsCrossLink: {
       title: 'Would you prefer a single session?',

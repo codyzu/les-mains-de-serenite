@@ -1,6 +1,8 @@
 import DiscoveryOffer from '../../../assets/images/massage-legs-offer.png';
 import TeaLake from '../../../assets/tea-lake.png';
 import type {HomePageData, Locale} from '../types';
+import {getProgramPreviewItems} from '../catalog/programs';
+import {getHomeTreatmentItems} from '../catalog/treatments';
 import {localizedPagePaths} from '../paths';
 import {discoveryOfferBookingHref, getBusinessWhatsappHref} from '../shared';
 
@@ -118,76 +120,7 @@ export const homePages = {
       recommendedLabel: 'Durée conseillée',
       ctaText: 'Découvrir les soins',
       ctaLink: localizedPagePaths.soins.fr,
-      items: [
-        {
-          anchorId: 'drainage-lymphatique',
-          title: 'Drainage lymphatique',
-          description:
-            'Pour retrouver une sensation de légèreté et de confort lorsque les jambes sont lourdes ou le ventre gonflé. Drainage lymphatique dynamique à Annecy selon la méthode Renata França.',
-          note: 'Également adapté aux femmes enceintes à partir de la fin du premier trimestre, avec un protocole spécifiquement adapté.',
-          icon: 'i-lucide-droplets',
-          prices: [
-            {duration: '1 h', price: '90 €', recommended: true},
-            {duration: '1 h 30', price: '125 €'},
-          ],
-          ctaText: 'Voir le soin',
-          ctaLink: `${localizedPagePaths.soins.fr}#drainage-lymphatique`,
-        },
-        {
-          anchorId: 'massage-anti-douleur',
-          title: 'Soin thérapeutique ou relaxant',
-          description:
-            'Pour relâcher les tensions, apaiser le stress et retrouver une détente profonde. Un soin personnalisé selon vos besoins du moment.',
-          icon: 'i-lucide-activity',
-          prices: [
-            {duration: '45 min', price: '60 €'},
-            {duration: '1 h', price: '80 €', recommended: true},
-            {duration: '1 h 30', price: '115 €'},
-          ],
-          ctaText: 'Voir le soin',
-          ctaLink: `${localizedPagePaths.soins.fr}#massage-anti-douleur`,
-        },
-        {
-          anchorId: 'massage-remodelant',
-          title: 'Soin remodelant',
-          description:
-            'Pour accompagner la tonicité, la sensation de fermeté et l’harmonie de la silhouette. Un soin remodelant tonifiant et ciblé.',
-          icon: 'i-lucide-scan',
-          prices: [
-            {duration: '1 h', price: '110 €', recommended: true},
-            {duration: '1 h 30', price: '135 €'},
-          ],
-          ctaText: 'Voir le soin',
-          ctaLink: `${localizedPagePaths.soins.fr}#massage-remodelant`,
-        },
-        {
-          anchorId: 'massage-visage-liftant',
-          title: 'Soin visage liftant',
-          description:
-            'Pour retrouver un teint plus lumineux et une peau tonifiée. Un soin du visage relaxant qui stimule la circulation avec douceur.',
-          icon: 'i-lucide-sparkles',
-          prices: [
-            {duration: '30 min', price: '50 €'},
-            {duration: '45 min', price: '65 €', recommended: true},
-            {duration: '1 h', price: '85 €'},
-          ],
-          ctaText: 'Voir le soin',
-          ctaLink: `${localizedPagePaths.soins.fr}#massage-visage-liftant`,
-        },
-        {
-          anchorId: 'maderotherapie',
-          title: 'Soin de madérothérapie',
-          description:
-            'Pour une sensation de légèreté, de tonicité et de tissus stimulés. Soin de madérothérapie à Annecy avec instruments en bois.',
-          icon: 'i-lucide-leaf',
-          prices: [
-            {duration: '1 h', price: '90 €', recommended: true},
-            {duration: '1 h 30', price: '125 €'},
-          ],
-          ctaText: 'Voir le soin',
-          ctaLink: localizedPagePaths.maderotherapie.fr,
-        },
-      ],
+      items: getHomeTreatmentItems('fr'),
     },
     emotionalTransition: {
       title: 'Prendre le temps',
@@ -210,48 +143,7 @@ export const homePages = {
       ],
       ctaText: 'Découvrir les programmes',
       ctaLink: localizedPagePaths.programs.fr,
-      items: [
-        {
-          eyebrow: 'Nouveau',
-          title: 'Programme Ventre Léger & Jambes Légères',
-          subtitle: 'Un accompagnement bien-être de 21 jours',
-          description:
-            'Un programme structuré de 21 jours qui associe 5 séances de drainage lymphatique, un bilan bien-être, un guide simple et un suivi WhatsApp.',
-          includesTitle: 'Le programme comprend',
-          includes: [
-            '5 séances de drainage lymphatique',
-            'Un bilan bien-être de 20 minutes',
-            'Un guide alimentaire simple',
-            'Un suivi WhatsApp pendant 21 jours',
-          ],
-          priceLabel: 'Tarif lancement',
-          price: '350 €',
-          note: 'L’accompagnement associe drainage lymphatique, écoute du corps et conseils simples du quotidien pour vous aider à retrouver une sensation de légèreté durable.',
-          ctaText: 'Découvrir le programme',
-          ctaLink: localizedPagePaths.program.fr,
-          icon: 'i-lucide-calendar-heart',
-        },
-        {
-          eyebrow: 'Nouvelle cure',
-          title: 'Cure Fusion',
-          subtitle: '3 séances personnalisées',
-          description:
-            'Un accompagnement en 3 séances personnalisées, avec un soin choisi à chaque rendez-vous selon vos besoins et votre évolution.',
-          includesTitle: 'Selon vos besoins, votre accompagnement peut inclure',
-          includes: [
-            'Drainage lymphatique',
-            'Soin remodelant',
-            'Madérothérapie',
-          ],
-          priceLabel: 'Tarif',
-          price: '350 €',
-          priceDetail: '3 séances',
-          note: 'Vous n’avez pas à choisir une formule fixe. Le soin est adapté au fil des séances pour créer un accompagnement plus juste et plus fluide.',
-          ctaText: 'Découvrir la cure',
-          ctaLink: localizedPagePaths.cureFusion.fr,
-          icon: 'i-lucide-sparkles',
-        },
-      ],
+      items: getProgramPreviewItems('fr'),
     },
     about: {
       title: 'Qui prendra soin de vous ?',
@@ -473,76 +365,7 @@ export const homePages = {
       recommendedLabel: 'Recommended',
       ctaText: 'Discover the treatments',
       ctaLink: localizedPagePaths.soins.en,
-      items: [
-        {
-          anchorId: 'lymphatic-drainage',
-          title: 'Lymphatic drainage',
-          description:
-            'For a feeling of lightness and comfort when legs feel heavy or the belly feels bloated. Dynamic lymphatic drainage in Annecy using the Renata França method.',
-          note: 'Also suitable during pregnancy from the end of the first trimester, with a specifically adapted protocol.',
-          icon: 'i-lucide-droplets',
-          prices: [
-            {duration: '1 h', price: '90 €', recommended: true},
-            {duration: '1 h 30', price: '125 €'},
-          ],
-          ctaText: 'View treatment',
-          ctaLink: `${localizedPagePaths.soins.en}#lymphatic-drainage`,
-        },
-        {
-          anchorId: 'tension-relief-massage',
-          title: 'Therapeutic or relaxing treatment',
-          description:
-            'To release tension, soften stress, and return to deep relaxation. A personalized treatment adapted to what you need in the moment.',
-          icon: 'i-lucide-activity',
-          prices: [
-            {duration: '45 min', price: '60 €'},
-            {duration: '1 h', price: '80 €', recommended: true},
-            {duration: '1 h 30', price: '115 €'},
-          ],
-          ctaText: 'View treatment',
-          ctaLink: `${localizedPagePaths.soins.en}#tension-relief-massage`,
-        },
-        {
-          anchorId: 'body-sculpting-massage',
-          title: 'Body sculpting treatment',
-          description:
-            'To support tone, a firmer feeling, and silhouette harmony. A targeted and toning body sculpting treatment.',
-          icon: 'i-lucide-scan',
-          prices: [
-            {duration: '1 h', price: '110 €', recommended: true},
-            {duration: '1 h 30', price: '135 €'},
-          ],
-          ctaText: 'View treatment',
-          ctaLink: `${localizedPagePaths.soins.en}#body-sculpting-massage`,
-        },
-        {
-          anchorId: 'lifting-facial-massage',
-          title: 'Lifting facial treatment',
-          description:
-            'For a brighter-looking complexion and a more toned skin feel. A relaxing facial treatment that gently stimulates circulation.',
-          icon: 'i-lucide-sparkles',
-          prices: [
-            {duration: '30 min', price: '50 €'},
-            {duration: '45 min', price: '65 €', recommended: true},
-            {duration: '1 h', price: '85 €'},
-          ],
-          ctaText: 'View treatment',
-          ctaLink: `${localizedPagePaths.soins.en}#lifting-facial-massage`,
-        },
-        {
-          anchorId: 'maderotherapy',
-          title: 'Maderotherapy treatment',
-          description:
-            'For a feeling of lightness, tone, and stimulated tissues. A maderotherapy treatment in Annecy using wooden instruments.',
-          icon: 'i-lucide-leaf',
-          prices: [
-            {duration: '1 h', price: '90 €', recommended: true},
-            {duration: '1 h 30', price: '125 €'},
-          ],
-          ctaText: 'View treatment',
-          ctaLink: localizedPagePaths.maderotherapie.en,
-        },
-      ],
+      items: getHomeTreatmentItems('en'),
     },
     emotionalTransition: {
       title: 'Take your time',
@@ -565,49 +388,7 @@ export const homePages = {
       ],
       ctaText: 'Discover the programs',
       ctaLink: localizedPagePaths.programs.en,
-      items: [
-        {
-          eyebrow: 'New',
-          title: 'Light Belly & Light Legs Program',
-          subtitle: 'A 21-day wellness accompaniment',
-          description:
-            'A structured 21-day program with 5 lymphatic drainage sessions, a wellness check-in, a simple guide, and WhatsApp follow-up.',
-          includesTitle: 'The program includes',
-          includes: [
-            '5 lymphatic drainage sessions',
-            'A 20-minute wellness check-in',
-            'A simple food guidance PDF',
-            'WhatsApp follow-up for 21 days',
-          ],
-          priceLabel: 'Launch price',
-          price: '350 €',
-          note: 'The accompaniment combines lymphatic drainage, body awareness, and simple everyday guidance to help you reconnect with a lasting feeling of lightness.',
-          ctaText: 'Discover the program',
-          ctaLink: localizedPagePaths.program.en,
-          icon: 'i-lucide-calendar-heart',
-        },
-        {
-          eyebrow: 'New package',
-          title: 'Cure Fusion',
-          subtitle: '3 personalized sessions',
-          description:
-            'A 3-session personalized accompaniment, with the treatment chosen at each appointment according to your needs and evolution.',
-          includesTitle:
-            'Depending on your needs, your accompaniment may include',
-          includes: [
-            'Lymphatic drainage',
-            'Body sculpting treatment',
-            'Maderotherapy',
-          ],
-          priceLabel: 'Price',
-          price: '350 €',
-          priceDetail: '3 sessions',
-          note: 'You do not have to choose a fixed formula. The treatment is adapted across the sessions for a more fluid and precise accompaniment.',
-          ctaText: 'Discover the package',
-          ctaLink: localizedPagePaths.cureFusion.en,
-          icon: 'i-lucide-sparkles',
-        },
-      ],
+      items: getProgramPreviewItems('en'),
     },
     about: {
       title: 'Who will take care of you?',
