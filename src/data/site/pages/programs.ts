@@ -41,6 +41,13 @@ export const programsPages = {
       ],
       items: getProgramPreviewItems('fr'),
     },
+    aftercare: {
+      eyebrow: 'Suite de programme',
+      title: 'Et après ?',
+      description:
+        'Certaines clientes choisissent de prolonger les bénéfices de leur programme grâce à un soin d’entretien ponctuel, adapté à leurs besoins du moment.',
+      detail: '1 h • 85 €, réservé aux clientes ayant déjà suivi un programme.',
+    },
     soinsCrossLink: {
       title: 'Vous préférez une séance ponctuelle ?',
       description:
@@ -104,6 +111,14 @@ export const programsPages = {
         },
       ],
       items: getProgramPreviewItems('en'),
+    },
+    aftercare: {
+      eyebrow: 'After your program',
+      title: 'What comes next?',
+      description:
+        'After a program, it is possible to continue with an occasional maintenance treatment to extend the benefits you have felt.',
+      detail:
+        '1 h • 85 €, reserved for clients who have already completed a program.',
     },
     soinsCrossLink: {
       title: 'Would you prefer a single session?',

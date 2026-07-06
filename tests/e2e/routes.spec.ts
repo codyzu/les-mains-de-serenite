@@ -100,6 +100,8 @@ test('section overview pages render their main content', async ({page}) => {
   await expect(
     page.getByRole('link', {name: 'Découvrir les programmes'})
   ).toHaveAttribute('href', '/programmes/');
+  await expect(page.getByText('Soin d’entretien')).toHaveCount(0);
+  await expect(page.getByText('Demander un soin d’entretien')).toHaveCount(0);
 
   await page.goto('/programmes/');
 
@@ -129,6 +131,17 @@ test('section overview pages render their main content', async ({page}) => {
   await expect(
     page.getByText('Une question avant de choisir ? Écrivez-moi sur')
   ).toBeVisible();
+  await expect(page.getByRole('heading', {name: 'Et après ?'})).toBeVisible();
+  await expect(
+    page.getByText(
+      'Certaines clientes choisissent de prolonger les bénéfices de leur programme grâce à un soin d’entretien ponctuel'
+    )
+  ).toBeVisible();
+  await expect(
+    page.getByText(
+      '1 h • 85 €, réservé aux clientes ayant déjà suivi un programme.'
+    )
+  ).toBeVisible();
 });
 
 test('Light Belly programme CTAs start a guided WhatsApp conversation', async ({
@@ -155,6 +168,32 @@ test('Light Belly programme CTAs start a guided WhatsApp conversation', async ({
     await getWhatsappMessage(page.getByRole('link', {name: 'WhatsApp'}).last())
   ).toBe(
     'Bonjour, j’ai quelques questions concernant le Programme Ventre Léger & Jambes Légères avant de me décider.'
+  );
+  await expect(
+    page.getByRole('heading', {name: 'Après votre programme'})
+  ).toBeVisible();
+  await expect(
+    page.getByRole('heading', {name: 'Soin d’entretien'})
+  ).toBeVisible();
+  await expect(page.getByText('1 h • 85 €')).toBeVisible();
+  await expect(
+    page.getByText(
+      'Chaque séance est adaptée à vos besoins du moment afin de prolonger les bénéfices de votre accompagnement.'
+    )
+  ).toBeVisible();
+  await expect(
+    page.getByText(
+      'Réservé aux clientes ayant déjà suivi la Cure Fusion ou le Programme Ventre Léger & Jambes Légères.'
+    )
+  ).toBeVisible();
+
+  const aftercareLink = page.getByRole('link', {
+    name: 'Demander un soin d’entretien',
+  });
+
+  await expect(aftercareLink).toHaveAttribute('href', /wa\.me/);
+  expect(await getWhatsappMessage(aftercareLink)).toBe(
+    'Bonjour, j’ai déjà suivi votre programme et je souhaiterais réserver un soin d’entretien.'
   );
 });
 
@@ -266,6 +305,32 @@ test('Cure Fusion page explains the personalized package', async ({page}) => {
     await getWhatsappMessage(page.getByRole('link', {name: 'WhatsApp'}).last())
   ).toBe(
     'Bonjour, j’ai quelques questions concernant la Cure Fusion avant de me décider.'
+  );
+  await expect(
+    page.getByRole('heading', {name: 'Après votre programme'})
+  ).toBeVisible();
+  await expect(
+    page.getByRole('heading', {name: 'Soin d’entretien'})
+  ).toBeVisible();
+  await expect(page.getByText('1 h • 85 €')).toBeVisible();
+  await expect(
+    page.getByText(
+      'Chaque séance est adaptée à vos besoins du moment afin de prolonger les bénéfices de votre accompagnement.'
+    )
+  ).toBeVisible();
+  await expect(
+    page.getByText(
+      'Réservé aux clientes ayant déjà suivi la Cure Fusion ou le Programme Ventre Léger & Jambes Légères.'
+    )
+  ).toBeVisible();
+
+  const aftercareLink = page.getByRole('link', {
+    name: 'Demander un soin d’entretien',
+  });
+
+  await expect(aftercareLink).toHaveAttribute('href', /wa\.me/);
+  expect(await getWhatsappMessage(aftercareLink)).toBe(
+    'Bonjour, j’ai déjà suivi votre programme et je souhaiterais réserver un soin d’entretien.'
   );
   await expect(
     page.getByRole('link', {name: 'Voir les programmes'})

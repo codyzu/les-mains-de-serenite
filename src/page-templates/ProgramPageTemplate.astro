@@ -40,6 +40,7 @@ const languageSwitchPaths =
 const ctaIsExternal = page.cta.href.startsWith('http');
 const secondaryCtaIsExternal =
   page.cta.secondaryHref?.startsWith('http') ?? false;
+const aftercareCtaIsExternal = page.aftercare?.href.startsWith('http') ?? false;
 const structuredDataPrice = page.price.amount.replaceAll(/[^\d,.]/g, '');
 const methodImage = page.visuals?.methodImage ?? {
   src: ProgramHabitsGuidance,
@@ -373,6 +374,49 @@ const structuredData = {
                   </a>
                 ))}
               </div>
+            </div>
+          </div>
+        </section>
+      ) : null
+    }
+
+    {
+      page.aftercare ? (
+        <section class="bg-surface px-0 py-10 sm:py-12">
+          <div class="container-page">
+            <div class="card-soft mx-auto max-w-5xl bg-white/86 p-7 shadow-card sm:p-8 lg:grid lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center lg:gap-10">
+              <div>
+                <p class="text-sm uppercase tracking-[0.22em] text-brand-strong/82">
+                  {page.aftercare.eyebrow}
+                </p>
+                <h2 class="heading-md mt-3">{page.aftercare.title}</h2>
+                <p class="body-base mt-4 max-w-3xl">
+                  {page.aftercare.description}
+                </p>
+                <div class="mt-6 rounded-2xl border border-brand/14 bg-brand-soft/34 p-5">
+                  <h3 class="text-xl font-semibold text-ink">
+                    {page.aftercare.offerTitle}
+                  </h3>
+                  <p class="mt-2 font-display text-2xl leading-none text-brand-strong">
+                    {page.aftercare.offerDetail}
+                  </p>
+                  <p class="body-base mt-3 text-sm">
+                    {page.aftercare.offerDescription}
+                  </p>
+                  <p class="body-base mt-3 text-sm">
+                    {page.aftercare.eligibility}
+                  </p>
+                </div>
+              </div>
+              <a
+                href={page.aftercare.href}
+                target={aftercareCtaIsExternal ? '_blank' : undefined}
+                rel={aftercareCtaIsExternal ? 'noreferrer' : undefined}
+                class="mt-6 inline-flex min-h-[3rem] items-center justify-center rounded-full border border-brand/24 px-6 py-3 text-sm font-semibold text-brand-strong no-underline transition hover:bg-brand-soft lg:mt-0 lg:shrink-0"
+                data-analytics-event={page.aftercare.analyticsEvent}
+              >
+                {page.aftercare.ctaText}
+              </a>
             </div>
           </div>
         </section>

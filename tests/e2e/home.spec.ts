@@ -68,6 +68,8 @@ test('French homepage renders the main business content and booking CTA', async 
   await expect(
     page.getByRole('link', {name: 'Réserver un soin'}).first()
   ).toHaveAttribute('href', '/reserver');
+  await expect(page.getByText('Soin d’entretien')).toHaveCount(0);
+  await expect(page.getByText('Demander un soin d’entretien')).toHaveCount(0);
 });
 
 test('English homepage renders localized content and booking CTA', async ({

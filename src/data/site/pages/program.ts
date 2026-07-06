@@ -3,6 +3,8 @@ import CureFusionLakeWalk from '../../../assets/cure-fusion-lake-walk.png';
 import type {Locale, ProgramPageData} from '../types';
 import {localizedPagePaths} from '../paths';
 import {
+  aftercareEnWhatsappHref,
+  aftercareFrWhatsappHref,
   programEnQuestionWhatsappHref,
   programEnStartWhatsappHref,
   programFrQuestionWhatsappHref,
@@ -108,6 +110,21 @@ export const programPages = {
         href: programFrQuestionWhatsappHref,
         analyticsEvent: 'whatsapp_click',
       },
+    },
+    aftercare: {
+      eyebrow: 'Suite de programme',
+      title: 'Après votre programme',
+      description:
+        'Certaines clientes apprécient de revenir ponctuellement afin de prolonger les bénéfices obtenus et de conserver une sensation de légèreté dans la durée.',
+      offerTitle: 'Soin d’entretien',
+      offerDetail: '1 h • 85 €',
+      offerDescription:
+        'Chaque séance est adaptée à vos besoins du moment afin de prolonger les bénéfices de votre accompagnement.',
+      eligibility:
+        'Réservé aux clientes ayant déjà suivi la Cure Fusion ou le Programme Ventre Léger & Jambes Légères.',
+      ctaText: 'Demander un soin d’entretien',
+      href: aftercareFrWhatsappHref,
+      analyticsEvent: 'whatsapp_click',
     },
     maderotherapieCrossLink: {
       title: 'Envie de découvrir la madérothérapie ?',
@@ -215,6 +232,21 @@ export const programPages = {
         href: programEnQuestionWhatsappHref,
         analyticsEvent: 'whatsapp_click',
       },
+    },
+    aftercare: {
+      eyebrow: 'Program follow-up',
+      title: 'After your program',
+      description:
+        'Some clients choose to extend the benefits they have felt with an occasional maintenance treatment, adapted to their needs at that moment.',
+      offerTitle: 'Maintenance treatment',
+      offerDetail: '1 h • 85 €',
+      offerDescription:
+        'Each session is adapted to your needs at that moment to extend the benefits of your accompaniment.',
+      eligibility:
+        'Reserved for clients who have already completed Cure Fusion or the Light Belly & Light Legs Program.',
+      ctaText: 'Request a maintenance treatment',
+      href: aftercareEnWhatsappHref,
+      analyticsEvent: 'whatsapp_click',
     },
     maderotherapieCrossLink: {
       title: 'Curious about maderotherapy?',

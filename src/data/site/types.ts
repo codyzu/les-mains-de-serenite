@@ -245,6 +245,12 @@ export type ProgramsOverviewPageData = {
     programDescription: string;
   };
   preview: ProgramPreviewData;
+  aftercare: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    detail: string;
+  };
   soinsCrossLink: OverviewCtaData;
   booking: OverviewCtaData;
 };
@@ -331,6 +337,18 @@ export type ProgramPageData = {
     secondaryText?: string;
     secondaryHref?: string;
     secondaryAnalyticsEvent?: AnalyticsEventName;
+  };
+  aftercare?: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    offerTitle: string;
+    offerDetail: string;
+    offerDescription: string;
+    eligibility: string;
+    ctaText: string;
+    href: string;
+    analyticsEvent?: AnalyticsEventName;
   };
   maderotherapieCrossLink: {
     title: string;

@@ -44,3 +44,9 @@ export const cureFusionFrQuestionWhatsappHref = getBusinessWhatsappHref(
 export const cureFusionEnQuestionWhatsappHref = getBusinessWhatsappHref(
   'Hello, I have a few questions about Cure Fusion before deciding.'
 );
+export const aftercareFrWhatsappHref = getBusinessWhatsappHref(
+  'Bonjour, j’ai déjà suivi votre programme et je souhaiterais réserver un soin d’entretien.'
+);
+export const aftercareEnWhatsappHref = getBusinessWhatsappHref(
+  'Hello, I have already completed a program and would like to book a maintenance treatment.'
+);
