@@ -49,6 +49,8 @@ const storyImage = page.visuals?.storyImage ?? {
   src: Practitioner,
   alt: 'Zahara pendant une séance de massage bien-être',
 };
+const storyImageClass =
+  storyImage.className ?? 'h-[420px] w-full object-cover object-center';
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'Service',
@@ -269,7 +271,7 @@ const structuredData = {
                 height={1056}
                 sizes="(min-width: 1024px) 38rem, (min-width: 640px) calc(100vw - 3rem), calc(100vw - 2rem)"
                 alt={storyImage.alt}
-                class="h-[420px] w-full object-cover object-center"
+                class={storyImageClass}
               />
             </div>
           </div>

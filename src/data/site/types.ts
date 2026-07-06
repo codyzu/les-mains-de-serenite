@@ -300,6 +300,7 @@ export type ProgramPageData = {
     storyImage?: {
       src: ImageMetadata;
       alt: string;
+      className?: string;
     };
   };
   techniques?: {
