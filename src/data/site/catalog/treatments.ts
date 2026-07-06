@@ -118,17 +118,17 @@ const treatmentCatalog = [
     copy: defineLocalizedContent<TreatmentCopy>({
       fr: {
         anchorId: 'massage-visage-liftant',
-        title: 'Soin visage liftant',
+        title: 'Miracle Face',
         description:
-          'Pour retrouver un teint plus lumineux et une peau tonifiée. Un soin du visage relaxant qui stimule la circulation avec douceur.',
+          'Notre soin visage liftant signature, conçu pour stimuler la circulation, tonifier la peau et illuminer naturellement le teint.',
         homeCtaText: 'Voir le soin',
         overviewCtaText: 'Réserver ce soin',
       },
       en: {
         anchorId: 'lifting-facial-massage',
-        title: 'Lifting facial treatment',
+        title: 'Miracle Face',
         description:
-          'For a brighter-looking complexion and a more toned skin feel. A relaxing facial treatment that gently stimulates circulation.',
+          'A relaxing lifting facial treatment to stimulate circulation, tone the skin, and restore a brighter-looking complexion.',
         homeCtaText: 'View treatment',
         overviewCtaText: 'Book this treatment',
       },

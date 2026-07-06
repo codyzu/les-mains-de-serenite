@@ -9,7 +9,7 @@ export const soinsPages = {
     meta: {
       title: 'Soins bien-être à Annecy | Les Mains de Sérénité',
       description:
-        'Découvrez les soins bien-être et massages à Annecy : drainage lymphatique, soin relaxant, soin thérapeutique, remodelant, visage liftant et madérothérapie.',
+        'Découvrez les soins bien-être et massages à Annecy : drainage lymphatique, soin relaxant, soin thérapeutique, remodelant, Miracle Face soin visage liftant et madérothérapie.',
     },
     hero: {
       eyebrow: 'Soins bien-être à Annecy',
@@ -108,7 +108,7 @@ export const soinsPages = {
     meta: {
       title: 'Wellness Massages in Annecy | Les Mains de Sérénité',
       description:
-        'Discover women-only wellness treatments and massages in Annecy: lymphatic drainage, relaxing treatment, tension relief, body sculpting, lifting facial treatment, and maderotherapy.',
+        'Discover women-only wellness treatments and massages in Annecy: lymphatic drainage, relaxing treatment, tension relief, body sculpting, Miracle Face lifting facial treatment, and maderotherapy.',
     },
     hero: {
       eyebrow: 'Wellness massages in Annecy',
