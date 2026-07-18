@@ -11,6 +11,9 @@ import {createLocalFontProcessor} from '@unocss/preset-web-fonts/local';
 import {breakpoint as wind4Breakpoint} from '@unocss/preset-wind4/theme';
 import lucideIcons from '@iconify-json/lucide/icons.json';
 import {joinBasePath} from './config/base-path.mjs';
+import {designTokens} from './src/styles/design-tokens';
+
+const {colors, radius} = designTokens;
 
 const localFontProcessor = createLocalFontProcessor({
   cacheDir: 'node_modules/.cache/unocss/fonts',
@@ -53,33 +56,34 @@ export default defineConfig({
     },
 
     colors: {
+      white: colors.white,
       brand: {
         // eslint-disable-next-line @typescript-eslint/naming-convention
-        DEFAULT: '#8FAF9A',
-        soft: '#DCE7E0',
-        muted: '#AFC6B6',
-        strong: '#7C9F8A',
+        DEFAULT: colors.brand.base,
+        soft: colors.brand.soft,
+        muted: colors.brand.muted,
+        strong: colors.brand.strong,
       },
 
       surface: {
         // eslint-disable-next-line @typescript-eslint/naming-convention
-        DEFAULT: '#F6F3EE',
-        muted: '#F0ECE7',
-        soft: '#E8EFEA',
+        DEFAULT: colors.surface.base,
+        muted: colors.surface.muted,
+        soft: colors.surface.soft,
       },
 
       accent: {
         // eslint-disable-next-line @typescript-eslint/naming-convention
-        DEFAULT: '#C98C73',
-        soft: '#E8B9A4',
-        strong: '#B8755A',
+        DEFAULT: colors.accent.base,
+        soft: colors.accent.soft,
+        strong: colors.accent.strong,
       },
 
       ink: {
         // eslint-disable-next-line @typescript-eslint/naming-convention
-        DEFAULT: '#3E3E3E',
-        muted: '#6B6B6B',
-        subtle: '#9A9A9A',
+        DEFAULT: colors.ink.base,
+        muted: colors.ink.muted,
+        subtle: colors.ink.subtle,
       },
     },
     // Font: {
@@ -90,9 +94,7 @@ export default defineConfig({
       card: '0 8px 24px rgba(62, 62, 62, 0.06)',
     },
 
-    radius: {
-      spa: '1.5rem',
-    },
+    radius,
 
     containers: {
       maxWidth: {

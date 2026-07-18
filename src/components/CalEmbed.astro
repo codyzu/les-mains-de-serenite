@@ -1,0 +1,319 @@
+---
+interface Props {
+  calLink: string;
+}
+
+const {calLink} = Astro.props;
+const namespace = calLink
+  .replaceAll('/', '-')
+  .replaceAll(/[^a-z\d-]/gi, '')
+  .toLowerCase();
+const mountId = `cal-inline-${namespace}`;
+const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
+---
+
+<div
+  data-cal-embed
+  class="cal-embed relative min-h-[34rem] w-full overflow-hidden rounded-spa bg-white sm:min-h-[44rem]"
+  data-cal-link={calLink}
+  data-cal-namespace={namespace}
+  id={mountId}
+  role="region"
+  aria-label="Sélecteur de rendez-vous en ligne / Online appointment selector"
+>
+  <div
+    data-cal-loading
+    class="cal-embed-loading absolute inset-0 z-1 flex items-center justify-center bg-white"
+    role="status"
+    aria-live="polite"
+  >
+    <div class="flex flex-col items-center gap-4 px-6 text-center">
+      <span
+        class="h-9 w-9 animate-spin rounded-full border-3 border-brand-soft border-t-brand-strong"
+        aria-hidden="true"></span>
+      <span class="text-sm font-medium text-ink-muted">
+        <span lang="fr">Chargement des rendez-vous…</span>
+        <span lang="en">Loading appointments…</span>
+      </span>
+    </div>
+  </div>
+
+  <div
+    data-cal-fallback
+    class="absolute inset-0 z-2 hidden items-center justify-center bg-white px-6 text-center"
+    role="alert"
+  >
+    <div class="max-w-lg">
+      <p class="text-base leading-7 text-ink">
+        <span lang="fr">
+          Le module de réservation ne peut pas s’afficher pour le moment.
+        </span>
+        <span lang="en">
+          The booking calendar cannot be displayed at the moment.
+        </span>
+      </p>
+      <a class="btn-primary mt-5" href={directUrl.toString()} rel="external">
+        <span lang="fr">Réserver directement sur Cal.eu</span>
+        <span lang="en">Book directly on Cal.eu</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<style>
+  :global(html[lang^='fr']) .cal-embed [lang='en'],
+  :global(html[lang^='en']) .cal-embed [lang='fr'] {
+    display: none;
+  }
+</style>
+
+<script>
+  import {designTokens} from '../styles/design-tokens';
+
+  type CalArgs = unknown[];
+  type QueuedCalApi = {
+    (...args: CalArgs): void;
+    q?: CalArgs[];
+  };
+  type CalApi = QueuedCalApi & {
+    ns: Record<string, QueuedCalApi>;
+    loaded?: boolean;
+  };
+  type EmbedState = {
+    bookingTracked: boolean;
+    listenersRegistered: boolean;
+    mount: HTMLElement;
+    readyTimer?: number;
+  };
+  type CalWindow = Window & {
+    Cal?: CalApi;
+    gtag?: (...args: unknown[]) => void;
+    __calEmbedElements?: WeakSet<HTMLElement>;
+    __calEmbedStates?: Map<string, EmbedState>;
+  };
+
+  const calScriptUrl = 'https://app.cal.eu/embed/embed.js';
+  const calOrigin = 'https://www.cal.eu';
+  const {colors, radius} = designTokens;
+  // Cal embed CSS variables omit the "--" prefix. The authoritative list is
+  // Cal's “Customize the embed with CSS variables” documentation; these
+  // values intentionally map to the shared Les Mains de Sérénité design tokens.
+  const calLightTheme = {
+    'cal-brand': colors.brand.strong,
+    'cal-brand-emphasis': colors.ink.base,
+    'cal-brand-text': colors.white,
+    'cal-brand-subtle': colors.brand.soft,
+    'cal-brand-accent': colors.white,
+    'cal-text': colors.ink.base,
+    'cal-text-emphasis': colors.ink.base,
+    'cal-text-subtle': colors.ink.muted,
+    'cal-text-muted': colors.ink.subtle,
+    'cal-text-inverted': colors.white,
+    'cal-bg': colors.white,
+    'cal-bg-emphasis': colors.brand.soft,
+    'cal-bg-subtle': colors.surface.base,
+    'cal-bg-muted': colors.surface.muted,
+    'cal-bg-inverted': colors.ink.base,
+    'cal-border': colors.brand.soft,
+    'cal-border-emphasis': colors.brand.strong,
+    'cal-border-subtle': colors.surface.soft,
+    'cal-border-muted': colors.surface.muted,
+    'cal-border-booker': colors.brand.soft,
+    'cal-border-booker-width': '1px',
+    radius: radius.control,
+  };
+  const calWindow = window as CalWindow;
+  const initializedElements =
+    calWindow.__calEmbedElements ?? new WeakSet<HTMLElement>();
+  const embedStates =
+    calWindow.__calEmbedStates ?? new Map<string, EmbedState>();
+
+  calWindow.__calEmbedElements = initializedElements;
+  calWindow.__calEmbedStates = embedStates;
+
+  const queueCall = (target: QueuedCalApi, args: CalArgs) => {
+    target.q = target.q || [];
+    target.q.push(args);
+  };
+
+  const showFallback = (mount: HTMLElement) => {
+    const loading = mount.querySelector<HTMLElement>('[data-cal-loading]');
+    const fallback = mount.querySelector<HTMLElement>('[data-cal-fallback]');
+
+    loading?.classList.add('hidden');
+    fallback?.classList.remove('hidden');
+    fallback?.classList.add('flex');
+    mount.dataset.calState = 'failed';
+  };
+
+  const showEmbed = (mount: HTMLElement) => {
+    mount
+      .querySelector<HTMLElement>('[data-cal-loading]')
+      ?.classList.add('hidden');
+    mount.dataset.calState = 'ready';
+  };
+
+  const ensureCal = (): CalApi => {
+    if (calWindow.Cal) {
+      return calWindow.Cal;
+    }
+
+    const cal = ((...args: CalArgs) => {
+      if (args[0] === 'init') {
+        const namespace = args[1];
+
+        if (typeof namespace === 'string') {
+          const namespaceApi: QueuedCalApi = (...namespaceArgs: CalArgs) => {
+            queueCall(namespaceApi, namespaceArgs);
+          };
+
+          cal.ns[namespace] = cal.ns[namespace] || namespaceApi;
+          queueCall(cal.ns[namespace], args);
+          queueCall(cal, ['initNamespace', namespace]);
+          return;
+        }
+      }
+
+      queueCall(cal, args);
+    }) as CalApi;
+
+    cal.ns = {};
+    cal.loaded = true;
+    calWindow.Cal = cal;
+
+    const script = document.createElement('script');
+    script.src = calScriptUrl;
+    script.async = true;
+    script.dataset.calEmbedLoader = '';
+    script.addEventListener('error', () => {
+      for (const state of embedStates.values()) {
+        showFallback(state.mount);
+      }
+    });
+    document.head.append(script);
+
+    return cal;
+  };
+
+  const initializeEmbed = (mount: HTMLElement) => {
+    if (initializedElements.has(mount)) {
+      return;
+    }
+
+    initializedElements.add(mount);
+
+    const {calLink, calNamespace: namespace} = mount.dataset;
+
+    if (!calLink || !namespace) {
+      showFallback(mount);
+      return;
+    }
+
+    const previousState = embedStates.get(namespace);
+    const state: EmbedState = {
+      bookingTracked: false,
+      listenersRegistered: previousState?.listenersRegistered ?? false,
+      mount,
+    };
+
+    embedStates.set(namespace, state);
+    mount.dataset.calState = 'loading';
+
+    try {
+      const cal = ensureCal();
+      cal('init', namespace, {origin: calOrigin});
+      const namespacedCal = cal.ns[namespace];
+
+      if (!namespacedCal) {
+        showFallback(mount);
+        return;
+      }
+
+      if (!state.listenersRegistered) {
+        namespacedCal('on', {
+          action: 'linkReady',
+          callback: () => {
+            const currentState = embedStates.get(namespace);
+
+            if (currentState) {
+              window.clearTimeout(currentState.readyTimer);
+              showEmbed(currentState.mount);
+            }
+          },
+        });
+        namespacedCal('on', {
+          action: 'linkFailed',
+          callback: () => {
+            const currentState = embedStates.get(namespace);
+
+            if (currentState) {
+              window.clearTimeout(currentState.readyTimer);
+              showFallback(currentState.mount);
+            }
+          },
+        });
+        namespacedCal('on', {
+          action: 'bookingSuccessfulV2',
+          callback: () => {
+            const currentState = embedStates.get(namespace);
+
+            if (currentState?.bookingTracked) {
+              return;
+            }
+
+            if (currentState) {
+              currentState.bookingTracked = true;
+            }
+
+            if (typeof calWindow.gtag === 'function') {
+              calWindow.gtag('event', 'booking_completed', {
+                booking_surface: 'embedded_selector',
+                cal_link: calLink,
+              });
+            }
+          },
+        });
+        state.listenersRegistered = true;
+      }
+
+      namespacedCal('inline', {
+        elementOrSelector: `#${mount.id}`,
+        calLink,
+        config: {
+          layout: 'month_view',
+          useSlotsViewOnSmallScreen: true,
+        },
+      });
+
+      namespacedCal('ui', {
+        theme: 'light',
+        hideEventTypeDetails: false,
+        cssVarsPerTheme: {
+          light: calLightTheme,
+        },
+      });
+
+      state.readyTimer = window.setTimeout(() => showFallback(mount), 20_000);
+    } catch {
+      showFallback(mount);
+    }
+  };
+
+  const initializeEmbeds = () => {
+    for (const mount of document.querySelectorAll<HTMLElement>(
+      '[data-cal-embed]'
+    )) {
+      initializeEmbed(mount);
+    }
+  };
+
+  initializeEmbeds();
+  document.addEventListener('astro:page-load', initializeEmbeds);
+</script>
+
+<!--
+  Later phases can pass a private link as calLink (for example,
+  "lesmainsdeserenite/private-event"); its namespace is derived internally.
+  Private appointment pages are intentionally deferred. booking_completed is the
+  shared GA4 key event imported into Google Ads.
+-->

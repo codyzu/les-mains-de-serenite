@@ -351,12 +351,12 @@ test('online booking pages render the embedded scheduler shell', async ({
   await expect(
     page.getByRole('heading', {name: 'Réserver votre soin bien-être'})
   ).toBeVisible();
-  await expect(page.locator('#my-cal-inline-reserver')).toBeVisible();
+  await expect(page.locator('#cal-inline-lesmainsdeserenite')).toBeVisible();
 
   await page.goto('/en/book-online');
 
   await expect(
     page.getByRole('heading', {name: 'Book your wellness treatment'})
   ).toBeVisible();
-  await expect(page.locator('#my-cal-inline-reserver')).toBeVisible();
+  await expect(page.locator('#cal-inline-lesmainsdeserenite')).toBeVisible();
 });

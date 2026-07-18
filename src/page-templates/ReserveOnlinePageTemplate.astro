@@ -1,5 +1,6 @@
 ---
 import Contact from '../components/Contact.astro';
+import CalEmbed from '../components/CalEmbed.astro';
 import IconImage from '../components/IconImage.astro';
 import {
   localizedPagePaths,
@@ -119,11 +120,7 @@ const whatsappUrl = home.whatsapp.generalHref;
         <div
           class="mx-auto mt-6 max-w-5xl rounded-[2rem] bg-white/45 p-1.5 shadow-[0_10px_24px_rgba(62,62,62,0.05)] sm:p-3"
         >
-          <div
-            id="my-cal-inline-reserver"
-            class="min-h-[760px] w-full overflow-hidden rounded-[1.5rem] bg-white sm:min-h-[860px] lg:min-h-[940px]"
-          >
-          </div>
+          <CalEmbed calLink="lesmainsdeserenite" />
         </div>
       </div>
     </section>
@@ -136,89 +133,4 @@ const whatsappUrl = home.whatsapp.generalHref;
       whatsappHref={reserveOnline.contact.whatsappHref}
     />
   </main>
-
-  <script>
-    type CalArgs = unknown[];
-    type QueuedCalApi = {
-      (...args: CalArgs): void;
-      q?: CalArgs[];
-    };
-    type CalApi = QueuedCalApi & {
-      ns: Record<string, QueuedCalApi>;
-      loaded?: boolean;
-    };
-    type CalWindow = Window & {
-      Cal?: CalApi;
-    };
-
-    const calScriptUrl = 'https://app.cal.eu/embed/embed.js';
-    const calOrigin = 'https://app.cal.eu';
-    const calNamespace = 'reserver-en-ligne';
-    const calSelector = '#my-cal-inline-reserver';
-    const calWindow = window as CalWindow;
-
-    const queueCall = (target: QueuedCalApi, args: CalArgs) => {
-      target.q = target.q || [];
-      target.q.push(args);
-    };
-
-    const ensureCal = (): CalApi => {
-      if (calWindow.Cal) {
-        return calWindow.Cal;
-      }
-
-      const cal = ((...args: CalArgs) => {
-        if (args[0] === 'init') {
-          const namespace = args[1];
-
-          if (typeof namespace === 'string') {
-            const namespaceApi: QueuedCalApi = (...namespaceArgs: CalArgs) => {
-              queueCall(namespaceApi, namespaceArgs);
-            };
-
-            cal.ns[namespace] = cal.ns[namespace] || namespaceApi;
-            queueCall(cal.ns[namespace], args);
-            queueCall(cal, ['initNamespace', namespace]);
-            return;
-          }
-        }
-
-        queueCall(cal, args);
-      }) as CalApi;
-
-      cal.ns = {};
-      cal.loaded = true;
-
-      const script = document.createElement('script');
-      script.src = calScriptUrl;
-      script.async = true;
-      document.head.append(script);
-
-      calWindow.Cal = cal;
-      return cal;
-    };
-
-    const cal = ensureCal();
-
-    cal('init', calNamespace, {origin: calOrigin});
-
-    cal.ns[calNamespace]('inline', {
-      elementOrSelector: calSelector,
-      config: {
-        layout: 'month_view',
-        useSlotsViewOnSmallScreen: true,
-      },
-      calLink: 'lesmainsdeserenite',
-    });
-
-    cal.ns[calNamespace]('ui', {
-      hideEventTypeDetails: false,
-      layout: 'month_view',
-      styles: {
-        branding: {
-          brandColor: '#6b8f71',
-        },
-      },
-    });
-  </script>
 </Layout>
