@@ -366,3 +366,31 @@ test('online booking pages render the embedded scheduler shell', async ({
     /←\s+Choose another treatment/
   );
 });
+
+test('maderotherapy discovery offers link to the embedded scheduler', async ({
+  page,
+}) => {
+  await page.goto('/soins/maderotherapie/');
+
+  const frenchOffer = page.locator('section').filter({
+    has: page.getByRole('heading', {
+      name: 'Offre Découverte Soin de madérothérapie Jambes Légères',
+    }),
+  });
+
+  await expect(
+    frenchOffer.getByRole('link', {name: 'Réserver ce soin'})
+  ).toHaveAttribute('href', '/reserver-en-ligne');
+
+  await page.goto('/en/massages/maderotherapy/');
+
+  const englishOffer = page.locator('section').filter({
+    has: page.getByRole('heading', {
+      name: 'Light Legs Maderotherapy Treatment Discovery Offer',
+    }),
+  });
+
+  await expect(
+    englishOffer.getByRole('link', {name: 'Book this treatment'})
+  ).toHaveAttribute('href', '/en/book-online');
+});

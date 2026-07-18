@@ -124,6 +124,7 @@ export const maderotherapiePages = {
       title: 'Offre Découverte Soin de madérothérapie Jambes Légères',
       duration: '60 minutes',
       price: '90 €',
+      ctaHref: localizedPagePaths.reserveOnline.fr,
       description:
         'Un soin ciblé de 60 minutes pour découvrir la madérothérapie et profiter d’un travail spécifique sur les zones de lourdeur, avec une attention particulière portée au confort et au ressenti.',
       targetAudience:
@@ -371,6 +372,7 @@ export const maderotherapiePages = {
       title: 'Light Legs Maderotherapy Treatment Discovery Offer',
       duration: '60 minutes',
       price: '90 €',
+      ctaHref: localizedPagePaths.reserveOnline.en,
       description:
         'A targeted 60-minute treatment to discover maderotherapy and enjoy focused work on areas of heaviness, with close attention to comfort and how your body feels.',
       targetAudience:

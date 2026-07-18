@@ -25,6 +25,7 @@ const {
 } = localized;
 const languageSwitchPaths = localizedPagePaths.maderotherapie;
 const ctaIsExternal = maderotherapie.cta.href.startsWith('http');
+const offerCtaIsExternal = maderotherapie.offer.ctaHref.startsWith('http');
 const heroEyebrow =
   locale === 'en' ? 'Maderotherapy in Annecy' : 'Madérothérapie à Annecy';
 const toolsImageAlt =
@@ -264,9 +265,9 @@ const structuredData = {
               <p>{maderotherapie.offer.positioning}</p>
             </div>
             <a
-              href={maderotherapie.cta.href}
-              target={ctaIsExternal ? '_blank' : undefined}
-              rel={ctaIsExternal ? 'noreferrer' : undefined}
+              href={maderotherapie.offer.ctaHref}
+              target={offerCtaIsExternal ? '_blank' : undefined}
+              rel={offerCtaIsExternal ? 'noreferrer' : undefined}
               class="btn-primary mt-8 min-h-[3rem] px-7 py-3.5 sm:min-h-0 sm:py-3"
               data-analytics-event={maderotherapie.cta.analyticsEvent}
             >

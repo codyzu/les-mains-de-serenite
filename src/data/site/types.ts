@@ -411,6 +411,7 @@ export type MaderotherapiePageData = {
     title: string;
     duration: string;
     price: string;
+    ctaHref: string;
     description: string;
     targetAudience: string;
     benefits: string;
