@@ -352,6 +352,9 @@ test('online booking pages render the embedded scheduler shell', async ({
     page.getByRole('heading', {name: 'Réserver votre soin bien-être'})
   ).toBeVisible();
   await expect(page.locator('#cal-inline-lesmainsdeserenite')).toBeVisible();
+  await expect(page.locator('[data-cal-reset]')).toHaveText(
+    /←\s+Choisir un autre soin/
+  );
 
   await page.goto('/en/book-online');
 
@@ -359,4 +362,7 @@ test('online booking pages render the embedded scheduler shell', async ({
     page.getByRole('heading', {name: 'Book your wellness treatment'})
   ).toBeVisible();
   await expect(page.locator('#cal-inline-lesmainsdeserenite')).toBeVisible();
+  await expect(page.locator('[data-cal-reset]')).toHaveText(
+    /←\s+Choose another treatment/
+  );
 });

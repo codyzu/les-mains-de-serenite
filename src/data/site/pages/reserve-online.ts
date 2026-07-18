@@ -46,6 +46,8 @@ export const reserveOnlinePages = {
       paymentNote: 'Aucun paiement en ligne. Règlement sur place.',
       disclaimer:
         'Service réservé aux femmes · Massage bien-être sans visée médicale',
+      resetLabel: 'Choisir un autre soin',
+      resetStatus: 'Retour à la sélection des soins…',
     },
     contact: {
       title: 'Une question avant de réserver ?',
@@ -108,6 +110,8 @@ export const reserveOnlinePages = {
       paymentNote: 'No online payment. Please pay on site.',
       disclaimer:
         'Women-only service · Wellness massage with no medical purpose',
+      resetLabel: 'Choose another treatment',
+      resetStatus: 'Returning to treatment selection…',
     },
     contact: {
       title: 'A question before booking?',

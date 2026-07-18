@@ -19,6 +19,25 @@ test('configures the namespaced Cal.eu embed and tracks one privacy-safe convers
           calls.push({args: namespaceArgs, namespace});
 
           if (
+            namespaceArgs[0] === 'inline' &&
+            typeof namespaceArgs[1] === 'object' &&
+            namespaceArgs[1] !== null
+          ) {
+            const inlineOptions = namespaceArgs[1] as {
+              elementOrSelector: string;
+            };
+            const mount = document.querySelector(
+              inlineOptions.elementOrSelector
+            );
+
+            const iframe = document.createElement('iframe');
+
+            iframe.src =
+              'https://www.cal.eu/lesmainsdeserenite/embed?layout=month_view&useSlotsViewOnSmallScreen=true&embedType=inline&embed=lesmainsdeserenite';
+            mount?.append(iframe);
+          }
+
+          if (
             namespaceArgs[0] === 'on' &&
             typeof namespaceArgs[1] === 'object' &&
             namespaceArgs[1] !== null
@@ -43,6 +62,14 @@ test('configures the namespaced Cal.eu embed and tracks one privacy-safe convers
   });
 
   await page.goto('/reserver-en-ligne');
+
+  const embedRoot = page.locator('[data-cal-embed]');
+
+  await expect(embedRoot).toHaveAttribute(
+    'data-cal-embed-link',
+    'lesmainsdeserenite'
+  );
+  await expect(embedRoot).not.toHaveAttribute('data-cal-link');
 
   const embedConfiguration = await page.evaluate(() => {
     const testState = (
@@ -118,7 +145,7 @@ test('configures the namespaced Cal.eu embed and tracks one privacy-safe convers
     testState.listeners.bookingSuccessfulV2(payload);
   });
 
-  await expect(page.locator('#cal-inline-lesmainsdeserenite')).toHaveAttribute(
+  await expect(page.locator('[data-cal-embed]')).toHaveAttribute(
     'data-cal-state',
     'ready'
   );
@@ -142,6 +169,134 @@ test('configures the namespaced Cal.eu embed and tracks one privacy-safe convers
       },
     ],
   ]);
+
+  const resetButton = page.getByRole('button', {
+    name: 'Choisir un autre soin',
+  });
+
+  await expect(resetButton).toBeHidden();
+
+  await page.evaluate(() => {
+    const testState = (
+      globalThis as unknown as {
+        __calEmbedTest: {
+          listeners: Record<string, (...args: unknown[]) => void>;
+        };
+      }
+    ).__calEmbedTest;
+
+    testState.listeners.eventTypeSelected();
+  });
+
+  await expect(resetButton).toBeVisible();
+  await expect(resetButton).toBeEnabled();
+  await resetButton.click();
+  await expect(page.locator('[data-cal-embed]')).toHaveAttribute(
+    'data-cal-state',
+    'loading'
+  );
+  await expect(resetButton).toBeHidden();
+  await expect(page.locator('#cal-inline-lesmainsdeserenite')).toBeFocused();
+  await expect(
+    page.getByText('Retour à la sélection des soins…')
+  ).toBeVisible();
+
+  await page.evaluate(() => {
+    const testState = (
+      globalThis as unknown as {
+        __calEmbedTest: {
+          listeners: Record<string, (...args: unknown[]) => void>;
+        };
+      }
+    ).__calEmbedTest;
+
+    testState.listeners.linkReady();
+    testState.listeners.eventTypeSelected();
+  });
+
+  await expect(resetButton).toBeVisible();
+  await resetButton.click();
+
+  const resetResults = await page.evaluate(() => {
+    const testState = (
+      globalThis as unknown as {
+        __calEmbedTest: {
+          analyticsCalls: unknown[][];
+          calls: Array<{args: unknown[]; namespace?: string}>;
+          listeners: Record<string, (...args: unknown[]) => void>;
+        };
+      }
+    ).__calEmbedTest;
+
+    testState.listeners.linkReady();
+
+    return {
+      analyticsCalls: testState.analyticsCalls,
+      iframeCount: document.querySelectorAll(
+        '#cal-inline-lesmainsdeserenite iframe'
+      ).length,
+      initCallCount: testState.calls.filter(({args}) => args[0] === 'init')
+        .length,
+      inlineCallCount: testState.calls.filter(
+        ({args, namespace}) =>
+          namespace === 'lesmainsdeserenite' && args[0] === 'inline'
+      ).length,
+      listenerCallCounts: Object.fromEntries(
+        [
+          'eventTypeSelected',
+          'linkReady',
+          'linkFailed',
+          'bookingSuccessfulV2',
+        ].map((action) => [
+          action,
+          testState.calls.filter(
+            ({args, namespace}) =>
+              namespace === 'lesmainsdeserenite' &&
+              args[0] === 'on' &&
+              (args[1] as {action?: string})?.action === action
+          ).length,
+        ])
+      ),
+    };
+  });
+
+  expect(resetResults).toEqual({
+    analyticsCalls: [
+      [
+        'event',
+        'booking_completed',
+        {
+          booking_surface: 'embedded_selector',
+          cal_link: 'lesmainsdeserenite',
+        },
+      ],
+      [
+        'event',
+        'booking_selector_reset',
+        {
+          booking_surface: 'embedded_selector',
+          cal_link: 'lesmainsdeserenite',
+        },
+      ],
+      [
+        'event',
+        'booking_selector_reset',
+        {
+          booking_surface: 'embedded_selector',
+          cal_link: 'lesmainsdeserenite',
+        },
+      ],
+    ],
+    iframeCount: 1,
+    initCallCount: 1,
+    inlineCallCount: 1,
+    listenerCallCounts: {
+      eventTypeSelected: 1,
+      linkReady: 1,
+      linkFailed: 1,
+      bookingSuccessfulV2: 1,
+    },
+  });
 });
 
 test('shows the localized direct-booking fallback if the Cal script is blocked', async ({

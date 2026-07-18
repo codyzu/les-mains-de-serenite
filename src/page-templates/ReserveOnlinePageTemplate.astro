@@ -120,7 +120,11 @@ const whatsappUrl = home.whatsapp.generalHref;
         <div
           class="mx-auto mt-6 max-w-5xl rounded-[2rem] bg-white/45 p-1.5 shadow-[0_10px_24px_rgba(62,62,62,0.05)] sm:p-3"
         >
-          <CalEmbed calLink="lesmainsdeserenite" />
+          <CalEmbed
+            calLink="lesmainsdeserenite"
+            resetLabel={reserveOnline.scheduler.resetLabel}
+            resetStatus={reserveOnline.scheduler.resetStatus}
+          />
         </div>
       </div>
     </section>

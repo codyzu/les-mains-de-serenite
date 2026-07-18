@@ -1,9 +1,11 @@
 ---
 interface Props {
   calLink: string;
+  resetLabel: string;
+  resetStatus: string;
 }
 
-const {calLink} = Astro.props;
+const {calLink, resetLabel, resetStatus} = Astro.props;
 const namespace = calLink
   .replaceAll('/', '-')
   .replaceAll(/[^a-z\d-]/gi, '')
@@ -14,48 +16,74 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
 
 <div
   data-cal-embed
-  class="cal-embed relative min-h-[34rem] w-full overflow-hidden rounded-spa bg-white sm:min-h-[44rem]"
-  data-cal-link={calLink}
+  class="cal-embed"
+  data-cal-embed-link={calLink}
   data-cal-namespace={namespace}
-  id={mountId}
-  role="region"
-  aria-label="Sélecteur de rendez-vous en ligne / Online appointment selector"
+  data-cal-reset-status={resetStatus}
 >
-  <div
-    data-cal-loading
-    class="cal-embed-loading absolute inset-0 z-1 flex items-center justify-center bg-white"
-    role="status"
-    aria-live="polite"
-  >
-    <div class="flex flex-col items-center gap-4 px-6 text-center">
-      <span
-        class="h-9 w-9 animate-spin rounded-full border-3 border-brand-soft border-t-brand-strong"
-        aria-hidden="true"></span>
-      <span class="text-sm font-medium text-ink-muted">
-        <span lang="fr">Chargement des rendez-vous…</span>
-        <span lang="en">Loading appointments…</span>
-      </span>
-    </div>
+  <div class="flex px-1">
+    <button
+      data-cal-reset
+      disabled
+      hidden
+      class="mb-3 inline-flex min-h-11 items-center gap-2 rounded-full px-3 py-2 text-sm font-medium text-ink-muted transition hover:bg-brand-soft/45 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-strong focus-visible:ring-offset-2 focus-visible:ring-offset-surface-muted disabled:cursor-wait disabled:opacity-50 sm:mb-4"
+      type="button"
+    >
+      <span aria-hidden="true">←</span>
+      <span>{resetLabel}</span>
+    </button>
   </div>
 
   <div
-    data-cal-fallback
-    class="absolute inset-0 z-2 hidden items-center justify-center bg-white px-6 text-center"
-    role="alert"
+    data-cal-shell
+    class="relative min-h-[34rem] w-full overflow-hidden rounded-spa bg-white sm:min-h-[44rem]"
   >
-    <div class="max-w-lg">
-      <p class="text-base leading-7 text-ink">
-        <span lang="fr">
-          Le module de réservation ne peut pas s’afficher pour le moment.
+    <div
+      data-cal-mount
+      class="min-h-[34rem] w-full sm:min-h-[44rem]"
+      id={mountId}
+      role="region"
+      aria-label="Sélecteur de rendez-vous en ligne / Online appointment selector"
+      tabindex="-1"
+    >
+    </div>
+
+    <div
+      data-cal-loading
+      class="cal-embed-loading absolute inset-0 z-1 flex items-center justify-center bg-white"
+      role="status"
+      aria-live="polite"
+    >
+      <div class="flex flex-col items-center gap-4 px-6 text-center">
+        <span
+          class="h-9 w-9 animate-spin rounded-full border-3 border-brand-soft border-t-brand-strong"
+          aria-hidden="true"></span>
+        <span data-cal-loading-label class="text-sm font-medium text-ink-muted">
+          <span lang="fr">Chargement des rendez-vous…</span>
+          <span lang="en">Loading appointments…</span>
         </span>
-        <span lang="en">
-          The booking calendar cannot be displayed at the moment.
-        </span>
-      </p>
-      <a class="btn-primary mt-5" href={directUrl.toString()} rel="external">
-        <span lang="fr">Réserver directement sur Cal.eu</span>
-        <span lang="en">Book directly on Cal.eu</span>
-      </a>
+      </div>
+    </div>
+
+    <div
+      data-cal-fallback
+      class="absolute inset-0 z-2 hidden items-center justify-center bg-white px-6 text-center"
+      role="alert"
+    >
+      <div class="max-w-lg">
+        <p class="text-base leading-7 text-ink">
+          <span lang="fr">
+            Le module de réservation ne peut pas s’afficher pour le moment.
+          </span>
+          <span lang="en">
+            The booking calendar cannot be displayed at the moment.
+          </span>
+        </p>
+        <a class="btn-primary mt-5" href={directUrl.toString()} rel="external">
+          <span lang="fr">Réserver directement sur Cal.eu</span>
+          <span lang="en">Book directly on Cal.eu</span>
+        </a>
+      </div>
     </div>
   </div>
 </div>
@@ -84,6 +112,9 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
     listenersRegistered: boolean;
     mount: HTMLElement;
     readyTimer?: number;
+    resetButton: HTMLButtonElement;
+    root: HTMLElement;
+    selectorUrl?: string;
   };
   type CalWindow = Window & {
     Cal?: CalApi;
@@ -136,21 +167,50 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
     target.q.push(args);
   };
 
-  const showFallback = (mount: HTMLElement) => {
-    const loading = mount.querySelector<HTMLElement>('[data-cal-loading]');
-    const fallback = mount.querySelector<HTMLElement>('[data-cal-fallback]');
+  const showFallback = (state: EmbedState) => {
+    const loading = state.root.querySelector<HTMLElement>('[data-cal-loading]');
+    const fallback = state.root.querySelector<HTMLElement>(
+      '[data-cal-fallback]'
+    );
 
     loading?.classList.add('hidden');
     fallback?.classList.remove('hidden');
     fallback?.classList.add('flex');
-    mount.dataset.calState = 'failed';
+    state.resetButton.hidden = true;
+    state.resetButton.disabled = true;
+    state.root.dataset.calState = 'failed';
   };
 
-  const showEmbed = (mount: HTMLElement) => {
-    mount
+  const showEmbed = (state: EmbedState) => {
+    const iframe = state.mount.querySelector<HTMLIFrameElement>('iframe');
+
+    state.selectorUrl = state.selectorUrl ?? iframe?.src;
+    state.root
       .querySelector<HTMLElement>('[data-cal-loading]')
       ?.classList.add('hidden');
-    mount.dataset.calState = 'ready';
+    state.resetButton.disabled = false;
+    state.root.dataset.calState = 'ready';
+  };
+
+  const showLoading = (state: EmbedState, isReset: boolean) => {
+    const loading = state.root.querySelector<HTMLElement>('[data-cal-loading]');
+    const fallback = state.root.querySelector<HTMLElement>(
+      '[data-cal-fallback]'
+    );
+    const loadingLabel = state.root.querySelector<HTMLElement>(
+      '[data-cal-loading-label]'
+    );
+
+    fallback?.classList.add('hidden');
+    fallback?.classList.remove('flex');
+    loading?.classList.remove('hidden');
+    state.resetButton.hidden = true;
+    state.resetButton.disabled = true;
+    state.root.dataset.calState = 'loading';
+
+    if (isReset && loadingLabel) {
+      loadingLabel.textContent = state.root.dataset.calResetStatus ?? '';
+    }
   };
 
   const ensureCal = (): CalApi => {
@@ -187,7 +247,7 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
     script.dataset.calEmbedLoader = '';
     script.addEventListener('error', () => {
       for (const state of embedStates.values()) {
-        showFallback(state.mount);
+        showFallback(state);
       }
     });
     document.head.append(script);
@@ -195,17 +255,13 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
     return cal;
   };
 
-  const initializeEmbed = (mount: HTMLElement) => {
-    if (initializedElements.has(mount)) {
-      return;
-    }
+  const mountEmbed = (root: HTMLElement) => {
+    const {calEmbedLink: calLink, calNamespace: namespace} = root.dataset;
+    const mount = root.querySelector<HTMLElement>('[data-cal-mount]');
+    const resetButton =
+      root.querySelector<HTMLButtonElement>('[data-cal-reset]');
 
-    initializedElements.add(mount);
-
-    const {calLink, calNamespace: namespace} = mount.dataset;
-
-    if (!calLink || !namespace) {
-      showFallback(mount);
+    if (!calLink || !namespace || !mount || !resetButton) {
       return;
     }
 
@@ -214,22 +270,41 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
       bookingTracked: false,
       listenersRegistered: previousState?.listenersRegistered ?? false,
       mount,
+      resetButton,
+      root,
+      selectorUrl: previousState?.selectorUrl,
     };
 
+    window.clearTimeout(previousState?.readyTimer);
     embedStates.set(namespace, state);
-    mount.dataset.calState = 'loading';
+    showLoading(state, false);
+    mount.replaceChildren();
 
     try {
       const cal = ensureCal();
-      cal('init', namespace, {origin: calOrigin});
+
+      if (!cal.ns[namespace]) {
+        cal('init', namespace, {origin: calOrigin});
+      }
+
       const namespacedCal = cal.ns[namespace];
 
       if (!namespacedCal) {
-        showFallback(mount);
+        showFallback(state);
         return;
       }
 
       if (!state.listenersRegistered) {
+        namespacedCal('on', {
+          action: 'eventTypeSelected',
+          callback: () => {
+            const currentState = embedStates.get(namespace);
+
+            if (currentState) {
+              currentState.resetButton.hidden = false;
+            }
+          },
+        });
         namespacedCal('on', {
           action: 'linkReady',
           callback: () => {
@@ -237,7 +312,7 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
 
             if (currentState) {
               window.clearTimeout(currentState.readyTimer);
-              showEmbed(currentState.mount);
+              showEmbed(currentState);
             }
           },
         });
@@ -248,7 +323,7 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
 
             if (currentState) {
               window.clearTimeout(currentState.readyTimer);
-              showFallback(currentState.mount);
+              showFallback(currentState);
             }
           },
         });
@@ -284,6 +359,9 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
           useSlotsViewOnSmallScreen: true,
         },
       });
+      state.selectorUrl =
+        state.selectorUrl ??
+        mount.querySelector<HTMLIFrameElement>('iframe')?.src;
 
       namespacedCal('ui', {
         theme: 'light',
@@ -293,10 +371,57 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
         },
       });
 
-      state.readyTimer = window.setTimeout(() => showFallback(mount), 20_000);
+      state.readyTimer = window.setTimeout(() => showFallback(state), 20_000);
     } catch {
-      showFallback(mount);
+      showFallback(state);
     }
+  };
+
+  const resetEmbed = (root: HTMLElement) => {
+    const {calEmbedLink: calLink, calNamespace: namespace} = root.dataset;
+    const mount = root.querySelector<HTMLElement>('[data-cal-mount]');
+    const state = namespace ? embedStates.get(namespace) : undefined;
+    const iframe = mount?.querySelector<HTMLIFrameElement>('iframe');
+    const selectorUrl = state?.selectorUrl ?? iframe?.src;
+
+    if (!calLink || !namespace || !mount || !state || !iframe || !selectorUrl) {
+      window.location.reload();
+      return;
+    }
+
+    if (typeof calWindow.gtag === 'function') {
+      calWindow.gtag('event', 'booking_selector_reset', {
+        booking_surface: 'embedded_selector',
+        cal_link: calLink,
+      });
+    }
+
+    window.clearTimeout(state.readyTimer);
+    state.bookingTracked = false;
+    showLoading(state, true);
+    iframe.src = selectorUrl;
+    state.readyTimer = window.setTimeout(() => showFallback(state), 20_000);
+    const reducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches;
+
+    root.scrollIntoView({
+      behavior: reducedMotion ? 'auto' : 'smooth',
+      block: 'start',
+    });
+    mount.focus({preventScroll: true});
+  };
+
+  const initializeEmbed = (root: HTMLElement) => {
+    if (initializedElements.has(root)) {
+      return;
+    }
+
+    initializedElements.add(root);
+    root
+      .querySelector<HTMLButtonElement>('[data-cal-reset]')
+      ?.addEventListener('click', () => resetEmbed(root));
+    mountEmbed(root);
   };
 
   const initializeEmbeds = () => {

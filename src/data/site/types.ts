@@ -572,6 +572,8 @@ export type ReserveOnlinePageData = {
     detail: string;
     paymentNote: string;
     disclaimer: string;
+    resetLabel: string;
+    resetStatus: string;
   };
   contact: ContactBlockData & {
     whatsappHref: string;
