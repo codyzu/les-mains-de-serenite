@@ -9,7 +9,6 @@ export const discoveryOfferBookingPages = {
       description:
         'Réservez une première séance personnalisée de 45 minutes à 55 € chez Les Mains de Sérénité à Annecy. Offre réservée aux femmes, paiement sur place.',
     },
-    reserveLink: localizedPagePaths.discoveryOfferBooking.fr,
     calLink: discoveryOfferCalLink,
     hero: {
       kicker: 'Offre découverte',
@@ -43,7 +42,6 @@ export const discoveryOfferBookingPages = {
       description:
         'Book a personalized first 45-minute session for €55 at Les Mains de Sérénité in Annecy. Women-only service, payment on site.',
     },
-    reserveLink: localizedPagePaths.discoveryOfferBooking.en,
     calLink: discoveryOfferCalLink,
     hero: {
       kicker: 'Discovery offer',

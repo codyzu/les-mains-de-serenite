@@ -25,13 +25,14 @@ const allOptionsHref = `${baseUrl}${discoveryOfferBooking.allOptions.href.replac
 
 <Layout
   reserveActive
+  reserveActiveLink
   locale={locale}
   canonicalPath={localePaths[locale]}
   alternatePaths={localePaths}
   languageSwitchPaths={localePaths}
   title={discoveryOfferBooking.meta.title}
   description={discoveryOfferBooking.meta.description}
-  reserveLink={discoveryOfferBooking.reserveLink}
+  reserveLink={localizedPagePaths.reserveOnline[locale]}
 >
   <main class="bg-surface">
     <section

@@ -587,7 +587,6 @@ export type DiscoveryOfferBookingPageData = {
     title: string;
     description: string;
   };
-  reserveLink: string;
   calLink: string;
   hero: {
     kicker: string;

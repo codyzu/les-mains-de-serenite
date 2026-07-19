@@ -22,6 +22,7 @@ interface Props {
   structuredData?: Record<string, unknown> | Array<Record<string, unknown>>;
   reserveLink?: string;
   reserveActive?: boolean;
+  reserveActiveLink?: boolean;
 }
 
 const {
@@ -36,6 +37,7 @@ const {
   structuredData,
   reserveLink,
   reserveActive = false,
+  reserveActiveLink = false,
 } = Astro.props;
 const localized = getLocalizedSite(locale);
 const toAbsoluteUrl = (path: string) =>
@@ -70,6 +72,7 @@ const structuredDataItems = structuredData
     languageSwitchPaths={languageSwitchPaths}
     reserveLink={reserveLink}
     reserveActive={reserveActive}
+    reserveActiveLink={reserveActiveLink}
   />
   <slot />
   <Footer

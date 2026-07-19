@@ -17,6 +17,7 @@ type Props = {
   languageSwitchPaths?: LocalePathMap;
   reserveLink?: string;
   reserveActive?: boolean;
+  reserveActiveLink?: boolean;
 };
 
 type HeaderNavItem = {
@@ -33,6 +34,7 @@ const {
   languageSwitchPaths,
   reserveLink,
   reserveActive = false,
+  reserveActiveLink = false,
 } = Astro.props;
 const baseUrl = getBaseUrl();
 const toHref = (path: string) =>
@@ -100,7 +102,7 @@ const desktopNavItems = [
     label: links.reserve,
     href: bookingHref,
     active: reserveActive,
-    activeElement: 'span',
+    activeElement: reserveActiveLink ? 'link' : 'span',
     analyticsEvent: 'reserve_click',
   },
   {
@@ -164,7 +166,11 @@ const mobileNavItems = desktopNavItems
           ) : (
             <a
               href={item.href}
-              aria-current={item.active ? 'page' : undefined}
+              aria-current={
+                item.active && !(item.key === 'reserve' && reserveActiveLink)
+                  ? 'page'
+                  : undefined
+              }
               class:list={[
                 item.active
                   ? 'text-sm font-medium text-ink no-underline'
@@ -295,7 +301,7 @@ const mobileNavItems = desktopNavItems
     <div class="mt-auto pt-8">
       <div>
         {
-          reserveActive ? (
+          reserveActive && !reserveActiveLink ? (
             <span aria-current="page" class="btn-primary w-full cursor-default">
               {primaryCta}
             </span>
