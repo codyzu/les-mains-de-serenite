@@ -131,6 +131,56 @@ test('mobile menu opens, exposes localized links, and closes with Escape @critic
   await expect(drawer).toBeHidden();
 });
 
+for (const {route, desktopLabel, mobileLabel, bookingPath} of [
+  {
+    route: '/',
+    desktopLabel: 'Réserver',
+    mobileLabel: 'Réserver un soin',
+    bookingPath: '/reserver-en-ligne',
+  },
+  {
+    route: '/en/',
+    desktopLabel: 'Book',
+    mobileLabel: 'Book a treatment',
+    bookingPath: '/en/book-online',
+  },
+]) {
+  test(`booking navigation uses the localized embedded page from ${route} @critical @booking`, async ({
+    page,
+  }) => {
+    await page.goto(route);
+
+    const desktopBooking = page.locator(
+      `header nav a[data-analytics-event="reserve_click"]:has-text("${desktopLabel}")`
+    );
+    const footerBooking = page.locator(
+      `footer a[data-analytics-event="reserve_click"]:has-text("${desktopLabel}")`
+    );
+
+    await Promise.all(
+      [desktopBooking, footerBooking].flatMap((link) => [
+        expect(link).toHaveAttribute('href', bookingPath),
+        expect(link).toHaveAttribute('data-analytics-event', 'reserve_click'),
+        expect(link).not.toHaveAttribute('target', '_blank'),
+      ])
+    );
+
+    await page.setViewportSize({width: 390, height: 844});
+    await page.locator('button[data-mobile-menu-open]').click();
+
+    const mobileBooking = page
+      .getByRole('dialog', {name: 'Les Mains de Sérénité'})
+      .getByRole('link', {name: mobileLabel});
+
+    await expect(mobileBooking).toHaveAttribute('href', bookingPath);
+    await expect(mobileBooking).toHaveAttribute(
+      'data-analytics-event',
+      'reserve_click'
+    );
+    await expect(mobileBooking).not.toHaveAttribute('target', '_blank');
+  });
+}
+
 test('mobile menu contains focus and handles a rapid close @mobile', async ({
   page,
 }) => {

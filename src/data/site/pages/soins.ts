@@ -19,7 +19,7 @@ export const soinsPages = {
       reassurance:
         'Des soins bien-être à Annecy réservés exclusivement aux femmes, dans un cadre calme, bienveillant et confidentiel.',
       ctaText: 'Réserver un soin',
-      ctaHref: localizedPagePaths.reserve.fr,
+      ctaHref: localizedPagePaths.reserveOnline.fr,
       analyticsEvent: 'reserve_click',
     },
     philosophy: {
@@ -47,7 +47,7 @@ export const soinsPages = {
       description:
         'C’est normal. Si vous hésitez, nous pouvons confirmer ensemble le soin le plus adapté à vos besoins lors de la réservation ou au début du rendez-vous.',
       text: 'Réserver un soin',
-      href: localizedPagePaths.reserve.fr,
+      href: localizedPagePaths.reserveOnline.fr,
       analyticsEvent: 'reserve_click',
       reassurance: {
         prefix: 'Une question avant de réserver ? Écrivez-moi sur ',
@@ -90,7 +90,7 @@ export const soinsPages = {
       description:
         'Nous pouvons vous orienter vers le soin le plus adapté à vos besoins du moment.',
       text: 'Réserver un soin',
-      href: localizedPagePaths.reserve.fr,
+      href: localizedPagePaths.reserveOnline.fr,
       analyticsEvent: 'reserve_click',
       reassurance: {
         prefix: 'Vous hésitez ? Écrivez-moi sur ',
@@ -118,7 +118,7 @@ export const soinsPages = {
       reassurance:
         'Wellness treatments and massages are reserved exclusively for women, in a calm, caring, and confidential setting.',
       ctaText: 'Book a treatment',
-      ctaHref: localizedPagePaths.reserve.en,
+      ctaHref: localizedPagePaths.reserveOnline.en,
       analyticsEvent: 'reserve_click',
     },
     philosophy: {
@@ -146,7 +146,7 @@ export const soinsPages = {
       description:
         'That is normal. If you are unsure, we can confirm together which treatment best fits your needs when booking or at the beginning of your appointment.',
       text: 'Book a treatment',
-      href: localizedPagePaths.reserve.en,
+      href: localizedPagePaths.reserveOnline.en,
       analyticsEvent: 'reserve_click',
       reassurance: {
         prefix: 'A question before booking? Message me on ',
@@ -189,7 +189,7 @@ export const soinsPages = {
       description:
         'We can guide you toward the treatment that best fits your current needs.',
       text: 'Book a treatment',
-      href: localizedPagePaths.reserve.en,
+      href: localizedPagePaths.reserveOnline.en,
       analyticsEvent: 'reserve_click',
       reassurance: {
         prefix: 'Unsure? Message me on ',

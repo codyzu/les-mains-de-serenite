@@ -176,7 +176,7 @@ const getOverviewTreatmentCtaHref = (
 ) =>
   item.id === 'maderotherapy'
     ? localizedPagePaths.maderotherapie[locale]
-    : localizedPagePaths.reserve[locale];
+    : localizedPagePaths.reserveOnline[locale];
 
 const toTreatmentData = (
   locale: Locale,

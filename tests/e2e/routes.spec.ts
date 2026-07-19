@@ -72,7 +72,7 @@ test('section overview pages render their main content', async ({page}) => {
   ).toBeVisible();
   await expect(
     page.getByRole('link', {name: 'Réserver un soin'}).first()
-  ).toHaveAttribute('href', '/reserver');
+  ).toHaveAttribute('href', '/reserver-en-ligne');
   await expect(
     page.getByRole('heading', {name: 'Un soin pensé pour vous'})
   ).toBeVisible();
@@ -99,7 +99,7 @@ test('section overview pages render their main content', async ({page}) => {
   ).toBeVisible();
   await expect(
     page.getByRole('link', {name: 'Réserver un soin'}).last()
-  ).toHaveAttribute('href', '/reserver');
+  ).toHaveAttribute('href', '/reserver-en-ligne');
   await expect(
     page.getByText('Une question avant de réserver ? Écrivez-moi sur')
   ).toBeVisible();

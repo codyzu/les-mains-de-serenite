@@ -220,7 +220,7 @@ export const homePages = {
       ],
     },
     booking: {
-      bookingPath: localizedPagePaths.reserve.fr,
+      bookingPath: localizedPagePaths.reserveOnline.fr,
       title: 'Réserver votre soin',
       description:
         'Réservez facilement votre soin en ligne et choisissez le créneau qui vous convient.',
@@ -464,7 +464,7 @@ export const homePages = {
       ],
     },
     booking: {
-      bookingPath: localizedPagePaths.reserve.en,
+      bookingPath: localizedPagePaths.reserveOnline.en,
       title: 'Book your treatment',
       description:
         'Book your treatment online in just a few clicks and choose the time slot that suits you best.',

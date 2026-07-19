@@ -230,7 +230,7 @@ export const maderotherapiePages = {
       description:
         'Réservez votre soin de madérothérapie Jambes Légères à Annecy et accordez à votre corps une vraie pause bien-être.',
       text: 'Réserver ce soin',
-      href: localizedPagePaths.reserve.fr,
+      href: localizedPagePaths.reserveOnline.fr,
       analyticsEvent: 'reserve_click',
       reassurance: {
         prefix: 'Une question avant de réserver ? Écrivez-moi sur ',
@@ -478,7 +478,7 @@ export const maderotherapiePages = {
       description:
         'Book your Light Legs maderotherapy treatment in Annecy and give your body a true wellness pause.',
       text: 'Book this treatment',
-      href: localizedPagePaths.reserve.en,
+      href: localizedPagePaths.reserveOnline.en,
       analyticsEvent: 'reserve_click',
       reassurance: {
         prefix: 'A question before booking? Message me on ',

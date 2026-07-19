@@ -20,7 +20,7 @@ test(
     ).toBeVisible();
     await expect(
       page.getByRole('link', {name: 'Réserver un soin'}).first()
-    ).toHaveAttribute('href', '/reserver');
+    ).toHaveAttribute('href', '/reserver-en-ligne');
     await expect(
       page.getByRole('link', {name: 'WhatsApp'}).first()
     ).toHaveAttribute('href', /^https:\/\/wa\.me\/33766612017\?text=/);
@@ -44,10 +44,9 @@ test(
         })
         .first()
     ).toBeVisible();
-    await expect(page.locator('a[href="/reserver-en-ligne"]')).toHaveAttribute(
-      'href',
-      '/reserver-en-ligne'
-    );
+    await expect(
+      page.locator('main').getByRole('link', {name: 'Réserver ce soin'}).first()
+    ).toHaveAttribute('href', '/reserver-en-ligne');
     await expectNoHorizontalOverflow(page);
 
     await page.goto('/programmes/ventre-leger-jambes-legeres/');
