@@ -572,7 +572,6 @@ export type ReserveOnlinePageData = {
     title: string;
     description: string;
     paymentNote: string;
-    disclaimer: string;
     resetLabel: string;
     resetStatus: string;
   };

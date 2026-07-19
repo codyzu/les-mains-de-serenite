@@ -355,6 +355,12 @@ test('online booking pages render the embedded scheduler shell', async ({
   await expect(page.locator('[data-cal-reset]')).toHaveText(
     /←\s+Choisir une autre durée/
   );
+  await expect(
+    page.getByText('Aucun paiement en ligne · Règlement sur place')
+  ).toBeVisible();
+  await expect(
+    page.getByText('Massage bien-être sans visée médicale')
+  ).toHaveCount(0);
 
   await page.goto('/en/book-online');
 
@@ -365,6 +371,10 @@ test('online booking pages render the embedded scheduler shell', async ({
   await expect(page.locator('[data-cal-reset]')).toHaveText(
     /←\s+Choose another duration/
   );
+  await expect(page.getByText('No online payment · Pay on site')).toBeVisible();
+  await expect(
+    page.getByText('Wellness massage with no medical purpose')
+  ).toHaveCount(0);
 });
 
 test('maderotherapy discovery offers link to the embedded scheduler', async ({

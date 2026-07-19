@@ -7,9 +7,16 @@ interface Props {
     href: string;
   }>;
   centered?: boolean;
+  compact?: boolean;
 }
 
-const {title, text, textLinks = [], centered = true} = Astro.props;
+const {
+  title,
+  text,
+  textLinks = [],
+  centered = true,
+  compact = false,
+} = Astro.props;
 
 const renderTextParts = (value: string) => {
   const parts: Array<string | {text: string; href: string}> = [value];
@@ -34,14 +41,14 @@ const renderTextParts = (value: string) => {
 
 <div
   class:list={[
-    'mb-12',
+    compact ? 'mb-8' : 'mb-12',
     centered ? 'mx-auto max-w-3xl text-center' : 'max-w-2xl',
   ]}
 >
   <h2 class="heading-lg">{title}</h2>
   {
     text ? (
-      <p class="body-lg mt-4">
+      <p class:list={['body-lg', compact ? 'mt-3' : 'mt-4']}>
         {renderTextParts(text).map((part) =>
           typeof part === 'string' ? (
             part

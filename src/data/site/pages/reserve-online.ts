@@ -37,15 +37,13 @@ export const reserveOnlinePages = {
       testimonialQuote: 'Un vrai moment de détente, je recommande vivement.',
       testimonialAuthor: 'Marie, Annecy',
     },
-    // The public Cal selector is intentionally described by duration until
-    // treatment-specific booking routes are introduced.
+    // The public Cal selector is intentionally described by duration. Its
+    // option descriptions are owned in Cal.eu and must not be duplicated here.
     scheduler: {
       title: 'Choisissez la durée de votre séance',
       description:
         'Sélectionnez la durée qui vous convient. La séance sera adaptée à vos besoins lors du rendez-vous.',
       paymentNote: 'Aucun paiement en ligne · Règlement sur place',
-      disclaimer:
-        'Service réservé aux femmes · Massage bien-être sans visée médicale',
       resetLabel: 'Choisir une autre durée',
       resetStatus: 'Retour à la sélection des durées…',
     },
@@ -101,15 +99,13 @@ export const reserveOnlinePages = {
       testimonialQuote: 'A truly relaxing moment, I highly recommend it.',
       testimonialAuthor: 'Marie, Annecy',
     },
-    // The public Cal selector is intentionally described by duration until
-    // treatment-specific booking routes are introduced.
+    // The public Cal selector is intentionally described by duration. Its
+    // option descriptions are owned in Cal.eu and must not be duplicated here.
     scheduler: {
       title: 'Choose your session length',
       description:
         'Select the duration that suits you. Your session will be adapted to your needs during the appointment.',
       paymentNote: 'No online payment · Pay on site',
-      disclaimer:
-        'Women-only service · Wellness massage with no medical purpose',
       resetLabel: 'Choose another duration',
       resetStatus: 'Returning to duration selection…',
     },
