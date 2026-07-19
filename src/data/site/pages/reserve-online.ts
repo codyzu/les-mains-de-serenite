@@ -12,10 +12,10 @@ export const reserveOnlinePages = {
     },
     reserveLink: localizedPagePaths.reserveOnline.fr,
     hero: {
-      kicker: 'Massage bien-être à Annecy',
-      title: 'Réserver votre soin bien-être',
+      kicker: 'Réservation en ligne',
+      title: 'Réservez votre soin bien-être',
       description:
-        'Choisissez votre soin et votre créneau en toute simplicité. Les séances sont proposées sur rendez-vous, dans un cadre calme, bienveillant et apaisant.',
+        'Choisissez la durée qui vous convient, puis sélectionnez votre créneau. Chaque séance est adaptée à vos besoins du moment.',
       reassuranceItems: [
         {
           icon: 'i-lucide-flower',
@@ -26,8 +26,8 @@ export const reserveOnlinePages = {
           label: 'Cadre calme et privé',
         },
         {
-          icon: 'i-lucide-briefcase-medical',
-          label: 'Table et matériel inclus',
+          icon: 'i-lucide-sparkles',
+          label: 'Séance personnalisée',
         },
         {
           icon: 'i-lucide-wallet',
@@ -37,34 +37,34 @@ export const reserveOnlinePages = {
       testimonialQuote: 'Un vrai moment de détente, je recommande vivement.',
       testimonialAuthor: 'Marie, Annecy',
     },
+    // The public Cal selector is intentionally described by duration until
+    // treatment-specific booking routes are introduced.
     scheduler: {
-      title: 'Choisissez votre créneau',
+      title: 'Choisissez la durée de votre séance',
       description:
-        'Choisissez votre soin puis votre créneau en quelques secondes.',
-      detail:
-        'Chaque séance est adaptée à vos besoins du moment, pour vous offrir un véritable moment de détente.',
-      paymentNote: 'Aucun paiement en ligne. Règlement sur place.',
+        'Sélectionnez la durée qui vous convient. La séance sera adaptée à vos besoins lors du rendez-vous.',
+      paymentNote: 'Aucun paiement en ligne · Règlement sur place',
       disclaimer:
         'Service réservé aux femmes · Massage bien-être sans visée médicale',
-      resetLabel: 'Choisir un autre soin',
-      resetStatus: 'Retour à la sélection des soins…',
+      resetLabel: 'Choisir une autre durée',
+      resetStatus: 'Retour à la sélection des durées…',
     },
     contact: {
       title: 'Une question avant de réserver ?',
       subtitle:
-        'Je vous réponds rapidement pour vous aider à choisir le soin le plus adapté.',
+        'Je vous réponds rapidement si vous avez besoin d’aide pour choisir la durée ou préparer votre rendez-vous.',
       whatsappTitle: 'WhatsApp',
       phoneTitle: 'Téléphone',
       emailTitle: 'Email',
       locationTitle: 'Lieu',
       whatsappDescription:
-        'Réponse rapide pour toute question avant réservation.',
-      phoneDescription: 'Pour échanger rapidement avant votre réservation.',
-      emailDescription:
-        'Idéal si vous préférez poser votre question par écrit.',
+        'Le moyen le plus simple pour obtenir une réponse rapide.',
+      phoneDescription: 'Pour en parler directement de vive voix.',
+      emailDescription: 'Pour poser votre question tranquillement par écrit.',
       whatsappLabel: 'Écrire sur WhatsApp',
+      whatsappEmphasis: true,
       whatsappHref: getBusinessWhatsappHref(
-        "Bonjour, j'ai une question avant de réserver un soin."
+        "Bonjour, j'ai une question sur la durée à choisir avant de réserver."
       ),
     },
   },
@@ -76,10 +76,10 @@ export const reserveOnlinePages = {
     },
     reserveLink: localizedPagePaths.reserveOnline.en,
     hero: {
-      kicker: 'Wellness massage for women in Annecy',
+      kicker: 'Online booking',
       title: 'Book your wellness treatment',
       description:
-        'Choose your treatment and your preferred time slot with ease. Sessions are available by appointment in a calm, caring, and soothing setting.',
+        'Choose the session length that suits you, then select your time. Each session is tailored to what you need on the day.',
       reassuranceItems: [
         {
           icon: 'i-lucide-flower',
@@ -90,8 +90,8 @@ export const reserveOnlinePages = {
           label: 'Calm and private setting',
         },
         {
-          icon: 'i-lucide-briefcase-medical',
-          label: 'Massage table and equipment provided',
+          icon: 'i-lucide-sparkles',
+          label: 'Personalized session',
         },
         {
           icon: 'i-lucide-wallet',
@@ -101,32 +101,33 @@ export const reserveOnlinePages = {
       testimonialQuote: 'A truly relaxing moment, I highly recommend it.',
       testimonialAuthor: 'Marie, Annecy',
     },
+    // The public Cal selector is intentionally described by duration until
+    // treatment-specific booking routes are introduced.
     scheduler: {
-      title: 'Choose your time slot',
+      title: 'Choose your session length',
       description:
-        'Pick your treatment and your appointment time in just a few seconds.',
-      detail:
-        'Each session is tailored to your needs at the moment, so you can enjoy a true moment of relaxation.',
-      paymentNote: 'No online payment. Please pay on site.',
+        'Select the duration that suits you. Your session will be adapted to your needs during the appointment.',
+      paymentNote: 'No online payment · Pay on site',
       disclaimer:
         'Women-only service · Wellness massage with no medical purpose',
-      resetLabel: 'Choose another treatment',
-      resetStatus: 'Returning to treatment selection…',
+      resetLabel: 'Choose another duration',
+      resetStatus: 'Returning to duration selection…',
     },
     contact: {
       title: 'A question before booking?',
       subtitle:
-        'I reply quickly to help you choose the treatment that best fits your needs.',
+        'I reply quickly if you need help choosing a duration or preparing for your appointment.',
       whatsappTitle: 'WhatsApp',
       phoneTitle: 'Phone',
       emailTitle: 'Email',
       locationTitle: 'Location',
-      whatsappDescription: 'Quick reply for any question before your booking.',
-      phoneDescription: 'For a quick chat before booking.',
-      emailDescription: 'Best if you prefer to ask your question in writing.',
+      whatsappDescription: 'The simplest way to get a quick answer.',
+      phoneDescription: 'For a quick conversation by phone.',
+      emailDescription: 'To ask your question in writing, at your own pace.',
       whatsappLabel: 'Message on WhatsApp',
+      whatsappEmphasis: true,
       whatsappHref: getBusinessWhatsappHref(
-        'Hello, I have a question before booking a treatment.'
+        'Hello, I have a question about which session length to choose before booking.'
       ),
     },
   },

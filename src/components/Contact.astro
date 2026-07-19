@@ -26,6 +26,7 @@ const {
   phoneDescription,
   emailDescription,
   whatsappLabel,
+  whatsappEmphasis = false,
   whatsappHref,
 } = Astro.props;
 const phoneHref = getPhoneHref(phone);
@@ -44,7 +45,12 @@ const hasLocation = Boolean(locationText);
         hasLocation ? 'xl:grid-cols-4' : 'xl:grid-cols-3',
       ]}
     >
-      <article class="card-soft min-w-0 p-6 sm:p-7">
+      <article
+        class:list={[
+          'card-soft min-w-0 p-6 sm:p-7',
+          whatsappEmphasis && 'border-brand-muted bg-brand-soft/30 shadow-soft',
+        ]}
+      >
         <IconImage
           class="bg-brand-soft text-brand-strong"
           name="i-lucide-message-circle-heart"
@@ -59,7 +65,12 @@ const hasLocation = Boolean(locationText);
           href={effectiveWhatsappHref}
           target="_blank"
           rel="noreferrer"
-          class="body-lg mt-4 inline-flex text-ink transition hover:text-brand-strong"
+          class:list={[
+            'mt-4 inline-flex transition',
+            whatsappEmphasis
+              ? 'rounded-full bg-brand px-5 py-2.5 text-sm font-medium text-white shadow-soft hover:bg-brand-strong'
+              : 'body-lg text-ink hover:text-brand-strong',
+          ]}
           data-analytics-event="whatsapp_click"
         >
           {whatsappLabel}

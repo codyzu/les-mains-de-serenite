@@ -500,6 +500,7 @@ export type ContactBlockData = {
   phoneDescription: string;
   emailDescription: string;
   whatsappLabel: string;
+  whatsappEmphasis?: boolean;
   locationText?: string;
 };
 
@@ -570,7 +571,6 @@ export type ReserveOnlinePageData = {
   scheduler: {
     title: string;
     description: string;
-    detail: string;
     paymentNote: string;
     disclaimer: string;
     resetLabel: string;

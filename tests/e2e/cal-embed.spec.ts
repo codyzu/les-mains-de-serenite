@@ -113,7 +113,7 @@ test('configures the namespaced Cal.eu embed and tracks one privacy-safe convers
       light: {
         'cal-brand': '#7C9F8A',
         'cal-bg': '#FFFFFF',
-        'cal-border-booker-width': '1px',
+        'cal-border-booker-width': '0px',
         radius: '0.75rem',
       },
     },
@@ -172,7 +172,7 @@ test('configures the namespaced Cal.eu embed and tracks one privacy-safe convers
   ]);
 
   const resetButton = page.getByRole('button', {
-    name: 'Choisir un autre soin',
+    name: 'Choisir une autre durée',
   });
 
   await expect(resetButton).toBeHidden();
@@ -199,7 +199,7 @@ test('configures the namespaced Cal.eu embed and tracks one privacy-safe convers
   await expect(resetButton).toBeHidden();
   await expect(page.locator('#cal-inline-lesmainsdeserenite')).toBeFocused();
   await expect(
-    page.getByText('Retour à la sélection des soins…')
+    page.getByText('Retour à la sélection des durées…')
   ).toBeVisible();
 
   await page.evaluate(() => {

@@ -36,7 +36,7 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
 
   <div
     data-cal-shell
-    class="relative min-h-[34rem] w-full overflow-hidden rounded-spa bg-white sm:min-h-[44rem]"
+    class="relative min-h-[34rem] w-full overflow-hidden rounded-spa bg-white shadow-soft sm:min-h-[44rem]"
   >
     <div
       data-cal-mount
@@ -140,19 +140,19 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
     'cal-text': colors.ink.base,
     'cal-text-emphasis': colors.ink.base,
     'cal-text-subtle': colors.ink.muted,
-    'cal-text-muted': colors.ink.subtle,
+    'cal-text-muted': colors.ink.muted,
     'cal-text-inverted': colors.white,
     'cal-bg': colors.white,
     'cal-bg-emphasis': colors.brand.soft,
-    'cal-bg-subtle': colors.surface.base,
-    'cal-bg-muted': colors.surface.muted,
+    'cal-bg-subtle': colors.surface.muted,
+    'cal-bg-muted': colors.surface.soft,
     'cal-bg-inverted': colors.ink.base,
-    'cal-border': colors.brand.soft,
+    'cal-border': colors.brand.muted,
     'cal-border-emphasis': colors.brand.strong,
     'cal-border-subtle': colors.surface.soft,
     'cal-border-muted': colors.surface.muted,
     'cal-border-booker': colors.brand.soft,
-    'cal-border-booker-width': '1px',
+    'cal-border-booker-width': '0px',
     radius: radius.control,
   };
   const calWindow = window as CalWindow;
@@ -445,6 +445,9 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
 
       namespacedCal('ui', {
         theme: 'light',
+        // This does not hide the public profile introduction. It removes the
+        // repeated selected-event metadata before the calendar and form while
+        // preserving option titles, descriptions, and durations in the list.
         hideEventTypeDetails: true,
         showTimezoneWhenEventDetailsHidden: true,
         cssVarsPerTheme: {
