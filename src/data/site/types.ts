@@ -571,6 +571,7 @@ export type ReserveOnlinePageData = {
   scheduler: {
     title: string;
     description: string;
+    expectationNote: string;
     paymentNote: string;
     resetLabel: string;
     resetStatus: string;

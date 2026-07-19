@@ -359,6 +359,11 @@ test('online booking pages render the embedded scheduler shell', async ({
     page.getByText('Aucun paiement en ligne · Règlement sur place')
   ).toBeVisible();
   await expect(
+    page.getByText(
+      'Les soins sont réalisés dans un cadre calme et privé à Annecy. Chaque séance est personnalisée selon vos besoins afin de vous offrir un véritable moment de détente.'
+    )
+  ).toBeVisible();
+  await expect(
     page.getByText('Massage bien-être sans visée médicale')
   ).toHaveCount(0);
 
@@ -372,6 +377,11 @@ test('online booking pages render the embedded scheduler shell', async ({
     /←\s+Choose another duration/
   );
   await expect(page.getByText('No online payment · Pay on site')).toBeVisible();
+  await expect(
+    page.getByText(
+      'Treatments take place in a calm, private setting in Annecy. Each session is tailored to your needs, creating a genuine moment of relaxation.'
+    )
+  ).toBeVisible();
   await expect(
     page.getByText('Wellness massage with no medical purpose')
   ).toHaveCount(0);

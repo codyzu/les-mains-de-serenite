@@ -43,6 +43,8 @@ export const reserveOnlinePages = {
       title: 'Choisissez la durée de votre séance',
       description:
         'Sélectionnez la durée qui vous convient. La séance sera adaptée à vos besoins lors du rendez-vous.',
+      expectationNote:
+        'Les soins sont réalisés dans un cadre calme et privé à Annecy. Chaque séance est personnalisée selon vos besoins afin de vous offrir un véritable moment de détente.',
       paymentNote: 'Aucun paiement en ligne · Règlement sur place',
       resetLabel: 'Choisir une autre durée',
       resetStatus: 'Retour à la sélection des durées…',
@@ -105,6 +107,8 @@ export const reserveOnlinePages = {
       title: 'Choose your session length',
       description:
         'Select the duration that suits you. Your session will be adapted to your needs during the appointment.',
+      expectationNote:
+        'Treatments take place in a calm, private setting in Annecy. Each session is tailored to your needs, creating a genuine moment of relaxation.',
       paymentNote: 'No online payment · Pay on site',
       resetLabel: 'Choose another duration',
       resetStatus: 'Returning to duration selection…',
