@@ -244,25 +244,29 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
         ).matches;
         const behavior = reducedMotion ? 'auto' : 'smooth';
         const isMobile = window.matchMedia('(max-width: 639px)').matches;
-
-        if (isMobile) {
-          const mountBottom = state.mount.getBoundingClientRect().bottom;
-
-          if (Math.abs(mountBottom - window.innerHeight) < 2) {
-            return;
-          }
-
-          state.mount.scrollIntoView({behavior, block: 'end'});
-          return;
-        }
-
-        const sectionTop = bookingSection.getBoundingClientRect().top;
         const headerBottom = Math.max(
           document
             .querySelector<HTMLElement>('[data-site-header]')
             ?.getBoundingClientRect().bottom ?? 0,
           0
         );
+
+        if (isMobile) {
+          const mountTop = state.mount.getBoundingClientRect().top;
+          const desiredMountTop = headerBottom + 8;
+
+          if (Math.abs(mountTop - desiredMountTop) < 2) {
+            return;
+          }
+
+          window.scrollTo({
+            behavior,
+            top: Math.max(window.scrollY + mountTop - desiredMountTop, 0),
+          });
+          return;
+        }
+
+        const sectionTop = bookingSection.getBoundingClientRect().top;
 
         if (sectionTop >= headerBottom && sectionTop < window.innerHeight) {
           return;
@@ -430,7 +434,9 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
         calLink,
         config: {
           layout: 'month_view',
-          useSlotsViewOnSmallScreen: true,
+          // Keep mobile time slots in the auto-sized inline layout. Cal's
+          // alternate small-screen slots view is an internally scrolling pane.
+          useSlotsViewOnSmallScreen: false,
         },
       });
       state.selectorUrl =
@@ -439,7 +445,8 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
 
       namespacedCal('ui', {
         theme: 'light',
-        hideEventTypeDetails: false,
+        hideEventTypeDetails: true,
+        showTimezoneWhenEventDetailsHidden: true,
         cssVarsPerTheme: {
           light: calLightTheme,
         },

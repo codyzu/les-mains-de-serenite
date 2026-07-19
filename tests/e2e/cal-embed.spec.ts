@@ -33,7 +33,7 @@ test('configures the namespaced Cal.eu embed and tracks one privacy-safe convers
             const iframe = document.createElement('iframe');
 
             iframe.src =
-              'https://www.cal.eu/lesmainsdeserenite/embed?layout=month_view&useSlotsViewOnSmallScreen=true&embedType=inline&embed=lesmainsdeserenite';
+              'https://www.cal.eu/lesmainsdeserenite/embed?layout=month_view&useSlotsViewOnSmallScreen=false&embedType=inline&embed=lesmainsdeserenite';
             mount?.append(iframe);
           }
 
@@ -95,7 +95,7 @@ test('configures the namespaced Cal.eu embed and tracks one privacy-safe convers
         calLink: 'lesmainsdeserenite',
         config: {
           layout: 'month_view',
-          useSlotsViewOnSmallScreen: true,
+          useSlotsViewOnSmallScreen: false,
         },
       },
     ],
@@ -107,7 +107,8 @@ test('configures the namespaced Cal.eu embed and tracks one privacy-safe convers
   );
   expect(uiCall?.args[1]).toMatchObject({
     theme: 'light',
-    hideEventTypeDetails: false,
+    hideEventTypeDetails: true,
+    showTimezoneWhenEventDetailsHidden: true,
     cssVarsPerTheme: {
       light: {
         'cal-brand': '#7C9F8A',
@@ -400,8 +401,9 @@ test('uses viewport-appropriate alignment when a selected booker is ready', asyn
 
   await page.setViewportSize({width: 390, height: 844});
 
-  const mobileScrollCalls = await page.evaluate(async () => {
+  const mobileScrollResult = await page.evaluate(async () => {
     const mount = document.querySelector<HTMLElement>('[data-cal-mount]');
+    const header = document.querySelector<HTMLElement>('[data-site-header]');
     const testState = (
       globalThis as unknown as {
         __calViewportTest: {
@@ -409,10 +411,10 @@ test('uses viewport-appropriate alignment when a selected booker is ready', asyn
         };
       }
     ).__calViewportTest;
-    const calls: ScrollIntoViewOptions[] = [];
+    const calls: ScrollToOptions[] = [];
 
-    if (!mount) {
-      throw new Error('Cal mount not found');
+    if (!mount || !header) {
+      throw new Error('Cal mount or site header not found');
     }
 
     const waitForFrame = async () =>
@@ -422,12 +424,18 @@ test('uses viewport-appropriate alignment when a selected booker is ready', asyn
         });
       });
 
-    mount.getBoundingClientRect = () => new DOMRect(0, 400, 390, 821);
-    mount.scrollIntoView = (options?: boolean | ScrollIntoViewOptions) => {
-      if (typeof options === 'object') {
-        calls.push(options);
-      }
-    };
+    const mountTop = 400;
+    const headerBottom = 80;
+    const expectedTop = Math.max(
+      globalThis.scrollY + mountTop - headerBottom - 8,
+      0
+    );
+
+    mount.getBoundingClientRect = () => new DOMRect(0, mountTop, 390, 821);
+    header.getBoundingClientRect = () => new DOMRect(0, 0, 390, headerBottom);
+    globalThis.scrollTo = ((options: ScrollToOptions) => {
+      calls.push(options);
+    }) as typeof globalThis.scrollTo;
 
     testState.listeners.eventTypeSelected();
     testState.listeners.bookerReady();
@@ -436,10 +444,12 @@ test('uses viewport-appropriate alignment when a selected booker is ready', asyn
     await waitForFrame();
     await waitForFrame();
 
-    return calls;
+    return {calls, expectedTop};
   });
 
-  expect(mobileScrollCalls).toEqual([{behavior: 'smooth', block: 'end'}]);
+  expect(mobileScrollResult.calls).toEqual([
+    {behavior: 'smooth', top: mobileScrollResult.expectedTop},
+  ]);
 });
 
 test('does not reposition when the booking heading is already visible', async ({
