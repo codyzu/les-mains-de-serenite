@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import {expect, test} from './fixtures';
 
-test('configures the namespaced Cal.eu embed and tracks one privacy-safe conversion event', async ({
+test('configures the namespaced Cal.eu embed and tracks one privacy-safe conversion event @booking', async ({
   page,
 }) => {
   await page.addInitScript(() => {
@@ -302,9 +302,10 @@ test('configures the namespaced Cal.eu embed and tracks one privacy-safe convers
   });
 });
 
-test('uses viewport-appropriate alignment when a selected booker is ready', async ({
+test('uses viewport-appropriate alignment when a selected booker is ready @booking @mobile', async ({
   page,
 }) => {
+  await page.setViewportSize({width: 1024, height: 768});
   await page.addInitScript(() => {
     const listeners: Record<string, (...args: unknown[]) => void> = {};
     const namespaces: Record<string, (...args: unknown[]) => void> = {};
@@ -452,7 +453,7 @@ test('uses viewport-appropriate alignment when a selected booker is ready', asyn
   ]);
 });
 
-test('does not reposition when the booking heading is already visible', async ({
+test('does not reposition when the booking heading is already visible @booking', async ({
   page,
 }) => {
   await page.addInitScript(() => {
@@ -530,7 +531,7 @@ test('does not reposition when the booking heading is already visible', async ({
   expect(scrollCount).toBe(0);
 });
 
-test('shows the localized direct-booking fallback if the Cal script is blocked', async ({
+test('shows the localized direct-booking fallback if the Cal script is blocked @booking', async ({
   page,
 }) => {
   await page.route('https://app.cal.eu/embed/embed.js', async (route) => {

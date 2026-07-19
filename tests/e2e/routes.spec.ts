@@ -343,7 +343,7 @@ test('Cure Fusion page explains the personalized package', async ({page}) => {
   ).toHaveAttribute('href', '/programmes/ventre-leger-jambes-legeres/');
 });
 
-test('online booking pages render the embedded scheduler shell', async ({
+test('online booking pages render the embedded scheduler shell @booking', async ({
   page,
 }) => {
   await page.goto('/reserver-en-ligne');
@@ -387,7 +387,7 @@ test('online booking pages render the embedded scheduler shell', async ({
   ).toHaveCount(0);
 });
 
-test('maderotherapy discovery offers link to the embedded scheduler', async ({
+test('maderotherapy discovery offers link to the embedded scheduler @booking', async ({
   page,
 }) => {
   await page.goto('/soins/maderotherapie/');

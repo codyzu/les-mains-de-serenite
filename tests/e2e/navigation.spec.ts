@@ -53,7 +53,7 @@ test('configures only homepage and service paths for view transitions', async ({
 });
 
 for (const width of [390, 430]) {
-  test(`mobile language switcher has clear tap targets at ${width}px`, async ({
+  test(`mobile language switcher has clear tap targets at ${width}px @mobile`, async ({
     page,
   }) => {
     await page.setViewportSize({width, height: 844});
@@ -97,7 +97,7 @@ for (const width of [390, 430]) {
   });
 }
 
-test('mobile menu opens, exposes localized links, and closes with Escape', async ({
+test('mobile menu opens, exposes localized links, and closes with Escape @critical @mobile', async ({
   page,
 }) => {
   await page.setViewportSize({width: 390, height: 844});
@@ -131,7 +131,9 @@ test('mobile menu opens, exposes localized links, and closes with Escape', async
   await expect(drawer).toBeHidden();
 });
 
-test('mobile menu contains focus and handles a rapid close', async ({page}) => {
+test('mobile menu contains focus and handles a rapid close @mobile', async ({
+  page,
+}) => {
   await page.setViewportSize({width: 390, height: 844});
   await page.goto('/');
 
@@ -139,7 +141,8 @@ test('mobile menu contains focus and handles a rapid close', async ({page}) => {
   const drawer = page.getByRole('dialog', {name: 'Les Mains de Sérénité'});
   const closeButton = drawer.getByRole('button', {name: 'Fermer le menu'});
 
-  await menuButton.click();
+  await menuButton.focus();
+  await page.keyboard.press('Enter');
   await page.keyboard.press('Escape');
 
   await expect(drawer).toBeHidden();

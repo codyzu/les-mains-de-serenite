@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import process from 'node:process';
-import {defineConfig} from '@playwright/test';
+import {defineConfig, devices} from '@playwright/test';
 
 const port = 4321;
 const baseUrl = `http://127.0.0.1:${port}`;
@@ -25,6 +25,22 @@ export default defineConfig({
     baseURL: baseUrl,
     trace: 'on-first-retry',
   },
+  projects: [
+    {
+      name: 'desktop-chromium',
+      use: {...devices['Desktop Chrome']},
+    },
+    {
+      name: 'mobile-safari',
+      grep: /@(?:critical|mobile|booking)/,
+      use: {...devices['iPhone 15']},
+    },
+    {
+      name: 'mobile-chrome',
+      grep: /@critical/,
+      use: {...devices['Pixel 7']},
+    },
+  ],
   webServer: {
     command: webServerCommand,
     url: baseUrl,

@@ -52,6 +52,19 @@ output. Browser-based specs should import `test` and `expect` from
 fixture blocks Google Analytics and Cloudflare Web Analytics requests during
 local and CI test runs.
 
+The default Playwright run uses three projects: Desktop Chromium runs the full
+suite, Mobile Safari (WebKit with an iPhone 15 profile) runs tests tagged
+`@critical`, `@mobile`, or `@booking`, and Mobile Chrome (Chromium with a Pixel
+7 profile) runs only `@critical` tests. Useful focused commands are:
+
+```sh
+pnpm exec playwright test
+pnpm exec playwright test --project=desktop-chromium
+pnpm exec playwright test --project=mobile-safari
+pnpm exec playwright test --project=mobile-chrome
+pnpm exec playwright test --grep @critical
+```
+
 ## Fonts
 
 This project uses UnoCSS `preset-web-fonts` with the local font processor.
