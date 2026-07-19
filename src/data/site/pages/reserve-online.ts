@@ -46,6 +46,7 @@ export const reserveOnlinePages = {
       expectationNote:
         'Les soins sont réalisés dans un cadre calme et privé à Annecy. Chaque séance est personnalisée selon vos besoins afin de vous offrir un véritable moment de détente.',
       paymentNote: 'Aucun paiement en ligne · Règlement sur place',
+      regionLabel: 'Sélecteur de rendez-vous en ligne',
       resetLabel: 'Choisir une autre durée',
       resetStatus: 'Retour à la sélection des durées…',
     },
@@ -110,6 +111,7 @@ export const reserveOnlinePages = {
       expectationNote:
         'Treatments take place in a calm, private setting in Annecy. Each session is tailored to your needs, creating a genuine moment of relaxation.',
       paymentNote: 'No online payment · Pay on site',
+      regionLabel: 'Online appointment selector',
       resetLabel: 'Choose another duration',
       resetStatus: 'Returning to duration selection…',
     },

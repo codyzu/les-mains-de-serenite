@@ -4,7 +4,7 @@ import type {HomePageData, Locale} from '../types';
 import {getProgramPreviewItems} from '../catalog/programs';
 import {getHomeTreatmentItems} from '../catalog/treatments';
 import {localizedPagePaths} from '../paths';
-import {discoveryOfferBookingHref, getBusinessWhatsappHref} from '../shared';
+import {getBusinessWhatsappHref} from '../shared';
 
 export const homePages = {
   fr: {
@@ -50,7 +50,7 @@ export const homePages = {
         'Une première séance personnalisée pour découvrir l’approche, relâcher les tensions et prendre un vrai moment pour vous.',
       note: 'Le choix idéal si vous découvrez Les Mains de Sérénité ou si vous hésitez entre plusieurs soins.',
       ctaText: 'Réserver l’offre',
-      ctaLink: discoveryOfferBookingHref,
+      ctaLink: localizedPagePaths.discoveryOfferBooking.fr,
       analyticsEvent: 'reserve_click',
       image: {
         src: DiscoveryOffer,
@@ -295,7 +295,7 @@ export const homePages = {
         'A first personalized session to discover the approach, release tension, and take a real moment for yourself.',
       note: 'The ideal choice if you are discovering Les Mains de Sérénité or hesitating between several treatments.',
       ctaText: 'Book the offer',
-      ctaLink: discoveryOfferBookingHref,
+      ctaLink: localizedPagePaths.discoveryOfferBooking.en,
       analyticsEvent: 'reserve_click',
       image: {
         src: DiscoveryOffer,

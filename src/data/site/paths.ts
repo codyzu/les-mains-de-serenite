@@ -33,6 +33,10 @@ export const localizedPagePaths = {
     fr: '/reserver-en-ligne',
     en: '/en/book-online',
   },
+  discoveryOfferBooking: {
+    fr: '/reserver-en-ligne/offre-decouverte',
+    en: '/en/book-online/discovery-offer',
+  },
 } satisfies Record<string, LocalePathMap>;
 
 export const globalPagePaths = {

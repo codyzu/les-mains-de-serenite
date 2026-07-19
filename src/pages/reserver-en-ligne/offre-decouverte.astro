@@ -1,0 +1,11 @@
+---
+import {defaultLocale, getLocalizedSite} from '../../data/site';
+import DiscoveryOfferBookingPageTemplate from '../../page-templates/DiscoveryOfferBookingPageTemplate.astro';
+
+const localized = getLocalizedSite(defaultLocale);
+---
+
+<DiscoveryOfferBookingPageTemplate
+  locale={defaultLocale}
+  localized={localized}
+/>

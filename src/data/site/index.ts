@@ -9,6 +9,7 @@ import {programPages} from './pages/program';
 import {programsPages} from './pages/programs';
 import {reservePages} from './pages/reserve';
 import {reserveOnlinePages} from './pages/reserve-online';
+import {discoveryOfferBookingPages} from './pages/discovery-offer-booking';
 import {globalPagePaths} from './paths';
 import {defaultLocale as defaultSiteLocale} from './shared';
 
@@ -16,6 +17,7 @@ export type {
   AboutData,
   AnalyticsEventName,
   ContactBlockData,
+  DiscoveryOfferBookingPageData,
   FeltBenefitsData,
   GlobalPagesData,
   HeroData,
@@ -61,6 +63,7 @@ const localized = {
       maderotherapie: maderotherapiePages.fr,
       reserve: reservePages.fr,
       reserveOnline: reserveOnlinePages.fr,
+      discoveryOfferBooking: discoveryOfferBookingPages.fr,
     },
   },
   en: {
@@ -76,6 +79,7 @@ const localized = {
       maderotherapie: maderotherapiePages.en,
       reserve: reservePages.en,
       reserveOnline: reserveOnlinePages.en,
+      discoveryOfferBooking: discoveryOfferBookingPages.en,
     },
   },
 } satisfies SiteData['localized'];

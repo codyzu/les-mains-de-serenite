@@ -573,11 +573,41 @@ export type ReserveOnlinePageData = {
     description: string;
     expectationNote: string;
     paymentNote: string;
+    regionLabel: string;
     resetLabel: string;
     resetStatus: string;
   };
   contact: ContactBlockData & {
     whatsappHref: string;
+  };
+};
+
+export type DiscoveryOfferBookingPageData = {
+  meta: {
+    title: string;
+    description: string;
+  };
+  reserveLink: string;
+  calLink: string;
+  hero: {
+    kicker: string;
+    title: string;
+    description: string;
+    reassuranceItems: Array<{
+      icon: string;
+      label: string;
+    }>;
+  };
+  scheduler: {
+    title: string;
+    description: string;
+    expectationNote: string;
+    paymentNote: string;
+    regionLabel: string;
+  };
+  allOptions: {
+    label: string;
+    href: string;
   };
 };
 
@@ -594,6 +624,7 @@ export type LocalizedSiteData = {
     maderotherapie: MaderotherapiePageData;
     reserve: ReservePageData;
     reserveOnline: ReserveOnlinePageData;
+    discoveryOfferBooking: DiscoveryOfferBookingPageData;
   };
 };
 

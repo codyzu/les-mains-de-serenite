@@ -1,0 +1,137 @@
+---
+import CalEmbed from '../components/CalEmbed.astro';
+import IconImage from '../components/IconImage.astro';
+import {
+  localizedPagePaths,
+  type Locale,
+  type LocalizedSiteData,
+} from '../data/site';
+import Layout from '../layouts/Layout.astro';
+import {getBaseUrl} from '../utils/url';
+
+interface Props {
+  locale: Locale;
+  localized: LocalizedSiteData;
+}
+
+const {locale, localized} = Astro.props;
+const {
+  pages: {discoveryOfferBooking},
+} = localized;
+const localePaths = localizedPagePaths.discoveryOfferBooking;
+const baseUrl = getBaseUrl();
+const allOptionsHref = `${baseUrl}${discoveryOfferBooking.allOptions.href.replace(/^\//, '')}`;
+---
+
+<Layout
+  reserveActive
+  locale={locale}
+  canonicalPath={localePaths[locale]}
+  alternatePaths={localePaths}
+  languageSwitchPaths={localePaths}
+  title={discoveryOfferBooking.meta.title}
+  description={discoveryOfferBooking.meta.description}
+  reserveLink={discoveryOfferBooking.reserveLink}
+>
+  <main class="bg-surface">
+    <section
+      class="relative overflow-hidden section-pad !pb-8 !pt-10 sm:!pb-10 sm:!pt-14"
+    >
+      <div
+        class="absolute inset-x-0 top-0 h-[26rem] bg-gradient-to-b from-brand-soft/70 via-surface-muted to-transparent"
+      >
+      </div>
+
+      <div class="container-page relative">
+        <div class="mx-auto max-w-3xl text-center">
+          <p
+            class="text-xs font-medium uppercase tracking-[0.28em] text-ink-muted/90"
+          >
+            {discoveryOfferBooking.hero.kicker}
+          </p>
+          <h1
+            class="heading-xl mt-3 text-[2.5rem] sm:mt-4 sm:text-5xl lg:text-[3.5rem]"
+          >
+            {discoveryOfferBooking.hero.title}
+          </h1>
+          <p class="body-lg mx-auto mt-4 max-w-2xl text-balance">
+            {discoveryOfferBooking.hero.description}
+          </p>
+        </div>
+
+        <div
+          class="mx-auto mt-7 grid max-w-5xl grid-cols-2 overflow-hidden rounded-spa border border-surface-soft bg-white/60 sm:mt-8 lg:grid-cols-4"
+        >
+          {
+            discoveryOfferBooking.hero.reassuranceItems.map(
+              ({icon, label}, index) => (
+                <article
+                  class:list={[
+                    'min-w-0 border-surface-soft px-2 py-3.5 text-center sm:px-4 sm:py-4 lg:border-b-0',
+                    index < 2 && 'border-b',
+                    index % 2 === 0 && 'border-r',
+                    index < 3 && 'lg:border-r',
+                    index === 3 && 'lg:border-r-0',
+                  ]}
+                >
+                  <div class="flex justify-center">
+                    <IconImage
+                      class="mb-0 h-9 w-9 bg-brand-soft text-brand-strong"
+                      name={icon}
+                      iconClass="h-4.5 w-4.5"
+                    />
+                  </div>
+                  <p class="mt-2 text-xs font-semibold leading-5 text-ink sm:text-sm">
+                    {label}
+                  </p>
+                </article>
+              )
+            )
+          }
+        </div>
+      </div>
+    </section>
+
+    <section
+      data-booking-selector
+      id="booking-selector"
+      class="section-pad scroll-mt-28 !py-6 bg-surface-muted/45 sm:!py-8 lg:!pb-12"
+      tabindex="-1"
+    >
+      <div class="container-page">
+        <div class="mx-auto max-w-4xl text-center">
+          <h2 class="heading-md text-[2rem] sm:text-[2.2rem]">
+            {discoveryOfferBooking.scheduler.title}
+          </h2>
+          <p class="mx-auto mt-3 max-w-2xl text-base leading-7 text-ink-muted">
+            {discoveryOfferBooking.scheduler.description}
+          </p>
+          <p class="mx-auto mt-3 max-w-2xl text-sm leading-6 text-ink-muted">
+            {discoveryOfferBooking.scheduler.expectationNote}
+          </p>
+          <p class="mt-2 text-xs leading-5 text-ink-subtle">
+            {discoveryOfferBooking.scheduler.paymentNote}
+          </p>
+        </div>
+
+        <div class="mx-auto mt-5 max-w-5xl">
+          <CalEmbed
+            mode="event"
+            calLink={discoveryOfferBooking.calLink}
+            regionLabel={discoveryOfferBooking.scheduler.regionLabel}
+          />
+        </div>
+
+        <div class="mt-6 text-center">
+          <a
+            class="inline-flex min-h-11 items-center rounded-full px-4 py-2 text-sm font-semibold text-brand-strong underline decoration-brand-muted underline-offset-4 transition hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-strong focus-visible:ring-offset-2 focus-visible:ring-offset-surface-muted"
+            href={allOptionsHref}
+            data-analytics-event="reserve_click"
+          >
+            {discoveryOfferBooking.allOptions.label}
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

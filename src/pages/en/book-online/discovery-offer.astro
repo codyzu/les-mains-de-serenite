@@ -1,0 +1,9 @@
+---
+import {getLocalizedSite} from '../../../data/site';
+import DiscoveryOfferBookingPageTemplate from '../../../page-templates/DiscoveryOfferBookingPageTemplate.astro';
+
+const locale = 'en' as const;
+const localized = getLocalizedSite(locale);
+---
+
+<DiscoveryOfferBookingPageTemplate locale={locale} localized={localized} />

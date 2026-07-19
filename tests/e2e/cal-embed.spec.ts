@@ -547,3 +547,148 @@ test('shows the localized direct-booking fallback if the Cal script is blocked @
     page.getByRole('link', {name: 'Book directly on Cal.eu'})
   ).toHaveAttribute('href', 'https://www.cal.eu/lesmainsdeserenite');
 });
+
+test('embeds the discovery event directly and tracks one shared conversion @booking', async ({
+  page,
+}) => {
+  await page.addInitScript(() => {
+    const calls: Array<{args: unknown[]; namespace?: string}> = [];
+    const listeners: Record<string, (...args: unknown[]) => void> = {};
+    const analyticsCalls: unknown[][] = [];
+    const namespaces: Record<string, (...args: unknown[]) => void> = {};
+    const cal = (...args: unknown[]) => {
+      calls.push({args});
+
+      if (args[0] === 'init' && typeof args[1] === 'string') {
+        const namespace = args[1];
+
+        namespaces[namespace] = (...namespaceArgs: unknown[]) => {
+          calls.push({args: namespaceArgs, namespace});
+
+          if (
+            namespaceArgs[0] === 'on' &&
+            typeof namespaceArgs[1] === 'object' &&
+            namespaceArgs[1] !== null
+          ) {
+            const listener = namespaceArgs[1] as {
+              action: string;
+              callback: (...callbackArgs: unknown[]) => void;
+            };
+
+            listeners[listener.action] = listener.callback;
+          }
+        };
+      }
+    };
+
+    Object.assign(cal, {ns: namespaces});
+    Object.assign(globalThis, {
+      Cal: cal,
+      gtag: (...args: unknown[]) => analyticsCalls.push(args),
+      __calDirectEventTest: {analyticsCalls, calls, listeners},
+    });
+  });
+
+  await page.goto('/reserver-en-ligne/offre-decouverte');
+
+  const calLink = 'lesmainsdeserenite/massage-45-minutes-offre-decouverte';
+  const namespace = 'lesmainsdeserenite-massage-45-minutes-offre-decouverte';
+  const embedRoot = page.locator('[data-cal-embed]');
+
+  await expect(embedRoot).toHaveAttribute('data-cal-mode', 'event');
+  await expect(embedRoot).toHaveAttribute('data-cal-embed-link', calLink);
+  await expect(embedRoot).toHaveAttribute('data-cal-namespace', namespace);
+  await expect(page.locator(`#cal-inline-${namespace}`)).toHaveAttribute(
+    'aria-label',
+    'Réservation de l’offre découverte en ligne'
+  );
+  await expect(page.locator('[data-cal-reset]')).toHaveCount(0);
+  await expect(page.locator('[data-cal-fallback] a')).toHaveAttribute(
+    'href',
+    'https://www.cal.eu/lesmainsdeserenite/massage-45-minutes-offre-decouverte'
+  );
+
+  const inlineCall = await page.evaluate((expectedNamespace) => {
+    const testState = (
+      globalThis as unknown as {
+        __calDirectEventTest: {
+          calls: Array<{args: unknown[]; namespace?: string}>;
+        };
+      }
+    ).__calDirectEventTest;
+
+    return testState.calls.find(
+      ({args, namespace}) =>
+        namespace === expectedNamespace && args[0] === 'inline'
+    );
+  }, namespace);
+
+  expect(inlineCall).toEqual({
+    namespace,
+    args: [
+      'inline',
+      {
+        elementOrSelector: `#cal-inline-${namespace}`,
+        calLink,
+        config: {
+          layout: 'month_view',
+          useSlotsViewOnSmallScreen: false,
+        },
+      },
+    ],
+  });
+
+  const analyticsCalls = await page.evaluate(() => {
+    const testState = (
+      globalThis as unknown as {
+        __calDirectEventTest: {
+          analyticsCalls: unknown[][];
+          listeners: Record<string, (...args: unknown[]) => void>;
+        };
+      }
+    ).__calDirectEventTest;
+
+    Object.assign(globalThis, {
+      gtag: (...args: unknown[]) => testState.analyticsCalls.push(args),
+    });
+    testState.listeners.bookingSuccessfulV2({
+      detail: {email: 'not-forwarded@example.test', name: 'Not Forwarded'},
+    });
+    testState.listeners.bookingSuccessfulV2({
+      detail: {email: 'still-not-forwarded@example.test'},
+    });
+
+    return testState.analyticsCalls;
+  });
+
+  expect(analyticsCalls).toEqual([
+    [
+      'event',
+      'booking_completed',
+      {
+        booking_surface: 'embedded_selector',
+        cal_link: calLink,
+      },
+    ],
+  ]);
+});
+
+test('uses the event-specific Cal fallback on the discovery page @booking', async ({
+  page,
+}) => {
+  await page.route('https://app.cal.eu/embed/embed.js', async (route) => {
+    await route.abort('blockedbyclient');
+  });
+
+  await page.goto('/en/book-online/discovery-offer');
+
+  await expect(
+    page.getByText('The booking calendar cannot be displayed at the moment.')
+  ).toBeVisible();
+  await expect(
+    page.getByRole('link', {name: 'Book directly on Cal.eu'})
+  ).toHaveAttribute(
+    'href',
+    'https://www.cal.eu/lesmainsdeserenite/massage-45-minutes-offre-decouverte'
+  );
+});

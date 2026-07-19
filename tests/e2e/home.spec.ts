@@ -68,10 +68,7 @@ test('French homepage renders the main business content and booking CTA', async 
   ).toHaveAttribute('href', '/reserver-en-ligne');
   await expect(
     page.getByRole('link', {name: 'Réserver l’offre'})
-  ).toHaveAttribute(
-    'href',
-    'https://cal.eu/lesmainsdeserenite/massage-45-minutes-offre-decouverte'
-  );
+  ).toHaveAttribute('href', '/reserver-en-ligne/offre-decouverte');
   await expect(page.getByText('Soin d’entretien')).toHaveCount(0);
   await expect(page.getByText('Demander un soin d’entretien')).toHaveCount(0);
 });
@@ -144,8 +141,5 @@ test('English homepage renders localized content and booking CTA', async ({
   ).toHaveAttribute('href', '/en/book-online');
   await expect(
     page.getByRole('link', {name: 'Book the offer'})
-  ).toHaveAttribute(
-    'href',
-    'https://cal.eu/lesmainsdeserenite/massage-45-minutes-offre-decouverte'
-  );
+  ).toHaveAttribute('href', '/en/book-online/discovery-offer');
 });

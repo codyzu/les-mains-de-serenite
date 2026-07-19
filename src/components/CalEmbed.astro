@@ -1,11 +1,19 @@
 ---
 interface Props {
   calLink: string;
-  resetLabel: string;
-  resetStatus: string;
+  mode?: 'selector' | 'event';
+  regionLabel: string;
+  resetLabel?: string;
+  resetStatus?: string;
 }
 
-const {calLink, resetLabel, resetStatus} = Astro.props;
+const {
+  calLink,
+  mode = 'selector',
+  regionLabel,
+  resetLabel,
+  resetStatus,
+} = Astro.props;
 const namespace = calLink
   .replaceAll('/', '-')
   .replaceAll(/[^a-z\d-]/gi, '')
@@ -18,21 +26,26 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
   data-cal-embed
   class="cal-embed"
   data-cal-embed-link={calLink}
+  data-cal-mode={mode}
   data-cal-namespace={namespace}
   data-cal-reset-status={resetStatus}
 >
-  <div class="flex px-1">
-    <button
-      data-cal-reset
-      disabled
-      hidden
-      class="mb-3 inline-flex min-h-11 items-center gap-2 rounded-full px-3 py-2 text-sm font-medium text-ink-muted transition hover:bg-brand-soft/45 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-strong focus-visible:ring-offset-2 focus-visible:ring-offset-surface-muted disabled:cursor-wait disabled:opacity-50 sm:mb-4"
-      type="button"
-    >
-      <span aria-hidden="true">←</span>
-      <span>{resetLabel}</span>
-    </button>
-  </div>
+  {
+    mode === 'selector' ? (
+      <div class="flex px-1">
+        <button
+          data-cal-reset
+          disabled
+          hidden
+          class="mb-3 inline-flex min-h-11 items-center gap-2 rounded-full px-3 py-2 text-sm font-medium text-ink-muted transition hover:bg-brand-soft/45 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-strong focus-visible:ring-offset-2 focus-visible:ring-offset-surface-muted disabled:cursor-wait disabled:opacity-50 sm:mb-4"
+          type="button"
+        >
+          <span aria-hidden="true">←</span>
+          <span>{resetLabel}</span>
+        </button>
+      </div>
+    ) : null
+  }
 
   <div
     data-cal-shell
@@ -43,7 +56,7 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
       class="min-h-[30rem] w-full sm:min-h-[38rem]"
       id={mountId}
       role="region"
-      aria-label="Sélecteur de rendez-vous en ligne / Online appointment selector"
+      aria-label={regionLabel}
       tabindex="-1"
     >
     </div>
@@ -112,8 +125,9 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
     bookerTransitionStartedAt?: number;
     listenersRegistered: boolean;
     mount: HTMLElement;
+    mode: 'selector' | 'event';
     readyTimer?: number;
-    resetButton: HTMLButtonElement;
+    resetButton?: HTMLButtonElement;
     root: HTMLElement;
     selectorUrl?: string;
   };
@@ -178,8 +192,10 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
     loading?.classList.add('hidden');
     fallback?.classList.remove('hidden');
     fallback?.classList.add('flex');
-    state.resetButton.hidden = true;
-    state.resetButton.disabled = true;
+    if (state.resetButton) {
+      state.resetButton.hidden = true;
+      state.resetButton.disabled = true;
+    }
     state.root.dataset.calState = 'failed';
   };
 
@@ -190,7 +206,9 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
     state.root
       .querySelector<HTMLElement>('[data-cal-loading]')
       ?.classList.add('hidden');
-    state.resetButton.disabled = false;
+    if (state.resetButton) {
+      state.resetButton.disabled = false;
+    }
     state.root.dataset.calState = 'ready';
   };
 
@@ -206,8 +224,10 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
     fallback?.classList.add('hidden');
     fallback?.classList.remove('flex');
     loading?.classList.remove('hidden');
-    state.resetButton.hidden = true;
-    state.resetButton.disabled = true;
+    if (state.resetButton) {
+      state.resetButton.hidden = true;
+      state.resetButton.disabled = true;
+    }
     state.root.dataset.calState = 'loading';
 
     if (isReset && loadingLabel) {
@@ -221,8 +241,9 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
     state.bookerTransitionStartedAt = undefined;
 
     if (
-      transitionStartedAt === undefined ||
-      performance.now() - transitionStartedAt > bookerTransitionTimeout
+      state.mode === 'selector' &&
+      (transitionStartedAt === undefined ||
+        performance.now() - transitionStartedAt > bookerTransitionTimeout)
     ) {
       return;
     }
@@ -323,12 +344,22 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
   };
 
   const mountEmbed = (root: HTMLElement) => {
-    const {calEmbedLink: calLink, calNamespace: namespace} = root.dataset;
+    const {
+      calEmbedLink: calLink,
+      calMode: mode,
+      calNamespace: namespace,
+    } = root.dataset;
     const mount = root.querySelector<HTMLElement>('[data-cal-mount]');
     const resetButton =
       root.querySelector<HTMLButtonElement>('[data-cal-reset]');
 
-    if (!calLink || !namespace || !mount || !resetButton) {
+    if (
+      !calLink ||
+      !namespace ||
+      !mount ||
+      (mode !== 'selector' && mode !== 'event') ||
+      (mode === 'selector' && !resetButton)
+    ) {
       return;
     }
 
@@ -337,6 +368,7 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
       bookingTracked: false,
       listenersRegistered: previousState?.listenersRegistered ?? false,
       mount,
+      mode,
       resetButton,
       root,
       selectorUrl: previousState?.selectorUrl,
@@ -369,7 +401,9 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
 
             if (currentState) {
               currentState.bookerTransitionStartedAt = performance.now();
-              currentState.resetButton.hidden = false;
+              if (currentState.resetButton) {
+                currentState.resetButton.hidden = false;
+              }
             }
           },
         });
@@ -521,9 +555,4 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
   document.addEventListener('astro:page-load', initializeEmbeds);
 </script>
 
-<!--
-  Later phases can pass a private link as calLink (for example,
-  "lesmainsdeserenite/private-event"); its namespace is derived internally.
-  Private appointment pages are intentionally deferred. booking_completed is the
-  shared GA4 key event imported into Google Ads.
--->
+<!-- booking_completed is the shared GA4 key event imported into Google Ads. -->

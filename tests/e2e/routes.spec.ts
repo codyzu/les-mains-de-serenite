@@ -29,6 +29,8 @@ const routes = [
   '/en/book',
   '/reserver-en-ligne',
   '/en/book-online',
+  '/reserver-en-ligne/offre-decouverte',
+  '/en/book-online/discovery-offer',
   '/mentions-legales',
   '/politique-de-confidentialite',
 ];
@@ -394,6 +396,38 @@ test('online booking pages render the embedded scheduler shell @booking', async 
   await expect(
     page.getByText('Wellness massage with no medical purpose')
   ).toHaveCount(0);
+});
+
+test('discovery-offer booking pages preserve localized promotional context @booking', async ({
+  page,
+}) => {
+  await page.goto('/reserver-en-ligne/offre-decouverte');
+
+  await expect(
+    page.getByRole('heading', {
+      name: 'Votre première séance de 45 min à 55 €',
+    })
+  ).toBeVisible();
+  await expect(page.getByText('Première séance', {exact: true})).toBeVisible();
+  await expect(page.getByText('Réservé aux femmes')).toBeVisible();
+  await expect(page.locator('[data-cal-reset]')).toHaveCount(0);
+  await expect(
+    page.getByRole('link', {name: 'Voir toutes les options de réservation'})
+  ).toHaveAttribute('href', '/reserver-en-ligne');
+
+  await page.goto('/en/book-online/discovery-offer');
+
+  await expect(
+    page.getByRole('heading', {
+      name: 'Your first 45-minute session for €55',
+    })
+  ).toBeVisible();
+  await expect(page.getByText('First session', {exact: true})).toBeVisible();
+  await expect(page.getByText('For women only')).toBeVisible();
+  await expect(page.locator('[data-cal-reset]')).toHaveCount(0);
+  await expect(
+    page.getByRole('link', {name: 'View all booking options'})
+  ).toHaveAttribute('href', '/en/book-online');
 });
 
 test('maderotherapy discovery offers link to the embedded scheduler @booking', async ({
