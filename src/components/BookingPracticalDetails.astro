@@ -1,0 +1,19 @@
+---
+import type {BookingPracticalInfoData} from '../data/site';
+
+type Props = Pick<
+  BookingPracticalInfoData,
+  'practicalTitle' | 'practicalDescription'
+>;
+
+const {practicalTitle, practicalDescription} = Astro.props;
+---
+
+<div data-booking-practical-details class="mx-auto mt-5 max-w-2xl text-center">
+  <h3 class="text-sm font-semibold leading-6 text-ink">
+    {practicalTitle}
+  </h3>
+  <p class="mt-1 text-base leading-6 text-ink-muted">
+    {practicalDescription}
+  </p>
+</div>

@@ -1,5 +1,6 @@
 import type {Locale, LocalizedSiteData, SiteData} from './types';
 import {business} from './business';
+import {bookingPracticalInfo} from './booking-practical-info';
 import {chrome} from './chrome';
 import {cureFusionPages} from './pages/cure-fusion';
 import {homePages} from './pages/home';
@@ -16,6 +17,7 @@ import {defaultLocale as defaultSiteLocale} from './shared';
 export type {
   AboutData,
   AnalyticsEventName,
+  BookingPracticalInfoData,
   ContactBlockData,
   DiscoveryOfferBookingPageData,
   FeltBenefitsData,
@@ -54,6 +56,7 @@ const localized = {
     locale: 'fr-FR',
     lang: 'fr',
     chrome: chrome.fr,
+    bookingPracticalInfo: bookingPracticalInfo.fr,
     pages: {
       home: homePages.fr,
       soins: soinsPages.fr,
@@ -70,6 +73,7 @@ const localized = {
     locale: 'en-US',
     lang: 'en',
     chrome: chrome.en,
+    bookingPracticalInfo: bookingPracticalInfo.en,
     pages: {
       home: homePages.en,
       soins: soinsPages.en,

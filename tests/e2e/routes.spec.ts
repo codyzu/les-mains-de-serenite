@@ -367,13 +367,29 @@ test('online booking pages render the embedded scheduler shell @booking', async 
     /←\s+Choisir une autre durée/
   );
   await expect(
-    page.getByText('Aucun paiement en ligne · Règlement sur place')
+    page.getByText(
+      'Aucun paiement en ligne. Le règlement s’effectue sur place en espèces. Les cartes bancaires ne sont pas acceptées.'
+    )
+  ).toBeVisible();
+  await expect(
+    page.getByRole('heading', {
+      name: 'Un accueil privé, sur rendez-vous',
+    })
   ).toBeVisible();
   await expect(
     page.getByText(
-      'Les soins sont réalisés dans un cadre calme et privé à Annecy. Chaque séance est personnalisée selon vos besoins afin de vous offrir un véritable moment de détente.'
+      'Vous serez accueillie dans un espace calme et privé à Annecy, réservé à une seule cliente à la fois.'
     )
   ).toBeVisible();
+  await expect(
+    page.getByRole('heading', {name: 'Informations pratiques'})
+  ).toBeVisible();
+  await expect(
+    page.getByText(
+      'Merci de venir seule, sauf accord préalable, et d’arriver à l’heure de votre rendez-vous. Il n’y a pas de salle d’attente sur place.'
+    )
+  ).toBeVisible();
+  await expect(page.getByText(/à mon domicile/i)).toHaveCount(0);
   await expect(
     page.getByText('Massage bien-être sans visée médicale')
   ).toHaveCount(0);
@@ -387,10 +403,27 @@ test('online booking pages render the embedded scheduler shell @booking', async 
   await expect(page.locator('[data-cal-reset]')).toHaveText(
     /←\s+Choose another duration/
   );
-  await expect(page.getByText('No online payment · Pay on site')).toBeVisible();
   await expect(
     page.getByText(
-      'Treatments take place in a calm, private setting in Annecy. Each session is tailored to your needs, creating a genuine moment of relaxation.'
+      'No online payment is required. Payment is made on site in cash. Bank cards are not accepted.'
+    )
+  ).toBeVisible();
+  await expect(
+    page.getByRole('heading', {
+      name: 'A private, appointment-only welcome',
+    })
+  ).toBeVisible();
+  await expect(
+    page.getByText(
+      'You will be welcomed in a calm and private space in Annecy, reserved for one client at a time.'
+    )
+  ).toBeVisible();
+  await expect(
+    page.getByRole('heading', {name: 'Practical information'})
+  ).toBeVisible();
+  await expect(
+    page.getByText(
+      'Please come alone unless agreed otherwise, and arrive at the scheduled time. There is no waiting room on site.'
     )
   ).toBeVisible();
   await expect(
@@ -410,6 +443,19 @@ test('discovery-offer booking pages preserve localized promotional context @book
   ).toBeVisible();
   await expect(page.getByText('Première séance', {exact: true})).toBeVisible();
   await expect(page.getByText('Réservé aux femmes')).toBeVisible();
+  await expect(
+    page.getByRole('heading', {
+      name: 'Un accueil privé, sur rendez-vous',
+    })
+  ).toBeVisible();
+  await expect(
+    page.getByText(
+      'Aucun paiement en ligne. Le règlement s’effectue sur place en espèces. Les cartes bancaires ne sont pas acceptées.'
+    )
+  ).toBeVisible();
+  await expect(
+    page.getByRole('heading', {name: 'Informations pratiques'})
+  ).toBeVisible();
   await expect(page.locator('[data-cal-reset]')).toHaveCount(0);
   await expect(
     page.getByRole('link', {name: 'Voir toutes les options de réservation'})
@@ -424,6 +470,19 @@ test('discovery-offer booking pages preserve localized promotional context @book
   ).toBeVisible();
   await expect(page.getByText('First session', {exact: true})).toBeVisible();
   await expect(page.getByText('For women only')).toBeVisible();
+  await expect(
+    page.getByRole('heading', {
+      name: 'A private, appointment-only welcome',
+    })
+  ).toBeVisible();
+  await expect(
+    page.getByText(
+      'No online payment is required. Payment is made on site in cash. Bank cards are not accepted.'
+    )
+  ).toBeVisible();
+  await expect(
+    page.getByRole('heading', {name: 'Practical information'})
+  ).toBeVisible();
   await expect(page.locator('[data-cal-reset]')).toHaveCount(0);
   await expect(
     page.getByRole('link', {name: 'View all booking options'})

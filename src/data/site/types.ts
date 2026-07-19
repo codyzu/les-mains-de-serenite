@@ -551,6 +551,15 @@ export type ReservePageData = {
   };
 };
 
+export type BookingPracticalInfoData = {
+  title: string;
+  description: string;
+  paymentTitle: string;
+  paymentDescription: string;
+  practicalTitle: string;
+  practicalDescription: string;
+};
+
 export type ReserveOnlinePageData = {
   meta: {
     title: string;
@@ -571,8 +580,6 @@ export type ReserveOnlinePageData = {
   scheduler: {
     title: string;
     description: string;
-    expectationNote: string;
-    paymentNote: string;
     regionLabel: string;
     resetLabel: string;
     resetStatus: string;
@@ -600,8 +607,6 @@ export type DiscoveryOfferBookingPageData = {
   scheduler: {
     title: string;
     description: string;
-    expectationNote: string;
-    paymentNote: string;
     regionLabel: string;
   };
   allOptions: {
@@ -614,6 +619,7 @@ export type LocalizedSiteData = {
   locale: string;
   lang: string;
   chrome: SiteChromeData;
+  bookingPracticalInfo: BookingPracticalInfoData;
   pages: {
     home: HomePageData;
     soins: SoinsOverviewPageData;

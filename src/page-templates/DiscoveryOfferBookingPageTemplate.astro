@@ -1,5 +1,7 @@
 ---
 import CalEmbed from '../components/CalEmbed.astro';
+import BookingPracticalDetails from '../components/BookingPracticalDetails.astro';
+import BookingPracticalInfo from '../components/BookingPracticalInfo.astro';
 import IconImage from '../components/IconImage.astro';
 import {
   localizedPagePaths,
@@ -17,6 +19,7 @@ interface Props {
 const {locale, localized} = Astro.props;
 const {
   pages: {discoveryOfferBooking},
+  bookingPracticalInfo,
 } = localized;
 const localePaths = localizedPagePaths.discoveryOfferBooking;
 const baseUrl = getBaseUrl();
@@ -107,21 +110,18 @@ const allOptionsHref = `${baseUrl}${discoveryOfferBooking.allOptions.href.replac
           <p class="mx-auto mt-3 max-w-2xl text-base leading-7 text-ink-muted">
             {discoveryOfferBooking.scheduler.description}
           </p>
-          <p class="mx-auto mt-3 max-w-2xl text-sm leading-6 text-ink-muted">
-            {discoveryOfferBooking.scheduler.expectationNote}
-          </p>
-          <p class="mt-2 text-xs leading-5 text-ink-subtle">
-            {discoveryOfferBooking.scheduler.paymentNote}
-          </p>
+          <BookingPracticalInfo {...bookingPracticalInfo} />
         </div>
 
-        <div class="mx-auto mt-5 max-w-5xl">
+        <div class="mx-auto mt-4 max-w-5xl sm:mt-5">
           <CalEmbed
             mode="event"
             calLink={discoveryOfferBooking.calLink}
             regionLabel={discoveryOfferBooking.scheduler.regionLabel}
           />
         </div>
+
+        <BookingPracticalDetails {...bookingPracticalInfo} />
 
         <div class="mt-6 text-center">
           <a

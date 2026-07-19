@@ -26,9 +26,6 @@ export const discoveryOfferBookingPages = {
       title: 'Choisissez votre créneau',
       description:
         'Vous réservez directement l’offre découverte : il ne reste qu’à choisir la date et l’heure qui vous conviennent.',
-      expectationNote:
-        'La séance est personnalisée selon vos besoins du moment, dans un cadre calme, privé et confidentiel à Annecy.',
-      paymentNote: 'Aucun paiement en ligne · Règlement sur place',
       regionLabel: 'Réservation de l’offre découverte en ligne',
     },
     allOptions: {
@@ -59,9 +56,6 @@ export const discoveryOfferBookingPages = {
       title: 'Choose your time',
       description:
         'You are booking the discovery offer directly; simply choose the date and time that suit you.',
-      expectationNote:
-        'Your session is tailored to what you need on the day, in a calm, private, and confidential setting in Annecy.',
-      paymentNote: 'No online payment · Pay on site',
       regionLabel: 'Online booking for the discovery offer',
     },
     allOptions: {
