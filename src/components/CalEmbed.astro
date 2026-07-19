@@ -109,6 +109,7 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
   };
   type EmbedState = {
     bookingTracked: boolean;
+    bookerTransitionStartedAt?: number;
     listenersRegistered: boolean;
     mount: HTMLElement;
     readyTimer?: number;
@@ -125,6 +126,7 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
 
   const calScriptUrl = 'https://app.cal.eu/embed/embed.js';
   const calOrigin = 'https://www.cal.eu';
+  const bookerTransitionTimeout = 30_000;
   const {colors, radius} = designTokens;
   // Cal embed CSS variables omit the "--" prefix. The authoritative list is
   // Cal's “Customize the embed with CSS variables” documentation; these
@@ -211,6 +213,67 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
     if (isReset && loadingLabel) {
       loadingLabel.textContent = state.root.dataset.calResetStatus ?? '';
     }
+  };
+
+  const scrollToBookingSection = (state: EmbedState) => {
+    const transitionStartedAt = state.bookerTransitionStartedAt;
+
+    state.bookerTransitionStartedAt = undefined;
+
+    if (
+      transitionStartedAt === undefined ||
+      performance.now() - transitionStartedAt > bookerTransitionTimeout
+    ) {
+      return;
+    }
+
+    const bookingSection = state.root.closest<HTMLElement>(
+      '[data-booking-selector]'
+    );
+
+    if (!bookingSection) {
+      return;
+    }
+
+    // bookerReady is public Cal API. Two frames let its accompanying iframe
+    // resize reach the parent layout before correcting the document position.
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        const reducedMotion = window.matchMedia(
+          '(prefers-reduced-motion: reduce)'
+        ).matches;
+        const behavior = reducedMotion ? 'auto' : 'smooth';
+        const isMobile = window.matchMedia('(max-width: 639px)').matches;
+
+        if (isMobile) {
+          const mountBottom = state.mount.getBoundingClientRect().bottom;
+
+          if (Math.abs(mountBottom - window.innerHeight) < 2) {
+            return;
+          }
+
+          state.mount.scrollIntoView({behavior, block: 'end'});
+          return;
+        }
+
+        const sectionTop = bookingSection.getBoundingClientRect().top;
+        const headerBottom = Math.max(
+          document
+            .querySelector<HTMLElement>('[data-site-header]')
+            ?.getBoundingClientRect().bottom ?? 0,
+          0
+        );
+
+        if (sectionTop >= headerBottom && sectionTop < window.innerHeight) {
+          return;
+        }
+
+        bookingSection.scrollIntoView({
+          behavior,
+          block: 'start',
+        });
+      });
+    });
   };
 
   const ensureCal = (): CalApi => {
@@ -301,7 +364,18 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
             const currentState = embedStates.get(namespace);
 
             if (currentState) {
+              currentState.bookerTransitionStartedAt = performance.now();
               currentState.resetButton.hidden = false;
+            }
+          },
+        });
+        namespacedCal('on', {
+          action: 'bookerReady',
+          callback: () => {
+            const currentState = embedStates.get(namespace);
+
+            if (currentState) {
+              scrollToBookingSection(currentState);
             }
           },
         });
@@ -398,6 +472,7 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
 
     window.clearTimeout(state.readyTimer);
     state.bookingTracked = false;
+    state.bookerTransitionStartedAt = undefined;
     showLoading(state, true);
     iframe.src = selectorUrl;
     state.readyTimer = window.setTimeout(() => showFallback(state), 20_000);

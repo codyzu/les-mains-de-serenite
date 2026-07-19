@@ -244,6 +244,7 @@ test('configures the namespaced Cal.eu embed and tracks one privacy-safe convers
       listenerCallCounts: Object.fromEntries(
         [
           'eventTypeSelected',
+          'bookerReady',
           'linkReady',
           'linkFailed',
           'bookingSuccessfulV2',
@@ -292,11 +293,231 @@ test('configures the namespaced Cal.eu embed and tracks one privacy-safe convers
     inlineCallCount: 1,
     listenerCallCounts: {
       eventTypeSelected: 1,
+      bookerReady: 1,
       linkReady: 1,
       linkFailed: 1,
       bookingSuccessfulV2: 1,
     },
   });
+});
+
+test('uses viewport-appropriate alignment when a selected booker is ready', async ({
+  page,
+}) => {
+  await page.addInitScript(() => {
+    const listeners: Record<string, (...args: unknown[]) => void> = {};
+    const namespaces: Record<string, (...args: unknown[]) => void> = {};
+    const cal = (...args: unknown[]) => {
+      if (args[0] === 'init' && typeof args[1] === 'string') {
+        const namespace = args[1];
+
+        namespaces[namespace] = (...namespaceArgs: unknown[]) => {
+          if (
+            namespaceArgs[0] === 'inline' &&
+            typeof namespaceArgs[1] === 'object' &&
+            namespaceArgs[1] !== null
+          ) {
+            const {elementOrSelector} = namespaceArgs[1] as {
+              elementOrSelector: string;
+            };
+            const iframe = document.createElement('iframe');
+
+            iframe.src = 'https://www.cal.eu/lesmainsdeserenite/embed';
+            document.querySelector(elementOrSelector)?.append(iframe);
+          }
+
+          if (
+            namespaceArgs[0] === 'on' &&
+            typeof namespaceArgs[1] === 'object' &&
+            namespaceArgs[1] !== null
+          ) {
+            const listener = namespaceArgs[1] as {
+              action: string;
+              callback: (...callbackArgs: unknown[]) => void;
+            };
+
+            listeners[listener.action] = listener.callback;
+          }
+        };
+      }
+    };
+
+    Object.assign(cal, {ns: namespaces});
+    Object.assign(globalThis, {
+      Cal: cal,
+      __calViewportTest: {listeners},
+    });
+  });
+
+  await page.goto('/reserver-en-ligne');
+
+  const scrollCalls = await page.evaluate(async () => {
+    const section = document.querySelector<HTMLElement>(
+      '[data-booking-selector]'
+    );
+    const header = document.querySelector<HTMLElement>('[data-site-header]');
+    const testState = (
+      globalThis as unknown as {
+        __calViewportTest: {
+          listeners: Record<string, (...args: unknown[]) => void>;
+        };
+      }
+    ).__calViewportTest;
+    const calls: ScrollIntoViewOptions[] = [];
+
+    if (!section || !header) {
+      throw new Error('Booking section or site header not found');
+    }
+
+    const sectionRect = new DOMRect(0, -200);
+    const waitForFrame = async () =>
+      new Promise<void>((resolve) => {
+        requestAnimationFrame(() => {
+          resolve();
+        });
+      });
+
+    section.getBoundingClientRect = () => sectionRect;
+    header.getBoundingClientRect = () => new DOMRect(0, -400);
+    section.scrollIntoView = (options?: boolean | ScrollIntoViewOptions) => {
+      if (typeof options === 'object') {
+        calls.push(options);
+      }
+    };
+
+    testState.listeners.linkReady();
+    testState.listeners.eventTypeSelected();
+    testState.listeners.bookerReady();
+    testState.listeners.bookerReady();
+    await waitForFrame();
+    await waitForFrame();
+    await waitForFrame();
+
+    return calls;
+  });
+
+  expect(scrollCalls).toEqual([{behavior: 'smooth', block: 'start'}]);
+
+  await page.setViewportSize({width: 390, height: 844});
+
+  const mobileScrollCalls = await page.evaluate(async () => {
+    const mount = document.querySelector<HTMLElement>('[data-cal-mount]');
+    const testState = (
+      globalThis as unknown as {
+        __calViewportTest: {
+          listeners: Record<string, (...args: unknown[]) => void>;
+        };
+      }
+    ).__calViewportTest;
+    const calls: ScrollIntoViewOptions[] = [];
+
+    if (!mount) {
+      throw new Error('Cal mount not found');
+    }
+
+    const waitForFrame = async () =>
+      new Promise<void>((resolve) => {
+        requestAnimationFrame(() => {
+          resolve();
+        });
+      });
+
+    mount.getBoundingClientRect = () => new DOMRect(0, 400, 390, 821);
+    mount.scrollIntoView = (options?: boolean | ScrollIntoViewOptions) => {
+      if (typeof options === 'object') {
+        calls.push(options);
+      }
+    };
+
+    testState.listeners.eventTypeSelected();
+    testState.listeners.bookerReady();
+    testState.listeners.bookerReady();
+    await waitForFrame();
+    await waitForFrame();
+    await waitForFrame();
+
+    return calls;
+  });
+
+  expect(mobileScrollCalls).toEqual([{behavior: 'smooth', block: 'end'}]);
+});
+
+test('does not reposition when the booking heading is already visible', async ({
+  page,
+}) => {
+  await page.addInitScript(() => {
+    const listeners: Record<string, (...args: unknown[]) => void> = {};
+    const namespaces: Record<string, (...args: unknown[]) => void> = {};
+    const cal = (...args: unknown[]) => {
+      if (args[0] === 'init' && typeof args[1] === 'string') {
+        const namespace = args[1];
+
+        namespaces[namespace] = (...namespaceArgs: unknown[]) => {
+          if (
+            namespaceArgs[0] === 'on' &&
+            typeof namespaceArgs[1] === 'object' &&
+            namespaceArgs[1] !== null
+          ) {
+            const listener = namespaceArgs[1] as {
+              action: string;
+              callback: (...callbackArgs: unknown[]) => void;
+            };
+
+            listeners[listener.action] = listener.callback;
+          }
+        };
+      }
+    };
+
+    Object.assign(cal, {ns: namespaces});
+    Object.assign(globalThis, {
+      Cal: cal,
+      __calViewportTest: {listeners},
+    });
+  });
+
+  await page.goto('/en/book-online');
+
+  const scrollCount = await page.evaluate(async () => {
+    const section = document.querySelector<HTMLElement>(
+      '[data-booking-selector]'
+    );
+    const testState = (
+      globalThis as unknown as {
+        __calViewportTest: {
+          listeners: Record<string, (...args: unknown[]) => void>;
+        };
+      }
+    ).__calViewportTest;
+    let calls = 0;
+
+    if (!section) {
+      throw new Error('Booking section not found');
+    }
+
+    const sectionRect = new DOMRect(0, 200);
+    const waitForFrame = async () =>
+      new Promise<void>((resolve) => {
+        requestAnimationFrame(() => {
+          resolve();
+        });
+      });
+
+    section.getBoundingClientRect = () => sectionRect;
+    section.scrollIntoView = () => {
+      calls += 1;
+    };
+
+    testState.listeners.eventTypeSelected();
+    testState.listeners.bookerReady();
+    await waitForFrame();
+    await waitForFrame();
+    await waitForFrame();
+
+    return calls;
+  });
+
+  expect(scrollCount).toBe(0);
 });
 
 test('shows the localized direct-booking fallback if the Cal script is blocked', async ({
