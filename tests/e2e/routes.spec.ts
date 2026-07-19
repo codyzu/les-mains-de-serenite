@@ -79,6 +79,15 @@ test('section overview pages render their main content', async ({page}) => {
   await expect(
     page.getByRole('heading', {name: 'Madérothérapie'})
   ).toBeVisible();
+  const treatmentCards = page.locator('#soins article');
+
+  await expect(treatmentCards.locator('a')).toHaveCount(5);
+  await expect(
+    treatmentCards.getByRole('link', {name: 'Réserver ce soin'})
+  ).toHaveCount(4);
+  await expect(
+    treatmentCards.getByRole('link', {name: 'Découvrir'})
+  ).toHaveAttribute('href', '/soins/maderotherapie/');
   await expect(
     page.getByRole('heading', {name: 'Vous ne savez pas quel soin choisir ?'})
   ).toBeVisible();

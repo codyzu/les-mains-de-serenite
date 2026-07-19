@@ -3,10 +3,20 @@ import type {SoinsSectionData} from '../data/site';
 import SectionIntro from './SectionIntro.astro';
 import IconImage from './IconImage.astro';
 
-type Props = SoinsSectionData;
+type Props = SoinsSectionData & {
+  showItemActions?: boolean;
+};
 
-const {title, intro, introLinks, recommendedLabel, ctaText, ctaLink, items} =
-  Astro.props;
+const {
+  title,
+  intro,
+  introLinks,
+  recommendedLabel,
+  ctaText,
+  ctaLink,
+  items,
+  showItemActions = true,
+} = Astro.props;
 
 const getCardGridClasses = (index: number) => {
   const isLastTabletCard = items.length % 2 === 1 && index === items.length - 1;
@@ -87,7 +97,7 @@ const getCardGridClasses = (index: number) => {
               ))}
             </div>
 
-            {item.ctaText && item.ctaLink ? (
+            {showItemActions && item.ctaText && item.ctaLink ? (
               <a
                 href={item.ctaLink}
                 class="mt-6 inline-flex min-h-[2.75rem] w-full items-center justify-center rounded-full border border-brand-soft bg-white/60 px-5 py-3 text-sm font-medium text-brand-strong transition hover:bg-brand-soft/60"

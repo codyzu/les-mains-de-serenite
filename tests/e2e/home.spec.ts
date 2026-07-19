@@ -22,6 +22,7 @@ test('French homepage renders the main business content and booking CTA', async 
   await expect(
     page.getByRole('link', {name: 'Découvrir les soins'})
   ).toHaveAttribute('href', '/soins/');
+  await expect(page.locator('#soins article a')).toHaveCount(0);
   await expect(page.getByText('Prendre le temps')).toBeVisible();
   await expect(page.getByText('S’accorder une vraie pause')).toBeVisible();
   await expect(
@@ -56,9 +57,6 @@ test('French homepage renders the main business content and booking CTA', async 
   await expect(
     page.getByRole('link', {name: 'Découvrir la cure'})
   ).toHaveAttribute('href', '/programmes/cure-fusion/');
-  await expect(
-    page.locator('a[href="/soins/maderotherapie/"]').first()
-  ).toHaveAttribute('href', '/soins/maderotherapie/');
   await expect(
     page.getByRole('heading', {name: 'Quel est votre besoin aujourd’hui ?'})
   ).toBeVisible();
@@ -96,6 +94,7 @@ test('English homepage renders localized content and booking CTA', async ({
   await expect(
     page.getByRole('link', {name: 'Discover the treatments'})
   ).toHaveAttribute('href', '/en/massages/');
+  await expect(page.locator('#soins article a')).toHaveCount(0);
   await expect(page.getByText('Take your time')).toBeVisible();
   await expect(page.getByText('Allow yourself a real pause')).toBeVisible();
   await expect(
@@ -128,9 +127,6 @@ test('English homepage renders localized content and booking CTA', async ({
   await expect(
     page.getByRole('link', {name: 'Discover the package'})
   ).toHaveAttribute('href', '/en/programs/cure-fusion/');
-  await expect(
-    page.locator('a[href="/en/massages/maderotherapy/"]').first()
-  ).toHaveAttribute('href', '/en/massages/maderotherapy/');
   await expect(
     page.getByRole('heading', {name: 'What do you need today?'})
   ).toBeVisible();
