@@ -1,18 +1,26 @@
 ---
 interface Props {
   calLink: string;
+  instructionDescription: string;
+  instructionTitle?: string;
   mode?: 'selector' | 'event';
   regionLabel: string;
   resetLabel?: string;
   resetStatus?: string;
+  selectedInstructionDescription?: string;
+  selectedInstructionTitle?: string;
 }
 
 const {
   calLink,
+  instructionDescription,
+  instructionTitle,
   mode = 'selector',
   regionLabel,
   resetLabel,
   resetStatus,
+  selectedInstructionDescription,
+  selectedInstructionTitle,
 } = Astro.props;
 const namespace = calLink
   .replaceAll('/', '-')
@@ -29,7 +37,41 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
   data-cal-mode={mode}
   data-cal-namespace={namespace}
   data-cal-reset-status={resetStatus}
+  data-cal-instruction-state={mode === 'selector' ? 'duration' : 'booking'}
 >
+  <slot />
+
+  <div
+    data-cal-instruction
+    class="mx-auto mt-4 max-w-2xl pb-4 text-center sm:mt-5 sm:pb-5"
+    aria-live="polite"
+    aria-atomic="true"
+  >
+    {
+      instructionTitle ? (
+        <p
+          data-cal-instruction-title
+          data-initial-text={instructionTitle}
+          data-selected-text={selectedInstructionTitle}
+          class="text-base font-semibold leading-6 text-ink"
+        >
+          {instructionTitle}
+        </p>
+      ) : null
+    }
+    <p
+      data-cal-instruction-description
+      data-initial-text={instructionDescription}
+      data-selected-text={selectedInstructionDescription}
+      class:list={[
+        'text-sm leading-6 text-ink-muted sm:text-base',
+        instructionTitle && 'mt-1',
+      ]}
+    >
+      {instructionDescription}
+    </p>
+  </div>
+
   {
     mode === 'selector' ? (
       <div class="flex px-1">
@@ -37,7 +79,7 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
           data-cal-reset
           disabled
           hidden
-          class="mb-3 inline-flex min-h-11 items-center gap-2 rounded-full px-3 py-2 text-sm font-medium text-ink-muted transition hover:bg-brand-soft/45 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-strong focus-visible:ring-offset-2 focus-visible:ring-offset-surface-muted disabled:cursor-wait disabled:opacity-50 sm:mb-4"
+          class="mb-4 inline-flex min-h-11 items-center gap-2 rounded-full px-3 py-2 text-sm font-medium text-ink-muted transition hover:bg-brand-soft/45 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-strong focus-visible:ring-offset-2 focus-visible:ring-offset-surface-muted disabled:cursor-wait disabled:opacity-50 sm:mb-5"
           type="button"
         >
           <span aria-hidden="true">←</span>
@@ -156,7 +198,11 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
     'cal-text-subtle': colors.ink.muted,
     'cal-text-muted': colors.ink.muted,
     'cal-text-inverted': colors.white,
-    'cal-bg': colors.white,
+    // Cal.eu does not apply styles.eventTypeListItem.background to the
+    // server-rendered selector until it is remounted after internal
+    // navigation. The selector rows use bg-default on first load, so this
+    // supported token provides the same warm surface immediately.
+    'cal-bg': colors.surface.base,
     'cal-bg-emphasis': colors.brand.soft,
     'cal-bg-subtle': colors.surface.muted,
     'cal-bg-muted': colors.surface.soft,
@@ -168,6 +214,22 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
     'cal-border-booker': colors.brand.soft,
     'cal-border-booker-width': '0px',
     radius: radius.control,
+  };
+  const calUiConfig = {
+    theme: 'light',
+    // This does not hide the public profile introduction. It removes the
+    // repeated selected-event metadata before the calendar and form while
+    // preserving option titles, descriptions, and durations in the list.
+    hideEventTypeDetails: true,
+    showTimezoneWhenEventDetailsHidden: true,
+    styles: {
+      eventTypeListItem: {
+        background: colors.surface.base,
+      },
+    },
+    cssVarsPerTheme: {
+      light: calLightTheme,
+    },
   };
   const calWindow = window as CalWindow;
   const initializedElements =
@@ -233,6 +295,24 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
     if (isReset && loadingLabel) {
       loadingLabel.textContent = state.root.dataset.calResetStatus ?? '';
     }
+  };
+
+  const showSelectedInstruction = (state: EmbedState, selected: boolean) => {
+    const title = state.root.querySelector<HTMLElement>(
+      '[data-cal-instruction-title]'
+    );
+    const description = state.root.querySelector<HTMLElement>(
+      '[data-cal-instruction-description]'
+    );
+    const textKey = selected ? 'selectedText' : 'initialText';
+
+    if (title) {
+      title.textContent = title.dataset[textKey] ?? '';
+    }
+    if (description) {
+      description.textContent = description.dataset[textKey] ?? '';
+    }
+    state.root.dataset.calInstructionState = selected ? 'booking' : 'duration';
   };
 
   const scrollToBookingSection = (state: EmbedState) => {
@@ -399,8 +479,9 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
           callback: () => {
             const currentState = embedStates.get(namespace);
 
-            if (currentState) {
+            if (currentState?.mode === 'selector') {
               currentState.bookerTransitionStartedAt = performance.now();
+              showSelectedInstruction(currentState, true);
               if (currentState.resetButton) {
                 currentState.resetButton.hidden = false;
               }
@@ -463,6 +544,10 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
         state.listenersRegistered = true;
       }
 
+      // Queue the supported UI configuration before mounting so it is
+      // available to the iframe as soon as Cal signals readiness.
+      namespacedCal('ui', calUiConfig);
+
       namespacedCal('inline', {
         elementOrSelector: `#${mount.id}`,
         calLink,
@@ -476,18 +561,6 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
       state.selectorUrl =
         state.selectorUrl ??
         mount.querySelector<HTMLIFrameElement>('iframe')?.src;
-
-      namespacedCal('ui', {
-        theme: 'light',
-        // This does not hide the public profile introduction. It removes the
-        // repeated selected-event metadata before the calendar and form while
-        // preserving option titles, descriptions, and durations in the list.
-        hideEventTypeDetails: true,
-        showTimezoneWhenEventDetailsHidden: true,
-        cssVarsPerTheme: {
-          light: calLightTheme,
-        },
-      });
 
       state.readyTimer = window.setTimeout(() => showFallback(state), 20_000);
     } catch {
@@ -517,6 +590,7 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
     window.clearTimeout(state.readyTimer);
     state.bookingTracked = false;
     state.bookerTransitionStartedAt = undefined;
+    showSelectedInstruction(state, false);
     showLoading(state, true);
     iframe.src = selectorUrl;
     state.readyTimer = window.setTimeout(() => showFallback(state), 20_000);

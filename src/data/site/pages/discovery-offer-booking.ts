@@ -24,8 +24,7 @@ export const discoveryOfferBookingPages = {
     },
     scheduler: {
       title: 'Choisissez votre créneau',
-      description:
-        'Vous réservez directement l’offre découverte : il ne reste qu’à choisir la date et l’heure qui vous conviennent.',
+      description: 'Sélectionnez la date et l’heure qui vous conviennent.',
       regionLabel: 'Réservation de l’offre découverte en ligne',
     },
     allOptions: {
@@ -54,8 +53,7 @@ export const discoveryOfferBookingPages = {
     },
     scheduler: {
       title: 'Choose your time',
-      description:
-        'You are booking the discovery offer directly; simply choose the date and time that suit you.',
+      description: 'Select the date and time that suit you.',
       regionLabel: 'Online booking for the discovery offer',
     },
     allOptions: {

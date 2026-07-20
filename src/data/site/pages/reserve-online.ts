@@ -15,7 +15,7 @@ export const reserveOnlinePages = {
       kicker: 'Réservation en ligne',
       title: 'Réservez votre soin bien-être',
       description:
-        'Choisissez la durée qui vous convient, puis sélectionnez votre créneau. Chaque séance est adaptée à vos besoins du moment.',
+        'Prenez rendez-vous en quelques instants pour votre prochain moment de bien-être.',
       reassuranceItems: [
         {
           icon: 'i-lucide-flower',
@@ -30,8 +30,8 @@ export const reserveOnlinePages = {
           label: 'Séance personnalisée',
         },
         {
-          icon: 'i-lucide-wallet',
-          label: 'Paiement sur place',
+          icon: 'i-lucide-clock-3',
+          label: '4 durées disponibles',
         },
       ],
       testimonialQuote: 'Un vrai moment de détente, je recommande vivement.',
@@ -40,17 +40,20 @@ export const reserveOnlinePages = {
     // The public Cal selector is intentionally described by duration. Its
     // option descriptions are owned in Cal.eu and must not be duplicated here.
     scheduler: {
-      title: 'Choisissez la durée de votre séance',
-      description:
-        'Sélectionnez la durée qui vous convient. La séance sera adaptée à vos besoins lors du rendez-vous.',
+      title: 'Choisissez la durée de votre soin',
+      instructionTitle: 'Choisissez votre durée de soin',
+      instructionDescription:
+        'Touchez une durée ci-dessous pour afficher les créneaux disponibles.',
+      selectedInstructionTitle: 'Choisissez votre créneau',
+      selectedInstructionDescription:
+        'Sélectionnez ensuite la date et l’heure qui vous conviennent.',
       regionLabel: 'Sélecteur de rendez-vous en ligne',
-      resetLabel: 'Choisir une autre durée',
+      resetLabel: 'Changer de durée',
       resetStatus: 'Retour à la sélection des durées…',
     },
     contact: {
-      title: 'Une question avant de réserver ?',
-      subtitle:
-        'Je vous réponds rapidement si vous avez besoin d’aide pour choisir la durée ou préparer votre rendez-vous.',
+      title: 'Une question ?',
+      subtitle: 'Je vous réponds avec plaisir.',
       whatsappTitle: 'WhatsApp',
       phoneTitle: 'Téléphone',
       emailTitle: 'Email',
@@ -76,8 +79,7 @@ export const reserveOnlinePages = {
     hero: {
       kicker: 'Online booking',
       title: 'Book your wellness treatment',
-      description:
-        'Choose the session length that suits you, then select your time. Each session is tailored to what you need on the day.',
+      description: 'Book your next moment of well-being in just a few steps.',
       reassuranceItems: [
         {
           icon: 'i-lucide-flower',
@@ -92,8 +94,8 @@ export const reserveOnlinePages = {
           label: 'Personalized session',
         },
         {
-          icon: 'i-lucide-wallet',
-          label: 'Pay on site',
+          icon: 'i-lucide-clock-3',
+          label: '4 durations available',
         },
       ],
       testimonialQuote: 'A truly relaxing moment, I highly recommend it.',
@@ -102,17 +104,19 @@ export const reserveOnlinePages = {
     // The public Cal selector is intentionally described by duration. Its
     // option descriptions are owned in Cal.eu and must not be duplicated here.
     scheduler: {
-      title: 'Choose your session length',
-      description:
-        'Select the duration that suits you. Your session will be adapted to your needs during the appointment.',
+      title: 'Choose your treatment duration',
+      instructionTitle: 'Choose your treatment duration',
+      instructionDescription: 'Tap a duration below to view available times.',
+      selectedInstructionTitle: 'Choose your time',
+      selectedInstructionDescription:
+        'Then select the date and time that suit you.',
       regionLabel: 'Online appointment selector',
-      resetLabel: 'Choose another duration',
+      resetLabel: 'Change duration',
       resetStatus: 'Returning to duration selection…',
     },
     contact: {
-      title: 'A question before booking?',
-      subtitle:
-        'I reply quickly if you need help choosing a duration or preparing for your appointment.',
+      title: 'A question?',
+      subtitle: 'I’ll be happy to help.',
       whatsappTitle: 'WhatsApp',
       phoneTitle: 'Phone',
       emailTitle: 'Email',

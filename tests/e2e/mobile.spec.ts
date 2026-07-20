@@ -77,9 +77,11 @@ test(
     const bookingSection = page.locator('[data-booking-selector]');
     const header = page.locator('[data-site-header]');
 
-    await bookingSection.scrollIntoViewIfNeeded();
+    await bookingSection.evaluate((element) => {
+      element.scrollIntoView();
+    });
     await expect(
-      page.getByRole('heading', {name: 'Choisissez la durée de votre séance'})
+      page.getByRole('heading', {name: 'Choisissez la durée de votre soin'})
     ).toBeVisible();
     await expect(
       page.getByRole('link', {name: 'Réserver directement sur Cal.eu'})

@@ -1,6 +1,5 @@
 ---
 import CalEmbed from '../components/CalEmbed.astro';
-import BookingPracticalDetails from '../components/BookingPracticalDetails.astro';
 import BookingPracticalInfo from '../components/BookingPracticalInfo.astro';
 import IconImage from '../components/IconImage.astro';
 import {
@@ -39,7 +38,7 @@ const allOptionsHref = `${baseUrl}${discoveryOfferBooking.allOptions.href.replac
 >
   <main class="bg-surface">
     <section
-      class="relative overflow-hidden section-pad !pb-8 !pt-10 sm:!pb-10 sm:!pt-14"
+      class="relative overflow-hidden section-pad !pb-5 !pt-8 sm:!pb-7 sm:!pt-10"
     >
       <div
         class="absolute inset-x-0 top-0 h-[26rem] bg-gradient-to-b from-brand-soft/70 via-surface-muted to-transparent"
@@ -58,13 +57,13 @@ const allOptionsHref = `${baseUrl}${discoveryOfferBooking.allOptions.href.replac
           >
             {discoveryOfferBooking.hero.title}
           </h1>
-          <p class="body-lg mx-auto mt-4 max-w-2xl text-balance">
+          <p class="body-base mx-auto mt-3 max-w-2xl text-balance sm:mt-4">
             {discoveryOfferBooking.hero.description}
           </p>
         </div>
 
         <div
-          class="mx-auto mt-7 grid max-w-5xl grid-cols-2 overflow-hidden rounded-spa border border-surface-soft bg-white/60 sm:mt-8 lg:grid-cols-4"
+          class="mx-auto mt-5 grid max-w-5xl grid-cols-2 overflow-hidden rounded-spa border border-surface-soft bg-white/60 sm:mt-6 lg:grid-cols-4"
         >
           {
             discoveryOfferBooking.hero.reassuranceItems.map(
@@ -99,7 +98,7 @@ const allOptionsHref = `${baseUrl}${discoveryOfferBooking.allOptions.href.replac
     <section
       data-booking-selector
       id="booking-selector"
-      class="section-pad scroll-mt-28 !py-6 bg-surface-muted/45 sm:!py-8 lg:!pb-12"
+      class="section-pad scroll-mt-28 !pb-8 !pt-5 bg-surface-muted/45 sm:!pt-6 lg:!pb-10"
       tabindex="-1"
     >
       <div class="container-page">
@@ -107,23 +106,19 @@ const allOptionsHref = `${baseUrl}${discoveryOfferBooking.allOptions.href.replac
           <h2 class="heading-md text-[2rem] sm:text-[2.2rem]">
             {discoveryOfferBooking.scheduler.title}
           </h2>
-          <p class="mx-auto mt-3 max-w-2xl text-base leading-7 text-ink-muted">
-            {discoveryOfferBooking.scheduler.description}
-          </p>
           <BookingPracticalInfo {...bookingPracticalInfo} />
         </div>
 
-        <div class="mx-auto mt-4 max-w-5xl sm:mt-5">
+        <div class="mx-auto mt-3 max-w-5xl sm:mt-4">
           <CalEmbed
             mode="event"
             calLink={discoveryOfferBooking.calLink}
+            instructionDescription={discoveryOfferBooking.scheduler.description}
             regionLabel={discoveryOfferBooking.scheduler.regionLabel}
           />
         </div>
 
-        <BookingPracticalDetails {...bookingPracticalInfo} />
-
-        <div class="mt-6 text-center">
+        <div class="mt-4 text-center">
           <a
             class="inline-flex min-h-11 items-center rounded-full px-4 py-2 text-sm font-semibold text-brand-strong underline decoration-brand-muted underline-offset-4 transition hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-strong focus-visible:ring-offset-2 focus-visible:ring-offset-surface-muted"
             href={allOptionsHref}

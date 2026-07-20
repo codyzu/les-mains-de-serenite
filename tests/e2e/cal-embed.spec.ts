@@ -109,15 +109,31 @@ test('configures the namespaced Cal.eu embed and tracks one privacy-safe convers
     theme: 'light',
     hideEventTypeDetails: true,
     showTimezoneWhenEventDetailsHidden: true,
+    styles: {
+      eventTypeListItem: {
+        background: '#F6F3EE',
+      },
+    },
     cssVarsPerTheme: {
       light: {
         'cal-brand': '#7C9F8A',
-        'cal-bg': '#FFFFFF',
+        'cal-bg': '#F6F3EE',
         'cal-border-booker-width': '0px',
         radius: '0.75rem',
       },
     },
   });
+  expect(
+    embedConfiguration.findIndex(
+      ({args, namespace}) =>
+        namespace === 'lesmainsdeserenite' && args[0] === 'ui'
+    )
+  ).toBeLessThan(
+    embedConfiguration.findIndex(
+      ({args, namespace}) =>
+        namespace === 'lesmainsdeserenite' && args[0] === 'inline'
+    )
+  );
 
   await page.evaluate(() => {
     const testState = (
@@ -172,9 +188,22 @@ test('configures the namespaced Cal.eu embed and tracks one privacy-safe convers
   ]);
 
   const resetButton = page.getByRole('button', {
-    name: 'Choisir une autre durée',
+    name: 'Changer de durée',
   });
 
+  await expect(embedRoot).toHaveAttribute(
+    'data-cal-instruction-state',
+    'duration'
+  );
+  await expect(
+    page.getByText('Choisissez votre durée de soin', {exact: true})
+  ).toBeVisible();
+  await expect(
+    page.getByText(
+      'Touchez une durée ci-dessous pour afficher les créneaux disponibles.',
+      {exact: true}
+    )
+  ).toBeVisible();
   await expect(resetButton).toBeHidden();
 
   await page.evaluate(() => {
@@ -189,6 +218,19 @@ test('configures the namespaced Cal.eu embed and tracks one privacy-safe convers
     testState.listeners.eventTypeSelected();
   });
 
+  await expect(embedRoot).toHaveAttribute(
+    'data-cal-instruction-state',
+    'booking'
+  );
+  await expect(
+    page.getByText('Choisissez votre créneau', {exact: true})
+  ).toBeVisible();
+  await expect(
+    page.getByText(
+      'Sélectionnez ensuite la date et l’heure qui vous conviennent.',
+      {exact: true}
+    )
+  ).toBeVisible();
   await expect(resetButton).toBeVisible();
   await expect(resetButton).toBeEnabled();
   await resetButton.click();
@@ -197,6 +239,13 @@ test('configures the namespaced Cal.eu embed and tracks one privacy-safe convers
     'loading'
   );
   await expect(resetButton).toBeHidden();
+  await expect(embedRoot).toHaveAttribute(
+    'data-cal-instruction-state',
+    'duration'
+  );
+  await expect(
+    page.getByText('Choisissez votre durée de soin', {exact: true})
+  ).toBeVisible();
   await expect(page.locator('#cal-inline-lesmainsdeserenite')).toBeFocused();
   await expect(
     page.getByText('Retour à la sélection des durées…')
@@ -596,6 +645,10 @@ test('embeds the discovery event directly and tracks one shared conversion @book
   const embedRoot = page.locator('[data-cal-embed]');
 
   await expect(embedRoot).toHaveAttribute('data-cal-mode', 'event');
+  await expect(embedRoot).toHaveAttribute(
+    'data-cal-instruction-state',
+    'booking'
+  );
   await expect(embedRoot).toHaveAttribute('data-cal-embed-link', calLink);
   await expect(embedRoot).toHaveAttribute('data-cal-namespace', namespace);
   await expect(page.locator(`#cal-inline-${namespace}`)).toHaveAttribute(
@@ -603,6 +656,11 @@ test('embeds the discovery event directly and tracks one shared conversion @book
     'Réservation de l’offre découverte en ligne'
   );
   await expect(page.locator('[data-cal-reset]')).toHaveCount(0);
+  await expect(
+    page.getByText('Sélectionnez la date et l’heure qui vous conviennent.', {
+      exact: true,
+    })
+  ).toBeVisible();
   await expect(page.locator('[data-cal-fallback] a')).toHaveAttribute(
     'href',
     'https://www.cal.eu/lesmainsdeserenite/massage-45-minutes-offre-decouverte'

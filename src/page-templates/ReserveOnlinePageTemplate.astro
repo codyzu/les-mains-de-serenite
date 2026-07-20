@@ -1,7 +1,6 @@
 ---
 import Contact from '../components/Contact.astro';
 import CalEmbed from '../components/CalEmbed.astro';
-import BookingPracticalDetails from '../components/BookingPracticalDetails.astro';
 import BookingPracticalInfo from '../components/BookingPracticalInfo.astro';
 import IconImage from '../components/IconImage.astro';
 import {
@@ -39,7 +38,7 @@ const whatsappUrl = home.whatsapp.generalHref;
 >
   <main class="bg-surface">
     <section
-      class="relative overflow-hidden section-pad !pb-8 !pt-10 sm:!pb-10 sm:!pt-14"
+      class="relative overflow-hidden section-pad !pb-5 !pt-8 sm:!pb-7 sm:!pt-10"
     >
       <div
         class="absolute inset-x-0 top-0 h-[26rem] bg-gradient-to-b from-brand-soft/70 via-surface-muted to-transparent"
@@ -59,13 +58,13 @@ const whatsappUrl = home.whatsapp.generalHref;
           >
             {reserveOnline.hero.title}
           </h1>
-          <p class="body-lg mx-auto mt-4 max-w-2xl text-balance">
+          <p class="body-base mx-auto mt-3 max-w-2xl text-balance sm:mt-4">
             {reserveOnline.hero.description}
           </p>
         </div>
 
         <div
-          class="mx-auto mt-7 grid max-w-5xl grid-cols-2 overflow-hidden rounded-spa border border-surface-soft bg-white/60 sm:mt-8 lg:grid-cols-4"
+          class="mx-auto mt-5 grid max-w-5xl grid-cols-2 overflow-hidden rounded-spa border border-surface-soft bg-white/60 sm:mt-6 lg:grid-cols-4"
         >
           {
             reserveOnline.hero.reassuranceItems.map(({icon, label}, index) => (
@@ -98,7 +97,7 @@ const whatsappUrl = home.whatsapp.generalHref;
     <section
       data-booking-selector
       id="booking-selector"
-      class="section-pad scroll-mt-28 !py-6 bg-surface-muted/45 sm:!py-8 lg:!pb-10"
+      class="section-pad scroll-mt-28 !pb-7 !pt-5 bg-surface-muted/45 sm:!pb-8 sm:!pt-6"
       tabindex="-1"
     >
       <div class="container-page">
@@ -106,15 +105,19 @@ const whatsappUrl = home.whatsapp.generalHref;
           <h2 class="heading-md text-[2rem] sm:text-[2.2rem]">
             {reserveOnline.scheduler.title}
           </h2>
-          <p class="mx-auto mt-3 max-w-2xl text-base leading-7 text-ink-muted">
-            {reserveOnline.scheduler.description}
-          </p>
           <BookingPracticalInfo {...bookingPracticalInfo} />
         </div>
 
-        <div class="mx-auto mt-4 max-w-5xl sm:mt-5">
+        <div class="mx-auto mt-3 max-w-5xl sm:mt-4">
           <CalEmbed
             calLink="lesmainsdeserenite"
+            instructionTitle={reserveOnline.scheduler.instructionTitle}
+            instructionDescription={reserveOnline.scheduler
+              .instructionDescription}
+            selectedInstructionTitle={reserveOnline.scheduler
+              .selectedInstructionTitle}
+            selectedInstructionDescription={reserveOnline.scheduler
+              .selectedInstructionDescription}
             regionLabel={reserveOnline.scheduler.regionLabel}
             resetLabel={reserveOnline.scheduler.resetLabel}
             resetStatus={reserveOnline.scheduler.resetStatus}
@@ -122,17 +125,15 @@ const whatsappUrl = home.whatsapp.generalHref;
         </div>
 
         <figure
-          class="mx-auto mt-4 max-w-2xl border-t border-surface-soft px-5 pt-4 text-center"
+          class="mx-auto mt-6 max-w-2xl border-t border-surface-soft px-5 pt-4 text-center sm:mt-8"
         >
           <blockquote class="text-base leading-7 text-ink-muted">
             “{reserveOnline.hero.testimonialQuote}”
           </blockquote>
-          <figcaption class="mt-2 text-sm text-ink-subtle">
+          <figcaption class="mt-1.5 text-sm text-ink-subtle">
             — {reserveOnline.hero.testimonialAuthor}
           </figcaption>
         </figure>
-
-        <BookingPracticalDetails {...bookingPracticalInfo} />
       </div>
     </section>
 

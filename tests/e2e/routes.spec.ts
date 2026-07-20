@@ -364,29 +364,20 @@ test('online booking pages render the embedded scheduler shell @booking', async 
   ).toBeVisible();
   await expect(page.locator('#cal-inline-lesmainsdeserenite')).toBeVisible();
   await expect(page.locator('[data-cal-reset]')).toHaveText(
-    /←\s+Choisir une autre durée/
+    /←\s+Changer de durée/
   );
   await expect(
+    page.getByRole('heading', {name: 'À savoir avant de réserver'})
+  ).toBeVisible();
+  await expect(
     page.getByText(
-      'Aucun paiement en ligne. Le règlement s’effectue sur place en espèces. Les cartes bancaires ne sont pas acceptées.'
+      'Accueil privé sur rendez-vous · Une cliente à la fois · Règlement sur place en espèces'
     )
   ).toBeVisible();
-  await expect(
-    page.getByRole('heading', {
-      name: 'Un accueil privé, sur rendez-vous',
-    })
-  ).toBeVisible();
+  await page.getByText('Informations pratiques', {exact: true}).click();
   await expect(
     page.getByText(
-      'Vous serez accueillie dans un espace calme et privé à Annecy, réservé à une seule cliente à la fois.'
-    )
-  ).toBeVisible();
-  await expect(
-    page.getByRole('heading', {name: 'Informations pratiques'})
-  ).toBeVisible();
-  await expect(
-    page.getByText(
-      'Merci de venir seule, sauf accord préalable, et d’arriver à l’heure de votre rendez-vous. Il n’y a pas de salle d’attente sur place.'
+      'Merci de venir seule afin de préserver le calme et l’intimité du soin. Il n’y a pas de salle d’attente sur place. Merci également d’arriver à l’heure de votre rendez-vous. Les cartes bancaires ne sont pas acceptées.'
     )
   ).toBeVisible();
   await expect(page.getByText(/à mon domicile/i)).toHaveCount(0);
@@ -401,29 +392,20 @@ test('online booking pages render the embedded scheduler shell @booking', async 
   ).toBeVisible();
   await expect(page.locator('#cal-inline-lesmainsdeserenite')).toBeVisible();
   await expect(page.locator('[data-cal-reset]')).toHaveText(
-    /←\s+Choose another duration/
+    /←\s+Change duration/
   );
   await expect(
+    page.getByRole('heading', {name: 'Before your appointment'})
+  ).toBeVisible();
+  await expect(
     page.getByText(
-      'No online payment is required. Payment is made on site in cash. Bank cards are not accepted.'
+      'Private appointment-based welcome · One client at a time · Payment on site in cash'
     )
   ).toBeVisible();
-  await expect(
-    page.getByRole('heading', {
-      name: 'A private, appointment-only welcome',
-    })
-  ).toBeVisible();
+  await page.getByText('Practical information', {exact: true}).click();
   await expect(
     page.getByText(
-      'You will be welcomed in a calm and private space in Annecy, reserved for one client at a time.'
-    )
-  ).toBeVisible();
-  await expect(
-    page.getByRole('heading', {name: 'Practical information'})
-  ).toBeVisible();
-  await expect(
-    page.getByText(
-      'Please come alone unless agreed otherwise, and arrive at the scheduled time. There is no waiting room on site.'
+      'Please come alone to preserve the calm and privacy of your treatment. There is no waiting room on site. Please also arrive at the scheduled time. Bank cards are not accepted.'
     )
   ).toBeVisible();
   await expect(
@@ -444,17 +426,15 @@ test('discovery-offer booking pages preserve localized promotional context @book
   await expect(page.getByText('Première séance', {exact: true})).toBeVisible();
   await expect(page.getByText('Réservé aux femmes')).toBeVisible();
   await expect(
-    page.getByRole('heading', {
-      name: 'Un accueil privé, sur rendez-vous',
-    })
+    page.getByRole('heading', {name: 'À savoir avant de réserver'})
   ).toBeVisible();
   await expect(
     page.getByText(
-      'Aucun paiement en ligne. Le règlement s’effectue sur place en espèces. Les cartes bancaires ne sont pas acceptées.'
+      'Accueil privé sur rendez-vous · Une cliente à la fois · Règlement sur place en espèces'
     )
   ).toBeVisible();
   await expect(
-    page.getByRole('heading', {name: 'Informations pratiques'})
+    page.getByText('Informations pratiques', {exact: true})
   ).toBeVisible();
   await expect(page.locator('[data-cal-reset]')).toHaveCount(0);
   await expect(
@@ -471,17 +451,15 @@ test('discovery-offer booking pages preserve localized promotional context @book
   await expect(page.getByText('First session', {exact: true})).toBeVisible();
   await expect(page.getByText('For women only')).toBeVisible();
   await expect(
-    page.getByRole('heading', {
-      name: 'A private, appointment-only welcome',
-    })
+    page.getByRole('heading', {name: 'Before your appointment'})
   ).toBeVisible();
   await expect(
     page.getByText(
-      'No online payment is required. Payment is made on site in cash. Bank cards are not accepted.'
+      'Private appointment-based welcome · One client at a time · Payment on site in cash'
     )
   ).toBeVisible();
   await expect(
-    page.getByRole('heading', {name: 'Practical information'})
+    page.getByText('Practical information', {exact: true})
   ).toBeVisible();
   await expect(page.locator('[data-cal-reset]')).toHaveCount(0);
   await expect(

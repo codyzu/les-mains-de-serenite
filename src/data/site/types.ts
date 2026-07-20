@@ -553,11 +553,9 @@ export type ReservePageData = {
 
 export type BookingPracticalInfoData = {
   title: string;
-  description: string;
-  paymentTitle: string;
-  paymentDescription: string;
-  practicalTitle: string;
-  practicalDescription: string;
+  summary: string;
+  detailsLabel: string;
+  details: string;
 };
 
 export type ReserveOnlinePageData = {
@@ -579,7 +577,10 @@ export type ReserveOnlinePageData = {
   };
   scheduler: {
     title: string;
-    description: string;
+    instructionTitle: string;
+    instructionDescription: string;
+    selectedInstructionTitle: string;
+    selectedInstructionDescription: string;
     regionLabel: string;
     resetLabel: string;
     resetStatus: string;
