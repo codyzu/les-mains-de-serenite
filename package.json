@@ -2,6 +2,7 @@
   "name": "mains-de-serenete",
   "type": "module",
   "version": "0.0.1",
+  "packageManager": "pnpm@10.23.0",
   "scripts": {
     "dev": "astro dev --host",
     "build": "astro build",
