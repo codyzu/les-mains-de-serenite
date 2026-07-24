@@ -2,7 +2,7 @@
 import process from 'node:process';
 import {defineConfig, devices} from '@playwright/test';
 
-const port = 4321;
+const port = Number(process.env.PLAYWRIGHT_PORT ?? 4321);
 const baseUrl = `http://127.0.0.1:${port}`;
 const previewCommand = `pnpm run preview --host 127.0.0.1 --port ${port}`;
 // CI builds first so tests preview the exact dist/ artifact that will be
