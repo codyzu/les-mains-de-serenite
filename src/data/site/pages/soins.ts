@@ -54,7 +54,7 @@ export const soinsPages = {
         linkText: 'WhatsApp',
         suffix: '.',
         href: getBusinessWhatsappHref(
-          "Bonjour, j'ai une question avant de réserver un soin."
+          "Bonjour, j'ai une question avant de réserver un soin.",
         ),
         analyticsEvent: 'whatsapp_click',
       },
@@ -97,7 +97,7 @@ export const soinsPages = {
         linkText: 'WhatsApp',
         suffix: ', je serai ravie de vous orienter.',
         href: getBusinessWhatsappHref(
-          "Bonjour, j'ai une question avant de réserver un soin."
+          "Bonjour, j'ai une question avant de réserver un soin.",
         ),
         analyticsEvent: 'whatsapp_click',
       },
@@ -154,7 +154,7 @@ export const soinsPages = {
         linkText: 'WhatsApp',
         suffix: '.',
         href: getBusinessWhatsappHref(
-          'Hello, I have a question before booking a treatment.'
+          'Hello, I have a question before booking a treatment.',
         ),
         analyticsEvent: 'whatsapp_click',
       },
@@ -197,7 +197,7 @@ export const soinsPages = {
         linkText: 'WhatsApp',
         suffix: ', I will be happy to guide you.',
         href: getBusinessWhatsappHref(
-          'Hello, I have a question before booking a treatment.'
+          'Hello, I have a question before booking a treatment.',
         ),
         analyticsEvent: 'whatsapp_click',
       },

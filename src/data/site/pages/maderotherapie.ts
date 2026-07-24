@@ -237,7 +237,7 @@ export const maderotherapiePages = {
         linkText: 'WhatsApp',
         suffix: '.',
         href: getBusinessWhatsappHref(
-          "Bonjour, j'ai une question avant de réserver la madérothérapie."
+          "Bonjour, j'ai une question avant de réserver la madérothérapie.",
         ),
         analyticsEvent: 'whatsapp_click',
       },
@@ -485,7 +485,7 @@ export const maderotherapiePages = {
         linkText: 'WhatsApp',
         suffix: '.',
         href: getBusinessWhatsappHref(
-          'Hello, I have a question before booking maderotherapy.'
+          'Hello, I have a question before booking maderotherapy.',
         ),
         analyticsEvent: 'whatsapp_click',
       },

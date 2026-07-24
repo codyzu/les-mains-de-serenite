@@ -3,10 +3,7 @@ import type {ImageMetadata} from 'astro';
 export type Locale = 'fr' | 'en';
 export type LocalePathMap = Record<Locale, string>;
 export type AnalyticsEventName =
-  | 'reserve_click'
-  | 'whatsapp_click'
-  | 'phone_click'
-  | 'email_click';
+  'reserve_click' | 'whatsapp_click' | 'phone_click' | 'email_click';
 
 export type SiteBusinessData = {
   name: string;

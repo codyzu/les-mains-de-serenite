@@ -47,7 +47,7 @@ export const homePages = {
     },
     promo: {
       title: 'Pour commencer',
-      headline: '45 min à 55\u00A0€',
+      headline: '45 min à 55\u{A0}€',
       description:
         'Une première séance personnalisée pour découvrir l’approche, relâcher les tensions et prendre un vrai moment pour vous.',
       note: 'Le choix idéal si vous découvrez Les Mains de Sérénité ou si vous hésitez entre plusieurs soins.',
@@ -250,7 +250,7 @@ export const homePages = {
     },
     whatsapp: {
       generalHref: getBusinessWhatsappHref(
-        'Bonjour, je souhaite des informations pour un soin bien-être'
+        'Bonjour, je souhaite des informations pour un soin bien-être',
       ),
     },
   },
@@ -492,7 +492,7 @@ export const homePages = {
     },
     whatsapp: {
       generalHref: getBusinessWhatsappHref(
-        'Hello, I would like more information about a wellness treatment.'
+        'Hello, I would like more information about a wellness treatment.',
       ),
     },
   },

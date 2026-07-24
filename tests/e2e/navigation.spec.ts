@@ -7,11 +7,11 @@ test('language switch points between localized homepages', async ({page}) => {
 
   await expect(switcher.getByRole('link', {name: 'FR'})).toHaveAttribute(
     'aria-current',
-    'page'
+    'page',
   );
   await expect(switcher.getByRole('link', {name: 'EN'})).toHaveAttribute(
     'href',
-    '/en/'
+    '/en/',
   );
   await page.goto('/en/');
 
@@ -19,11 +19,11 @@ test('language switch points between localized homepages', async ({page}) => {
 
   await expect(englishSwitcher.getByRole('link', {name: 'EN'})).toHaveAttribute(
     'aria-current',
-    'page'
+    'page',
   );
   await expect(englishSwitcher.getByRole('link', {name: 'FR'})).toHaveAttribute(
     'href',
-    '/'
+    '/',
   );
 });
 
@@ -47,7 +47,7 @@ test('configures only homepage and service paths for view transitions', async ({
       '/en/programs/',
       '/soins/maderotherapie/',
       '/en/massages/maderotherapy/',
-    ])
+    ]),
   );
   expect(configuredPaths).not.toContain('/reserver');
 });
@@ -71,13 +71,13 @@ for (const width of [390, 430]) {
     await expect(inactiveLanguage).toBeFocused();
     expect(
       await inactiveLanguage.evaluate(
-        (link) => getComputedStyle(link).boxShadow
-      )
+        (link) => getComputedStyle(link).boxShadow,
+      ),
     ).not.toBe('none');
 
     const links = await languageLinks.all();
     const linkBoxes = await Promise.all(
-      links.map(async (link) => link.boundingBox())
+      links.map(async (link) => link.boundingBox()),
     );
     const switcherBox = await switcher.boundingBox();
     const menuBox = await menuButton.boundingBox();
@@ -86,13 +86,13 @@ for (const width of [390, 430]) {
       expect.arrayContaining([
         expect.objectContaining({height: 32, width: 32}),
         expect.objectContaining({height: 32, width: 32}),
-      ])
+      ]),
     );
     expect(switcherBox).not.toBeNull();
     expect(menuBox).not.toBeNull();
     expect(switcherBox!.height).toBeLessThan(menuBox!.height);
     expect(
-      menuBox!.x - (switcherBox!.x + switcherBox!.width)
+      menuBox!.x - (switcherBox!.x + switcherBox!.width),
     ).toBeGreaterThanOrEqual(16);
   });
 }
@@ -114,15 +114,15 @@ test('mobile menu opens, exposes localized links, and closes with Escape @critic
   await expect(menuButton).toHaveAttribute('aria-expanded', 'true');
   await expect(drawer).toBeVisible();
   await expect(drawer.getByRole('link', {name: 'Maderotherapy'})).toHaveCount(
-    0
+    0,
   );
   await expect(drawer.getByRole('link', {name: 'Treatments'})).toHaveAttribute(
     'href',
-    '/en/massages/'
+    '/en/massages/',
   );
   await expect(drawer.getByRole('link', {name: 'Programs'})).toHaveAttribute(
     'href',
-    '/en/programs/'
+    '/en/programs/',
   );
 
   await page.keyboard.press('Escape');
@@ -151,10 +151,10 @@ for (const {route, desktopLabel, mobileLabel, bookingPath} of [
     await page.goto(route);
 
     const desktopBooking = page.locator(
-      `header nav a[data-analytics-event="reserve_click"]:has-text("${desktopLabel}")`
+      `header nav a[data-analytics-event="reserve_click"]:has-text("${desktopLabel}")`,
     );
     const footerBooking = page.locator(
-      `footer a[data-analytics-event="reserve_click"]:has-text("${desktopLabel}")`
+      `footer a[data-analytics-event="reserve_click"]:has-text("${desktopLabel}")`,
     );
 
     await Promise.all(
@@ -162,7 +162,7 @@ for (const {route, desktopLabel, mobileLabel, bookingPath} of [
         expect(link).toHaveAttribute('href', bookingPath),
         expect(link).toHaveAttribute('data-analytics-event', 'reserve_click'),
         expect(link).not.toHaveAttribute('target', '_blank'),
-      ])
+      ]),
     );
 
     await page.setViewportSize({width: 390, height: 844});
@@ -175,7 +175,7 @@ for (const {route, desktopLabel, mobileLabel, bookingPath} of [
     await expect(mobileBooking).toHaveAttribute('href', bookingPath);
     await expect(mobileBooking).toHaveAttribute(
       'data-analytics-event',
-      'reserve_click'
+      'reserve_click',
     );
     await expect(mobileBooking).not.toHaveAttribute('target', '_blank');
   });
@@ -201,12 +201,12 @@ for (const {route, desktopLabel, mobileLabel, bookingPath} of [
     await page.goto(route);
 
     const desktopBooking = page.locator(
-      `header nav a[data-analytics-event="reserve_click"]:has-text("${desktopLabel}")`
+      `header nav a[data-analytics-event="reserve_click"]:has-text("${desktopLabel}")`,
     );
 
     await expect(desktopBooking).toHaveAttribute('href', bookingPath);
     await expect(desktopBooking).not.toHaveAttribute('aria-current');
-    await expect(desktopBooking).toHaveClass(/font-medium/);
+    await expect(desktopBooking).toHaveClass(/font-medium/v);
 
     await page.setViewportSize({width: 390, height: 844});
     await page.locator('button[data-mobile-menu-open]').click();
@@ -218,7 +218,7 @@ for (const {route, desktopLabel, mobileLabel, bookingPath} of [
     await expect(mobileBooking).toHaveAttribute('href', bookingPath);
     await expect(mobileBooking).toHaveAttribute(
       'data-analytics-event',
-      'reserve_click'
+      'reserve_click',
     );
   });
 }

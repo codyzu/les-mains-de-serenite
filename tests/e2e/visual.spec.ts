@@ -21,14 +21,14 @@ const visualPages = [
 
 const preparePageForScreenshot = async (page: Page) => {
   await page.evaluate(async () => {
-    await document.fonts.ready;
+    await globalThis.document.fonts.ready;
 
-    for (const image of document.images) {
+    for (const image of globalThis.document.images) {
       image.loading = 'eager';
     }
 
     const scrollThroughPage = async (scrollPosition = 0): Promise<void> => {
-      if (scrollPosition >= document.documentElement.scrollHeight) {
+      if (scrollPosition >= globalThis.document.documentElement.scrollHeight) {
         return;
       }
 
@@ -56,7 +56,7 @@ const preparePageForScreenshot = async (page: Page) => {
         } catch {
           // Broken optional images should not prevent the page shell snapshot.
         }
-      })
+      }),
     );
   });
 };
@@ -87,8 +87,8 @@ test.describe('visual snapshots', () => {
       if (visualPage.name === 'booking') {
         await expect(
           page.getByText(
-            'Le module de réservation ne peut pas s’afficher pour le moment.'
-          )
+            'Le module de réservation ne peut pas s’afficher pour le moment.',
+          ),
         ).toBeVisible();
       }
 
@@ -101,7 +101,7 @@ test.describe('visual snapshots', () => {
           maxDiffPixelRatio: 0.01,
           scale: 'css',
           threshold: 0.2,
-        }
+        },
       );
     });
   }

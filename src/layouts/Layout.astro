@@ -41,7 +41,7 @@ const {
 } = Astro.props;
 const localized = getLocalizedSite(locale);
 const toAbsoluteUrl = (path: string) =>
-  new URL(path, site.business.siteUrl).toString();
+  new URL(path, site.business.siteUrl).href;
 const canonicalUrl = canonicalPath ? toAbsoluteUrl(canonicalPath) : undefined;
 const alternates = alternatePaths
   ? [

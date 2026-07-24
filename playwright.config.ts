@@ -1,22 +1,23 @@
-/* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable @typescript-eslint/naming-convention -- Playwright's public config keys use established camel-case names. */
 import process from 'node:process';
 import {defineConfig, devices} from '@playwright/test';
 
 const port = Number(process.env.PLAYWRIGHT_PORT ?? 4321);
 const baseUrl = `http://127.0.0.1:${port}`;
 const previewCommand = `pnpm run preview --host 127.0.0.1 --port ${port}`;
+const isCi = process.env.CI !== undefined;
 // CI builds first so tests preview the exact dist/ artifact that will be
 // deployed. Local test runs still build automatically from a clean checkout.
-const webServerCommand = process.env.CI
+const webServerCommand = isCi
   ? previewCommand
   : `pnpm run build && ${previewCommand}`;
 
 export default defineConfig({
   testDir: './tests/e2e',
   fullyParallel: true,
-  forbidOnly: Boolean(process.env.CI),
-  retries: process.env.CI ? 2 : 0,
-  reporter: process.env.CI ? 'github' : 'list',
+  forbidOnly: isCi,
+  retries: isCi ? 2 : 0,
+  reporter: isCi ? 'github' : 'list',
   timeout: 30_000,
   expect: {
     timeout: 5000,
@@ -32,19 +33,19 @@ export default defineConfig({
     },
     {
       name: 'mobile-safari',
-      grep: /@(?:critical|mobile|booking)/,
+      grep: /@(?:critical|mobile|booking)/v,
       use: {...devices['iPhone 15']},
     },
     {
       name: 'mobile-chrome',
-      grep: /@critical/,
+      grep: /@critical/v,
       use: {...devices['Pixel 7']},
     },
   ],
   webServer: {
     command: webServerCommand,
     url: baseUrl,
-    reuseExistingServer: !process.env.CI,
+    reuseExistingServer: !isCi,
     timeout: 120_000,
   },
 });

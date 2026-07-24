@@ -38,7 +38,7 @@ const structuredData = {
   '@context': 'https://schema.org',
   '@type': business.seo.schemaType,
   name: business.name,
-  image: new URL(HeroMassageRoom.src, business.siteUrl).toString(),
+  image: new URL(HeroMassageRoom.src, business.siteUrl).href,
   telephone: business.phone,
   address: {
     '@type': 'PostalAddress',
@@ -82,7 +82,7 @@ const structuredData = {
                 </a>
               ) : (
                 part.text
-              )
+              ),
             )
           }
         </p>

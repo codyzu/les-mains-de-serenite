@@ -172,7 +172,7 @@ const getHomeTreatmentCtaHref = (locale: Locale, item: TreatmentCatalogItem) =>
 
 const getOverviewTreatmentCtaHref = (
   locale: Locale,
-  item: TreatmentCatalogItem
+  item: TreatmentCatalogItem,
 ) =>
   item.id === 'maderotherapy'
     ? localizedPagePaths.maderotherapie[locale]
@@ -181,7 +181,7 @@ const getOverviewTreatmentCtaHref = (
 const toTreatmentData = (
   locale: Locale,
   item: TreatmentCatalogItem,
-  ctaContext: 'home' | 'overview'
+  ctaContext: 'home' | 'overview',
 ): SoinData => {
   const copy = item.copy[locale];
 

@@ -2,8 +2,8 @@ import {expect, test, type Page} from './fixtures';
 
 const expectNoHorizontalOverflow = async (page: Page) => {
   const dimensions = await page.evaluate(() => ({
-    clientWidth: document.documentElement.clientWidth,
-    scrollWidth: document.documentElement.scrollWidth,
+    clientWidth: globalThis.document.documentElement.clientWidth,
+    scrollWidth: globalThis.document.documentElement.scrollWidth,
   }));
 
   expect(dimensions.scrollWidth).toBeLessThanOrEqual(dimensions.clientWidth);
@@ -18,19 +18,19 @@ test(
     await expect(
       page.getByRole('heading', {
         name: 'Drainage lymphatique, massages et soins bien-être à Annecy',
-      })
+      }),
     ).toBeVisible();
     await expect(
-      page.getByRole('link', {name: 'Réserver un soin'}).first()
+      page.getByRole('link', {name: 'Réserver un soin'}).first(),
     ).toHaveAttribute('href', '/reserver-en-ligne');
     await expect(
-      page.getByRole('link', {name: 'WhatsApp'}).first()
-    ).toHaveAttribute('href', /^https:\/\/wa\.me\/33766612017\?text=/);
+      page.getByRole('link', {name: 'WhatsApp'}).first(),
+    ).toHaveAttribute('href', /^https:\/\/wa\.me\/33766612017\?text=/v);
     await expect(
-      page.getByRole('link', {name: 'Appeler'}).first()
+      page.getByRole('link', {name: 'Appeler'}).first(),
     ).toHaveAttribute('href', 'tel:+33766612017');
     await expectNoHorizontalOverflow(page);
-  }
+  },
 );
 
 test(
@@ -44,10 +44,13 @@ test(
         .getByRole('heading', {
           name: 'Soin de madérothérapie Jambes Légères',
         })
-        .first()
+        .first(),
     ).toBeVisible();
     await expect(
-      page.locator('main').getByRole('link', {name: 'Réserver ce soin'}).first()
+      page
+        .locator('main')
+        .getByRole('link', {name: 'Réserver ce soin'})
+        .first(),
     ).toHaveAttribute('href', '/reserver-en-ligne');
     await expectNoHorizontalOverflow(page);
 
@@ -58,13 +61,13 @@ test(
         .getByRole('heading', {
           name: 'Programme Ventre Léger & Jambes Légères',
         })
-        .first()
+        .first(),
     ).toBeVisible();
     await expect(
-      page.getByRole('link', {name: 'Commencer mon accompagnement'}).first()
-    ).toHaveAttribute('href', /^https:\/\/wa\.me\/33766612017\?text=/);
+      page.getByRole('link', {name: 'Commencer mon accompagnement'}).first(),
+    ).toHaveAttribute('href', /^https:\/\/wa\.me\/33766612017\?text=/v);
     await expectNoHorizontalOverflow(page);
-  }
+  },
 );
 
 test(
@@ -83,10 +86,10 @@ test(
       element.scrollIntoView();
     });
     await expect(
-      page.getByRole('heading', {name: 'Choisissez la durée de votre soin'})
+      page.getByRole('heading', {name: 'Choisissez la durée de votre soin'}),
     ).toBeVisible();
     await expect(
-      page.getByRole('link', {name: 'Réserver directement sur Cal.eu'})
+      page.getByRole('link', {name: 'Réserver directement sur Cal.eu'}),
     ).toBeVisible();
 
     const headerBox = await header.boundingBox();
@@ -98,8 +101,8 @@ test(
     expect(headerBox).not.toBeNull();
     expect(headingBox).not.toBeNull();
     expect(headingBox!.y).toBeGreaterThanOrEqual(
-      headerBox!.y + headerBox!.height
+      headerBox!.y + headerBox!.height,
     );
     await expectNoHorizontalOverflow(page);
-  }
+  },
 );

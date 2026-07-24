@@ -3,7 +3,9 @@
   "singleQuote": true,
   "useTabs": false,
   "tabWidth": 2,
-  "trailingComma": "es5",
+  "trailingComma": "all",
+  "bracketSpacing": false,
+  "bracketSameLine": false,
   "plugins": [
     "prettier-plugin-astro"
   ],

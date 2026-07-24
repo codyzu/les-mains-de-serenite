@@ -5,13 +5,13 @@ const siteUrl = 'https://lesmainsdeserenite.fr';
 async function expectCanonical(page: Page, href: string) {
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
     'href',
-    href
+    href,
   );
 }
 
 async function expectAlternate(page: Page, hreflang: string, href: string) {
   await expect(
-    page.locator(`link[rel="alternate"][hreflang="${hreflang}"]`)
+    page.locator(`link[rel="alternate"][hreflang="${hreflang}"]`),
   ).toHaveAttribute('href', href);
 }
 

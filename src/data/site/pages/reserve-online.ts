@@ -65,7 +65,7 @@ export const reserveOnlinePages = {
       whatsappLabel: 'Écrire sur WhatsApp',
       whatsappEmphasis: true,
       whatsappHref: getBusinessWhatsappHref(
-        "Bonjour, j'ai une question sur la durée à choisir avant de réserver."
+        "Bonjour, j'ai une question sur la durée à choisir avant de réserver.",
       ),
     },
   },
@@ -127,7 +127,7 @@ export const reserveOnlinePages = {
       whatsappLabel: 'Message on WhatsApp',
       whatsappEmphasis: true,
       whatsappHref: getBusinessWhatsappHref(
-        'Hello, I have a question about which session length to choose before booking.'
+        'Hello, I have a question about which session length to choose before booking.',
       ),
     },
   },

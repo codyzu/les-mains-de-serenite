@@ -17,7 +17,7 @@ const {
 } = Astro.props;
 const baseUrl = getBaseUrl();
 const toHref = (path: string) =>
-  path.startsWith('http') ? path : `${baseUrl}${path.replace(/^\//, '')}`;
+  path.startsWith('http') ? path : `${baseUrl}${path.replace(/^\//v, '')}`;
 const homePath = locale === 'en' ? '/en/' : '/';
 const homeHref = toHref(homePath);
 const {
@@ -30,9 +30,9 @@ const {
 } = getLocalizedSite(locale);
 const {tagline, links} = footer;
 const localizedPages = localized[locale].pages;
-const bookingHref = reserveLink
-  ? toHref(reserveLink)
-  : toHref(localizedPages.home.booking.bookingPath);
+const bookingHref = toHref(
+  reserveLink || localizedPages.home.booking.bookingPath,
+);
 ---
 
 <footer

@@ -33,15 +33,15 @@ const toolsImageAlt =
     ? 'Wooden instruments used for maderotherapy: mushroom tool, cylinder roller, cube roller, and sculpting board.'
     : 'Instruments en bois utilisés pour la madérothérapie : champignon, rouleau cylindre, rouleau cube et table de remodelage.';
 const structuredDataPrice = maderotherapie.offer.price.replaceAll(
-  /[^\d,.]/g,
-  ''
+  /[^\d,.]/gv,
+  '',
 );
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'Service',
   name: maderotherapie.meta.title,
   description: maderotherapie.meta.description,
-  image: new URL(MaderotherapieHeroImage.src, business.siteUrl).toString(),
+  image: new URL(MaderotherapieHeroImage.src, business.siteUrl).href,
   provider: {
     '@type': business.seo.schemaType,
     name: business.name,

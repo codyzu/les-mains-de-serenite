@@ -61,7 +61,7 @@ export const programsPages = {
         'Nous pouvons vous orienter vers le soin ou le programme le plus adapté à vos besoins du moment.',
       text: 'Être guidée sur WhatsApp',
       href: getBusinessWhatsappHref(
-        'Bonjour, j’aimerais être guidée pour choisir le programme le plus adapté à mes besoins.'
+        'Bonjour, j’aimerais être guidée pour choisir le programme le plus adapté à mes besoins.',
       ),
       analyticsEvent: 'whatsapp_click',
       reassurance: {
@@ -69,7 +69,7 @@ export const programsPages = {
         linkText: 'WhatsApp',
         suffix: '.',
         href: getBusinessWhatsappHref(
-          'Bonjour, j’ai une question avant de choisir un programme.'
+          'Bonjour, j’ai une question avant de choisir un programme.',
         ),
         analyticsEvent: 'whatsapp_click',
       },
@@ -133,7 +133,7 @@ export const programsPages = {
         'We can guide you toward the treatment or program that best fits your current needs.',
       text: 'Get guidance on WhatsApp',
       href: getBusinessWhatsappHref(
-        'Hello, I would like guidance choosing the program that best fits my needs.'
+        'Hello, I would like guidance choosing the program that best fits my needs.',
       ),
       analyticsEvent: 'whatsapp_click',
       reassurance: {
@@ -141,7 +141,7 @@ export const programsPages = {
         linkText: 'WhatsApp',
         suffix: '.',
         href: getBusinessWhatsappHref(
-          'Hello, I have a question before choosing a program.'
+          'Hello, I have a question before choosing a program.',
         ),
         analyticsEvent: 'whatsapp_click',
       },

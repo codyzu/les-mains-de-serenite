@@ -21,7 +21,7 @@ const {
 const redirectUrl = business.bookingUrl;
 const localePaths = localizedPagePaths.reserve;
 const toAbsoluteUrl = (path: string) =>
-  new URL(path, site.business.siteUrl).toString();
+  new URL(path, site.business.siteUrl).href;
 const alternates = [
   {hreflang: 'fr', href: toAbsoluteUrl(localePaths.fr)},
   {hreflang: 'en', href: toAbsoluteUrl(localePaths.en)},

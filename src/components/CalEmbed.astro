@@ -24,10 +24,10 @@ const {
 } = Astro.props;
 const namespace = calLink
   .replaceAll('/', '-')
-  .replaceAll(/[^a-z\d-]/gi, '')
+  .replaceAll(/[^\d\-a-z]/giv, '')
   .toLowerCase();
 const mountId = `cal-inline-${namespace}`;
-const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
+const directUrl = new URL(calLink.replace(/^\/+/v, ''), 'https://www.cal.eu/');
 ---
 
 <div
@@ -133,7 +133,7 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
             The booking calendar cannot be displayed at the moment.
           </span>
         </p>
-        <a class="btn-primary mt-5" href={directUrl.toString()} rel="external">
+        <a class="btn-primary mt-5" href={directUrl.href} rel="external">
           <span lang="fr">Réserver directement sur Cal.eu</span>
           <span lang="en">Book directly on Cal.eu</span>
         </a>
@@ -247,7 +247,7 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
   const showFallback = (state: EmbedState) => {
     const loading = state.root.querySelector<HTMLElement>('[data-cal-loading]');
     const fallback = state.root.querySelector<HTMLElement>(
-      '[data-cal-fallback]'
+      '[data-cal-fallback]',
     );
 
     loading?.classList.add('hidden');
@@ -276,10 +276,10 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
   const showLoading = (state: EmbedState, isReset: boolean) => {
     const loading = state.root.querySelector<HTMLElement>('[data-cal-loading]');
     const fallback = state.root.querySelector<HTMLElement>(
-      '[data-cal-fallback]'
+      '[data-cal-fallback]',
     );
     const loadingLabel = state.root.querySelector<HTMLElement>(
-      '[data-cal-loading-label]'
+      '[data-cal-loading-label]',
     );
 
     fallback?.classList.add('hidden');
@@ -298,10 +298,10 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
 
   const showSelectedInstruction = (state: EmbedState, selected: boolean) => {
     const title = state.root.querySelector<HTMLElement>(
-      '[data-cal-instruction-title]'
+      '[data-cal-instruction-title]',
     );
     const description = state.root.querySelector<HTMLElement>(
-      '[data-cal-instruction-description]'
+      '[data-cal-instruction-description]',
     );
     const textKey = selected ? 'selectedText' : 'initialText';
 
@@ -328,7 +328,7 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
     }
 
     const bookingSection = state.root.closest<HTMLElement>(
-      '[data-booking-selector]'
+      '[data-booking-selector]',
     );
 
     if (!bookingSection) {
@@ -340,7 +340,7 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         const reducedMotion = window.matchMedia(
-          '(prefers-reduced-motion: reduce)'
+          '(prefers-reduced-motion: reduce)',
         ).matches;
         const behavior = reducedMotion ? 'auto' : 'smooth';
         const isMobile = window.matchMedia('(max-width: 639px)').matches;
@@ -348,7 +348,7 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
           document
             .querySelector<HTMLElement>('[data-site-header]')
             ?.getBoundingClientRect().bottom ?? 0,
-          0
+          0,
         );
 
         if (isMobile) {
@@ -594,7 +594,7 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
     iframe.src = selectorUrl;
     state.readyTimer = window.setTimeout(() => showFallback(state), 20_000);
     const reducedMotion = window.matchMedia(
-      '(prefers-reduced-motion: reduce)'
+      '(prefers-reduced-motion: reduce)',
     ).matches;
 
     root.scrollIntoView({
@@ -618,7 +618,7 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
 
   const initializeEmbeds = () => {
     for (const mount of document.querySelectorAll<HTMLElement>(
-      '[data-cal-embed]'
+      '[data-cal-embed]',
     )) {
       initializeEmbed(mount);
     }

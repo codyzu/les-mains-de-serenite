@@ -38,7 +38,7 @@ const {
 } = Astro.props;
 const baseUrl = getBaseUrl();
 const toHref = (path: string) =>
-  path.startsWith('http') ? path : `${baseUrl}${path.replace(/^\//, '')}`;
+  path.startsWith('http') ? path : `${baseUrl}${path.replace(/^\//v, '')}`;
 const homePath = locale === 'en' ? '/en/' : '/';
 const homeHref = toHref(homePath);
 const brand = site.business.name;
@@ -53,21 +53,19 @@ const {
   booking: {bookingPath},
   whatsapp: {generalHref: whatsappHref},
 } = home;
-const bookingHref = reserveLink ? toHref(reserveLink) : toHref(bookingPath);
-const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
-const normalizedHomePath = homePath.replace(/\/$/, '') || '/';
-const homeActive = currentPath === normalizedHomePath;
-const soinsPath = soins.path.replace(/\/$/, '') || '/';
-const programPath = programs.path.replace(/\/$/, '') || '/';
+const bookingHref = toHref(reserveLink || bookingPath);
+const currentPath = Astro.url.pathname.replace(/\/$/v, '') || '/';
+const normalizedHomePath = homePath.replace(/\/$/v, '') || '/';
+const isHomeActive = currentPath === normalizedHomePath;
+const soinsPath = soins.path.replace(/\/$/v, '') || '/';
+const programPath = programs.path.replace(/\/$/v, '') || '/';
 const soinsActive =
   currentPath === soinsPath || currentPath.startsWith(`${soinsPath}/`);
 const programActive =
   currentPath === programPath || currentPath.startsWith(`${programPath}/`);
 const soinsHref = toHref(soins.path);
 const programHref = toHref(programs.path);
-const drawerBookingHref = reserveLink
-  ? toHref(reserveLink)
-  : toHref(bookingPath);
+const drawerBookingHref = toHref(reserveLink || bookingPath);
 const phoneHref = getPhoneHref(site.business.phone);
 const menuLabel = locale === 'en' ? 'Menu' : 'Menu';
 const closeMenuLabel = locale === 'en' ? 'Close menu' : 'Fermer le menu';
@@ -115,8 +113,8 @@ const mobileNavItems = desktopNavItems
   .filter((item) => item.key !== 'reserve')
   .map((item) =>
     item.key === 'home'
-      ? {...item, active: homeActive, activeElement: 'span' as const}
-      : item
+      ? {...item, active: isHomeActive, activeElement: 'span' as const}
+      : item,
   );
 ---
 
@@ -180,7 +178,7 @@ const mobileNavItems = desktopNavItems
             >
               {item.label}
             </a>
-          )
+          ),
         )
       }
     </nav>
@@ -293,7 +291,7 @@ const mobileNavItems = desktopNavItems
             >
               {item.label}
             </a>
-          )
+          ),
         )
       }
     </nav>
@@ -340,7 +338,7 @@ const mobileNavItems = desktopNavItems
 <script>
   const menuRoot = document.querySelector('[data-mobile-menu]');
   const menuDrawer = document.querySelector<HTMLElement>(
-    '[data-mobile-menu-drawer]'
+    '[data-mobile-menu-drawer]',
   );
   const menuBackdrop = document.querySelector('[data-mobile-menu-backdrop]');
   const openMenuButton = document.querySelector('[data-mobile-menu-open]');
@@ -355,7 +353,7 @@ const mobileNavItems = desktopNavItems
   const getFocusableMenuItems = () =>
     menuDrawer
       ? [...menuDrawer.querySelectorAll<HTMLElement>(focusableSelector)].filter(
-          (element) => !element.hasAttribute('disabled')
+          (element) => !element.hasAttribute('disabled'),
         )
       : [];
 

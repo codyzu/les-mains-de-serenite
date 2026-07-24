@@ -2,7 +2,10 @@
 import process from 'node:process';
 
 /**
- * @param {string | undefined} base
+ Normalize an optional deployment base path.
+
+ @param {string | undefined} base - Configured deployment base path.
+ @returns {string} The normalized base path.
  */
 function normalizeBasePath(base) {
   if (!base || base === '/') {
@@ -17,15 +20,19 @@ function normalizeBasePath(base) {
 }
 
 /**
- * @returns {string}
+ Read the site's configured deployment base path.
+
+ @returns {string} The normalized site base path.
  */
 export function getSiteBasePath() {
   return normalizeBasePath(process.env.SITE_BASE);
 }
 
 /**
- * @param {string} pathname
- * @returns {string}
+ Join a pathname to the configured deployment base path.
+
+ @param {string} pathname - Site-relative pathname to join.
+ @returns {string} The base-aware pathname.
  */
 export function joinBasePath(pathname) {
   const basePath = getSiteBasePath();

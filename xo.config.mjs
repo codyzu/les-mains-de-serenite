@@ -8,10 +8,8 @@ const config = [
   {
     space: 2,
     prettier: true,
-    react: true,
     semicolon: true,
     rules: {
-      'react/react-in-jsx-scope': 0,
       'import-x/extensions': 'off',
     },
   },
@@ -22,7 +20,8 @@ const config = [
         'error',
         {
           case: 'pascalCase',
-          ignore: ['index.astro', /\[.+]\.astro$/],
+          checkDirectories: false,
+          ignore: ['index.astro', /^\[[^\]]+\]\.astro$/v],
         },
       ],
       'n/file-extension-in-import': 'off',
@@ -35,18 +34,10 @@ const config = [
         'error',
         {
           case: 'kebabCase',
-          ignore: [/\[.+]\.astro$/],
+          checkDirectories: false,
+          ignore: [/^\[[^\]]+\]\.astro$/v],
         },
       ],
-    },
-  },
-  {
-    files: ['**/*.astro'],
-    rules: {
-      'react/no-unknown-property': 'off',
-      'react/self-closing-comp': 'off',
-      'react/jsx-no-undef': 'off',
-      'react/jsx-key': 'off',
     },
   },
   ...eslintPluginAstro.configs['flat/recommended'],

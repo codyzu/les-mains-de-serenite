@@ -22,7 +22,7 @@ const {
 } = localized;
 const localePaths = localizedPagePaths.discoveryOfferBooking;
 const baseUrl = getBaseUrl();
-const allOptionsHref = `${baseUrl}${discoveryOfferBooking.allOptions.href.replace(/^\//, '')}`;
+const allOptionsHref = `${baseUrl}${discoveryOfferBooking.allOptions.href.replace(/^\//v, '')}`;
 ---
 
 <Layout
@@ -88,7 +88,7 @@ const allOptionsHref = `${baseUrl}${discoveryOfferBooking.allOptions.href.replac
                     {label}
                   </p>
                 </article>
-              )
+              ),
             )
           }
         </div>

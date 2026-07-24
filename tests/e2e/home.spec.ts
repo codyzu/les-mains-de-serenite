@@ -6,76 +6,76 @@ test('French homepage renders the main business content and booking CTA', async 
   await page.goto('/');
 
   await expect(page).toHaveTitle(
-    'Drainage lymphatique et massages à Annecy | Les Mains de Sérénité'
+    'Drainage lymphatique et massages à Annecy | Les Mains de Sérénité',
   );
   await expect(
     page.getByRole('heading', {
       name: 'Drainage lymphatique, massages et soins bien-être à Annecy',
-    })
+    }),
   ).toBeVisible();
   await expect(
     page.getByRole('heading', {
       name: 'Massages et soins ponctuels : choisir le rituel juste',
-    })
+    }),
   ).toBeVisible();
   await expect(
-    page.getByRole('heading', {name: 'Massage relaxant et personnalisé'})
+    page.getByRole('heading', {name: 'Massage relaxant et personnalisé'}),
   ).toBeVisible();
   await expect(
     page.getByRole('link', {
       name: 'drainage lymphatique à Annecy',
       exact: true,
-    })
+    }),
   ).toHaveAttribute('href', '/soins/#drainage-lymphatique');
   await expect(
-    page.getByRole('link', {name: 'Découvrir les soins'})
+    page.getByRole('link', {name: 'Découvrir les soins'}),
   ).toHaveAttribute('href', '/soins/');
   await expect(page.locator('#soins article a')).toHaveCount(0);
   await expect(page.getByText('Prendre le temps')).toBeVisible();
   await expect(page.getByText('S’accorder une vraie pause')).toBeVisible();
   await expect(
     page.getByText(
-      'Un moment pour ralentir, écouter votre corps et retrouver une sensation de calme.'
-    )
+      'Un moment pour ralentir, écouter votre corps et retrouver une sensation de calme.',
+    ),
   ).toBeVisible();
   await expect(
     page.getByRole('heading', {
       name: 'Accompagnement : aller plus loin sur plusieurs séances',
-    })
+    }),
   ).toBeVisible();
   await expect(
     page.getByRole('heading', {
       name: 'Programme Ventre Léger & Jambes Légères',
-    })
+    }),
   ).toBeVisible();
   await expect(page.getByRole('heading', {name: 'Cure Fusion'})).toBeVisible();
   await expect(page.getByText('350 €').last()).toBeVisible();
   await expect(page.getByText('3 séances', {exact: true})).toBeVisible();
   await expect(
     page.getByText(
-      'L’accompagnement associe drainage lymphatique, écoute du corps'
-    )
+      'L’accompagnement associe drainage lymphatique, écoute du corps',
+    ),
   ).toBeVisible();
   await expect(
-    page.getByRole('link', {name: 'Découvrir les programmes'})
+    page.getByRole('link', {name: 'Découvrir les programmes'}),
   ).toHaveAttribute('href', '/programmes/');
   await expect(
-    page.getByRole('link', {name: 'Découvrir le programme', exact: true})
+    page.getByRole('link', {name: 'Découvrir le programme', exact: true}),
   ).toHaveAttribute('href', '/programmes/ventre-leger-jambes-legeres/');
   await expect(
-    page.getByRole('link', {name: 'Découvrir la cure'})
+    page.getByRole('link', {name: 'Découvrir la cure'}),
   ).toHaveAttribute('href', '/programmes/cure-fusion/');
   await expect(
-    page.getByRole('heading', {name: 'Quel est votre besoin aujourd’hui ?'})
+    page.getByRole('heading', {name: 'Quel est votre besoin aujourd’hui ?'}),
   ).toBeVisible();
   await expect(
-    page.getByRole('heading', {name: 'Je souhaite un accompagnement'})
+    page.getByRole('heading', {name: 'Je souhaite un accompagnement'}),
   ).toBeVisible();
   await expect(
-    page.getByRole('link', {name: 'Réserver un soin'}).first()
+    page.getByRole('link', {name: 'Réserver un soin'}).first(),
   ).toHaveAttribute('href', '/reserver-en-ligne');
   await expect(
-    page.getByRole('link', {name: 'Réserver l’offre'})
+    page.getByRole('link', {name: 'Réserver l’offre'}),
   ).toHaveAttribute('href', '/reserver-en-ligne/offre-decouverte');
   await expect(page.getByText('Soin d’entretien')).toHaveCount(0);
   await expect(page.getByText('Demander un soin d’entretien')).toHaveCount(0);
@@ -87,67 +87,67 @@ test('English homepage renders localized content and booking CTA', async ({
   await page.goto('/en/');
 
   await expect(page).toHaveTitle(
-    'Women’s Wellness Massage in Annecy | Les Mains de Sérénité'
+    'Women’s Wellness Massage in Annecy | Les Mains de Sérénité',
   );
   await expect(
-    page.getByRole('heading', {name: 'Les Mains de Sérénité'}).first()
+    page.getByRole('heading', {name: 'Les Mains de Sérénité'}).first(),
   ).toBeVisible();
   await expect(
     page.getByRole('heading', {
       name: 'Single massages and treatments: choose the right ritual',
-    })
+    }),
   ).toBeVisible();
   await expect(
     page.getByRole('heading', {
       name: 'Relaxing personalized massage',
-    })
+    }),
   ).toBeVisible();
   await expect(
-    page.getByRole('link', {name: 'Discover the treatments'})
+    page.getByRole('link', {name: 'Discover the treatments'}),
   ).toHaveAttribute('href', '/en/massages/');
   await expect(page.locator('#soins article a')).toHaveCount(0);
   await expect(page.getByText('Take your time')).toBeVisible();
   await expect(page.getByText('Allow yourself a real pause')).toBeVisible();
   await expect(
     page.getByText(
-      'A moment to slow down, listen to your body, and return to a sense of calm.'
-    )
+      'A moment to slow down, listen to your body, and return to a sense of calm.',
+    ),
   ).toBeVisible();
   await expect(
     page.getByRole('heading', {
       name: 'Support: go further across several sessions',
-    })
+    }),
   ).toBeVisible();
   await expect(
-    page.getByRole('heading', {name: 'Light Belly & Light Legs Program'})
+    page.getByRole('heading', {name: 'Light Belly & Light Legs Program'}),
   ).toBeVisible();
   await expect(page.getByRole('heading', {name: 'Cure Fusion'})).toBeVisible();
   await expect(page.getByText('350 €').last()).toBeVisible();
   await expect(page.getByText('3 sessions', {exact: true})).toBeVisible();
   await expect(
     page.getByText(
-      'The accompaniment combines lymphatic drainage, body awareness'
-    )
+      'The accompaniment combines lymphatic drainage, body awareness',
+    ),
   ).toBeVisible();
   await expect(
-    page.getByRole('link', {name: 'Discover the programs'})
+    page.getByRole('link', {name: 'Discover the programs'}),
   ).toHaveAttribute('href', '/en/programs/');
   await expect(
-    page.getByRole('link', {name: 'Discover the program', exact: true})
+    page.getByRole('link', {name: 'Discover the program', exact: true}),
   ).toHaveAttribute('href', '/en/programs/light-belly-light-legs/');
   await expect(
-    page.getByRole('link', {name: 'Discover the package'})
+    page.getByRole('link', {name: 'Discover the package'}),
   ).toHaveAttribute('href', '/en/programs/cure-fusion/');
   await expect(
-    page.getByRole('heading', {name: 'What do you need today?'})
+    page.getByRole('heading', {name: 'What do you need today?'}),
   ).toBeVisible();
   await expect(
-    page.getByRole('heading', {name: 'I want support'})
+    page.getByRole('heading', {name: 'I want support'}),
   ).toBeVisible();
   await expect(
-    page.getByRole('link', {name: 'Book a treatment'}).first()
+    page.getByRole('link', {name: 'Book a treatment'}).first(),
   ).toHaveAttribute('href', '/en/book-online');
   await expect(
-    page.getByRole('link', {name: 'Book the offer'})
+    page.getByRole('link', {name: 'Book the offer'}),
   ).toHaveAttribute('href', '/en/book-online/discovery-offer');
 });

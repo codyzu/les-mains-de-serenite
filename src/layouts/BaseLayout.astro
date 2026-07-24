@@ -43,14 +43,14 @@ const transitionPaths = [
   localizedPagePaths.maderotherapie,
   localizedPagePaths.program,
 ].flatMap((paths) =>
-  Object.values(paths).map((path) => `${baseUrl}${path.replace(/^\//, '')}`)
+  Object.values(paths).map((path) => `${baseUrl}${path.replace(/^\//v, '')}`),
 );
 ---
 
 <!doctype html>
 <html lang={lang} data-transition-paths={JSON.stringify(transitionPaths)}>
   <head>
-    <meta charset="utf8" />
+    <meta charset="utf-8" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, viewport-fit=cover"
@@ -123,8 +123,8 @@ const transitionPaths = [
       const root = document.documentElement;
       const transitionPaths = new Set(
         JSON.parse(root.dataset.transitionPaths ?? '[]').map(
-          (path) => new URL(path, location.href).pathname
-        )
+          (path) => new URL(path, location.href).pathname,
+        ),
       );
       const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
       let clickedDestination;
@@ -160,7 +160,7 @@ const transitionPaths = [
         () => {
           suppressTransition = true;
         },
-        {capture: true}
+        {capture: true},
       );
 
       addEventListener('pageswap', (event) => {

@@ -100,5 +100,5 @@ export const site = {
 } satisfies SiteData;
 
 export const getLocalizedSite = (
-  locale: Locale = defaultSiteLocale
+  locale: Locale = defaultSiteLocale,
 ): LocalizedSiteData => site.localized[locale];

@@ -9,7 +9,7 @@ type Props = AboutData;
 
 const {title, body, imageAlt} = Astro.props;
 const paragraphs = body
-  .split(/\n\s*\n/)
+  .split(/\n\s*\n/v)
   .map((paragraph) => paragraph.trim())
   .filter(Boolean);
 ---

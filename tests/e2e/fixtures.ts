@@ -1,8 +1,7 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import {test as base} from '@playwright/test';
 
 const analyticsHosts =
-  /https:\/\/(?:[^/]+\.)?(?:googletagmanager\.com|google-analytics\.com|analytics\.google\.com|cloudflareinsights\.com)\//;
+  /https:\/\/(?:[^\/]+\.)?(?:googletagmanager\.com|google-analytics\.com|analytics\.google\.com|cloudflareinsights\.com)\//v;
 
 export const test = base.extend({
   async page({page}, use) {

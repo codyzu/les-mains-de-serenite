@@ -95,7 +95,7 @@ const programCatalog = [
 ] satisfies ProgramCatalogItem[];
 
 export const getProgramPreviewItems = (
-  locale: Locale
+  locale: Locale,
 ): ProgramPreviewItemData[] =>
   programCatalog.map((item) => ({
     ...item.preview[locale],

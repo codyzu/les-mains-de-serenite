@@ -41,7 +41,7 @@ const ctaIsExternal = page.cta.href.startsWith('http');
 const secondaryCtaIsExternal =
   page.cta.secondaryHref?.startsWith('http') ?? false;
 const aftercareCtaIsExternal = page.aftercare?.href.startsWith('http') ?? false;
-const structuredDataPrice = page.price.amount.replaceAll(/[^\d,.]/g, '');
+const structuredDataPrice = page.price.amount.replaceAll(/[^\d,.]/gv, '');
 const methodImage = page.visuals?.methodImage ?? {
   src: ProgramHabitsGuidance,
   alt: 'Guide d’habitudes alimentaires simples et boisson chaude sur une table',

@@ -53,10 +53,10 @@ test('legacy French massages route redirects directly to soins', async ({
 
   expect(response.status()).toBe(200);
   expect(body).toContain(
-    '<meta http-equiv="refresh" content="0; url=/soins/">'
+    '<meta http-equiv="refresh" content="0; url=/soins/">',
   );
   expect(body).toContain(
-    '<link rel="canonical" href="https://lesmainsdeserenite.fr/soins/">'
+    '<link rel="canonical" href="https://lesmainsdeserenite.fr/soins/">',
   );
 
   await page.goto('/massages/');
@@ -72,10 +72,10 @@ test('sitemap includes soins and excludes the legacy French massages URL', async
   expect(response.status()).toBe(200);
   expect(sitemap).toContain('<loc>https://lesmainsdeserenite.fr/soins/</loc>');
   expect(sitemap).not.toContain(
-    '<loc>https://lesmainsdeserenite.fr/massages/</loc>'
+    '<loc>https://lesmainsdeserenite.fr/massages/</loc>',
   );
   expect(sitemap).toContain(
-    '<loc>https://lesmainsdeserenite.fr/en/massages/</loc>'
+    '<loc>https://lesmainsdeserenite.fr/en/massages/</loc>',
   );
 });
 
@@ -85,13 +85,13 @@ test('custom 404 page renders branded recovery links', async ({page}) => {
   await expect(
     page.getByRole('heading', {
       name: 'Cette page n’existe plus ou a changé d’adresse.',
-    })
+    }),
   ).toBeVisible();
   await expect(
-    page.getByRole('link', {name: 'Retour à l’accueil'})
+    page.getByRole('link', {name: 'Retour à l’accueil'}),
   ).toHaveAttribute('href', '/');
   await expect(
-    page.getByRole('link', {name: 'English homepage', exact: true})
+    page.getByRole('link', {name: 'English homepage', exact: true}),
   ).toHaveAttribute('href', '/en/');
 });
 
@@ -101,51 +101,51 @@ test('section overview pages render their main content', async ({page}) => {
   await expect(
     page.getByRole('heading', {
       name: 'Massages et soins bien-être à Annecy',
-    })
+    }),
   ).toBeVisible();
   await expect(
     page.getByText(
-      'Drainage lymphatique selon la méthode Renata França, massage relaxant personnalisé et autres soins bien-être : chaque rendez-vous s’adapte à vos besoins du moment, entre légèreté, détente, relâchement et tonicité.'
-    )
+      'Drainage lymphatique selon la méthode Renata França, massage relaxant personnalisé et autres soins bien-être : chaque rendez-vous s’adapte à vos besoins du moment, entre légèreté, détente, relâchement et tonicité.',
+    ),
   ).toBeVisible();
   await expect(
-    page.getByRole('link', {name: 'Réserver un soin'}).first()
+    page.getByRole('link', {name: 'Réserver un soin'}).first(),
   ).toHaveAttribute('href', '/reserver-en-ligne');
   await expect(
-    page.getByRole('heading', {name: 'Des massages et soins pensés pour vous'})
+    page.getByRole('heading', {name: 'Des massages et soins pensés pour vous'}),
   ).toBeVisible();
   await expect(
-    page.getByRole('heading', {name: 'Madérothérapie'})
+    page.getByRole('heading', {name: 'Madérothérapie'}),
   ).toBeVisible();
   const treatmentCards = page.locator('#soins article');
 
   await expect(treatmentCards.locator('a')).toHaveCount(5);
   await expect(
-    treatmentCards.getByRole('link', {name: 'Réserver ce soin'})
+    treatmentCards.getByRole('link', {name: 'Réserver ce soin'}),
   ).toHaveCount(4);
   await expect(
-    treatmentCards.getByRole('link', {name: 'Découvrir'})
+    treatmentCards.getByRole('link', {name: 'Découvrir'}),
   ).toHaveAttribute('href', '/soins/maderotherapie/');
   await expect(
-    page.getByRole('heading', {name: 'Vous ne savez pas quel soin choisir ?'})
+    page.getByRole('heading', {name: 'Vous ne savez pas quel soin choisir ?'}),
   ).toBeVisible();
   await expect(
-    page.getByText('Une vraie écoute avant de commencer')
+    page.getByText('Une vraie écoute avant de commencer'),
   ).toBeVisible();
   await expect(
-    page.getByRole('heading', {name: 'Vous souhaitez aller plus loin ?'})
+    page.getByRole('heading', {name: 'Vous souhaitez aller plus loin ?'}),
   ).toBeVisible();
   await expect(
-    page.getByRole('link', {name: 'Réserver un soin'}).last()
+    page.getByRole('link', {name: 'Réserver un soin'}).last(),
   ).toHaveAttribute('href', '/reserver-en-ligne');
   await expect(
-    page.getByText('Une question avant de réserver ? Écrivez-moi sur')
+    page.getByText('Une question avant de réserver ? Écrivez-moi sur'),
   ).toBeVisible();
   await expect(
-    page.getByRole('link', {name: 'WhatsApp'}).last()
-  ).toHaveAttribute('href', /wa\.me/);
+    page.getByRole('link', {name: 'WhatsApp'}).last(),
+  ).toHaveAttribute('href', /wa\.me/v);
   await expect(
-    page.getByRole('link', {name: 'Découvrir les programmes'})
+    page.getByRole('link', {name: 'Découvrir les programmes'}),
   ).toHaveAttribute('href', '/programmes/');
   await expect(page.getByText('Soin d’entretien')).toHaveCount(0);
   await expect(page.getByText('Demander un soin d’entretien')).toHaveCount(0);
@@ -153,41 +153,41 @@ test('section overview pages render their main content', async ({page}) => {
   await page.goto('/programmes/');
 
   await expect(
-    page.getByRole('heading', {name: 'Aller plus loin qu’une séance seule'})
+    page.getByRole('heading', {name: 'Aller plus loin qu’une séance seule'}),
   ).toBeVisible();
   await expect(
-    page.getByText('Des accompagnements bien-être réservés aux femmes')
+    page.getByText('Des accompagnements bien-être réservés aux femmes'),
   ).toBeVisible();
   await expect(
-    page.getByRole('link', {name: 'Découvrir les programmes'}).first()
+    page.getByRole('link', {name: 'Découvrir les programmes'}).first(),
   ).toHaveAttribute('href', '#programmes');
   await expect(
-    page.getByRole('heading', {name: 'Cure Fusion', exact: true})
+    page.getByRole('heading', {name: 'Cure Fusion', exact: true}),
   ).toBeVisible();
   await expect(
-    page.getByRole('link', {name: 'Découvrir la cure'})
+    page.getByRole('link', {name: 'Découvrir la cure'}),
   ).toHaveAttribute('href', '/programmes/cure-fusion/');
   await expect(
     page.getByText(
-      'Deux accompagnements pour répondre à des besoins différents'
-    )
+      'Deux accompagnements pour répondre à des besoins différents',
+    ),
   ).toBeVisible();
   await expect(
-    page.getByRole('link', {name: 'Voir les soins'})
+    page.getByRole('link', {name: 'Voir les soins'}),
   ).toHaveAttribute('href', '/soins/');
   await expect(
-    page.getByText('Une question avant de choisir ? Écrivez-moi sur')
+    page.getByText('Une question avant de choisir ? Écrivez-moi sur'),
   ).toBeVisible();
   await expect(page.getByRole('heading', {name: 'Et après ?'})).toBeVisible();
   await expect(
     page.getByText(
-      'Certaines clientes choisissent de prolonger les bénéfices de leur programme grâce à un soin d’entretien ponctuel'
-    )
+      'Certaines clientes choisissent de prolonger les bénéfices de leur programme grâce à un soin d’entretien ponctuel',
+    ),
   ).toBeVisible();
   await expect(
     page.getByText(
-      '1 h • 85 €, réservé aux clientes ayant déjà suivi un programme.'
-    )
+      '1 h • 85 €, réservé aux clientes ayant déjà suivi un programme.',
+    ),
   ).toBeVisible();
 });
 
@@ -200,47 +200,47 @@ test('Light Belly programme CTAs start a guided WhatsApp conversation', async ({
     name: 'Commencer mon accompagnement',
   });
 
-  await expect(startLinks.first()).toHaveAttribute('href', /wa\.me/);
-  await expect(startLinks.last()).toHaveAttribute('href', /wa\.me/);
+  await expect(startLinks.first()).toHaveAttribute('href', /wa\.me/v);
+  await expect(startLinks.last()).toHaveAttribute('href', /wa\.me/v);
   expect(await getWhatsappMessage(startLinks.first())).toBe(
-    'Bonjour, je souhaite commencer le Programme Ventre Léger & Jambes Légères. J’aimerais savoir s’il est adapté à mes besoins.'
+    'Bonjour, je souhaite commencer le Programme Ventre Léger & Jambes Légères. J’aimerais savoir s’il est adapté à mes besoins.',
   );
   expect(await getWhatsappMessage(startLinks.last())).toBe(
-    'Bonjour, je souhaite commencer le Programme Ventre Léger & Jambes Légères. J’aimerais savoir s’il est adapté à mes besoins.'
+    'Bonjour, je souhaite commencer le Programme Ventre Léger & Jambes Légères. J’aimerais savoir s’il est adapté à mes besoins.',
   );
   await expect(
-    page.getByText('Une question avant de commencer ? Écrivez-moi sur')
+    page.getByText('Une question avant de commencer ? Écrivez-moi sur'),
   ).toBeVisible();
   expect(
-    await getWhatsappMessage(page.getByRole('link', {name: 'WhatsApp'}).last())
+    await getWhatsappMessage(page.getByRole('link', {name: 'WhatsApp'}).last()),
   ).toBe(
-    'Bonjour, j’ai quelques questions concernant le Programme Ventre Léger & Jambes Légères avant de me décider.'
+    'Bonjour, j’ai quelques questions concernant le Programme Ventre Léger & Jambes Légères avant de me décider.',
   );
   await expect(
-    page.getByRole('heading', {name: 'Après votre programme'})
+    page.getByRole('heading', {name: 'Après votre programme'}),
   ).toBeVisible();
   await expect(
-    page.getByRole('heading', {name: 'Soin d’entretien'})
+    page.getByRole('heading', {name: 'Soin d’entretien'}),
   ).toBeVisible();
   await expect(page.getByText('1 h • 85 €')).toBeVisible();
   await expect(
     page.getByText(
-      'Chaque séance est adaptée à vos besoins du moment afin de prolonger les bénéfices de votre accompagnement.'
-    )
+      'Chaque séance est adaptée à vos besoins du moment afin de prolonger les bénéfices de votre accompagnement.',
+    ),
   ).toBeVisible();
   await expect(
     page.getByText(
-      'Réservé aux clientes ayant déjà suivi la Cure Fusion ou le Programme Ventre Léger & Jambes Légères.'
-    )
+      'Réservé aux clientes ayant déjà suivi la Cure Fusion ou le Programme Ventre Léger & Jambes Légères.',
+    ),
   ).toBeVisible();
 
   const aftercareLink = page.getByRole('link', {
     name: 'Demander un soin d’entretien',
   });
 
-  await expect(aftercareLink).toHaveAttribute('href', /wa\.me/);
+  await expect(aftercareLink).toHaveAttribute('href', /wa\.me/v);
   expect(await getWhatsappMessage(aftercareLink)).toBe(
-    'Bonjour, j’ai déjà suivi votre programme et je souhaiterais réserver un soin d’entretien.'
+    'Bonjour, j’ai déjà suivi votre programme et je souhaiterais réserver un soin d’entretien.',
   );
 });
 
@@ -248,145 +248,145 @@ test('Cure Fusion page explains the personalized package', async ({page}) => {
   await page.goto('/programmes/cure-fusion/');
 
   await expect(
-    page.getByRole('heading', {name: 'Cure Fusion', exact: true})
+    page.getByRole('heading', {name: 'Cure Fusion', exact: true}),
   ).toBeVisible();
   await expect(
-    page.getByText('3 séances personnalisées').first()
+    page.getByText('3 séances personnalisées').first(),
   ).toBeVisible();
   await expect(
-    page.getByText('3 soins personnalisés', {exact: true})
+    page.getByText('3 soins personnalisés', {exact: true}),
   ).toBeVisible();
   await expect(page.getByText('350 €').first()).toBeVisible();
   await expect(
-    page.getByText('Accompagnement réservé exclusivement aux femmes')
+    page.getByText('Accompagnement réservé exclusivement aux femmes'),
   ).toBeVisible();
   await expect(
-    page.getByText('Vous n’avez pas à choisir le bon soin seule')
+    page.getByText('Vous n’avez pas à choisir le bon soin seule'),
   ).toBeVisible();
   await expect(
     page.getByText(
-      'Vous n’avez pas à choisir seule entre drainage lymphatique, soin remodelant ou madérothérapie'
-    )
+      'Vous n’avez pas à choisir seule entre drainage lymphatique, soin remodelant ou madérothérapie',
+    ),
   ).toBeVisible();
   await expect(
-    page.getByRole('heading', {name: 'Votre accompagnement en 3 séances'})
+    page.getByRole('heading', {name: 'Votre accompagnement en 3 séances'}),
   ).toBeVisible();
   await expect(
-    page.getByText('La troisième séance vient consolider les bienfaits')
+    page.getByText('La troisième séance vient consolider les bienfaits'),
   ).toBeVisible();
   await expect(
     page.getByRole('heading', {
       name: 'Votre corps évolue, votre accompagnement aussi',
-    })
+    }),
   ).toBeVisible();
   await expect(
     page
       .locator(
-        'img[alt="Deux femmes marchent pieds nus au bord du lac d’Annecy"]'
+        'img[alt="Deux femmes marchent pieds nus au bord du lac d’Annecy"]',
       )
-      .first()
+      .first(),
   ).toBeVisible();
   await expect(
     page
       .locator(
-        'img[alt="Plumes blanches dans une ambiance douce et apaisante"]'
+        'img[alt="Plumes blanches dans une ambiance douce et apaisante"]',
       )
-      .first()
+      .first(),
   ).toBeVisible();
   await expect(
     page.getByRole('heading', {
       name: 'Les soins pouvant être choisis',
-    })
+    }),
   ).toBeVisible();
   await expect(
-    page.getByRole('heading', {name: 'Drainage lymphatique'})
+    page.getByRole('heading', {name: 'Drainage lymphatique'}),
   ).toBeVisible();
   await expect(
-    page.getByRole('heading', {name: 'Soin remodelant'})
+    page.getByRole('heading', {name: 'Soin remodelant'}),
   ).toBeVisible();
   await expect(
-    page.getByRole('heading', {name: 'Madérothérapie'})
+    page.getByRole('heading', {name: 'Madérothérapie'}),
   ).toBeVisible();
   await expect(
-    page.getByRole('heading', {name: 'Un accompagnement attentif'})
+    page.getByRole('heading', {name: 'Un accompagnement attentif'}),
   ).toBeVisible();
   await expect(
-    page.getByText('J’ai particulièrement apprécié l’écoute')
+    page.getByText('J’ai particulièrement apprécié l’écoute'),
   ).toBeVisible();
   await expect(page.getByText('Je suis ressortie avec')).toBeVisible();
   await expect(
-    page.getByText('professionnelle et très rassurante')
+    page.getByText('professionnelle et très rassurante'),
   ).toBeVisible();
   await expect(
     page.getByRole('heading', {
       name: 'Pourquoi choisir une Cure Fusion plutôt que trois soins réservés séparément ?',
-    })
+    }),
   ).toBeVisible();
   await expect(
-    page.getByText('L’expérience globale est plus cohérente')
+    page.getByText('L’expérience globale est plus cohérente'),
   ).toBeVisible();
   await expect(
-    page.getByRole('link', {name: 'Commencer mon accompagnement'}).last()
-  ).toHaveAttribute('href', /wa\.me/);
+    page.getByRole('link', {name: 'Commencer mon accompagnement'}).last(),
+  ).toHaveAttribute('href', /wa\.me/v);
   expect(
     await getWhatsappMessage(
-      page.getByRole('link', {name: 'Commencer mon accompagnement'}).first()
-    )
+      page.getByRole('link', {name: 'Commencer mon accompagnement'}).first(),
+    ),
   ).toBe(
-    'Bonjour, je souhaite commencer la Cure Fusion. J’aimerais savoir si elle est adaptée à mes besoins.'
+    'Bonjour, je souhaite commencer la Cure Fusion. J’aimerais savoir si elle est adaptée à mes besoins.',
   );
   expect(
     await getWhatsappMessage(
-      page.getByRole('link', {name: 'Commencer mon accompagnement'}).last()
-    )
+      page.getByRole('link', {name: 'Commencer mon accompagnement'}).last(),
+    ),
   ).toBe(
-    'Bonjour, je souhaite commencer la Cure Fusion. J’aimerais savoir si elle est adaptée à mes besoins.'
+    'Bonjour, je souhaite commencer la Cure Fusion. J’aimerais savoir si elle est adaptée à mes besoins.',
   );
   await expect(
-    page.getByText('Une question avant de commencer ? Écrivez-moi sur')
+    page.getByText('Une question avant de commencer ? Écrivez-moi sur'),
   ).toBeVisible();
   await expect(
-    page.getByRole('link', {name: 'WhatsApp'}).last()
-  ).toHaveAttribute('href', /wa\.me/);
+    page.getByRole('link', {name: 'WhatsApp'}).last(),
+  ).toHaveAttribute('href', /wa\.me/v);
   expect(
-    await getWhatsappMessage(page.getByRole('link', {name: 'WhatsApp'}).last())
+    await getWhatsappMessage(page.getByRole('link', {name: 'WhatsApp'}).last()),
   ).toBe(
-    'Bonjour, j’ai quelques questions concernant la Cure Fusion avant de me décider.'
+    'Bonjour, j’ai quelques questions concernant la Cure Fusion avant de me décider.',
   );
   await expect(
-    page.getByRole('heading', {name: 'Après votre programme'})
+    page.getByRole('heading', {name: 'Après votre programme'}),
   ).toBeVisible();
   await expect(
-    page.getByRole('heading', {name: 'Soin d’entretien'})
+    page.getByRole('heading', {name: 'Soin d’entretien'}),
   ).toBeVisible();
   await expect(page.getByText('1 h • 85 €')).toBeVisible();
   await expect(
     page.getByText(
-      'Chaque séance est adaptée à vos besoins du moment afin de prolonger les bénéfices de votre accompagnement.'
-    )
+      'Chaque séance est adaptée à vos besoins du moment afin de prolonger les bénéfices de votre accompagnement.',
+    ),
   ).toBeVisible();
   await expect(
     page.getByText(
-      'Réservé aux clientes ayant déjà suivi la Cure Fusion ou le Programme Ventre Léger & Jambes Légères.'
-    )
+      'Réservé aux clientes ayant déjà suivi la Cure Fusion ou le Programme Ventre Léger & Jambes Légères.',
+    ),
   ).toBeVisible();
 
   const aftercareLink = page.getByRole('link', {
     name: 'Demander un soin d’entretien',
   });
 
-  await expect(aftercareLink).toHaveAttribute('href', /wa\.me/);
+  await expect(aftercareLink).toHaveAttribute('href', /wa\.me/v);
   expect(await getWhatsappMessage(aftercareLink)).toBe(
-    'Bonjour, j’ai déjà suivi votre programme et je souhaiterais réserver un soin d’entretien.'
+    'Bonjour, j’ai déjà suivi votre programme et je souhaiterais réserver un soin d’entretien.',
   );
   await expect(
-    page.getByRole('link', {name: 'Voir les programmes'})
+    page.getByRole('link', {name: 'Voir les programmes'}),
   ).toHaveAttribute('href', '/programmes/');
   await expect(
-    page.getByRole('link', {name: 'Voir les soins'})
+    page.getByRole('link', {name: 'Voir les soins'}),
   ).toHaveAttribute('href', '/soins/');
   await expect(
-    page.getByRole('link', {name: 'Programme Ventre Léger'})
+    page.getByRole('link', {name: 'Programme Ventre Léger'}),
   ).toHaveAttribute('href', '/programmes/ventre-leger-jambes-legeres/');
 });
 
@@ -396,56 +396,56 @@ test('online booking pages render the embedded scheduler shell @booking', async 
   await page.goto('/reserver-en-ligne');
 
   await expect(
-    page.getByRole('heading', {name: 'Réservez votre soin bien-être'})
+    page.getByRole('heading', {name: 'Réservez votre soin bien-être'}),
   ).toBeVisible();
   await expect(page.locator('#cal-inline-lesmainsdeserenite')).toBeVisible();
   await expect(page.locator('[data-cal-reset]')).toHaveText(
-    /←\s+Changer de durée/
+    /←\s+Changer de durée/v,
   );
   await expect(
-    page.getByRole('heading', {name: 'À savoir avant de réserver'})
+    page.getByRole('heading', {name: 'À savoir avant de réserver'}),
   ).toBeVisible();
   await expect(
     page.getByText(
-      'Accueil privé sur rendez-vous · Une cliente à la fois · Règlement sur place en espèces'
-    )
+      'Accueil privé sur rendez-vous · Une cliente à la fois · Règlement sur place en espèces',
+    ),
   ).toBeVisible();
   await page.getByText('Informations pratiques', {exact: true}).click();
   await expect(
     page.getByText(
-      'Merci de venir seule afin de préserver le calme et l’intimité du soin. Il n’y a pas de salle d’attente sur place. Merci également d’arriver à l’heure de votre rendez-vous. Les cartes bancaires ne sont pas acceptées.'
-    )
+      'Merci de venir seule afin de préserver le calme et l’intimité du soin. Il n’y a pas de salle d’attente sur place. Merci également d’arriver à l’heure de votre rendez-vous. Les cartes bancaires ne sont pas acceptées.',
+    ),
   ).toBeVisible();
-  await expect(page.getByText(/à mon domicile/i)).toHaveCount(0);
+  await expect(page.getByText(/à mon domicile/iv)).toHaveCount(0);
   await expect(
-    page.getByText('Massage bien-être sans visée médicale')
+    page.getByText('Massage bien-être sans visée médicale'),
   ).toHaveCount(0);
 
   await page.goto('/en/book-online');
 
   await expect(
-    page.getByRole('heading', {name: 'Book your wellness treatment'})
+    page.getByRole('heading', {name: 'Book your wellness treatment'}),
   ).toBeVisible();
   await expect(page.locator('#cal-inline-lesmainsdeserenite')).toBeVisible();
   await expect(page.locator('[data-cal-reset]')).toHaveText(
-    /←\s+Change duration/
+    /←\s+Change duration/v,
   );
   await expect(
-    page.getByRole('heading', {name: 'Before your appointment'})
+    page.getByRole('heading', {name: 'Before your appointment'}),
   ).toBeVisible();
   await expect(
     page.getByText(
-      'Private appointment-based welcome · One client at a time · Payment on site in cash'
-    )
+      'Private appointment-based welcome · One client at a time · Payment on site in cash',
+    ),
   ).toBeVisible();
   await page.getByText('Practical information', {exact: true}).click();
   await expect(
     page.getByText(
-      'Please come alone to preserve the calm and privacy of your treatment. There is no waiting room on site. Please also arrive at the scheduled time. Bank cards are not accepted.'
-    )
+      'Please come alone to preserve the calm and privacy of your treatment. There is no waiting room on site. Please also arrive at the scheduled time. Bank cards are not accepted.',
+    ),
   ).toBeVisible();
   await expect(
-    page.getByText('Wellness massage with no medical purpose')
+    page.getByText('Wellness massage with no medical purpose'),
   ).toHaveCount(0);
 });
 
@@ -457,24 +457,24 @@ test('discovery-offer booking pages preserve localized promotional context @book
   await expect(
     page.getByRole('heading', {
       name: 'Votre première séance de 45 min à 55 €',
-    })
+    }),
   ).toBeVisible();
   await expect(page.getByText('Première séance', {exact: true})).toBeVisible();
   await expect(page.getByText('Réservé aux femmes')).toBeVisible();
   await expect(
-    page.getByRole('heading', {name: 'À savoir avant de réserver'})
+    page.getByRole('heading', {name: 'À savoir avant de réserver'}),
   ).toBeVisible();
   await expect(
     page.getByText(
-      'Accueil privé sur rendez-vous · Une cliente à la fois · Règlement sur place en espèces'
-    )
+      'Accueil privé sur rendez-vous · Une cliente à la fois · Règlement sur place en espèces',
+    ),
   ).toBeVisible();
   await expect(
-    page.getByText('Informations pratiques', {exact: true})
+    page.getByText('Informations pratiques', {exact: true}),
   ).toBeVisible();
   await expect(page.locator('[data-cal-reset]')).toHaveCount(0);
   await expect(
-    page.getByRole('link', {name: 'Voir toutes les options de réservation'})
+    page.getByRole('link', {name: 'Voir toutes les options de réservation'}),
   ).toHaveAttribute('href', '/reserver-en-ligne');
 
   await page.goto('/en/book-online/discovery-offer');
@@ -482,24 +482,24 @@ test('discovery-offer booking pages preserve localized promotional context @book
   await expect(
     page.getByRole('heading', {
       name: 'Your first 45-minute session for €55',
-    })
+    }),
   ).toBeVisible();
   await expect(page.getByText('First session', {exact: true})).toBeVisible();
   await expect(page.getByText('For women only')).toBeVisible();
   await expect(
-    page.getByRole('heading', {name: 'Before your appointment'})
+    page.getByRole('heading', {name: 'Before your appointment'}),
   ).toBeVisible();
   await expect(
     page.getByText(
-      'Private appointment-based welcome · One client at a time · Payment on site in cash'
-    )
+      'Private appointment-based welcome · One client at a time · Payment on site in cash',
+    ),
   ).toBeVisible();
   await expect(
-    page.getByText('Practical information', {exact: true})
+    page.getByText('Practical information', {exact: true}),
   ).toBeVisible();
   await expect(page.locator('[data-cal-reset]')).toHaveCount(0);
   await expect(
-    page.getByRole('link', {name: 'View all booking options'})
+    page.getByRole('link', {name: 'View all booking options'}),
   ).toHaveAttribute('href', '/en/book-online');
 });
 
@@ -515,7 +515,7 @@ test('maderotherapy discovery offers link to the embedded scheduler @booking', a
   });
 
   await expect(
-    frenchOffer.getByRole('link', {name: 'Réserver ce soin'})
+    frenchOffer.getByRole('link', {name: 'Réserver ce soin'}),
   ).toHaveAttribute('href', '/reserver-en-ligne');
 
   await page.goto('/en/massages/maderotherapy/');
@@ -527,6 +527,6 @@ test('maderotherapy discovery offers link to the embedded scheduler @booking', a
   });
 
   await expect(
-    englishOffer.getByRole('link', {name: 'Book this treatment'})
+    englishOffer.getByRole('link', {name: 'Book this treatment'}),
   ).toHaveAttribute('href', '/en/book-online');
 });

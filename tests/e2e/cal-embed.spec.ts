@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable @typescript-eslint/naming-convention -- Browser test state uses explicit double-underscore keys. */
 import {expect, test} from './fixtures';
 
 test('configures the namespaced Cal.eu embed and tracks one privacy-safe conversion event @booking', async ({
@@ -27,7 +27,7 @@ test('configures the namespaced Cal.eu embed and tracks one privacy-safe convers
               elementOrSelector: string;
             };
             const mount = document.querySelector(
-              inlineOptions.elementOrSelector
+              inlineOptions.elementOrSelector,
             );
 
             const iframe = document.createElement('iframe');
@@ -56,7 +56,9 @@ test('configures the namespaced Cal.eu embed and tracks one privacy-safe convers
     Object.assign(cal, {ns: namespaces});
     Object.assign(globalThis, {
       Cal: cal,
-      gtag: (...args: unknown[]) => analyticsCalls.push(args),
+      gtag(...args: unknown[]) {
+        analyticsCalls.push(args);
+      },
       __calEmbedTest: {analyticsCalls, calls, listeners},
     });
   });
@@ -67,7 +69,7 @@ test('configures the namespaced Cal.eu embed and tracks one privacy-safe convers
 
   await expect(embedRoot).toHaveAttribute(
     'data-cal-embed-link',
-    'lesmainsdeserenite'
+    'lesmainsdeserenite',
   );
   await expect(embedRoot).not.toHaveAttribute('data-cal-link');
 
@@ -103,7 +105,7 @@ test('configures the namespaced Cal.eu embed and tracks one privacy-safe convers
 
   const uiCall = embedConfiguration.find(
     ({args, namespace}) =>
-      namespace === 'lesmainsdeserenite' && args[0] === 'ui'
+      namespace === 'lesmainsdeserenite' && args[0] === 'ui',
   );
   expect(uiCall?.args[1]).toMatchObject({
     theme: 'light',
@@ -126,13 +128,13 @@ test('configures the namespaced Cal.eu embed and tracks one privacy-safe convers
   expect(
     embedConfiguration.findIndex(
       ({args, namespace}) =>
-        namespace === 'lesmainsdeserenite' && args[0] === 'ui'
-    )
+        namespace === 'lesmainsdeserenite' && args[0] === 'ui',
+    ),
   ).toBeLessThan(
     embedConfiguration.findIndex(
       ({args, namespace}) =>
-        namespace === 'lesmainsdeserenite' && args[0] === 'inline'
-    )
+        namespace === 'lesmainsdeserenite' && args[0] === 'inline',
+    ),
   );
 
   await page.evaluate(() => {
@@ -146,7 +148,9 @@ test('configures the namespaced Cal.eu embed and tracks one privacy-safe convers
     ).__calEmbedTest;
 
     Object.assign(globalThis, {
-      gtag: (...args: unknown[]) => testState.analyticsCalls.push(args),
+      gtag(...args: unknown[]) {
+        testState.analyticsCalls.push(args);
+      },
     });
     testState.listeners.linkReady();
     const payload = {
@@ -164,7 +168,7 @@ test('configures the namespaced Cal.eu embed and tracks one privacy-safe convers
 
   await expect(page.locator('[data-cal-embed]')).toHaveAttribute(
     'data-cal-state',
-    'ready'
+    'ready',
   );
 
   const analyticsCalls = await page.evaluate(
@@ -173,7 +177,7 @@ test('configures the namespaced Cal.eu embed and tracks one privacy-safe convers
         globalThis as unknown as {
           __calEmbedTest: {analyticsCalls: unknown[][]};
         }
-      ).__calEmbedTest.analyticsCalls
+      ).__calEmbedTest.analyticsCalls,
   );
 
   expect(analyticsCalls).toEqual([
@@ -193,16 +197,16 @@ test('configures the namespaced Cal.eu embed and tracks one privacy-safe convers
 
   await expect(embedRoot).toHaveAttribute(
     'data-cal-instruction-state',
-    'duration'
+    'duration',
   );
   await expect(
-    page.getByText('Choisissez votre durée de soin', {exact: true})
+    page.getByText('Choisissez votre durée de soin', {exact: true}),
   ).toBeVisible();
   await expect(
     page.getByText(
       'Touchez une durée ci-dessous pour afficher les créneaux disponibles.',
-      {exact: true}
-    )
+      {exact: true},
+    ),
   ).toBeVisible();
   await expect(resetButton).toBeHidden();
 
@@ -220,35 +224,35 @@ test('configures the namespaced Cal.eu embed and tracks one privacy-safe convers
 
   await expect(embedRoot).toHaveAttribute(
     'data-cal-instruction-state',
-    'booking'
+    'booking',
   );
   await expect(
-    page.getByText('Choisissez votre créneau', {exact: true})
+    page.getByText('Choisissez votre créneau', {exact: true}),
   ).toBeVisible();
   await expect(
     page.getByText(
       'Sélectionnez ensuite la date et l’heure qui vous conviennent.',
-      {exact: true}
-    )
+      {exact: true},
+    ),
   ).toBeVisible();
   await expect(resetButton).toBeVisible();
   await expect(resetButton).toBeEnabled();
   await resetButton.click();
   await expect(page.locator('[data-cal-embed]')).toHaveAttribute(
     'data-cal-state',
-    'loading'
+    'loading',
   );
   await expect(resetButton).toBeHidden();
   await expect(embedRoot).toHaveAttribute(
     'data-cal-instruction-state',
-    'duration'
+    'duration',
   );
   await expect(
-    page.getByText('Choisissez votre durée de soin', {exact: true})
+    page.getByText('Choisissez votre durée de soin', {exact: true}),
   ).toBeVisible();
   await expect(page.locator('#cal-inline-lesmainsdeserenite')).toBeFocused();
   await expect(
-    page.getByText('Retour à la sélection des durées…')
+    page.getByText('Retour à la sélection des durées…'),
   ).toBeVisible();
 
   await page.evaluate(() => {
@@ -282,14 +286,14 @@ test('configures the namespaced Cal.eu embed and tracks one privacy-safe convers
 
     return {
       analyticsCalls: testState.analyticsCalls,
-      iframeCount: document.querySelectorAll(
-        '#cal-inline-lesmainsdeserenite iframe'
+      iframeCount: globalThis.document.querySelectorAll(
+        '#cal-inline-lesmainsdeserenite iframe',
       ).length,
       initCallCount: testState.calls.filter(({args}) => args[0] === 'init')
         .length,
       inlineCallCount: testState.calls.filter(
         ({args, namespace}) =>
-          namespace === 'lesmainsdeserenite' && args[0] === 'inline'
+          namespace === 'lesmainsdeserenite' && args[0] === 'inline',
       ).length,
       listenerCallCounts: Object.fromEntries(
         [
@@ -304,9 +308,9 @@ test('configures the namespaced Cal.eu embed and tracks one privacy-safe convers
             ({args, namespace}) =>
               namespace === 'lesmainsdeserenite' &&
               args[0] === 'on' &&
-              (args[1] as {action?: string})?.action === action
+              (args[1] as {action?: string})?.action === action,
           ).length,
-        ])
+        ]),
       ),
     };
   });
@@ -359,38 +363,40 @@ test('uses viewport-appropriate alignment when a selected booker is ready @booki
     const listeners: Record<string, (...args: unknown[]) => void> = {};
     const namespaces: Record<string, (...args: unknown[]) => void> = {};
     const cal = (...args: unknown[]) => {
-      if (args[0] === 'init' && typeof args[1] === 'string') {
-        const namespace = args[1];
-
-        namespaces[namespace] = (...namespaceArgs: unknown[]) => {
-          if (
-            namespaceArgs[0] === 'inline' &&
-            typeof namespaceArgs[1] === 'object' &&
-            namespaceArgs[1] !== null
-          ) {
-            const {elementOrSelector} = namespaceArgs[1] as {
-              elementOrSelector: string;
-            };
-            const iframe = document.createElement('iframe');
-
-            iframe.src = 'https://www.cal.eu/lesmainsdeserenite/embed';
-            document.querySelector(elementOrSelector)?.append(iframe);
-          }
-
-          if (
-            namespaceArgs[0] === 'on' &&
-            typeof namespaceArgs[1] === 'object' &&
-            namespaceArgs[1] !== null
-          ) {
-            const listener = namespaceArgs[1] as {
-              action: string;
-              callback: (...callbackArgs: unknown[]) => void;
-            };
-
-            listeners[listener.action] = listener.callback;
-          }
-        };
+      if (!(args[0] === 'init' && typeof args[1] === 'string')) {
+        return;
       }
+
+      const namespace = args[1];
+
+      namespaces[namespace] = (...namespaceArgs: unknown[]) => {
+        if (
+          namespaceArgs[0] === 'inline' &&
+          typeof namespaceArgs[1] === 'object' &&
+          namespaceArgs[1] !== null
+        ) {
+          const {elementOrSelector} = namespaceArgs[1] as {
+            elementOrSelector: string;
+          };
+          const iframe = document.createElement('iframe');
+
+          iframe.src = 'https://www.cal.eu/lesmainsdeserenite/embed';
+          document.querySelector(elementOrSelector)?.append(iframe);
+        }
+
+        if (
+          namespaceArgs[0] === 'on' &&
+          typeof namespaceArgs[1] === 'object' &&
+          namespaceArgs[1] !== null
+        ) {
+          const listener = namespaceArgs[1] as {
+            action: string;
+            callback: (...callbackArgs: unknown[]) => void;
+          };
+
+          listeners[listener.action] = listener.callback;
+        }
+      };
     };
 
     Object.assign(cal, {ns: namespaces});
@@ -403,10 +409,16 @@ test('uses viewport-appropriate alignment when a selected booker is ready @booki
   await page.goto('/reserver-en-ligne');
 
   const scrollCalls = await page.evaluate(async () => {
-    const section = document.querySelector<HTMLElement>(
-      '[data-booking-selector]'
+    const section = globalThis.document.querySelector<HTMLElement>(
+      '[data-booking-selector]',
     );
-    const header = document.querySelector<HTMLElement>('[data-site-header]');
+    const header =
+      globalThis.document.querySelector<HTMLElement>('[data-site-header]');
+
+    if (!section || !header) {
+      throw new Error('Booking section or site header not found');
+    }
+
     const testState = (
       globalThis as unknown as {
         __calViewportTest: {
@@ -416,20 +428,17 @@ test('uses viewport-appropriate alignment when a selected booker is ready @booki
     ).__calViewportTest;
     const calls: ScrollIntoViewOptions[] = [];
 
-    if (!section || !header) {
-      throw new Error('Booking section or site header not found');
-    }
-
-    const sectionRect = new DOMRect(0, -200);
+    const {DOMRect: BrowserDOMRect} = globalThis;
+    const sectionRect = new BrowserDOMRect(0, -200);
     const waitForFrame = async () =>
       new Promise<void>((resolve) => {
-        requestAnimationFrame(() => {
+        globalThis.requestAnimationFrame(() => {
           resolve();
         });
       });
 
     section.getBoundingClientRect = () => sectionRect;
-    header.getBoundingClientRect = () => new DOMRect(0, -400);
+    header.getBoundingClientRect = () => new BrowserDOMRect(0, -400);
     section.scrollIntoView = (options?: boolean | ScrollIntoViewOptions) => {
       if (typeof options === 'object') {
         calls.push(options);
@@ -452,8 +461,15 @@ test('uses viewport-appropriate alignment when a selected booker is ready @booki
   await page.setViewportSize({width: 390, height: 844});
 
   const mobileScrollResult = await page.evaluate(async () => {
-    const mount = document.querySelector<HTMLElement>('[data-cal-mount]');
-    const header = document.querySelector<HTMLElement>('[data-site-header]');
+    const mount =
+      globalThis.document.querySelector<HTMLElement>('[data-cal-mount]');
+    const header =
+      globalThis.document.querySelector<HTMLElement>('[data-site-header]');
+
+    if (!mount || !header) {
+      throw new Error('Cal mount or site header not found');
+    }
+
     const testState = (
       globalThis as unknown as {
         __calViewportTest: {
@@ -463,13 +479,9 @@ test('uses viewport-appropriate alignment when a selected booker is ready @booki
     ).__calViewportTest;
     const calls: ScrollToOptions[] = [];
 
-    if (!mount || !header) {
-      throw new Error('Cal mount or site header not found');
-    }
-
     const waitForFrame = async () =>
       new Promise<void>((resolve) => {
-        requestAnimationFrame(() => {
+        globalThis.requestAnimationFrame(() => {
           resolve();
         });
       });
@@ -478,14 +490,20 @@ test('uses viewport-appropriate alignment when a selected booker is ready @booki
     const headerBottom = 80;
     const expectedTop = Math.max(
       globalThis.scrollY + mountTop - headerBottom - 8,
-      0
+      0,
     );
 
-    mount.getBoundingClientRect = () => new DOMRect(0, mountTop, 390, 821);
-    header.getBoundingClientRect = () => new DOMRect(0, 0, 390, headerBottom);
-    globalThis.scrollTo = ((options: ScrollToOptions) => {
-      calls.push(options);
-    }) as typeof globalThis.scrollTo;
+    const {DOMRect: BrowserDOMRect} = globalThis;
+    mount.getBoundingClientRect = () =>
+      new BrowserDOMRect(0, mountTop, 390, 821);
+    header.getBoundingClientRect = () =>
+      new BrowserDOMRect(0, 0, 390, headerBottom);
+    Object.defineProperty(globalThis, 'scrollTo', {
+      configurable: true,
+      value(options: ScrollToOptions) {
+        calls.push(options);
+      },
+    });
 
     testState.listeners.eventTypeSelected();
     testState.listeners.bookerReady();
@@ -509,24 +527,29 @@ test('does not reposition when the booking heading is already visible @booking',
     const listeners: Record<string, (...args: unknown[]) => void> = {};
     const namespaces: Record<string, (...args: unknown[]) => void> = {};
     const cal = (...args: unknown[]) => {
-      if (args[0] === 'init' && typeof args[1] === 'string') {
-        const namespace = args[1];
-
-        namespaces[namespace] = (...namespaceArgs: unknown[]) => {
-          if (
-            namespaceArgs[0] === 'on' &&
-            typeof namespaceArgs[1] === 'object' &&
-            namespaceArgs[1] !== null
-          ) {
-            const listener = namespaceArgs[1] as {
-              action: string;
-              callback: (...callbackArgs: unknown[]) => void;
-            };
-
-            listeners[listener.action] = listener.callback;
-          }
-        };
+      if (!(args[0] === 'init' && typeof args[1] === 'string')) {
+        return;
       }
+
+      const namespace = args[1];
+
+      namespaces[namespace] = (...namespaceArgs: unknown[]) => {
+        if (
+          !(
+            namespaceArgs[0] === 'on' && typeof namespaceArgs[1] === 'object'
+          ) ||
+          namespaceArgs[1] === null
+        ) {
+          return;
+        }
+
+        const listener = namespaceArgs[1] as {
+          action: string;
+          callback: (...callbackArgs: unknown[]) => void;
+        };
+
+        listeners[listener.action] = listener.callback;
+      };
     };
 
     Object.assign(cal, {ns: namespaces});
@@ -539,9 +562,14 @@ test('does not reposition when the booking heading is already visible @booking',
   await page.goto('/en/book-online');
 
   const scrollCount = await page.evaluate(async () => {
-    const section = document.querySelector<HTMLElement>(
-      '[data-booking-selector]'
+    const section = globalThis.document.querySelector<HTMLElement>(
+      '[data-booking-selector]',
     );
+
+    if (!section) {
+      throw new Error('Booking section not found');
+    }
+
     const testState = (
       globalThis as unknown as {
         __calViewportTest: {
@@ -549,16 +577,14 @@ test('does not reposition when the booking heading is already visible @booking',
         };
       }
     ).__calViewportTest;
+
     let calls = 0;
 
-    if (!section) {
-      throw new Error('Booking section not found');
-    }
-
-    const sectionRect = new DOMRect(0, 200);
+    const {DOMRect: BrowserDOMRect} = globalThis;
+    const sectionRect = new BrowserDOMRect(0, 200);
     const waitForFrame = async () =>
       new Promise<void>((resolve) => {
-        requestAnimationFrame(() => {
+        globalThis.requestAnimationFrame(() => {
           resolve();
         });
       });
@@ -590,10 +616,10 @@ test('shows the localized direct-booking fallback if the Cal script is blocked @
   await page.goto('/en/book-online');
 
   await expect(
-    page.getByText('The booking calendar cannot be displayed at the moment.')
+    page.getByText('The booking calendar cannot be displayed at the moment.'),
   ).toBeVisible();
   await expect(
-    page.getByRole('link', {name: 'Book directly on Cal.eu'})
+    page.getByRole('link', {name: 'Book directly on Cal.eu'}),
   ).toHaveAttribute('href', 'https://www.cal.eu/lesmainsdeserenite');
 });
 
@@ -633,7 +659,9 @@ test('embeds the discovery event directly and tracks one shared conversion @book
     Object.assign(cal, {ns: namespaces});
     Object.assign(globalThis, {
       Cal: cal,
-      gtag: (...args: unknown[]) => analyticsCalls.push(args),
+      gtag(...args: unknown[]) {
+        analyticsCalls.push(args);
+      },
       __calDirectEventTest: {analyticsCalls, calls, listeners},
     });
   });
@@ -647,23 +675,23 @@ test('embeds the discovery event directly and tracks one shared conversion @book
   await expect(embedRoot).toHaveAttribute('data-cal-mode', 'event');
   await expect(embedRoot).toHaveAttribute(
     'data-cal-instruction-state',
-    'booking'
+    'booking',
   );
   await expect(embedRoot).toHaveAttribute('data-cal-embed-link', calLink);
   await expect(embedRoot).toHaveAttribute('data-cal-namespace', namespace);
   await expect(page.locator(`#cal-inline-${namespace}`)).toHaveAttribute(
     'aria-label',
-    'Réservation de l’offre découverte en ligne'
+    'Réservation de l’offre découverte en ligne',
   );
   await expect(page.locator('[data-cal-reset]')).toHaveCount(0);
   await expect(
     page.getByText('Sélectionnez la date et l’heure qui vous conviennent.', {
       exact: true,
-    })
+    }),
   ).toBeVisible();
   await expect(page.locator('[data-cal-fallback] a')).toHaveAttribute(
     'href',
-    'https://www.cal.eu/lesmainsdeserenite/massage-45-minutes-offre-decouverte'
+    'https://www.cal.eu/lesmainsdeserenite/massage-45-minutes-offre-decouverte',
   );
 
   const inlineCall = await page.evaluate((expectedNamespace) => {
@@ -676,8 +704,8 @@ test('embeds the discovery event directly and tracks one shared conversion @book
     ).__calDirectEventTest;
 
     return testState.calls.find(
-      ({args, namespace}) =>
-        namespace === expectedNamespace && args[0] === 'inline'
+      ({args, namespace: callNamespace}) =>
+        callNamespace === expectedNamespace && args[0] === 'inline',
     );
   }, namespace);
 
@@ -707,7 +735,9 @@ test('embeds the discovery event directly and tracks one shared conversion @book
     ).__calDirectEventTest;
 
     Object.assign(globalThis, {
-      gtag: (...args: unknown[]) => testState.analyticsCalls.push(args),
+      gtag(...args: unknown[]) {
+        testState.analyticsCalls.push(args);
+      },
     });
     testState.listeners.bookingSuccessfulV2({
       detail: {email: 'not-forwarded@example.test', name: 'Not Forwarded'},
@@ -741,12 +771,12 @@ test('uses the event-specific Cal fallback on the discovery page @booking', asyn
   await page.goto('/en/book-online/discovery-offer');
 
   await expect(
-    page.getByText('The booking calendar cannot be displayed at the moment.')
+    page.getByText('The booking calendar cannot be displayed at the moment.'),
   ).toBeVisible();
   await expect(
-    page.getByRole('link', {name: 'Book directly on Cal.eu'})
+    page.getByRole('link', {name: 'Book directly on Cal.eu'}),
   ).toHaveAttribute(
     'href',
-    'https://www.cal.eu/lesmainsdeserenite/massage-45-minutes-offre-decouverte'
+    'https://www.cal.eu/lesmainsdeserenite/massage-45-minutes-offre-decouverte',
   );
 });
