@@ -65,17 +65,17 @@ const treatmentCatalog = [
     copy: defineLocalizedContent<TreatmentCopy>({
       fr: {
         anchorId: 'massage-anti-douleur',
-        title: 'Soin thérapeutique ou relaxant',
+        title: 'Massage relaxant et personnalisé',
         description:
-          'Pour relâcher les tensions, apaiser le stress et retrouver une détente profonde. Un soin personnalisé selon vos besoins du moment.',
+          'Pour relâcher les tensions, apaiser le stress et retrouver une détente profonde. Un massage personnalisé selon vos besoins du moment.',
         homeCtaText: 'Voir le soin',
         overviewCtaText: 'Réserver ce soin',
       },
       en: {
         anchorId: 'tension-relief-massage',
-        title: 'Therapeutic or relaxing treatment',
+        title: 'Relaxing personalized massage',
         description:
-          'To release tension, soften stress, and return to deep relaxation. A personalized treatment adapted to what you need in the moment.',
+          'To release tension, soften stress, and return to deep relaxation. A personalized massage adapted to what you need in the moment.',
         homeCtaText: 'View treatment',
         overviewCtaText: 'Book this treatment',
       },

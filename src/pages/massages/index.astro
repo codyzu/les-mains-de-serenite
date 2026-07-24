@@ -1,0 +1,13 @@
+---
+import {defaultLocale, localizedPagePaths} from '../../data/site';
+import LegacyRedirectPageTemplate from '../../page-templates/LegacyRedirectPageTemplate.astro';
+---
+
+<LegacyRedirectPageTemplate
+  locale={defaultLocale}
+  title="Massages et soins bien-être à Annecy"
+  description="La page des massages et soins bien-être se trouve désormais dans la section Soins."
+  destinationPath={localizedPagePaths.soins.fr}
+  destinationLabel="Découvrir les soins"
+  languageSwitchPaths={localizedPagePaths.soins}
+/>

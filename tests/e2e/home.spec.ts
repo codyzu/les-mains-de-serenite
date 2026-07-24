@@ -6,19 +6,27 @@ test('French homepage renders the main business content and booking CTA', async 
   await page.goto('/');
 
   await expect(page).toHaveTitle(
-    'Les Mains de Sérénité | Massage bien-être à Annecy pour femmes'
+    'Drainage lymphatique et massages à Annecy | Les Mains de Sérénité'
   );
   await expect(
-    page.getByRole('heading', {name: 'Les Mains de Sérénité'}).first()
-  ).toBeVisible();
-  await expect(
     page.getByRole('heading', {
-      name: 'Soin ponctuel : choisir le rituel juste',
+      name: 'Drainage lymphatique, massages et soins bien-être à Annecy',
     })
   ).toBeVisible();
   await expect(
-    page.getByRole('heading', {name: 'Soin thérapeutique ou relaxant'})
+    page.getByRole('heading', {
+      name: 'Massages et soins ponctuels : choisir le rituel juste',
+    })
   ).toBeVisible();
+  await expect(
+    page.getByRole('heading', {name: 'Massage relaxant et personnalisé'})
+  ).toBeVisible();
+  await expect(
+    page.getByRole('link', {
+      name: 'drainage lymphatique à Annecy',
+      exact: true,
+    })
+  ).toHaveAttribute('href', '/soins/#drainage-lymphatique');
   await expect(
     page.getByRole('link', {name: 'Découvrir les soins'})
   ).toHaveAttribute('href', '/soins/');
@@ -86,12 +94,12 @@ test('English homepage renders localized content and booking CTA', async ({
   ).toBeVisible();
   await expect(
     page.getByRole('heading', {
-      name: 'Single treatment: choose the right ritual',
+      name: 'Single massages and treatments: choose the right ritual',
     })
   ).toBeVisible();
   await expect(
     page.getByRole('heading', {
-      name: 'Therapeutic or relaxing treatment',
+      name: 'Relaxing personalized massage',
     })
   ).toBeVisible();
   await expect(

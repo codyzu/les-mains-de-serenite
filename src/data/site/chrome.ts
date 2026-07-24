@@ -14,7 +14,7 @@ export const chrome = {
       },
     },
     footer: {
-      tagline: 'Soin bien-être',
+      tagline: 'Massages et soins bien-être à Annecy',
       links: {
         soins: 'Soins',
         program: 'Programmes',
@@ -39,7 +39,7 @@ export const chrome = {
       },
     },
     footer: {
-      tagline: 'Wellness massage',
+      tagline: 'Massages and wellness treatments in Annecy',
       links: {
         soins: 'Treatments',
         program: 'Programs',

@@ -11,6 +11,7 @@ const getWhatsappMessage = async (locator: Locator) => {
 const routes = [
   '/',
   '/en/',
+  '/massages/',
   '/soins/',
   '/en/massages/',
   '/soins/maderotherapie/',
@@ -43,6 +44,41 @@ for (const route of routes) {
   });
 }
 
+test('legacy French massages route redirects directly to soins', async ({
+  page,
+  request,
+}) => {
+  const response = await request.get('/massages/');
+  const body = await response.text();
+
+  expect(response.status()).toBe(200);
+  expect(body).toContain(
+    '<meta http-equiv="refresh" content="0; url=/soins/">'
+  );
+  expect(body).toContain(
+    '<link rel="canonical" href="https://lesmainsdeserenite.fr/soins/">'
+  );
+
+  await page.goto('/massages/');
+  await expect(page).toHaveURL('/soins/');
+});
+
+test('sitemap includes soins and excludes the legacy French massages URL', async ({
+  request,
+}) => {
+  const response = await request.get('/sitemap-0.xml');
+  const sitemap = await response.text();
+
+  expect(response.status()).toBe(200);
+  expect(sitemap).toContain('<loc>https://lesmainsdeserenite.fr/soins/</loc>');
+  expect(sitemap).not.toContain(
+    '<loc>https://lesmainsdeserenite.fr/massages/</loc>'
+  );
+  expect(sitemap).toContain(
+    '<loc>https://lesmainsdeserenite.fr/en/massages/</loc>'
+  );
+});
+
 test('custom 404 page renders branded recovery links', async ({page}) => {
   await page.goto('/404.html');
 
@@ -64,19 +100,19 @@ test('section overview pages render their main content', async ({page}) => {
 
   await expect(
     page.getByRole('heading', {
-      name: 'Chaque soin est pensé pour répondre à votre besoin du moment',
+      name: 'Massages et soins bien-être à Annecy',
     })
   ).toBeVisible();
   await expect(
     page.getByText(
-      'Des soins bien-être à Annecy réservés exclusivement aux femmes'
+      'Des massages et soins bien-être à Annecy réservés exclusivement aux femmes'
     )
   ).toBeVisible();
   await expect(
     page.getByRole('link', {name: 'Réserver un soin'}).first()
   ).toHaveAttribute('href', '/reserver-en-ligne');
   await expect(
-    page.getByRole('heading', {name: 'Un soin pensé pour vous'})
+    page.getByRole('heading', {name: 'Des massages et soins pensés pour vous'})
   ).toBeVisible();
   await expect(
     page.getByRole('heading', {name: 'Madérothérapie'})

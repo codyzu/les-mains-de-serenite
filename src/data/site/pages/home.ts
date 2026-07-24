@@ -9,16 +9,18 @@ import {getBusinessWhatsappHref} from '../shared';
 export const homePages = {
   fr: {
     meta: {
-      title: 'Les Mains de Sérénité | Massage bien-être à Annecy pour femmes',
+      title:
+        'Drainage lymphatique et massages à Annecy | Les Mains de Sérénité',
       description:
-        'Soins bien-être à Annecy réservés aux femmes, sur rendez-vous, dans un cadre calme et confortable. Drainage lymphatique, madérothérapie, soins ciblés et programmes d’accompagnement.',
+        'Drainage lymphatique Renata França, massages personnalisés et soins bien-être à Annecy, réservés aux femmes dans un cadre calme et rassurant.',
     },
     hero: {
-      subtitle: 'Soins bien-être à Annecy',
-      title: 'Les Mains de Sérénité',
+      subtitle: 'Les Mains de Sérénité',
+      title: 'Drainage lymphatique, massages\net soins bien-être à Annecy',
       description:
-        'À Annecy, dans un cadre chaleureux, apaisant, privé et sécurisant.',
-      imageAlt: 'Ambiance bien-être et massage',
+        'Drainage lymphatique selon la méthode Renata França, massages personnalisés et soins bien-être dans un cadre chaleureux, privé et rassurant.',
+      imageAlt:
+        'Cabinet de drainage lymphatique, massages et soins bien-être à Annecy',
       womenOnlyLabel: 'Réservé aux femmes',
       benefitHighlight:
         'Idéal pour jambes lourdes, ventre gonflé et confort au quotidien',
@@ -30,7 +32,7 @@ export const homePages = {
       parts: [
         {text: 'Des '},
         {
-          text: 'soins individuels',
+          text: 'massages et soins bien-être personnalisés',
           href: localizedPagePaths.soins.fr,
         },
         {
@@ -108,13 +110,13 @@ export const homePages = {
       ],
     },
     soinsSection: {
-      title: 'Soin ponctuel : choisir le rituel juste',
+      title: 'Massages et soins ponctuels : choisir le rituel juste',
       intro:
-        'Une sélection de soins bien-être à Annecy, réservés aux femmes, pour répondre à un besoin précis ou simplement s’accorder un vrai moment pour soi.',
+        'Le drainage lymphatique à Annecy selon la méthode Renata França ouvre cette sélection de massages et soins bien-être réservés aux femmes, pour répondre à un besoin précis ou s’accorder un vrai moment pour soi.',
       introLinks: [
         {
-          text: 'soins bien-être à Annecy',
-          href: localizedPagePaths.soins.fr,
+          text: 'drainage lymphatique à Annecy',
+          href: `${localizedPagePaths.soins.fr}#drainage-lymphatique`,
         },
       ],
       recommendedLabel: 'Durée conseillée',
@@ -148,9 +150,9 @@ export const homePages = {
     about: {
       title: 'Qui prendra soin de vous ?',
       body: `
-  Je suis Zahara, praticienne bien-être à Annecy. Mon parcours d’auxiliaire de puériculture m’a appris l’attention, la douceur et l’écoute fine du corps.
+  Je suis Zahara, praticienne en massages et soins bien-être à Annecy. Mon parcours d’auxiliaire de puériculture m’a appris l’attention, la douceur et l’écoute fine du corps.
 
-  Formée au drainage lymphatique selon la méthode Renata França, je propose des soins réservés aux femmes, dans un cadre calme, privé et rassurant.
+  Formée au drainage lymphatique selon la méthode Renata França, je propose des massages et soins réservés aux femmes, dans un cadre calme, privé et rassurant.
 
   Chaque séance est personnalisée selon vos besoins du moment : alléger le corps, relâcher les tensions, retrouver du calme ou simplement vous accorder une vraie parenthèse.
 
@@ -353,13 +355,13 @@ export const homePages = {
       ],
     },
     soinsSection: {
-      title: 'Single treatment: choose the right ritual',
+      title: 'Single massages and treatments: choose the right ritual',
       intro:
-        'A curated preview of women-only wellness treatments in Annecy, for a specific need or a true moment for yourself.',
+        'Renata França lymphatic drainage in Annecy leads this selection of women-only massages and wellness treatments, for a specific need or a true moment for yourself.',
       introLinks: [
         {
-          text: 'wellness treatments in Annecy',
-          href: localizedPagePaths.soins.en,
+          text: 'lymphatic drainage in Annecy',
+          href: `${localizedPagePaths.soins.en}#lymphatic-drainage`,
         },
       ],
       recommendedLabel: 'Recommended',
@@ -393,9 +395,9 @@ export const homePages = {
     about: {
       title: 'Who will take care of you?',
       body: `
-  I am Zahara, a wellness practitioner in Annecy. My background as a childcare assistant shaped an attentive, gentle, and body-aware approach.
+  I am Zahara, a massage and wellness practitioner in Annecy. My background as a childcare assistant shaped an attentive, gentle, and body-aware approach.
 
-  Trained in lymphatic drainage with the Renata França method, I offer women-only treatments in a calm, private, and reassuring setting.
+  Trained in lymphatic drainage with the Renata França method, I offer women-only massages and treatments in a calm, private, and reassuring setting.
 
   Every session is personalized to your needs at that moment: lightness, tension release, calm, or simply a real pause for yourself.
 

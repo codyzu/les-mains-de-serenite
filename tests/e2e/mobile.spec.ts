@@ -16,7 +16,9 @@ test(
     await page.goto('/');
 
     await expect(
-      page.getByRole('heading', {name: 'Les Mains de Sérénité'}).first()
+      page.getByRole('heading', {
+        name: 'Drainage lymphatique, massages et soins bien-être à Annecy',
+      })
     ).toBeVisible();
     await expect(
       page.getByRole('link', {name: 'Réserver un soin'}).first()

@@ -7,36 +7,36 @@ export const soinsPages = {
   fr: {
     path: localizedPagePaths.soins.fr,
     meta: {
-      title: 'Soins bien-être à Annecy | Les Mains de Sérénité',
+      title: 'Massages et soins bien-être à Annecy | Les Mains de Sérénité',
       description:
-        'Découvrez les soins bien-être et massages à Annecy : drainage lymphatique, soin relaxant, soin thérapeutique, remodelant, Miracle Face soin visage liftant et madérothérapie.',
+        'Découvrez les massages et soins bien-être à Annecy réservés aux femmes : drainage lymphatique Renata França, massage relaxant, remodelant, Miracle Face et madérothérapie.',
     },
     hero: {
-      eyebrow: 'Soins bien-être à Annecy',
-      title: 'Chaque soin est pensé pour répondre à votre besoin du moment',
+      eyebrow: 'Des rituels personnalisés, réservés aux femmes',
+      title: 'Massages et soins bien-être à Annecy',
       description:
-        'À chaque rendez-vous, le soin s’adapte à vos besoins actuels, à vos sensations et à votre intention du moment : légèreté, détente, relâchement ou tonicité.',
+        'Drainage lymphatique selon la méthode Renata França, massage relaxant personnalisé et autres soins bien-être : chaque rendez-vous s’adapte à vos besoins du moment, entre légèreté, détente, relâchement et tonicité.',
       reassurance:
-        'Des soins bien-être à Annecy réservés exclusivement aux femmes, dans un cadre calme, bienveillant et confidentiel.',
+        'Chaque rendez-vous est réservé exclusivement aux femmes et se déroule dans un cadre calme, bienveillant et confidentiel à Annecy.',
       ctaText: 'Réserver un soin',
       ctaHref: localizedPagePaths.reserveOnline.fr,
       analyticsEvent: 'reserve_click',
     },
     philosophy: {
-      title: 'Un soin pensé pour vous',
+      title: 'Des massages et soins pensés pour vous',
       description:
-        'Chaque rendez-vous commence par un échange pour comprendre vos besoins, vos ressentis et ce que votre corps exprime ce jour-là. L’objectif n’est pas seulement de choisir une technique, mais de vous proposer le soin le plus adapté à votre moment.',
+        'Chaque rendez-vous commence par un échange pour comprendre vos besoins, vos ressentis et ce que votre corps exprime ce jour-là. L’objectif n’est pas seulement de choisir une technique, mais de vous proposer le massage ou le soin le plus adapté à votre moment.',
     },
     transitionImageAlt:
       'Théière asiatique et petites tasses sur une terrasse avec vue sur le lac et les montagnes à Annecy',
     section: {
-      title: 'Soin ponctuel : choisir le rituel juste',
+      title: 'Massages et soins ponctuels : choisir le rituel juste',
       intro:
-        'Les soins sont des séances individuelles. Ils permettent de répondre à un besoin précis, de découvrir une technique de soin bien-être ou de vous offrir un moment de détente ponctuel.',
+        'Le drainage lymphatique à Annecy selon la méthode Renata França ouvre cette sélection de séances individuelles. Ces massages et soins répondent à un besoin précis ou vous offrent un moment de détente ponctuel.',
       introLinks: [
         {
-          text: 'soins bien-être à Annecy',
-          href: localizedPagePaths.soins.fr,
+          text: 'drainage lymphatique à Annecy',
+          href: `${localizedPagePaths.soins.fr}#drainage-lymphatique`,
         },
       ],
       recommendedLabel: 'Durée conseillée',
@@ -106,15 +106,16 @@ export const soinsPages = {
   en: {
     path: localizedPagePaths.soins.en,
     meta: {
-      title: 'Wellness Massages in Annecy | Les Mains de Sérénité',
+      title:
+        'Massages and Wellness Treatments in Annecy | Les Mains de Sérénité',
       description:
-        'Discover women-only wellness treatments and massages in Annecy: lymphatic drainage, relaxing treatment, tension relief, body sculpting, Miracle Face lifting facial treatment, and maderotherapy.',
+        'Discover women-only massages and wellness treatments in Annecy: Renata França lymphatic drainage, relaxing massage, body sculpting, Miracle Face, and maderotherapy.',
     },
     hero: {
-      eyebrow: 'Wellness massages in Annecy',
-      title: 'Each treatment is designed around what you need today',
+      eyebrow: 'Personalized rituals for women',
+      title: 'Massages and wellness treatments in Annecy',
       description:
-        'At every appointment, the treatment adapts to your current needs, sensations, and intention for the session: lightness, relaxation, tension relief, or tone.',
+        'Renata França lymphatic drainage, personalized relaxing massage, and other wellness treatments: every appointment adapts to your current needs, whether you seek lightness, relaxation, tension relief, or tone.',
       reassurance:
         'Wellness treatments and massages are reserved exclusively for women, in a calm, caring, and confidential setting.',
       ctaText: 'Book a treatment',
@@ -122,20 +123,20 @@ export const soinsPages = {
       analyticsEvent: 'reserve_click',
     },
     philosophy: {
-      title: 'A treatment designed for you',
+      title: 'Massages and treatments designed for you',
       description:
-        'Each appointment begins with a conversation to understand your needs, how you feel, and what your body is expressing that day. The goal is not only to choose a technique, but to offer the treatment that best fits your moment.',
+        'Each appointment begins with a conversation to understand your needs, how you feel, and what your body is expressing that day. The goal is not only to choose a technique, but to offer the massage or treatment that best fits your moment.',
     },
     transitionImageAlt:
       'Asian teapot and small cups on a terrace overlooking the lake and mountains in Annecy',
     section: {
-      title: 'Single treatment: choose the right ritual',
+      title: 'Single massages and treatments: choose the right ritual',
       intro:
-        'Treatments are individual sessions. They are ideal for a specific need, discovering a wellness massage technique, or giving yourself a focused moment of well-being.',
+        'Renata França lymphatic drainage in Annecy leads this selection of individual sessions. These massages and wellness treatments meet a specific need or offer a focused moment of relaxation.',
       introLinks: [
         {
-          text: 'wellness treatments in Annecy',
-          href: localizedPagePaths.soins.en,
+          text: 'lymphatic drainage in Annecy',
+          href: `${localizedPagePaths.soins.en}#lymphatic-drainage`,
         },
       ],
       recommendedLabel: 'Recommended',
