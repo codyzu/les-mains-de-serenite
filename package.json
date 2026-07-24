@@ -22,7 +22,7 @@
     "@astrojs/check": "^0.9.9",
     "@iconify-json/lucide": "^1.2.119",
     "@playwright/test": "^1.61.1",
-    "@types/node": "^25.5.0",
+    "@types/node": "^24.13.3",
     "@typescript-eslint/parser": "^8.65.0",
     "@unocss/astro": "^66.7.5",
     "@unocss/preset-icons": "^66.7.5",
