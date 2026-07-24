@@ -98,7 +98,11 @@ const transitionPaths = [
     }
     {
       structuredDataItems.map((item) => (
-        <script type="application/ld+json" set:html={JSON.stringify(item)} />
+        <script
+          is:inline
+          type="application/ld+json"
+          set:html={JSON.stringify(item)}
+        />
       ))
     }
     <slot name="head" />
@@ -111,6 +115,7 @@ const transitionPaths = [
     {
       import.meta.env.PROD ? (
         <script
+          is:inline
           defer
           src="https://static.cloudflareinsights.com/beacon.min.js"
           data-cf-beacon='{"token": "cac9cbcf27cb4fd1b8c1f96bc6e63852"}'

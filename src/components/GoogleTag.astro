@@ -11,7 +11,7 @@ const gtagSrc =
 
 <script is:inline async src={gtagSrc}></script>
 
-<script define:vars={{gaMeasurementId}}>
+<script is:inline define:vars={{gaMeasurementId}}>
   window.dataLayer = window.dataLayer || [];
 
   window.gtag = function gtag() {

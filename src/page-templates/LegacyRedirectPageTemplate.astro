@@ -33,7 +33,7 @@ const {
     http-equiv="refresh"
     content={`0; url=${destinationPath}`}
   />
-  <main class="bg-surface">
+  <main class="bg-surface" data-legacy-redirect={destinationPath}>
     <section class="section-pad">
       <div class="container-page max-w-3xl">
         <div class="card-soft p-7 text-center shadow-soft sm:p-10">
@@ -49,7 +49,14 @@ const {
       </div>
     </section>
   </main>
-  <script define:vars={{destinationPath}}>
-    window.location.replace(destinationPath);
+  <script>
+    const redirectPage = document.querySelector<HTMLElement>(
+      '[data-legacy-redirect]',
+    );
+    const destinationPath = redirectPage?.dataset.legacyRedirect;
+
+    if (typeof destinationPath === 'string' && destinationPath.length > 0) {
+      window.location.replace(destinationPath);
+    }
   </script>
 </Layout>

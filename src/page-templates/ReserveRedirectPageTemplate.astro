@@ -37,7 +37,11 @@ const alternates = [
   alternates={alternates}
 >
   <meta slot="head" name="robots" content="noindex" />
-  <main class="min-h-screen bg-surface px-6 py-16 text-ink">
+  <main
+    class="min-h-screen bg-surface px-6 py-16 text-ink"
+    data-reserve-redirect-url={redirectUrl}
+    data-reserve-redirect-delay-ms={reserve.redirect.delayMs}
+  >
     <div
       class="mx-auto flex min-h-[60vh] max-w-xl flex-col items-center justify-center text-center"
     >
@@ -83,14 +87,23 @@ const alternates = [
     </div>
   </main>
 
-  <script
-    define:vars={{
-      redirectDelayMs: reserve.redirect.delayMs,
-      redirectUrl,
-    }}
-  >
-    window.setTimeout(() => {
-      window.location.replace(redirectUrl);
-    }, redirectDelayMs);
+  <script>
+    const redirectPage = document.querySelector<HTMLElement>(
+      '[data-reserve-redirect-url]',
+    );
+    const redirectUrl = redirectPage?.dataset.reserveRedirectUrl;
+    const redirectDelayMs = Number(
+      redirectPage?.dataset.reserveRedirectDelayMs,
+    );
+
+    if (
+      typeof redirectUrl === 'string' &&
+      redirectUrl.length > 0 &&
+      Number.isFinite(redirectDelayMs)
+    ) {
+      window.setTimeout(() => {
+        window.location.replace(redirectUrl);
+      }, redirectDelayMs);
+    }
   </script>
 </BaseLayout>
