@@ -449,7 +449,7 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
       listenersRegistered: previousState?.listenersRegistered ?? false,
       mount,
       mode,
-      resetButton,
+      resetButton: resetButton ?? undefined,
       root,
       selectorUrl: previousState?.selectorUrl,
     };

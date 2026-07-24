@@ -105,7 +105,7 @@ test('section overview pages render their main content', async ({page}) => {
   ).toBeVisible();
   await expect(
     page.getByText(
-      'Des massages et soins bien-être à Annecy réservés exclusivement aux femmes'
+      'Drainage lymphatique selon la méthode Renata França, massage relaxant personnalisé et autres soins bien-être : chaque rendez-vous s’adapte à vos besoins du moment, entre légèreté, détente, relâchement et tonicité.'
     )
   ).toBeVisible();
   await expect(

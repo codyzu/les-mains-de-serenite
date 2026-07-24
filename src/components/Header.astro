@@ -339,7 +339,9 @@ const mobileNavItems = desktopNavItems
 
 <script>
   const menuRoot = document.querySelector('[data-mobile-menu]');
-  const menuDrawer = document.querySelector('[data-mobile-menu-drawer]');
+  const menuDrawer = document.querySelector<HTMLElement>(
+    '[data-mobile-menu-drawer]'
+  );
   const menuBackdrop = document.querySelector('[data-mobile-menu-backdrop]');
   const openMenuButton = document.querySelector('[data-mobile-menu-open]');
   const closeMenuButton = document.querySelector('[data-mobile-menu-close]');
