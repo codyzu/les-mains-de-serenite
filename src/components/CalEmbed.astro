@@ -82,8 +82,7 @@ const directUrl = new URL(calLink.replace(/^\/+/, ''), 'https://www.cal.eu/');
           class="mb-4 inline-flex min-h-11 items-center gap-2 rounded-full px-3 py-2 text-sm font-medium text-ink-muted transition hover:bg-brand-soft/45 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-strong focus-visible:ring-offset-2 focus-visible:ring-offset-surface-muted disabled:cursor-wait disabled:opacity-50 sm:mb-5"
           type="button"
         >
-          <span aria-hidden="true">←</span>
-          <span>{resetLabel}</span>
+          <span aria-hidden="true">←</span> <span>{resetLabel}</span>
         </button>
       </div>
     ) : null
