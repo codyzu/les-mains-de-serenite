@@ -1,0 +1,81 @@
+---
+import {site} from '../data/site';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import {getBaseUrl} from '../utils/url';
+
+const bookingPath = `${getBaseUrl()}reserver-en-ligne`;
+const redirectUrl = `${bookingPath}?utm_source=vitrine&utm_medium=qr&utm_campaign=reservation`;
+const canonicalUrl = new URL(bookingPath, site.business.siteUrl).href;
+---
+
+<BaseLayout
+  lang="fr"
+  title="Redirection vers la réservation en ligne"
+  description="Redirection vers la réservation en ligne des Mains de Sérénité."
+  canonicalUrl={canonicalUrl}
+  gaSendPageView={false}
+>
+  <meta slot="head" name="robots" content="noindex, follow" />
+  <noscript slot="head">
+    <meta http-equiv="refresh" content={`0; url=${redirectUrl}`} />
+  </noscript>
+
+  <main
+    class="grid min-h-screen place-items-center bg-surface p-6 text-center"
+    data-qr-redirect={redirectUrl}
+  >
+    <div>
+      <p class="body-base">Redirection vers la réservation en ligne…</p>
+      <a class="btn-primary mt-6" href={redirectUrl}>Réserver en ligne</a>
+    </div>
+  </main>
+
+  <script>
+    type GtagWindow = Window & {
+      gtag?: (...args: unknown[]) => void;
+      __vitrineQrRedirectStarted?: boolean;
+    };
+
+    const redirectPage =
+      document.querySelector<HTMLElement>('[data-qr-redirect]');
+    const destination = redirectPage?.dataset.qrRedirect;
+    const gtagWindow = window as GtagWindow;
+
+    if (
+      typeof destination === 'string' &&
+      destination.length > 0 &&
+      !gtagWindow.__vitrineQrRedirectStarted
+    ) {
+      gtagWindow.__vitrineQrRedirectStarted = true;
+      let hasRedirected = false;
+
+      const redirect = () => {
+        if (hasRedirected) {
+          return;
+        }
+
+        hasRedirected = true;
+        window.clearTimeout(fallbackTimer);
+        window.location.replace(destination);
+      };
+
+      const fallbackTimer = window.setTimeout(redirect, 350);
+
+      if (typeof gtagWindow.gtag === 'function') {
+        try {
+          gtagWindow.gtag('event', 'qr_redirect', {
+            campaign: 'reservation',
+            qr_location: 'vitrine',
+            transport_type: 'beacon',
+            event_callback: redirect,
+            event_timeout: 250,
+          });
+        } catch {
+          redirect();
+        }
+      } else {
+        redirect();
+      }
+    }
+  </script>
+</BaseLayout>

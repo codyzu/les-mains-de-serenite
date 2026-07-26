@@ -10,6 +10,7 @@ interface Props {
   openGraphDescription?: string;
   lang?: string;
   canonicalUrl?: string;
+  gaSendPageView?: boolean;
   alternates?: Array<{
     hreflang: string;
     href: string;
@@ -24,6 +25,7 @@ const {
   openGraphDescription,
   lang = 'fr',
   canonicalUrl,
+  gaSendPageView = true,
   alternates = [],
   structuredData,
 } = Astro.props;
@@ -106,7 +108,14 @@ const transitionPaths = [
       ))
     }
     <slot name="head" />
-    {gaMeasurementId ? <GoogleTag gaMeasurementId={gaMeasurementId} /> : null}
+    {
+      gaMeasurementId ? (
+        <GoogleTag
+          gaMeasurementId={gaMeasurementId}
+          sendPageView={gaSendPageView}
+        />
+      ) : null
+    }
   </head>
   <body>
     <slot />

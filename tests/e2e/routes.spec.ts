@@ -8,6 +8,9 @@ const getWhatsappMessage = async (locator: Locator) => {
   return new URL(href ?? '').searchParams.get('text');
 };
 
+const vitrineDestination =
+  '/reserver-en-ligne?utm_source=vitrine&utm_medium=qr&utm_campaign=reservation';
+
 const routes = [
   '/',
   '/en/',
@@ -28,6 +31,7 @@ const routes = [
   '/en/light-belly-light-legs-program',
   '/reserver',
   '/en/book',
+  '/v',
   '/reserver-en-ligne',
   '/en/book-online',
   '/reserver-en-ligne/offre-decouverte',
@@ -63,6 +67,156 @@ test('legacy French massages route redirects directly to soins', async ({
   await expect(page).toHaveURL('/soins/');
 });
 
+test('vitrine QR route preserves metadata and its no-JavaScript fallback', async ({
+  request,
+}) => {
+  const response = await request.get('/v');
+  const body = await response.text();
+
+  expect(response.status()).toBe(200);
+  expect(body).toContain('name="robots" content="noindex, follow"');
+  expect(body).toContain('qr_redirect');
+  expect(body).toContain('send_page_view: sendPageView');
+  expect(body).toContain('const sendPageView = false');
+  expect(body).toMatch(/transport_type:["'`]beacon["'`]/v);
+  expect(body).toContain(
+    'utm_source=vitrine&amp;utm_medium=qr&amp;utm_campaign=reservation',
+  );
+  expect(body).toContain('http-equiv="refresh"');
+});
+
+test('vitrine QR route redirects through the GA callback only once', async ({
+  page,
+}) => {
+  let bookingNavigations = 0;
+
+  page.on('request', (request) => {
+    if (
+      request.isNavigationRequest() &&
+      new URL(request.url()).pathname === '/reserver-en-ligne'
+    ) {
+      bookingNavigations += 1;
+    }
+  });
+  await page.addInitScript(() => {
+    type AnalyticsWindow = typeof globalThis & {
+      dataLayer?: {push: (...items: unknown[]) => number};
+      gtag?: (...args: unknown[]) => void;
+    };
+
+    const analyticsWindow = globalThis as AnalyticsWindow;
+    const mockGtag = (...args: unknown[]) => {
+      if (args[0] !== 'event' || args[1] !== 'qr_redirect') {
+        return;
+      }
+
+      const eventOptions = args[2] as {
+        // GA4's public option name intentionally uses snake_case.
+        // eslint-disable-next-line @typescript-eslint/naming-convention
+        event_callback?: () => void;
+      };
+      const eventCallback = eventOptions.event_callback;
+
+      if (typeof eventCallback === 'function') {
+        eventCallback();
+        setTimeout(eventCallback, 500);
+      }
+    };
+
+    analyticsWindow.dataLayer = {
+      push(...items) {
+        const command = items[0] as ArrayLike<unknown>;
+
+        if (command[0] === 'config') {
+          queueMicrotask(() => {
+            analyticsWindow.gtag = mockGtag;
+          });
+        }
+
+        return items.length;
+      },
+    };
+  });
+
+  await page.goto('/v');
+  await expect(page).toHaveURL(vitrineDestination);
+  await page.waitForTimeout(600);
+  expect(bookingNavigations).toBe(1);
+});
+
+test('vitrine QR route redirects immediately when gtag is unavailable', async ({
+  page,
+}) => {
+  await page.addInitScript(() => {
+    type AnalyticsWindow = typeof globalThis & {
+      dataLayer?: {push: (...items: unknown[]) => number};
+      gtag?: (...args: unknown[]) => void;
+    };
+
+    const analyticsWindow = globalThis as AnalyticsWindow;
+
+    analyticsWindow.dataLayer = {
+      push(...items) {
+        const command = items[0] as ArrayLike<unknown>;
+
+        if (command[0] === 'config') {
+          queueMicrotask(() => {
+            analyticsWindow.gtag = undefined;
+          });
+        }
+
+        return items.length;
+      },
+    };
+  });
+
+  await page.goto('/v');
+  await expect(page).toHaveURL(vitrineDestination);
+});
+
+test('vitrine QR route falls back when the GA callback never fires', async ({
+  page,
+}) => {
+  await page.addInitScript(() => {
+    type AnalyticsWindow = typeof globalThis & {
+      dataLayer?: {push: (...items: unknown[]) => number};
+      gtag?: (...args: unknown[]) => void;
+    };
+
+    const analyticsWindow = globalThis as AnalyticsWindow;
+
+    function stalledGtag() {
+      return undefined;
+    }
+
+    analyticsWindow.dataLayer = {
+      push(...items) {
+        const command = items[0] as ArrayLike<unknown>;
+
+        if (command[0] === 'config') {
+          queueMicrotask(() => {
+            analyticsWindow.gtag = stalledGtag;
+          });
+        }
+
+        return items.length;
+      },
+    };
+  });
+
+  await page.goto('/v');
+  await expect(page).toHaveURL(vitrineDestination);
+});
+
+test('vitrine QR route replaces its browser history entry', async ({page}) => {
+  await page.goto('/');
+  await page.goto('/v');
+  await expect(page).toHaveURL(vitrineDestination);
+
+  await page.goBack();
+  await expect(page).toHaveURL('/');
+});
+
 test('sitemap includes soins and excludes the legacy French massages URL', async ({
   request,
 }) => {
@@ -74,6 +228,7 @@ test('sitemap includes soins and excludes the legacy French massages URL', async
   expect(sitemap).not.toContain(
     '<loc>https://lesmainsdeserenite.fr/massages/</loc>',
   );
+  expect(sitemap).not.toContain('<loc>https://lesmainsdeserenite.fr/v/</loc>');
   expect(sitemap).toContain(
     '<loc>https://lesmainsdeserenite.fr/en/massages/</loc>',
   );

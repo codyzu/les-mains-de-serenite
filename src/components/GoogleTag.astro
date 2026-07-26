@@ -1,9 +1,10 @@
 ---
 interface Props {
   gaMeasurementId: string;
+  sendPageView?: boolean;
 }
 
-const {gaMeasurementId} = Astro.props;
+const {gaMeasurementId, sendPageView = true} = Astro.props;
 const gtagSrc =
   'https://www.googletagmanager.com/gtag/js?id=' +
   encodeURIComponent(gaMeasurementId);
@@ -11,7 +12,7 @@ const gtagSrc =
 
 <script is:inline async src={gtagSrc}></script>
 
-<script is:inline define:vars={{gaMeasurementId}}>
+<script is:inline define:vars={{gaMeasurementId, sendPageView}}>
   window.dataLayer = window.dataLayer || [];
 
   window.gtag = function gtag() {
@@ -22,6 +23,7 @@ const gtagSrc =
   window.gtag('config', gaMeasurementId, {
     allow_google_signals: false,
     allow_ad_personalization_signals: false,
+    send_page_view: sendPageView,
   });
 </script>
 
