@@ -1,0 +1,449 @@
+---
+import {Picture} from 'astro:assets';
+import CtaReassurance from '../components/CtaReassurance.astro';
+import IconImage from '../components/IconImage.astro';
+import SectionIntro from '../components/SectionIntro.astro';
+import DrainageHeroImage from '../assets/drainage-lymphatique-renata-franca.png';
+import {
+  localizedPagePaths,
+  type Locale,
+  type LocalizedSiteData,
+  type SiteBusinessData,
+} from '../data/site';
+import Layout from '../layouts/Layout.astro';
+
+interface Props {
+  locale: Locale;
+  business: SiteBusinessData;
+  localized: LocalizedSiteData;
+}
+
+const {locale, business, localized} = Astro.props;
+const {
+  pages: {drainageLymphatique: page},
+} = localized;
+const languageSwitchPaths = localizedPagePaths.drainageLymphatique;
+const ctaIsExternal = page.cta.href.startsWith('http');
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: page.meta.title,
+  description: page.meta.description,
+  image: new URL(DrainageHeroImage.src, business.siteUrl).href,
+  serviceType:
+    locale === 'en'
+      ? 'Renata França lymphatic drainage wellness treatment'
+      : 'Soin bien-être de drainage lymphatique Renata França',
+  provider: {
+    '@type': business.seo.schemaType,
+    name: business.name,
+    telephone: business.phone,
+    address: {
+      '@type': 'PostalAddress',
+      ...business.address,
+    },
+  },
+  areaServed: business.seo.areaServed,
+  offers: [
+    {
+      '@type': 'Offer',
+      price: '90',
+      priceCurrency: 'EUR',
+      description: locale === 'en' ? '60 minutes' : '60 minutes',
+    },
+    {
+      '@type': 'Offer',
+      price: '125',
+      priceCurrency: 'EUR',
+      description: locale === 'en' ? '90 minutes' : '90 minutes',
+    },
+  ],
+};
+---
+
+<Layout
+  locale={locale}
+  canonicalPath={page.path}
+  alternatePaths={languageSwitchPaths}
+  languageSwitchPaths={languageSwitchPaths}
+  title={page.meta.title}
+  description={page.meta.description}
+  openGraphTitle={page.meta.openGraphTitle}
+  openGraphDescription={page.meta.openGraphDescription}
+  structuredData={structuredData}
+>
+  <main>
+    <section class="overflow-hidden bg-surface-muted">
+      <div
+        class="container-page grid gap-10 pb-16 pt-14 sm:pb-20 sm:pt-18 lg:grid-cols-[minmax(0,0.95fr)_minmax(22rem,0.8fr)] lg:items-center lg:gap-14 lg:pb-16 lg:pt-16"
+      >
+        <div class="max-w-3xl">
+          <p
+            class="mb-4 text-sm uppercase tracking-[0.25em] text-brand-strong/90"
+          >
+            {
+              locale === 'en'
+                ? 'Renata França method in Annecy'
+                : 'Méthode Renata França à Annecy'
+            }
+          </p>
+          <h1 class="font-display text-5xl leading-tight text-ink sm:text-6xl">
+            {page.hero.title}
+          </h1>
+          <p
+            class="mt-6 max-w-2xl text-pretty text-lg leading-8 text-ink-muted sm:text-xl"
+          >
+            {page.hero.description}
+          </p>
+
+          <div class="mt-7 flex flex-wrap gap-3">
+            {
+              page.hero.keyInfo.map((item) => (
+                <span class="rounded-full bg-white/78 px-4 py-2 text-sm font-medium text-ink shadow-card">
+                  {item}
+                </span>
+              ))
+            }
+          </div>
+
+          <a
+            href={page.cta.href}
+            target={ctaIsExternal ? '_blank' : undefined}
+            rel={ctaIsExternal ? 'noreferrer' : undefined}
+            class="btn-primary mt-9 min-h-[3rem] px-7 py-3.5 sm:min-h-0 sm:py-3"
+            data-analytics-event={page.cta.analyticsEvent}
+          >
+            {page.hero.primaryCta}
+          </a>
+          <p class="mt-4 max-w-xl text-sm leading-6 text-ink/62">
+            {page.reassuranceNote}
+          </p>
+        </div>
+
+        <div
+          class="mx-auto max-w-[30rem] overflow-hidden rounded-[2rem] shadow-soft ring-1 ring-surface-soft lg:mx-0 lg:max-w-none"
+        >
+          <Picture
+            priority
+            src={DrainageHeroImage}
+            formats={['avif', 'webp']}
+            fallbackFormat="webp"
+            widths={[320, 448, 640, 768, 1086]}
+            width={448}
+            height={597}
+            sizes="(min-width: 1024px) 31rem, (min-width: 640px) 30rem, calc(100vw - 2rem)"
+            alt={page.hero.imageAlt}
+            class="h-auto w-full object-cover lg:max-h-[36rem]"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad bg-surface">
+      <div class="container-page">
+        <div
+          class="grid gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(19rem,0.65fr)] lg:items-start lg:gap-12"
+        >
+          <div>
+            <h2 class="heading-lg">{page.method.title}</h2>
+            <div class="mt-5 space-y-4">
+              {
+                page.method.paragraphs.map((paragraph, index) => (
+                  <p class:list={[index === 0 ? 'body-lg' : 'body-base']}>
+                    {paragraph}
+                  </p>
+                ))
+              }
+            </div>
+          </div>
+
+          <aside
+            class="card-soft bg-brand-soft/68 p-7 shadow-card sm:p-8 lg:sticky lg:top-28"
+          >
+            <IconImage
+              name="i-lucide-waves"
+              class="bg-white/74 text-brand-strong"
+            />
+            <p class="font-display text-2xl leading-9 text-ink">
+              {page.method.highlight}
+            </p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad bg-surface-muted">
+      <div class="container-page">
+        <SectionIntro title={page.forYou.title} text={page.forYou.intro} />
+
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {
+            page.forYou.items.map((item) => (
+              <article class="card-soft bg-white/84 p-6 shadow-card">
+                <IconImage
+                  name={item.icon}
+                  class="mb-4 h-12 w-12 bg-brand-soft text-brand-strong"
+                  iconClass="h-5 w-5"
+                />
+                <h3 class="text-lg font-semibold text-ink">{item.title}</h3>
+                <p class="body-base mt-3">{item.description}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad bg-surface">
+      <div class="container-page">
+        <SectionIntro title={page.benefits.title} text={page.benefits.intro} />
+
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {
+            page.benefits.items.map((item) => (
+              <article class="card-soft bg-white/78 p-6 shadow-card">
+                <IconImage
+                  name={item.icon}
+                  class="mb-4 h-12 w-12 bg-accent-soft text-accent-strong"
+                  iconClass="h-5 w-5"
+                />
+                <h3 class="text-lg font-semibold text-ink">{item.title}</h3>
+                <p class="mt-3 text-sm leading-6 text-ink-muted">
+                  {item.description}
+                </p>
+              </article>
+            ))
+          }
+        </div>
+        <p
+          class="mx-auto mt-7 max-w-4xl rounded-2xl bg-surface-muted px-5 py-4 text-center text-sm leading-6 text-ink/68"
+        >
+          {page.benefits.note}
+        </p>
+      </div>
+    </section>
+
+    <section class="section-pad bg-surface-muted">
+      <div class="container-page">
+        <SectionIntro title={page.session.title} text={page.session.intro} />
+
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {
+            page.session.items.map((item, index) => (
+              <article class="card-soft bg-white/84 p-6 shadow-card">
+                <span class="font-display text-4xl leading-none text-brand-strong">
+                  {index + 1}
+                </span>
+                <h3 class="mt-4 text-lg font-semibold leading-7 text-ink">
+                  {item.title}
+                </h3>
+                <p class="mt-3 text-sm leading-6 text-ink-muted">
+                  {item.description}
+                </p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad bg-surface">
+      <div class="container-page">
+        <div
+          class="grid overflow-hidden rounded-[2rem] bg-ink shadow-soft lg:grid-cols-[minmax(20rem,0.8fr)_minmax(0,1.2fr)] lg:items-stretch"
+        >
+          <Picture
+            src={DrainageHeroImage}
+            formats={['avif', 'webp']}
+            fallbackFormat="webp"
+            widths={[360, 520, 704, 900]}
+            width={704}
+            height={704}
+            sizes="(min-width: 1024px) 34rem, calc(100vw - 2rem)"
+            alt={page.hero.imageAlt}
+            class="h-[26rem] w-full object-cover object-[50%_38%] lg:h-full lg:min-h-[42rem]"
+          />
+
+          <div class="p-8 text-white sm:p-10 lg:p-12">
+            <p class="text-sm uppercase tracking-[0.25em] text-white/68">
+              {page.approach.eyebrow}
+            </p>
+            <h2 class="mt-4 font-display text-3xl leading-tight sm:text-4xl">
+              {page.approach.title}
+            </h2>
+            <div class="mt-6 space-y-4 text-base leading-7 text-white/82">
+              {page.approach.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+            </div>
+            <ul class="mt-7 grid gap-3 sm:grid-cols-2">
+              {
+                page.approach.points.map((item) => (
+                  <li class="flex gap-3 rounded-2xl bg-white/9 px-4 py-3 text-sm leading-6 text-white/88">
+                    <span class="i-lucide-check mt-1 h-4 w-4 shrink-0 text-brand-soft" />
+                    <span>{item}</span>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad bg-surface-muted">
+      <div class="container-page">
+        <SectionIntro
+          title={page.beforeAfter.title}
+          text={page.beforeAfter.intro}
+        />
+
+        <div class="grid gap-5 lg:grid-cols-2">
+          {
+            [
+              {
+                title: page.beforeAfter.beforeTitle,
+                items: page.beforeAfter.before,
+              },
+              {
+                title: page.beforeAfter.afterTitle,
+                items: page.beforeAfter.after,
+              },
+            ].map((group) => (
+              <article class="card-soft bg-white/84 p-7 shadow-card sm:p-8">
+                <h3 class="heading-md">{group.title}</h3>
+                <ul class="mt-5 space-y-3">
+                  {group.items.map((item) => (
+                    <li class="flex gap-3 text-base leading-7 text-ink/76">
+                      <span class="i-lucide-check mt-1 h-5 w-5 shrink-0 text-brand-strong" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section id="precautions" class="section-pad scroll-mt-28 bg-surface">
+      <div class="container-page">
+        <div
+          class="card-soft mx-auto max-w-5xl bg-white/84 p-7 shadow-soft sm:p-9"
+        >
+          <div
+            class="grid gap-8 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]"
+          >
+            <div>
+              <IconImage
+                name="i-lucide-circle-alert"
+                class="bg-accent-soft text-accent-strong"
+              />
+              <h2 class="heading-lg">{page.precautions.title}</h2>
+              <p class="body-base mt-4">{page.precautions.description}</p>
+            </div>
+
+            <div>
+              <ul class="grid gap-3 sm:grid-cols-2">
+                {
+                  page.precautions.items.map((item) => (
+                    <li class="flex gap-3 rounded-2xl bg-surface-muted/70 px-4 py-3 text-sm font-medium leading-6 text-ink/78">
+                      <span class="i-lucide-info mt-1 h-4 w-4 shrink-0 text-accent-strong" />
+                      <span>{item}</span>
+                    </li>
+                  ))
+                }
+              </ul>
+              <p
+                class="mt-5 rounded-2xl bg-accent-soft/56 px-5 py-4 text-sm leading-6 text-ink/74"
+              >
+                {page.precautions.note}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="section-pad scroll-mt-28 bg-surface-muted">
+      <div class="container-page">
+        <SectionIntro title={page.faq.title} />
+
+        <div class="mx-auto grid max-w-4xl gap-4">
+          {
+            page.faq.items.map((item) => (
+              <details class="group card-soft bg-white/84 p-6 shadow-card sm:p-7">
+                <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-lg font-semibold text-ink">
+                  <span>{item.question}</span>
+                  <span class="i-lucide-chevron-down h-5 w-5 shrink-0 text-brand-strong transition group-open:rotate-180" />
+                </summary>
+                <p class="body-base mt-4">{item.answer}</p>
+              </details>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-surface px-0 py-10 sm:py-12">
+      <div class="container-page">
+        <div class="mx-auto max-w-5xl">
+          <p class="text-sm uppercase tracking-[0.22em] text-brand-strong/82">
+            {page.related.eyebrow}
+          </p>
+          <h2 class="heading-md mt-3">{page.related.title}</h2>
+          <p class="body-base mt-4 max-w-3xl">{page.related.description}</p>
+
+          <div class="mt-7 grid gap-5 md:grid-cols-2">
+            {
+              page.related.items.map((item) => (
+                <article class="card-soft flex flex-col bg-white/84 p-6 shadow-card sm:p-7">
+                  <h3 class="text-xl font-semibold text-ink">{item.title}</h3>
+                  <p class="body-base mt-3">{item.description}</p>
+                  <a
+                    href={item.href}
+                    class="mt-5 inline-flex min-h-[2.75rem] w-fit items-center justify-center rounded-full border border-brand/24 px-5 py-3 text-sm font-semibold text-brand-strong no-underline transition hover:bg-brand-soft"
+                  >
+                    {item.text}
+                  </a>
+                </article>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="reservation" class="section-pad scroll-mt-28 bg-surface">
+      <div class="container-page">
+        <div
+          class="card-soft mx-auto max-w-4xl p-8 text-center shadow-soft sm:p-10 lg:p-12"
+        >
+          <IconImage
+            name="i-lucide-calendar-heart"
+            class="mx-auto bg-brand-soft text-brand-strong"
+          />
+          <h2 class="heading-lg">{page.cta.title}</h2>
+          <p class="body-lg mx-auto mt-4 max-w-2xl">
+            {page.cta.description}
+          </p>
+          <a
+            href={page.cta.href}
+            target={ctaIsExternal ? '_blank' : undefined}
+            rel={ctaIsExternal ? 'noreferrer' : undefined}
+            class="btn-primary mt-7 min-h-[3rem] px-7 py-3.5 sm:min-h-0 sm:py-3"
+            data-analytics-event={page.cta.analyticsEvent}
+          >
+            {page.cta.text}
+          </a>
+          <CtaReassurance
+            reassurance={page.cta.reassurance}
+            class="mx-auto mt-4 max-w-2xl"
+          />
+          <p class="mx-auto mt-4 max-w-2xl text-sm leading-6 text-ink/58">
+            {page.reassuranceNote}
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

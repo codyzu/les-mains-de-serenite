@@ -455,6 +455,102 @@ export type MaderotherapiePageData = {
   };
 };
 
+export type DrainageLymphatiquePageData = {
+  meta: {
+    title: string;
+    description: string;
+    openGraphTitle?: string;
+    openGraphDescription?: string;
+  };
+  path: string;
+  hero: {
+    title: string;
+    description: string;
+    primaryCta: string;
+    imageAlt: string;
+    keyInfo: string[];
+  };
+  method: {
+    title: string;
+    paragraphs: string[];
+    highlight: string;
+  };
+  forYou: {
+    title: string;
+    intro: string;
+    items: Array<{
+      title: string;
+      description: string;
+      icon: string;
+    }>;
+  };
+  benefits: {
+    title: string;
+    intro: string;
+    items: Array<{
+      title: string;
+      description: string;
+      icon: string;
+    }>;
+    note: string;
+  };
+  session: {
+    title: string;
+    intro: string;
+    items: Array<{
+      title: string;
+      description: string;
+    }>;
+  };
+  approach: {
+    eyebrow: string;
+    title: string;
+    paragraphs: string[];
+    points: string[];
+  };
+  beforeAfter: {
+    title: string;
+    intro: string;
+    beforeTitle: string;
+    before: string[];
+    afterTitle: string;
+    after: string[];
+  };
+  precautions: {
+    title: string;
+    description: string;
+    items: string[];
+    note: string;
+  };
+  faq: {
+    title: string;
+    items: Array<{
+      question: string;
+      answer: string;
+    }>;
+  };
+  related: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    items: Array<{
+      title: string;
+      description: string;
+      text: string;
+      href: string;
+    }>;
+  };
+  cta: {
+    title: string;
+    description: string;
+    text: string;
+    href: string;
+    analyticsEvent?: AnalyticsEventName;
+    reassurance?: ReassuranceLinkData;
+  };
+  reassuranceNote: string;
+};
+
 export type AboutData = {
   title: string;
   body: string;
@@ -625,6 +721,7 @@ export type LocalizedSiteData = {
     program: ProgramPageData;
     cureFusion: ProgramPageData;
     maderotherapie: MaderotherapiePageData;
+    drainageLymphatique: DrainageLymphatiquePageData;
     reserve: ReservePageData;
     reserveOnline: ReserveOnlinePageData;
     discoveryOfferBooking: DiscoveryOfferBookingPageData;

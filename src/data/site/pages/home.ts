@@ -69,7 +69,7 @@ export const homePages = {
           title: 'Jambes lourdes',
           description:
             'Un soin ponctuel peut aider à retrouver une sensation de légèreté.',
-          href: `${localizedPagePaths.soins.fr}#drainage-lymphatique`,
+          href: localizedPagePaths.drainageLymphatique.fr,
           ctaText: 'Voir le soin',
         },
         {
@@ -83,7 +83,7 @@ export const homePages = {
           title: 'Rétention d’eau',
           description:
             'Le drainage lymphatique à Annecy est souvent choisi pour ce besoin.',
-          href: `${localizedPagePaths.soins.fr}#drainage-lymphatique`,
+          href: localizedPagePaths.drainageLymphatique.fr,
           ctaText: 'Voir le soin',
         },
         {
@@ -116,7 +116,7 @@ export const homePages = {
       introLinks: [
         {
           text: 'drainage lymphatique à Annecy',
-          href: `${localizedPagePaths.soins.fr}#drainage-lymphatique`,
+          href: localizedPagePaths.drainageLymphatique.fr,
         },
       ],
       recommendedLabel: 'Durée conseillée',
@@ -314,7 +314,7 @@ export const homePages = {
           title: 'Heavy legs',
           description:
             'A single treatment can help you reconnect with a feeling of lightness.',
-          href: `${localizedPagePaths.soins.en}#lymphatic-drainage`,
+          href: localizedPagePaths.drainageLymphatique.en,
           ctaText: 'View treatment',
         },
         {
@@ -328,7 +328,7 @@ export const homePages = {
           title: 'Water retention',
           description:
             'Lymphatic drainage in Annecy is often chosen for this kind of need.',
-          href: `${localizedPagePaths.soins.en}#lymphatic-drainage`,
+          href: localizedPagePaths.drainageLymphatique.en,
           ctaText: 'View treatment',
         },
         {
@@ -361,7 +361,7 @@ export const homePages = {
       introLinks: [
         {
           text: 'lymphatic drainage in Annecy',
-          href: `${localizedPagePaths.soins.en}#lymphatic-drainage`,
+          href: localizedPagePaths.drainageLymphatique.en,
         },
       ],
       recommendedLabel: 'Recommended',

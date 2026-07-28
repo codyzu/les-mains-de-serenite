@@ -25,6 +25,10 @@ export const localizedPagePaths = {
     fr: '/soins/maderotherapie/',
     en: '/en/massages/maderotherapy/',
   },
+  drainageLymphatique: {
+    fr: '/soins/drainage-lymphatique/',
+    en: '/en/massages/lymphatic-drainage/',
+  },
   reserve: {
     fr: '/reserver',
     en: '/en/book',

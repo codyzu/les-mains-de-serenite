@@ -37,6 +37,19 @@ test(
   'representative treatment and programme pages remain usable on mobile',
   {tag: '@mobile'},
   async ({page}) => {
+    await page.goto('/soins/drainage-lymphatique/');
+
+    await expect(
+      page.getByRole('heading', {name: 'Drainage lymphatique'}).first(),
+    ).toBeVisible();
+    await expect(
+      page
+        .locator('main')
+        .getByRole('link', {name: 'Réserver mon drainage lymphatique'})
+        .first(),
+    ).toHaveAttribute('href', '/reserver-en-ligne');
+    await expectNoHorizontalOverflow(page);
+
     await page.goto('/soins/maderotherapie/');
 
     await expect(

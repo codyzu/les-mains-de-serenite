@@ -1,0 +1,13 @@
+---
+import {getLocalizedSite, site} from '../../../data/site';
+import DrainageLymphatiquePageTemplate from '../../../page-templates/DrainageLymphatiquePageTemplate.astro';
+
+const locale = 'en';
+const localized = getLocalizedSite(locale);
+---
+
+<DrainageLymphatiquePageTemplate
+  locale={locale}
+  business={site.business}
+  localized={localized}
+/>

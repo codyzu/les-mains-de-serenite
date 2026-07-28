@@ -19,6 +19,8 @@ const routes = [
   '/en/massages/',
   '/soins/maderotherapie/',
   '/en/massages/maderotherapy/',
+  '/soins/drainage-lymphatique/',
+  '/en/massages/lymphatic-drainage/',
   '/maderotherapie/',
   '/en/maderotherapy/',
   '/programmes/',
@@ -232,6 +234,12 @@ test('sitemap includes soins and excludes the legacy French massages URL', async
   expect(sitemap).toContain(
     '<loc>https://lesmainsdeserenite.fr/en/massages/</loc>',
   );
+  expect(sitemap).toContain(
+    '<loc>https://lesmainsdeserenite.fr/soins/drainage-lymphatique/</loc>',
+  );
+  expect(sitemap).toContain(
+    '<loc>https://lesmainsdeserenite.fr/en/massages/lymphatic-drainage/</loc>',
+  );
 });
 
 test('custom 404 page renders branded recovery links', async ({page}) => {
@@ -278,6 +286,9 @@ test('section overview pages render their main content', async ({page}) => {
   await expect(
     treatmentCards.getByRole('link', {name: 'Réserver ce soin'}),
   ).toHaveCount(4);
+  await expect(
+    treatmentCards.getByRole('link', {name: 'Réserver ce soin'}).first(),
+  ).toHaveAttribute('href', '/soins/drainage-lymphatique/');
   await expect(
     treatmentCards.getByRole('link', {name: 'Découvrir'}),
   ).toHaveAttribute('href', '/soins/maderotherapie/');

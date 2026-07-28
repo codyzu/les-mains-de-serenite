@@ -36,7 +36,7 @@ export const soinsPages = {
       introLinks: [
         {
           text: 'drainage lymphatique à Annecy',
-          href: `${localizedPagePaths.soins.fr}#drainage-lymphatique`,
+          href: localizedPagePaths.drainageLymphatique.fr,
         },
       ],
       recommendedLabel: 'Durée conseillée',
@@ -136,7 +136,7 @@ export const soinsPages = {
       introLinks: [
         {
           text: 'lymphatic drainage in Annecy',
-          href: `${localizedPagePaths.soins.en}#lymphatic-drainage`,
+          href: localizedPagePaths.drainageLymphatique.en,
         },
       ],
       recommendedLabel: 'Recommended',

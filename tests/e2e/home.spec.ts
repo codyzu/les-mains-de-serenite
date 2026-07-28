@@ -26,7 +26,7 @@ test('French homepage renders the main business content and booking CTA', async 
       name: 'drainage lymphatique à Annecy',
       exact: true,
     }),
-  ).toHaveAttribute('href', '/soins/#drainage-lymphatique');
+  ).toHaveAttribute('href', '/soins/drainage-lymphatique/');
   await expect(
     page.getByRole('link', {name: 'Découvrir les soins'}),
   ).toHaveAttribute('href', '/soins/');

@@ -168,7 +168,9 @@ const getTreatmentAnchorHref = (locale: Locale, anchorId: string) =>
 const getHomeTreatmentCtaHref = (locale: Locale, item: TreatmentCatalogItem) =>
   item.id === 'maderotherapy'
     ? localizedPagePaths.maderotherapie[locale]
-    : getTreatmentAnchorHref(locale, item.copy[locale].anchorId);
+    : item.id === 'lymphaticDrainage'
+      ? localizedPagePaths.drainageLymphatique[locale]
+      : getTreatmentAnchorHref(locale, item.copy[locale].anchorId);
 
 const getOverviewTreatmentCtaHref = (
   locale: Locale,
@@ -176,7 +178,9 @@ const getOverviewTreatmentCtaHref = (
 ) =>
   item.id === 'maderotherapy'
     ? localizedPagePaths.maderotherapie[locale]
-    : localizedPagePaths.reserveOnline[locale];
+    : item.id === 'lymphaticDrainage'
+      ? localizedPagePaths.drainageLymphatique[locale]
+      : localizedPagePaths.reserveOnline[locale];
 
 const toTreatmentData = (
   locale: Locale,

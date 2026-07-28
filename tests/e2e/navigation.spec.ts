@@ -47,6 +47,8 @@ test('configures only homepage and service paths for view transitions', async ({
       '/en/programs/',
       '/soins/maderotherapie/',
       '/en/massages/maderotherapy/',
+      '/soins/drainage-lymphatique/',
+      '/en/massages/lymphatic-drainage/',
     ]),
   );
   expect(configuredPaths).not.toContain('/reserver');

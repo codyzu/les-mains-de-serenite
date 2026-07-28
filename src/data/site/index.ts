@@ -5,6 +5,7 @@ import {chrome} from './chrome';
 import {cureFusionPages} from './pages/cure-fusion';
 import {homePages} from './pages/home';
 import {maderotherapiePages} from './pages/maderotherapie';
+import {drainageLymphatiquePages} from './pages/drainage-lymphatique';
 import {soinsPages} from './pages/soins';
 import {programPages} from './pages/program';
 import {programsPages} from './pages/programs';
@@ -20,6 +21,7 @@ export type {
   BookingPracticalInfoData,
   ContactBlockData,
   DiscoveryOfferBookingPageData,
+  DrainageLymphatiquePageData,
   FeltBenefitsData,
   GlobalPagesData,
   HeroData,
@@ -66,6 +68,7 @@ const localized = {
       program: programPages.fr,
       cureFusion: cureFusionPages.fr,
       maderotherapie: maderotherapiePages.fr,
+      drainageLymphatique: drainageLymphatiquePages.fr,
       reserve: reservePages.fr,
       reserveOnline: reserveOnlinePages.fr,
       discoveryOfferBooking: discoveryOfferBookingPages.fr,
@@ -83,6 +86,7 @@ const localized = {
       program: programPages.en,
       cureFusion: cureFusionPages.en,
       maderotherapie: maderotherapiePages.en,
+      drainageLymphatique: drainageLymphatiquePages.en,
       reserve: reservePages.en,
       reserveOnline: reserveOnlinePages.en,
       discoveryOfferBooking: discoveryOfferBookingPages.en,

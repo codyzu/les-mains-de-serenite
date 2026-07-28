@@ -135,3 +135,24 @@ test('maderotherapy pages expose matching localized alternates', async ({
   await expectAlternate(page, 'en', `${siteUrl}${englishPath}`);
   await expectAlternate(page, 'x-default', `${siteUrl}${frenchPath}`);
 });
+
+test('lymphatic drainage pages expose matching localized alternates', async ({
+  page,
+}) => {
+  const frenchPath = '/soins/drainage-lymphatique/';
+  const englishPath = '/en/massages/lymphatic-drainage/';
+
+  await page.goto(frenchPath);
+
+  await expectCanonical(page, `${siteUrl}${frenchPath}`);
+  await expectAlternate(page, 'fr', `${siteUrl}${frenchPath}`);
+  await expectAlternate(page, 'en', `${siteUrl}${englishPath}`);
+  await expectAlternate(page, 'x-default', `${siteUrl}${frenchPath}`);
+
+  await page.goto(englishPath);
+
+  await expectCanonical(page, `${siteUrl}${englishPath}`);
+  await expectAlternate(page, 'fr', `${siteUrl}${frenchPath}`);
+  await expectAlternate(page, 'en', `${siteUrl}${englishPath}`);
+  await expectAlternate(page, 'x-default', `${siteUrl}${frenchPath}`);
+});
