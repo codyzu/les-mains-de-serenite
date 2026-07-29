@@ -39,6 +39,7 @@ All commands are run from the root of the project, from a terminal:
 | `pnpm build`           | Build your production site to `./dist/`                         |
 | `pnpm fonts:refresh`   | Regenerates committed local web fonts in `public/assets/fonts/` |
 | `pnpm preview`         | Preview your build locally, before deploying                    |
+| `pnpm screenshots`     | Captures full-page desktop and mobile screenshots               |
 | `pnpm test:e2e`        | Runs the Playwright smoke tests against build output            |
 | `pnpm test`            | Runs lint, build, and Playwright smoke tests                    |
 | `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check`                |
@@ -64,6 +65,26 @@ pnpm exec playwright test --project=mobile-safari
 pnpm exec playwright test --project=mobile-chrome
 pnpm exec playwright test --grep @critical
 ```
+
+## Review screenshots
+
+Generate disposable, full-page desktop and mobile screenshots for visual
+review:
+
+```sh
+# Homepage, soins and programmes overviews, and every individual soin/programme
+pnpm screenshots
+
+# One route from a temporary local Astro development server
+pnpm screenshots -- /soins/drainage-lymphatique/
+
+# One page from an existing deployment or server
+pnpm screenshots -- https://example.com/soins/drainage-lymphatique/
+```
+
+Each run writes route-named PNGs to a timestamped directory under
+`screenshots/`, grouped into `desktop/` and `mobile/`. The output is ignored by
+Git and intended for visual review rather than committed test baselines.
 
 ## Fonts
 

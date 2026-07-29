@@ -16,6 +16,7 @@ pnpm-debug.log*
 # test artifacts
 test-results/
 playwright-report/
+screenshots/
 
 # environment variables
 .env
