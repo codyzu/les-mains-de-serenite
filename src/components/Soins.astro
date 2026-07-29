@@ -2,9 +2,10 @@
 import type {SoinsSectionData} from '../data/site';
 import SectionIntro from './SectionIntro.astro';
 import IconImage from './IconImage.astro';
+import TreatmentPricing from './TreatmentPricing.astro';
 
 type Props = SoinsSectionData & {
-  showItemActions?: boolean;
+  variant?: 'home' | 'overview';
 };
 
 const {
@@ -12,11 +13,13 @@ const {
   intro,
   introLinks,
   recommendedLabel,
+  startingPriceLabel,
   ctaText,
   ctaLink,
   items,
-  showItemActions = true,
+  variant = 'overview',
 } = Astro.props;
+const isHome = variant === 'home';
 
 const getCardGridClasses = (index: number) => {
   const isLastTabletCard = items.length % 2 === 1 && index === items.length - 1;
@@ -44,6 +47,7 @@ const getCardGridClasses = (index: number) => {
             id={item.anchorId}
             class:list={[
               'card-soft flex scroll-mt-30 flex-col p-6 sm:p-7',
+              isHome ? 'bg-white/72' : '',
               ...getCardGridClasses(index),
             ]}
           >
@@ -58,51 +62,32 @@ const getCardGridClasses = (index: number) => {
 
             <h3 class="heading-md text-[1.6rem]">{item.title}</h3>
             <p class="body-base mt-3">{item.description}</p>
-            {item.note ? (
+            {!isHome && item.note ? (
               <p class="mt-4 rounded-2xl bg-brand-soft/55 px-4 py-3 text-sm leading-6 text-ink/76">
                 {item.note}
               </p>
             ) : null}
 
-            <div class="mt-7 space-y-2 border-t border-ink/8 pt-4">
-              {item.prices.map((option) => (
-                <div
-                  class:list={[
-                    'rounded-2xl px-3 py-2',
-                    option.recommended ? 'py-1.5' : '',
-                    option.recommended ? 'bg-brand-soft/70' : 'bg-white/45',
-                  ]}
-                >
-                  {option.recommended ? (
-                    <div class="grid grid-cols-[minmax(0,1fr)_auto] items-end gap-x-4 gap-y-0.5">
-                      <p class="col-span-2 leading-none text-[0.68rem] font-medium uppercase tracking-[0.16em] text-brand-strong/80">
-                        {recommendedLabel}
-                      </p>
-                      <span class="col-start-1 row-start-2 text-sm font-medium text-ink">
-                        {option.duration}
-                      </span>
-                      <span class="col-start-2 row-start-2 whitespace-nowrap text-right text-sm font-bold text-ink">
-                        {option.price}
-                      </span>
-                    </div>
-                  ) : (
-                    <div class="flex items-center justify-between gap-4">
-                      <span class="text-sm text-ink/68">{option.duration}</span>
-                      <span class="whitespace-nowrap text-right text-sm font-medium text-ink">
-                        {option.price}
-                      </span>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
+            {isHome ? (
+              <p class="mt-6 border-t border-ink/8 pt-4 text-sm font-semibold text-ink">
+                {startingPriceLabel} {item.prices[0]?.price}
+              </p>
+            ) : (
+              <TreatmentPricing
+                options={item.prices}
+                recommendedLabel={recommendedLabel}
+                class="mt-7 border-t border-ink/8 pt-4"
+              />
+            )}
 
-            {showItemActions && item.ctaText && item.ctaLink ? (
+            {item.ctaText && item.ctaLink ? (
               <a
                 href={item.ctaLink}
-                class="mt-6 inline-flex min-h-[2.75rem] w-full items-center justify-center rounded-full border border-brand-soft bg-white/60 px-5 py-3 text-sm font-medium text-brand-strong transition hover:bg-brand-soft/60"
+                aria-label={`${item.ctaText} — ${item.title}`}
+                class="mt-6 inline-flex min-h-[2.75rem] w-full items-center justify-center gap-2 rounded-full border border-brand-soft bg-white/60 px-5 py-3 text-sm font-semibold text-brand-strong no-underline transition hover:bg-brand-soft/60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
               >
                 {item.ctaText}
+                <span class="i-lucide-arrow-right h-4 w-4" aria-hidden="true" />
               </a>
             ) : null}
           </article>

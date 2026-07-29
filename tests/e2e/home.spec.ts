@@ -30,7 +30,22 @@ test('French homepage renders the main business content and booking CTA', async 
   await expect(
     page.getByRole('link', {name: 'Découvrir les soins'}),
   ).toHaveAttribute('href', '/soins/');
-  await expect(page.locator('#soins article a')).toHaveCount(0);
+  const treatmentCards = page.locator('#soins article');
+
+  await expect(
+    treatmentCards.getByRole('link', {name: 'Découvrir'}),
+  ).toHaveCount(5);
+  await expect(
+    treatmentCards
+      .filter({hasText: 'Drainage lymphatique'})
+      .getByRole('link', {name: 'Découvrir'}),
+  ).toHaveAttribute('href', '/soins/drainage-lymphatique/');
+  await expect(
+    treatmentCards
+      .filter({hasText: 'Massage relaxant et personnalisé'})
+      .getByRole('link', {name: 'Découvrir'}),
+  ).toHaveAttribute('href', '/soins/#massage-anti-douleur');
+  await expect(treatmentCards.getByText('Durée conseillée')).toHaveCount(0);
   await expect(page.getByText('Prendre le temps')).toBeVisible();
   await expect(page.getByText('S’accorder une vraie pause')).toBeVisible();
   await expect(
@@ -105,7 +120,9 @@ test('English homepage renders localized content and booking CTA', async ({
   await expect(
     page.getByRole('link', {name: 'Discover the treatments'}),
   ).toHaveAttribute('href', '/en/massages/');
-  await expect(page.locator('#soins article a')).toHaveCount(0);
+  await expect(
+    page.locator('#soins article').getByRole('link', {name: 'Discover'}),
+  ).toHaveCount(5);
   await expect(page.getByText('Take your time')).toBeVisible();
   await expect(page.getByText('Allow yourself a real pause')).toBeVisible();
   await expect(

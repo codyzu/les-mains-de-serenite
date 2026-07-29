@@ -138,6 +138,7 @@ export type SoinsSectionData = {
   intro: string;
   introLinks?: InlineTextLinkData[];
   recommendedLabel: string;
+  startingPriceLabel: string;
   ctaText?: string;
   ctaLink?: string;
   items: SoinData[];

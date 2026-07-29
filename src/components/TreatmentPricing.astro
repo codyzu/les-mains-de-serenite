@@ -1,0 +1,51 @@
+---
+import type {SoinPriceData} from '../data/site';
+
+interface Props {
+  options: SoinPriceData[];
+  recommendedLabel: string;
+  class?: string;
+}
+
+const {options, recommendedLabel, class: className} = Astro.props;
+---
+
+<div class:list={['space-y-2', className]}>
+  {
+    options.map((option) => (
+      <div
+        class:list={[
+          'rounded-2xl border px-4 py-3',
+          option.recommended
+            ? 'border-brand/20 bg-brand-soft/72'
+            : 'border-ink/6 bg-white/52',
+        ]}
+      >
+        {option.recommended ? (
+          <p class="mb-1 text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-brand-strong/84">
+            <span class="i-lucide-sparkles mr-1.5 inline-block h-3.5 w-3.5 align-[-0.18em]" />
+            {recommendedLabel}
+          </p>
+        ) : null}
+        <div class="flex items-baseline justify-between gap-4">
+          <span
+            class:list={[
+              'text-sm',
+              option.recommended ? 'font-semibold text-ink' : 'text-ink/68',
+            ]}
+          >
+            {option.duration}
+          </span>
+          <span
+            class:list={[
+              'whitespace-nowrap text-right text-sm text-ink',
+              option.recommended ? 'font-bold' : 'font-medium',
+            ]}
+          >
+            {option.price}
+          </span>
+        </div>
+      </div>
+    ))
+  }
+</div>

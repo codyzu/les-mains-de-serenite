@@ -91,8 +91,7 @@ const structuredData = {
 
     <PromoSection promo={home.promo} />
 
-    <!-- Homepage cards are intentionally informational until dedicated treatment pages exist consistently. -->
-    <Soins {...home.soinsSection} showItemActions={false} />
+    <Soins {...home.soinsSection} variant="home" />
 
     <HomeMomentTransition {...home.emotionalTransition} />
 

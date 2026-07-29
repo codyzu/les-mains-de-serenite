@@ -40,6 +40,7 @@ export const soinsPages = {
         },
       ],
       recommendedLabel: 'Durée conseillée',
+      startingPriceLabel: 'À partir de',
       items: getOverviewTreatmentItems('fr'),
     },
     choiceHelp: {
@@ -140,6 +141,7 @@ export const soinsPages = {
         },
       ],
       recommendedLabel: 'Recommended',
+      startingPriceLabel: 'From',
       items: getOverviewTreatmentItems('en'),
     },
     choiceHelp: {

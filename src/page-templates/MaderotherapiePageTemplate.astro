@@ -3,8 +3,10 @@ import {Picture} from 'astro:assets';
 import CtaReassurance from '../components/CtaReassurance.astro';
 import IconImage from '../components/IconImage.astro';
 import SectionIntro from '../components/SectionIntro.astro';
+import TreatmentPricing from '../components/TreatmentPricing.astro';
 import MaderotherapieHeroImage from '../assets/maderotherapie.png';
 import MaderotherapieToolsImage from '../assets/maderotherapie-outils-bois.png';
+import {getTreatmentPrices} from '../data/site/catalog/treatments';
 import {
   localizedPagePaths,
   type Locale,
@@ -26,16 +28,29 @@ const {
 const languageSwitchPaths = localizedPagePaths.maderotherapie;
 const ctaIsExternal = maderotherapie.cta.href.startsWith('http');
 const offerCtaIsExternal = maderotherapie.offer.ctaHref.startsWith('http');
+const treatmentPrices = getTreatmentPrices('maderotherapy');
+const pricingCopy =
+  locale === 'en'
+    ? {
+        eyebrow: 'Durations and prices',
+        title: 'Choose the time that suits you',
+        description:
+          'The 60-minute session is recommended for a complete first treatment. Choose 90 minutes when you would like more time for targeted areas and a more enveloping pace.',
+        recommendedLabel: 'Recommended',
+      }
+    : {
+        eyebrow: 'Durées et tarifs',
+        title: 'Choisissez le temps qui vous convient',
+        description:
+          'La séance de 60 minutes est conseillée pour un premier soin complet. Choisissez 90 minutes pour accorder davantage de temps aux zones ciblées et profiter d’un rythme plus enveloppant.',
+        recommendedLabel: 'Durée conseillée',
+      };
 const heroEyebrow =
   locale === 'en' ? 'Maderotherapy in Annecy' : 'Madérothérapie à Annecy';
 const toolsImageAlt =
   locale === 'en'
     ? 'Wooden instruments used for maderotherapy: mushroom tool, cylinder roller, cube roller, and sculpting board.'
     : 'Instruments en bois utilisés pour la madérothérapie : champignon, rouleau cylindre, rouleau cube et table de remodelage.';
-const structuredDataPrice = maderotherapie.offer.price.replaceAll(
-  /[^\d,.]/gv,
-  '',
-);
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'Service',
@@ -52,11 +67,12 @@ const structuredData = {
     },
   },
   areaServed: business.seo.areaServed,
-  offers: {
+  offers: treatmentPrices.map((option) => ({
     '@type': 'Offer',
-    price: structuredDataPrice,
+    price: option.price.replaceAll(/[^\d,.]/gv, ''),
     priceCurrency: 'EUR',
-  },
+    description: option.duration,
+  })),
 };
 ---
 
@@ -216,6 +232,30 @@ const structuredData = {
               </article>
             ))
           }
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad bg-surface-muted">
+      <div class="container-page">
+        <div
+          class="mx-auto grid max-w-5xl gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.72fr)] lg:items-center lg:gap-12"
+        >
+          <div>
+            <p
+              class="text-sm font-medium uppercase tracking-[0.22em] text-brand-strong/82"
+            >
+              {pricingCopy.eyebrow}
+            </p>
+            <h2 class="heading-lg mt-3">{pricingCopy.title}</h2>
+            <p class="body-lg mt-5">{pricingCopy.description}</p>
+          </div>
+          <div class="card-soft bg-white/84 p-6 shadow-card sm:p-7">
+            <TreatmentPricing
+              options={treatmentPrices}
+              recommendedLabel={pricingCopy.recommendedLabel}
+            />
+          </div>
         </div>
       </div>
     </section>

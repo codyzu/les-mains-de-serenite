@@ -284,14 +284,22 @@ test('section overview pages render their main content', async ({page}) => {
 
   await expect(treatmentCards.locator('a')).toHaveCount(5);
   await expect(
-    treatmentCards.getByRole('link', {name: 'Réserver ce soin'}),
-  ).toHaveCount(4);
+    treatmentCards.getByRole('link', {name: 'En savoir plus'}),
+  ).toHaveCount(2);
   await expect(
-    treatmentCards.getByRole('link', {name: 'Réserver ce soin'}).first(),
+    treatmentCards.getByRole('link', {name: 'En savoir plus'}).first(),
   ).toHaveAttribute('href', '/soins/drainage-lymphatique/');
   await expect(
-    treatmentCards.getByRole('link', {name: 'Découvrir'}),
+    treatmentCards.getByRole('link', {name: 'En savoir plus'}).last(),
   ).toHaveAttribute('href', '/soins/maderotherapie/');
+  await expect(
+    treatmentCards.getByRole('link', {name: 'Réserver'}),
+  ).toHaveCount(3);
+  await expect(
+    treatmentCards
+      .filter({hasText: 'Massage relaxant et personnalisé'})
+      .getByRole('link', {name: 'Réserver'}),
+  ).toHaveAttribute('href', '/reserver-en-ligne');
   await expect(
     page.getByRole('heading', {name: 'Vous ne savez pas quel soin choisir ?'}),
   ).toBeVisible();
@@ -695,4 +703,52 @@ test('maderotherapy discovery offers link to the embedded scheduler @booking', a
   await expect(
     englishOffer.getByRole('link', {name: 'Book this treatment'}),
   ).toHaveAttribute('href', '/en/book-online');
+});
+
+for (const {route, heading} of [
+  {
+    route: '/soins/drainage-lymphatique/',
+    heading: 'Choisissez la durée de votre soin',
+  },
+  {
+    route: '/soins/maderotherapie/',
+    heading: 'Choisissez le temps qui vous convient',
+  },
+]) {
+  test(`dedicated treatment pricing stays in sync on ${route}`, async ({
+    page,
+  }) => {
+    await page.goto(route);
+
+    const pricingSection = page.locator('section').filter({
+      has: page.getByRole('heading', {name: heading}),
+    });
+
+    await expect(pricingSection.getByText('1 h', {exact: true})).toBeVisible();
+    await expect(pricingSection.getByText('90 €', {exact: true})).toBeVisible();
+    await expect(
+      pricingSection.getByText('1 h 30', {exact: true}),
+    ).toBeVisible();
+    await expect(
+      pricingSection.getByText('125 €', {exact: true}),
+    ).toBeVisible();
+    await expect(
+      pricingSection.getByText('Durée conseillée', {exact: true}),
+    ).toBeVisible();
+  });
+}
+
+test('homepage anchored treatment links land on stable overview cards', async ({
+  page,
+}) => {
+  await page.goto('/');
+
+  await page
+    .locator('#soins article')
+    .filter({hasText: 'Massage relaxant et personnalisé'})
+    .getByRole('link', {name: 'Découvrir'})
+    .click();
+
+  await expect(page).toHaveURL('/soins/#massage-anti-douleur');
+  await expect(page.locator('#massage-anti-douleur')).toBeVisible();
 });

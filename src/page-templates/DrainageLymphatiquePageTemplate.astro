@@ -3,7 +3,9 @@ import {Picture} from 'astro:assets';
 import CtaReassurance from '../components/CtaReassurance.astro';
 import IconImage from '../components/IconImage.astro';
 import SectionIntro from '../components/SectionIntro.astro';
+import TreatmentPricing from '../components/TreatmentPricing.astro';
 import DrainageHeroImage from '../assets/drainage-lymphatique-renata-franca.png';
+import {getTreatmentPrices} from '../data/site/catalog/treatments';
 import {
   localizedPagePaths,
   type Locale,
@@ -24,6 +26,23 @@ const {
 } = localized;
 const languageSwitchPaths = localizedPagePaths.drainageLymphatique;
 const ctaIsExternal = page.cta.href.startsWith('http');
+const treatmentPrices = getTreatmentPrices('lymphaticDrainage');
+const pricingCopy =
+  locale === 'en'
+    ? {
+        eyebrow: 'Durations and prices',
+        title: 'Choose your session length',
+        description:
+          'The 60-minute session is recommended for discovering the full-body treatment. Choose 90 minutes for more time on areas that need particular attention and a gentler return to calm.',
+        recommendedLabel: 'Recommended',
+      }
+    : {
+        eyebrow: 'Durées et tarifs',
+        title: 'Choisissez la durée de votre soin',
+        description:
+          'La séance de 60 minutes est conseillée pour découvrir le soin du corps complet. Choisissez 90 minutes pour accorder plus de temps aux zones qui demandent une attention particulière et au retour au calme.',
+        recommendedLabel: 'Durée conseillée',
+      };
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'Service',
@@ -44,20 +63,12 @@ const structuredData = {
     },
   },
   areaServed: business.seo.areaServed,
-  offers: [
-    {
-      '@type': 'Offer',
-      price: '90',
-      priceCurrency: 'EUR',
-      description: locale === 'en' ? '60 minutes' : '60 minutes',
-    },
-    {
-      '@type': 'Offer',
-      price: '125',
-      priceCurrency: 'EUR',
-      description: locale === 'en' ? '90 minutes' : '90 minutes',
-    },
-  ],
+  offers: treatmentPrices.map((option) => ({
+    '@type': 'Offer',
+    price: option.price.replaceAll(/[^\d,.]/gv, ''),
+    priceCurrency: 'EUR',
+    description: option.duration,
+  })),
 };
 ---
 
@@ -220,6 +231,30 @@ const structuredData = {
         >
           {page.benefits.note}
         </p>
+      </div>
+    </section>
+
+    <section class="section-pad bg-surface-muted">
+      <div class="container-page">
+        <div
+          class="mx-auto grid max-w-5xl gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.72fr)] lg:items-center lg:gap-12"
+        >
+          <div>
+            <p
+              class="text-sm font-medium uppercase tracking-[0.22em] text-brand-strong/82"
+            >
+              {pricingCopy.eyebrow}
+            </p>
+            <h2 class="heading-lg mt-3">{pricingCopy.title}</h2>
+            <p class="body-lg mt-5">{pricingCopy.description}</p>
+          </div>
+          <div class="card-soft bg-white/84 p-6 shadow-card sm:p-7">
+            <TreatmentPricing
+              options={treatmentPrices}
+              recommendedLabel={pricingCopy.recommendedLabel}
+            />
+          </div>
+        </div>
       </div>
     </section>
 
