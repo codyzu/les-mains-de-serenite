@@ -21,11 +21,7 @@ export const drainageLymphatiquePages = {
       primaryCta: 'Réserver mon drainage lymphatique',
       imageAlt:
         'Drainage lymphatique manuel des jambes dans un espace bien-être chaleureux à Annecy',
-      keyInfo: [
-        'Méthode Renata França',
-        '60 ou 90 minutes',
-        'Réservé aux femmes',
-      ],
+      keyInfo: ['Méthode Renata França', '60 ou 90 min', 'Réservé aux femmes'],
     },
     method: {
       title: 'La méthode Renata França : un drainage dynamique et précis',
@@ -162,7 +158,7 @@ export const drainageLymphatiquePages = {
     },
     particularSituations: {
       eyebrow: 'Situations particulières',
-      title: 'Lipœdème, lymphœdème, chirurgie : savoir de quoi l’on parle',
+      title: 'Lipœdème, lymphœdème, chirurgie\u{A0}: savoir de quoi l’on parle',
       intro:
         'Ces termes sont parfois associés au drainage lymphatique, mais ils ne décrivent pas une simple sensation de jambes lourdes. Les nommer clairement permet de mieux orienter chaque femme et d’éviter de confondre un soin bien-être avec une prise en charge clinique.',
       items: [
@@ -422,7 +418,7 @@ export const drainageLymphatiquePages = {
       primaryCta: 'Book my lymphatic drainage',
       imageAlt:
         'Manual lymphatic drainage treatment on the legs in a warm wellness room in Annecy',
-      keyInfo: ['Renata França method', '60 or 90 minutes', 'Women only'],
+      keyInfo: ['Renata França method', '60 or 90 min', 'Women only'],
     },
     method: {
       title: 'The Renata França method: dynamic and precise',

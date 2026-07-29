@@ -96,7 +96,7 @@ const structuredData = {
   <main>
     <section class="overflow-hidden bg-surface-muted">
       <div
-        class="container-page grid gap-10 pb-16 pt-14 sm:pb-20 sm:pt-18 lg:grid-cols-[minmax(0,0.95fr)_minmax(22rem,0.8fr)] lg:items-center lg:gap-14 lg:pb-16 lg:pt-16"
+        class="container-page grid gap-7 pb-16 pt-14 sm:gap-10 sm:pb-20 sm:pt-18 lg:grid-cols-[minmax(0,0.95fr)_minmax(22rem,0.8fr)] lg:items-center lg:gap-14 lg:pb-16 lg:pt-16"
       >
         <div class="max-w-3xl">
           <p
@@ -123,7 +123,7 @@ const structuredData = {
             href={page.cta.href}
             target={ctaIsExternal ? '_blank' : undefined}
             rel={ctaIsExternal ? 'noreferrer' : undefined}
-            class="btn-primary mt-9 min-h-[3rem] px-7 py-3.5 sm:min-h-0 sm:py-3"
+            class="btn-primary mt-9 min-h-[3rem] w-full px-7 py-3.5 sm:min-h-0 sm:w-auto sm:py-3"
             data-analytics-event={page.cta.analyticsEvent}
           >
             {page.hero.primaryCta}
@@ -158,7 +158,27 @@ const structuredData = {
           class="grid gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(19rem,0.65fr)] lg:items-start lg:gap-12"
         >
           <div>
-            <h2 class="heading-lg">{page.method.title}</h2>
+            <h2
+              class="font-display text-[1.625rem] leading-[1.2] text-ink sm:text-4xl sm:leading-tight"
+            >
+              {
+                locale === 'fr' ? (
+                  <>
+                    <span class="block sm:inline">
+                      La méthode Renata França
+                    </span>{' '}
+                    <span class="block sm:hidden">
+                      Un drainage dynamique et précis
+                    </span>
+                    <span class="hidden sm:inline">
+                      : un drainage dynamique et précis
+                    </span>
+                  </>
+                ) : (
+                  page.method.title
+                )
+              }
+            </h2>
             <div class="mt-5 space-y-4">
               {
                 page.method.paragraphs.map((paragraph, index) => (
@@ -171,7 +191,7 @@ const structuredData = {
           </div>
 
           <aside
-            class="card-soft bg-brand-soft/68 p-7 shadow-card sm:p-8 lg:sticky lg:top-28"
+            class="card-soft bg-brand-soft/68 p-6 shadow-card sm:p-8 lg:sticky lg:top-28"
           >
             <IconImage
               name="i-lucide-waves"
@@ -216,7 +236,7 @@ const structuredData = {
             <div class="mt-5 grid gap-4 sm:grid-cols-2">
               {
                 page.lymphaticSystem.factors.map((factor) => (
-                  <article class="card-soft bg-white/84 p-5 shadow-card sm:p-6">
+                  <article class="card-soft bg-white/84 p-6 shadow-card">
                     <IconImage
                       name={factor.icon}
                       class="mb-4 h-11 w-11 bg-brand-soft text-brand-strong"
@@ -316,7 +336,10 @@ const structuredData = {
               >
                 <summary class="flex min-h-11 cursor-pointer list-none items-center justify-between gap-4 rounded-md py-1 text-left text-lg font-semibold text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-strong focus-visible:ring-offset-4">
                   <span>{item.title}</span>
-                  <span class="i-lucide-chevron-down h-5 w-5 shrink-0 text-brand-strong transition group-open:rotate-180" />
+                  <span
+                    class="i-lucide-chevron-down h-5 w-5 shrink-0 text-brand-strong transition group-open:rotate-180"
+                    aria-hidden="true"
+                  />
                 </summary>
                 <p class="body-base mt-4">{item.description}</p>
               </details>
@@ -332,7 +355,10 @@ const structuredData = {
       </div>
     </section>
 
-    <section id="tarifs" class="section-pad scroll-mt-28 bg-surface-muted">
+    <section
+      id="tarifs"
+      class="scroll-mt-28 bg-surface-muted pb-16 pt-18 sm:py-20 lg:py-24"
+    >
       <div class="container-page">
         <div
           class="mx-auto grid max-w-5xl gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.72fr)] lg:items-center lg:gap-12"
@@ -346,7 +372,7 @@ const structuredData = {
             <h2 class="heading-lg mt-3">{pricingCopy.title}</h2>
             <p class="body-lg mt-5">{pricingCopy.description}</p>
           </div>
-          <div class="card-soft bg-white/88 p-6 shadow-soft sm:p-7">
+          <div class="card-soft bg-white/88 p-6 pb-7 shadow-soft sm:p-7">
             <TreatmentPricing
               options={treatmentPrices}
               recommendedLabel={pricingCopy.recommendedLabel}
@@ -369,7 +395,10 @@ const structuredData = {
       </div>
     </section>
 
-    <section id="seance" class="section-pad scroll-mt-28 bg-surface">
+    <section
+      id="seance"
+      class="scroll-mt-28 bg-surface pb-16 pt-18 sm:py-20 lg:py-24"
+    >
       <div class="container-page">
         <SectionIntro title={page.session.title} text={page.session.intro} />
 
@@ -379,7 +408,7 @@ const structuredData = {
 
     <section
       id="pourquoi-nous"
-      class="section-pad scroll-mt-28 bg-surface-muted"
+      class="scroll-mt-28 bg-surface-muted pb-16 pt-18 sm:py-20 lg:py-24"
     >
       <div class="container-page">
         <div
@@ -397,7 +426,7 @@ const structuredData = {
             class="h-[26rem] w-full object-cover object-[50%_38%] lg:h-full lg:min-h-[42rem]"
           />
 
-          <div class="p-8 text-white sm:p-10 lg:p-12">
+          <div class="px-7 pb-9 pt-8 text-white sm:p-10 lg:p-12">
             <p class="text-sm uppercase tracking-[0.25em] text-white/68">
               {page.approach.eyebrow}
             </p>
@@ -411,7 +440,10 @@ const structuredData = {
               {
                 page.approach.points.map((item) => (
                   <li class="flex gap-3 rounded-2xl bg-white/9 px-4 py-3 text-sm leading-6 text-white/88">
-                    <span class="i-lucide-check mt-1 h-4 w-4 shrink-0 text-brand-soft" />
+                    <span
+                      class="i-lucide-check mt-1 h-4 w-4 shrink-0 text-brand-soft"
+                      aria-hidden="true"
+                    />
                     <span>{item}</span>
                   </li>
                 ))
@@ -441,12 +473,15 @@ const structuredData = {
                 items: page.beforeAfter.after,
               },
             ].map((group) => (
-              <article class="card-soft bg-white/84 p-7 shadow-card sm:p-8">
+              <article class="card-soft bg-white/84 p-6 shadow-card sm:p-8">
                 <h3 class="heading-md">{group.title}</h3>
                 <ul class="mt-5 space-y-3">
                   {group.items.map((item) => (
                     <li class="flex gap-3 text-base leading-7 text-ink/76">
-                      <span class="i-lucide-check mt-1 h-5 w-5 shrink-0 text-brand-strong" />
+                      <span
+                        class="i-lucide-check mt-1 h-5 w-5 shrink-0 text-brand-strong"
+                        aria-hidden="true"
+                      />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -494,8 +529,9 @@ const structuredData = {
         <div
           class="mx-auto mt-7 flex max-w-4xl gap-4 rounded-[1.5rem] bg-brand-soft/68 px-5 py-5 shadow-card sm:px-7"
         >
-          <span class="i-lucide-leaf mt-1 h-5 w-5 shrink-0 text-brand-strong"
-          ></span>
+          <span
+            class="i-lucide-leaf mt-1 h-5 w-5 shrink-0 text-brand-strong"
+            aria-hidden="true"></span>
           <p class="text-sm font-medium leading-6 text-ink/76">
             {page.dailyCare.highlight}
           </p>
@@ -506,7 +542,7 @@ const structuredData = {
     <section id="precautions" class="section-pad scroll-mt-28 bg-surface">
       <div class="container-page">
         <div
-          class="card-soft mx-auto max-w-5xl bg-white/84 p-7 shadow-soft sm:p-9"
+          class="card-soft mx-auto max-w-5xl bg-white/84 p-6 shadow-soft sm:p-9"
         >
           <div
             class="grid gap-8 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]"
@@ -525,7 +561,10 @@ const structuredData = {
                 {
                   page.precautions.items.map((item) => (
                     <li class="flex gap-3 rounded-2xl bg-surface-muted/70 px-4 py-3 text-sm font-medium leading-6 text-ink/78">
-                      <span class="i-lucide-info mt-1 h-4 w-4 shrink-0 text-accent-strong" />
+                      <span
+                        class="i-lucide-info mt-1 h-4 w-4 shrink-0 text-accent-strong"
+                        aria-hidden="true"
+                      />
                       <span>{item}</span>
                     </li>
                   ))
@@ -542,7 +581,10 @@ const structuredData = {
       </div>
     </section>
 
-    <section id="faq" class="section-pad scroll-mt-28 bg-surface-muted">
+    <section
+      id="faq"
+      class="scroll-mt-28 bg-surface-muted pb-16 pt-18 sm:py-20 lg:py-24"
+    >
       <div class="container-page">
         <SectionIntro title={page.faq.title} text={page.faq.intro} compact />
 
@@ -567,7 +609,7 @@ const structuredData = {
 
     <section
       id="a-decouvrir"
-      class="scroll-mt-28 bg-surface px-0 py-14 sm:py-16"
+      class="scroll-mt-28 bg-surface px-0 pb-12 pt-18 sm:py-16"
     >
       <div class="container-page">
         <div class="mx-auto max-w-5xl">
@@ -586,7 +628,10 @@ const structuredData = {
       </div>
     </section>
 
-    <section id="reservation" class="section-pad scroll-mt-28 bg-surface">
+    <section
+      id="reservation"
+      class="scroll-mt-28 bg-surface-muted pb-16 pt-12 sm:py-20 lg:py-24"
+    >
       <div class="container-page">
         <div
           class="card-soft mx-auto max-w-4xl p-7 text-center shadow-soft sm:p-10 lg:p-12"

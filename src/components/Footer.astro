@@ -33,10 +33,12 @@ const localizedPages = localized[locale].pages;
 const bookingHref = toHref(
   reserveLink || localizedPages.home.booking.bookingPath,
 );
+const footerLinkClass =
+  'inline-flex min-h-11 items-center rounded-md px-1 no-underline transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/85 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-strong';
 ---
 
 <footer
-  class="bg-brand-strong pb-[calc(2.5rem+env(safe-area-inset-bottom))] pt-7 text-white"
+  class="bg-brand-strong pb-[calc(2.5rem+env(safe-area-inset-bottom))] pt-10 text-white sm:pt-9"
 >
   <div class="container-page flex flex-col items-center gap-3 text-center">
     <Image
@@ -52,50 +54,44 @@ const bookingHref = toHref(
     <div class="font-display text-3xl">{brand}</div>
     <p class="text-white/85">{tagline}</p>
     <div
-      class="flex flex-wrap items-center justify-center gap-4 text-sm text-white/75"
+      class="flex flex-wrap items-center justify-center gap-x-4 gap-y-0 text-sm text-white/75"
     >
-      <a
-        href={toHref(localizedPages.soins.path)}
-        class="no-underline hover:text-white"
-      >
+      <a href={toHref(localizedPages.soins.path)} class={footerLinkClass}>
         {links.soins}
       </a>
-      <a
-        href={toHref(localizedPages.programs.path)}
-        class="no-underline hover:text-white"
-      >
+      <a href={toHref(localizedPages.programs.path)} class={footerLinkClass}>
         {links.program}
       </a>
-      <a href={`${homeHref}#apropos`} class="no-underline hover:text-white">
+      <a href={`${homeHref}#apropos`} class={footerLinkClass}>
         {links.about}
       </a>
       {
         reserveActive ? (
-          <span aria-current="page" class="text-white">
+          <span
+            aria-current="page"
+            class="inline-flex min-h-11 items-center px-1 text-white"
+          >
             {links.reserve}
           </span>
         ) : (
           <a
             href={bookingHref}
-            class="no-underline hover:text-white"
+            class={footerLinkClass}
             data-analytics-event="reserve_click"
           >
             {links.reserve}
           </a>
         )
       }
-      <a href={`${homeHref}#contact`} class="no-underline hover:text-white">
+      <a href={`${homeHref}#contact`} class={footerLinkClass}>
         {links.contact}
       </a>
-      <a
-        href={toHref(`${pages.mentionsLegalesPath}/`)}
-        class="no-underline hover:text-white"
-      >
+      <a href={toHref(`${pages.mentionsLegalesPath}/`)} class={footerLinkClass}>
         {links.legal}
       </a>
       <a
         href={toHref(`${pages.politiqueConfidentialitePath}/`)}
-        class="no-underline hover:text-white"
+        class={footerLinkClass}
       >
         {links.privacy}
       </a>
