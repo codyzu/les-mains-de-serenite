@@ -37,6 +37,54 @@ export const drainageLymphatiquePages = {
       highlight:
         'Une technique tonique ne signifie pas une séance brusque : la pression et le rythme restent ajustés à votre sensibilité, à chaque étape du soin.',
     },
+    lymphaticSystem: {
+      eyebrow: 'Mieux comprendre',
+      title: 'Le système lymphatique, un réseau discret et essentiel',
+      paragraphs: [
+        'Le système lymphatique est un réseau de vaisseaux, de ganglions et d’organes qui participe à l’équilibre des liquides dans les tissus et au fonctionnement immunitaire. La lymphe, liquide transparent circulant dans ce réseau, transporte notamment des protéines et des cellules immunitaires tout en récupérant une partie des liquides présents entre les cellules.',
+        'À la différence de la circulation sanguine, il ne dispose pas d’une pompe centrale comparable au cœur. Le mouvement, la marche, les contractions musculaires, la respiration et l’activité propre des vaisseaux contribuent à sa progression. C’est pourquoi les sensations corporelles peuvent évoluer avec le rythme de vie, sans que toute impression de gonflement corresponde pour autant à une maladie.',
+        'La méthode Renata França utilise des manœuvres manuelles organisées sur le corps. Dans le cadre proposé par Les Mains de Sérénité, elle accompagne une démarche de confort et de bien-être ; elle ne remplace pas le fonctionnement naturel de l’organisme ni un drainage lymphatique thérapeutique prescrit dans un parcours de soins.',
+      ],
+      factorsTitle: 'Pourquoi le corps peut-il sembler plus lourd ?',
+      factors: [
+        {
+          title: 'Variations hormonales',
+          description:
+            'Le cycle menstruel, la grossesse ou la ménopause peuvent modifier temporairement la façon dont certaines femmes ressentent leur ventre, leurs jambes ou leurs tissus.',
+          icon: 'i-lucide-refresh-cw',
+        },
+        {
+          title: 'Immobilité prolongée',
+          description:
+            'Les heures passées assise, debout ou dans une même position limitent le mouvement musculaire qui accompagne naturellement la circulation des liquides.',
+          icon: 'i-lucide-armchair',
+        },
+        {
+          title: 'Chaleur',
+          description:
+            'Les fortes températures peuvent accentuer l’impression de jambes lourdes, de chevilles marquées ou de vêtements plus serrés.',
+          icon: 'i-lucide-sun',
+        },
+        {
+          title: 'Longs trajets',
+          description:
+            'L’avion, le train ou plusieurs heures en voiture associent immobilité et position prolongée, avec parfois une sensation de gonflement à l’arrivée.',
+          icon: 'i-lucide-plane',
+        },
+        {
+          title: 'Stress et respiration',
+          description:
+            'Le stress influence la respiration, le sommeil et les tensions musculaires, ce qui peut changer la manière dont le corps est perçu au quotidien.',
+          icon: 'i-lucide-wind',
+        },
+        {
+          title: 'Fatigue et sommeil',
+          description:
+            'Lorsque la récupération est insuffisante, les sensations de lourdeur, de tension et de fatigue corporelle peuvent paraître plus présentes.',
+          icon: 'i-lucide-moon',
+        },
+      ],
+    },
     forYou: {
       title: 'Ce soin peut vous convenir si…',
       intro:
@@ -112,6 +160,40 @@ export const drainageLymphatiquePages = {
       ],
       note: 'Une silhouette peut paraître temporairement moins gonflée lorsque les tissus sont plus confortables. Cet effet ne correspond pas à une perte de graisse ou de poids.',
     },
+    particularSituations: {
+      eyebrow: 'Situations particulières',
+      title: 'Lipœdème, lymphœdème, chirurgie : savoir de quoi l’on parle',
+      intro:
+        'Ces termes sont parfois associés au drainage lymphatique, mais ils ne décrivent pas une simple sensation de jambes lourdes. Les nommer clairement permet de mieux orienter chaque femme et d’éviter de confondre un soin bien-être avec une prise en charge clinique.',
+      items: [
+        {
+          title: 'Lipœdème',
+          description:
+            'Le lipœdème est une affection chronique touchant presque exclusivement les femmes, caractérisée par une répartition anormale du tissu adipeux, souvent au niveau des jambes et parfois des bras. Il peut s’accompagner de douleurs, d’une sensibilité au toucher, d’ecchymoses faciles et d’une sensation de lourdeur. Le drainage ne fait pas disparaître le tissu graisseux du lipœdème et ne le guérit pas. Lorsqu’un lipœdème est diagnostiqué, tout soin doit rester complémentaire au suivi des professionnels de santé et être adapté à la sensibilité de la personne.',
+        },
+        {
+          title: 'Lymphœdème',
+          description:
+            'Le lymphœdème correspond à une accumulation durable de lymphe liée à une altération du système lymphatique. Il peut être primaire ou apparaître notamment après certaines interventions et certains traitements. Il nécessite une évaluation médicale et peut relever d’un drainage lymphatique manuel thérapeutique, de compression et de kinésithérapie spécialisée. Un drainage bien-être Renata França n’est pas l’équivalent de cette prise en charge. Si vous avez un lymphœdème diagnostiqué ou suspecté, contactez Zahara avant toute réservation et suivez en priorité l’avis de votre équipe soignante.',
+        },
+        {
+          title: 'Après une intervention chirurgicale',
+          description:
+            'Après une chirurgie, notamment esthétique, les tissus peuvent présenter œdème, inflammation, douleur, fragilité cicatricielle ou risque de complication. Le moment, la technique et la pression autorisés dépendent de l’intervention et de votre évolution. Aucun soin ne sera envisagé sans l’accord explicite du chirurgien ou du médecin qui vous suit. La séance proposée ici ne constitue ni une rééducation post-opératoire ni un acte infirmier ou kinésithérapique.',
+        },
+        {
+          title: 'Cellulite aqueuse et aspect des tissus',
+          description:
+            'L’expression « cellulite aqueuse » est couramment utilisée lorsque l’aspect capitonné s’accompagne d’une impression de rétention d’eau ou de tissus congestionnés. Le travail manuel peut donner temporairement une sensation de tissus plus souples et un aspect visuel plus lisse. Il ne détruit pas les cellules graisseuses, ne supprime pas la cellulite et ne produit pas de transformation permanente.',
+        },
+        {
+          title: 'Grossesse et post-partum',
+          description:
+            'La grossesse et les semaines qui suivent l’accouchement impliquent des changements hormonaux, circulatoires et corporels importants. Un protocole adapté peut parfois être envisagé, mais jamais automatiquement. Contactez Zahara avant de réserver ; selon votre terme, vos antécédents et le déroulement de la grossesse ou du post-partum, un avis de sage-femme ou de médecin pourra être demandé.',
+        },
+      ],
+      note: 'Douleur inhabituelle, gonflement soudain ou asymétrique, rougeur, chaleur locale, essoufflement ou malaise nécessitent un avis médical rapide et non une séance de bien-être.',
+    },
     session: {
       title: 'Comment se déroule votre séance ?',
       intro:
@@ -172,6 +254,52 @@ export const drainageLymphatiquePages = {
         'Évitez de rester immobile pendant de longues heures.',
         'Écoutez votre niveau d’énergie et accordez-vous du repos si nécessaire.',
       ],
+    },
+    dailyCare: {
+      eyebrow: 'Entre deux rendez-vous',
+      title: 'Des habitudes simples pour prendre soin de votre confort',
+      intro:
+        'Le drainage s’inscrit dans un ensemble. Sans promettre de « détoxifier » le corps, quelques habitudes régulières peuvent soutenir le mouvement, la récupération et une meilleure écoute de vos sensations.',
+      items: [
+        {
+          title: 'Bouger régulièrement',
+          description:
+            'La marche, les étirements et une activité physique adaptée sollicitent les muscles. La régularité compte davantage que l’intensité : quelques minutes de mouvement répétées dans la journée sont déjà utiles au confort.',
+          icon: 'i-lucide-footprints',
+        },
+        {
+          title: 'Changer de position',
+          description:
+            'Si vous travaillez assise ou restez longtemps debout, faites quelques pas, mobilisez les chevilles et évitez de conserver exactement la même position pendant plusieurs heures.',
+          icon: 'i-lucide-move',
+        },
+        {
+          title: 'Respirer profondément',
+          description:
+            'Une respiration lente mobilise le diaphragme et crée surtout un temps de relâchement. Quelques respirations conscientes peuvent aider à diminuer les tensions et à revenir au corps.',
+          icon: 'i-lucide-wind',
+        },
+        {
+          title: 'S’hydrater normalement',
+          description:
+            'Buvez régulièrement selon votre soif et vos besoins, sauf recommandation médicale particulière. Il n’est pas nécessaire de se forcer à boire des quantités excessives après une séance.',
+          icon: 'i-lucide-glass-water',
+        },
+        {
+          title: 'Soigner la récupération',
+          description:
+            'Un sommeil suffisant et des temps de repos soutiennent l’équilibre général. Si la séance vous détend profondément, prévoyez si possible une suite de journée sans rythme trop contraignant.',
+          icon: 'i-lucide-bed',
+        },
+        {
+          title: 'Choisir le confort',
+          description:
+            'Des vêtements qui ne compriment pas excessivement, une alimentation variée et une activité qui vous convient participent à une démarche globale, sans régime miracle ni injonction.',
+          icon: 'i-lucide-heart-handshake',
+        },
+      ],
+      highlight:
+        'Aucun aliment, massage ou rituel ne « nettoie » à lui seul le système lymphatique. L’objectif est plus simple : prendre soin de votre confort avec des habitudes réalistes et régulières.',
     },
     precautions: {
       title: 'Précautions avant de réserver',
@@ -303,6 +431,54 @@ export const drainageLymphatiquePages = {
       highlight:
         'A toning technique does not mean a harsh treatment: pressure and rhythm are adjusted to your sensitivity throughout the session.',
     },
+    lymphaticSystem: {
+      eyebrow: 'Understanding the body',
+      title: 'The lymphatic system: a quiet, essential network',
+      paragraphs: [
+        'The lymphatic system is a network of vessels, lymph nodes, and organs involved in tissue-fluid balance and immune function. Lymph, the clear fluid moving through this network, carries proteins and immune cells while collecting some of the fluid found between cells.',
+        'Unlike blood circulation, it has no central pump comparable to the heart. Movement, walking, muscle contractions, breathing, and the activity of the lymphatic vessels themselves all contribute to its flow. This is one reason bodily sensations may change with daily routines, although not every feeling of puffiness indicates illness.',
+        'The Renata França method uses organized manual movements across the body. At Les Mains de Sérénité, it is offered for comfort and wellness. It does not replace the body’s natural functions or therapeutic manual lymphatic drainage prescribed within medical care.',
+      ],
+      factorsTitle: 'Why can the body sometimes feel heavier?',
+      factors: [
+        {
+          title: 'Hormonal changes',
+          description:
+            'The menstrual cycle, pregnancy, and menopause may temporarily change how some women experience their abdomen, legs, or tissues.',
+          icon: 'i-lucide-refresh-cw',
+        },
+        {
+          title: 'Prolonged stillness',
+          description:
+            'Long periods sitting, standing, or remaining in one position reduce the muscle movement that naturally supports fluid circulation.',
+          icon: 'i-lucide-armchair',
+        },
+        {
+          title: 'Hot weather',
+          description:
+            'High temperatures can increase feelings of heavy legs, marked ankles, or clothes fitting more tightly.',
+          icon: 'i-lucide-sun',
+        },
+        {
+          title: 'Long journeys',
+          description:
+            'Flights, trains, and several hours in a car combine stillness with a prolonged position, sometimes leaving a puffy feeling on arrival.',
+          icon: 'i-lucide-plane',
+        },
+        {
+          title: 'Stress and breathing',
+          description:
+            'Stress affects breathing, sleep, and muscle tension, which can change how the body feels from day to day.',
+          icon: 'i-lucide-wind',
+        },
+        {
+          title: 'Fatigue and sleep',
+          description:
+            'When recovery is insufficient, sensations of heaviness, tension, and physical fatigue may feel more present.',
+          icon: 'i-lucide-moon',
+        },
+      ],
+    },
     forYou: {
       title: 'This treatment may suit you if…',
       intro:
@@ -378,6 +554,40 @@ export const drainageLymphatiquePages = {
       ],
       note: 'When tissues feel less congested, the silhouette may temporarily appear less puffy. This is not fat loss or weight loss.',
     },
+    particularSituations: {
+      eyebrow: 'Particular situations',
+      title: 'Lipoedema, lymphoedema, and surgery: understanding the terms',
+      intro:
+        'These terms are sometimes associated with lymphatic drainage, but they do not describe an ordinary feeling of heavy legs. Naming them clearly helps guide each woman appropriately and prevents confusion between a wellness treatment and clinical care.',
+      items: [
+        {
+          title: 'Lipoedema',
+          description:
+            'Lipoedema is a chronic condition affecting almost exclusively women, characterized by an abnormal distribution of fatty tissue, commonly in the legs and sometimes the arms. It may involve pain, tenderness, easy bruising, and heaviness. Drainage does not remove lipoedema fat and does not cure the condition. When lipoedema has been diagnosed, any wellness treatment should remain complementary to care from qualified health professionals and be adapted to the person’s sensitivity.',
+        },
+        {
+          title: 'Lymphoedema',
+          description:
+            'Lymphoedema is a persistent accumulation of lymph caused by impairment of the lymphatic system. It may be primary or develop after certain procedures and treatments. It requires medical assessment and may call for therapeutic manual lymphatic drainage, compression, and specialist physiotherapy. Renata França wellness drainage is not equivalent to this care. If you have diagnosed or suspected lymphoedema, contact Zahara before booking and prioritize guidance from your healthcare team.',
+        },
+        {
+          title: 'After surgery',
+          description:
+            'After surgery, including cosmetic procedures, tissues may have oedema, inflammation, pain, fragile scarring, or a risk of complications. The timing, technique, and pressure permitted depend on the procedure and your recovery. No treatment will be considered without explicit approval from your surgeon or doctor. The appointment offered here is neither post-operative rehabilitation nor nursing or physiotherapy care.',
+        },
+        {
+          title: 'So-called aqueous cellulite',
+          description:
+            'The term “aqueous cellulite” is commonly used when dimpled skin appears alongside a sense of water retention or congested tissues. Manual work may temporarily create a feeling of suppleness and a smoother visual appearance. It does not destroy fat cells, eliminate cellulite, or produce permanent transformation.',
+        },
+        {
+          title: 'Pregnancy and postpartum',
+          description:
+            'Pregnancy and the weeks after birth involve significant hormonal, circulatory, and physical changes. An adapted protocol may sometimes be considered, but never automatically. Contact Zahara before booking; depending on your stage, history, and pregnancy or postpartum recovery, guidance from a midwife or doctor may be required.',
+        },
+      ],
+      note: 'Unusual pain, sudden or one-sided swelling, redness, local heat, shortness of breath, or feeling faint require prompt medical advice—not a wellness appointment.',
+    },
     session: {
       title: 'What happens during a session?',
       intro:
@@ -438,6 +648,52 @@ export const drainageLymphatiquePages = {
         'Avoid remaining still for many hours.',
         'Listen to your energy and rest if you need to.',
       ],
+    },
+    dailyCare: {
+      eyebrow: 'Between appointments',
+      title: 'Simple habits that support everyday comfort',
+      intro:
+        'Drainage belongs within a bigger picture. Without claiming to “detox” the body, a few regular habits can support movement, recovery, and awareness of how you feel.',
+      items: [
+        {
+          title: 'Move regularly',
+          description:
+            'Walking, stretching, and suitable physical activity engage the muscles. Consistency matters more than intensity: a few minutes of movement repeated through the day can already support comfort.',
+          icon: 'i-lucide-footprints',
+        },
+        {
+          title: 'Change position',
+          description:
+            'If you work seated or stand for long periods, take a few steps, move your ankles, and avoid keeping exactly the same position for several hours.',
+          icon: 'i-lucide-move',
+        },
+        {
+          title: 'Breathe deeply',
+          description:
+            'Slow breathing engages the diaphragm and, above all, creates a moment of release. A few conscious breaths can help soften tension and reconnect with the body.',
+          icon: 'i-lucide-wind',
+        },
+        {
+          title: 'Hydrate normally',
+          description:
+            'Drink regularly according to your thirst and needs unless you have specific medical advice. There is no need to force excessive amounts of water after a session.',
+          icon: 'i-lucide-glass-water',
+        },
+        {
+          title: 'Make space for recovery',
+          description:
+            'Adequate sleep and periods of rest support general balance. If the treatment relaxes you deeply, plan a gentler remainder of the day when possible.',
+          icon: 'i-lucide-bed',
+        },
+        {
+          title: 'Choose comfort',
+          description:
+            'Clothes that do not excessively compress, a varied diet, and activity you enjoy can support a balanced approach without miracle diets or pressure.',
+          icon: 'i-lucide-heart-handshake',
+        },
+      ],
+      highlight:
+        'No food, massage, or ritual “cleans” the lymphatic system by itself. The aim is simpler: care for your comfort through realistic, consistent habits.',
     },
     precautions: {
       title: 'Precautions before booking',

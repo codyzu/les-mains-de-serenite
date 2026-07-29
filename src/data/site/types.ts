@@ -476,6 +476,17 @@ export type DrainageLymphatiquePageData = {
     paragraphs: string[];
     highlight: string;
   };
+  lymphaticSystem: {
+    eyebrow: string;
+    title: string;
+    paragraphs: string[];
+    factorsTitle: string;
+    factors: Array<{
+      title: string;
+      description: string;
+      icon: string;
+    }>;
+  };
   forYou: {
     title: string;
     intro: string;
@@ -492,6 +503,16 @@ export type DrainageLymphatiquePageData = {
       title: string;
       description: string;
       icon: string;
+    }>;
+    note: string;
+  };
+  particularSituations: {
+    eyebrow: string;
+    title: string;
+    intro: string;
+    items: Array<{
+      title: string;
+      description: string;
     }>;
     note: string;
   };
@@ -516,6 +537,17 @@ export type DrainageLymphatiquePageData = {
     before: string[];
     afterTitle: string;
     after: string[];
+  };
+  dailyCare: {
+    eyebrow: string;
+    title: string;
+    intro: string;
+    items: Array<{
+      title: string;
+      description: string;
+      icon: string;
+    }>;
+    highlight: string;
   };
   precautions: {
     title: string;

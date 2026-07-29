@@ -183,7 +183,59 @@ const structuredData = {
       </div>
     </section>
 
-    <section class="section-pad bg-surface-muted">
+    <section
+      id="systeme-lymphatique"
+      class="section-pad scroll-mt-28 bg-surface-muted"
+    >
+      <div class="container-page">
+        <div
+          class="grid gap-9 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-start lg:gap-12"
+        >
+          <div class="lg:sticky lg:top-28">
+            <p
+              class="text-sm font-medium uppercase tracking-[0.22em] text-brand-strong/82"
+            >
+              {page.lymphaticSystem.eyebrow}
+            </p>
+            <h2 class="heading-lg mt-3">{page.lymphaticSystem.title}</h2>
+            <div class="mt-5 space-y-4">
+              {
+                page.lymphaticSystem.paragraphs.map((paragraph, index) => (
+                  <p class:list={[index === 0 ? 'body-lg' : 'body-base']}>
+                    {paragraph}
+                  </p>
+                ))
+              }
+            </div>
+          </div>
+
+          <div>
+            <h3 class="heading-md">{page.lymphaticSystem.factorsTitle}</h3>
+            <div class="mt-5 grid gap-4 sm:grid-cols-2">
+              {
+                page.lymphaticSystem.factors.map((factor) => (
+                  <article class="card-soft bg-white/84 p-5 shadow-card sm:p-6">
+                    <IconImage
+                      name={factor.icon}
+                      class="mb-4 h-11 w-11 bg-brand-soft text-brand-strong"
+                      iconClass="h-5 w-5"
+                    />
+                    <h4 class="text-base font-semibold text-ink">
+                      {factor.title}
+                    </h4>
+                    <p class="mt-2 text-sm leading-6 text-ink-muted">
+                      {factor.description}
+                    </p>
+                  </article>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad bg-surface">
       <div class="container-page">
         <SectionIntro title={page.forYou.title} text={page.forYou.intro} />
 
@@ -205,7 +257,7 @@ const structuredData = {
       </div>
     </section>
 
-    <section class="section-pad bg-surface">
+    <section class="section-pad bg-surface-muted">
       <div class="container-page">
         <SectionIntro title={page.benefits.title} text={page.benefits.intro} />
 
@@ -234,6 +286,50 @@ const structuredData = {
       </div>
     </section>
 
+    <section
+      id="situations-particulieres"
+      class="section-pad scroll-mt-28 bg-surface"
+    >
+      <div class="container-page">
+        <div class="mx-auto mb-12 max-w-3xl text-center">
+          <p
+            class="text-sm font-medium uppercase tracking-[0.22em] text-brand-strong/82"
+          >
+            {page.particularSituations.eyebrow}
+          </p>
+          <h2 class="heading-lg mt-3">{page.particularSituations.title}</h2>
+          <p class="body-lg mt-4">{page.particularSituations.intro}</p>
+        </div>
+
+        <div class="mx-auto grid max-w-5xl gap-4 md:grid-cols-2">
+          {
+            page.particularSituations.items.map((item, index) => (
+              <details
+                class:list={[
+                  'group card-soft bg-white/84 p-6 shadow-card sm:p-7',
+                  index === page.particularSituations.items.length - 1
+                    ? 'md:col-span-2'
+                    : '',
+                ]}
+              >
+                <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-lg font-semibold text-ink">
+                  <span>{item.title}</span>
+                  <span class="i-lucide-chevron-down h-5 w-5 shrink-0 text-brand-strong transition group-open:rotate-180" />
+                </summary>
+                <p class="body-base mt-4">{item.description}</p>
+              </details>
+            ))
+          }
+        </div>
+
+        <p
+          class="mx-auto mt-6 max-w-5xl rounded-2xl bg-accent-soft/62 px-5 py-4 text-sm font-medium leading-6 text-ink/76"
+        >
+          {page.particularSituations.note}
+        </p>
+      </div>
+    </section>
+
     <section class="section-pad bg-surface-muted">
       <div class="container-page">
         <div
@@ -258,7 +354,7 @@ const structuredData = {
       </div>
     </section>
 
-    <section class="section-pad bg-surface-muted">
+    <section class="section-pad bg-surface">
       <div class="container-page">
         <SectionIntro title={page.session.title} text={page.session.intro} />
 
@@ -282,7 +378,7 @@ const structuredData = {
       </div>
     </section>
 
-    <section class="section-pad bg-surface">
+    <section class="section-pad bg-surface-muted">
       <div class="container-page">
         <div
           class="grid overflow-hidden rounded-[2rem] bg-ink shadow-soft lg:grid-cols-[minmax(20rem,0.8fr)_minmax(0,1.2fr)] lg:items-stretch"
@@ -324,7 +420,7 @@ const structuredData = {
       </div>
     </section>
 
-    <section class="section-pad bg-surface-muted">
+    <section class="section-pad bg-surface">
       <div class="container-page">
         <SectionIntro
           title={page.beforeAfter.title}
@@ -356,6 +452,51 @@ const structuredData = {
               </article>
             ))
           }
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="conseils-quotidiens"
+      class="section-pad scroll-mt-28 bg-surface-muted"
+    >
+      <div class="container-page">
+        <div class="mx-auto mb-12 max-w-3xl text-center">
+          <p
+            class="text-sm font-medium uppercase tracking-[0.22em] text-brand-strong/82"
+          >
+            {page.dailyCare.eyebrow}
+          </p>
+          <h2 class="heading-lg mt-3">{page.dailyCare.title}</h2>
+          <p class="body-lg mt-4">{page.dailyCare.intro}</p>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {
+            page.dailyCare.items.map((item) => (
+              <article class="card-soft bg-white/82 p-6 shadow-card">
+                <IconImage
+                  name={item.icon}
+                  class="mb-4 h-12 w-12 bg-brand-soft text-brand-strong"
+                  iconClass="h-5 w-5"
+                />
+                <h3 class="text-lg font-semibold text-ink">{item.title}</h3>
+                <p class="mt-3 text-sm leading-6 text-ink-muted">
+                  {item.description}
+                </p>
+              </article>
+            ))
+          }
+        </div>
+
+        <div
+          class="mx-auto mt-7 flex max-w-4xl gap-4 rounded-[1.5rem] bg-brand-soft/68 px-5 py-5 shadow-card sm:px-7"
+        >
+          <span class="i-lucide-leaf mt-1 h-5 w-5 shrink-0 text-brand-strong"
+          ></span>
+          <p class="text-sm font-medium leading-6 text-ink/76">
+            {page.dailyCare.highlight}
+          </p>
         </div>
       </div>
     </section>
