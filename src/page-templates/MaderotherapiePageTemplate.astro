@@ -3,6 +3,7 @@ import {Picture} from 'astro:assets';
 import CtaReassurance from '../components/CtaReassurance.astro';
 import IconImage from '../components/IconImage.astro';
 import SectionIntro from '../components/SectionIntro.astro';
+import TreatmentMetaPills from '../components/TreatmentMetaPills.astro';
 import TreatmentPricing from '../components/TreatmentPricing.astro';
 import MaderotherapieHeroImage from '../assets/maderotherapie.png';
 import MaderotherapieToolsImage from '../assets/maderotherapie-outils-bois.png';
@@ -107,15 +108,10 @@ const structuredData = {
             {maderotherapie.hero.description}
           </p>
 
-          <div class="mt-7 flex flex-wrap gap-3">
-            {
-              maderotherapie.hero.keyInfo.map((item) => (
-                <span class="rounded-full bg-white/78 px-4 py-2 text-sm font-medium text-ink shadow-card">
-                  {item}
-                </span>
-              ))
-            }
-          </div>
+          <TreatmentMetaPills
+            items={maderotherapie.hero.keyInfo}
+            class="mt-7"
+          />
 
           <a
             href={maderotherapie.cta.href}

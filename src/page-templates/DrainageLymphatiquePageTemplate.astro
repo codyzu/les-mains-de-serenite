@@ -2,8 +2,11 @@
 import {Picture} from 'astro:assets';
 import CtaReassurance from '../components/CtaReassurance.astro';
 import IconImage from '../components/IconImage.astro';
+import RelatedTreatmentCards from '../components/RelatedTreatmentCards.astro';
 import SectionIntro from '../components/SectionIntro.astro';
+import TreatmentMetaPills from '../components/TreatmentMetaPills.astro';
 import TreatmentPricing from '../components/TreatmentPricing.astro';
+import TreatmentStepCards from '../components/TreatmentStepCards.astro';
 import DrainageHeroImage from '../assets/drainage-lymphatique-renata-franca.png';
 import {getTreatmentPrices} from '../data/site/catalog/treatments';
 import {
@@ -32,16 +35,23 @@ const pricingCopy =
     ? {
         eyebrow: 'Durations and prices',
         title: 'Choose your session length',
-        description:
-          'The 60-minute session is recommended for discovering the full-body treatment. Choose 90 minutes for more time on areas that need particular attention and a gentler return to calm.',
+        description: 'Choose the pace that best suits what you need today.',
         recommendedLabel: 'Recommended',
+        optionDescriptions: [
+          'Recommended for discovering the complete full-body treatment.',
+          'More time for areas needing particular attention and a slower return to calm.',
+        ],
       }
     : {
         eyebrow: 'Durées et tarifs',
         title: 'Choisissez la durée de votre soin',
         description:
-          'La séance de 60 minutes est conseillée pour découvrir le soin du corps complet. Choisissez 90 minutes pour accorder plus de temps aux zones qui demandent une attention particulière et au retour au calme.',
+          'Choisissez le rythme qui correspond le mieux à votre besoin du moment.',
         recommendedLabel: 'Durée conseillée',
+        optionDescriptions: [
+          'La durée recommandée pour découvrir le soin complet du corps.',
+          'Plus de temps pour les zones qui demandent une attention particulière et un retour au calme plus lent.',
+        ],
       };
 const structuredData = {
   '@context': 'https://schema.org',
@@ -107,15 +117,7 @@ const structuredData = {
             {page.hero.description}
           </p>
 
-          <div class="mt-7 flex flex-wrap gap-3">
-            {
-              page.hero.keyInfo.map((item) => (
-                <span class="rounded-full bg-white/78 px-4 py-2 text-sm font-medium text-ink shadow-card">
-                  {item}
-                </span>
-              ))
-            }
-          </div>
+          <TreatmentMetaPills items={page.hero.keyInfo} class="mt-7" />
 
           <a
             href={page.cta.href}
@@ -312,7 +314,7 @@ const structuredData = {
                     : '',
                 ]}
               >
-                <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-lg font-semibold text-ink">
+                <summary class="flex min-h-11 cursor-pointer list-none items-center justify-between gap-4 rounded-md py-1 text-left text-lg font-semibold text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-strong focus-visible:ring-offset-4">
                   <span>{item.title}</span>
                   <span class="i-lucide-chevron-down h-5 w-5 shrink-0 text-brand-strong transition group-open:rotate-180" />
                 </summary>
@@ -330,7 +332,7 @@ const structuredData = {
       </div>
     </section>
 
-    <section class="section-pad bg-surface-muted">
+    <section id="tarifs" class="section-pad scroll-mt-28 bg-surface-muted">
       <div class="container-page">
         <div
           class="mx-auto grid max-w-5xl gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.72fr)] lg:items-center lg:gap-12"
@@ -344,41 +346,41 @@ const structuredData = {
             <h2 class="heading-lg mt-3">{pricingCopy.title}</h2>
             <p class="body-lg mt-5">{pricingCopy.description}</p>
           </div>
-          <div class="card-soft bg-white/84 p-6 shadow-card sm:p-7">
+          <div class="card-soft bg-white/88 p-6 shadow-soft sm:p-7">
             <TreatmentPricing
               options={treatmentPrices}
               recommendedLabel={pricingCopy.recommendedLabel}
+              optionDescriptions={pricingCopy.optionDescriptions}
+              featured
             />
+            <div class="mt-6 border-t border-ink/8 pt-6">
+              <a
+                href={page.cta.href}
+                target={ctaIsExternal ? '_blank' : undefined}
+                rel={ctaIsExternal ? 'noreferrer' : undefined}
+                class="btn-primary min-h-[3.25rem] w-full px-5 py-3.5 text-center text-sm sm:px-6 sm:text-base"
+                data-analytics-event={page.cta.analyticsEvent}
+              >
+                {page.hero.primaryCta}
+              </a>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section-pad bg-surface">
+    <section id="seance" class="section-pad scroll-mt-28 bg-surface">
       <div class="container-page">
         <SectionIntro title={page.session.title} text={page.session.intro} />
 
-        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-          {
-            page.session.items.map((item, index) => (
-              <article class="card-soft bg-white/84 p-6 shadow-card">
-                <span class="font-display text-4xl leading-none text-brand-strong">
-                  {index + 1}
-                </span>
-                <h3 class="mt-4 text-lg font-semibold leading-7 text-ink">
-                  {item.title}
-                </h3>
-                <p class="mt-3 text-sm leading-6 text-ink-muted">
-                  {item.description}
-                </p>
-              </article>
-            ))
-          }
-        </div>
+        <TreatmentStepCards steps={page.session.items} />
       </div>
     </section>
 
-    <section class="section-pad bg-surface-muted">
+    <section
+      id="pourquoi-nous"
+      class="section-pad scroll-mt-28 bg-surface-muted"
+    >
       <div class="container-page">
         <div
           class="grid overflow-hidden rounded-[2rem] bg-ink shadow-soft lg:grid-cols-[minmax(20rem,0.8fr)_minmax(0,1.2fr)] lg:items-stretch"
@@ -420,7 +422,7 @@ const structuredData = {
       </div>
     </section>
 
-    <section class="section-pad bg-surface">
+    <section id="avant-apres" class="section-pad scroll-mt-28 bg-surface">
       <div class="container-page">
         <SectionIntro
           title={page.beforeAfter.title}
@@ -542,15 +544,18 @@ const structuredData = {
 
     <section id="faq" class="section-pad scroll-mt-28 bg-surface-muted">
       <div class="container-page">
-        <SectionIntro title={page.faq.title} />
+        <SectionIntro title={page.faq.title} text={page.faq.intro} compact />
 
         <div class="mx-auto grid max-w-4xl gap-4">
           {
             page.faq.items.map((item) => (
               <details class="group card-soft bg-white/84 p-6 shadow-card sm:p-7">
-                <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-lg font-semibold text-ink">
+                <summary class="flex min-h-11 cursor-pointer list-none items-center justify-between gap-4 rounded-md py-1 text-left text-lg font-semibold text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-strong focus-visible:ring-offset-4">
                   <span>{item.question}</span>
-                  <span class="i-lucide-chevron-down h-5 w-5 shrink-0 text-brand-strong transition group-open:rotate-180" />
+                  <span
+                    class="i-lucide-chevron-down h-5 w-5 shrink-0 text-brand-strong transition group-open:rotate-180"
+                    aria-hidden="true"
+                  />
                 </summary>
                 <p class="body-base mt-4">{item.answer}</p>
               </details>
@@ -560,30 +565,22 @@ const structuredData = {
       </div>
     </section>
 
-    <section class="bg-surface px-0 py-10 sm:py-12">
+    <section
+      id="a-decouvrir"
+      class="scroll-mt-28 bg-surface px-0 py-14 sm:py-16"
+    >
       <div class="container-page">
         <div class="mx-auto max-w-5xl">
-          <p class="text-sm uppercase tracking-[0.22em] text-brand-strong/82">
-            {page.related.eyebrow}
-          </p>
-          <h2 class="heading-md mt-3">{page.related.title}</h2>
-          <p class="body-base mt-4 max-w-3xl">{page.related.description}</p>
+          <div class="mx-auto max-w-3xl text-center">
+            <p class="text-sm uppercase tracking-[0.22em] text-brand-strong/82">
+              {page.related.eyebrow}
+            </p>
+            <h2 class="heading-md mt-3">{page.related.title}</h2>
+            <p class="body-base mt-4">{page.related.description}</p>
+          </div>
 
-          <div class="mt-7 grid gap-5 md:grid-cols-2">
-            {
-              page.related.items.map((item) => (
-                <article class="card-soft flex flex-col bg-white/84 p-6 shadow-card sm:p-7">
-                  <h3 class="text-xl font-semibold text-ink">{item.title}</h3>
-                  <p class="body-base mt-3">{item.description}</p>
-                  <a
-                    href={item.href}
-                    class="mt-5 inline-flex min-h-[2.75rem] w-fit items-center justify-center rounded-full border border-brand/24 px-5 py-3 text-sm font-semibold text-brand-strong no-underline transition hover:bg-brand-soft"
-                  >
-                    {item.text}
-                  </a>
-                </article>
-              ))
-            }
+          <div class="mt-8">
+            <RelatedTreatmentCards items={page.related.items} />
           </div>
         </div>
       </div>
@@ -592,7 +589,7 @@ const structuredData = {
     <section id="reservation" class="section-pad scroll-mt-28 bg-surface">
       <div class="container-page">
         <div
-          class="card-soft mx-auto max-w-4xl p-8 text-center shadow-soft sm:p-10 lg:p-12"
+          class="card-soft mx-auto max-w-4xl p-7 text-center shadow-soft sm:p-10 lg:p-12"
         >
           <IconImage
             name="i-lucide-calendar-heart"
@@ -606,13 +603,14 @@ const structuredData = {
             href={page.cta.href}
             target={ctaIsExternal ? '_blank' : undefined}
             rel={ctaIsExternal ? 'noreferrer' : undefined}
-            class="btn-primary mt-7 min-h-[3rem] px-7 py-3.5 sm:min-h-0 sm:py-3"
+            class="btn-primary mt-7 min-h-[3rem] px-5 py-3.5 sm:min-h-0 sm:px-7 sm:py-3"
             data-analytics-event={page.cta.analyticsEvent}
           >
             {page.cta.text}
           </a>
           <CtaReassurance
             reassurance={page.cta.reassurance}
+            largeTapTarget
             class="mx-auto mt-4 max-w-2xl"
           />
           <p class="mx-auto mt-4 max-w-2xl text-sm leading-6 text-ink/58">

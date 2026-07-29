@@ -1,0 +1,37 @@
+---
+interface RelatedTreatment {
+  title: string;
+  description: string;
+  text: string;
+  href: string;
+}
+
+interface Props {
+  items: RelatedTreatment[];
+}
+
+const {items} = Astro.props;
+---
+
+<div class="grid gap-4 sm:gap-5 md:grid-cols-2">
+  {
+    items.map((item) => (
+      <article class="card-soft group flex h-full flex-col bg-white/84 p-6 shadow-card transition duration-200 hover:-translate-y-0.5 hover:border-brand/18 hover:bg-white hover:shadow-soft focus-within:border-brand/24 focus-within:shadow-soft sm:p-7">
+        <h3 class="font-display text-2xl leading-snug text-ink">
+          {item.title}
+        </h3>
+        <p class="body-base mt-3">{item.description}</p>
+        <a
+          href={item.href}
+          class="mt-auto inline-flex min-h-11 w-fit items-center gap-2 pt-5 text-sm font-semibold text-brand-strong underline decoration-brand-strong/24 underline-offset-4 transition group-hover:text-ink hover:decoration-brand-strong focus-visible:rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-strong focus-visible:ring-offset-4 focus-visible:ring-offset-white"
+        >
+          {item.text}
+          <span
+            class="i-lucide-arrow-right h-4 w-4 transition-transform group-hover:translate-x-0.5"
+            aria-hidden="true"
+          />
+        </a>
+      </article>
+    ))
+  }
+</div>

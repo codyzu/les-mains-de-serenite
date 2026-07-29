@@ -557,6 +557,7 @@ export type DrainageLymphatiquePageData = {
   };
   faq: {
     title: string;
+    intro: string;
     items: Array<{
       question: string;
       answer: string;

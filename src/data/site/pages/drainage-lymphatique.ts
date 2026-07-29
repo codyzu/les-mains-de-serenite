@@ -45,7 +45,7 @@ export const drainageLymphatiquePages = {
         'À la différence de la circulation sanguine, il ne dispose pas d’une pompe centrale comparable au cœur. Le mouvement, la marche, les contractions musculaires, la respiration et l’activité propre des vaisseaux contribuent à sa progression. C’est pourquoi les sensations corporelles peuvent évoluer avec le rythme de vie, sans que toute impression de gonflement corresponde pour autant à une maladie.',
         'La méthode Renata França utilise des manœuvres manuelles organisées sur le corps. Dans le cadre proposé par Les Mains de Sérénité, elle accompagne une démarche de confort et de bien-être ; elle ne remplace pas le fonctionnement naturel de l’organisme ni un drainage lymphatique thérapeutique prescrit dans un parcours de soins.',
       ],
-      factorsTitle: 'Pourquoi le corps peut-il sembler plus lourd ?',
+      factorsTitle: 'Pourquoi le corps peut-il sembler plus lourd\u{A0}?',
       factors: [
         {
           title: 'Variations hormonales',
@@ -195,7 +195,7 @@ export const drainageLymphatiquePages = {
       note: 'Douleur inhabituelle, gonflement soudain ou asymétrique, rougeur, chaleur locale, essoufflement ou malaise nécessitent un avis médical rapide et non une séance de bien-être.',
     },
     session: {
-      title: 'Comment se déroule votre séance ?',
+      title: 'Comment se déroule votre séance\u{A0}?',
       intro:
         'Vous êtes accueillie sur rendez-vous dans un espace calme et privé à Annecy. Le soin dure 60 ou 90 minutes selon le temps que vous souhaitez vous accorder.',
       items: [
@@ -223,7 +223,7 @@ export const drainageLymphatiquePages = {
     },
     approach: {
       eyebrow: 'Une présence attentive',
-      title: 'Pourquoi choisir Les Mains de Sérénité ?',
+      title: 'Pourquoi choisir Les Mains de Sérénité\u{A0}?',
       paragraphs: [
         'Un drainage se choisit pour sa méthode, mais aussi pour la qualité de la présence qui l’accompagne. Zahara vous reçoit seule, dans un cadre chaleureux, confidentiel et exclusivement réservé aux femmes. Il n’y a pas de protocole appliqué mécaniquement : chaque rendez-vous commence par l’écoute.',
         'Avant de se former aux massages et au drainage lymphatique Renata França, Zahara a travaillé comme auxiliaire de puériculture. Ce parcours a nourri sa manière de prendre soin : observer avec finesse, écouter sans jugement, expliquer avec douceur et rester attentive aux réactions du corps.',
@@ -317,44 +317,47 @@ export const drainageLymphatiquePages = {
     },
     faq: {
       title: 'Questions fréquentes',
+      intro:
+        'Vous avez encore une question ? Retrouvez ici les réponses aux interrogations les plus fréquentes avant une première séance.',
       items: [
         {
-          question: 'Quelle est la différence avec un drainage classique ?',
+          question:
+            'Quelle est la différence avec un drainage classique\u{A0}?',
           answer:
             'La méthode Renata França se caractérise par des mouvements plus dynamiques, précis et rythmés que les approches très lentes. Elle reste manuelle et la pression est adaptée pour conserver une séance confortable.',
         },
         {
-          question: 'Le drainage est-il douloureux ?',
+          question: 'Le drainage est-il douloureux\u{A0}?',
           answer:
             'Il peut être tonique, mais il ne doit pas être douloureux. Certaines zones sont parfois plus sensibles ; Zahara ajuste alors la pression et vous invite à partager votre ressenti.',
         },
         {
-          question: 'Que puis-je ressentir après la séance ?',
+          question: 'Que puis-je ressentir après la séance\u{A0}?',
           answer:
             'Vous pouvez ressentir une sensation de légèreté, de souplesse ou de détente. Certaines femmes remarquent aussi un ventre moins tendu ou une envie d’uriner plus fréquente. Les réactions varient selon les personnes et les séances.',
         },
         {
-          question: 'Le drainage fait-il perdre du poids ?',
+          question: 'Le drainage fait-il perdre du poids\u{A0}?',
           answer:
             'Non. Il n’agit pas sur les cellules graisseuses et ne remplace ni l’activité physique ni une alimentation équilibrée. Quand les tissus paraissent moins gonflés, la silhouette peut sembler temporairement plus harmonieuse, sans qu’il s’agisse d’une perte de graisse.',
         },
         {
-          question: 'Combien de séances faut-il prévoir ?',
+          question: 'Combien de séances faut-il prévoir\u{A0}?',
           answer:
             'Une séance ponctuelle peut répondre à un besoin du moment, après un voyage ou avant une occasion par exemple. Si vous souhaitez un rythme régulier, Zahara vous aidera à choisir une fréquence réaliste selon vos attentes, sans engagement inutile.',
         },
         {
-          question: 'Puis-je venir pendant mes règles ?',
+          question: 'Puis-je venir pendant mes règles\u{A0}?',
           answer:
             'Oui, si vous vous sentez à l’aise. Certaines femmes apprécient le soin pendant cette période lorsqu’elles se sentent plus gonflées. La séance peut aussi être reportée si votre confort vous invite à attendre.',
         },
         {
-          question: 'Le drainage est-il possible pendant la grossesse ?',
+          question: 'Le drainage est-il possible pendant la grossesse\u{A0}?',
           answer:
             'Certaines situations peuvent permettre un protocole adapté, mais il est indispensable de contacter Zahara avant de réserver. Elle pourra vous demander un avis médical selon le stade et le déroulement de la grossesse.',
         },
         {
-          question: 'Quelle durée choisir : 60 ou 90 minutes ?',
+          question: 'Quelle durée choisir\u{A0}: 60 ou 90 minutes\u{A0}?',
           answer:
             'Soixante minutes permettent de découvrir le soin et de travailler l’ensemble du corps. La séance de 90 minutes offre davantage de temps pour l’échange, les zones qui demandent une attention particulière et un retour au calme plus enveloppant.',
         },
@@ -711,6 +714,8 @@ export const drainageLymphatiquePages = {
     },
     faq: {
       title: 'Frequently asked questions',
+      intro:
+        'Still have a question? Find answers to the most common questions before a first session.',
       items: [
         {
           question: 'How does it differ from classic drainage?',

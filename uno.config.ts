@@ -113,7 +113,7 @@ export default defineConfig({
     'body-lg': 'text-lg leading-8 text-ink-muted',
     'body-base': 'text-base leading-7 text-ink-muted',
     'btn-primary':
-      'inline-flex items-center justify-center rounded-full bg-brand px-6 py-3 text-sm font-medium text-white shadow-soft transition hover:bg-brand-strong',
+      'inline-flex items-center justify-center rounded-full bg-brand px-6 py-3 text-sm font-medium text-white shadow-soft transition hover:bg-brand-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-strong focus-visible:ring-offset-2',
     'btn-secondary':
       'inline-flex items-center justify-center rounded-full border border-white/70 bg-white/10 px-6 py-3 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/20',
     'card-soft':
