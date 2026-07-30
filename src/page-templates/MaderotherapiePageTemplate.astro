@@ -257,7 +257,7 @@ const structuredData = {
                 href={maderotherapie.cta.href}
                 target={ctaIsExternal ? '_blank' : undefined}
                 rel={ctaIsExternal ? 'noreferrer' : undefined}
-                class="btn-primary min-h-[3.25rem] w-full px-5 py-3.5 text-center text-sm sm:px-6 sm:text-base"
+                class="btn-primary min-h-[3.25rem] w-full whitespace-nowrap px-4 py-3.5 text-center text-sm sm:px-6 sm:text-base"
                 data-analytics-event={maderotherapie.cta.analyticsEvent}
               >
                 {maderotherapie.hero.primaryCta}
@@ -268,7 +268,9 @@ const structuredData = {
       </div>
     </section>
 
-    <section class="section-pad bg-surface-muted">
+    <section
+      class="bg-surface-muted pb-16 pt-6 sm:pb-20 sm:pt-8 lg:pb-24 lg:pt-10"
+    >
       <div class="container-page">
         <div
           class="grid overflow-hidden rounded-[2rem] bg-ink shadow-soft lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-stretch"
@@ -316,7 +318,7 @@ const structuredData = {
               href={maderotherapie.offer.ctaHref}
               target={offerCtaIsExternal ? '_blank' : undefined}
               rel={offerCtaIsExternal ? 'noreferrer' : undefined}
-              class="btn-primary mt-8 min-h-[3rem] px-7 py-3.5 sm:min-h-0 sm:py-3"
+              class="btn-primary mt-8 min-h-[3rem] px-7 py-3.5 sm:py-3"
               data-analytics-event={maderotherapie.cta.analyticsEvent}
             >
               {maderotherapie.hero.primaryCta}
@@ -347,7 +349,7 @@ const structuredData = {
           </div>
           <a
             href={maderotherapie.programCrossLink.href}
-            class="mt-6 inline-flex min-h-[3rem] items-center justify-center rounded-full border border-brand/24 px-6 py-3 text-sm font-semibold text-brand-strong no-underline transition hover:bg-brand-soft lg:mt-0 lg:shrink-0"
+            class="mt-6 inline-flex min-h-[3rem] items-center justify-center rounded-full border border-brand/24 px-6 py-3 text-sm font-semibold text-brand-strong no-underline transition-colors hover:bg-brand-soft active:bg-brand-soft/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-strong focus-visible:ring-offset-2 motion-reduce:transition-none lg:mt-0 lg:shrink-0"
           >
             {maderotherapie.programCrossLink.text}
           </a>
@@ -474,7 +476,7 @@ const structuredData = {
                 <summary class="flex min-h-11 cursor-pointer list-none items-center justify-between gap-4 rounded-md py-1 text-left text-lg font-semibold text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-strong focus-visible:ring-offset-4">
                   <span>{item.question}</span>
                   <span
-                    class="i-lucide-chevron-down h-5 w-5 shrink-0 text-brand-strong transition group-open:rotate-180"
+                    class="i-lucide-chevron-down h-5 w-5 shrink-0 text-brand-strong transition-transform group-open:rotate-180 motion-reduce:transition-none"
                     aria-hidden="true"
                   />
                 </summary>

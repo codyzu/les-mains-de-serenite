@@ -113,11 +113,12 @@ export default defineConfig({
     'body-lg': 'text-lg leading-8 text-ink-muted',
     'body-base': 'text-base leading-7 text-ink-muted',
     'btn-primary':
-      'inline-flex items-center justify-center rounded-full bg-brand px-6 py-3 text-sm font-medium text-white shadow-soft transition hover:bg-brand-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-strong focus-visible:ring-offset-2',
+      'inline-flex items-center justify-center rounded-full bg-brand px-6 py-3 text-sm font-medium text-white shadow-soft transition-colors duration-200 hover:bg-brand-strong active:bg-brand-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-strong focus-visible:ring-offset-2 motion-reduce:transition-none',
     'btn-secondary':
-      'inline-flex items-center justify-center rounded-full border border-white/70 bg-white/10 px-6 py-3 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/20',
+      'inline-flex min-h-12 items-center justify-center rounded-full border border-white/70 bg-white/10 px-6 py-3 text-sm font-medium text-white backdrop-blur-sm transition-colors duration-200 hover:bg-white/20 active:bg-white/24 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-ink motion-reduce:transition-none',
     'card-soft':
       'rounded-spa border border-surface-soft bg-white/70 shadow-card backdrop-blur-sm',
-    'nav-link': 'text-sm text-ink-muted transition hover:text-ink',
+    'nav-link':
+      'rounded-md text-sm text-ink-muted transition-colors duration-200 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-strong focus-visible:ring-offset-4 focus-visible:ring-offset-surface-muted motion-reduce:transition-none',
   },
 });

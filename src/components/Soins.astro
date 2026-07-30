@@ -37,7 +37,10 @@ const getCardGridClasses = (index: number) => {
 };
 ---
 
-<section id="soins" class="section-pad scroll-mt-28 bg-surface">
+<section
+  id="soins"
+  class="scroll-mt-28 bg-surface pb-16 pt-10 sm:pb-20 sm:pt-12 lg:pb-24 lg:pt-16"
+>
   <div class="container-page">
     <SectionIntro
       eyebrow={eyebrow}
@@ -52,7 +55,7 @@ const getCardGridClasses = (index: number) => {
           <article
             id={item.anchorId}
             class:list={[
-              'card-soft flex scroll-mt-30 flex-col p-6 sm:p-7',
+              'card-soft group flex scroll-mt-30 flex-col p-6 transition duration-200 hover:border-brand/18 hover:bg-white/86 hover:shadow-soft focus-within:border-brand/24 focus-within:shadow-soft motion-reduce:transition-none sm:p-7',
               isHome ? 'bg-white/72' : '',
               ...getCardGridClasses(index),
             ]}
@@ -91,11 +94,11 @@ const getCardGridClasses = (index: number) => {
                 <a
                   href={item.ctaLink}
                   aria-label={`${item.ctaText} — ${item.title}`}
-                  class="mt-6 inline-flex min-h-[2.75rem] w-full items-center justify-center gap-2 rounded-full border border-brand-soft bg-white/60 px-5 py-3 text-sm font-semibold text-brand-strong no-underline transition hover:bg-brand-soft/60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+                  class="mt-6 inline-flex min-h-[2.875rem] w-full items-center justify-center gap-2 whitespace-nowrap rounded-full border border-brand-soft bg-white/60 px-5 py-3 text-sm font-semibold text-brand-strong no-underline transition-colors hover:bg-brand-soft/60 active:bg-brand-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-strong focus-visible:ring-offset-2 motion-reduce:transition-none"
                 >
                   {item.ctaText}
                   <span
-                    class="i-lucide-arrow-right h-4 w-4"
+                    class="i-lucide-arrow-right h-4 w-4 transition-transform group-hover:translate-x-0.5 motion-reduce:transform-none motion-reduce:transition-none"
                     aria-hidden="true"
                   />
                 </a>

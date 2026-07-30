@@ -14,7 +14,7 @@ const {iconClass = 'h-7 w-7', inline = false} = Astro.props;
 {
   inline ? (
     <span class:list={['flex items-center justify-center', className]}>
-      <span class:list={[iconClass, name]} />
+      <span class:list={[iconClass, name]} aria-hidden="true" />
     </span>
   ) : (
     <div
@@ -23,7 +23,7 @@ const {iconClass = 'h-7 w-7', inline = false} = Astro.props;
         className,
       ]}
     >
-      <span class:list={[iconClass, name]} />
+      <span class:list={[iconClass, name]} aria-hidden="true" />
     </div>
   )
 }

@@ -16,7 +16,7 @@ const {items} = Astro.props;
 <div class="grid gap-4 sm:gap-5 md:grid-cols-2">
   {
     items.map((item) => (
-      <article class="card-soft group flex h-full flex-col bg-white/84 p-6 shadow-card transition duration-200 hover:-translate-y-0.5 hover:border-brand/18 hover:bg-white hover:shadow-soft focus-within:border-brand/24 focus-within:shadow-soft sm:p-7">
+      <article class="card-soft group flex h-full flex-col bg-white/84 p-6 shadow-card transition duration-200 hover:-translate-y-0.5 hover:border-brand/18 hover:bg-white hover:shadow-soft focus-within:border-brand/24 focus-within:shadow-soft motion-reduce:transform-none motion-reduce:transition-none sm:p-7">
         <h3 class="font-display text-2xl leading-snug text-ink">
           {item.title}
         </h3>
@@ -27,7 +27,7 @@ const {items} = Astro.props;
         >
           {item.text}
           <span
-            class="i-lucide-arrow-right h-4 w-4 transition-transform group-hover:translate-x-0.5"
+            class="i-lucide-arrow-right h-4 w-4 transition-transform group-hover:translate-x-0.5 motion-reduce:transform-none motion-reduce:transition-none"
             aria-hidden="true"
           />
         </a>

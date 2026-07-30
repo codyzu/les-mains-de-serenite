@@ -164,14 +164,19 @@ const structuredData = {
               {
                 locale === 'fr' ? (
                   <>
-                    <span class="block sm:inline">
-                      La méthode Renata França
-                    </span>{' '}
-                    <span class="block sm:hidden">
-                      Un drainage dynamique et précis
+                    <span class="sr-only">
+                      La méthode Renata França : un drainage dynamique et précis
                     </span>
-                    <span class="hidden sm:inline">
-                      : un drainage dynamique et précis
+                    <span aria-hidden="true">
+                      <span class="block sm:inline">
+                        La méthode Renata França
+                      </span>{' '}
+                      <span class="block sm:hidden">
+                        Un drainage dynamique et précis
+                      </span>
+                      <span class="hidden sm:inline">
+                        : un drainage dynamique et précis
+                      </span>
                     </span>
                   </>
                 ) : (
@@ -337,7 +342,7 @@ const structuredData = {
                 <summary class="flex min-h-11 cursor-pointer list-none items-center justify-between gap-4 rounded-md py-1 text-left text-lg font-semibold text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-strong focus-visible:ring-offset-4">
                   <span>{item.title}</span>
                   <span
-                    class="i-lucide-chevron-down h-5 w-5 shrink-0 text-brand-strong transition group-open:rotate-180"
+                    class="i-lucide-chevron-down h-5 w-5 shrink-0 text-brand-strong transition-transform group-open:rotate-180 motion-reduce:transition-none"
                     aria-hidden="true"
                   />
                 </summary>
@@ -384,7 +389,7 @@ const structuredData = {
                 href={page.cta.href}
                 target={ctaIsExternal ? '_blank' : undefined}
                 rel={ctaIsExternal ? 'noreferrer' : undefined}
-                class="btn-primary min-h-[3.25rem] w-full px-5 py-3.5 text-center text-sm sm:px-6 sm:text-base"
+                class="btn-primary min-h-[3.25rem] w-full whitespace-nowrap px-4 py-3.5 text-center text-[0.82rem] sm:px-6 sm:text-base"
                 data-analytics-event={page.cta.analyticsEvent}
               >
                 {page.hero.primaryCta}
@@ -595,7 +600,7 @@ const structuredData = {
                 <summary class="flex min-h-11 cursor-pointer list-none items-center justify-between gap-4 rounded-md py-1 text-left text-lg font-semibold text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-strong focus-visible:ring-offset-4">
                   <span>{item.question}</span>
                   <span
-                    class="i-lucide-chevron-down h-5 w-5 shrink-0 text-brand-strong transition group-open:rotate-180"
+                    class="i-lucide-chevron-down h-5 w-5 shrink-0 text-brand-strong transition-transform group-open:rotate-180 motion-reduce:transition-none"
                     aria-hidden="true"
                   />
                 </summary>
@@ -648,7 +653,7 @@ const structuredData = {
             href={page.cta.href}
             target={ctaIsExternal ? '_blank' : undefined}
             rel={ctaIsExternal ? 'noreferrer' : undefined}
-            class="btn-primary mt-7 min-h-[3rem] px-5 py-3.5 sm:min-h-0 sm:px-7 sm:py-3"
+            class="btn-primary mt-7 min-h-[3rem] whitespace-nowrap px-4 py-3.5 text-[0.82rem] sm:px-7 sm:py-3 sm:text-sm"
             data-analytics-event={page.cta.analyticsEvent}
           >
             {page.cta.text}

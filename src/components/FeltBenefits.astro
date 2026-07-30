@@ -7,7 +7,10 @@ type Props = FeltBenefitsData;
 const {title, intro, items} = Astro.props;
 ---
 
-<section id="bienfaits" class="section-pad bg-surface">
+<section
+  id="bienfaits"
+  class="bg-surface pb-16 pt-8 sm:pb-20 sm:pt-10 lg:pb-24 lg:pt-12"
+>
   <div class="container-page">
     <SectionIntro title={title} text={intro} />
 

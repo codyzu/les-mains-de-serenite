@@ -76,7 +76,8 @@ const hasLocation = Boolean(locationText);
           target="_blank"
           rel="noreferrer"
           class:list={[
-            'mt-4 inline-flex transition',
+            'mt-4 inline-flex rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-strong focus-visible:ring-offset-2 motion-reduce:transition-none',
+            !compact && 'min-h-11 items-center',
             whatsappEmphasis
               ? 'rounded-full bg-brand px-5 py-2.5 text-sm font-medium text-white shadow-soft hover:bg-brand-strong'
               : 'body-lg text-ink hover:text-brand-strong',
@@ -105,7 +106,10 @@ const hasLocation = Boolean(locationText);
         }
         <a
           href={`tel:${phoneHref}`}
-          class="body-lg mt-4 inline-flex text-ink transition hover:text-brand-strong"
+          class:list={[
+            'body-lg mt-4 inline-flex rounded-md text-ink transition-colors hover:text-brand-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-strong focus-visible:ring-offset-2 motion-reduce:transition-none',
+            !compact && 'min-h-11 items-center',
+          ]}
           data-analytics-event="phone_click"
         >
           {phoneDisplay}
@@ -130,7 +134,10 @@ const hasLocation = Boolean(locationText);
         }
         <a
           href={`mailto:${email}`}
-          class="body-lg mt-4 inline-flex break-all text-ink transition hover:text-accent-strong"
+          class:list={[
+            'body-lg mt-4 inline-flex break-all rounded-md text-ink transition-colors hover:text-accent-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-strong focus-visible:ring-offset-2 motion-reduce:transition-none',
+            !compact && 'min-h-11 items-center',
+          ]}
           data-analytics-event="email_click"
         >
           {email}

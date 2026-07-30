@@ -127,7 +127,7 @@ const mobileNavItems = desktopNavItems
   >
     <a
       href={homeHref}
-      class="flex min-w-0 items-center gap-2 no-underline sm:gap-3"
+      class="flex min-w-0 items-center gap-2 rounded-md no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-strong focus-visible:ring-offset-4 focus-visible:ring-offset-surface-muted sm:gap-3"
     >
       <Image
         src={LogoSquareDark}
@@ -195,7 +195,7 @@ const mobileNavItems = desktopNavItems
               href={toHref(languageSwitchPaths.fr)}
               aria-current={locale === 'fr' ? 'page' : undefined}
               class:list={[
-                'inline-flex h-8 min-w-8 touch-manipulation items-center justify-center rounded-full px-1.5 no-underline transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/55 focus-visible:ring-offset-1 focus-visible:ring-offset-surface-muted',
+                'inline-flex h-8 min-w-8 touch-manipulation items-center justify-center rounded-full px-1.5 no-underline transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/55 focus-visible:ring-offset-1 focus-visible:ring-offset-surface-muted motion-reduce:transition-none',
                 locale === 'fr'
                   ? 'bg-brand-muted/25 font-semibold text-ink'
                   : 'text-ink-muted hover:bg-white/60 hover:text-ink active:bg-brand-muted/20',
@@ -207,7 +207,7 @@ const mobileNavItems = desktopNavItems
               href={toHref(languageSwitchPaths.en)}
               aria-current={locale === 'en' ? 'page' : undefined}
               class:list={[
-                'inline-flex h-8 min-w-8 touch-manipulation items-center justify-center rounded-full px-1.5 no-underline transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/55 focus-visible:ring-offset-1 focus-visible:ring-offset-surface-muted',
+                'inline-flex h-8 min-w-8 touch-manipulation items-center justify-center rounded-full px-1.5 no-underline transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/55 focus-visible:ring-offset-1 focus-visible:ring-offset-surface-muted motion-reduce:transition-none',
                 locale === 'en'
                   ? 'bg-brand-muted/25 font-semibold text-ink'
                   : 'text-ink-muted hover:bg-white/60 hover:text-ink active:bg-brand-muted/20',
@@ -221,7 +221,7 @@ const mobileNavItems = desktopNavItems
       <button
         data-mobile-menu-open
         type="button"
-        class="inline-flex touch-manipulation select-none items-center rounded-full border border-brand-muted/70 bg-brand-muted/45 px-4 py-2 text-sm font-semibold text-ink shadow-card transition hover:bg-brand-muted/55 focus:outline-none focus:ring-2 focus:ring-brand/45 lg:hidden"
+        class="inline-flex min-h-11 touch-manipulation select-none items-center rounded-full border border-brand-muted/70 bg-brand-muted/45 px-4 py-2 text-sm font-semibold text-ink shadow-card transition-colors hover:bg-brand-muted/55 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/55 focus-visible:ring-offset-2 focus-visible:ring-offset-surface-muted motion-reduce:transition-none lg:hidden"
         aria-label={menuLabel}
         aria-controls="mobile-navigation-drawer"
         aria-expanded="false"
@@ -241,7 +241,7 @@ const mobileNavItems = desktopNavItems
 >
   <div
     data-mobile-menu-backdrop
-    class="absolute inset-0 bg-ink/25 opacity-0 transition-opacity duration-250"
+    class="absolute inset-0 bg-ink/25 opacity-0 transition-opacity duration-250 motion-reduce:transition-none"
     aria-hidden="true"
   >
   </div>
@@ -266,7 +266,7 @@ const mobileNavItems = desktopNavItems
       <button
         data-mobile-menu-close
         type="button"
-        class="inline-flex h-10 w-10 touch-manipulation select-none shrink-0 items-center justify-center rounded-full border border-surface-soft/80 bg-white/50 text-ink-muted transition hover:bg-white/80 hover:text-ink focus:outline-none focus:ring-2 focus:ring-brand/45"
+        class="inline-flex h-11 w-11 touch-manipulation select-none shrink-0 items-center justify-center rounded-full border border-surface-soft/80 bg-white/50 text-ink-muted transition-colors hover:bg-white/80 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/55 focus-visible:ring-offset-2 motion-reduce:transition-none"
         aria-label={closeMenuLabel}
       >
         <span class="i-lucide-x h-4 w-4" aria-hidden="true"></span>
@@ -318,14 +318,14 @@ const mobileNavItems = desktopNavItems
       <div class="mt-3 grid grid-cols-2 gap-3">
         <a
           href={`tel:${phoneHref}`}
-          class="inline-flex items-center justify-center rounded-full border border-brand-soft bg-white/60 px-4 py-3 text-sm font-medium text-ink no-underline transition hover:bg-white"
+          class="inline-flex min-h-12 items-center justify-center rounded-full border border-brand-soft bg-white/60 px-4 py-3 text-sm font-medium text-ink no-underline transition-colors hover:bg-white active:bg-brand-soft/55 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-strong focus-visible:ring-offset-2 motion-reduce:transition-none"
           data-analytics-event="phone_click"
         >
           {secondaryCta}
         </a>
         <a
           href={whatsappHref}
-          class="inline-flex items-center justify-center rounded-full border border-brand-soft bg-white/60 px-4 py-3 text-sm font-medium text-ink no-underline transition hover:bg-white"
+          class="inline-flex min-h-12 items-center justify-center rounded-full border border-brand-soft bg-white/60 px-4 py-3 text-sm font-medium text-ink no-underline transition-colors hover:bg-white active:bg-brand-soft/55 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-strong focus-visible:ring-offset-2 motion-reduce:transition-none"
           data-analytics-event="whatsapp_click"
         >
           {whatsappCta}

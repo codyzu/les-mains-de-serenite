@@ -2,12 +2,20 @@
 import type {TestimonialsData} from '../data/site';
 import SectionIntro from './SectionIntro.astro';
 
-type Props = TestimonialsData;
+type Props = TestimonialsData & {
+  compactTop?: boolean;
+};
 
-const {title, intro, items} = Astro.props;
+const {title, intro, items, compactTop = false} = Astro.props;
 ---
 
-<section id="avis-clientes" class="section-pad bg-surface-muted">
+<section
+  id="avis-clientes"
+  class:list={[
+    'bg-surface-muted pb-16 sm:pb-20 lg:pb-24',
+    compactTop ? 'pt-8 sm:pt-10 lg:pt-12' : 'pt-16 sm:pt-20 lg:pt-24',
+  ]}
+>
   <div class="container-page">
     <SectionIntro title={title} text={intro} />
 
