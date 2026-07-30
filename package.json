@@ -13,6 +13,8 @@
     "screenshots": "node scripts/screenshots.ts",
     "typecheck": "astro check",
     "test:e2e": "playwright test",
+    "test:smoke": "playwright test --grep-invert @visual",
+    "test:visual": "playwright test tests/e2e/visual.spec.ts",
     "test": "pnpm run lint && pnpm run typecheck && pnpm run test:e2e"
   },
   "dependencies": {

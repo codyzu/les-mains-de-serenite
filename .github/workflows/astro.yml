@@ -70,7 +70,7 @@ jobs:
             --site "${{ steps.pages.outputs.origin }}"
 
       - name: Run Playwright smoke tests
-        run: pnpm run test:e2e
+        run: pnpm run test:smoke
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

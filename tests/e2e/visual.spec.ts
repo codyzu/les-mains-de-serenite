@@ -61,7 +61,7 @@ const preparePageForScreenshot = async (page: Page) => {
   });
 };
 
-test.describe('visual snapshots', () => {
+test.describe('visual snapshots @visual', () => {
   test.describe.configure({mode: 'serial'});
 
   test.use({
