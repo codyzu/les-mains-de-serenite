@@ -23,22 +23,17 @@ export const soinsPages = {
       analyticsEvent: 'reserve_click',
     },
     philosophy: {
-      title: 'Des massages et soins pensés pour vous',
+      title: 'Des soins pensés pour vous',
       description:
         'Chaque rendez-vous commence par un échange pour comprendre vos besoins, vos ressentis et ce que votre corps exprime ce jour-là. L’objectif n’est pas seulement de choisir une technique, mais de vous proposer le massage ou le soin le plus adapté à votre moment.',
     },
     transitionImageAlt:
       'Théière asiatique et petites tasses sur une terrasse avec vue sur le lac et les montagnes à Annecy',
     section: {
-      title: 'Massages et soins ponctuels : choisir le rituel juste',
+      eyebrow: 'Massages et soins ponctuels',
+      title: 'Choisir le rituel juste',
       intro:
-        'Le drainage lymphatique à Annecy selon la méthode Renata França ouvre cette sélection de séances individuelles. Ces massages et soins répondent à un besoin précis ou vous offrent un moment de détente ponctuel.',
-      introLinks: [
-        {
-          text: 'drainage lymphatique à Annecy',
-          href: localizedPagePaths.drainageLymphatique.fr,
-        },
-      ],
+        'Cette sélection de séances individuelles répond à un besoin précis ou vous offre un moment de détente ponctuel. Chaque rendez-vous reste personnalisé selon votre ressenti du moment.',
       recommendedLabel: 'Durée conseillée',
       startingPriceLabel: 'À partir de',
       items: getOverviewTreatmentItems('fr'),
@@ -80,9 +75,9 @@ export const soinsPages = {
       ],
     },
     programCrossLink: {
-      title: 'Vous souhaitez aller plus loin ?',
+      title: 'Besoin d’un accompagnement plus régulier ?',
       description:
-        'Lorsque plusieurs séances sont plus adaptées à vos besoins, découvrez nos programmes d’accompagnement pour prolonger les bienfaits dans le temps.',
+        'Découvrez les programmes conçus pour inscrire les soins dans la durée, avec un accompagnement plus progressif et régulier.',
       text: 'Découvrir les programmes',
       href: localizedPagePaths.programs.fr,
     },
@@ -124,22 +119,17 @@ export const soinsPages = {
       analyticsEvent: 'reserve_click',
     },
     philosophy: {
-      title: 'Massages and treatments designed for you',
+      title: 'Treatments designed for you',
       description:
         'Each appointment begins with a conversation to understand your needs, how you feel, and what your body is expressing that day. The goal is not only to choose a technique, but to offer the massage or treatment that best fits your moment.',
     },
     transitionImageAlt:
       'Asian teapot and small cups on a terrace overlooking the lake and mountains in Annecy',
     section: {
-      title: 'Single massages and treatments: choose the right ritual',
+      eyebrow: 'Single massages and treatments',
+      title: 'Choose the right ritual',
       intro:
-        'Renata França lymphatic drainage in Annecy leads this selection of individual sessions. These massages and wellness treatments meet a specific need or offer a focused moment of relaxation.',
-      introLinks: [
-        {
-          text: 'lymphatic drainage in Annecy',
-          href: localizedPagePaths.drainageLymphatique.en,
-        },
-      ],
+        'This selection of individual sessions meets a specific need or offers a focused moment of relaxation. Each appointment remains personalized around how you feel that day.',
       recommendedLabel: 'Recommended',
       startingPriceLabel: 'From',
       items: getOverviewTreatmentItems('en'),
@@ -181,9 +171,9 @@ export const soinsPages = {
       ],
     },
     programCrossLink: {
-      title: 'Would you like to go further?',
+      title: 'Looking for more regular support?',
       description:
-        'When several sessions are better suited to your needs, discover our support programs to extend the benefits over time.',
+        'Discover programs designed to bring treatments into a more progressive and regular form of support.',
       text: 'Discover the programs',
       href: localizedPagePaths.programs.en,
     },

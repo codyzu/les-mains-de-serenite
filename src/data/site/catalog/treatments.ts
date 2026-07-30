@@ -17,10 +17,14 @@ type TreatmentCopy = {
   note?: string;
 };
 
+type DedicatedTreatmentPathKey = 'drainageLymphatique' | 'maderotherapie';
+
 type TreatmentCatalogItem = {
   id: TreatmentId;
   icon: string;
   prices: SoinPriceData[];
+  bookingPathKey: 'reserveOnline';
+  dedicatedPathKey?: DedicatedTreatmentPathKey;
   copy: ReturnType<typeof defineLocalizedContent<TreatmentCopy>>;
 };
 
@@ -28,6 +32,8 @@ const treatmentCatalog = [
   {
     id: 'lymphaticDrainage',
     icon: 'i-lucide-droplets',
+    bookingPathKey: 'reserveOnline',
+    dedicatedPathKey: 'drainageLymphatique',
     prices: [
       {duration: '1 h', price: '90 €', recommended: true},
       {duration: '1 h 30', price: '125 €'},
@@ -56,6 +62,7 @@ const treatmentCatalog = [
   {
     id: 'tensionRelief',
     icon: 'i-lucide-activity',
+    bookingPathKey: 'reserveOnline',
     prices: [
       {duration: '45 min', price: '60 €'},
       {duration: '1 h', price: '80 €', recommended: true},
@@ -83,6 +90,7 @@ const treatmentCatalog = [
   {
     id: 'bodySculpting',
     icon: 'i-lucide-scan',
+    bookingPathKey: 'reserveOnline',
     prices: [
       {duration: '1 h', price: '110 €', recommended: true},
       {duration: '1 h 30', price: '135 €'},
@@ -109,6 +117,7 @@ const treatmentCatalog = [
   {
     id: 'liftingFacial',
     icon: 'i-lucide-sparkles',
+    bookingPathKey: 'reserveOnline',
     prices: [
       {duration: '30 min', price: '50 €'},
       {duration: '45 min', price: '65 €', recommended: true},
@@ -136,6 +145,8 @@ const treatmentCatalog = [
   {
     id: 'maderotherapy',
     icon: 'i-lucide-leaf',
+    bookingPathKey: 'reserveOnline',
+    dedicatedPathKey: 'maderotherapie',
     prices: [
       {duration: '1 h', price: '90 €', recommended: true},
       {duration: '1 h 30', price: '125 €'},
@@ -164,22 +175,27 @@ const treatmentCatalog = [
 const getTreatmentAnchorHref = (locale: Locale, anchorId: string) =>
   `${localizedPagePaths.soins[locale]}#${anchorId}`;
 
-const getHomeTreatmentCtaHref = (locale: Locale, item: TreatmentCatalogItem) =>
-  item.id === 'maderotherapy'
-    ? localizedPagePaths.maderotherapie[locale]
-    : item.id === 'lymphaticDrainage'
-      ? localizedPagePaths.drainageLymphatique[locale]
-      : getTreatmentAnchorHref(locale, item.copy[locale].anchorId);
+const getHomeTreatmentCtaHref = (
+  locale: Locale,
+  item: TreatmentCatalogItem,
+) => {
+  if (item.dedicatedPathKey === undefined) {
+    return getTreatmentAnchorHref(locale, item.copy[locale].anchorId);
+  }
+
+  return localizedPagePaths[item.dedicatedPathKey][locale];
+};
 
 const getOverviewTreatmentCtaHref = (
   locale: Locale,
   item: TreatmentCatalogItem,
-) =>
-  item.id === 'maderotherapy'
-    ? localizedPagePaths.maderotherapie[locale]
-    : item.id === 'lymphaticDrainage'
-      ? localizedPagePaths.drainageLymphatique[locale]
-      : localizedPagePaths.reserveOnline[locale];
+) => {
+  if (item.dedicatedPathKey === undefined) {
+    return localizedPagePaths[item.bookingPathKey][locale];
+  }
+
+  return localizedPagePaths[item.dedicatedPathKey][locale];
+};
 
 const toTreatmentData = (
   locale: Locale,
@@ -187,6 +203,7 @@ const toTreatmentData = (
   ctaContext: 'home' | 'overview',
 ): SoinData => {
   const copy = item.copy[locale];
+  const hasDedicatedPage = item.dedicatedPathKey !== undefined;
 
   return {
     anchorId: copy.anchorId,
@@ -201,7 +218,7 @@ const toTreatmentData = (
         ? locale === 'fr'
           ? 'Découvrir'
           : 'Discover'
-        : item.id === 'maderotherapy' || item.id === 'lymphaticDrainage'
+        : hasDedicatedPage
           ? locale === 'fr'
             ? 'En savoir plus'
             : 'Learn more'
@@ -229,4 +246,24 @@ export const getTreatmentPrices = (id: TreatmentId): SoinPriceData[] => {
   }
 
   return treatment.prices;
+};
+
+export const getTreatmentDurationSummary = (
+  id: TreatmentId,
+  locale: Locale,
+): string => {
+  const minuteValues = getTreatmentPrices(id).map(({duration}) => {
+    const [hours, minutes] = duration.split(' h');
+
+    if (minutes === undefined) {
+      return Number(hours.replace(' min', ''));
+    }
+
+    const hourMinutes = Number(hours) * 60;
+
+    return hourMinutes + (minutes === '' ? 0 : Number(minutes));
+  });
+  const conjunction = locale === 'fr' ? ' ou ' : ' or ';
+
+  return `${minuteValues.join(conjunction)} min`;
 };

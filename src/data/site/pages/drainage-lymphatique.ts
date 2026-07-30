@@ -1,5 +1,6 @@
 // @unocss-include
 import type {DrainageLymphatiquePageData, Locale} from '../types';
+import {getTreatmentDurationSummary} from '../catalog/treatments';
 import {localizedPagePaths} from '../paths';
 import {getBusinessWhatsappHref} from '../shared';
 
@@ -21,7 +22,11 @@ export const drainageLymphatiquePages = {
       primaryCta: 'Réserver mon drainage lymphatique',
       imageAlt:
         'Drainage lymphatique manuel des jambes dans un espace bien-être chaleureux à Annecy',
-      keyInfo: ['Méthode Renata França', '60 ou 90 min', 'Réservé aux femmes'],
+      keyInfo: [
+        'Méthode Renata França',
+        getTreatmentDurationSummary('lymphaticDrainage', 'fr'),
+        'Réservé aux femmes',
+      ],
     },
     method: {
       title: 'La méthode Renata França : un drainage dynamique et précis',
@@ -418,7 +423,11 @@ export const drainageLymphatiquePages = {
       primaryCta: 'Book my lymphatic drainage',
       imageAlt:
         'Manual lymphatic drainage treatment on the legs in a warm wellness room in Annecy',
-      keyInfo: ['Renata França method', '60 or 90 min', 'Women only'],
+      keyInfo: [
+        'Renata França method',
+        getTreatmentDurationSummary('lymphaticDrainage', 'en'),
+        'Women only',
+      ],
     },
     method: {
       title: 'The Renata França method: dynamic and precise',

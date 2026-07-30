@@ -9,6 +9,7 @@ type Props = SoinsSectionData & {
 };
 
 const {
+  eyebrow,
   title,
   intro,
   introLinks,
@@ -36,9 +37,14 @@ const getCardGridClasses = (index: number) => {
 };
 ---
 
-<section id="soins" class="section-pad bg-surface">
+<section id="soins" class="section-pad scroll-mt-28 bg-surface">
   <div class="container-page">
-    <SectionIntro title={title} text={intro} textLinks={introLinks} />
+    <SectionIntro
+      eyebrow={eyebrow}
+      title={title}
+      text={intro}
+      textLinks={introLinks}
+    />
 
     <div class="grid gap-6 md:grid-cols-4 xl:grid-cols-6">
       {
@@ -68,28 +74,33 @@ const getCardGridClasses = (index: number) => {
               </p>
             ) : null}
 
-            {isHome ? (
-              <p class="mt-6 border-t border-ink/8 pt-4 text-sm font-semibold text-ink">
-                {startingPriceLabel} {item.prices[0]?.price}
-              </p>
-            ) : (
-              <TreatmentPricing
-                options={item.prices}
-                recommendedLabel={recommendedLabel}
-                class="mt-7 border-t border-ink/8 pt-4"
-              />
-            )}
+            <div class="mt-auto pt-6">
+              {isHome ? (
+                <p class="border-t border-ink/8 pt-4 text-sm font-semibold text-ink">
+                  {startingPriceLabel} {item.prices[0]?.price}
+                </p>
+              ) : (
+                <TreatmentPricing
+                  options={item.prices}
+                  recommendedLabel={recommendedLabel}
+                  class="border-t border-ink/8 pt-4"
+                />
+              )}
 
-            {item.ctaText && item.ctaLink ? (
-              <a
-                href={item.ctaLink}
-                aria-label={`${item.ctaText} — ${item.title}`}
-                class="mt-6 inline-flex min-h-[2.75rem] w-full items-center justify-center gap-2 rounded-full border border-brand-soft bg-white/60 px-5 py-3 text-sm font-semibold text-brand-strong no-underline transition hover:bg-brand-soft/60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
-              >
-                {item.ctaText}
-                <span class="i-lucide-arrow-right h-4 w-4" aria-hidden="true" />
-              </a>
-            ) : null}
+              {item.ctaText && item.ctaLink ? (
+                <a
+                  href={item.ctaLink}
+                  aria-label={`${item.ctaText} — ${item.title}`}
+                  class="mt-6 inline-flex min-h-[2.75rem] w-full items-center justify-center gap-2 rounded-full border border-brand-soft bg-white/60 px-5 py-3 text-sm font-semibold text-brand-strong no-underline transition hover:bg-brand-soft/60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+                >
+                  {item.ctaText}
+                  <span
+                    class="i-lucide-arrow-right h-4 w-4"
+                    aria-hidden="true"
+                  />
+                </a>
+              ) : null}
+            </div>
           </article>
         ))
       }

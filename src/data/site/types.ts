@@ -134,6 +134,7 @@ export type SoinData = {
 };
 
 export type SoinsSectionData = {
+  eyebrow?: string;
   title: string;
   intro: string;
   introLinks?: InlineTextLinkData[];

@@ -1,5 +1,6 @@
 ---
 interface Props {
+  eyebrow?: string;
   title: string;
   text?: string;
   textLinks?: Array<{
@@ -11,6 +12,7 @@ interface Props {
 }
 
 const {
+  eyebrow,
   title,
   text,
   textLinks = [],
@@ -45,6 +47,13 @@ const renderTextParts = (value: string) => {
     centered ? 'mx-auto max-w-3xl text-center' : 'max-w-2xl',
   ]}
 >
+  {
+    eyebrow ? (
+      <p class="mb-3 text-sm font-medium uppercase tracking-[0.22em] text-brand-strong/82">
+        {eyebrow}
+      </p>
+    ) : null
+  }
   <h2 class="heading-lg">{title}</h2>
   {
     text ? (

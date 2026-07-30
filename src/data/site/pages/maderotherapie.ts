@@ -1,5 +1,6 @@
 // @unocss-include
 import type {Locale, MaderotherapiePageData} from '../types';
+import {getTreatmentDurationSummary} from '../catalog/treatments';
 import {localizedPagePaths} from '../paths';
 import {getBusinessWhatsappHref} from '../shared';
 
@@ -22,7 +23,7 @@ export const maderotherapiePages = {
       imageAlt: 'Soin jambes légères dans une ambiance bien-être chaleureuse',
       keyInfo: [
         'Soin ciblé jambes légères',
-        'Instruments en bois',
+        getTreatmentDurationSummary('maderotherapy', 'fr'),
         'Réservé aux femmes',
       ],
     },
@@ -270,7 +271,7 @@ export const maderotherapiePages = {
       imageAlt: 'Light legs wellness treatment in a warm massage setting',
       keyInfo: [
         'Targeted light-legs treatment',
-        'Wooden instruments',
+        getTreatmentDurationSummary('maderotherapy', 'en'),
         'Women only',
       ],
     },

@@ -275,7 +275,11 @@ test('section overview pages render their main content', async ({page}) => {
     page.getByRole('link', {name: 'Réserver un soin'}).first(),
   ).toHaveAttribute('href', '/reserver-en-ligne');
   await expect(
-    page.getByRole('heading', {name: 'Des massages et soins pensés pour vous'}),
+    page.getByRole('heading', {name: 'Des soins pensés pour vous'}),
+  ).toBeVisible();
+  await expect(page.getByText('Massages et soins ponctuels')).toBeVisible();
+  await expect(
+    page.getByRole('heading', {name: 'Choisir le rituel juste'}),
   ).toBeVisible();
   await expect(
     page.getByRole('heading', {name: 'Madérothérapie'}),
@@ -307,7 +311,9 @@ test('section overview pages render their main content', async ({page}) => {
     page.getByText('Une vraie écoute avant de commencer'),
   ).toBeVisible();
   await expect(
-    page.getByRole('heading', {name: 'Vous souhaitez aller plus loin ?'}),
+    page.getByRole('heading', {
+      name: 'Besoin d’un accompagnement plus régulier ?',
+    }),
   ).toBeVisible();
   await expect(
     page.getByRole('link', {name: 'Réserver un soin'}).last(),
@@ -735,20 +741,54 @@ for (const {route, heading} of [
     await expect(
       pricingSection.getByText('Durée conseillée', {exact: true}),
     ).toBeVisible();
+    await expect(
+      pricingSection.getByRole('link', {
+        name:
+          route === '/soins/drainage-lymphatique/'
+            ? 'Réserver mon drainage lymphatique'
+            : 'Réserver ce soin',
+      }),
+    ).toHaveAttribute('href', '/reserver-en-ligne');
   });
 }
 
-test('homepage anchored treatment links land on stable overview cards', async ({
-  page,
-}) => {
-  await page.goto('/');
+for (const {title, anchorId} of [
+  {
+    title: 'Massage relaxant et personnalisé',
+    anchorId: 'massage-anti-douleur',
+  },
+  {title: 'Soin remodelant', anchorId: 'massage-remodelant'},
+  {title: 'Miracle Face', anchorId: 'massage-visage-liftant'},
+]) {
+  test(`homepage ${title} link lands on its stable overview card`, async ({
+    page,
+  }) => {
+    await page.goto('/');
 
-  await page
-    .locator('#soins article')
-    .filter({hasText: 'Massage relaxant et personnalisé'})
-    .getByRole('link', {name: 'Découvrir'})
-    .click();
+    await page
+      .locator('#soins article')
+      .filter({hasText: title})
+      .getByRole('link', {name: 'Découvrir'})
+      .click();
 
-  await expect(page).toHaveURL('/soins/#massage-anti-douleur');
-  await expect(page.locator('#massage-anti-douleur')).toBeVisible();
-});
+    await expect(page).toHaveURL(`/soins/#${anchorId}`);
+    await expect(page.locator(`#${anchorId}`)).toBeVisible();
+
+    const doesClearStickyHeader = await page
+      .locator(`#${anchorId}`)
+      .evaluate((card) => {
+        const header = document.querySelector('[data-site-header]');
+
+        return (
+          header instanceof HTMLElement &&
+          card.getBoundingClientRect().top >=
+            header.getBoundingClientRect().bottom
+        );
+      });
+
+    expect(doesClearStickyHeader).toBe(true);
+
+    await page.goto(`/soins/#${anchorId}`);
+    await expect(page.locator(`#${anchorId}`)).toBeVisible();
+  });
+}

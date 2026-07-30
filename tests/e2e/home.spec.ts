@@ -45,6 +45,21 @@ test('French homepage renders the main business content and booking CTA', async 
       .filter({hasText: 'Massage relaxant et personnalisé'})
       .getByRole('link', {name: 'Découvrir'}),
   ).toHaveAttribute('href', '/soins/#massage-anti-douleur');
+  await expect(
+    treatmentCards
+      .filter({hasText: 'Soin remodelant'})
+      .getByRole('link', {name: 'Découvrir'}),
+  ).toHaveAttribute('href', '/soins/#massage-remodelant');
+  await expect(
+    treatmentCards
+      .filter({hasText: 'Miracle Face'})
+      .getByRole('link', {name: 'Découvrir'}),
+  ).toHaveAttribute('href', '/soins/#massage-visage-liftant');
+  await expect(
+    treatmentCards
+      .filter({hasText: 'Soin de madérothérapie'})
+      .getByRole('link', {name: 'Découvrir'}),
+  ).toHaveAttribute('href', '/soins/maderotherapie/');
   await expect(treatmentCards.getByText('Durée conseillée')).toHaveCount(0);
   await expect(page.getByText('Prendre le temps')).toBeVisible();
   await expect(page.getByText('S’accorder une vraie pause')).toBeVisible();

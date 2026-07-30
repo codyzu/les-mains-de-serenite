@@ -91,7 +91,7 @@ const structuredData = {
   <main>
     <section class="overflow-hidden bg-surface-muted">
       <div
-        class="container-page grid gap-10 pb-16 pt-14 sm:pb-20 sm:pt-18 lg:grid-cols-[minmax(0,0.95fr)_minmax(22rem,0.8fr)] lg:items-center lg:gap-14 lg:pb-16 lg:pt-16"
+        class="container-page grid gap-7 pb-16 pt-14 sm:gap-10 sm:pb-20 sm:pt-18 lg:grid-cols-[minmax(0,0.95fr)_minmax(22rem,0.8fr)] lg:items-center lg:gap-14 lg:pb-16 lg:pt-16"
       >
         <div class="max-w-3xl">
           <p
@@ -117,7 +117,7 @@ const structuredData = {
             href={maderotherapie.cta.href}
             target={ctaIsExternal ? '_blank' : undefined}
             rel={ctaIsExternal ? 'noreferrer' : undefined}
-            class="btn-primary mt-9 min-h-[3rem] px-7 py-3.5 sm:min-h-0 sm:py-3"
+            class="btn-primary mt-9 min-h-[3rem] w-full px-7 py-3.5 sm:min-h-0 sm:w-auto sm:py-3"
             data-analytics-event={maderotherapie.cta.analyticsEvent}
           >
             {maderotherapie.hero.primaryCta}
@@ -232,7 +232,7 @@ const structuredData = {
       </div>
     </section>
 
-    <section class="section-pad bg-surface-muted">
+    <section id="tarifs" class="section-pad scroll-mt-28 bg-surface-muted">
       <div class="container-page">
         <div
           class="mx-auto grid max-w-5xl gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.72fr)] lg:items-center lg:gap-12"
@@ -246,11 +246,23 @@ const structuredData = {
             <h2 class="heading-lg mt-3">{pricingCopy.title}</h2>
             <p class="body-lg mt-5">{pricingCopy.description}</p>
           </div>
-          <div class="card-soft bg-white/84 p-6 shadow-card sm:p-7">
+          <div class="card-soft bg-white/84 p-6 pb-7 shadow-card sm:p-7">
             <TreatmentPricing
               options={treatmentPrices}
               recommendedLabel={pricingCopy.recommendedLabel}
+              featured
             />
+            <div class="mt-6 border-t border-ink/8 pt-6">
+              <a
+                href={maderotherapie.cta.href}
+                target={ctaIsExternal ? '_blank' : undefined}
+                rel={ctaIsExternal ? 'noreferrer' : undefined}
+                class="btn-primary min-h-[3.25rem] w-full px-5 py-3.5 text-center text-sm sm:px-6 sm:text-base"
+                data-analytics-event={maderotherapie.cta.analyticsEvent}
+              >
+                {maderotherapie.hero.primaryCta}
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -347,7 +359,7 @@ const structuredData = {
       <div class="container-page">
         <SectionIntro title={maderotherapie.steps.title} />
 
-        <div class="grid gap-4 md:grid-cols-5">
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {
             maderotherapie.steps.items.map((step, index) => (
               <article class="card-soft bg-white/78 p-5 shadow-card">
@@ -378,7 +390,10 @@ const structuredData = {
               {
                 maderotherapie.beforeAfter.before.map((item) => (
                   <li class="flex gap-3 text-base leading-7 text-ink/76">
-                    <span class="i-lucide-check mt-1 h-5 w-5 shrink-0 text-brand-strong" />
+                    <span
+                      class="i-lucide-check mt-1 h-5 w-5 shrink-0 text-brand-strong"
+                      aria-hidden="true"
+                    />
                     <span>{item}</span>
                   </li>
                 ))
@@ -392,7 +407,10 @@ const structuredData = {
               {
                 maderotherapie.beforeAfter.after.map((item) => (
                   <li class="flex gap-3 text-base leading-7 text-ink/76">
-                    <span class="i-lucide-check mt-1 h-5 w-5 shrink-0 text-brand-strong" />
+                    <span
+                      class="i-lucide-check mt-1 h-5 w-5 shrink-0 text-brand-strong"
+                      aria-hidden="true"
+                    />
                     <span>{item}</span>
                   </li>
                 ))
@@ -431,7 +449,10 @@ const structuredData = {
               {
                 maderotherapie.contraindications.items.map((item) => (
                   <li class="flex gap-3 rounded-2xl bg-surface-muted/70 px-4 py-3 text-sm font-medium leading-6 text-ink/78">
-                    <span class="i-lucide-info mt-1 h-4 w-4 shrink-0 text-accent-strong" />
+                    <span
+                      class="i-lucide-info mt-1 h-4 w-4 shrink-0 text-accent-strong"
+                      aria-hidden="true"
+                    />
                     <span>{item}</span>
                   </li>
                 ))
@@ -450,9 +471,12 @@ const structuredData = {
           {
             maderotherapie.faq.items.map((item) => (
               <details class="group card-soft bg-white/84 p-6 shadow-card sm:p-7">
-                <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-lg font-semibold text-ink">
+                <summary class="flex min-h-11 cursor-pointer list-none items-center justify-between gap-4 rounded-md py-1 text-left text-lg font-semibold text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-strong focus-visible:ring-offset-4">
                   <span>{item.question}</span>
-                  <span class="i-lucide-chevron-down h-5 w-5 shrink-0 text-brand-strong transition group-open:rotate-180" />
+                  <span
+                    class="i-lucide-chevron-down h-5 w-5 shrink-0 text-brand-strong transition group-open:rotate-180"
+                    aria-hidden="true"
+                  />
                 </summary>
                 <p class="body-base mt-4">{item.answer}</p>
               </details>
