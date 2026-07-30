@@ -57,6 +57,7 @@ type CaptureTarget = {
 type AstroDevServer = Awaited<ReturnType<typeof dev>>;
 
 let astroServer: AstroDevServer | undefined;
+let astroServerPort: number | undefined;
 let browser: Browser | undefined;
 let cleanupPromise: Promise<void> | undefined;
 
@@ -122,9 +123,46 @@ async function startAstro(): Promise<string> {
     root,
     server: {host, port},
   });
-  const baseUrl = `http://${host}:${astroServer.address.port}`;
+  astroServerPort = astroServer.address.port;
+  const baseUrl = `http://${host}:${astroServerPort}`;
   console.log(`Astro ready at ${baseUrl}`);
   return baseUrl;
+}
+
+async function isPortOpen(port: number): Promise<boolean> {
+  return new Promise((resolve) => {
+    const socket = net.createConnection({host, port});
+    const finish = (isOpen: boolean) => {
+      socket.destroy();
+      resolve(isOpen);
+    };
+
+    socket.setTimeout(250);
+    socket.once('connect', () => {
+      finish(true);
+    });
+    socket.once('error', () => {
+      finish(false);
+    });
+    socket.once('timeout', () => {
+      finish(false);
+    });
+  });
+}
+
+async function waitForPortToClose(port: number): Promise<boolean> {
+  const deadline = Date.now() + 3000;
+  while (Date.now() < deadline) {
+    if (!(await isPortOpen(port))) {
+      return true;
+    }
+
+    await new Promise<void>((resolve) => {
+      setTimeout(resolve, 100);
+    });
+  }
+
+  return false;
 }
 
 async function settlePage(page: Page): Promise<void> {
@@ -219,19 +257,36 @@ async function capturePage(
 
 async function cleanup(): Promise<void> {
   cleanupPromise ??= (async () => {
+    const server = astroServer;
+    const serverPort = astroServerPort;
+    astroServer = undefined;
+    astroServerPort = undefined;
+
+    if (server !== undefined) {
+      console.log('Stopping Astro dev server...');
+      try {
+        await server.stop();
+      } catch (error) {
+        const message = error instanceof Error ? error.message : String(error);
+        console.error(`Failed to stop Astro cleanly: ${message}`);
+        process.exitCode = 1;
+      }
+    }
+
+    if (serverPort !== undefined && !(await waitForPortToClose(serverPort))) {
+      console.error(
+        `Astro dev server is still accepting connections on ${host}:${serverPort}.`,
+      );
+      process.exitCode = 1;
+    } else if (server !== undefined) {
+      console.log('Astro dev server stopped.');
+    }
+
     try {
       await browser?.close();
     } catch {}
 
     browser = undefined;
-
-    try {
-      await astroServer?.stop();
-    } catch {
-      // The server may already be closed after an initialization failure.
-    }
-
-    astroServer = undefined;
   })();
 
   await cleanupPromise;
