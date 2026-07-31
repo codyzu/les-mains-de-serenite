@@ -18,7 +18,7 @@ export const homePages = {
       subtitle: 'EXPERTE EN DRAINAGE LYMPHATIQUE RENATA FRANÇA',
       title: 'Drainage lymphatique et massages bien-être à Annecy',
       description:
-        'Drainage lymphatique selon la méthode Renata França, massages personnalisés et soins bien-être dans un cadre chaleureux, privé et rassurant.',
+        'Je vous accueille à Annecy pour des massages personnalisés, avec une expertise reconnue en drainage lymphatique selon la méthode Renata França, dans un cadre chaleureux, privé et rassurant.',
       imageAlt:
         'Cabinet de drainage lymphatique, massages et soins bien-être à Annecy',
       womenOnlyLabel: 'Réservé aux femmes',

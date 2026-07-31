@@ -16,6 +16,11 @@ test('French homepage renders the main business content and booking CTA', async 
   await expect(
     page.getByText('EXPERTE EN DRAINAGE LYMPHATIQUE RENATA FRANÇA'),
   ).toBeVisible();
+  await expect(
+    page.getByText(
+      'Je vous accueille à Annecy pour des massages personnalisés, avec une expertise reconnue en drainage lymphatique selon la méthode Renata França, dans un cadre chaleureux, privé et rassurant.',
+    ),
+  ).toBeVisible();
   await expect(page.getByText('27 avenue de la Plaine')).toHaveCount(2);
   await expect(page.getByText('74000 Annecy')).toHaveCount(2);
   await expect(page.getByText('Sur rendez-vous uniquement')).toBeVisible();

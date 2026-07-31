@@ -28,6 +28,11 @@ Run commands from the repository root.
 When starting the dev server, run `pnpm run dev --host` exactly as shown above.
 Do not append a host value such as `127.0.0.1` or `0.0.0.0`, and do not add an extra `--` separator.
 
+After interactive browser QA, stop the exact dev-server PID reported at startup
+and verify that port 4321 has no listener with
+`lsof -nP -iTCP:4321 -sTCP:LISTEN`. Do not rely solely on
+`astro dev stop`.
+
 ## Project Structure
 
 - `src/pages/`: Astro routes. French routes live at the root; English routes live in `src/pages/en/`.
