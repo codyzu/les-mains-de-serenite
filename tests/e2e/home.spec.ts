@@ -10,9 +10,16 @@ test('French homepage renders the main business content and booking CTA', async 
   );
   await expect(
     page.getByRole('heading', {
-      name: 'Drainage lymphatique, massages et soins bien-être à Annecy',
+      name: 'Drainage lymphatique et massages bien-être à Annecy',
     }),
   ).toBeVisible();
+  await expect(
+    page.getByText('EXPERTE EN DRAINAGE LYMPHATIQUE RENATA FRANÇA'),
+  ).toBeVisible();
+  await expect(page.getByText('27 avenue de la Plaine')).toHaveCount(2);
+  await expect(page.getByText('74000 Annecy')).toHaveCount(2);
+  await expect(page.getByText('Sur rendez-vous uniquement')).toBeVisible();
+  await expect(page.getByText(/environ 30 minutes de Genève/v)).toBeVisible();
   await expect(
     page.getByRole('heading', {
       name: 'Massages et soins ponctuels : choisir le rituel juste',

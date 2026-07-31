@@ -33,6 +33,28 @@ test('homepages expose canonical and alternate language links', async ({
   await expectAlternate(page, 'x-default', `${siteUrl}/`);
 });
 
+test('homepage structured data exposes the Annecy business address', async ({
+  page,
+}) => {
+  await page.goto('/');
+
+  const structuredData = await page
+    .locator('script[type="application/ld+json"]')
+    .first()
+    .textContent();
+  const business = JSON.parse(structuredData ?? '{}') as {
+    address?: Record<string, string>;
+  };
+
+  expect(business.address).toEqual({
+    '@type': 'PostalAddress',
+    streetAddress: '27 avenue de la Plaine',
+    addressLocality: 'Annecy',
+    postalCode: '74000',
+    addressCountry: 'FR',
+  });
+});
+
 test('program pages expose matching localized alternates', async ({page}) => {
   const frenchPath = '/programmes/ventre-leger-jambes-legeres/';
   const englishPath = '/en/programs/light-belly-light-legs/';

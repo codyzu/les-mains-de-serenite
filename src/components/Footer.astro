@@ -21,14 +21,14 @@ const toHref = (path: string) =>
 const homePath = locale === 'en' ? '/en/' : '/';
 const homeHref = toHref(homePath);
 const {
-  business: {name: brand},
+  business: {name: brand, address},
   pages,
   localized,
 } = site;
 const {
   chrome: {footer},
 } = getLocalizedSite(locale);
-const {tagline, links} = footer;
+const {tagline, appointmentLabel, links} = footer;
 const localizedPages = localized[locale].pages;
 const bookingHref = toHref(
   reserveLink || localizedPages.home.booking.bookingPath,
@@ -53,6 +53,11 @@ const footerLinkClass =
     />
     <div class="font-display text-3xl">{brand}</div>
     <p class="text-white/85">{tagline}</p>
+    <address class="text-sm not-italic leading-6 text-white/78">
+      <span class="block">{address.streetAddress}</span>
+      <span class="block">{address.postalCode} {address.addressLocality}</span>
+      <span class="block">{appointmentLabel}</span>
+    </address>
     <div
       class="flex flex-wrap items-center justify-center gap-x-4 gap-y-0 text-sm text-white/75"
     >

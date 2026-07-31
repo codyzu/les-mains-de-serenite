@@ -17,7 +17,7 @@ test(
 
     await expect(
       page.getByRole('heading', {
-        name: 'Drainage lymphatique, massages et soins bien-être à Annecy',
+        name: 'Drainage lymphatique et massages bien-être à Annecy',
       }),
     ).toBeVisible();
     await expect(

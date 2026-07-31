@@ -15,6 +15,7 @@ export const chrome = {
     },
     footer: {
       tagline: 'Massages et soins bien-être à Annecy',
+      appointmentLabel: 'Sur rendez-vous uniquement',
       links: {
         soins: 'Soins',
         program: 'Programmes',
@@ -40,6 +41,7 @@ export const chrome = {
     },
     footer: {
       tagline: 'Massages and wellness treatments in Annecy',
+      appointmentLabel: 'By appointment only',
       links: {
         soins: 'Treatments',
         program: 'Programs',

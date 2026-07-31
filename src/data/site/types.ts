@@ -49,6 +49,7 @@ export type SiteHeaderData = {
 
 export type SiteFooterData = {
   tagline: string;
+  appointmentLabel: string;
   links: {
     soins: string;
     program: string;

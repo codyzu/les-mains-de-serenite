@@ -15,8 +15,8 @@ export const homePages = {
         'Drainage lymphatique Renata França, massages personnalisés et soins bien-être à Annecy, réservés aux femmes dans un cadre calme et rassurant.',
     },
     hero: {
-      subtitle: 'Les Mains de Sérénité',
-      title: 'Drainage lymphatique, massages\net soins bien-être à Annecy',
+      subtitle: 'EXPERTE EN DRAINAGE LYMPHATIQUE RENATA FRANÇA',
+      title: 'Drainage lymphatique et massages bien-être à Annecy',
       description:
         'Drainage lymphatique selon la méthode Renata França, massages personnalisés et soins bien-être dans un cadre chaleureux, privé et rassurant.',
       imageAlt:
@@ -247,7 +247,7 @@ export const homePages = {
         'Idéal si vous préférez poser votre question par écrit.',
       whatsappLabel: 'Écrire sur WhatsApp',
       locationText:
-        'Soins et massages bien-être à Annecy, sur rendez-vous, dans un cadre calme et confortable.',
+        'Le cabinet vous accueille exclusivement sur rendez-vous dans un cadre calme, chaleureux et privé, réservé aux femmes. Facilement accessible, il se trouve à environ 30 minutes de Genève, ce qui en fait une adresse pratique pour les clientes d’Annecy et de la région genevoise.',
     },
     whatsapp: {
       generalHref: getBusinessWhatsappHref(
@@ -490,7 +490,7 @@ export const homePages = {
       emailDescription: 'Best if you prefer to ask your question in writing.',
       whatsappLabel: 'Message on WhatsApp',
       locationText:
-        'Wellness massage in Annecy, by appointment, in a calm and comfortable setting.',
+        'The private, women-only practice welcomes you by appointment in a calm and warm setting. It is approximately 30 minutes from Geneva, making it convenient for clients from Annecy and the Geneva area.',
     },
     whatsapp: {
       generalHref: getBusinessWhatsappHref(

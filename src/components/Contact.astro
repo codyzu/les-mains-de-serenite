@@ -1,5 +1,5 @@
 ---
-import type {ContactBlockData} from '../data/site';
+import type {ContactBlockData, SiteBusinessData} from '../data/site';
 import {formatPhoneDisplay, getPhoneHref} from '../utils/phone';
 import IconImage from './IconImage.astro';
 import SectionIntro from './SectionIntro.astro';
@@ -10,6 +10,7 @@ type Props = ContactBlockData & {
   whatsappUrl: string;
   whatsappHref?: string;
   compact?: boolean;
+  address?: SiteBusinessData['address'];
 };
 
 const {
@@ -30,6 +31,7 @@ const {
   whatsappEmphasis = false,
   whatsappHref,
   compact = false,
+  address,
 } = Astro.props;
 const phoneHref = getPhoneHref(phone);
 const phoneDisplay = formatPhoneDisplay(phone);
@@ -157,7 +159,17 @@ const hasLocation = Boolean(locationText);
               name="i-lucide-map-pin"
             />
             <h3 class="heading-md text-[1.6rem]">{locationTitle}</h3>
-            <p class="body-base mt-4">{locationText}</p>
+            {address ? (
+              <address class="body-lg mt-4 not-italic text-ink">
+                <span class="block">{address.streetAddress}</span>
+                <span class="block">
+                  {address.postalCode} {address.addressLocality}
+                </span>
+              </address>
+            ) : null}
+            <p class:list={['body-base', address ? 'mt-3' : 'mt-4']}>
+              {locationText}
+            </p>
           </article>
         ) : null
       }

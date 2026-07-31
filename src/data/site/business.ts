@@ -8,7 +8,7 @@ export const business = {
   email: 'bonjour@lesmainsdeserenite.fr',
   bookingUrl: 'https://cal.eu/lesmainsdeserenite',
   address: {
-    streetAddress: '27 avenue de la plaine',
+    streetAddress: '27 avenue de la Plaine',
     addressLocality: 'Annecy',
     postalCode: '74000',
     addressCountry: 'FR',
