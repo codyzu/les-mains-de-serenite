@@ -791,6 +791,65 @@ for (const {route, heading} of [
   });
 }
 
+test('drainage page keeps booking decisions visible and consolidates secondary detail', async ({
+  page,
+}) => {
+  await page.goto('/soins/drainage-lymphatique/');
+
+  const sectionOrder = await page.evaluate(() => {
+    const top = (selector: string) =>
+      globalThis.document.querySelector(selector)?.getBoundingClientRect()
+        .top ?? -1;
+
+    return {
+      suitability: top('#pour-vous'),
+      pricing: top('#tarifs'),
+      method: top('#tarifs + section'),
+    };
+  });
+
+  expect(sectionOrder.suitability).toBeGreaterThanOrEqual(0);
+  expect(sectionOrder.pricing).toBeGreaterThan(sectionOrder.suitability);
+  expect(sectionOrder.method).toBeGreaterThan(sectionOrder.pricing);
+
+  await expect(
+    page.getByRole('heading', {name: 'Précautions avant de réserver'}),
+  ).toBeVisible();
+  await expect(
+    page.getByText(
+      'Ce drainage est un soin de bien-être. Il ne remplace pas un avis médical, un drainage thérapeutique, des soins infirmiers ou une prise en charge en kinésithérapie.',
+    ),
+  ).toBeVisible();
+
+  const disclosures = page.locator('[data-drainage-disclosures] > details');
+
+  await expect(disclosures).toHaveCount(4);
+  expect(
+    await disclosures.evaluateAll((items) =>
+      items.every((item) => item instanceof HTMLDetailsElement && !item.open),
+    ),
+  ).toBe(true);
+
+  const sessionSummary = page.locator('#seance > summary');
+
+  await sessionSummary.focus();
+  await sessionSummary.press('Enter');
+  await expect(page.locator('#avant-apres')).toBeVisible();
+  await expect(page.locator('#conseils-quotidiens')).toBeVisible();
+
+  await page.locator('#situations-particulieres > summary').click();
+  await expect(
+    page.getByRole('heading', {name: 'Lipœdème', exact: true}),
+  ).toBeVisible();
+
+  await page.locator('#faq > summary').click();
+  await expect(
+    page.getByRole('heading', {
+      name: 'Quelle durée choisir : 60 ou 90 minutes ?',
+    }),
+  ).toBeVisible();
+});
+
 for (const {title, anchorId} of [
   {
     title: 'Massage relaxant et personnalisé',

@@ -1,12 +1,11 @@
 ---
 import {Picture} from 'astro:assets';
 import CtaReassurance from '../components/CtaReassurance.astro';
+import DrainageDetails from '../components/DrainageDetails.astro';
 import IconImage from '../components/IconImage.astro';
 import RelatedTreatmentCards from '../components/RelatedTreatmentCards.astro';
-import SectionIntro from '../components/SectionIntro.astro';
 import TreatmentMetaPills from '../components/TreatmentMetaPills.astro';
 import TreatmentPricing from '../components/TreatmentPricing.astro';
-import TreatmentStepCards from '../components/TreatmentStepCards.astro';
 import DrainageHeroImage from '../assets/drainage-lymphatique-renata-franca.png';
 import {getTreatmentPrices} from '../data/site/catalog/treatments';
 import {
@@ -152,6 +151,112 @@ const structuredData = {
       </div>
     </section>
 
+    <section id="pour-vous" class="section-pad scroll-mt-28 bg-surface">
+      <div class="container-page">
+        <div class="grid gap-6 lg:grid-cols-2 lg:items-start">
+          <article class="card-soft bg-white/86 p-6 shadow-card sm:p-8">
+            <h2 class="heading-lg">{page.forYou.title}</h2>
+            <p class="body-lg mt-4">{page.forYou.intro}</p>
+
+            <div class="mt-6 grid gap-x-7 sm:grid-cols-2">
+              {
+                page.forYou.items.map((item) => (
+                  <div class="flex gap-3 border-t border-ink/8 py-4">
+                    <IconImage
+                      name={item.icon}
+                      class="h-9 w-9 shrink-0 bg-brand-soft text-brand-strong"
+                      iconClass="h-4 w-4"
+                    />
+                    <div>
+                      <h3 class="text-base font-semibold text-ink">
+                        {item.title}
+                      </h3>
+                      <p class="mt-1 text-sm leading-6 text-ink-muted">
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+          </article>
+
+          <article class="card-soft bg-brand-soft/46 p-6 shadow-card sm:p-8">
+            <h2 class="heading-lg">{page.benefits.title}</h2>
+            <p class="body-lg mt-4">{page.benefits.intro}</p>
+
+            <div class="mt-6 grid gap-x-7 sm:grid-cols-2">
+              {
+                page.benefits.items.map((item) => (
+                  <div class="flex gap-3 border-t border-ink/8 py-4">
+                    <IconImage
+                      name={item.icon}
+                      class="h-9 w-9 shrink-0 bg-accent-soft text-accent-strong"
+                      iconClass="h-4 w-4"
+                    />
+                    <div>
+                      <h3 class="text-base font-semibold text-ink">
+                        {item.title}
+                      </h3>
+                      <p class="mt-1 text-sm leading-6 text-ink-muted">
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+
+            <p
+              class="mt-5 rounded-2xl bg-white/66 px-5 py-4 text-sm leading-6 text-ink/72"
+            >
+              {page.benefits.note}
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="tarifs"
+      class="scroll-mt-28 bg-surface-muted pb-16 pt-18 sm:py-20 lg:py-24"
+    >
+      <div class="container-page">
+        <div
+          class="mx-auto grid max-w-5xl gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.72fr)] lg:items-center lg:gap-12"
+        >
+          <div>
+            <p
+              class="text-sm font-medium uppercase tracking-[0.22em] text-brand-strong/82"
+            >
+              {pricingCopy.eyebrow}
+            </p>
+            <h2 class="heading-lg mt-3">{pricingCopy.title}</h2>
+            <p class="body-lg mt-5">{pricingCopy.description}</p>
+          </div>
+          <div class="card-soft bg-white/88 p-6 pb-7 shadow-soft sm:p-7">
+            <TreatmentPricing
+              options={treatmentPrices}
+              recommendedLabel={pricingCopy.recommendedLabel}
+              optionDescriptions={pricingCopy.optionDescriptions}
+              featured
+            />
+            <div class="mt-6 border-t border-ink/8 pt-6">
+              <a
+                href={page.cta.href}
+                target={ctaIsExternal ? '_blank' : undefined}
+                rel={ctaIsExternal ? 'noreferrer' : undefined}
+                class="btn-primary min-h-[3.25rem] w-full whitespace-nowrap px-4 py-3.5 text-center text-[0.82rem] sm:px-6 sm:text-base"
+                data-analytics-event={page.cta.analyticsEvent}
+              >
+                {page.hero.primaryCta}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="section-pad bg-surface">
       <div class="container-page">
         <div
@@ -211,207 +316,6 @@ const structuredData = {
     </section>
 
     <section
-      id="systeme-lymphatique"
-      class="section-pad scroll-mt-28 bg-surface-muted"
-    >
-      <div class="container-page">
-        <div
-          class="grid gap-9 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-start lg:gap-12"
-        >
-          <div class="lg:sticky lg:top-28">
-            <p
-              class="text-sm font-medium uppercase tracking-[0.22em] text-brand-strong/82"
-            >
-              {page.lymphaticSystem.eyebrow}
-            </p>
-            <h2 class="heading-lg mt-3">{page.lymphaticSystem.title}</h2>
-            <div class="mt-5 space-y-4">
-              {
-                page.lymphaticSystem.paragraphs.map((paragraph, index) => (
-                  <p class:list={[index === 0 ? 'body-lg' : 'body-base']}>
-                    {paragraph}
-                  </p>
-                ))
-              }
-            </div>
-          </div>
-
-          <div>
-            <h3 class="heading-md">{page.lymphaticSystem.factorsTitle}</h3>
-            <div class="mt-5 grid gap-4 sm:grid-cols-2">
-              {
-                page.lymphaticSystem.factors.map((factor) => (
-                  <article class="card-soft bg-white/84 p-6 shadow-card">
-                    <IconImage
-                      name={factor.icon}
-                      class="mb-4 h-11 w-11 bg-brand-soft text-brand-strong"
-                      iconClass="h-5 w-5"
-                    />
-                    <h4 class="text-base font-semibold text-ink">
-                      {factor.title}
-                    </h4>
-                    <p class="mt-2 text-sm leading-6 text-ink-muted">
-                      {factor.description}
-                    </p>
-                  </article>
-                ))
-              }
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-pad bg-surface">
-      <div class="container-page">
-        <SectionIntro title={page.forYou.title} text={page.forYou.intro} />
-
-        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {
-            page.forYou.items.map((item) => (
-              <article class="card-soft bg-white/84 p-6 shadow-card">
-                <IconImage
-                  name={item.icon}
-                  class="mb-4 h-12 w-12 bg-brand-soft text-brand-strong"
-                  iconClass="h-5 w-5"
-                />
-                <h3 class="text-lg font-semibold text-ink">{item.title}</h3>
-                <p class="body-base mt-3">{item.description}</p>
-              </article>
-            ))
-          }
-        </div>
-      </div>
-    </section>
-
-    <section class="section-pad bg-surface-muted">
-      <div class="container-page">
-        <SectionIntro title={page.benefits.title} text={page.benefits.intro} />
-
-        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {
-            page.benefits.items.map((item) => (
-              <article class="card-soft bg-white/78 p-6 shadow-card">
-                <IconImage
-                  name={item.icon}
-                  class="mb-4 h-12 w-12 bg-accent-soft text-accent-strong"
-                  iconClass="h-5 w-5"
-                />
-                <h3 class="text-lg font-semibold text-ink">{item.title}</h3>
-                <p class="mt-3 text-sm leading-6 text-ink-muted">
-                  {item.description}
-                </p>
-              </article>
-            ))
-          }
-        </div>
-        <p
-          class="mx-auto mt-7 max-w-4xl rounded-2xl bg-surface-muted px-5 py-4 text-center text-sm leading-6 text-ink/68"
-        >
-          {page.benefits.note}
-        </p>
-      </div>
-    </section>
-
-    <section
-      id="situations-particulieres"
-      class="section-pad scroll-mt-28 bg-surface"
-    >
-      <div class="container-page">
-        <div class="mx-auto mb-12 max-w-3xl text-center">
-          <p
-            class="text-sm font-medium uppercase tracking-[0.22em] text-brand-strong/82"
-          >
-            {page.particularSituations.eyebrow}
-          </p>
-          <h2 class="heading-lg mt-3">{page.particularSituations.title}</h2>
-          <p class="body-lg mt-4">{page.particularSituations.intro}</p>
-        </div>
-
-        <div class="mx-auto grid max-w-5xl gap-4 md:grid-cols-2">
-          {
-            page.particularSituations.items.map((item, index) => (
-              <details
-                class:list={[
-                  'group card-soft bg-white/84 p-6 shadow-card sm:p-7',
-                  index === page.particularSituations.items.length - 1
-                    ? 'md:col-span-2'
-                    : '',
-                ]}
-              >
-                <summary class="flex min-h-11 cursor-pointer list-none items-center justify-between gap-4 rounded-md py-1 text-left text-lg font-semibold text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-strong focus-visible:ring-offset-4">
-                  <span>{item.title}</span>
-                  <span
-                    class="i-lucide-chevron-down h-5 w-5 shrink-0 text-brand-strong transition-transform group-open:rotate-180 motion-reduce:transition-none"
-                    aria-hidden="true"
-                  />
-                </summary>
-                <p class="body-base mt-4">{item.description}</p>
-              </details>
-            ))
-          }
-        </div>
-
-        <p
-          class="mx-auto mt-6 max-w-5xl rounded-2xl bg-accent-soft/62 px-5 py-4 text-sm font-medium leading-6 text-ink/76"
-        >
-          {page.particularSituations.note}
-        </p>
-      </div>
-    </section>
-
-    <section
-      id="tarifs"
-      class="scroll-mt-28 bg-surface-muted pb-16 pt-18 sm:py-20 lg:py-24"
-    >
-      <div class="container-page">
-        <div
-          class="mx-auto grid max-w-5xl gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.72fr)] lg:items-center lg:gap-12"
-        >
-          <div>
-            <p
-              class="text-sm font-medium uppercase tracking-[0.22em] text-brand-strong/82"
-            >
-              {pricingCopy.eyebrow}
-            </p>
-            <h2 class="heading-lg mt-3">{pricingCopy.title}</h2>
-            <p class="body-lg mt-5">{pricingCopy.description}</p>
-          </div>
-          <div class="card-soft bg-white/88 p-6 pb-7 shadow-soft sm:p-7">
-            <TreatmentPricing
-              options={treatmentPrices}
-              recommendedLabel={pricingCopy.recommendedLabel}
-              optionDescriptions={pricingCopy.optionDescriptions}
-              featured
-            />
-            <div class="mt-6 border-t border-ink/8 pt-6">
-              <a
-                href={page.cta.href}
-                target={ctaIsExternal ? '_blank' : undefined}
-                rel={ctaIsExternal ? 'noreferrer' : undefined}
-                class="btn-primary min-h-[3.25rem] w-full whitespace-nowrap px-4 py-3.5 text-center text-[0.82rem] sm:px-6 sm:text-base"
-                data-analytics-event={page.cta.analyticsEvent}
-              >
-                {page.hero.primaryCta}
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section
-      id="seance"
-      class="scroll-mt-28 bg-surface pb-16 pt-18 sm:py-20 lg:py-24"
-    >
-      <div class="container-page">
-        <SectionIntro title={page.session.title} text={page.session.intro} />
-
-        <TreatmentStepCards steps={page.session.items} />
-      </div>
-    </section>
-
-    <section
       id="pourquoi-nous"
       class="scroll-mt-28 bg-surface-muted pb-16 pt-18 sm:py-20 lg:py-24"
     >
@@ -459,91 +363,6 @@ const structuredData = {
       </div>
     </section>
 
-    <section id="avant-apres" class="section-pad scroll-mt-28 bg-surface">
-      <div class="container-page">
-        <SectionIntro
-          title={page.beforeAfter.title}
-          text={page.beforeAfter.intro}
-        />
-
-        <div class="grid gap-5 lg:grid-cols-2">
-          {
-            [
-              {
-                title: page.beforeAfter.beforeTitle,
-                items: page.beforeAfter.before,
-              },
-              {
-                title: page.beforeAfter.afterTitle,
-                items: page.beforeAfter.after,
-              },
-            ].map((group) => (
-              <article class="card-soft bg-white/84 p-6 shadow-card sm:p-8">
-                <h3 class="heading-md">{group.title}</h3>
-                <ul class="mt-5 space-y-3">
-                  {group.items.map((item) => (
-                    <li class="flex gap-3 text-base leading-7 text-ink/76">
-                      <span
-                        class="i-lucide-check mt-1 h-5 w-5 shrink-0 text-brand-strong"
-                        aria-hidden="true"
-                      />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </article>
-            ))
-          }
-        </div>
-      </div>
-    </section>
-
-    <section
-      id="conseils-quotidiens"
-      class="section-pad scroll-mt-28 bg-surface-muted"
-    >
-      <div class="container-page">
-        <div class="mx-auto mb-12 max-w-3xl text-center">
-          <p
-            class="text-sm font-medium uppercase tracking-[0.22em] text-brand-strong/82"
-          >
-            {page.dailyCare.eyebrow}
-          </p>
-          <h2 class="heading-lg mt-3">{page.dailyCare.title}</h2>
-          <p class="body-lg mt-4">{page.dailyCare.intro}</p>
-        </div>
-
-        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {
-            page.dailyCare.items.map((item) => (
-              <article class="card-soft bg-white/82 p-6 shadow-card">
-                <IconImage
-                  name={item.icon}
-                  class="mb-4 h-12 w-12 bg-brand-soft text-brand-strong"
-                  iconClass="h-5 w-5"
-                />
-                <h3 class="text-lg font-semibold text-ink">{item.title}</h3>
-                <p class="mt-3 text-sm leading-6 text-ink-muted">
-                  {item.description}
-                </p>
-              </article>
-            ))
-          }
-        </div>
-
-        <div
-          class="mx-auto mt-7 flex max-w-4xl gap-4 rounded-[1.5rem] bg-brand-soft/68 px-5 py-5 shadow-card sm:px-7"
-        >
-          <span
-            class="i-lucide-leaf mt-1 h-5 w-5 shrink-0 text-brand-strong"
-            aria-hidden="true"></span>
-          <p class="text-sm font-medium leading-6 text-ink/76">
-            {page.dailyCare.highlight}
-          </p>
-        </div>
-      </div>
-    </section>
-
     <section id="precautions" class="section-pad scroll-mt-28 bg-surface">
       <div class="container-page">
         <div
@@ -586,31 +405,7 @@ const structuredData = {
       </div>
     </section>
 
-    <section
-      id="faq"
-      class="scroll-mt-28 bg-surface-muted pb-16 pt-18 sm:py-20 lg:py-24"
-    >
-      <div class="container-page">
-        <SectionIntro title={page.faq.title} text={page.faq.intro} compact />
-
-        <div class="mx-auto grid max-w-4xl gap-4">
-          {
-            page.faq.items.map((item) => (
-              <details class="group card-soft bg-white/84 p-6 shadow-card sm:p-7">
-                <summary class="flex min-h-11 cursor-pointer list-none items-center justify-between gap-4 rounded-md py-1 text-left text-lg font-semibold text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-strong focus-visible:ring-offset-4">
-                  <span>{item.question}</span>
-                  <span
-                    class="i-lucide-chevron-down h-5 w-5 shrink-0 text-brand-strong transition-transform group-open:rotate-180 motion-reduce:transition-none"
-                    aria-hidden="true"
-                  />
-                </summary>
-                <p class="body-base mt-4">{item.answer}</p>
-              </details>
-            ))
-          }
-        </div>
-      </div>
-    </section>
+    <DrainageDetails locale={locale} page={page} />
 
     <section
       id="a-decouvrir"
