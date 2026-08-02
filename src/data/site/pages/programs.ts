@@ -32,7 +32,7 @@ export const programsPages = {
     preview: {
       title: 'Accompagnement : aller plus loin sur plusieurs séances',
       intro:
-        'Deux accompagnements pour répondre à des besoins différents, selon votre objectif de bien-être.',
+        'Choisissez entre un programme de drainage avec accompagnement alimentaire bien-être sur 21 jours et une cure de 3 soins dont les techniques s’adaptent à chaque rendez-vous.',
       introLinks: [
         {
           text: 'programmes d’accompagnement',
@@ -103,7 +103,7 @@ export const programsPages = {
     preview: {
       title: 'Support: go further across several sessions',
       intro:
-        'Two accompaniments designed for different needs, depending on your wellness goal.',
+        'Choose between a 21-day drainage program with wellness-oriented food guidance and a 3-treatment package whose techniques adapt at each appointment.',
       introLinks: [
         {
           text: 'support programs',

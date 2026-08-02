@@ -25,7 +25,7 @@ export const cureFusionPages = {
       eyebrow: 'Cure personnalisée à Annecy',
       title: 'Cure Fusion',
       description:
-        '3 soins personnalisés, parfois différents d’une séance à l’autre, choisis selon vos besoins, vos sensations et l’évolution de votre corps pour retrouver légèreté, confort, tonicité et bien-être.',
+        '3 soins personnalisés, parfois différents d’une séance à l’autre, dont les techniques s’adaptent à vos besoins et à vos sensations au fil des rendez-vous.',
       reassurance:
         'Accompagnement réservé exclusivement aux femmes, adapté à vos objectifs bien-être.',
       primaryCta: 'Commencer mon accompagnement',
@@ -33,7 +33,7 @@ export const cureFusionPages = {
     },
     intro: {
       title: 'Vous n’avez pas à choisir le bon soin seule',
-      body: 'La Cure Fusion est un accompagnement personnalisé pour les femmes qui souhaitent être guidées. Chaque corps est différent, et chaque séance est choisie selon vos besoins, vos objectifs et la façon dont votre corps répond au fil des trois rendez-vous. Vous n’avez pas à choisir seule entre drainage lymphatique, soin remodelant ou madérothérapie : le soin le plus adapté est sélectionné pour vous. À la fin de l’accompagnement, des conseils personnalisés vous aident à prolonger les bienfaits ressentis.',
+      body: 'La Cure Fusion est un accompagnement personnalisé pour les femmes qui souhaitent être guidées. Chaque séance est choisie selon vos besoins, vos objectifs et vos sensations au fil des trois rendez-vous. Vous n’avez pas à choisir seule entre drainage lymphatique, soin remodelant ou madérothérapie : la technique la plus adaptée est sélectionnée pour vous. À la fin de l’accompagnement, des conseils personnalisés vous aident à prolonger les bienfaits ressentis.',
     },
     forWhom: {
       title: 'Cette cure est idéale si vous souhaitez',
@@ -51,7 +51,7 @@ export const cureFusionPages = {
         '3 soins personnalisés',
         'Le choix du soin le plus adapté à chaque séance',
         'Un accompagnement fondé sur vos ressentis et vos objectifs',
-        'Une adaptation selon la façon dont votre corps évolue',
+        'Une adaptation des techniques au fil des rendez-vous',
         'Des conseils personnalisés pour prolonger les bienfaits après les trois séances',
       ],
     },
@@ -62,11 +62,11 @@ export const cureFusionPages = {
     },
     method: {
       title: 'Votre accompagnement en 3 séances',
-      body: 'La première séance commence par un échange pour comprendre vos besoins, vos sensations et vos objectifs, puis par un premier soin personnalisé. Lors de la deuxième séance, votre corps a déjà réagi : le soin est adapté selon votre évolution et ce que vous ressentez depuis le premier rendez-vous. La troisième séance vient consolider les bienfaits ressentis et se termine par des conseils personnalisés pour prolonger cette sensation de légèreté, de confort et de tonicité.',
+      body: 'La première séance commence par un échange pour comprendre vos besoins, vos sensations et vos objectifs, puis par un premier soin personnalisé. Lors de la deuxième séance, un nouvel échange permet d’adapter la technique selon vos sensations et vos priorités depuis le premier rendez-vous. La troisième séance vient consolider les bienfaits ressentis et se termine par des conseils personnalisés pour prolonger cette sensation de légèreté, de confort et de tonicité.',
     },
     story: {
-      title: 'Votre corps évolue, votre accompagnement aussi',
-      body: 'Chaque femme est différente, et chaque corps réagit différemment. La Cure Fusion ne suit donc pas un protocole figé : l’accompagnement repose sur l’écoute, l’observation et le choix du soin le plus juste à chaque étape. Ce suivi sur trois séances crée une expérience plus cohérente, plus premium et plus rassurante qu’une simple succession de soins indépendants.',
+      title: 'Vos besoins évoluent, votre accompagnement aussi',
+      body: 'Chaque femme est différente, et ses besoins ou ses sensations peuvent évoluer d’un rendez-vous à l’autre. La Cure Fusion ne suit donc pas un protocole figé : l’accompagnement repose sur l’écoute et le choix de la technique la plus juste à chaque étape. Ce suivi sur trois séances crée une expérience plus cohérente, plus premium et plus rassurante qu’une simple succession de soins indépendants.',
     },
     visuals: {
       methodImage: {
@@ -81,7 +81,7 @@ export const cureFusionPages = {
     techniques: {
       title: 'Les soins pouvant être choisis',
       intro:
-        'Chaque Cure Fusion est unique. Ces soins s’appuient sur des techniques de massage bien-être sélectionnées selon vos besoins, vos ressentis et la façon dont vous vous sentez au fil des trois séances.',
+        'Chaque Cure Fusion est unique. Ces techniques de massage bien-être sont sélectionnées et adaptées selon vos besoins et vos sensations au fil des trois rendez-vous.',
       items: [
         {
           title: 'Drainage lymphatique',
@@ -134,7 +134,7 @@ export const cureFusionPages = {
           question:
             'Pourquoi choisir une Cure Fusion plutôt que trois soins réservés séparément ?',
           answer:
-            'Les 3 séances sont pensées ensemble. Chaque soin peut évoluer selon vos ressentis, vos objectifs et la manière dont votre corps répond. L’accompagnement est personnalisé du début à la fin, avec des conseils adaptés après les trois séances pour prolonger les bienfaits. L’expérience globale est plus cohérente que trois soins indépendants.',
+            'Les 3 séances sont pensées ensemble. Les techniques peuvent évoluer selon vos ressentis, vos objectifs et vos priorités au fil des rendez-vous. L’accompagnement est personnalisé du début à la fin, avec des conseils adaptés après les trois séances pour prolonger les bienfaits. L’expérience globale est plus cohérente que trois soins indépendants.',
         },
         {
           question:
@@ -226,14 +226,14 @@ export const cureFusionPages = {
       eyebrow: 'Personalized package in Annecy',
       title: 'Cure Fusion',
       description:
-        '3 personalized treatments, sometimes different from one session to the next, chosen according to your needs, sensations, and how your body evolves, to reconnect with lightness, comfort, tone, and well-being.',
+        '3 personalized treatments, sometimes different from one session to the next, with techniques that adapt to your needs and sensations across the appointments.',
       reassurance: 'A women-only accompaniment adapted to your wellness goals.',
       primaryCta: 'Start my accompaniment',
       secondaryCta: 'See how it works',
     },
     intro: {
       title: 'You do not have to choose the right treatment alone',
-      body: 'Cure Fusion is a personalized accompaniment for women who want guided support. Every body is different, and each session is chosen according to your needs, goals, and how your body responds across the three appointments. You do not have to choose alone between lymphatic drainage, body sculpting treatment, or maderotherapy: the most suitable treatment is selected for you. At the end of the accompaniment, personalized tips help extend the benefits you feel.',
+      body: 'Cure Fusion is a personalized accompaniment for women who want guided support. Each session is chosen according to your needs, goals, and sensations across the three appointments. You do not have to choose alone between lymphatic drainage, body sculpting treatment, or maderotherapy: the most suitable technique is selected for you. At the end of the accompaniment, personalized tips help extend the benefits you feel.',
     },
     forWhom: {
       title: 'This package is ideal if you would like to',
@@ -251,7 +251,7 @@ export const cureFusionPages = {
         '3 personalized treatments',
         'The most suitable treatment chosen at each session',
         'Support based on your sensations and goals',
-        'Adjustments according to how your body evolves',
+        'Techniques adapted across the appointments',
         'Personalized tips to extend the benefits after the three sessions',
       ],
     },
@@ -262,11 +262,11 @@ export const cureFusionPages = {
     },
     method: {
       title: 'Your 3-session accompaniment',
-      body: 'The first session begins with a conversation to understand your needs, sensations, and goals, followed by a first personalized treatment. At the second session, your body has already responded: the treatment is adapted according to your evolution and what you have felt since the first appointment. The third session consolidates the benefits already felt and ends with personalized tips to extend the feeling of lightness, comfort, and tone.',
+      body: 'The first session begins with a conversation to understand your needs, sensations, and goals, followed by a first personalized treatment. At the second session, a new conversation helps adapt the technique according to your sensations and priorities since the first appointment. The third session consolidates the benefits already felt and ends with personalized tips to extend the feeling of lightness, comfort, and tone.',
     },
     story: {
-      title: 'Your body evolves, and so does your accompaniment',
-      body: 'Every woman is different, and every body responds differently. Cure Fusion does not follow a fixed protocol: the accompaniment is based on listening, observation, and choosing the most appropriate treatment at each step. This 3-session guidance creates a more coherent, premium, and reassuring experience than a simple succession of independent treatments.',
+      title: 'Your needs evolve, and so does your accompaniment',
+      body: 'Every woman is different, and her needs or sensations may change from one appointment to the next. Cure Fusion does not follow a fixed protocol: the accompaniment is based on listening and choosing the most appropriate technique at each step. This 3-session guidance creates a more coherent, premium, and reassuring experience than a simple succession of independent treatments.',
     },
     visuals: {
       methodImage: {
@@ -281,7 +281,7 @@ export const cureFusionPages = {
     techniques: {
       title: 'Treatments that may be selected',
       intro:
-        'Every Cure Fusion is unique. These treatments use wellness massage techniques selected according to your needs, sensations, and how you feel across the three sessions.',
+        'Every Cure Fusion is unique. These wellness massage techniques are selected and adapted according to your needs and sensations across the three appointments.',
       items: [
         {
           title: 'Lymphatic drainage',
@@ -334,7 +334,7 @@ export const cureFusionPages = {
           question:
             'Why choose Cure Fusion instead of booking three individual treatments?',
           answer:
-            'The 3 sessions are planned together. Each treatment can evolve according to your sensations, goals, and how your body responds. The accompaniment is personalized from beginning to end, with adapted advice after the three sessions to extend the benefits. The overall experience is more coherent than booking three independent treatments.',
+            'The 3 sessions are planned together. The techniques can evolve according to your sensations, goals, and priorities across the appointments. The accompaniment is personalized from beginning to end, with adapted advice after the three sessions to extend the benefits. The overall experience is more coherent than booking three independent treatments.',
         },
         {
           question:

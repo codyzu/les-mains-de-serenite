@@ -349,9 +349,25 @@ test('section overview pages render their main content', async ({page}) => {
   ).toHaveAttribute('href', '/programmes/cure-fusion/');
   await expect(
     page.getByText(
-      'Deux accompagnements pour répondre à des besoins différents',
+      'Choisissez entre un programme de drainage avec accompagnement alimentaire bien-être sur 21 jours et une cure de 3 soins dont les techniques s’adaptent à chaque rendez-vous.',
     ),
   ).toBeVisible();
+  await expect(
+    page.getByText(
+      'Drainage + accompagnement alimentaire bien-être · 21 jours',
+    ),
+  ).toBeVisible();
+  await expect(
+    page.getByText('Soins sur mesure · 3 rendez-vous'),
+  ).toBeVisible();
+  const cureCard = page
+    .locator('#programmes article')
+    .filter({hasText: 'Cure Fusion'});
+
+  await expect(cureCard).toContainText('350 €');
+  await expect(cureCard).toContainText(
+    'une cure flexible dont les techniques s’adaptent à vos besoins et à vos sensations au fil des rendez-vous.',
+  );
   await expect(
     page.getByRole('link', {name: 'Voir les soins'}),
   ).toHaveAttribute('href', '/soins/');
@@ -375,6 +391,24 @@ test('Light Belly programme CTAs start a guided WhatsApp conversation', async ({
   page,
 }) => {
   await page.goto('/programmes/ventre-leger-jambes-legeres/');
+
+  await expect(
+    page.getByText(
+      'Un programme structuré de 21 jours associant 5 drainages lymphatiques Renata França, un bilan, un accompagnement alimentaire bien-être et un suivi WhatsApp.',
+    ),
+  ).toBeVisible();
+  await expect(
+    page.getByText('Un guide alimentaire anti-ballonnements'),
+  ).toBeVisible();
+  await expect(page.getByText('Une liste de courses simplifiée')).toBeVisible();
+  await expect(
+    page.getByText('Un accompagnement WhatsApp pendant 21 jours', {
+      exact: true,
+    }),
+  ).toBeVisible();
+  await expect(
+    page.getByText('Valeur habituelle 470 €', {exact: true}),
+  ).toBeVisible();
 
   const startLinks = page.getByRole('link', {
     name: 'Commencer mon accompagnement',
@@ -456,8 +490,13 @@ test('Cure Fusion page explains the personalized package', async ({page}) => {
   ).toBeVisible();
   await expect(
     page.getByRole('heading', {
-      name: 'Votre corps évolue, votre accompagnement aussi',
+      name: 'Vos besoins évoluent, votre accompagnement aussi',
     }),
+  ).toBeVisible();
+  await expect(
+    page.getByText(
+      '3 soins personnalisés, parfois différents d’une séance à l’autre, dont les techniques s’adaptent à vos besoins et à vos sensations au fil des rendez-vous.',
+    ),
   ).toBeVisible();
   await expect(
     page
