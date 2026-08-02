@@ -94,37 +94,37 @@ export const drainageLymphatiquePages = {
         {
           title: 'Vos jambes semblent lourdes',
           description:
-            'Après une journée debout, de longues heures assise ou une période où vous bougez moins, vous recherchez une sensation de légèreté.',
+            'Après une journée debout ou longtemps assise, vous recherchez plus de légèreté.',
           icon: 'i-lucide-feather',
         },
         {
           title: 'Vous vous sentez gonflée',
           description:
-            'Votre corps vous paraît parfois plus serré dans les vêtements, avec une impression de rétention d’eau ou de tissus tendus.',
+            'Vos vêtements semblent plus serrés, avec une impression de rétention d’eau.',
           icon: 'i-lucide-droplets',
         },
         {
           title: 'Votre ventre est tendu',
           description:
-            'Vous ressentez un inconfort ou un ventre plus gonflé à certaines périodes, notamment selon le stress, le rythme de vie ou le cycle.',
+            'Votre ventre paraît gonflé ou inconfortable selon le stress, le rythme de vie ou le cycle.',
           icon: 'i-lucide-waves',
         },
         {
           title: 'La chaleur vous pèse',
           description:
-            'Les journées chaudes accentuent parfois la sensation de jambes lourdes et l’envie de retrouver plus de fraîcheur et de mobilité.',
+            'La chaleur accentue parfois la sensation de jambes lourdes et le besoin de retrouver plus de confort.',
           icon: 'i-lucide-sun',
         },
         {
           title: 'Vous revenez d’un voyage',
           description:
-            'Après un long trajet en voiture, en train ou en avion, vous souhaitez délier le corps et sortir de cette impression d’immobilité.',
+            'Après un long trajet, vous souhaitez délier le corps et retrouver de la mobilité.',
           icon: 'i-lucide-plane',
         },
         {
           title: 'Vous avez besoin d’une pause',
           description:
-            'Vous souhaitez ralentir, respirer et recevoir un soin attentif, entièrement consacré à votre confort du moment.',
+            'Vous souhaitez ralentir et recevoir un soin attentif, entièrement consacré à votre confort.',
           icon: 'i-lucide-heart',
         },
       ],
@@ -137,25 +137,25 @@ export const drainageLymphatiquePages = {
         {
           title: 'Une agréable légèreté',
           description:
-            'Les jambes ou l’ensemble du corps peuvent sembler moins lourds et plus disponibles après le soin.',
+            'Les jambes ou le corps peuvent sembler plus légers après le soin.',
           icon: 'i-lucide-sparkles',
         },
         {
           title: 'Des tissus plus souples',
           description:
-            'Le travail manuel peut apporter une sensation de décongestion et de souplesse sur les zones tendues.',
+            'Le travail manuel peut apporter une sensation de décongestion, de souplesse et de confort aux zones tendues.',
           icon: 'i-lucide-waves',
         },
         {
           title: 'Un ventre plus confortable',
           description:
-            'Le travail abdominal peut être apprécié lorsque le ventre paraît gonflé ou sous tension.',
+            'Le travail abdominal peut être apprécié lorsque le ventre paraît gonflé ou tendu.',
           icon: 'i-lucide-circle',
         },
         {
           title: 'Une détente profonde',
           description:
-            'Malgré son rythme dynamique, la séance invite souvent à ralentir et à relâcher la pression du quotidien.',
+            'La séance dynamique invite souvent à ralentir et à relâcher la pression.',
           icon: 'i-lucide-moon-star',
         },
       ],
@@ -495,37 +495,37 @@ export const drainageLymphatiquePages = {
         {
           title: 'Your legs feel heavy',
           description:
-            'After standing, sitting, or moving less than usual, you are looking for a pleasant feeling of lightness.',
+            'After a day spent standing or sitting for long periods, you are looking for a greater sense of lightness.',
           icon: 'i-lucide-feather',
         },
         {
           title: 'You feel puffy',
           description:
-            'Your body sometimes feels tighter in your clothes, with a sense of water retention or tissue tension.',
+            'Your clothes feel tighter, with a sense of water retention.',
           icon: 'i-lucide-droplets',
         },
         {
           title: 'Your abdomen feels tense',
           description:
-            'You notice bloating or discomfort at certain times, depending on stress, your routine, or your cycle.',
+            'Your abdomen feels bloated or uncomfortable depending on stress, your routine, or your cycle.',
           icon: 'i-lucide-waves',
         },
         {
           title: 'Hot weather feels heavy',
           description:
-            'Warm days may increase heavy-leg sensations and your wish for greater ease of movement.',
+            'Heat may intensify heavy-leg sensations and the need to feel more comfortable.',
           icon: 'i-lucide-sun',
         },
         {
           title: 'You have just travelled',
           description:
-            'After a long car, train, or plane journey, you would like to help your body move on from hours of stillness.',
+            'After a long journey, you would like to loosen the body and regain mobility.',
           icon: 'i-lucide-plane',
         },
         {
           title: 'You need a real pause',
           description:
-            'You would like to slow down and receive a treatment entirely attentive to your comfort in the moment.',
+            'You would like to slow down and receive a treatment devoted entirely to your comfort.',
           icon: 'i-lucide-heart',
         },
       ],
@@ -538,25 +538,25 @@ export const drainageLymphatiquePages = {
         {
           title: 'A feeling of lightness',
           description:
-            'Your legs or your whole body may feel lighter and more comfortable after the treatment.',
+            'Your legs or body may feel lighter after the treatment.',
           icon: 'i-lucide-sparkles',
         },
         {
           title: 'More supple tissues',
           description:
-            'The manual work may bring a sense of ease and suppleness to areas that felt tense.',
+            'The manual work may bring a sense of decongestion, suppleness, and comfort to tense areas.',
           icon: 'i-lucide-waves',
         },
         {
           title: 'A more comfortable abdomen',
           description:
-            'Abdominal work can feel welcome when the belly seems bloated or under tension.',
+            'Abdominal work may be appreciated when the abdomen feels bloated or tense.',
           icon: 'i-lucide-circle',
         },
         {
           title: 'Deep relaxation',
           description:
-            'Despite its dynamic rhythm, the session often creates space to slow down and release everyday pressure.',
+            'The dynamic session often invites you to slow down and release pressure.',
           icon: 'i-lucide-moon-star',
         },
       ],
