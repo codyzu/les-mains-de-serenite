@@ -29,6 +29,7 @@ const {
   emailDescription,
   whatsappLabel,
   whatsappEmphasis = false,
+  locationNote,
   whatsappHref,
   compact = false,
   address,
@@ -174,5 +175,11 @@ const hasLocation = Boolean(locationText);
         ) : null
       }
     </div>
+
+    {
+      locationNote ? (
+        <p class="body-base mt-6 text-center text-ink/68">{locationNote}</p>
+      ) : null
+    }
   </div>
 </section>

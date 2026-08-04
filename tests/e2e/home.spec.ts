@@ -18,12 +18,14 @@ test('French homepage renders the main business content and booking CTA', async 
   ).toBeVisible();
   await expect(
     page.getByText(
-      'Je vous accueille à Annecy pour des massages personnalisés, avec une expertise reconnue en drainage lymphatique selon la méthode Renata França, dans un cadre chaleureux, privé et rassurant.',
+      'Je vous accueille à Annecy pour des massages personnalisés, avec une expertise en drainage lymphatique selon la méthode Renata França, dans un cadre chaleureux, privé et rassurant.',
     ),
   ).toBeVisible();
   await expect(page.getByText('27 avenue de la Plaine')).toHaveCount(2);
   await expect(page.getByText('74000 Annecy')).toHaveCount(2);
-  await expect(page.getByText('Sur rendez-vous uniquement')).toBeVisible();
+  await expect(
+    page.getByText('Sur rendez-vous uniquement', {exact: true}),
+  ).toBeVisible();
   await expect(page.getByText(/environ 30 minutes de Genève/v)).toBeVisible();
   await expect(
     page.getByRole('heading', {
@@ -35,7 +37,7 @@ test('French homepage renders the main business content and booking CTA', async 
   ).toBeVisible();
   await expect(
     page.getByRole('link', {
-      name: 'drainage lymphatique à Annecy',
+      name: 'drainage lymphatique Renata França',
       exact: true,
     }),
   ).toHaveAttribute('href', '/soins/drainage-lymphatique/');
@@ -91,13 +93,29 @@ test('French homepage renders the main business content and booking CTA', async 
     }),
   ).toBeVisible();
   await expect(page.getByRole('heading', {name: 'Cure Fusion'})).toBeVisible();
-  await expect(page.getByText('350 €').last()).toBeVisible();
-  await expect(page.getByText('3 séances', {exact: true})).toBeVisible();
   await expect(
     page.getByText(
-      'L’accompagnement associe drainage lymphatique, écoute du corps',
+      'Drainage + accompagnement alimentaire bien-être · 21 jours',
     ),
   ).toBeVisible();
+  await expect(
+    page.getByText('Soins sur mesure · 3 rendez-vous'),
+  ).toBeVisible();
+  const programCards = page.locator('#programmes article');
+
+  await expect(programCards).toHaveCount(2);
+  await expect(
+    programCards.getByText(
+      '5 drainages d’1 h, un bilan de 20 min, un guide alimentaire, une liste de courses, des conseils personnalisés et un accompagnement WhatsApp pendant 21 jours.',
+    ),
+  ).toHaveCount(0);
+  await expect(page.getByText('350 €').last()).toBeVisible();
+  await expect(
+    programCards.getByText(
+      'une cure flexible dont les techniques s’adaptent à vos besoins et à vos sensations au fil des rendez-vous.',
+    ),
+  ).toHaveCount(0);
+  await expect(programCards.getByRole('heading', {level: 4})).toHaveCount(0);
   await expect(
     page.getByRole('link', {name: 'Découvrir les programmes'}),
   ).toHaveAttribute('href', '/programmes/');
@@ -166,13 +184,22 @@ test('English homepage renders localized content and booking CTA', async ({
     page.getByRole('heading', {name: 'Light Belly & Light Legs Program'}),
   ).toBeVisible();
   await expect(page.getByRole('heading', {name: 'Cure Fusion'})).toBeVisible();
-  await expect(page.getByText('350 €').last()).toBeVisible();
-  await expect(page.getByText('3 sessions', {exact: true})).toBeVisible();
   await expect(
-    page.getByText(
-      'The accompaniment combines lymphatic drainage, body awareness',
-    ),
+    page.getByText('Drainage + wellness-oriented food guidance · 21 days'),
   ).toBeVisible();
+  await expect(
+    page.getByText('Tailor-made treatments · 3 appointments'),
+  ).toBeVisible();
+  const programCards = page.locator('#programmes article');
+
+  await expect(programCards).toHaveCount(2);
+  await expect(page.getByText('350 €').last()).toBeVisible();
+  await expect(
+    programCards.getByText(
+      'a flexible package whose techniques adapt to your needs and sensations across the appointments.',
+    ),
+  ).toHaveCount(0);
+  await expect(programCards.getByRole('heading', {level: 4})).toHaveCount(0);
   await expect(
     page.getByRole('link', {name: 'Discover the programs'}),
   ).toHaveAttribute('href', '/en/programs/');

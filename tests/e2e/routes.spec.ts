@@ -276,7 +276,7 @@ test('section overview pages render their main content', async ({page}) => {
   ).toBeVisible();
   await expect(
     page.getByText(
-      'Drainage lymphatique selon la méthode Renata França, massage relaxant personnalisé et autres soins bien-être : chaque rendez-vous s’adapte à vos besoins du moment, entre légèreté, détente, relâchement et tonicité.',
+      'Drainage lymphatique Renata França, massage relaxant et autres soins bien-être : chaque rendez-vous s’adapte à votre besoin de légèreté, de détente, de relâchement ou de tonicité.',
     ),
   ).toBeVisible();
   await expect(
@@ -312,6 +312,19 @@ test('section overview pages render their main content', async ({page}) => {
       .filter({hasText: 'Massage relaxant et personnalisé'})
       .getByRole('link', {name: 'Réserver'}),
   ).toHaveAttribute('href', '/reserver-en-ligne');
+
+  const drainageOverviewCard = page.locator('#drainage-lymphatique');
+  const isPricingBeforeNote = await drainageOverviewCard.evaluate((card) => {
+    const pricing = card.querySelector('[data-treatment-pricing]');
+    const note = card.querySelector('[data-treatment-note]');
+    const children = [...card.children];
+
+    return Boolean(
+      pricing && note && children.indexOf(pricing) < children.indexOf(note),
+    );
+  });
+
+  expect(isPricingBeforeNote).toBe(true);
   await expect(
     page.getByRole('heading', {name: 'Vous ne savez pas quel soin choisir ?'}),
   ).toBeVisible();
@@ -322,6 +335,9 @@ test('section overview pages render their main content', async ({page}) => {
     page.getByRole('heading', {
       name: 'Besoin d’un accompagnement plus régulier ?',
     }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole('heading', {name: 'Besoin d’aide pour choisir ?'}),
   ).toBeVisible();
   await expect(
     page.getByRole('link', {name: 'Réserver un soin'}).last(),
@@ -357,9 +373,25 @@ test('section overview pages render their main content', async ({page}) => {
   ).toHaveAttribute('href', '/programmes/cure-fusion/');
   await expect(
     page.getByText(
-      'Deux accompagnements pour répondre à des besoins différents',
+      'Choisissez entre un programme de drainage avec accompagnement alimentaire bien-être sur 21 jours et une cure de 3 soins dont les techniques s’adaptent à chaque rendez-vous.',
     ),
   ).toBeVisible();
+  await expect(
+    page.getByText(
+      'Drainage + accompagnement alimentaire bien-être · 21 jours',
+    ),
+  ).toBeVisible();
+  await expect(
+    page.getByText('Soins sur mesure · 3 rendez-vous'),
+  ).toBeVisible();
+  const cureCard = page
+    .locator('#programmes article')
+    .filter({hasText: 'Cure Fusion'});
+
+  await expect(cureCard).toContainText('350 €');
+  await expect(cureCard).toContainText(
+    'une cure flexible dont les techniques s’adaptent à vos besoins et à vos sensations au fil des rendez-vous.',
+  );
   await expect(
     page.getByRole('link', {name: 'Voir les soins'}),
   ).toHaveAttribute('href', '/soins/');
@@ -383,6 +415,24 @@ test('Light Belly programme CTAs start a guided WhatsApp conversation', async ({
   page,
 }) => {
   await page.goto('/programmes/ventre-leger-jambes-legeres/');
+
+  await expect(
+    page.getByText(
+      'Un programme structuré de 21 jours associant 5 drainages lymphatiques Renata França, un bilan, un accompagnement alimentaire bien-être et un suivi WhatsApp.',
+    ),
+  ).toBeVisible();
+  await expect(
+    page.getByText('Un guide alimentaire anti-ballonnements'),
+  ).toBeVisible();
+  await expect(page.getByText('Une liste de courses simplifiée')).toBeVisible();
+  await expect(
+    page.getByText('Un accompagnement WhatsApp pendant 21 jours', {
+      exact: true,
+    }),
+  ).toBeVisible();
+  await expect(
+    page.getByText('Valeur habituelle 470 €', {exact: true}),
+  ).toBeVisible();
 
   const startLinks = page.getByRole('link', {
     name: 'Commencer mon accompagnement',
@@ -464,8 +514,13 @@ test('Cure Fusion page explains the personalized package', async ({page}) => {
   ).toBeVisible();
   await expect(
     page.getByRole('heading', {
-      name: 'Votre corps évolue, votre accompagnement aussi',
+      name: 'Vos besoins évoluent, votre accompagnement aussi',
     }),
+  ).toBeVisible();
+  await expect(
+    page.getByText(
+      '3 soins personnalisés, parfois différents d’une séance à l’autre, dont les techniques s’adaptent à vos besoins et à vos sensations au fil des rendez-vous.',
+    ),
   ).toBeVisible();
   await expect(
     page
@@ -759,6 +814,65 @@ for (const {route, heading} of [
     ).toHaveAttribute('href', '/reserver-en-ligne');
   });
 }
+
+test('drainage page keeps booking decisions visible and consolidates secondary detail', async ({
+  page,
+}) => {
+  await page.goto('/soins/drainage-lymphatique/');
+
+  const sectionOrder = await page.evaluate(() => {
+    const top = (selector: string) =>
+      globalThis.document.querySelector(selector)?.getBoundingClientRect()
+        .top ?? -1;
+
+    return {
+      suitability: top('#pour-vous'),
+      pricing: top('#tarifs'),
+      method: top('#tarifs + section'),
+    };
+  });
+
+  expect(sectionOrder.suitability).toBeGreaterThanOrEqual(0);
+  expect(sectionOrder.pricing).toBeGreaterThan(sectionOrder.suitability);
+  expect(sectionOrder.method).toBeGreaterThan(sectionOrder.pricing);
+
+  await expect(
+    page.getByRole('heading', {name: 'Précautions avant de réserver'}),
+  ).toBeVisible();
+  await expect(
+    page.getByText(
+      'Ce drainage est un soin de bien-être. Il ne remplace pas un avis médical, un drainage thérapeutique, des soins infirmiers ou une prise en charge en kinésithérapie.',
+    ),
+  ).toBeVisible();
+
+  const disclosures = page.locator('[data-drainage-disclosures] > details');
+
+  await expect(disclosures).toHaveCount(4);
+  expect(
+    await disclosures.evaluateAll((items) =>
+      items.every((item) => item instanceof HTMLDetailsElement && !item.open),
+    ),
+  ).toBe(true);
+
+  const sessionSummary = page.locator('#seance > summary');
+
+  await sessionSummary.focus();
+  await sessionSummary.press('Enter');
+  await expect(page.locator('#avant-apres')).toBeVisible();
+  await expect(page.locator('#conseils-quotidiens')).toBeVisible();
+
+  await page.locator('#situations-particulieres > summary').click();
+  await expect(
+    page.getByRole('heading', {name: 'Lipœdème', exact: true}),
+  ).toBeVisible();
+
+  await page.locator('#faq > summary').click();
+  await expect(
+    page.getByRole('heading', {
+      name: 'Quelle durée choisir : 60 ou 90 minutes ?',
+    }),
+  ).toBeVisible();
+});
 
 for (const {title, anchorId} of [
   {

@@ -18,19 +18,19 @@ export const programPages = {
       title:
         'Programme Ventre Léger & Jambes Légères à Annecy | Les Mains de Sérénité',
       description:
-        'Un accompagnement bien-être de 21 jours à Annecy associant drainage lymphatique Renata França, bilan bien-être, conseils simples et suivi WhatsApp.',
+        'Un accompagnement bien-être de 21 jours à Annecy associant 5 drainages lymphatiques Renata França, bilan, accompagnement alimentaire bien-être et suivi WhatsApp.',
     },
     hero: {
       eyebrow: 'Programme 21 jours',
       title: 'Programme Ventre Léger & Jambes Légères',
       description:
-        'Retrouvez des jambes plus légères, un ventre plus confortable et davantage d’énergie grâce à une approche globale du bien-être féminin.',
+        'Un programme structuré de 21 jours associant 5 drainages lymphatiques Renata França, un bilan, un accompagnement alimentaire bien-être et un suivi WhatsApp.',
       primaryCta: 'Commencer mon accompagnement',
       secondaryCta: 'Voir ce qui est inclus',
     },
     intro: {
       title: 'Un accompagnement pour prolonger les bienfaits du drainage',
-      body: 'Ce programme s’adresse aux femmes qui souhaitent aller plus loin qu’une séance seule, avec un cadre doux et facile à suivre. Il associe 5 drainages lymphatiques Renata França à un bilan bien-être, des conseils simples du quotidien et un accompagnement WhatsApp pendant 21 jours pour vous aider à garder le cap entre les séances.',
+      body: 'Ce programme s’adresse aux femmes qui souhaitent aller plus loin qu’une séance seule, avec un cadre doux et facile à suivre. Il associe 5 drainages lymphatiques Renata França à un bilan bien-être, un guide alimentaire, une liste de courses, des conseils personnalisés et un accompagnement WhatsApp pendant 21 jours pour vous aider à garder le cap entre les séances.',
     },
     forWhom: {
       title: 'Ce programme est idéal si vous souhaitez',
@@ -140,19 +140,19 @@ export const programPages = {
       title:
         'Light Belly & Light Legs Program in Annecy | Les Mains de Sérénité',
       description:
-        'A 21-day wellness accompaniment in Annecy combining Renata França lymphatic drainage, a wellness check-in, simple guidance, and WhatsApp follow-up.',
+        'A 21-day wellness accompaniment in Annecy combining 5 Renata França lymphatic drainage sessions, a check-in, wellness-oriented food guidance, and WhatsApp support.',
     },
     hero: {
       eyebrow: '21-day program',
       title: 'Light Belly & Light Legs Program',
       description:
-        'Reconnect with lighter legs, a more comfortable belly, and more everyday energy through a holistic women’s wellness approach.',
+        'A structured 21-day program combining 5 Renata França lymphatic drainage sessions, a wellness check-in, wellness-oriented food guidance, and WhatsApp support.',
       primaryCta: 'Start my accompaniment',
       secondaryCta: 'See what is included',
     },
     intro: {
       title: 'An accompaniment to extend the benefits of drainage',
-      body: 'This program is for women who would like to go further than a single session, with gentle support that is easy to follow. It combines 5 Renata França lymphatic drainage sessions with a wellness check-in, simple everyday guidance, and WhatsApp accompaniment for 21 days to help you stay on track between sessions.',
+      body: 'This program is for women who would like to go further than a single session, with gentle support that is easy to follow. It combines 5 Renata França lymphatic drainage sessions with a wellness check-in, a food guide, a shopping list, personalized guidance, and WhatsApp support for 21 days to help you stay on track between sessions.',
     },
     forWhom: {
       title: 'This program is ideal if you would like to',

@@ -150,7 +150,9 @@ export type ProgramPreviewItemData = {
   eyebrow: string;
   title: string;
   subtitle: string;
+  formatSummary: string;
   description: string;
+  primaryDifferentiator: string;
   includesTitle: string;
   includes: string[];
   priceLabel: string;
@@ -631,6 +633,7 @@ export type ContactBlockData = {
   whatsappLabel: string;
   whatsappEmphasis?: boolean;
   locationText?: string;
+  locationNote?: string;
 };
 
 export type HomePageData = {
