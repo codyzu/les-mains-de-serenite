@@ -78,8 +78,11 @@ test('vitrine QR route preserves metadata and its no-JavaScript fallback', async
   expect(response.status()).toBe(200);
   expect(body).toContain('name="robots" content="noindex, follow"');
   expect(body).toContain('qr_redirect');
-  expect(body).toContain('send_page_view: sendPageView');
-  expect(body).toContain('const sendPageView = false');
+  if (body.includes('googletagmanager.com/gtag/js')) {
+    expect(body).toContain('send_page_view: sendPageView');
+    expect(body).toContain('const sendPageView = false');
+  }
+
   expect(body).toMatch(/transport_type:["'`]beacon["'`]/v);
   expect(body).toContain(
     'utm_source=vitrine&amp;utm_medium=qr&amp;utm_campaign=reservation',

@@ -30,6 +30,7 @@ const {
   structuredData,
 } = Astro.props;
 const baseUrl = getBaseUrl();
+const isAnalyticsEnabled = import.meta.env.PUBLIC_ENABLE_ANALYTICS === 'true';
 const publicGaMeasurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
 const gaMeasurementId =
   typeof publicGaMeasurementId === 'string' ? publicGaMeasurementId.trim() : '';
@@ -110,7 +111,7 @@ const transitionPaths = [
     }
     <slot name="head" />
     {
-      gaMeasurementId ? (
+      isAnalyticsEnabled && gaMeasurementId ? (
         <GoogleTag
           gaMeasurementId={gaMeasurementId}
           sendPageView={gaSendPageView}
@@ -123,7 +124,7 @@ const transitionPaths = [
 
     <!-- Cloudflare Web Analytics -->
     {
-      import.meta.env.PROD ? (
+      isAnalyticsEnabled ? (
         <script
           is:inline
           defer
