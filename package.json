@@ -16,7 +16,9 @@
     "test:smoke": "playwright test --grep-invert @visual",
     "test:visual": "playwright test tests/e2e/visual.spec.ts",
     "test": "pnpm run lint && pnpm run typecheck && pnpm run test:e2e",
-    "build:cloudflare": "pnpm astro sync && pnpm run lint && pnpm run typecheck && pnpm run build && pnpm run test:smoke"
+    "playwright:install:cloudflare": "playwright install --with-deps chromium webkit",
+    "verify:cloudflare": "astro sync && pnpm run lint && pnpm run typecheck",
+    "build:cloudflare": "pnpm run playwright:install:cloudflare && pnpm run verify:cloudflare && pnpm run build && pnpm run test:smoke"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
