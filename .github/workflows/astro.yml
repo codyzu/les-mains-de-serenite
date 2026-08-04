@@ -1,27 +1,16 @@
-# Sample workflow for building and deploying an Astro site to GitHub Pages
-#
-# To get started with Astro see: https://docs.astro.build/en/getting-started/
-#
-name: Deploy Astro site to Pages
+name: Deploy Astro site
 
 on:
-  # Runs on pushes targeting the default branch
   push:
-    branches: ["main"]
+    branches: ["**"]
 
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
-  group: "pages"
+  group: "deploy-${{ github.ref }}"
   cancel-in-progress: true
 
 jobs:
@@ -43,10 +32,6 @@ jobs:
           node-version: "24"
           cache: "pnpm"
 
-      - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@v5
-
       - name: Install deps
         run: pnpm install
 
@@ -62,30 +47,83 @@ jobs:
       - name: Install Playwright browsers
         run: pnpm exec playwright install --with-deps chromium webkit
 
+      - name: Configure deployment
+        id: deployment
+        env:
+          BRANCH_NAME: ${{ github.ref_name }}
+        run: |
+          branch_alias="$(
+            printf '%s' "${BRANCH_NAME}" \
+              | tr '[:upper:]' '[:lower:]' \
+              | sed 's/[^a-z0-9]/-/g'
+          )"
+
+          if [[ "${BRANCH_NAME}" == "main" ]]; then
+            site_url="https://lesmainsdeserenite.fr"
+          else
+            site_url="https://${branch_alias}.lesmainsdeserenite.pages.dev"
+          fi
+
+          printf 'site_url=%s\n' "${site_url}" >> "${GITHUB_OUTPUT}"
+
       - name: Build
         env:
           PUBLIC_ENABLE_ANALYTICS: ${{ github.ref == 'refs/heads/main' && 'true' || '' }}
           PUBLIC_GA_MEASUREMENT_ID: ${{ vars.PUBLIC_GA_MEASUREMENT_ID }}
-        run: |
-          SITE_BASE="${{ steps.pages.outputs.base_path }}" pnpm astro build \
-            --site "${{ steps.pages.outputs.origin }}"
+          SITE_URL: ${{ steps.deployment.outputs.site_url }}
+        run: pnpm run build
 
       - name: Run Playwright smoke tests
         run: pnpm run test:smoke
 
-      - name: Upload artifact
+      - name: Upload GitHub Pages artifact
+        if: github.ref == 'refs/heads/main'
         uses: actions/upload-pages-artifact@v3
         with:
           path: dist
 
-  deploy:
+      - name: Upload Cloudflare Pages artifact
+        if: github.ref != 'refs/heads/main'
+        uses: actions/upload-artifact@v4
+        with:
+          name: cloudflare-pages
+          path: dist
+
+  deploy-github:
+    name: Deploy to GitHub Pages
+    if: github.ref == 'refs/heads/main'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     needs: build
+    permissions:
+      pages: write
+      id-token: write
     runs-on: ubuntu-latest
-    name: Deploy
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  deploy-cloudflare:
+    name: Deploy to Cloudflare Pages
+    if: github.ref != 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v5
+        with:
+          name: cloudflare-pages
+          path: dist
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: >-
+            pages deploy dist
+            --project-name=lesmainsdeserenite
+            --branch=${{ github.ref_name }}
+            --commit-hash=${{ github.sha }}

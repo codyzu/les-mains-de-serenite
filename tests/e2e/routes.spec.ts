@@ -227,21 +227,25 @@ test('sitemap includes soins and excludes the legacy French massages URL', async
 }) => {
   const response = await request.get('/sitemap-0.xml');
   const sitemap = await response.text();
+  const sitemapLocation = /<loc>(?<url>[^<]+)<\/loc>/v.exec(sitemap)?.groups
+    ?.url;
+
+  if (sitemapLocation === undefined || sitemapLocation.length === 0) {
+    throw new Error('Sitemap contains no locations.');
+  }
+
+  const sitemapOrigin = new URL(sitemapLocation).origin;
 
   expect(response.status()).toBe(200);
-  expect(sitemap).toContain('<loc>https://lesmainsdeserenite.fr/soins/</loc>');
-  expect(sitemap).not.toContain(
-    '<loc>https://lesmainsdeserenite.fr/massages/</loc>',
-  );
-  expect(sitemap).not.toContain('<loc>https://lesmainsdeserenite.fr/v/</loc>');
+  expect(sitemap).toContain(`<loc>${sitemapOrigin}/soins/</loc>`);
+  expect(sitemap).not.toContain(`<loc>${sitemapOrigin}/massages/</loc>`);
+  expect(sitemap).not.toContain(`<loc>${sitemapOrigin}/v/</loc>`);
+  expect(sitemap).toContain(`<loc>${sitemapOrigin}/en/massages/</loc>`);
   expect(sitemap).toContain(
-    '<loc>https://lesmainsdeserenite.fr/en/massages/</loc>',
-  );
-  expect(sitemap).toContain(
-    '<loc>https://lesmainsdeserenite.fr/soins/drainage-lymphatique/</loc>',
+    `<loc>${sitemapOrigin}/soins/drainage-lymphatique/</loc>`,
   );
   expect(sitemap).toContain(
-    '<loc>https://lesmainsdeserenite.fr/en/massages/lymphatic-drainage/</loc>',
+    `<loc>${sitemapOrigin}/en/massages/lymphatic-drainage/</loc>`,
   );
 });
 

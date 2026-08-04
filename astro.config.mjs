@@ -1,4 +1,5 @@
 // @ts-check
+import process from 'node:process';
 import {defineConfig} from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import unoCSS from 'unocss/astro';
@@ -7,11 +8,11 @@ import {getSiteBasePath, joinBasePath} from './config/base-path.mjs';
 const legacyMassagesPath = joinBasePath('/massages/');
 const shortRedirectPath = joinBasePath('/v/');
 const excludedSitemapPaths = new Set([legacyMassagesPath, shortRedirectPath]);
-const cloudflarePagesUrl = import.meta.env.CF_PAGES_URL?.trim();
+const siteUrl = process.env.SITE_URL?.trim() || 'https://lesmainsdeserenite.fr';
 
 // https://astro.build/config
 export default defineConfig({
-  site: cloudflarePagesUrl || 'https://lesmainsdeserenite.fr',
+  site: siteUrl,
   base: getSiteBasePath(),
   integrations: [
     sitemap({
