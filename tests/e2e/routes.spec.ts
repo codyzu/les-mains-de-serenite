@@ -268,7 +268,7 @@ test('section overview pages render their main content', async ({page}) => {
   ).toBeVisible();
   await expect(
     page.getByText(
-      'Drainage lymphatique selon la méthode Renata França, massage relaxant personnalisé et autres soins bien-être : chaque rendez-vous s’adapte à vos besoins du moment, entre légèreté, détente, relâchement et tonicité.',
+      'Drainage lymphatique Renata França, massage relaxant et autres soins bien-être : chaque rendez-vous s’adapte à votre besoin de légèreté, de détente, de relâchement ou de tonicité.',
     ),
   ).toBeVisible();
   await expect(
@@ -304,6 +304,19 @@ test('section overview pages render their main content', async ({page}) => {
       .filter({hasText: 'Massage relaxant et personnalisé'})
       .getByRole('link', {name: 'Réserver'}),
   ).toHaveAttribute('href', '/reserver-en-ligne');
+
+  const drainageOverviewCard = page.locator('#drainage-lymphatique');
+  const isPricingBeforeNote = await drainageOverviewCard.evaluate((card) => {
+    const pricing = card.querySelector('[data-treatment-pricing]');
+    const note = card.querySelector('[data-treatment-note]');
+    const children = [...card.children];
+
+    return Boolean(
+      pricing && note && children.indexOf(pricing) < children.indexOf(note),
+    );
+  });
+
+  expect(isPricingBeforeNote).toBe(true);
   await expect(
     page.getByRole('heading', {name: 'Vous ne savez pas quel soin choisir ?'}),
   ).toBeVisible();
@@ -314,6 +327,9 @@ test('section overview pages render their main content', async ({page}) => {
     page.getByRole('heading', {
       name: 'Besoin d’un accompagnement plus régulier ?',
     }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole('heading', {name: 'Besoin d’aide pour choisir ?'}),
   ).toBeVisible();
   await expect(
     page.getByRole('link', {name: 'Réserver un soin'}).last(),

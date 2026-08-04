@@ -94,20 +94,19 @@ const phoneHref = getPhoneHref(phone);
         <span>{benefitHighlight}</span>
       </p>
 
-      <div class="mt-9 w-fit">
-        <div
-          class="flex w-full flex-col gap-3.5 sm:w-auto sm:flex-row sm:flex-wrap sm:gap-4"
+      <div class="mt-9 w-fit max-w-full">
+        <a
+          href={bookingUrl}
+          class="btn-primary min-h-[3rem] px-6 py-3.5 sm:min-h-0 sm:py-3"
+          data-analytics-event="reserve_click"
         >
-          <a
-            href={bookingUrl}
-            class="btn-primary min-h-[3rem] px-6 py-3.5 sm:min-h-0 sm:py-3"
-            data-analytics-event="reserve_click"
-          >
-            {primaryCta}
-          </a>
+          {primaryCta}
+        </a>
+
+        <div class="mt-4 flex flex-wrap items-center gap-x-5 gap-y-1">
           <a
             href={whatsappUrl}
-            class="inline-flex min-h-[3rem] items-center justify-center gap-2.5 rounded-full border border-white/28 bg-white/8 px-6 py-3.5 text-sm font-medium text-white/88 shadow-soft backdrop-blur-sm transition-colors hover:border-white/40 hover:bg-white/14 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-ink motion-reduce:transition-none sm:py-3"
+            class="inline-flex min-h-11 items-center gap-2 rounded-md text-sm font-medium text-white/86 underline decoration-white/28 underline-offset-4 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-ink motion-reduce:transition-none"
             target="_blank"
             rel="noreferrer"
             data-analytics-event="whatsapp_click"
@@ -115,20 +114,20 @@ const phoneHref = getPhoneHref(phone);
             <IconImage
               inline
               name="i-lucide-message-circle"
-              class="text-white/84"
+              class="text-white/82"
               iconClass="h-4 w-4"
             />
             {whatsappCta}
           </a>
           <a
             href={`tel:${phoneHref}`}
-            class="inline-flex min-h-[3rem] items-center justify-center gap-2.5 rounded-full border border-white/18 bg-transparent px-6 py-3.5 text-sm font-medium text-white/76 transition-colors hover:border-white/28 hover:bg-white/8 hover:text-white/92 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-ink motion-reduce:transition-none sm:py-3"
+            class="inline-flex min-h-11 items-center gap-2 rounded-md text-sm font-medium text-white/78 underline decoration-white/24 underline-offset-4 transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-ink motion-reduce:transition-none"
             data-analytics-event="phone_click"
           >
             <IconImage
               inline
               name="i-lucide-phone"
-              class="text-white/78"
+              class="text-white/76"
               iconClass="h-4 w-4"
             />
             {secondaryCta}

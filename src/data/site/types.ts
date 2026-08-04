@@ -633,6 +633,7 @@ export type ContactBlockData = {
   whatsappLabel: string;
   whatsappEmphasis?: boolean;
   locationText?: string;
+  locationNote?: string;
 };
 
 export type HomePageData = {

@@ -71,8 +71,18 @@ const getCardGridClasses = (index: number) => {
 
             <h3 class="heading-md text-[1.6rem]">{item.title}</h3>
             <p class="body-base mt-3">{item.description}</p>
+            {isHome ? null : (
+              <TreatmentPricing
+                options={item.prices}
+                recommendedLabel={recommendedLabel}
+                class="mt-5 border-t border-ink/8 pt-4"
+              />
+            )}
             {!isHome && item.note ? (
-              <p class="mt-4 rounded-2xl bg-brand-soft/55 px-4 py-3 text-sm leading-6 text-ink/76">
+              <p
+                class="mt-4 rounded-2xl bg-brand-soft/55 px-4 py-3 text-sm leading-6 text-ink/76"
+                data-treatment-note
+              >
                 {item.note}
               </p>
             ) : null}
@@ -82,13 +92,7 @@ const getCardGridClasses = (index: number) => {
                 <p class="border-t border-ink/8 pt-4 text-sm font-semibold text-ink">
                   {startingPriceLabel} {item.prices[0]?.price}
                 </p>
-              ) : (
-                <TreatmentPricing
-                  options={item.prices}
-                  recommendedLabel={recommendedLabel}
-                  class="border-t border-ink/8 pt-4"
-                />
-              )}
+              ) : null}
 
               {item.ctaText && item.ctaLink ? (
                 <a

@@ -18,7 +18,10 @@ const {
 } = Astro.props;
 ---
 
-<div class:list={[featured ? 'space-y-3' : 'space-y-2', className]}>
+<div
+  class:list={[featured ? 'space-y-3' : 'space-y-2', className]}
+  data-treatment-pricing
+>
   {
     options.map((option, index) => (
       <div

@@ -18,7 +18,7 @@ export const homePages = {
       subtitle: 'EXPERTE EN DRAINAGE LYMPHATIQUE RENATA FRANÇA',
       title: 'Drainage lymphatique et massages bien-être à Annecy',
       description:
-        'Je vous accueille à Annecy pour des massages personnalisés, avec une expertise reconnue en drainage lymphatique selon la méthode Renata França, dans un cadre chaleureux, privé et rassurant.',
+        'Je vous accueille à Annecy pour des massages personnalisés, avec une expertise en drainage lymphatique selon la méthode Renata França, dans un cadre chaleureux, privé et rassurant.',
       imageAlt:
         'Cabinet de drainage lymphatique, massages et soins bien-être à Annecy',
       womenOnlyLabel: 'Réservé aux femmes',
@@ -32,17 +32,17 @@ export const homePages = {
       parts: [
         {text: 'Des '},
         {
-          text: 'massages et soins bien-être personnalisés',
+          text: 'massages personnalisés',
           href: localizedPagePaths.soins.fr,
         },
         {
-          text: ' pour soulager les tensions ou retrouver une sensation de légèreté, et des ',
+          text: ' pour relâcher les tensions ou retrouver plus de légèreté, et des ',
         },
         {
           text: 'programmes d’accompagnement',
           href: localizedPagePaths.programs.fr,
         },
-        {text: ' pour avancer avec douceur sur plusieurs séances.'},
+        {text: ' pour avancer en douceur sur plusieurs séances.'},
       ],
     },
     promo: {
@@ -112,10 +112,10 @@ export const homePages = {
     soinsSection: {
       title: 'Massages et soins ponctuels : choisir le rituel juste',
       intro:
-        'Le drainage lymphatique à Annecy selon la méthode Renata França ouvre cette sélection de massages et soins bien-être réservés aux femmes, pour répondre à un besoin précis ou s’accorder un vrai moment pour soi.',
+        'À Annecy, découvrez des massages personnalisés réservés aux femmes, du drainage lymphatique Renata França aux rituels relaxants et remodelants, selon vos besoins du moment.',
       introLinks: [
         {
-          text: 'drainage lymphatique à Annecy',
+          text: 'drainage lymphatique Renata França',
           href: localizedPagePaths.drainageLymphatique.fr,
         },
       ],
@@ -164,8 +164,9 @@ export const homePages = {
     sessionSteps: {
       title: 'Comment se déroule une séance ?',
       intro:
-        'Chaque séance est pensée comme un véritable moment de détente et de reconnexion au corps. Le drainage lymphatique est une technique douce, rythmée et apaisante, réalisée avec des mouvements précis pour stimuler naturellement la circulation lymphatique.',
-      reassuranceNote: 'Aucun matériel n’est à prévoir de votre côté.',
+        'De la réservation au soin, chaque rendez-vous est pensé pour vous offrir un accueil attentif, un moment de détente et une expérience adaptée à vos besoins.',
+      reassuranceNote:
+        'Sur rendez-vous uniquement. L’espace est aménagé pour votre confort : aucun matériel n’est à prévoir.',
       steps: [
         {
           title: 'Réservation',
@@ -175,12 +176,12 @@ export const homePages = {
         {
           title: 'Lieu du rendez-vous',
           description:
-            'La séance a lieu sur rendez-vous à Annecy, dans un espace privé soigneusement aménagé pour votre confort et votre bien-être. Vous êtes accueillie dans un cadre calme, chaleureux et intime, pensé pour vous permettre de relâcher pleinement les tensions.',
+            'À Annecy, la séance se déroule dans un espace privé, calme et chaleureux.',
         },
         {
           title: 'Votre moment de détente',
           description:
-            'Avant de commencer, nous prenons quelques minutes pour échanger sur vos besoins afin d’adapter le soin à votre corps et à vos attentes. Chaque séance est personnalisée pour vous aider à relâcher les tensions, alléger le corps et apaiser l’esprit.',
+            'Avant de commencer, nous échangeons sur vos besoins afin d’adapter le soin à votre corps, à vos attentes et à votre ressenti du moment.',
         },
       ],
     },
@@ -246,8 +247,9 @@ export const homePages = {
       emailDescription:
         'Idéal si vous préférez poser votre question par écrit.',
       whatsappLabel: 'Écrire sur WhatsApp',
-      locationText:
-        'Le cabinet vous accueille exclusivement sur rendez-vous dans un cadre calme, chaleureux et privé, réservé aux femmes. Facilement accessible, il se trouve à environ 30 minutes de Genève, ce qui en fait une adresse pratique pour les clientes d’Annecy et de la région genevoise.',
+      locationText: 'Un cadre calme, chaleureux et privé.',
+      locationNote:
+        'Le cabinet réservé aux femmes vous accueille uniquement sur rendez-vous, à environ 30 minutes de Genève. Une adresse pratique pour les clientes d’Annecy et de la région genevoise.',
     },
     whatsapp: {
       generalHref: getBusinessWhatsappHref(
@@ -265,7 +267,7 @@ export const homePages = {
       subtitle: 'Wellness massage for women in Annecy',
       title: 'Les Mains de Sérénité',
       description:
-        'In Annecy, enjoy a calm, caring, and reassuring space dedicated to your well-being.',
+        'In Annecy, I welcome you for personalized massages, with expertise in Renata França lymphatic drainage, in a warm, private, and reassuring setting.',
       imageAlt: 'Wellness massage atmosphere',
       womenOnlyLabel: 'For women only · English welcome',
       benefitHighlight:
@@ -276,9 +278,9 @@ export const homePages = {
     },
     heroBridge: {
       parts: [
-        {text: 'Choose '},
+        {text: ''},
         {
-          text: 'individual treatments',
+          text: 'Personalized massages',
           href: localizedPagePaths.soins.en,
         },
         {
@@ -288,7 +290,7 @@ export const homePages = {
           text: 'support programs',
           href: localizedPagePaths.programs.en,
         },
-        {text: ' when you want gentle guidance over several sessions.'},
+        {text: ' for gentle guidance across several sessions.'},
       ],
     },
     promo: {
@@ -358,10 +360,10 @@ export const homePages = {
     soinsSection: {
       title: 'Single massages and treatments: choose the right ritual',
       intro:
-        'Renata França lymphatic drainage in Annecy leads this selection of women-only massages and wellness treatments, for a specific need or a true moment for yourself.',
+        'In Annecy, discover personalized women-only massages, from Renata França lymphatic drainage to relaxing and sculpting rituals, adapted to what you need at the time.',
       introLinks: [
         {
-          text: 'lymphatic drainage in Annecy',
+          text: 'Renata França lymphatic drainage',
           href: localizedPagePaths.drainageLymphatique.en,
         },
       ],
@@ -409,8 +411,10 @@ export const homePages = {
     },
     sessionSteps: {
       title: 'How does a session work?',
-      intro: 'A simple and peaceful wellness experience.',
-      reassuranceNote: 'You do not need to bring any equipment.',
+      intro:
+        'From booking to treatment, every appointment is designed to offer attentive care, a moment of relaxation, and an experience adapted to your needs.',
+      reassuranceNote:
+        'By appointment only. The space is arranged for your comfort, so you do not need to bring any equipment.',
       steps: [
         {
           title: 'Booking',
@@ -420,12 +424,12 @@ export const homePages = {
         {
           title: 'Appointment location',
           description:
-            'Sessions take place by appointment in Annecy, in a calm and comfortable setting, with all equipment provided.',
+            'Your session takes place in Annecy, in a private, calm, and welcoming space.',
         },
         {
           title: 'Your relaxation time',
           description:
-            'Enjoy a personalized session in a calm and reassuring environment.',
+            'Before we begin, we talk about your needs so the treatment can be adapted to your body, your expectations, and how you feel at the time.',
         },
       ],
     },
@@ -489,8 +493,9 @@ export const homePages = {
       phoneDescription: 'For a quick chat before booking.',
       emailDescription: 'Best if you prefer to ask your question in writing.',
       whatsappLabel: 'Message on WhatsApp',
-      locationText:
-        'The private, women-only practice welcomes you by appointment in a calm and warm setting. It is approximately 30 minutes from Geneva, making it convenient for clients from Annecy and the Geneva area.',
+      locationText: 'A calm, warm, and private setting.',
+      locationNote:
+        'The women-only practice welcomes clients by appointment, approximately 30 minutes from Geneva. It is conveniently located for clients from Annecy and the Geneva area.',
     },
     whatsapp: {
       generalHref: getBusinessWhatsappHref(

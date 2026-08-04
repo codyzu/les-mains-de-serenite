@@ -15,9 +15,9 @@ export const soinsPages = {
       eyebrow: 'Des rituels personnalisés, réservés aux femmes',
       title: 'Massages et soins bien-être à Annecy',
       description:
-        'Drainage lymphatique selon la méthode Renata França, massage relaxant personnalisé et autres soins bien-être : chaque rendez-vous s’adapte à vos besoins du moment, entre légèreté, détente, relâchement et tonicité.',
+        'Drainage lymphatique Renata França, massage relaxant et autres soins bien-être : chaque rendez-vous s’adapte à votre besoin de légèreté, de détente, de relâchement ou de tonicité.',
       reassurance:
-        'Chaque rendez-vous est réservé exclusivement aux femmes et se déroule dans un cadre calme, bienveillant et confidentiel à Annecy.',
+        'Des rendez-vous personnalisés, réservés aux femmes, dans un cadre calme, bienveillant et confidentiel à Annecy.',
       ctaText: 'Réserver un soin',
       ctaHref: localizedPagePaths.reserveOnline.fr,
       analyticsEvent: 'reserve_click',
@@ -25,7 +25,7 @@ export const soinsPages = {
     philosophy: {
       title: 'Des soins pensés pour vous',
       description:
-        'Chaque rendez-vous commence par un échange pour comprendre vos besoins, vos ressentis et ce que votre corps exprime ce jour-là. L’objectif n’est pas seulement de choisir une technique, mais de vous proposer le massage ou le soin le plus adapté à votre moment.',
+        'Chaque rendez-vous commence par un échange sur vos besoins, vos ressentis et ce que votre corps exprime, afin d’adapter le soin à vos besoins du moment.',
     },
     transitionImageAlt:
       'Théière asiatique et petites tasses sur une terrasse avec vue sur le lac et les montagnes à Annecy',
@@ -33,7 +33,7 @@ export const soinsPages = {
       eyebrow: 'Massages et soins ponctuels',
       title: 'Choisir le rituel juste',
       intro:
-        'Cette sélection de séances individuelles répond à un besoin précis ou vous offre un moment de détente ponctuel. Chaque rendez-vous reste personnalisé selon votre ressenti du moment.',
+        'Comparez les séances selon votre besoin, leur durée et leur tarif. Chaque rendez-vous reste personnalisé selon votre ressenti du moment.',
       recommendedLabel: 'Durée conseillée',
       startingPriceLabel: 'À partir de',
       items: getOverviewTreatmentItems('fr'),
@@ -41,7 +41,7 @@ export const soinsPages = {
     choiceHelp: {
       title: 'Vous ne savez pas quel soin choisir ?',
       description:
-        'C’est normal. Si vous hésitez, nous pouvons confirmer ensemble le soin le plus adapté à vos besoins lors de la réservation ou au début du rendez-vous.',
+        'Si vous hésitez, nous pouvons confirmer ensemble le soin le plus adapté lors de la réservation ou au début du rendez-vous.',
       text: 'Réserver un soin',
       href: localizedPagePaths.reserveOnline.fr,
       analyticsEvent: 'reserve_click',
@@ -84,7 +84,7 @@ export const soinsPages = {
     booking: {
       title: 'Besoin d’aide pour choisir ?',
       description:
-        'Nous pouvons vous orienter vers le soin le plus adapté à vos besoins du moment.',
+        'Zahara peut vous orienter vers le soin le plus adapté à vos besoins, avant la réservation ou le rendez-vous.',
       text: 'Réserver un soin',
       href: localizedPagePaths.reserveOnline.fr,
       analyticsEvent: 'reserve_click',
@@ -111,9 +111,9 @@ export const soinsPages = {
       eyebrow: 'Personalized rituals for women',
       title: 'Massages and wellness treatments in Annecy',
       description:
-        'Renata França lymphatic drainage, personalized relaxing massage, and other wellness treatments: every appointment adapts to your current needs, whether you seek lightness, relaxation, tension relief, or tone.',
+        'Renata França lymphatic drainage, relaxing massage, and other wellness treatments: every appointment adapts to your need for lightness, relaxation, tension relief, or tone.',
       reassurance:
-        'Wellness treatments and massages are reserved exclusively for women, in a calm, caring, and confidential setting.',
+        'Personalized appointments for women, in a calm, caring, and confidential setting in Annecy.',
       ctaText: 'Book a treatment',
       ctaHref: localizedPagePaths.reserveOnline.en,
       analyticsEvent: 'reserve_click',
@@ -121,7 +121,7 @@ export const soinsPages = {
     philosophy: {
       title: 'Treatments designed for you',
       description:
-        'Each appointment begins with a conversation to understand your needs, how you feel, and what your body is expressing that day. The goal is not only to choose a technique, but to offer the massage or treatment that best fits your moment.',
+        'Each appointment begins with a conversation about your needs, how you feel, and what your body is expressing, so the treatment can be adapted to what you need at the time.',
     },
     transitionImageAlt:
       'Asian teapot and small cups on a terrace overlooking the lake and mountains in Annecy',
@@ -129,7 +129,7 @@ export const soinsPages = {
       eyebrow: 'Single massages and treatments',
       title: 'Choose the right ritual',
       intro:
-        'This selection of individual sessions meets a specific need or offers a focused moment of relaxation. Each appointment remains personalized around how you feel that day.',
+        'Compare the sessions by need, duration, and price. Every appointment remains personalized around how you feel at the time.',
       recommendedLabel: 'Recommended',
       startingPriceLabel: 'From',
       items: getOverviewTreatmentItems('en'),
@@ -137,7 +137,7 @@ export const soinsPages = {
     choiceHelp: {
       title: 'Not sure which treatment to choose?',
       description:
-        'That is normal. If you are unsure, we can confirm together which treatment best fits your needs when booking or at the beginning of your appointment.',
+        'If you are unsure, we can confirm together which treatment best suits you when booking or at the beginning of your appointment.',
       text: 'Book a treatment',
       href: localizedPagePaths.reserveOnline.en,
       analyticsEvent: 'reserve_click',
@@ -180,7 +180,7 @@ export const soinsPages = {
     booking: {
       title: 'Need help choosing?',
       description:
-        'We can guide you toward the treatment that best fits your current needs.',
+        'Zahara can guide you toward the treatment that best suits your needs before booking or before your appointment.',
       text: 'Book a treatment',
       href: localizedPagePaths.reserveOnline.en,
       analyticsEvent: 'reserve_click',
