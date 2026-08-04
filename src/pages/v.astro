@@ -14,8 +14,8 @@ const canonicalUrl = new URL(bookingPath, site.business.siteUrl).href;
   description="Redirection vers la réservation en ligne des Mains de Sérénité."
   canonicalUrl={canonicalUrl}
   gaSendPageView={false}
+  robots="noindex, follow"
 >
-  <meta slot="head" name="robots" content="noindex, follow" />
   <noscript slot="head">
     <meta http-equiv="refresh" content={`0; url=${redirectUrl}`} />
   </noscript>

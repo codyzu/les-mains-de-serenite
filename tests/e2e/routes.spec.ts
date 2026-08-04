@@ -76,7 +76,8 @@ test('vitrine QR route preserves metadata and its no-JavaScript fallback', async
   const body = await response.text();
 
   expect(response.status()).toBe(200);
-  expect(body).toContain('name="robots" content="noindex, follow"');
+  expect(body.split('name="robots"')).toHaveLength(2);
+  expect(body).toMatch(/name="robots" content="noindex, (?:follow|nofollow)"/v);
   expect(body).toContain('qr_redirect');
   if (body.includes('googletagmanager.com/gtag/js')) {
     expect(body).toContain('send_page_view: sendPageView');

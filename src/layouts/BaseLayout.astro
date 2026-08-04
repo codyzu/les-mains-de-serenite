@@ -1,6 +1,6 @@
 ---
 import GoogleTag from '../components/GoogleTag.astro';
-import {localizedPagePaths} from '../data/site';
+import {localizedPagePaths, site} from '../data/site';
 import {getBaseUrl} from '../utils/url';
 
 interface Props {
@@ -11,6 +11,7 @@ interface Props {
   lang?: string;
   canonicalUrl?: string;
   gaSendPageView?: boolean;
+  robots?: string;
   alternates?: Array<{
     hreflang: string;
     href: string;
@@ -26,10 +27,14 @@ const {
   lang = 'fr',
   canonicalUrl,
   gaSendPageView = true,
+  robots,
   alternates = [],
   structuredData,
 } = Astro.props;
 const baseUrl = getBaseUrl();
+const isIndexingAllowed =
+  Astro.site?.origin === new URL(site.business.siteUrl).origin;
+const robotsContent = isIndexingAllowed ? robots : 'noindex, nofollow';
 const isAnalyticsEnabled = import.meta.env.PUBLIC_ENABLE_ANALYTICS === 'true';
 const publicGaMeasurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
 const gaMeasurementId =
@@ -91,6 +96,11 @@ const transitionPaths = [
     />
     {canonicalUrl ? <meta property="og:url" content={canonicalUrl} /> : null}
     {canonicalUrl ? <link rel="canonical" href={canonicalUrl} /> : null}
+    {
+      robotsContent === undefined ? null : (
+        <meta name="robots" content={robotsContent} />
+      )
+    }
     {
       alternates.map((alternate) => (
         <link
