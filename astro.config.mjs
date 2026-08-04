@@ -7,10 +7,11 @@ import {getSiteBasePath, joinBasePath} from './config/base-path.mjs';
 const legacyMassagesPath = joinBasePath('/massages/');
 const shortRedirectPath = joinBasePath('/v/');
 const excludedSitemapPaths = new Set([legacyMassagesPath, shortRedirectPath]);
+const cloudflarePagesUrl = import.meta.env.CF_PAGES_URL?.trim();
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://lesmainsdeserenite.fr',
+  site: cloudflarePagesUrl || 'https://lesmainsdeserenite.fr',
   base: getSiteBasePath(),
   integrations: [
     sitemap({
