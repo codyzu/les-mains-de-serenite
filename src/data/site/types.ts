@@ -378,6 +378,7 @@ export type MaderotherapiePageData = {
   };
   path: string;
   hero: {
+    eyebrow: string;
     title: string;
     description: string;
     primaryCta: string;
@@ -391,6 +392,7 @@ export type MaderotherapiePageData = {
   instruments: {
     title: string;
     body: string;
+    imageAlt: string;
   };
   benefits: {
     title: string;
@@ -409,7 +411,14 @@ export type MaderotherapiePageData = {
       description: string;
     }>;
   };
+  pricing: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    recommendedLabel: string;
+  };
   offer: {
+    eyebrow: string;
     title: string;
     duration: string;
     price: string;
@@ -430,6 +439,14 @@ export type MaderotherapiePageData = {
     title: string;
     before: string[];
     after: string[];
+  };
+  practical: {
+    title: string;
+    intro: string;
+    stepsDescription: string;
+    beforeAfterDescription: string;
+    beforeLabel: string;
+    afterLabel: string;
   };
   contraindications: {
     title: string;
@@ -453,6 +470,7 @@ export type MaderotherapiePageData = {
   };
   reassuranceNote: string;
   programCrossLink: {
+    eyebrow: string;
     title: string;
     description: string;
     text: string;

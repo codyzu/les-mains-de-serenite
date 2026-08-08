@@ -774,6 +774,45 @@ test('maderotherapy discovery offers link to the embedded scheduler @booking', a
   ).toHaveAttribute('href', '/en/book-online');
 });
 
+test('maderotherapy keeps complete guidance in coherent bilingual disclosures', async ({
+  page,
+}) => {
+  await page.goto('/soins/maderotherapie/');
+
+  await expect(page.locator('#bienfaits article')).toHaveCount(4);
+
+  const practicalSection = page.locator('#infos-pratiques');
+  const practicalDisclosures = practicalSection.locator('details');
+  await expect(practicalDisclosures).toHaveCount(2);
+  await expect(practicalSection).toContainText('Échange sur vos besoins');
+  await expect(practicalSection).toContainText('Bien s’hydrater');
+  await expect(practicalSection).toContainText('Écouter son corps');
+
+  const firstSummary = practicalDisclosures.first().locator('summary');
+  await firstSummary.focus();
+  await firstSummary.press('Enter');
+  await expect(practicalDisclosures.first()).toHaveAttribute('open', '');
+
+  await expect(page.locator('#contre-indications')).toBeVisible();
+  await expect(page.locator('#faq details')).toHaveCount(6);
+  await expect(page.locator('footer')).toHaveClass(/\bbg-ink\b/v);
+
+  await page.goto('/en/massages/maderotherapy/');
+
+  await expect(page.locator('#bienfaits article')).toHaveCount(4);
+  await expect(page.getByText('Discovery Offer', {exact: true})).toBeVisible();
+  await expect(page.getByText('Program', {exact: true})).toBeVisible();
+
+  const englishPracticalSection = page.locator('#infos-pratiques');
+  await expect(englishPracticalSection.locator('details')).toHaveCount(2);
+  await expect(englishPracticalSection).toContainText('Discuss your needs');
+  await expect(englishPracticalSection).toContainText('Hydrate well');
+  await expect(englishPracticalSection).toContainText(
+    'Listen to your body and rest if needed',
+  );
+  await expect(page.locator('#faq details')).toHaveCount(6);
+});
+
 for (const {route, heading} of [
   {
     route: '/soins/drainage-lymphatique/',

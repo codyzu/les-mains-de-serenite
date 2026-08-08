@@ -1,5 +1,6 @@
 ---
 import {Picture} from 'astro:assets';
+import ContentDisclosure from '../components/ContentDisclosure.astro';
 import CtaReassurance from '../components/CtaReassurance.astro';
 import IconImage from '../components/IconImage.astro';
 import SectionIntro from '../components/SectionIntro.astro';
@@ -30,28 +31,6 @@ const languageSwitchPaths = localizedPagePaths.maderotherapie;
 const ctaIsExternal = maderotherapie.cta.href.startsWith('http');
 const offerCtaIsExternal = maderotherapie.offer.ctaHref.startsWith('http');
 const treatmentPrices = getTreatmentPrices('maderotherapy');
-const pricingCopy =
-  locale === 'en'
-    ? {
-        eyebrow: 'Durations and prices',
-        title: 'Choose the time that suits you',
-        description:
-          'The 60-minute session is recommended for a complete first treatment. Choose 90 minutes when you would like more time for targeted areas and a more enveloping pace.',
-        recommendedLabel: 'Recommended',
-      }
-    : {
-        eyebrow: 'Durées et tarifs',
-        title: 'Choisissez le temps qui vous convient',
-        description:
-          'La séance de 60 minutes est conseillée pour un premier soin complet. Choisissez 90 minutes pour accorder davantage de temps aux zones ciblées et profiter d’un rythme plus enveloppant.',
-        recommendedLabel: 'Durée conseillée',
-      };
-const heroEyebrow =
-  locale === 'en' ? 'Maderotherapy in Annecy' : 'Madérothérapie à Annecy';
-const toolsImageAlt =
-  locale === 'en'
-    ? 'Wooden instruments used for maderotherapy: mushroom tool, cylinder roller, cube roller, and sculpting board.'
-    : 'Instruments en bois utilisés pour la madérothérapie : champignon, rouleau cylindre, rouleau cube et table de remodelage.';
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'Service',
@@ -97,7 +76,7 @@ const structuredData = {
           <p
             class="mb-4 text-sm uppercase tracking-[0.25em] text-brand-strong/90"
           >
-            {heroEyebrow}
+            {maderotherapie.hero.eyebrow}
           </p>
           <h1 class="font-display text-5xl leading-tight text-ink sm:text-6xl">
             {maderotherapie.hero.title}
@@ -174,7 +153,7 @@ const structuredData = {
                 width={704}
                 height={528}
                 sizes="(min-width: 1024px) 39rem, (min-width: 640px) calc(100vw - 3rem), calc(100vw - 2rem)"
-                alt={toolsImageAlt}
+                alt={maderotherapie.instruments.imageAlt}
                 class="h-[320px] w-full object-cover object-center sm:h-[380px] lg:h-[420px]"
               />
             </div>
@@ -241,15 +220,15 @@ const structuredData = {
             <p
               class="text-sm font-medium uppercase tracking-[0.22em] text-brand-strong/82"
             >
-              {pricingCopy.eyebrow}
+              {maderotherapie.pricing.eyebrow}
             </p>
-            <h2 class="heading-lg mt-3">{pricingCopy.title}</h2>
-            <p class="body-lg mt-5">{pricingCopy.description}</p>
+            <h2 class="heading-lg mt-3">{maderotherapie.pricing.title}</h2>
+            <p class="body-lg mt-5">{maderotherapie.pricing.description}</p>
           </div>
           <div class="card-soft bg-white/84 p-6 pb-7 shadow-card sm:p-7">
             <TreatmentPricing
               options={treatmentPrices}
-              recommendedLabel={pricingCopy.recommendedLabel}
+              recommendedLabel={maderotherapie.pricing.recommendedLabel}
               featured
             />
             <div class="mt-6 border-t border-ink/8 pt-6">
@@ -291,7 +270,7 @@ const structuredData = {
 
           <div class="p-8 text-white sm:p-10 lg:p-12">
             <p class="text-sm uppercase tracking-[0.25em] text-white/68">
-              Offre Découverte
+              {maderotherapie.offer.eyebrow}
             </p>
             <h2 class="mt-4 font-display text-3xl leading-tight sm:text-4xl">
               {maderotherapie.offer.title}
@@ -338,7 +317,7 @@ const structuredData = {
         >
           <div class="max-w-3xl">
             <p class="text-sm uppercase tracking-[0.22em] text-brand-strong/82">
-              Programme
+              {maderotherapie.programCrossLink.eyebrow}
             </p>
             <h2 class="heading-md mt-3">
               {maderotherapie.programCrossLink.title}
@@ -357,68 +336,81 @@ const structuredData = {
       </div>
     </section>
 
-    <section class="section-pad bg-surface">
+    <section id="infos-pratiques" class="section-pad scroll-mt-28 bg-surface">
       <div class="container-page">
-        <SectionIntro title={maderotherapie.steps.title} />
+        <SectionIntro
+          title={maderotherapie.practical.title}
+          text={maderotherapie.practical.intro}
+        />
 
-        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-          {
-            maderotherapie.steps.items.map((step, index) => (
-              <article class="card-soft bg-white/78 p-5 shadow-card">
-                <span class="font-display text-4xl leading-none text-brand-strong">
-                  {index + 1}
-                </span>
-                <h3 class="mt-4 text-base font-semibold leading-6 text-ink">
-                  {step.title}
+        <div class="mx-auto max-w-5xl space-y-4">
+          <ContentDisclosure
+            title={maderotherapie.steps.title}
+            description={maderotherapie.practical.stepsDescription}
+          >
+            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+              {
+                maderotherapie.steps.items.map((step, index) => (
+                  <article class="rounded-2xl bg-surface-muted/70 p-5">
+                    <span class="font-display text-4xl leading-none text-brand-strong">
+                      {index + 1}
+                    </span>
+                    <h3 class="mt-4 text-base font-semibold leading-6 text-ink">
+                      {step.title}
+                    </h3>
+                    <p class="mt-3 text-sm leading-6 text-ink-muted">
+                      {step.description}
+                    </p>
+                  </article>
+                ))
+              }
+            </div>
+          </ContentDisclosure>
+
+          <ContentDisclosure
+            title={maderotherapie.beforeAfter.title}
+            description={maderotherapie.practical.beforeAfterDescription}
+          >
+            <div class="grid gap-5 lg:grid-cols-2">
+              <article class="rounded-2xl bg-surface-muted/70 p-6 sm:p-7">
+                <h3 class="heading-md">
+                  {maderotherapie.practical.beforeLabel}
                 </h3>
-                <p class="mt-3 text-sm leading-6 text-ink-muted">
-                  {step.description}
-                </p>
+                <ul class="mt-5 space-y-3">
+                  {
+                    maderotherapie.beforeAfter.before.map((item) => (
+                      <li class="flex gap-3 text-base leading-7 text-ink/76">
+                        <span
+                          class="i-lucide-check mt-1 h-5 w-5 shrink-0 text-brand-strong"
+                          aria-hidden="true"
+                        />
+                        <span>{item}</span>
+                      </li>
+                    ))
+                  }
+                </ul>
               </article>
-            ))
-          }
-        </div>
-      </div>
-    </section>
 
-    <section class="section-pad bg-surface-muted">
-      <div class="container-page">
-        <SectionIntro title={maderotherapie.beforeAfter.title} />
-
-        <div class="grid gap-5 lg:grid-cols-2">
-          <article class="card-soft bg-white/84 p-7 shadow-card sm:p-8">
-            <h3 class="heading-md">Avant</h3>
-            <ul class="mt-5 space-y-3">
-              {
-                maderotherapie.beforeAfter.before.map((item) => (
-                  <li class="flex gap-3 text-base leading-7 text-ink/76">
-                    <span
-                      class="i-lucide-check mt-1 h-5 w-5 shrink-0 text-brand-strong"
-                      aria-hidden="true"
-                    />
-                    <span>{item}</span>
-                  </li>
-                ))
-              }
-            </ul>
-          </article>
-
-          <article class="card-soft bg-white/84 p-7 shadow-card sm:p-8">
-            <h3 class="heading-md">Après</h3>
-            <ul class="mt-5 space-y-3">
-              {
-                maderotherapie.beforeAfter.after.map((item) => (
-                  <li class="flex gap-3 text-base leading-7 text-ink/76">
-                    <span
-                      class="i-lucide-check mt-1 h-5 w-5 shrink-0 text-brand-strong"
-                      aria-hidden="true"
-                    />
-                    <span>{item}</span>
-                  </li>
-                ))
-              }
-            </ul>
-          </article>
+              <article class="rounded-2xl bg-surface-muted/70 p-6 sm:p-7">
+                <h3 class="heading-md">
+                  {maderotherapie.practical.afterLabel}
+                </h3>
+                <ul class="mt-5 space-y-3">
+                  {
+                    maderotherapie.beforeAfter.after.map((item) => (
+                      <li class="flex gap-3 text-base leading-7 text-ink/76">
+                        <span
+                          class="i-lucide-check mt-1 h-5 w-5 shrink-0 text-brand-strong"
+                          aria-hidden="true"
+                        />
+                        <span>{item}</span>
+                      </li>
+                    ))
+                  }
+                </ul>
+              </article>
+            </div>
+          </ContentDisclosure>
         </div>
       </div>
     </section>

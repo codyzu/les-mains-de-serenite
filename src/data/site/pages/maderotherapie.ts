@@ -16,6 +16,7 @@ export const maderotherapiePages = {
         'Un soin bien-être de 60 minutes réservé aux femmes, idéal pour les jambes lourdes, la rétention d’eau et la sensation de légèreté.',
     },
     hero: {
+      eyebrow: 'Madérothérapie à Annecy',
       title: 'Soin de madérothérapie Jambes Légères',
       description:
         'Retrouvez une agréable sensation de légèreté grâce à un soin utilisant des instruments en bois spécialement conçus pour stimuler la circulation et accompagner le drainage naturel du corps.',
@@ -34,6 +35,8 @@ export const maderotherapiePages = {
     instruments: {
       title: 'Pourquoi utiliser des instruments en bois ?',
       body: 'Les instruments en bois permettent un travail précis, régulier et adapté aux zones ciblées. Leur matière naturelle offre un contact chaleureux, tout en aidant à stimuler les tissus et à relancer les sensations de circulation. Associés à un geste manuel attentif, ils rendent l’expérience à la fois tonique, enveloppante et relaxante.',
+      imageAlt:
+        'Instruments en bois utilisés pour la madérothérapie : champignon, rouleau cylindre, rouleau cube et table de remodelage.',
     },
     benefits: {
       title: 'Les bienfaits de la madérothérapie',
@@ -42,39 +45,19 @@ export const maderotherapiePages = {
       items: [
         {
           icon: 'i-lucide-droplets',
-          text: 'Favorise le drainage lymphatique naturel',
-        },
-        {
-          icon: 'i-lucide-activity',
-          text: 'Stimule la circulation sanguine et lymphatique',
+          text: 'Soutient le drainage lymphatique naturel, stimule la circulation sanguine et lymphatique et contribue à diminuer la sensation de rétention d’eau.',
         },
         {
           icon: 'i-lucide-feather',
-          text: 'Aide à réduire la sensation de jambes lourdes',
-        },
-        {
-          icon: 'i-lucide-waves',
-          text: 'Contribue à diminuer la rétention d’eau',
+          text: 'Aide à réduire la sensation de jambes lourdes et procure une agréable sensation de légèreté et de bien-être.',
         },
         {
           icon: 'i-lucide-sparkles',
-          text: 'Contribue à une sensation de peau plus tonique',
-        },
-        {
-          icon: 'i-lucide-scan',
-          text: 'Aide à lisser l’aspect de la peau et des tissus',
-        },
-        {
-          icon: 'i-lucide-leaf',
-          text: 'Procure une sensation de légèreté et de bien-être',
+          text: 'Contribue à une sensation de peau plus tonique et aide à lisser l’aspect de la peau et des tissus.',
         },
         {
           icon: 'i-lucide-heart-pulse',
-          text: 'Aide à détendre les muscles et les tensions corporelles',
-        },
-        {
-          icon: 'i-lucide-flower',
-          text: 'Favorise la relaxation et le lâcher-prise',
+          text: 'Aide à détendre les muscles et les tensions corporelles, tout en favorisant la relaxation et le lâcher-prise.',
         },
       ],
     },
@@ -121,7 +104,15 @@ export const maderotherapiePages = {
         },
       ],
     },
+    pricing: {
+      eyebrow: 'Durées et tarifs',
+      title: 'Choisissez le temps qui vous convient',
+      description:
+        'La séance de 60 minutes est conseillée pour un premier soin complet. Choisissez 90 minutes pour accorder davantage de temps aux zones ciblées et profiter d’un rythme plus enveloppant.',
+      recommendedLabel: 'Durée conseillée',
+    },
     offer: {
+      eyebrow: 'Offre Découverte',
       title: 'Offre Découverte Soin de madérothérapie Jambes Légères',
       duration: '60 minutes',
       price: '90 €',
@@ -177,6 +168,17 @@ export const maderotherapiePages = {
         'Favoriser une activité douce',
         'Écouter son corps et se reposer si nécessaire',
       ],
+    },
+    practical: {
+      title: 'Informations pratiques',
+      intro:
+        'Retrouvez le déroulement du soin et les conseils simples à suivre avant et après votre rendez-vous.',
+      stepsDescription:
+        'Les cinq étapes, de l’échange sur vos besoins aux recommandations finales.',
+      beforeAfterDescription:
+        'Des conseils simples de préparation et de récupération pour votre confort.',
+      beforeLabel: 'Avant',
+      afterLabel: 'Après',
     },
     contraindications: {
       title: 'Contre-indications',
@@ -246,6 +248,7 @@ export const maderotherapiePages = {
     reassuranceNote:
       'Ce soin est réservé aux femmes. En cas de doute ou de contre-indication, contactez-moi avant de réserver.',
     programCrossLink: {
+      eyebrow: 'Programme',
       title: 'Vous souhaitez un accompagnement plus complet ?',
       description:
         'Si vous ressentez régulièrement des jambes lourdes, de la rétention d’eau ou une sensation de ventre gonflé, le Programme Ventre Léger & Jambes Légères propose un accompagnement sur plusieurs séances avec des conseils adaptés.',
@@ -264,6 +267,7 @@ export const maderotherapiePages = {
         'A 60-minute women-only wellness treatment for heavy legs, water retention, and a pleasant feeling of lightness.',
     },
     hero: {
+      eyebrow: 'Maderotherapy in Annecy',
       title: 'Light Legs Maderotherapy Treatment',
       description:
         'Reconnect with a pleasant feeling of lightness through a treatment using wooden instruments designed to stimulate circulation and support the body’s natural drainage.',
@@ -282,6 +286,8 @@ export const maderotherapiePages = {
     instruments: {
       title: 'Why use wooden instruments?',
       body: 'Wooden instruments allow precise, regular work adapted to targeted areas. Their natural material offers a warm contact while helping stimulate the tissues and circulation sensations. Combined with attentive manual gestures, they make the experience both toning, enveloping, and relaxing.',
+      imageAlt:
+        'Wooden instruments used for maderotherapy: mushroom tool, cylinder roller, cube roller, and sculpting board.',
     },
     benefits: {
       title: 'Benefits of maderotherapy',
@@ -290,39 +296,19 @@ export const maderotherapiePages = {
       items: [
         {
           icon: 'i-lucide-droplets',
-          text: 'Supports natural lymphatic drainage',
-        },
-        {
-          icon: 'i-lucide-activity',
-          text: 'Stimulates blood and lymphatic circulation',
+          text: 'Supports natural lymphatic drainage, stimulates blood and lymphatic circulation, and helps ease the feeling of water retention.',
         },
         {
           icon: 'i-lucide-feather',
-          text: 'Helps reduce the sensation of heavy legs',
-        },
-        {
-          icon: 'i-lucide-waves',
-          text: 'Helps ease the feeling of water retention',
+          text: 'Helps reduce the sensation of heavy legs and creates a pleasant feeling of lightness and well-being.',
         },
         {
           icon: 'i-lucide-sparkles',
-          text: 'Contributes to a sensation of more toned skin',
-        },
-        {
-          icon: 'i-lucide-scan',
-          text: 'Helps smooth the appearance of skin and tissues',
-        },
-        {
-          icon: 'i-lucide-leaf',
-          text: 'Creates a feeling of lightness and well-being',
+          text: 'Contributes to a sensation of more toned skin and helps smooth the appearance of skin and tissues.',
         },
         {
           icon: 'i-lucide-heart-pulse',
-          text: 'Relaxes muscles and eases certain body tensions',
-        },
-        {
-          icon: 'i-lucide-flower',
-          text: 'Supports relaxation and letting go',
+          text: 'Relaxes muscles and eases certain body tensions while supporting relaxation and letting go.',
         },
       ],
     },
@@ -369,7 +355,15 @@ export const maderotherapiePages = {
         },
       ],
     },
+    pricing: {
+      eyebrow: 'Durations and prices',
+      title: 'Choose the time that suits you',
+      description:
+        'The 60-minute session is recommended for a complete first treatment. Choose 90 minutes when you would like more time for targeted areas and a more enveloping pace.',
+      recommendedLabel: 'Recommended',
+    },
     offer: {
+      eyebrow: 'Discovery Offer',
       title: 'Light Legs Maderotherapy Treatment Discovery Offer',
       duration: '60 minutes',
       price: '90 €',
@@ -425,6 +419,17 @@ export const maderotherapiePages = {
         'Choose gentle movement',
         'Listen to your body and rest if needed',
       ],
+    },
+    practical: {
+      title: 'Practical information',
+      intro:
+        'Review how the treatment unfolds and the simple guidance to follow before and after your appointment.',
+      stepsDescription:
+        'The five stages, from discussing your needs to the final recommendations.',
+      beforeAfterDescription:
+        'Simple preparation and recovery guidance for your comfort.',
+      beforeLabel: 'Before',
+      afterLabel: 'After',
     },
     contraindications: {
       title: 'Contraindications',
@@ -494,6 +499,7 @@ export const maderotherapiePages = {
     reassuranceNote:
       'This treatment is reserved for women. If you have any doubt or contraindication, contact me before booking.',
     programCrossLink: {
+      eyebrow: 'Program',
       title: 'Would you like more complete support?',
       description:
         'If you regularly experience heavy legs, water retention, or a bloated feeling, the Light Belly & Light Legs Program offers multi-session support with adapted guidance.',
