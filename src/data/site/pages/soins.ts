@@ -9,7 +9,7 @@ export const soinsPages = {
     meta: {
       title: 'Massages et soins bien-être à Annecy | Les Mains de Sérénité',
       description:
-        'Découvrez les massages et soins bien-être à Annecy réservés aux femmes : drainage lymphatique Renata França, massage relaxant, remodelant, Miracle Face et madérothérapie.',
+        'Découvrez les massages et soins bien-être à Annecy réservés aux femmes : drainage lymphatique Renata França, massage relaxant, remodelant, drainage visage anti-âge et madérothérapie.',
     },
     hero: {
       eyebrow: 'Des rituels personnalisés, réservés aux femmes',
@@ -105,7 +105,7 @@ export const soinsPages = {
       title:
         'Massages and Wellness Treatments in Annecy | Les Mains de Sérénité',
       description:
-        'Discover women-only massages and wellness treatments in Annecy: Renata França lymphatic drainage, relaxing massage, body sculpting, Miracle Face, and maderotherapy.',
+        'Discover women-only massages and wellness treatments in Annecy: Renata França lymphatic drainage, relaxing massage, body sculpting, anti-aging facial lymphatic drainage, and maderotherapy.',
     },
     hero: {
       eyebrow: 'Personalized rituals for women',

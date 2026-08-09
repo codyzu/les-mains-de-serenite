@@ -126,19 +126,19 @@ const treatmentCatalog = [
     copy: defineLocalizedContent<TreatmentCopy>({
       fr: {
         anchorId: 'massage-visage-liftant',
-        title: 'Miracle Face',
+        title: 'Drainage visage',
         homeDescription:
-          'Un soin visage tonifiant pour illuminer naturellement le teint.',
+          'Un soin anti-âge liftant pour défatiguer les traits, tonifier la peau et raviver l’éclat du teint.',
         description:
-          'Notre soin visage liftant signature, conçu pour stimuler la circulation, tonifier la peau et illuminer naturellement le teint.',
+          'Un drainage visage anti-âge aux gestes dynamiques et remodelants, conçu pour aider à décongestionner le visage, lisser l’apparence des traits, tonifier la peau et révéler un teint plus lumineux.',
       },
       en: {
         anchorId: 'lifting-facial-massage',
-        title: 'Miracle Face',
+        title: 'Facial lymphatic drainage',
         homeDescription:
-          'A toning facial treatment for a naturally brighter-looking complexion.',
+          'An anti-aging facial treatment to de-puff, tone, and reveal a brighter-looking complexion.',
         description:
-          'A relaxing lifting facial treatment to stimulate circulation, tone the skin, and restore a brighter-looking complexion.',
+          'An anti-aging facial lymphatic drainage treatment using dynamic, sculpting movements to help de-puff the face, smooth the appearance of facial features, tone the skin, and reveal a lifted, brighter-looking complexion.',
       },
     }),
   },

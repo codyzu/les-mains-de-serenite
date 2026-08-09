@@ -371,10 +371,10 @@ export const drainageLymphatiquePages = {
         'Le drainage du corps peut être complété par un soin du visage ou laisser place à une approche plus ciblée des tissus.',
       items: [
         {
-          title: 'Miracle Face',
+          title: 'Drainage visage',
           description:
-            'Le protocole visage de la méthode Renata França, pour un moment frais, tonique et relaxant.',
-          text: 'Voir Miracle Face',
+            'Un soin anti-âge liftant aux gestes dynamiques pour aider à décongestionner le visage, tonifier la peau et raviver l’éclat du teint.',
+          text: 'Découvrir le drainage visage',
           href: `${localizedPagePaths.soins.fr}#massage-visage-liftant`,
         },
         {
@@ -771,10 +771,10 @@ export const drainageLymphatiquePages = {
         'Full-body drainage can be complemented by a facial treatment or exchanged for a more tissue-focused approach.',
       items: [
         {
-          title: 'Miracle Face',
+          title: 'Facial lymphatic drainage',
           description:
-            'The Renata França facial protocol for a fresh, toning, relaxing moment.',
-          text: 'View Miracle Face',
+            'An anti-aging lifting treatment using dynamic movements to help de-puff the face, tone the skin, and restore a brighter-looking complexion.',
+          text: 'Discover facial lymphatic drainage',
           href: `${localizedPagePaths.soins.en}#lifting-facial-massage`,
         },
         {

@@ -66,7 +66,7 @@ test('French homepage renders the main business content and booking CTA', async 
   ).toHaveAttribute('href', '/soins/#massage-remodelant');
   await expect(
     treatmentCards
-      .filter({hasText: 'Miracle Face'})
+      .filter({hasText: 'Drainage visage'})
       .getByRole('link', {name: 'Découvrir'}),
   ).toHaveAttribute('href', '/soins/#massage-visage-liftant');
   await expect(
@@ -162,6 +162,15 @@ test('English homepage renders localized content and booking CTA', async ({
       name: 'Relaxing personalized massage',
     }),
   ).toBeVisible();
+  await expect(
+    page.getByRole('heading', {name: 'Facial lymphatic drainage'}),
+  ).toBeVisible();
+  await expect(
+    page
+      .locator('#soins article')
+      .filter({hasText: 'Facial lymphatic drainage'})
+      .getByRole('link', {name: 'Discover'}),
+  ).toHaveAttribute('href', '/en/massages/#lifting-facial-massage');
   await expect(
     page.getByRole('link', {name: 'Discover the treatments'}),
   ).toHaveAttribute('href', '/en/massages/');

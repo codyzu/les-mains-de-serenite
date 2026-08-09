@@ -919,7 +919,7 @@ for (const {title, anchorId} of [
     anchorId: 'massage-anti-douleur',
   },
   {title: 'Soin remodelant', anchorId: 'massage-remodelant'},
-  {title: 'Miracle Face', anchorId: 'massage-visage-liftant'},
+  {title: 'Drainage visage', anchorId: 'massage-visage-liftant'},
 ]) {
   test(`homepage ${title} link lands on its stable overview card`, async ({
     page,
