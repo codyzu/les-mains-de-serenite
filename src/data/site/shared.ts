@@ -7,7 +7,7 @@ export const businessPhone = '+33766612017';
 export const getBusinessWhatsappHref = (message: string) =>
   getWhatsappHref(businessPhone, message);
 export const discoveryOfferCalLink =
-  'lesmainsdeserenite/massage-45-minutes-offre-decouverte';
+  'lesmainsdeserenite/massage-relaxant-offre-rentree';
 export const programFrWhatsappHref = getBusinessWhatsappHref(
   'Bonjour, je souhaite en savoir plus sur le programme Ventre Léger & Jambes Légères.',
 );

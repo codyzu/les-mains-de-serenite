@@ -5,27 +5,27 @@ import {discoveryOfferCalLink} from '../shared';
 export const discoveryOfferBookingPages = {
   fr: {
     meta: {
-      title: 'Réserver l’offre découverte à Annecy | Les Mains de Sérénité',
+      title: 'Réserver l’offre de rentrée à Annecy | Les Mains de Sérénité',
       description:
-        'Réservez une première séance personnalisée de 45 minutes à 55 € chez Les Mains de Sérénité à Annecy. Offre réservée aux femmes, paiement sur place.',
+        'Réservez un massage relaxant de 1 h à 70 € au lieu de 80 € chez Les Mains de Sérénité à Annecy. Offre réservée aux femmes, paiement sur place.',
     },
     calLink: discoveryOfferCalLink,
     hero: {
-      kicker: 'Offre découverte',
-      title: 'Votre première séance de 45 min à 55 €',
+      kicker: 'Offre de rentrée',
+      title: 'Votre massage relaxant de 1 h à 70 €',
       description:
-        'Une première séance personnalisée pour découvrir l’approche, relâcher les tensions et prendre un vrai moment pour vous.',
+        'Et si, à la rentrée, vous preniez aussi soin de vous\u{A0}? Entre la reprise du travail, l’organisation du quotidien et l’attention portée aux autres, la rentrée laisse parfois peu de place pour soi. Offrez-vous une heure de massage relaxant et personnalisé pour relâcher les tensions, souffler et retrouver un moment de calme. 70 € au lieu de 80 €, soit 10 € de réduction pour la rentrée.',
       reassuranceItems: [
-        {icon: 'i-lucide-clock-3', label: '45 minutes'},
-        {icon: 'i-lucide-tag', label: '55 €'},
-        {icon: 'i-lucide-sparkles', label: 'Première séance'},
+        {icon: 'i-lucide-clock-3', label: '60 minutes'},
+        {icon: 'i-lucide-tag', label: '70 €'},
+        {icon: 'i-lucide-sparkles', label: 'Offre de rentrée'},
         {icon: 'i-lucide-flower', label: 'Réservé aux femmes'},
       ],
     },
     scheduler: {
       title: 'Choisissez votre créneau',
       description: 'Sélectionnez la date et l’heure qui vous conviennent.',
-      regionLabel: 'Réservation de l’offre découverte en ligne',
+      regionLabel: 'Réservation de l’offre de rentrée en ligne',
     },
     allOptions: {
       label: 'Voir toutes les options de réservation',
@@ -34,27 +34,27 @@ export const discoveryOfferBookingPages = {
   },
   en: {
     meta: {
-      title: 'Book the Discovery Offer | Les Mains de Sérénité Annecy',
+      title: 'Book the Back-to-School Offer | Les Mains de Sérénité Annecy',
       description:
-        'Book a personalized first 45-minute session for €55 at Les Mains de Sérénité in Annecy. Women-only service, payment on site.',
+        'Book a one-hour relaxing massage for €70 instead of €80 at Les Mains de Sérénité in Annecy. Women-only service, payment on site.',
     },
     calLink: discoveryOfferCalLink,
     hero: {
-      kicker: 'Discovery offer',
-      title: 'Your first 45-minute session for €55',
+      kicker: 'Back-to-school offer',
+      title: 'Your one-hour relaxing massage for €70',
       description:
-        'A personalized first session to discover the approach, release tension, and take a real moment for yourself.',
+        'This back-to-school season, make time for yourself too. Between returning to work, organising everyday life and caring for others, the back-to-school season can leave little time for yourself. Enjoy an hour of relaxing, personalised massage to release tension, take a breath and find a moment of calm. €70 instead of €80 — save €10 for the back-to-school season.',
       reassuranceItems: [
-        {icon: 'i-lucide-clock-3', label: '45 minutes'},
-        {icon: 'i-lucide-tag', label: '€55'},
-        {icon: 'i-lucide-sparkles', label: 'First session'},
+        {icon: 'i-lucide-clock-3', label: '60 minutes'},
+        {icon: 'i-lucide-tag', label: '€70'},
+        {icon: 'i-lucide-sparkles', label: 'Back-to-school offer'},
         {icon: 'i-lucide-flower', label: 'For women only'},
       ],
     },
     scheduler: {
       title: 'Choose your time',
       description: 'Select the date and time that suit you.',
-      regionLabel: 'Online booking for the discovery offer',
+      regionLabel: 'Online booking for the back-to-school offer',
     },
     allOptions: {
       label: 'View all booking options',

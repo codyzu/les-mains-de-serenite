@@ -668,8 +668,8 @@ test('embeds the discovery event directly and tracks one shared conversion @book
 
   await page.goto('/reserver-en-ligne/offre-decouverte');
 
-  const calLink = 'lesmainsdeserenite/massage-45-minutes-offre-decouverte';
-  const namespace = 'lesmainsdeserenite-massage-45-minutes-offre-decouverte';
+  const calLink = 'lesmainsdeserenite/massage-relaxant-offre-rentree';
+  const namespace = 'lesmainsdeserenite-massage-relaxant-offre-rentree';
   const embedRoot = page.locator('[data-cal-embed]');
 
   await expect(embedRoot).toHaveAttribute('data-cal-mode', 'event');
@@ -681,7 +681,7 @@ test('embeds the discovery event directly and tracks one shared conversion @book
   await expect(embedRoot).toHaveAttribute('data-cal-namespace', namespace);
   await expect(page.locator(`#cal-inline-${namespace}`)).toHaveAttribute(
     'aria-label',
-    'Réservation de l’offre découverte en ligne',
+    'Réservation de l’offre de rentrée en ligne',
   );
   await expect(page.locator('[data-cal-reset]')).toHaveCount(0);
   await expect(
@@ -691,7 +691,7 @@ test('embeds the discovery event directly and tracks one shared conversion @book
   ).toBeVisible();
   await expect(page.locator('[data-cal-fallback] a')).toHaveAttribute(
     'href',
-    'https://www.cal.eu/lesmainsdeserenite/massage-45-minutes-offre-decouverte',
+    'https://www.cal.eu/lesmainsdeserenite/massage-relaxant-offre-rentree',
   );
 
   const inlineCall = await page.evaluate((expectedNamespace) => {
@@ -777,6 +777,6 @@ test('uses the event-specific Cal fallback on the discovery page @booking', asyn
     page.getByRole('link', {name: 'Book directly on Cal.eu'}),
   ).toHaveAttribute(
     'href',
-    'https://www.cal.eu/lesmainsdeserenite/massage-45-minutes-offre-decouverte',
+    'https://www.cal.eu/lesmainsdeserenite/massage-relaxant-offre-rentree',
   );
 });

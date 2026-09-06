@@ -46,11 +46,11 @@ export const homePages = {
       ],
     },
     promo: {
-      title: 'Pour commencer',
-      headline: '45 min à 55\u{A0}€',
+      title: 'Offre de rentrée · Massage relaxant',
+      headline: 'Et si, à la rentrée, vous preniez aussi soin de vous\u{A0}?',
       description:
-        'Une première séance personnalisée pour découvrir l’approche, relâcher les tensions et prendre un vrai moment pour vous.',
-      note: 'Le choix idéal si vous découvrez Les Mains de Sérénité ou si vous hésitez entre plusieurs soins.',
+        'Entre la reprise du travail, l’organisation du quotidien et l’attention portée aux autres, la rentrée laisse parfois peu de place pour soi. Offrez-vous une heure de massage relaxant et personnalisé pour relâcher les tensions, souffler et retrouver un moment de calme.',
+      note: 'Votre pause de rentrée : 1 h à 70 € au lieu de 80 €, soit 10 € de réduction.',
       ctaText: 'Réserver l’offre',
       ctaLink: localizedPagePaths.discoveryOfferBooking.fr,
       analyticsEvent: 'reserve_click',
@@ -294,11 +294,11 @@ export const homePages = {
       ],
     },
     promo: {
-      title: 'To begin',
-      headline: '45 min for €55',
+      title: 'Back-to-school offer · Relaxing massage',
+      headline: 'This back-to-school season, make time for yourself too',
       description:
-        'A first personalized session to discover the approach, release tension, and take a real moment for yourself.',
-      note: 'The ideal choice if you are discovering Les Mains de Sérénité or hesitating between several treatments.',
+        'Between returning to work, organising everyday life and caring for others, the back-to-school season can leave little time for yourself. Enjoy an hour of relaxing, personalised massage to release tension, take a breath and find a moment of calm.',
+      note: 'Your back-to-school pause: 1 hour for €70 instead of €80 — save €10.',
       ctaText: 'Book the offer',
       ctaLink: localizedPagePaths.discoveryOfferBooking.en,
       analyticsEvent: 'reserve_click',
