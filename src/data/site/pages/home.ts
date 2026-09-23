@@ -1,4 +1,4 @@
-import DiscoveryOffer from '../../../assets/images/massage-back-recovery-offer.png';
+import DiscoveryOffer from '../../../assets/images/massage-back-tension-release-offer.png';
 import TeaLake from '../../../assets/tea-lake.png';
 import type {HomePageData, Locale} from '../types';
 import {getProgramPreviewItems} from '../catalog/programs';
@@ -56,7 +56,7 @@ export const homePages = {
       analyticsEvent: 'reserve_click',
       image: {
         src: DiscoveryOffer,
-        alt: 'Pierres de massage disposées en forme de colonne vertébrale sur un linge beige',
+        alt: 'Linge beige passant de plis serrés à des ondulations souples dans une lumière chaleureuse',
       },
     },
     needsSection: {
@@ -304,7 +304,7 @@ export const homePages = {
       analyticsEvent: 'reserve_click',
       image: {
         src: DiscoveryOffer,
-        alt: 'Massage stones arranged like a spine on warm beige linen',
+        alt: 'Beige linen opening from gathered folds into soft waves in warm light',
       },
     },
     needsSection: {
