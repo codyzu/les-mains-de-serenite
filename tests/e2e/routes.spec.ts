@@ -699,11 +699,11 @@ test('discovery-offer booking pages preserve localized promotional context @book
 
   await expect(
     page.getByRole('heading', {
-      name: 'Votre massage relaxant de 1 h à 70 €',
+      name: 'Votre massage du dos de 45 min à 60 €',
     }),
   ).toBeVisible();
   await expect(
-    page.getByText('Offre de rentrée', {exact: true}).last(),
+    page.getByText('Récupération musculaire', {exact: true}).last(),
   ).toBeVisible();
   await expect(page.getByText('Réservé aux femmes')).toBeVisible();
   await expect(
@@ -726,11 +726,11 @@ test('discovery-offer booking pages preserve localized promotional context @book
 
   await expect(
     page.getByRole('heading', {
-      name: 'Your one-hour relaxing massage for €70',
+      name: 'Your 45-minute back massage for €60',
     }),
   ).toBeVisible();
   await expect(
-    page.getByText('Back-to-school offer', {exact: true}).last(),
+    page.getByText('Muscle recovery', {exact: true}).last(),
   ).toBeVisible();
   await expect(page.getByText('For women only')).toBeVisible();
   await expect(

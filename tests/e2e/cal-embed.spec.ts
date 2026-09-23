@@ -681,7 +681,7 @@ test('embeds the discovery event directly and tracks one shared conversion @book
   await expect(embedRoot).toHaveAttribute('data-cal-namespace', namespace);
   await expect(page.locator(`#cal-inline-${namespace}`)).toHaveAttribute(
     'aria-label',
-    'Réservation de l’offre de rentrée en ligne',
+    'Réservation du massage du dos en ligne',
   );
   await expect(page.locator('[data-cal-reset]')).toHaveCount(0);
   await expect(

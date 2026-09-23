@@ -5,27 +5,27 @@ import {discoveryOfferCalLink} from '../shared';
 export const discoveryOfferBookingPages = {
   fr: {
     meta: {
-      title: 'Réserver l’offre de rentrée à Annecy | Les Mains de Sérénité',
+      title: 'Réserver un massage du dos à Annecy | Les Mains de Sérénité',
       description:
-        'Réservez un massage relaxant de 1 h à 70 € au lieu de 80 € chez Les Mains de Sérénité à Annecy. Offre réservée aux femmes, paiement sur place.',
+        'Réservez un massage du dos et des épaules de 45\u{A0}min à 60\u{A0}€ chez Les Mains de Sérénité à Annecy. Offre réservée aux femmes, paiement sur place.',
     },
     calLink: discoveryOfferCalLink,
     hero: {
-      kicker: 'Offre de rentrée',
-      title: 'Votre massage relaxant de 1 h à 70 €',
+      kicker: 'Récupération musculaire',
+      title: 'Votre massage du dos de 45\u{A0}min à 60\u{A0}€',
       description:
-        'Et si, à la rentrée, vous preniez aussi soin de vous\u{A0}? Entre la reprise du travail, l’organisation du quotidien et l’attention portée aux autres, la rentrée laisse parfois peu de place pour soi. Offrez-vous une heure de massage relaxant et personnalisé pour relâcher les tensions, souffler et retrouver un moment de calme. 70 € au lieu de 80 €, soit 10 € de réduction pour la rentrée.',
+        'Après un effort ou une journée intense, accordez une pause à votre dos. Un massage ciblé du dos et des épaules, avec une pression adaptée à vos besoins, pour détendre les muscles et retrouver une sensation de souplesse.',
       reassuranceItems: [
-        {icon: 'i-lucide-clock-3', label: '60 minutes'},
-        {icon: 'i-lucide-tag', label: '70 €'},
-        {icon: 'i-lucide-sparkles', label: 'Offre de rentrée'},
+        {icon: 'i-lucide-clock-3', label: '45\u{A0}minutes'},
+        {icon: 'i-lucide-tag', label: '60\u{A0}€'},
+        {icon: 'i-lucide-sparkles', label: 'Récupération musculaire'},
         {icon: 'i-lucide-flower', label: 'Réservé aux femmes'},
       ],
     },
     scheduler: {
       title: 'Choisissez votre créneau',
       description: 'Sélectionnez la date et l’heure qui vous conviennent.',
-      regionLabel: 'Réservation de l’offre de rentrée en ligne',
+      regionLabel: 'Réservation du massage du dos en ligne',
     },
     allOptions: {
       label: 'Voir toutes les options de réservation',
@@ -34,27 +34,27 @@ export const discoveryOfferBookingPages = {
   },
   en: {
     meta: {
-      title: 'Book the Back-to-School Offer | Les Mains de Sérénité Annecy',
+      title: 'Book a Back Massage | Les Mains de Sérénité Annecy',
       description:
-        'Book a one-hour relaxing massage for €70 instead of €80 at Les Mains de Sérénité in Annecy. Women-only service, payment on site.',
+        'Book a 45-minute back and shoulder massage for €60 at Les Mains de Sérénité in Annecy. Women-only service, payment on site.',
     },
     calLink: discoveryOfferCalLink,
     hero: {
-      kicker: 'Back-to-school offer',
-      title: 'Your one-hour relaxing massage for €70',
+      kicker: 'Muscle recovery',
+      title: 'Your 45-minute back massage for €60',
       description:
-        'This back-to-school season, make time for yourself too. Between returning to work, organising everyday life and caring for others, the back-to-school season can leave little time for yourself. Enjoy an hour of relaxing, personalised massage to release tension, take a breath and find a moment of calm. €70 instead of €80 — save €10 for the back-to-school season.',
+        'After exercise or a demanding day, give your back a break. A targeted back and shoulder massage, with pressure adapted to your needs, to relax your muscles and help you feel more supple.',
       reassuranceItems: [
-        {icon: 'i-lucide-clock-3', label: '60 minutes'},
-        {icon: 'i-lucide-tag', label: '€70'},
-        {icon: 'i-lucide-sparkles', label: 'Back-to-school offer'},
+        {icon: 'i-lucide-clock-3', label: '45\u{A0}minutes'},
+        {icon: 'i-lucide-tag', label: '€60'},
+        {icon: 'i-lucide-sparkles', label: 'Muscle recovery'},
         {icon: 'i-lucide-flower', label: 'For women only'},
       ],
     },
     scheduler: {
       title: 'Choose your time',
       description: 'Select the date and time that suit you.',
-      regionLabel: 'Online booking for the back-to-school offer',
+      regionLabel: 'Online booking for the back massage',
     },
     allOptions: {
       label: 'View all booking options',

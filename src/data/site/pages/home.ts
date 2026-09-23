@@ -1,4 +1,4 @@
-import DiscoveryOffer from '../../../assets/images/massage-legs-offer.png';
+import DiscoveryOffer from '../../../assets/images/massage-back-recovery-offer.png';
 import TeaLake from '../../../assets/tea-lake.png';
 import type {HomePageData, Locale} from '../types';
 import {getProgramPreviewItems} from '../catalog/programs';
@@ -46,17 +46,17 @@ export const homePages = {
       ],
     },
     promo: {
-      title: 'Offre de rentrée · Massage relaxant',
-      headline: 'Et si, à la rentrée, vous preniez aussi soin de vous\u{A0}?',
+      title: 'Massage du dos · Récupération musculaire',
+      headline: 'Relâchez les tensions, retrouvez un dos plus détendu',
       description:
-        'Entre la reprise du travail, l’organisation du quotidien et l’attention portée aux autres, la rentrée laisse parfois peu de place pour soi. Offrez-vous une heure de massage relaxant et personnalisé pour relâcher les tensions, souffler et retrouver un moment de calme.',
-      note: 'Votre pause de rentrée : 1 h à 70 € au lieu de 80 €, soit 10 € de réduction.',
+        'Après un effort ou une journée intense, accordez une pause à votre dos. Un massage ciblé du dos et des épaules, avec une pression adaptée à vos besoins, pour détendre les muscles et retrouver une sensation de souplesse.',
+      note: 'Votre séance : 45\u{A0}min · 60\u{A0}€',
       ctaText: 'Réserver l’offre',
       ctaLink: localizedPagePaths.discoveryOfferBooking.fr,
       analyticsEvent: 'reserve_click',
       image: {
         src: DiscoveryOffer,
-        alt: 'Massage bien-être dans une ambiance douce et apaisante',
+        alt: 'Pierres de massage disposées en forme de colonne vertébrale sur un linge beige',
       },
     },
     needsSection: {
@@ -294,17 +294,17 @@ export const homePages = {
       ],
     },
     promo: {
-      title: 'Back-to-school offer · Relaxing massage',
-      headline: 'This back-to-school season, make time for yourself too',
+      title: 'Back massage · Muscle recovery',
+      headline: 'Release tension, enjoy a more relaxed back',
       description:
-        'Between returning to work, organising everyday life and caring for others, the back-to-school season can leave little time for yourself. Enjoy an hour of relaxing, personalised massage to release tension, take a breath and find a moment of calm.',
-      note: 'Your back-to-school pause: 1 hour for €70 instead of €80 — save €10.',
+        'After exercise or a demanding day, give your back a break. A targeted back and shoulder massage, with pressure adapted to your needs, to relax your muscles and help you feel more supple.',
+      note: 'Your session: 45\u{A0}min · €60',
       ctaText: 'Book the offer',
       ctaLink: localizedPagePaths.discoveryOfferBooking.en,
       analyticsEvent: 'reserve_click',
       image: {
         src: DiscoveryOffer,
-        alt: 'Wellness massage in a soft and soothing atmosphere',
+        alt: 'Massage stones arranged like a spine on warm beige linen',
       },
     },
     needsSection: {
