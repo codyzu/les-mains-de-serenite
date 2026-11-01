@@ -16,7 +16,7 @@ export const giftCertificatesPages = {
       title: 'Offrez un massage à Annecy',
       description:
         'Pour un anniversaire, les fêtes ou simplement pour faire plaisir… offrez-lui une pause entre nos mains attentionnées. Un cadeau pour ralentir et profiter d’un moment rien qu’à elle.',
-      note: 'Soins réservés aux femmes à Annecy · Bon valable 3 mois',
+      note: 'Soins réservés aux femmes à Annecy · Bon valable 3 mois à compter de l’achat',
       ctaText: 'Demander un bon cadeau',
       ctaHref: getBusinessWhatsappHref(
         'Bonjour, je souhaite offrir un bon cadeau pour un massage. Pouvez-vous m’aider à le préparer ?',
@@ -64,7 +64,7 @@ export const giftCertificatesPages = {
         {
           title: 'Personnalisez votre cadeau',
           description:
-            'Indiquez le prénom de la destinataire et le message à ajouter. Le règlement se fait par virement bancaire ou Wero ; nous convenons ensemble de la remise du bon.',
+            'Indiquez le prénom de la destinataire et le message à ajouter. Le règlement se fait par virement bancaire ou Wero. Vous recevez un bon cadeau numérique au format PDF, à imprimer si vous le souhaitez.',
         },
         {
           title: 'Elle choisit son rendez-vous',
@@ -89,12 +89,12 @@ export const giftCertificatesPages = {
         {
           question: 'Quelle est la durée de validité du bon cadeau ?',
           answer:
-            'Le bon cadeau est valable 3 mois. Sa date de validité est inscrite sur le bon, utilisable une seule fois pour le soin indiqué.',
+            'Le bon cadeau est valable 3 mois à compter de la date d’achat. Sa date de validité est inscrite sur le bon, utilisable une seule fois pour le soin indiqué.',
         },
         {
           question: 'Comment régler et recevoir mon bon cadeau ?',
           answer:
-            'Le règlement se fait par virement bancaire ou Wero. Contactez-nous sur WhatsApp pour préparer votre bon cadeau et convenir de sa remise.',
+            'Le règlement se fait par virement bancaire ou Wero. Vous recevez un bon cadeau numérique au format PDF, que vous pouvez offrir tel quel ou imprimer si vous le souhaitez. Contactez-nous sur WhatsApp pour le préparer.',
         },
       ],
     },
@@ -117,7 +117,7 @@ export const giftCertificatesPages = {
       title: 'Give a massage in Annecy',
       description:
         'For a birthday, the holidays, or simply to make her smile… give her a break in our caring hands. A thoughtful gift to slow down and enjoy a little time for herself.',
-      note: 'Treatments for women in Annecy · Valid for 3 months',
+      note: 'Treatments for women in Annecy · Valid for 3 months from purchase',
       ctaText: 'Enquire about a gift certificate',
       ctaHref: getBusinessWhatsappHref(
         'Hello, I’d like to give a gift certificate for a massage. Could you help me arrange it?',
@@ -165,7 +165,7 @@ export const giftCertificatesPages = {
         {
           title: 'Make it personal',
           description:
-            'Share her name and the message you would like to add. Payment is by bank transfer or Wero; we will arrange how you receive the certificate together.',
+            'Share her name and the message you would like to add. Payment is by bank transfer or Wero. You receive a digital gift certificate as a PDF, which you can print if you wish.',
         },
         {
           title: 'She chooses her appointment',
@@ -190,12 +190,12 @@ export const giftCertificatesPages = {
         {
           question: 'How long is the gift certificate valid?',
           answer:
-            'Gift certificates are valid for 3 months. The expiry date is shown on the certificate, which can be used once for the specified treatment.',
+            'Gift certificates are valid for 3 months from the date of purchase. The expiry date is shown on the certificate, which can be used once for the specified treatment.',
         },
         {
           question: 'How do I pay and receive my gift certificate?',
           answer:
-            'Payment is by bank transfer or Wero. Message us on WhatsApp to prepare your gift certificate and arrange how you receive it.',
+            'Payment is by bank transfer or Wero. You receive a digital gift certificate as a PDF, which you can give digitally or print if you wish. Message us on WhatsApp to arrange it.',
         },
       ],
     },

@@ -13,7 +13,8 @@ for (const item of [
     message:
       'Bonjour, je souhaite offrir un bon cadeau pour un massage. Pouvez-vous m’aider à le préparer ?',
     validity: 'Quelle est la durée de validité du bon cadeau ?',
-    validityText: 'Le bon cadeau est valable 3 mois.',
+    validityText:
+      'Le bon cadeau est valable 3 mois à compter de la date d’achat.',
     payment: 'Comment régler et recevoir mon bon cadeau ?',
     paymentText: 'virement bancaire ou Wero',
   },
@@ -29,7 +30,8 @@ for (const item of [
     message:
       'Hello, I’d like to give a gift certificate for a massage. Could you help me arrange it?',
     validity: 'How long is the gift certificate valid?',
-    validityText: 'Gift certificates are valid for 3 months.',
+    validityText:
+      'Gift certificates are valid for 3 months from the date of purchase.',
     payment: 'How do I pay and receive my gift certificate?',
     paymentText: 'bank transfer or Wero',
   },
