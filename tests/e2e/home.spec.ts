@@ -135,8 +135,11 @@ test('French homepage renders the main business content and booking CTA', async 
     page.getByRole('link', {name: 'Réserver un soin'}).first(),
   ).toHaveAttribute('href', '/reserver-en-ligne');
   await expect(
-    page.getByRole('link', {name: 'Réserver l’offre'}),
-  ).toHaveAttribute('href', '/reserver-en-ligne/offre-decouverte');
+    page.getByRole('link', {name: 'Demander un bon cadeau'}),
+  ).toHaveAttribute(
+    'href',
+    `https://wa.me/33766612017?text=${encodeURIComponent('Bonjour, je souhaite offrir un bon cadeau pour les fêtes. Pouvez-vous m’aider à le préparer ?')}`,
+  );
   await expect(page.getByText('Soin d’entretien')).toHaveCount(0);
   await expect(page.getByText('Demander un soin d’entretien')).toHaveCount(0);
 });
@@ -228,6 +231,9 @@ test('English homepage renders localized content and booking CTA', async ({
     page.getByRole('link', {name: 'Book a treatment'}).first(),
   ).toHaveAttribute('href', '/en/book-online');
   await expect(
-    page.getByRole('link', {name: 'Book the offer'}),
-  ).toHaveAttribute('href', '/en/book-online/discovery-offer');
+    page.getByRole('link', {name: 'Enquire about a gift certificate'}),
+  ).toHaveAttribute(
+    'href',
+    `https://wa.me/33766612017?text=${encodeURIComponent('Hello, I’d like to give a gift certificate for the holidays. Could you help me arrange it?')}`,
+  );
 });

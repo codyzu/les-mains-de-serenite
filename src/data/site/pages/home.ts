@@ -1,4 +1,4 @@
-import DiscoveryOffer from '../../../assets/images/massage-back-tension-release-offer.png';
+import HolidayGiftCertificate from '../../../assets/images/holiday-gift-certificate.png';
 import TeaLake from '../../../assets/tea-lake.png';
 import type {HomePageData, Locale} from '../types';
 import {getProgramPreviewItems} from '../catalog/programs';
@@ -46,17 +46,19 @@ export const homePages = {
       ],
     },
     promo: {
-      title: 'Massage du dos · Récupération musculaire',
-      headline: 'Relâchez les tensions, retrouvez un dos plus détendu',
+      title: 'Bons cadeaux · Fêtes de fin d’année',
+      headline: 'Offrez-lui une vague de douceur',
       description:
-        'Après un effort ou une journée intense, accordez une pause à votre dos. Un massage ciblé du dos et des épaules, avec une pression adaptée à vos besoins, pour détendre les muscles et retrouver une sensation de souplesse.',
-      note: 'Votre séance : 45\u{A0}min · 60\u{A0}€',
-      ctaText: 'Réserver l’offre',
-      ctaLink: localizedPagePaths.discoveryOfferBooking.fr,
-      analyticsEvent: 'reserve_click',
+        'Pour votre maman, votre sœur, une amie… offrez une pause entre nos mains attentionnées. Un massage relaxant ou un drainage lymphatique à Annecy, pour relâcher les tensions et retrouver une sensation de légèreté.',
+      note: 'Soins réservés aux femmes · À Annecy',
+      ctaText: 'Demander un bon cadeau',
+      ctaLink: getBusinessWhatsappHref(
+        'Bonjour, je souhaite offrir un bon cadeau pour les fêtes. Pouvez-vous m’aider à le préparer ?',
+      ),
+      analyticsEvent: 'whatsapp_click',
       image: {
-        src: DiscoveryOffer,
-        alt: 'Linge beige passant de plis serrés à des ondulations souples dans une lumière chaleureuse',
+        src: HolidayGiftCertificate,
+        alt: 'Bon cadeau dans une enveloppe ivoire ornée d’un ruban vert sauge, avec des branches de sapin, des lumières de Noël et de doux reflets sur l’eau',
       },
     },
     needsSection: {
@@ -294,17 +296,19 @@ export const homePages = {
       ],
     },
     promo: {
-      title: 'Back massage · Muscle recovery',
-      headline: 'Release tension, enjoy a more relaxed back',
+      title: 'Gift certificates · Holiday season',
+      headline: 'Give her a little wave of calm',
       description:
-        'After exercise or a demanding day, give your back a break. A targeted back and shoulder massage, with pressure adapted to your needs, to relax your muscles and help you feel more supple.',
-      note: 'Your session: 45\u{A0}min · €60',
-      ctaText: 'Book the offer',
-      ctaLink: localizedPagePaths.discoveryOfferBooking.en,
-      analyticsEvent: 'reserve_click',
+        'For your mum, sister, or a friend… give her a relaxing break in our caring hands. A soothing massage or lymphatic drainage treatment in Annecy, to ease tension and rediscover a feeling of lightness.',
+      note: 'Treatments for women · In Annecy',
+      ctaText: 'Enquire about a gift certificate',
+      ctaLink: getBusinessWhatsappHref(
+        'Hello, I’d like to give a gift certificate for the holidays. Could you help me arrange it?',
+      ),
+      analyticsEvent: 'whatsapp_click',
       image: {
-        src: DiscoveryOffer,
-        alt: 'Beige linen opening from gathered folds into soft waves in warm light',
+        src: HolidayGiftCertificate,
+        alt: 'Gift certificate in an ivory envelope tied with a sage-green ribbon, with fir branches, Christmas lights, and gentle reflections on water',
       },
     },
     needsSection: {
