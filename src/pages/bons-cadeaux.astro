@@ -1,0 +1,9 @@
+---
+import {getLocalizedSite} from '../data/site';
+import GiftCertificatesPageTemplate from '../page-templates/GiftCertificatesPageTemplate.astro';
+
+const locale = 'fr';
+const localized = getLocalizedSite(locale);
+---
+
+<GiftCertificatesPageTemplate locale={locale} localized={localized} />

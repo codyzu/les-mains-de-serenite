@@ -1,0 +1,217 @@
+---
+import {getImage, Picture} from 'astro:assets';
+import GiftCertificateExample from '../assets/images/gift-certificate-example-front.png';
+import {
+  localizedPagePaths,
+  type Locale,
+  type LocalizedSiteData,
+} from '../data/site';
+import Layout from '../layouts/Layout.astro';
+import {getBaseUrl} from '../utils/url';
+
+interface Props {
+  locale: Locale;
+  localized: LocalizedSiteData;
+}
+
+const {locale, localized} = Astro.props;
+const {giftCertificates: gift} = localized.pages;
+const languagePaths = localizedPagePaths.giftCertificates;
+const enlargedPreview = await getImage({
+  src: GiftCertificateExample,
+  width: GiftCertificateExample.width,
+  format: 'webp',
+});
+const baseUrl = getBaseUrl();
+const treatmentsHref = `${baseUrl}${gift.treatment.otherCtaHref.replace(/^\//v, '')}`;
+---
+
+<Layout
+  locale={locale}
+  title={gift.meta.title}
+  description={gift.meta.description}
+  canonicalPath={gift.path}
+  alternatePaths={languagePaths}
+  languageSwitchPaths={languagePaths}
+>
+  <main>
+    <section class="overflow-hidden bg-surface-muted">
+      <div
+        class="container-page grid items-center gap-10 py-12 sm:py-16 lg:grid-cols-2 lg:gap-14 lg:py-20"
+      >
+        <div>
+          <p
+            class="text-sm font-medium uppercase tracking-[0.2em] text-brand-strong"
+          >
+            {gift.hero.eyebrow}
+          </p>
+          <h1 class="heading-xl mt-4 max-w-[15ch]">{gift.hero.title}</h1>
+          <p class="body-lg mt-6">{gift.hero.description}</p>
+          <a
+            class="btn-primary mt-7 min-h-12 max-w-full px-7 py-4 text-center"
+            href={gift.hero.ctaHref}
+            target="_blank"
+            rel="noreferrer"
+            data-analytics-event="whatsapp_click"
+          >
+            {gift.hero.ctaText}
+          </a>
+          <p class="mt-4 text-sm leading-6 text-ink-muted">{gift.hero.note}</p>
+        </div>
+        <figure>
+          <a
+            href={enlargedPreview.src}
+            target="_blank"
+            rel="noreferrer"
+            class="block rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-strong focus-visible:ring-offset-4"
+            aria-label={gift.hero.imageLinkText}
+          >
+            <Picture
+              src={GiftCertificateExample}
+              alt={gift.hero.imageAlt}
+              formats={['avif', 'webp']}
+              fallbackFormat="webp"
+              widths={[390, 640, 960, 1280, 1748]}
+              sizes="(min-width: 1024px) 32rem, calc(100vw - 2rem)"
+              loading="eager"
+              class="h-auto w-full rounded-2xl border border-brand-muted/30 shadow-soft"
+            />
+          </a>
+          <figcaption class="mt-4 text-sm leading-6 text-ink-muted">
+            <p>{gift.hero.imageCaption}</p>
+            <a
+              href={enlargedPreview.src}
+              target="_blank"
+              rel="noreferrer"
+              class="mt-1 inline-flex min-h-11 items-center rounded-md font-medium text-brand-strong underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-strong"
+            >
+              {gift.hero.imageLinkText}
+            </a>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section-pad bg-surface">
+      <div
+        class="container-page grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-start lg:gap-12"
+      >
+        <article class="card-soft bg-white/80 p-7 sm:p-9">
+          <p
+            class="text-sm font-medium uppercase tracking-[0.18em] text-brand-strong"
+          >
+            {gift.treatment.eyebrow}
+          </p>
+          <h2 class="heading-lg mt-4">{gift.treatment.title}</h2>
+          <p class="body-base mt-4">{gift.treatment.description}</p>
+          <dl class="mt-6 divide-y divide-brand-soft">
+            {
+              gift.treatment.prices.map((price) => (
+                <div class="flex items-baseline justify-between gap-4 py-3 text-lg text-ink">
+                  <dt>{price.duration}</dt>
+                  <dd class="font-medium">{price.price}</dd>
+                </div>
+              ))
+            }
+          </dl>
+          <a
+            href={gift.treatment.ctaHref}
+            class="btn-primary mt-6 min-h-12 text-center"
+            target="_blank"
+            rel="noreferrer"
+            data-analytics-event="whatsapp_click"
+          >
+            {gift.treatment.ctaText}
+          </a>
+        </article>
+        <div class="py-3 lg:py-6">
+          <h2 class="heading-md">{gift.personalization.title}</h2>
+          <p class="body-base mt-4">{gift.personalization.description}</p>
+          <ul class="mt-5 space-y-3">
+            {
+              gift.personalization.items.map((item) => (
+                <li class="flex items-center gap-3 text-ink-muted">
+                  <span
+                    class="i-lucide-check h-5 w-5 shrink-0 text-brand-strong"
+                    aria-hidden="true"
+                  />
+                  {item}
+                </li>
+              ))
+            }
+          </ul>
+          <div class="mt-8 border-t border-brand-muted/40 pt-7">
+            <h3 class="heading-md">{gift.treatment.otherTitle}</h3>
+            <p class="body-base mt-3">{gift.treatment.otherDescription}</p>
+            <a
+              href={treatmentsHref}
+              class="mt-4 inline-flex min-h-11 items-center rounded-md font-medium text-brand-strong underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-strong"
+            >
+              {gift.treatment.otherCtaText}
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad bg-surface-soft/50">
+      <div class="container-page">
+        <h2 class="heading-lg max-w-2xl">{gift.steps.title}</h2>
+        <ol class="mt-8 grid gap-5 lg:grid-cols-3">
+          {
+            gift.steps.items.map((step, index) => (
+              <li class="card-soft bg-white/75 p-7">
+                <span
+                  class="mb-5 inline-flex h-10 w-10 items-center justify-center rounded-full bg-brand-soft font-medium text-ink"
+                  aria-hidden="true"
+                >
+                  {index + 1}
+                </span>
+                <h3 class="heading-md">{step.title}</h3>
+                <p class="body-base mt-3">{step.description}</p>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </section>
+
+    <section class="section-pad bg-surface">
+      <div class="container-page">
+        <div class="mx-auto max-w-3xl">
+          <h2 class="heading-lg">{gift.faq.title}</h2>
+          <div class="mt-7 divide-y divide-brand-muted/35">
+            {
+              gift.faq.items.map((item) => (
+                <details class="group py-5">
+                  <summary class="cursor-pointer rounded-md text-lg font-medium leading-7 text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-strong">
+                    {item.question}
+                  </summary>
+                  <p class="body-base mt-3">{item.answer}</p>
+                </details>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-pad bg-surface-muted">
+      <div class="container-page">
+        <div class="card-soft mx-auto max-w-3xl p-7 text-center sm:p-10">
+          <h2 class="heading-lg">{gift.contact.title}</h2>
+          <p class="body-lg mt-4">{gift.contact.description}</p>
+          <a
+            href={gift.hero.ctaHref}
+            class="btn-primary mt-7 min-h-12 max-w-full text-center"
+            target="_blank"
+            rel="noreferrer"
+            data-analytics-event="whatsapp_click"
+          >
+            {gift.contact.ctaText}
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

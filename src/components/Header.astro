@@ -21,7 +21,14 @@ type Props = {
 };
 
 type HeaderNavItem = {
-  key: 'home' | 'soins' | 'program' | 'about' | 'reserve' | 'contact';
+  key:
+    | 'home'
+    | 'soins'
+    | 'program'
+    | 'giftCertificates'
+    | 'about'
+    | 'reserve'
+    | 'contact';
   label: string;
   href: string;
   active?: boolean;
@@ -45,7 +52,7 @@ const brand = site.business.name;
 const localized = getLocalizedSite(locale);
 const {
   chrome: {header},
-  pages: {home, soins, programs},
+  pages: {home, soins, programs, giftCertificates},
 } = localized;
 const {tagline, links} = header;
 const {
@@ -88,6 +95,13 @@ const desktopNavItems = [
     label: links.program,
     href: programHref,
     active: programActive,
+    activeElement: 'link',
+  },
+  {
+    key: 'giftCertificates',
+    label: links.giftCertificates,
+    href: toHref(giftCertificates.path),
+    active: currentPath === giftCertificates.path.replace(/\/$/v, ''),
     activeElement: 'link',
   },
   {
@@ -142,7 +156,7 @@ const mobileNavItems = desktopNavItems
       />
       <div class="min-w-0">
         <div
-          class="font-display text-xl leading-tight text-ink sm:text-2xl lg:truncate"
+          class="font-display text-xl leading-tight text-ink sm:text-2xl xl:truncate"
         >
           {brand}
         </div>
@@ -154,7 +168,7 @@ const mobileNavItems = desktopNavItems
       </div>
     </a>
 
-    <nav class="hidden items-center gap-6 lg:flex">
+    <nav class="hidden shrink-0 items-center gap-5 whitespace-nowrap xl:flex">
       {
         desktopNavItems.map((item) =>
           item.active && item.activeElement === 'span' ? (
@@ -183,7 +197,7 @@ const mobileNavItems = desktopNavItems
       }
     </nav>
     <div
-      class="flex shrink-0 items-center gap-4 max-xs:flex-col max-xs:items-end max-xs:gap-1 lg:gap-3"
+      class="flex shrink-0 items-center gap-4 max-xs:flex-col max-xs:items-end max-xs:gap-1 xl:gap-3"
     >
       {
         languageSwitchPaths ? (
@@ -221,7 +235,7 @@ const mobileNavItems = desktopNavItems
       <button
         data-mobile-menu-open
         type="button"
-        class="inline-flex min-h-11 touch-manipulation select-none items-center rounded-full border border-brand-muted/70 bg-brand-muted/45 px-4 py-2 text-sm font-semibold text-ink shadow-card transition-colors hover:bg-brand-muted/55 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/55 focus-visible:ring-offset-2 focus-visible:ring-offset-surface-muted motion-reduce:transition-none lg:hidden"
+        class="inline-flex min-h-11 touch-manipulation select-none items-center rounded-full border border-brand-muted/70 bg-brand-muted/45 px-4 py-2 text-sm font-semibold text-ink shadow-card transition-colors hover:bg-brand-muted/55 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/55 focus-visible:ring-offset-2 focus-visible:ring-offset-surface-muted motion-reduce:transition-none xl:hidden"
         aria-label={menuLabel}
         aria-controls="mobile-navigation-drawer"
         aria-expanded="false"
@@ -235,7 +249,7 @@ const mobileNavItems = desktopNavItems
 <div
   inert
   data-mobile-menu
-  class="fixed inset-0 z-60 hidden overflow-hidden lg:hidden"
+  class="fixed inset-0 z-60 hidden overflow-hidden xl:hidden"
   data-state="closed"
   aria-hidden="true"
 >

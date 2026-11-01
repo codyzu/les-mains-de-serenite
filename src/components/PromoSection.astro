@@ -1,6 +1,7 @@
 ---
 import {Picture} from 'astro:assets';
 import type {PromoData} from '../data/site';
+import {getBaseUrl} from '../utils/url';
 
 interface Props {
   promo?: PromoData;
@@ -8,6 +9,11 @@ interface Props {
 
 const {promo} = Astro.props;
 const ctaIsExternal = promo?.ctaLink.startsWith('http') ?? false;
+const ctaHref =
+  promo &&
+  (ctaIsExternal
+    ? promo.ctaLink
+    : `${getBaseUrl()}${promo.ctaLink.replace(/^\//v, '')}`);
 ---
 
 {
@@ -51,7 +57,7 @@ const ctaIsExternal = promo?.ctaLink.startsWith('http') ?? false;
                 ]}
               >
                 <a
-                  href={promo.ctaLink}
+                  href={ctaHref}
                   target={ctaIsExternal ? '_blank' : undefined}
                   rel={ctaIsExternal ? 'noreferrer' : undefined}
                   class="btn-primary min-h-[3.25rem] w-full px-7 py-4 text-base sm:w-auto sm:min-w-[14rem]"

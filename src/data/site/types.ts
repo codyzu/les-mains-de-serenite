@@ -41,6 +41,7 @@ export type SiteHeaderData = {
     home: string;
     soins: string;
     program: string;
+    giftCertificates: string;
     about: string;
     reserve: string;
     contact: string;
@@ -53,6 +54,7 @@ export type SiteFooterData = {
   links: {
     soins: string;
     program: string;
+    giftCertificates: string;
     about: string;
     reserve: string;
     contact: string;
@@ -766,6 +768,38 @@ export type DiscoveryOfferBookingPageData = {
   };
 };
 
+export type GiftCertificatesPageData = {
+  path: string;
+  meta: {title: string; description: string};
+  hero: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    note: string;
+    ctaText: string;
+    ctaHref: string;
+    imageAlt: string;
+    imageCaption: string;
+    imageLinkText: string;
+  };
+  treatment: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    prices: SoinPriceData[];
+    ctaText: string;
+    ctaHref: string;
+    otherTitle: string;
+    otherDescription: string;
+    otherCtaText: string;
+    otherCtaHref: string;
+  };
+  personalization: {title: string; description: string; items: string[]};
+  steps: {title: string; items: Array<{title: string; description: string}>};
+  faq: {title: string; items: Array<{question: string; answer: string}>};
+  contact: {title: string; description: string; ctaText: string};
+};
+
 export type LocalizedSiteData = {
   locale: string;
   lang: string;
@@ -773,6 +807,7 @@ export type LocalizedSiteData = {
   bookingPracticalInfo: BookingPracticalInfoData;
   pages: {
     home: HomePageData;
+    giftCertificates: GiftCertificatesPageData;
     soins: SoinsOverviewPageData;
     programs: ProgramsOverviewPageData;
     program: ProgramPageData;

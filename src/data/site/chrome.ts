@@ -8,6 +8,7 @@ export const chrome = {
         home: 'Accueil',
         soins: 'Soins',
         program: 'Programmes',
+        giftCertificates: 'Bons cadeaux',
         about: 'À propos',
         reserve: 'Réserver',
         contact: 'Contact',
@@ -19,6 +20,7 @@ export const chrome = {
       links: {
         soins: 'Soins',
         program: 'Programmes',
+        giftCertificates: 'Bons cadeaux',
         about: 'À propos',
         reserve: 'Réserver',
         contact: 'Contact',
@@ -34,6 +36,7 @@ export const chrome = {
         home: 'Home',
         soins: 'Treatments',
         program: 'Programs',
+        giftCertificates: 'Gift certificates',
         about: 'About',
         reserve: 'Book',
         contact: 'Contact',
@@ -45,6 +48,7 @@ export const chrome = {
       links: {
         soins: 'Treatments',
         program: 'Programs',
+        giftCertificates: 'Gift certificates',
         about: 'About',
         reserve: 'Book',
         contact: 'Contact',

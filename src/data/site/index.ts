@@ -4,6 +4,7 @@ import {bookingPracticalInfo} from './booking-practical-info';
 import {chrome} from './chrome';
 import {cureFusionPages} from './pages/cure-fusion';
 import {homePages} from './pages/home';
+import {giftCertificatesPages} from './pages/gift-certificates';
 import {maderotherapiePages} from './pages/maderotherapie';
 import {drainageLymphatiquePages} from './pages/drainage-lymphatique';
 import {soinsPages} from './pages/soins';
@@ -24,6 +25,7 @@ export type {
   DrainageLymphatiquePageData,
   FeltBenefitsData,
   GlobalPagesData,
+  GiftCertificatesPageData,
   HeroData,
   HomePageData,
   HomeTransitionData,
@@ -63,6 +65,7 @@ const localized = {
     bookingPracticalInfo: bookingPracticalInfo.fr,
     pages: {
       home: homePages.fr,
+      giftCertificates: giftCertificatesPages.fr,
       soins: soinsPages.fr,
       programs: programsPages.fr,
       program: programPages.fr,
@@ -81,6 +84,7 @@ const localized = {
     bookingPracticalInfo: bookingPracticalInfo.en,
     pages: {
       home: homePages.en,
+      giftCertificates: giftCertificatesPages.en,
       soins: soinsPages.en,
       programs: programsPages.en,
       program: programPages.en,

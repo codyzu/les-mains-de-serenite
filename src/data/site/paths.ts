@@ -29,6 +29,10 @@ export const localizedPagePaths = {
     fr: '/soins/drainage-lymphatique/',
     en: '/en/massages/lymphatic-drainage/',
   },
+  giftCertificates: {
+    fr: '/bons-cadeaux/',
+    en: '/en/gift-certificates/',
+  },
   reserve: {
     fr: '/reserver',
     en: '/en/book',

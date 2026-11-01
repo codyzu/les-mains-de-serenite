@@ -47,15 +47,12 @@ export const homePages = {
     },
     promo: {
       title: 'Bons cadeaux · Fêtes de fin d’année',
-      headline: 'Offrez-lui une vague de douceur',
+      headline: 'Offrez un massage, une vague de douceur',
       description:
         'Pour votre maman, votre sœur, une amie… offrez une pause entre nos mains attentionnées. Un massage relaxant ou un drainage lymphatique à Annecy, pour relâcher les tensions et retrouver une sensation de légèreté.',
       note: 'Soins réservés aux femmes · À Annecy',
-      ctaText: 'Demander un bon cadeau',
-      ctaLink: getBusinessWhatsappHref(
-        'Bonjour, je souhaite offrir un bon cadeau pour les fêtes. Pouvez-vous m’aider à le préparer ?',
-      ),
-      analyticsEvent: 'whatsapp_click',
+      ctaText: 'Découvrir les bons cadeaux',
+      ctaLink: localizedPagePaths.giftCertificates.fr,
       image: {
         src: HolidayGiftCertificate,
         alt: 'Bon cadeau dans une enveloppe ivoire ornée d’un ruban vert sauge, avec des branches de sapin, des lumières de Noël et de doux reflets sur l’eau',
@@ -297,15 +294,12 @@ export const homePages = {
     },
     promo: {
       title: 'Gift certificates · Holiday season',
-      headline: 'Give her a little wave of calm',
+      headline: 'Give a massage, a little wave of calm',
       description:
         'For your mum, sister, or a friend… give her a relaxing break in our caring hands. A soothing massage or lymphatic drainage treatment in Annecy, to ease tension and rediscover a feeling of lightness.',
       note: 'Treatments for women · In Annecy',
-      ctaText: 'Enquire about a gift certificate',
-      ctaLink: getBusinessWhatsappHref(
-        'Hello, I’d like to give a gift certificate for the holidays. Could you help me arrange it?',
-      ),
-      analyticsEvent: 'whatsapp_click',
+      ctaText: 'Explore gift certificates',
+      ctaLink: localizedPagePaths.giftCertificates.en,
       image: {
         src: HolidayGiftCertificate,
         alt: 'Gift certificate in an ivory envelope tied with a sage-green ribbon, with fir branches, Christmas lights, and gentle reflections on water',
