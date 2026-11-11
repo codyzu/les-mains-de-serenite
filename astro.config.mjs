@@ -7,7 +7,12 @@ import {getSiteBasePath, joinBasePath} from './config/base-path.mjs';
 
 const legacyMassagesPath = joinBasePath('/massages/');
 const shortRedirectPath = joinBasePath('/v/');
-const excludedSitemapPaths = new Set([legacyMassagesPath, shortRedirectPath]);
+const sponsorRedirectPath = joinBasePath('/s/');
+const excludedSitemapPaths = new Set([
+  legacyMassagesPath,
+  shortRedirectPath,
+  sponsorRedirectPath,
+]);
 const siteUrl = process.env.SITE_URL?.trim() || 'https://lesmainsdeserenite.fr';
 
 // https://astro.build/config

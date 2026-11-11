@@ -1,0 +1,89 @@
+---
+import {site} from '../data/site';
+import {sponsorQr} from '../data/site/sponsor-qr';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import {getBaseUrl} from '../utils/url';
+
+const homePath = getBaseUrl();
+const campaignQuery = new URLSearchParams([
+  ['utm_source', sponsorQr.source],
+  ['utm_medium', sponsorQr.medium],
+  ['utm_campaign', sponsorQr.campaign],
+]);
+const redirectUrl = `${homePath}?${campaignQuery}`;
+const canonicalUrl = new URL(homePath, site.business.siteUrl).href;
+---
+
+<BaseLayout
+  lang="fr"
+  title={sponsorQr.title}
+  description={sponsorQr.description}
+  canonicalUrl={canonicalUrl}
+  gaSendPageView={false}
+  robots="noindex, follow"
+>
+  <noscript slot="head">
+    <meta http-equiv="refresh" content={`0; url=${redirectUrl}`} />
+  </noscript>
+
+  <main
+    class="grid min-h-screen place-items-center bg-surface p-6 text-center"
+    data-qr-redirect={redirectUrl}
+    data-qr-location={sponsorQr.location}
+    data-qr-campaign={sponsorQr.campaign}
+  >
+    <div>
+      <p class="body-base">{sponsorQr.message}</p>
+      <a class="btn-primary mt-6" href={redirectUrl}>{sponsorQr.linkLabel}</a>
+    </div>
+  </main>
+
+  <script>
+    type GtagWindow = Window & {
+      gtag?: (...args: unknown[]) => void;
+      __sponsorQrRedirectStarted?: boolean;
+    };
+
+    const redirectPage =
+      document.querySelector<HTMLElement>('[data-qr-redirect]');
+    const destination = redirectPage?.dataset.qrRedirect;
+    const gtagWindow = window as GtagWindow;
+
+    if (
+      typeof destination === 'string' &&
+      destination.length > 0 &&
+      !gtagWindow.__sponsorQrRedirectStarted
+    ) {
+      gtagWindow.__sponsorQrRedirectStarted = true;
+      let hasRedirected = false;
+
+      const redirect = () => {
+        if (hasRedirected) {
+          return;
+        }
+
+        hasRedirected = true;
+        window.clearTimeout(fallbackTimer);
+        window.location.replace(destination);
+      };
+
+      const fallbackTimer = window.setTimeout(redirect, 350);
+
+      if (typeof gtagWindow.gtag === 'function') {
+        try {
+          gtagWindow.gtag('event', 'qr_redirect', {
+            campaign: redirectPage?.dataset.qrCampaign,
+            qr_location: redirectPage?.dataset.qrLocation,
+            transport_type: 'beacon',
+            event_callback: redirect,
+            event_timeout: 250,
+          });
+        } catch {
+          redirect();
+        }
+      } else {
+        redirect();
+      }
+    }
+  </script>
+</BaseLayout>

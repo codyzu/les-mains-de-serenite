@@ -34,6 +34,7 @@ const routes = [
   '/reserver',
   '/en/book',
   '/v',
+  '/s',
   '/reserver-en-ligne',
   '/en/book-online',
   '/reserver-en-ligne/offre-decouverte',
