@@ -1,6 +1,9 @@
 # build output
 dist/
 
+# Local private assets and deliverables
+/assets/private/
+
 # generated types
 .astro/
 
