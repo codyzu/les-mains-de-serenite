@@ -79,7 +79,10 @@ for (const item of [
     const href = new URL((await cta.getAttribute('href'))!);
     expect(href.origin + href.pathname).toBe('https://wa.me/33766612017');
     expect(href.searchParams.get('text')).toBe(item.message);
-    await expect(cta).toHaveAttribute('data-analytics-event', 'whatsapp_click');
+    await expect(cta).toHaveAttribute(
+      'data-analytics-event',
+      'gift_certificate_whatsapp_click',
+    );
     await page.getByText(item.validity, {exact: true}).click();
     await expect(page.locator('details[open]')).toContainText(
       item.validityText,
